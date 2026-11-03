@@ -1,0 +1,2465 @@
+
+=== [parte1 pág 1] ===
+
+=== [parte1 pág 2] ===
+APROVECHO ·
+1. ÍNDICE
+3. ELEVATOR PITCH
+ .1. Definición del mensaje central y el propósito
+3
+3.2. Elevator pitch: versión extendida
+4. INFORME EJECUTIVO
+ . CONTEXTO E INTRODUCCIÓN
+5
+5.1 Contexto general del emprendimiento
+ 5.2 Tendencias
+ 5.2.1 Tendencias demograficas y culturales
+ 5.2.2 Tendencias tecnologicas
+ 5.2.3 Tendencias de la industria y el mercado
+ 5.2.4 Tendencias de la vertical
+ 5.2.5 Otras tendencias
+ 5.3 Desarrollo del triple impacto (ODS)
+ . RESUMEN DEL PROBLEMA, OPORTUNIDAD Y SEGMENTOS
+6
+6.1 Problemas y sub-problemas
+ 6.2. Análisis de las diversas oportunidades
+ 6.3. Segmentos objetivos
+ . VALIDACION Y DESCUBRIMIENTO DE CLIENTE Y USUARIO
+7
+7.1 Validaciones con información de mercado y propias sobre la oportunidad detectada
+ .2. Hipótesis identificadas y metodología de validación
+7
+7.2.1 Hipótesis del segmento consumidor
+7.2.2 Hipótesis del segmento comercio
+7.2.3 Hipótesis transversales
+7.2.4 Metodologia de investigacion
+7.3 Mapa de empatia de los segmentos involucrados
+7.4 Buyer persona
+8. ENFOQUE GENERAL DE SOLUCIÓN
+ .1. Descripción general del enfoque de solución
+8
+8.2. Componentes físicos y digitales
+ 8.3 Aproximación inicial del equipo ampliado y expertise necesario
+ 8.4 Descripción del ecosistema y jugadores de la industria
+9. PROPUESTA DE VALOR
+ .1. Proposito del emprendimiento
+9
+9.2 Propuesta de valor integral
+ Página2
+=== [parte1 pág 3] ===
+APROVECHO ·
+ .2.1 Propuesta de valor para los stakeholders
+9
+9.3 Product-market fit por segmento
+ 9.3.1 Consumidor (B2C)
+ 9.3.2 Comercios (B2B)
+ 9.4 Diferenciales y ventaja competitiva
+ 0. DIMENSIONAMIENTO DEL MERCADO
+1
+10.1 Dimensionamiento del mercado con el modelo TAM-SAM-SOM 5.2 Tendencias
+ 10.2. Dimensionamiento del mercado B2B
+ 10.2.1 TAM B2B
+ 10.2.2 SAM B2B
+ 10.2.3 SOM B2B
+ 10.3 Dimensionamiento del mercado B2C
+ 10.3.1 TAM B2C
+ 10.3.2 SAM B2C
+ 10.3.3 SOM B2C
+ 10.4 Análisis de la capacidad instalada
+ 1. PRODUCTOS Y SERVICIOS
+1
+11.1 Productos y servicios B2B
+ 11.1.1 AROVECHO base
+ 11.1.2 APROVECHO Smart
+ 11.1.3 APROVECHO Intelligence
+ 11.2 Productos y servicios B2C
+ 11.3 Monetizacion
+ 11.4 Matriz de productos y servicios con su alcance
+ 11.5 Precios
+12. ANALISIS DEL SECTOR Y LA COMPETENCIA
+ 2.1. Analisis del sector industrial del emprendimiento
+1
+12.2. Analisis de la competencia local e internacional potencial
+ 12.3 Atributos principales y relevantes para la comparacion
+ 12.4 Mapa comparativo de atributos
+ 12.5 Conclusiones sobre el mapa competitivo
+13. PLAN COMERCIAL
+ 4. PLAN DE OPERACIONES Y TECNOLOGIA
+1
+15. POSICIONAMIENTO ESTRATEGICO Y VARIABLES EXTERNAS
+ 16. ANALIS ECONOMICS BASICO
+ 17. ANEXO
+ Página3
+=== [parte1 pág 4] ===
+APROVECHO ·
+3. ELEVATOR PITCH
+3.1 Definición del mensaje central y el propósito
+ odos los días, comercios de alimentos terminan su jornada con productos que siguen en
+T
+buen estado pero que no lograron vender. Para el negocio, eso significa una pérdida
+ económica; para el consumidor, mientras tanto, existe una oportunidad de acceder a buena
+ comida a un precio más conveniente.
+ PROVECHO conecta ambas necesidades en una misma plataforma.Los comercios
+A
+transforman sus excedentes en packs a precio reducido que pueden ser encontrados y
+ comprados por consumidores cercanos.
+ ero la propuesta no termina en recuperar lo que ya sobró. A partir de la información generada
+P
+en cada operación, APROVECHO ayuda a los comercios a entender mejor sus excedentes y,
+ progresivamente, a tomar mejores decisiones para reducirlos.
+ sí, APROVECHO combinarecuperación económica, ahorro para el consumidor y
+A
+reducción del desperdicio alimentariodentro de un mismo modelo.
+3.2 Elevator pitch: versión extendida
+ odos los días, panaderías, cafeterías, restaurantes, hoteles, supermercados y otros
+T
+comercios de alimentos terminan su jornada con productos que siguen siendo aptos para
+ consumo pero que no lograron vender. Ese excedente representa una pérdida para el negocio:
+ alimentos en los que ya se invirtieron materias primas, tiempo, energía y trabajo pueden
+ terminar descartados sin generar ningún retorno.
+ l mismo tiempo, existen consumidores que buscan alternativas para acceder a alimentos de
+A
+calidad a un precio más conveniente, sin tener que modificar demasiado su rutina.
+ ara conectar estas dos necesidades naceAPROVECHO, una plataforma que permite
+P
+transformar los excedentes de los comercios en una nueva oportunidad de consumo. Los
+ alimentos que quedaron disponibles se ofrecen como packs a precio reducido para que
+ puedan ser encontrados y comprados por personas cercanas.
+La propuesta de APROVECHO se construye sobre tres pilares:
+ . Recuperar valor:
+1
+APROVECHO permite que los comercios conviertan lo que antes representaba una pérdida en
+ una nueva fuente de ingresos. Al mismo tiempo, el consumidor accede a alimentos a un precio
+ menor y encuentra una alternativa conveniente dentro de su zona.
+ . Entender el excedente:
+2
+Cada operación genera información sobre qué alimentos sobran, cuánto excedente se
+ produce, cuándo ocurre y qué parte logra recuperarse. Con el tiempo, estos datos permiten
+ que el comercio deje de mirar el desperdicio como algo aislado y empiece a entenderlo como
+ una parte de su operación que puede medirse y gestionarse.
+ Página4
+=== [parte1 pág 5] ===
+APROVECHO ·
+ . Reducir el desperdicio:
+3
+El objetivo final de APROVECHO no es que los comercios vendan cada vez más excedentes,
+ sino que progresivamente generen menos. A medida que se acumula información, la
+ plataforma puede detectar patrones y ayudar a tomar mejores decisiones de producción,
+ compra y planificación.
+ e esta manera, APROVECHO no funciona únicamente como un marketplace de alimentos
+D
+con descuento. Construye una red donde cada transacción recupera valor en el presente y, al
+ mismo tiempo, genera información que puede ayudar a reducir las pérdidas futuras.
+ a oportunidad está en unir en una misma propuestaahorro para el consumidor,
+L
+recuperación económica para el comercio y una gestión cada vez más inteligente del
+ desperdicio alimentario.
+ Página5
+=== [parte1 pág 6] ===
+APROVECHO ·
+4. INFORME EJECUTIVO
+ adadía,loscomerciosdealimentosterminansujornadaconproductosquesiguensiendo
+C
+aptosparaconsumo,peroquenolograronvender.Eseexcedenterepresentaunapérdida
+ económica:sonalimentosenlosqueelcomercioyainvirtiómateriaprima,trabajo,energía
+ y tiempo, pero que pueden terminar descartados sin generar ningún retorno.
+ l problema también tiene una dimensión ambiental significativa.En2022sedesperdiciaron
+E
+aproximadamente 1.050 millones de toneladas dealimentosenelmundo.1 EnArgentina,
+ se estima que se pierden y desperdician alrededor de 16 millones de toneladas de
+ alimentosporaño2. Porlotanto,APROVECHOvióestaproblemáticacomounaposibilidad
+ para ayudar almedioambiente, al consumidor y a los comercios.
+ ediante las encuestas realizadas por elequipo,APROVECHOvalidósusolución,el35,7%
+M
+indicóhabertenidoexcedentesaptosparaconsumotodoslosdíasdurantelaúltimasemana,
+ mientrasqueel52%noregistracuántolesobra,principalmenteporfaltadetiempo.Alavez,
+ del lado de los consumidores existe interés por acceder a alternativas dealimentaciónaun
+ precio más conveniente, siempre que la experiencia resulte cercana, simple y confiable.
+ or lo tanto, nace APROVECHO, una plataforma que conecta estos comercios que
+P
+generan excedentes de alimentos con los consumidores interesados en comprarlos a
+ un precio reducido. El comercio transforma aquello que no logró vender en packs que se
+ publican en la plataforma, mientrasqueelconsumidorpuedeencontraropcionesdisponibles
+ cerca, comprarlas y retirarlas directamente en el local.
+ a idea del proyecto sigue cuatro pasos simples: recuperar, medir, entender y reducir.Al
+L
+principio, la plataforma permite recuperar el valor de lo que sobró. A medida que los
+ comerciosutilizanAPROVECHO,cadaoperacióngenerainformaciónsobrelosalimentosque
+ quedandisponibles,lascantidades,losmomentosenlosqueseproducenesosexcedentesy
+ cuánto logra recuperarse. Esa información permite progresivamente entender mejor el
+ problema y, en operaciones de mayor volumen o complejidad, utilizar los datos para
+ identificar patrones y mejorar decisiones de producción, compra y planificación.
+ l objetivo final no es que los comercios vendan cada vez más excedentes, sino que
+E
+con el tiempo puedan generar menos.
+ a propuesta se adapta a comercios de distintas escalas. Un negocio pequeño puede
+L
+comenzar de unamanerasimple,utilizandolosrecursosqueyatieneypagandoúnicamente
+ cuando logra vender. Los comercios que necesitan mayor precisión pueden incorporar
+ herramientas de medición, mientras que empresas con operaciones máscomplejasovarias
+1
+ Programa de las Naciones Unidas para el Medio Ambiente (PNUMA). (2024).Food Waste Index Report 2024.
+https://wedocs.unep.org/handle/20.500.11822/45230
+2
+ Ministerio de Agricultura, Ganadería y Pesca de la Nación. Resolución 134/2022. Información oficial sobre pérdida y
+ esperdicio de alimentos en Argentina.
+d
+https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-134-2022-365417/texto
+ Página6
+=== [parte1 pág 7] ===
+APROVECHO ·
+ ucursales pueden utilizar la información acumulada para comparar resultados, detectar
+s
+patrones y recibir recomendaciones. Esta estructura permite que APROVECHO acompañe
+ distintos niveles de necesidad sin obligar a todos los clientes a adoptar la misma
+ solución.
+ a validación con consumidores también permitió definir con mayor precisión qué tiene que
+L
+ofrecer la experiencia. Un 35,1% dijo que el ahorro económico fue la principal motivación
+ individualparaunasolucióndeestetipo,yel40,3%manifestóintencióndecomprafrentea
+ un pack con 50% de descuento. La conveniencia también tiene un rol muy importante: el
+ 72,8%dijoquecompraríasielcomercioseencuentradepasoosiseencuentraamenosde
+ diez minutos.
+ partirdelosresultados,planteamoslapropuestaB2Cparaqueestéconstruidaalrededorde
+A
+la sustentabilidad. Además, para el consumidor es importante acceder a una opción
+ conveniente, cercana y a un precio menor. Por eso, APROVECHO busca combinarahorro,
+ facilidad e impacto positivo, sin exigir un cambio importante en los hábitos cotidianos de
+ compra.
+ elladodeloscomerciostambiénencontramosinterés.El63,6%dijoqueestaríadispuesto
+D
+aprobarlasoluciónduranteunperíodoinicialsincosto.Susprincipalesdudasfueronque
+ sus clientes habituales empiecen a esperar descuentos, que usar la plataforma lleve
+ demasiado tiempo y que los packs no se vendan. Estaspreocupacionesfuerontomadasen
+ cuenta para diseñar una propuesta simple, con barreras bajas al inicio yconunaestrategia
+ que busca sumar comercios y consumidores en las mismas zonas.
+ ERCADOYOPORTUNIDAD.APROVECHOparticipadeunmercadodedoslados:porun
+M
+lado,loscomerciosquegeneranlaofertadeexcedentes;porelotro,losconsumidores
+ que generan la demanda.
+ Página7
+=== [parte1 pág 8] ===
+APROVECHO ·
+ el lado de los comercios (B2B), estimamos un TAM de 2.365.746 establecimientos en
+D
+Latinoamérica, equivalente a aproximadamente USD 1.434 millones anuales. Para
+ Argentina, el SAM es de 70.126 comercios, equivalente a aproximadamente USD 42,5
+ millones.Finalmente,para2027,nuestroobjetivoinicialesalcanzar525comerciosdentrode
+ la zona de lanzamiento: 518 en Base, 5 en Smart y 2 en Intelligence.
+ el lado de los consumidores (B2C), elTAMalcanzaaproximadamente336,8millonesde
+D
+personasenLatinoamérica,equivalenteaalrededordeUSD1.747millonesanuales.Para
+ Argentina, el SAM es de 23,6 millones de consumidores, equivalente aaproximadamente
+ USD122millones.Paraelprimeraño,estimamosllegara26.247usuariosdentrodelazona
+ de lanzamiento.
+ onesacantidaddeusuariosycomercios,estimamosunas34.121ventasdepacksdurante
+C
+2027, que generaríanaproximadamenteUSD71.236deingresosparaAPROVECHOentre
+ comisiones y suscripciones.
+ lobjetivodelprimerañoesmuchomáschicoqueelmercadototalporqueAPROVECHOno
+E
+buscaexpandirseamuchoslugaresalmismotiempodesdeelinicio.Primeroqueremoslograr
+ que una zona funcione bien, con suficientes comercios y consumidores. Una vez que ese
+ modelo esté validado, podemos repetirlo en nuevas zonas.
+ ODELO DE NEGOCIO YDIFERENCIAL.Laaplicaciónesgratuitaparaelconsumidor.Del
+M
+lado de los comercios, APROVECHO combina ingresos transaccionales y mensuales
+ n el niveldeentradanoexisteuncostofijomensual:APROVECHOrecibeunacomisión
+E
+del 25% por cada pack vendido. Los servicios orientados a operaciones de mayor volumen
+ incorporanademássuscripcionesmensuales,actualmenteestimadasenUSD300paraSmart
+ y USD 800 por sucursal para Intelligence, manteniendo la comisión sobre las ventas
+ realizadas a través del marketplace.
+ sta combinación permite que el negocio no dependa exclusivamente de aumentar
+E
+indefinidamente la cantidad de packs vendidos. A medida que crece la participación de
+ clientesqueutilizanherramientasdemedición,análisisygestión,aumentatambiénelpesode
+ los ingresos mensuales.
+ lmercadoyacuentaconcompetidores quevalidanlaexistenciadeestanecesidad.Cheaf3 y
+E
+Buen Provecho4 operanenlacomercializacióndeexcedentesenlaregión,mientrasqueToo
+ Good To Go5 se convirtió en uno de los principales referentes internacionales del modelo.
+3
+ heaf.Cómo funciona Cheaf.https://www.cheaf.com/ar/como-funciona
+ C
+4
+ Buen Provecho. Referenciade operación y expansión en Argentina:
+ https://www.cronista.com/apertura/emprendedoress/una-app-llega-a-la-argentina-para-que-los-comercios-vendan-sus-exceden
+ tes-con-descuentos/
+5
+ TooGoodToGo.AboutUs.Referenteinternacionaldelmodeloderecuperacióndeexcedentesmediantepacksyretiroen
+ comercios.https://www.toogoodtogo.com/en-us/about-us
+ Página8
+=== [parte1 pág 9] ===
+APROVECHO ·
+ a diferenciación de APROVECHO no se basa únicamente en ofrecer alimentos con
+L
+descuento. Su propuesta conecta dos momentos que actualmente suelen resolverse por
+ separado:recuperarelexcedentequeyaexisteyutilizarlainformacióngeneradaparaayudar
+ a reducir el excedente futuro.
+ adaoperacióndejaentoncesdosresultados:valoreconómicorecuperadoenelpresente
+C
+e información para mejorar decisiones en el futuro. A medida que la plataforma crece,
+ también se construye un historial sobre excedentes, recuperación y comportamiento de la
+ demanda que puede mejorar progresivamente la calidad de los análisis y recomendaciones.
+ STRATEGIA DECRECIMIENTO.ElcrecimientoinicialdeAPROVECHOdependedelograr
+E
+suficiente oferta y demanda dentro de una misma zona. Una plataforma con muchos
+ consumidores pero pocos packs disponibles pierde valor; lo mismo ocurre si los comercios
+ publican excedentes pero todavía no existen compradores cercanos.
+ orestemotivo,2027seráelañodemayorinversióncomercialydemarketing.Laestrategia
+P
+consiste en concentrar comercios y consumidores dentro de zonas de lanzamiento,generar
+ las primeras transacciones y, a partir de ellas, activar mecanismos de recompra,
+ recomendación y referidos.
+ a lógica buscada es que el crecimiento pueda evolucionar desde un modelo fuertemente
+L
+impulsado por adquisición paga hacia otro en el que la propia actividad de la red genere
+ nuevos usuarios y comercios.
+Una vez validado este modelo, el mismo esquema puede replicarse geográficamente.
+ l roadmap plantea validar los tres niveles de servicio durante 2027 y utilizar 2028 para
+E
+demostrarqueelmodelopuederepetirseenlosprincipalesmercadosurbanosyturísticosde
+ Argentina. A partir de 2029, comienza una expansión internacional progresiva, inicialmente
+ haciaChileyUruguay,seguidaporPerú,ColombiayMéxico.En2031seproyectalaentrada
+ a Brasil y, para 2032, el objetivo pasa de abrir nuevos mercados a consolidar laplataforma
+ regional.
+ as ciudades, países ytiemposespecíficosfuncionancomohipótesisestratégicasydeberán
+L
+validarse comercial, operativa, legal y financieramente antes de cada lanzamiento.
+ PERACIÓN, RIESGOS Y ESCALABILIDAD. APROVECHO funciona como intermediario
+O
+entre el comercio y el consumidor. La empresa no produce, almacena y transporta los
+ alimentos: el comercio conserva la responsabilidad sobre el producto y entrega el pack
+ directamente en su establecimiento, mientras que el consumidor realiza el retiro.
+ ste modelo permite mantener una estructura operativa más liviana y evitar la complejidad
+E
+logística asociada al delivery.
+ no de los principales riesgos es que no haya suficiente equilibrio entre comercios y
+U
+consumidores dentro de una misma zona lo cual puede generar una mala experiencia para
+ Página9
+=== [parte1 pág 10] ===
+APROVECHO ·
+ mboslados.Parareduciresteriesgo,ellanzamientoserealizademaneraconcentraday
+a
+progresiva.
+ ambién existen riesgos asociados al contexto económico, la adopción por parte de los
+T
+comercios,laseguridadalimentariaylacapacidadfinancieraparasostenerelcrecimiento.La
+ estrategia busca reducirlos mediante una estructura inicialmente liviana, validación
+ progresiva, incorporacióndecomerciosporetapasyprocesosclarosdeverificacióny
+ operación.
+ l principal desafío de escala será demostrar que el modelo construido en 2027 puede
+E
+repetirsesinaumentarloscostoscomercialesyoperativosenlamismaproporciónquecrece
+ la red.
+ PROVECHOesdesarrolladoporunequipofundadorcompuestoporCatalinaRebolo,CEO;
+A
+Facundo Beumont, CTO; Lola Baldini, CMO; y Octavio Chomnalez, CFO, combinando
+ responsabilidades de dirección, tecnología, marketingyfinanzas.Amedidaquelaoperación
+ crezca, el roadmap incorporacapacidadesespecíficasendesarrollo,ventas,soporte,Data&
+ Analytics y expansión regional.
+ PROVECHO buscaposicionarseentremediode:larecuperacióninmediatadealimentos
+A
+que todavía tienen valor y la gestión de la información necesaria para reducir el
+ desperdicio futuro.
+ n unaprimeraetapa,cadapackvendidopermiterecuperarunaoportunidadeconómicaque
+E
+de otra manera podría perderse. Con el tiempo, cada una de esas operaciones también
+ construye información sobre el problema.
+ or eso, la lógicadelproyectopuederesumirsedeunamanerasimple:cadaventarecupera
+P
+valor hoy y genera un dato para tomar mejores decisiones mañana.
+ Página10
+=== [parte1 pág 11] ===
+APROVECHO ·
+5. CONTEXTO E INTRODUCCIÓN
+5.1 Contexto general del emprendimiento
+ acadenadealimentostieneunproblemadeeficiencia:unaparteimportantedeloquese
+L
+producenuncallegaacomerse.SegúnelProgramadelasNacionesUnidasparaelMedio
+ Ambiente, en 2022 se desperdiciaron en el mundo 1.050 millones de toneladas de
+ alimentos,cercadel19%detodalacomidadisponibleparalosconsumidores.Alrededordel
+ 60%deesedesperdicioocurreenloshogares;elresto,enrestaurantes,hoteles,serviciosde
+ comidaycomerciosminoristas6.Aestosesumaun13%dealimentosquesepierdeantesde
+ llegar a la venta7. 
+ aArgentinanoeslaexcepción:cadaañosepierdenydesperdiciancercade16millonesde
+L
+toneladas de alimentos, el12,5%delaproducciónagroalimentariadelpaís8. Esetotalestá
+ compuesto por dos conceptos principales. Lapérdidaocurrealprincipiodelacadena,enel
+ campo, la industria o el transporte, y depende sobre todo de infraestructura y políticas
+ públicas. Eldesperdicioocurre al final, en la venta y el consumo.
+ PROVECHO se ubicaenelsegundoconceptomencionado,elcomerciodealimentos.Es
+A
+unapartemáschicadeltotal,dondeelalimentoyaestáelaborado,enbuenestadoyapocos
+ metros de alguien que podría consumirlo. Para muchos comercios, producir de más es la
+ forma de no quedarse sin mercadería, por lo que el excedenteformapartedesuoperación
+ diaria. Hoy ese excedente suele descartarse o repartirse entre los empleados, y engeneral
+ nadie registra cuánto sobra ni por qué.
+ stasituaciónescontroversialconlarealidadyaqueenelprimersemestrede2026,el32,3%
+E
+delaspersonasenlaArgentinaestababajolalíneadepobreza9.Quesedescartenalimentos
+ aptosparaelconsumomientrasunapartedelapoblaciónnolograalimentarsebienconvierte
+ al desperdicio en un problemaeconómico, social y ambientalal mismo tiempo.
+ n este contexto surge APROVECHO, un emprendimiento de triple impacto que busca
+E
+darle al excedente del comercio una salida comercial en el mismo día y, con la
+ informaciónquegeneracadaoperación,ayudaraqueeseexcedenteseacadavezmenor.
+ El proyecto se lanza en 2027 en la Ciudad de Buenos Aires,VicenteLópez,SanIsidroy
+ Pilar, con el objetivo futuro de expandirse internacionalmente.
+6
+ PNUMA. (2024). Informe sobre el Índice de Desperdicio de Alimentos 2024.
+https://www.unep.org/es/resources/publicaciones/informe-sobre-el-indice-de-desperdicio-de-alimentos-2024
+7
+ FAO. (s. f.). Food loss and food waste.https://www.fao.org/policy-support/policy-themes/food-loss-and-food-waste/
+8
+ Universidad Siglo 21. (s. f.). En Argentina se pierden y desperdician 16 millones de toneladas de alimentos por año.
+https://21.edu.ar/identidad-21/en-argentina-se-pierden-y-desperdician-16-millones-de-toneladas-de-alimentos-por-a%C3%B1o
+9
+ Forbes Argentina. (2026, septiembre). La pobreza subió al 32,3% en el primer semestre de 2026 (datos del INDEC).
+https://www.forbesargentina.com/today/la-pobreza-subio-323-primer-semestre-2026-afecta-casi-10-millones-personas-n98687
+ Página11
+=== [parte1 pág 12] ===
+APROVECHO ·
+5.2 TENDENCIAS
+5.2.1 Tendencias demográficas y culturales
+ aformadeconsumirestácambiando.Cercadel70%delosargentinosencuestadosporel
+L
+CENARSECS(FacultaddeCienciasEconómicas,UBA)estaríadispuestoapagarmáspor
+ productosdeempresasquegeneranunimpactosocialoambientalpositivo,ymásdel75%
+ dice tener en cuenta ese impacto al elegir alimentos y bebidas10
+ in embargo, la conciencia ambiental todavía no es la principal motivación al momento de
+S
+comprar.Enlamismaencuesta,el72%reconocióhaberreducidosusgastosenlosúltimos
+ meses por razones económicas11. En Latinoamérica ocurre algo similar: el 58% de los
+ consumidores considera que los productos sustentables son muy caros, y la principal
+ preocupacióndeloshogareseseconómica,noambiental12.Conunainflaciónqueen2025fue
+ del 31,5%13, el ahorro sigue pesando más que la sustentabilidad al momento de decidir.
+ hí aparece la oportunidad para APROVECHO. Alofreceralimentosenbuenestadoconun
+A
+50%dedescuento,elconsumidornotienequeelegirentreahorrarycuidarelambiente:
+ hace las dos cosas en la misma compra.
+5.2.2. Tendencias tecnológicas
+ aArgentinaesunodelospaísesmásdigitalizadosdelaregiónenpagos:el84%dequienes
+L
+paganconelcelularenuncomerciousacódigoQRdeformahabitual,laproporciónmásalta
+ de América Latina, y Mercado Pago supera los 25 millones deusuariosactivos14.Comoen
+ APROVECHO la reserva, el pago y el retiro suceden dentro del celular, no hace falta
+ crear un hábito nuevo.
+ esto se sumaelavancedelainteligenciaartificialydelvisionrecognitionparaidentificary
+A
+pesar alimentos de forma automática. Equipos como KITRO, Winnow,OrbiskoLeanpathya
+ combinan cámara y balanza en cocinas profesionales, y un estudio publicado en la revista
+ Waste Management encontró que estos sistemas reducen el desperdicio entreun25%yun
+10
+ Revista Mercado. (2025, 27 de diciembre). Encuesta de CENARSECS revela cambios en hábitos de consumo responsable
+ n Argentina.
+e
+https://mercado.com.ar/gestion-sustentable/encuesta-de-cenarsecs-revela-cambios-en-habitos-de-consumo-responsable-en-ar
+ gentina
+11
+ Revista Mercado. (2025, 27 de diciembre). Encuesta de CENARSECS revela cambios en hábitos de consumo responsable
+ n Argentina.
+e
+https://mercado.com.ar/gestion-sustentable/encuesta-de-cenarsecs-revela-cambios-en-habitos-de-consumo-responsable-en-ar
+ gentina
+12
+ KantarWorldpanel.(2025).SustentabilidadenLatam:decodificandoprácticasecoamigables(SustentarparaGanar2025).
+ ttps://www.kantar.com/latin-america/inspiracion/consumidor/2025/sustentabilidad-latam-practicas-ecoamigables-crecimiento-f
+h
+mcg
+13
+ Canal26.(2026,13deenero).Lainflaciónen2025fuede31,5%,lamásbajaenlosúltimos8años(datosdelINDEC).
+ https://www.canal26.com/economia/2026/01/13/la-inflacion-de-diciembre-fue-de-28-y-cerro-el-2025-con-un-alza-de-315/
+14
+ Worldpay. (2026). GlobalPayments Report 2026.https://www.worldpay.com/es-MX/global-payments-report
+ Página12
+=== [parte1 pág 13] ===
+APROVECHO ·
+ 0%enhoteles,yhastaun54%enrestaurantes15.Latecnologíaexisteyfunciona,aunque
+7
+hoy está pensada para cocinas de gran volumen. APROVECHO la aplica de forma más
+ accesible: con lacámaradelcelularenelplanBaseyconunaestaciónpropia,armadacon
+ equipos que se consiguen en el país, en los planes Smart e Intelligence.
+5.2.3. Tendencias de la industria y el mercado
+ enderexcedentesdecomidaaprecioreducidoesunmodeloprobadoanivelmundial.
+V
+Too Good To Go,creadaenDinamarcaen2016,tienehoymásde120millonesdeusuarios
+ registradosy180.000comerciosasociados16,ysoloen2025rescatómásde156millonesde
+ comidas17.Esto demuestra que el negocio es viable y puede crecer a gran escala.
+ n la Argentina la categoría es reciente, perocrecerápido.Winimfuelaprimeraempresa
+E
+local en 201918; en 2025 llegaron Cheaf, de la mano de Cencosud19, y Buen Provecho, de
+ origen uruguayo20 y Kigüi recibió inversión para su modelo de prevención de pérdidas en
+ supermercados21. La tendencia muestra cómo las apps que venden el excedente al
+ consumidorylasherramientasqueayudanalasempresasamedirlo,crecenalmismotiempo.
+ El análisis de cada competidor se desarrolla en la sección de competencia.
+5.2.4. Tendencias de la vertical
+ n la Argentina, la Ley 27.454 de 2018 creó el Plan Nacional de Reducción de Pérdidas y
+E
+Desperdicio de Alimentos y facilitó ladonacióndealimentosenbuenestado22.Suaplicación
+ práctica todavía es limitada, lo que deja espacio para soluciones privadas como
+ APROVECHO.
+15
+ Waste Management. (2025). Reducing food waste in the HORECA sector using AI-based waste-tracking devices.
+https://www.sciencedirect.com/science/article/pii/S0956053X25001072
+16
+ Too Good To Go. (s.f.). About us.https://www.toogoodtogo.com/en-us/about-us
+17
+ Vakblad Voedingsindustrie. (2026). Too Good To Go saves more than 156 million meals.
+ https://vakbladvoedingsindustrie.nl/en/article/too-good-to-go-saves-more-than-156-million-meals
+18
+ Shulman, M. (2022, 24 de enero). Comida barata: dejaron sus trabajos, juntaron US$100.000 y lanzaron un negocio que no
+ existía en la Argentina. LA NACION.
+ https://www.lanacion.com.ar/economia/comida-barata-dejaron-sus-trabajos-juntaron-us100000-y-lanzaron-un-negocio-que-no-
+ existia-en-la-nid24012022/
+ 19
+ ElCronista.(2025,12defebrero).Alimentosmásbaratos:desembarcaenlaArgentinaunaappqueproponeunanueva
+ forma de comprar y cuidar el medioambiente.
+ https://www.cronista.com/infotechnology/actualidad/alimentos-mas-baratos-desembarca-en-la-argentina-una-app-que-propone-
+ una-nueva-forma-de-comprar-y-cuidar-el-medioambiente
+20
+ El Cronista. (2025). Una app llega a la Argentina para que los comercios vendan sus excedentes con descuentos.
+ ttps://www.cronista.com/apertura/emprendedoress/una-app-llega-a-la-argentina-para-que-los-comercios-vendan-sus-exceden
+h
+tes-con-descuentos
+21
+ Startups Latam. (2025, 3 de febrero). Kigüi recibe US$500 mil para potenciar su modelo B2B con IA y reducir el desperdicio
+ e alimentos.
+d
+https://startupslatam.com/kigui-recibe-us-500-mil-para-potenciar-su-modelo-b2b-con-ia-y-reducir-el-desperdicio-de-alimentos/
+22
+ Ley 27.454. (2018). Plan Nacional de Reducción de Pérdidas y Desperdicio de Alimentos. Boletín Oficial.
+https://www.boletinoficial.gob.ar/detalleAviso/primera/194679/20181029
+ Página13
+=== [parte1 pág 14] ===
+APROVECHO ·
+ nivel internacional la tendencia es más fuerte.Enoctubrede2025entróenvigenciaenla
+A
+Unión Europea unadirectivaque,porprimeravez,fijametasobligatoriasdereduccióndel
+ desperdiciopara2030:10%enprocesamientoyfabricación,y30%porpersonaencomercios,
+ restaurantesyhogares23.Estetipodenormassueleanticiparelcaminodeotrospaíses,medir
+ y reducir el desperdicio está pasando de ser una opción a ser una obligación.
+ o mismo se ve en las empresas. En 2025, el 47% de las empresas que cotizan en la
+L
+ComisiónNacionaldeValorespublicóinformaciónambientalysocial,yel96%deellasutilizó
+ los estándares GRI24. Esto es una oportunidad para Intelligence, el plan pensado para
+ cadenas y empresas grandes que necesitan datos confiablessobrecuántacomidadejande
+ desperdiciar.
+5.2.5. Otras Tendencias
+ demásdelastendenciasdirectamentevinculadasconlosalimentos,hayotrasquerefuerzan
+A
+elproyectoporquecompartenlamismalógica:aprovecharmejorloqueyaexisteenlugarde
+ producir más y descartar. Es la idea de la economía circular.
+ • Recicladoycompostaje.Separarlosresiduosyaespartedelavidaenlasciudades.
+ La Ciudad de Buenos Aires trataunas610toneladasderesiduosorgánicospordíae
+ instaló composteras en Puntos Verdes de sus 15 comunas.25 A medida que crece la
+ separación de residuos, se vuelve más visible cuánta comida se tira.
+ • Sustentabilidad en los envases. Crecen las alternativas al plástico, un fabricante
+ argentino de bolsas compostables proyecta crecer un 70% en 202626. El packaging
+ biodegradable de APROVECHO se suma a esta tendencia, aunque todavía hay que
+ explicarlo bien: el 51% de los latinoamericanos no sabe qué hacer con un producto
+ biodegradable.27
+ • Consumo de cercanía y comunidad. Los consumidores vuelven a elegir los
+ comercios cercanos a su casa. A finesde2025,lascomprasenalmacenescrecieron
+ un8%mientraslasdesupermercadosdecadenacayeronun4%,yelcanaltradicional
+23
+ Comisión Europea. (2025, 16 de octubre). Revised Waste Framework Directive enters into force.
+https://environment.ec.europa.eu/news/revised-waste-framework-directive-enters-force-2025-10-16_en
+24
+ ]Revista Mercado. (2026, 13defebrero).SMSBuenosAiresmidióreportesASG:47%deempresaslistadasenCNVen
+ 025.
+2
+https://mercado.com.ar/gestion-sustentable/sms-buenos-aires-midio-reportes-asg-47-de-empresas-listadas-en-cnv-en-2025
+25
+ Economía Sustentable. (2021). Residuos orgánicos: instalan composteras en Puntos Verdes de las 15 comunas de la
+ iudad.
+C
+https://economiasustentable.com/noticias/residuos-organicos-instalan-composteras-en-puntos-verdes-de-las-15-comunas-de-l
+ a-ciudad/amp/
+26
+ Revista Mercado. (2025, 11 de agosto). Bolsas compostables: Conciencia Circular proyecta crecer 70% en 2026.
+https://mercado.com.ar/gestion-sustentable/bolsas-compostables-conciencia-circular-proyecta-crecer-70-en-2026
+27
+ KantarWorldpanel.(2025).SustentabilidadenLatam:decodificandoprácticasecoamigables(SustentarparaGanar2025).
+ ttps://www.kantar.com/latin-america/inspiracion/consumidor/2025/sustentabilidad-latam-practicas-ecoamigables-crecimiento-f
+h
+mcg
+ Página14
+=== [parte1 pág 15] ===
+APROVECHO ·
+ a concentra el 34% del consumo, porencimadel31%delossupermercados28.Esto
+ y
+ favorece a APROVECHO, que funciona sobre comercios de la zona y propone una
+ comunidad de vecinos y comercios que rescatan comida juntos.
+5.3. Desarrollo del triple impacto (ODS)
+ través del marco de los Objetivos de Desarrollo Sostenible (ODS) de las Naciones
+A
+Unidas, APROVECHO confirma que su propósito va más allá de lo comercial.
+ l objetivo con mayor relación con el proyecto es el ODS 12,
+ E
+ “Producción y consumo responsables”, y puntualmente su
+ meta 12.3, que propone reducir a la mitad el desperdicio de
+ alimentos por persona a nivel mundial para el año 2030.29 El
+ informe más reciente (2025) sobre como fue el avance de esta
+ meta,publicadoporlaorganizaciónChampions12.3,esclaro:el
+ mundo no está en camino de cumplirla. De hecho, hasta el
+ momento solamente Japón logró reducir su desperdicio de
+ alimentosalamitad,conunabajadel53%desdeelaño200030.
+ Este dato deja en evidencia que todavía falta muchísimo por
+hacer,yqueproyectoscomoAPROVECHOpuedenaportarvaloraunproblemaque,a
+ nivel global, sigue sin resolverse.
+ PROVECHO también se conecta con el ODS 2, “Hambre
+ A
+ cero”. Como se mencionó antes, en la Argentina conviven el
+ desperdiciomasivodealimentosconnivelesaltosdeinseguridad
+ alimentaria, especialmente entre los chicos. Cada pack de
+ comidaquesevendeatravésdelaplataformaes,alimentoque
+ deja de perderse yquellegaaalguienquelovaaconsumir,en
+ un país donde eso todavía no está garantizado para todos.
+28
+ LosAndes.(2026,7deabril).Consumo:losalmaceneslesgananlapulseadaalossupermercados(datosdeNielsenIQ).
+https://www.losandes.com.ar/economia/consumo-los-almacenes-les-ganan-la-pulseada-los-supermercados-n5986731
+29
+ Naciones Unidas. (s.f.).Objetivo 12: Garantizar modalidades de consumo y producción sostenibles. Objetivos de Desarrollo
+ Sostenible.https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/
+30
+ Champions 12.3. (2025). SDG Target 12.3 on Food Loss and Waste: 2025 Progress Report.
+ https://champions123.org/publication/sdg-target-123-food-loss-and-waste-2025-progress-report
+ Página15
+=== [parte1 pág 16] ===
+APROVECHO ·
+ or último, el proyecto también aporta al ODS 13, “Acción
+ P
+ por el clima”. El desperdicio de alimentos no es solamente
+ un problema económicoosocial:cuandolacomidasepudre
+ en un basural, genera gases de efecto invernadero, entre
+ ellos metano, que tiene un efecto de calentamiento mucho
+ más fuertequeeldióxidodecarbono.Seestimaque,anivel
+ global,eldesperdiciodealimentosesresponsabledeentreel
+ 8% y el 10% de todas las emisiones de gases de efecto
+ invernadero31. Por eso, cada kilo de comida que se
+ recupera a través de APROVECHO tiene también un
+ impacto ambiental medible, que además se puede
+mostrar tanto al consumidor final como al comercio, cerrando así el círculo entre lo
+ económico, lo social y lo ambiental que define al triple impacto del proyecto.
+31
+ Programa de las Naciones Unidas para el Medio Ambiente [PNUMA]. (2024).Informe sobre el Índice de Desperdicio de
+Alimentos 2024.https://www.unep.org/es/resources/publicaciones/informe-sobre-el-indice-de-desperdicio-de-alimentos-2024
+ Página16
+=== [parte1 pág 17] ===
+APROVECHO ·
+6. RESUMEN DEL PROBLEMA, OPORTUNIDAD Y SEGMENTOS
+6.1 Problemas y sub-problemas
+ ll cierre de cada día, los comercios tiran comida que todavía se puede comer, y no tienen
+A
+una forma simple de recuperar esa plata ni de evitar que pase de nuevo al día siguiente.
+ o intentamos resolver todo el desperdicio del mundo. Mucho pasa en el campo, en el
+N
+transporte oenlaindustria,yesodependedeinfraestructuraydepolíticaspúblicas.Nuestro
+ focoeselfinaldelacadena:elcomercio,dondelacomidayaestálistayapocosmetrosde
+ alguien que podría comprarla. Es una parte más chica del total, pero es la que se puede
+ recuperar en el mismo día, y se repite todos los días en miles de locales.
+Este problema involucra tanto a un consumidor (B2C) y tres tipos de comercio (B2B).
+Comercios chicos y medianos (B2B 1)
+ • Pierden plata que ya gastaron. Lo que se tira ya tiene pagadoslosingredientes,el
+ sueldo de quien lo hizo, la luz y el alquiler. Está perdida.
+ • Las pérdidas pesan más que antes. Con un consumo que cae y márgenes muy
+ justos, cada producto que se tira tiene un impacto más fuerte en el negocio.
+ • Al cierre no hay tiempo. El momento en que aparece lo que sobra coincide con
+ limpiar, hacer la caja y cerrar. Cualquier tarea nueva en ese momento se abandona
+ rápido, sobre todo si cambia el empleado.
+ • Medir es caro o da trabajo. Las herramientas que existenparamedireldesperdicio
+ necesitanequiposycapacitación:porejemplo,KITROcobradesdeunosUSD420por
+ mes por cocina32. Anotar a mano se deja de hacer a las pocas semanas.
+ • Lo que hacen hoy no recupera plata. El excedente se tira, se reparte entre los
+ empleados o se vende al día siguiente con menos calidad.
+Comercios con mayor volumen (B2B 2)
+ • Pierden mucho, peronosabencuánto.Comonoregistranloquesobra,nopueden
+ ponerle un número a la pérdida.
+ • Producen con aproximaciones. Cuánto cocinar se decide por la experiencia del
+ dueño o del encargado. Sirve, peronopermiteverpatronesqueserepitensemanaa
+ semana.Ymedirconviene:enrestaurantes,porcadapesoqueseinvierteenreducirel
+ desperdicio vuelven en promedio siete33.
+Cadenas y empresas con varias sucursales (B2B 3)
+ • Nopuedencompararsucursalesconprecisión.Nosabenporquéenunlocalsobra
+ más que en otro.
+ • Además de comida elaborada, se lesvencen productos envasados.
+32
+ KITRO. (s. f.). KITRO pricing.https://www.kitro.ch/pricing
+33
+ Champions 12.3. (2019). The business case for reducing food loss and waste: Restaurants.
+https://champions123.org/publication/business-case-reducing-food-loss-and-waste-restaurants
+ Página17
+=== [parte1 pág 18] ===
+APROVECHO ·
+ • Tienenqueinformarsuimpactoymuchasveceslohacenconestimaciones,sindatos
+ reales.
+Consumidores (B2C)
+ • Comerafueraescaro.Lospreciosmásbajosdependendepromocionesdelbancoo
+ de días puntuales que el consumidor no controla. Mientras tanto, cerca suyo hay
+ comida buena que nadie compra.
+Comunidad y sector público
+ • Tirar comida cuesta. El municipio paga por recolectar y enterrar esa basura, que
+ además genera gases al pudrirse.
+ • No hay datos locales. Como ningúncomercioregistraloquetira,nosesabecuánto
+ se desperdicia en cada zona ni se pueden diseñar políticas para bajarlo.
+6.2. Análisis de las diversas oportunidades
+ l problema no abre una sola oportunidad, sino varias.Notodassepuedentomaralmismo
+E
+tiempo ni necesitan lo mismo para funcionar:
+ 1. Venderloquesobra(marketplace).estaeslaactividadprincipaldeAPROVECHO,la
+ cualdejaunacomisiónporcadaventaynonecesitastocknienvíos;alsolocontarcon
+ una comisión del 25%, cuanto mas volumen, mas rentabilidad para APROVECHO.
+ 2. Que cargar el excedente sea fácil (vision recognition). Gracias alsoftwarepropio
+ de APROVECHO estafuncionalidadhacequeconunafoto,milesdelocalesquehoy
+ no usan ninguna app pasan a poder usarla, lo que genera adopción.
+ 3. Medir con precisión (Smart). Los comercios con más volumen necesitan saber
+ cuánto pierden de verdad. Con la estación propia, el peso es realylosreportesson
+ confiables. Deja un abono mensual.
+ 4. Entender, reducir y demostrar (Intelligence). Con elhistorialsepuedeexplicarpor
+ quésobra,recomendarcambiosyentregarreportesdeimpacto(kilos,CO₂eyagua)a
+ cadenas que los necesitan. Deja un abono mensual.
+ 5. Compararentrecomercios.Conmuchoscomerciosenelmercado,sepuedemostrar
+ a cada uno cómo está frente a otros de su rubro, siempre con datos anónimos. Sin
+ escala no sirve, así que es de largo plazo.
+ 6. Creceranuevoslugares.Elmismomodelosepuedellevaraotrasciudadesypaíses.
+ El techo no es el tamaño del mercado: en Argentina hay70.126localesquepodrían
+ usar APROVECHO y en Latinoamérica 2.365.746 (sección 10).
+ Página18
+=== [parte1 pág 19] ===
+APROVECHO ·
+ 6.3. Segmentos
+ PROVECHO tiene dos tipos de clientes: los consumidores, que compran la comida, y los
+ A
+ comercios,alosquelessobra.Poresodefinimosunsegmentodelladodelconsumidor(B2C)
+ ytresdelladodeloscomercios(B2B).Aloscomercioslosseparamossegúneltamañodesu
+ operación y cuánto excedente generan, porque no tienenelmismoproblemaunapanadería
+ de barrio que una cadena de supermercados.
+Segmento Quiénes son Cómo es su situación hoy Quién decide y cómo
+ 2C:
+B ersonas de 18 años
+ P ompran comida fuera de
+ C ecide cada
+ D
+Consumidores o más que viven, casa o de paso, buscan persona, en el
+ trabajan o estudian en ahorrar y solo se mueven momento y por
+ la zona de a buscar algo si les queda precio.
+ lanzamiento (CABA, cerca o de camino.
+ Vicente López, San
+ Isidro y Pilar) y pagan
+ con billetera digital.
+ 2B 1:
+B anaderías,
+ P es sobra comida casi
+ L ecide el dueño o el
+ D
+Comercios cafeterías, rotiserías y todos los días, pero en encargado, rápido y
+ chicos y restaurantes chicos o cantidades chicas. No sin intermediarios.
+ medianos medianos, en general tienen tiempo ni personal
+ con un solo local y para medir lo que sobra ni
+ pocos empleados. para venderlo por otro
+ canal.
+ 2B 2:
+B oteles con servicio
+ H eneran mucho
+ G ecide el dueño o un
+ D
+Comercios con de comidas, excedente y pierden plata gerente, y necesita
+ mayor volumen restaurantes grandes todos los días, pero no ver números antes
+ y comedores, con un saben exactamente de pagar un servicio.
+ desperdicio de al cuánto, porque no lo
+ menos USD 1.150 por registran.
+ mes.
+ 2B 3: Cadenas S
+B upermercados, demás de comida
+ A eciden áreas como
+ D
+y empresas con cadenas elaborada tienen operaciones,
+ varias sucursales gastronómicas, grupos productos envasados que compras o
+ hoteleros, caterings y se vencen. No pueden sustentabilidad. La
+ comercios con varias comparar qué pasa en decisión es más lenta
+ sucursales, con un cada sucursal y muchas y pasa por varias
+ desperdicio de al veces tienen que reportar personas.
+ menos USD 3.100 por su impacto ambiental.
+ mes por sucursal.
+ a comunidad y los municipios tambiénsebeneficiancuandosedesperdiciamenoscomida,
+ L
+ peronosonclientes:nousannipaganlaplataforma.Eltamañodecadasegmentosecalcula
+ en el punto 10.
+ Página19
+=== [parte1 pág 20] ===
+APROVECHO ·
+7. VALIDACIÓN Y DESCUBRIMIENTO DE CLIENTE Y USUARIO
+7.1. Validaciones con información de mercado y propias sobre la oportunidad detectada
+ partir del análisis realizado, APROVECHO identifica señales favorables para la
+A
+oportunidad desde cuatro dimensiones principales: la existencia de una necesidad
+ concreta,elinterésdelosconsumidores,elincentivoeconómicodeloscomerciosy
+ la disponibilidad de tecnología aplicable.
+ n primer lugar, la existencia de plataformas dedicadas a recuperar y comercializar
+E
+excedentesdealimentosmuestraqueelproblemayadiolugarasolucionesdemercadoen
+ distintos contextos. Esto permite validar que existe una necesidad tanto del lado de los
+ consumidores, que buscan acceder a alimentos a un precio más conveniente, como del
+ ladodeloscomercios,quenecesitanencontrarunaalternativaparaproductosquepierden
+ valor al final de la jornada.
+ el lado de los comercios, la oportunidad no aparece solamente por la existencia de
+D
+excedentes,sinotambiénporelimpactoeconómicoyoperativoqueestosgeneran.Cuando
+ unalimentoquedasinvender,elcomercionosolopierdeelingresopotencial,sinotambién
+ partedelvalorinvertidoenmateriaprima,producciónytrabajo.Almismotiempo,gestionar
+ esossobrantespuedesumartareasenunmomentodeldíaenelquelaoperaciónyaestá
+ terminando.
+ esdeelpuntodevistadelconsumidor,lasvalidacionesrealizadasmuestranqueelahorro
+D
+es uno de los principales motivos de interés, pero queladecisióndecompratambién
+ depende de otras condiciones. La cercanía del comercio, la conveniencia del horario de
+ retiro y contar con información suficiente sobre el pack aparecen como elementos
+ relevantes para que la propuesta resulte atractiva y genere confianza.
+ as encuestas realizadas también permitieron detectar que los dos ladosdelmarketplace
+L
+presentan necesidades complementarias. El consumidor busca una alternativa decomida
+ más accesible sin resignar conveniencia ni confianza, mientras que el comercio busca
+ recuperar parte del valor de sus excedentes sin sumar complejidad a su operación. Esta
+ coincidencia constituye una primera señal favorable para el funcionamiento de
+ APROVECHO como plataforma de dos lados.
+ or otro lado, lapropuestatambiénencuentrarespaldoenladisponibilidaddetecnologías
+P
+que ya permiten reconocer alimentos mediante imágenes, estimar cantidades y registrar
+ desperdicios. Esto haceposibleplantearunaprimeraversióndeAPROVECHObasadaen
+ herramientas existentes, sin depender desde el inicio del desarrollo de tecnología
+ completamente nueva.
+ n conjunto, estas validaciones no permiten afirmar todavía que el modelo se encuentre
+E
+probadocomercialmente,perosímuestranqueexisteunproblemarelevante,interéspor
+ partedeambossegmentosycondicionestecnológicasparadesarrollarunasolución.
+ A partir de estas señales, la siguiente etapa de investigación seconcentraenvalidarcon
+ Página20
+=== [parte1 pág 21] ===
+APROVECHO ·
+ ayor profundidad las hipótesis específicasdelmodelo:motivacionesdecompra,nivelde
+m
+descuento, conveniencia, confianza, frecuencia de excedentes, fricción operativa,
+ disposición a adoptar la herramienta y valor de la información generada.
+7.2. Hipótesis identificadas y metodología de validación
+ a investigación de APROVECHO fue diseñada con un criterio central: entender para
+L
+quién puede funcionar, bajo qué condiciones y cuáles son las principales barreras
+ para su adopción.
+ or tratarse de un marketplace de dos lados, se definieron hipótesis diferenciadas para
+P
+consumidores B2C ycomerciosB2B.Tambiénseincorporaronhipótesisquedependende
+ la interacción entre ambos segmentos, como la coincidenciaentreloshorariosenlosque
+ los comercios pueden ofrecer excedentes y aquellos en los que los consumidores están
+ disponibles para retirarlos.
+7.2.1. Hipótesis del segmento consumidor
+A. Motivación y precio
+ 1.ElahorroeconómicoconstituyeelprincipalmotivodeadopcióndeAPROVECHO,
+H
+mientras que el impacto ambiental funciona como un beneficio complementario.
+ os resultados muestran que el ahorro ocupa un lugar central en la decisión. Ante la
+L
+pregunta sobre la principal razón para utilizar un servicio de este tipo, el 35,1% eligió
+ ahorrar dinero, siendo la alternativa individual más seleccionada. Además, ante un
+ escenario concreto de compra, el 68,8% prefirió un pack sorpresa a mitad de precio
+ antesquecomprarsuplatofavoritoaprecionormal,auncuandolaopcióndescontada
+ implicaba aceptar incertidumbre sobre el contenido.
+ onclusión:lahipótesisquedarespaldada.Elahorroaparececomoelprincipaldisparador
+C
+económico de la propuesta, mientras que la reducción del desperdicio funciona como un
+ beneficio adicional.
+ 2. Existe disposición a comprar alimentos excedentes cuando el descuento
+H
+compensa la incertidumbre sobre el contenido del pack.
+ 3. El rango de descuento necesario para generar intención de compra resulta
+H
+compatible con un modelo económicamente viable para el comercio y APROVECHO.
+ a intención de compraaumentaamedidaquecreceeldescuento.Conundescuentodel
+L
+30%, el 18,2% respondió que probablemente o seguramente compraría; con 40%, el
+ porcentaje asciende al 26%; con 50%, al 40,3%; con 60%, al 53,2%; y con 70%, al 63,7%.
+ ambiénapareceunintercambioclaroentreinformaciónyprecio.Frenteadosalternativas,
+T
+el 46,8% eligió un pack con 50% de descuento e información general sobre la
+ Página21
+=== [parte1 pág 22] ===
+APROVECHO ·
+ ategoría, mientras que el 38,6% prefirió recibir más informaciónsobreelcontenidopero
+c
+con un descuento menor, del 40%. La intención de compra aumenta a medida que el
+ descuento se vuelve más significativo, como se observa en el siguiente gráfico:
+ onclusión: H2 queda respaldada. El descuento puede compensar parte de la
+C
+incertidumbre propia del formato sorpresa.
+B. Conveniencia
+ 4.Lacercaníayloshorariosderetirosonvariablesdeterminantesenladecisiónde
+H
+compra.
+ osresultadosmuestranunabajatoleranciaamodificardemasiadolarutinapararetirarun
+L
+pack. El 26% indicó que solo compraría si el comercio le queda de paso, el 24,7%
+ dedicaría como máximo cinco minutos adicionales y el 22,1% hasta diez minutos. En
+ conjunto, el72,8%concentrasutoleranciaenunaopcióndepasooundesvíomáximode
+ diez minutos.
+ ncuantoahorarios,lasfranjasconmayordisponibilidadson17:00a19:00,con42,1%,y
+E
+19:00 a 21:00, con 39,8%. Tambiénapareceinterésalmediodía,aunqueelperíododela
+ tarde-noche resulta especialmente relevante para el funcionamiento del modelo.
+ Página22
+=== [parte1 pág 23] ===
+APROVECHO ·
+ onclusión: la hipótesis queda respaldada. APROVECHO necesita priorizar cercanía y
+C
+mostrar claramente la ventana de retiro antes de que el consumidor realice la compra.
+C. Información y confianza
+ 5.Laincertidumbresobreelcontenidodelpackconstituyeunabarreradecompray
+H
+puede reducirse ofreciendo información suficiente sin eliminar completamente el
+ componente sorpresa.
+ a principal barrera declarada fue no saber exactamente qué contiene el pack,
+L
+mencionada por el 28,6% de los consumidores. Le siguen las dudas sobre calidad o
+ frescura, con 20,8%, y sobre seguridad alimentaria, con 13%.
+ in embargo, los usuarios no necesariamente necesitan conocer cada producto de
+S
+antemano.Lainformaciónmásvaloradafueeltipoocategoríadecomida,con42,9%;si
+ el contenido es dulce o salado, con 33,8%; la cantidad aproximada de unidades o
+ porciones,con31,2%;elpesoaproximado,con26%;yunafotografíaorientativa,con
+ 24,7%.
+ onclusión: la hipótesis quedarespaldada.Elformatosorpresapuedemantenerse,pero
+C
+debe estar acompañado por una cantidad mínima de información que reduzca la
+ incertidumbre y permita al consumidor decidir con mayor confianza.
+ Página23
+=== [parte1 pág 24] ===
+APROVECHO ·
+D. Recurrencia
+ 6. La recompra depende principalmente de que el usuario perciba una buena
+H
+relación entre precio, cantidad y calidad.
+ ntre quienes ya utilizan aplicaciones o servicios similares, el factor que más influye en
+E
+continuar utilizándolos es elpreciooahorro,seleccionadoporel67,5%,seguidoporla
+ calidad o frescura, con 41,6%, y la cantidad recibida, con 36,4%.
+ sto indica que generar una primera compra mediante un descuento atractivo no es
+E
+suficienteparaconstruirrecurrencia.Laexperienciadebesostenerunapercepciónpositiva
+ entre lo que el usuario paga y lo que efectivamente recibe.
+ onclusión:lahipótesisquedarespaldada.Precio,calidadycantidadformanpartedeuna
+C
+misma percepción de valor y tienen un rol central en la recompra.
+7.2.2. Hipótesis del segmento comercio
+A. Existencia e intensidad del problema
+ 7. Los comercios del segmento objetivo generan excedentes aptos para consumo
+H
+de manera suficientemente frecuente como para justificar una solución específica.
+ os resultados muestran que la generación de excedentes no es un evento aislado. El
+L
+35,7% señaló que durante la última semanatuvoalimentosaptosparaconsumosin
+ vendertodoslosdías,mientrasqueel22,1%lostuvoentretresycuatrodíasyotro6,5%
+ entre cinco y seis días.
+ demás,losproductosqueaparecenconmayorfrecuenciacomoexcedentecoincidencon
+A
+categorías relevantes para la propuesta: pan y facturas (68,8%), pastelería o tortas
+ (52,4%), sándwiches y productos de cafetería (41,6%), platos elaborados o viandas
+ (28,6%) y pizzas o empanadas (26%).
+ onclusión:lahipótesisquedarespaldada.Existeunageneraciónrecurrentedealimentos
+C
+aptos para consumo que puede alimentar una oferta continua dentro del marketplace.
+ 8. Una proporción relevante de esos excedentes actualmente no genera ingresos
+H
+para el comercio.
+ urante la última semana, el 58,4% de los comercios indicó que parte de sus
+D
+excedentesfuedescartada.Cuandosepreguntóespecíficamenteporeldestinoprincipal,
+ el descarte volvió a aparecer como la alternativamásfrecuente,con38,3%.Soloel2,6%
+ señaló como destino principal la venta mediante una aplicación.
+ Página24
+=== [parte1 pág 25] ===
+APROVECHO ·
+ stoindicaqueexisteunaproporcióndelexcedentequeactualmentepierdecompletamente
+E
+su valor comercial, aunque otras partes se destinen al personal, donación, descuentos o
+ reutilización.
+ onclusión: la hipótesis queda respaldada. Para una parte relevante de los comercios
+C
+existe valor económico potencial que hoy no está siendo recuperado.
+B. Fricción operativa
+ 9. Registrar y gestionar los excedentes representa una fricción operativa para los
+H
+comercios.
+ l52%deloscomerciosdeclaróqueactualmentenoregistracuántoalimentoqueda
+E
+sin vender. Entre quienes no lo hacen, las principales razones son la falta de tiempo,
+ mencionadaporel37,8%,ylaausenciadeunapersonaresponsabledelatarea,con
+ 32,4%.
+Inclusoentreaquellosquesírealizanalgúnregistro,elprocesopuededemandartiempo:el
+ 50% señaló que le lleva más de veinte minutos diarios y otro 22,1% entre diez y veinte
+ minutos.
+ onclusión: la hipótesis queda respaldada. La falta de tiempo y deresponsablesclaros
+C
+muestra que una solución que requiera demasiadacargamanualtendríadificultadespara
+ incorporarse a la rutina diaria.
+ 10. Una experiencia basada en automatización y confirmación humana puede
+H
+reducir la fricción y facilitar la adopción de APROVECHO Base.
+ Página25
+=== [parte1 pág 26] ===
+APROVECHO ·
+ nteunapropuestaautomáticadecantidaddepacks,precioyhorario,el33,8%indicóque
+A
+preferiría revisar y corregir únicamente cuando fuera necesario, mientras que otro
+ 18,2% simplemente confirmaría la propuesta. En conjunto, el 52% muestra apertura a
+ una experiencia donde el sistema realice una primerapropuestaylapersonaconservela
+ posibilidad de confirmarla o modificarla.
+ lmismotiempo,el27,3%señalóquepreferiríadefinirpersonalmenteelprecioyotro11,7%
+A
+personalizar cantidad y precio, lo que demuestra que la automatización debe mantener
+ cierto nivel decontrolhumano.Soloel5,2%preferiríacargartodomanualmenteyel3,9%
+ indicó que no utilizaría el sistema.
+ onclusión: la hipótesis queda parcialmente respaldada. Los resultados favorecen la
+C
+lógica de propuesta automática + revisión/confirmación,perolaexperienciaespecífica
+ defoto→propuesta→confirmacióntodavíadebeprobarseenunprototipoopruebade
+ concepto para comprobar que efectivamente reduce tiempos.
+C. Adopción y modelo de ingresos
+ 11. Los comercios están dispuestos a comercializar sus excedentes si el proceso
+H
+requiere poco trabajo adicional y no genera efectos negativos sobre su operación
+ habitual.
+ adisposicióninicialesfavorable:antelaposibilidadderealizarunapruebagratuitadurante
+L
+dos semanas, el 63,6% respondió que estaría dispuesto a probarla, mientras que un
+ 27,3% respondió que posiblemente lo haría si tuviera más información. Solo el 9,1%
+ rechazó directamente la prueba.
+ Página26
+=== [parte1 pág 27] ===
+APROVECHO ·
+ in embargo, también aparecen barreras concretas. Las principales preocupaciones son
+S
+que los clientes habituales esperen el descuento (36,4%), que el personal no tenga
+ tiempo (28,6%), que los packs no se vendan (28,6%), que existan errores enpropuestas
+ automáticas (24,7%), el valor delacomisión(19,5%)ylaresponsabilidadrelacionadacon
+ los alimentos (18,2%).
+ onclusión: la hipótesis queda respaldada de manera condicionada. Existe interés en
+C
+probar la herramienta, pero la adopción dependerá de minimizar la carga operativa y
+ responder adecuadamente a las preocupaciones comerciales y de funcionamiento.
+ 12.Existeunniveldecomisiónporventaqueresultaaceptableparaloscomerciosy
+H
+compatible con el modelo Base de APROVECHO.
+ os resultados muestran unarelaciónclaraentrecomisiónyaceptación.Unacomisióndel
+L
+10%esconsideradaaceptableporel62,3%,mientrasqueotro31,2%indicóquetendría
+ queevaluarla.Conunacomisióndel15%,laaceptacióndirectacaeal38,9%;con20%,al
+ 20,8%; y a partir de allí aumenta significativamente el rechazo.
+ onclusión: la hipótesis queda respaldada, aunque los niveles más bajos presentan
+C
+mayoraceptaciónyquelacomisióndefinitivadeberádefinirsejuntoconloseconomicsdel
+ modelo.
+D. Smart e Intelligence
+ 13.Losestablecimientosconmayorvolumenencuentranvalorenmedirconmayor
+H
+precisión cuánto excedente generan y cuánto logran recuperar.
+ os indicadores que los comercios consideran más útiles para tomar decisiones son los
+L
+ingresos recuperados (57,1%), los kilos totales de excedente (45,5%), la tasa de
+ recuperación (41,6%), los kilos recuperados (37,7%), la evolución mensual del
+ desperdicio (36,4%) y el costo económico estimado (33,8%).
+ onclusión: la hipótesis queda respaldada. Existe interés en información que permita
+C
+medir el excedente tanto desde una perspectiva operativa como económica.
+ 14. Las organizaciones con múltiples sucursales encuentran valor adicional en
+H
+comparar operaciones y utilizar los datos para mejorar decisiones de producción,
+ compras e inventario.
+ ntre las funciones analizadas, el 35,1% indicó que utilizaría la comparación de
+E
+desperdicio entre sucursales para tomar decisiones. También se observa interés en
+ identificar qué productos generan más excedentes (49,4%),predecircuántopodríasobrar
+ (41,6%) y recibir recomendaciones sobre producción (37,7%).
+ amuestraincluyeprincipalmenteoperacionespequeñasomedianas,porloquelautilidad
+L
+específica del benchmarking entre sucursales debe analizarse con mayor profundidad en
+ cadenas y organizaciones de mayor escala.
+ Página27
+=== [parte1 pág 28] ===
+APROVECHO ·
+ onclusión: la hipótesisquedaparcialmenterespaldada.Existeinterésenlasfunciones
+C
+de análisis y comparación, pero su valor específico para organizaciones multisucursal
+ deberá validarse con una muestra más concentrada en ese tipo de empresas.
+ 15. Existe disposición a pagar por Smart e Intelligence cuando el servicio puede
+H
+demostrar un beneficio económico u operativo concreto.
+ nte la pregunta sobre qué tendría que demostrar una herramienta de medición para
+A
+justificar un abono mensual, el 53,2% respondió que necesitaría una combinación de
+ distintos beneficios. Además, el 22,1% priorizó que los ingresos recuperados cubran el
+ costo de la herramienta, mientras que el 10,4% señaló específicamente la reducción del
+ desperdicio. Solo el 2,6% indicó que no contrataría una herramienta de este tipo.
+ onclusión: la hipótesis queda respaldada de manera condicionada. El interés en un
+C
+servicio pago existe, pero la decisión depende de que APROVECHO pueda demostrar
+ resultados concretos y no simplemente ofrecer un dashboard o información adicional.
+7.2.3. Hipótesis transversales
+ demás de las hipótesis propias de cada segmento, se analizaron dos condiciones
+A
+fundamentales para el funcionamiento conjunto del marketplace.
+ 16. Existe coincidencia suficiente entre los horarios en los que los comercios
+H
+puedenofrecerexcedentesyaquellosenlosquelosconsumidoresestándisponibles
+ para retirarlos.
+ elladodelconsumidor,lasfranjasmáselegidasfueron17:00a19:00,con42,1%,y19:00
+D
+a21:00,con39,8%.Delladodeloscomercios,el49,4%puedeentregarpacksentrelas
+ 17:00 y las 19:00 y el 46,8% entre las 19:00 y las 21:00.
+ demás, los comercios comienzan a identificar qué productos quedarán sin vender
+A
+principalmente entre las 17:00 y las 21:00, reforzando la compatibilidad operativa entre
+ generación del excedente y disponibilidad de retiro.
+ onclusión: la hipótesis queda respaldada. Existe una superposición clara entre los
+C
+horarios de oferta y demanda, especialmente durante la tarde y comienzo de la noche.
+ Página28
+=== [parte1 pág 29] ===
+APROVECHO ·
+ 17. Existe correspondencia entre las categorías de alimentos que los comercios
+H
+generan como excedente y aquellas que los consumidores tienen interés en comprar.
+ el lado de la oferta, los excedentes más frecuentes corresponden a pan y facturas
+D
+(68,8%), pastelería y tortas (52,4%), productos de cafetería y sándwiches (41,6%),
+ platos elaborados y viandas (28,6%) y pizzas o empanadas (26%).
+ elladodelademanda,aparecenniveleselevadosdeintencióndecompraparapanadería
+D
+ypastelería(62,3%),pizzasyempanadas(56,8%),cafetería(54,5%)yplatosoviandas
+ (48,1%).
+ onclusión:lahipótesisquedarespaldada.Existeunacoincidenciarelevanteentrevarias
+C
+delascategoríasquemásexcedentegeneranyaquellasquelosconsumidoresmanifiestan
+ interés enadquirir,loquepermitepriorizarinicialmentepanaderías,cafeteríasycomercios
+ de comida preparada.
+7.2.4. Metodología de investigación
+ ara analizar las hipótesis se hicieron dos encuestas diferentes, una para consumidores
+P
+(B2C) y otra para comercios (B2B). La encuesta a consumidores buscó entender sus
+ hábitos de compra, cuánto influye el precio, qué condiciones necesitan pararetirar
+ un pack, qué información les da confianza y cuáles podrían ser las principales
+ barreras para usar APROVECHO. La encuesta acomerciosseenfocóenentendercon
+ quéfrecuenciageneranexcedentes,quéhacenactualmenteconellos,cuántotrabajo
+ implicagestionarlos,quétanabiertosestánautilizarunasoluciónmásautomatizada
+ y qué valor podrían encontrar en los planes Smart e Intelligence.
+ Página29
+=== [parte1 pág 30] ===
+APROVECHO ·
+ demás de las encuestas, la investigación incluye otras dos instancias que permiten
+A
+profundizar algunos puntos que no pueden conocerse solamente a partir de lo que las
+ personas dicen que harían. Por un lado, entrevistas con dueños, gerentes y
+ responsables operativos, destinadas a profundizar en las causas del desperdicio, los
+ procesosinternosyloscriteriosdedecisióndecompra.Porotro,unapruebadeconcepto
+ del flujo Base, que permita observar directamente si la experiencia foto → propuesta
+ automática → confirmaciónreduce efectivamente lacarga operativa.
+ stas instancias son importantes porque algunas cuestiones necesitan probarse en la
+E
+práctica.Porejemplo,sielsistemarealmenteesfácildeusar,cuántotiempollevapublicar
+ unexcedente,quétanprecisassonlaspropuestasautomáticasysiloscomerciosestarían
+ dispuestos a utilizar la herramienta de manera habitual.
+7.3. Mapa de empatía de los segmentos involucrados
+ partir de las encuestas, las hipótesis planteadas y el análisis realizado, se elaboraron dos
+A
+mapas de empatía: uno para el consumidor final (B2C) y otro tres para el comercio
+ gastronómico (B2B). El objetivo es comprender no solo qué necesita cada segmento, sino
+ también qué piensa, qué observa en su entorno, qué dificultades enfrenta.
+Consumidor (B2C)
+ ersona de 18 años omásquevive,trabajaoestudiaenlazonaycompracomidafuerade
+P
+casa o de paso.
+ ¿Qué piensa y siente? ¿Qué ve?
+ • " Comer afuera está cada vez más •Precios que suben en panaderías,
+ caro." cafeterías y rotiserías.
+ • Quierealgoricoyrapidosingastarde • Promociones bancarias con días fijos
+ más. y topes.
+ • Lemolestaquesetirecomida,pero • Locales que cierran con el mostrador
+ noesalgoenloquepiensetodoslos todavía lleno.
+ días. • Apps de delivery con costo de envío.
+ • Desconfía de lo barato si no sabe
+ bien qué está comprando.
+ ¿Qué oye? ¿Qué dice y hace?
+ • Amigos y compañeros que comparten • Busca promociones antes de
+ descuentos y cupones. omprar.
+ c
+ • Noticias sobre inflación y sobre la • Compraalavueltadeltrabajoodela
+ comida que se desperdicia. facultad,enlugaresquelequedande
+ •Recomendacionesdelugaresenredes camino.
+ sociales. • Paga con billetera digital o QR.
+ Página30
+=== [parte1 pág 31] ===
+APROVECHO ·
+ • M uchasvecesterminacomprandolo
+ de siempre, por comodidad.
+ Esfuerzos (lo que le duele o preocupa) Resultados (lo que quiere lograr)
+ • G astar mucho en comida. • A horrar sin resignar calidad.
+ • o saber qué va a recibir cuando
+ N • Comprar cerca y rápido.
+ algo es muy barato. • Descubrir lugares nuevos de su
+ • Tener quedesviarseoesperarpara zona.
+ comprar. • Sentir que hace algo bueno sin
+ • Promociones difícilesdeentendero esfuerzo extra.
+ de aprovechar.
+Comercio chico o mediano (B2B 1)
+ ueño o encargado de una panadería, cafetería, rotisería o restaurante chico, con un solo
+D
+local y pocos empleados.
+ ¿Qué piensa y siente? ¿Qué ve?
+ • " Me duele tirar algo que me costó • A lcierre,bandejasconloquenose
+ hacer." vendió.
+ • "No tengo tiempo para sumar una • Aumentos de alquiler, luzymateria
+ tarea más." prima.
+ • Ve el desperdicio como una parte • Menos clientes que antes.
+ normal del negocio. • Cadenas grandes con precios más
+ • Lepreocupallegarafindemescon bajos.
+ costos que no paran de subir.
+ ¿Qué oye? ¿Qué dice y hace?
+ • roveedores que avisan nuevos
+ P • roduce según la experiencia y lo
+ P
+ aumentos. que vendió la semana anterior.
+ • Otroscomerciantesquesequejande • Alcierretiraloquesobró,loregalaa
+ que las ventas bajaron. los empleados o lo vende al otrodía
+ • Clientes que preguntan si hay algo más barato.
+ más barato al final del día. • No anota cuánto le sobra.
+ Página31
+=== [parte1 pág 32] ===
+APROVECHO ·
+ Esfuerzos (lo que le duele o preocupa) Resultados (lo que quiere lograr)
+ • P erder plata sobre algo que ya pagó. • ecuperar algo de plata de lo que
+ R
+ • l cierre es el momento con más
+ E sobra.
+ trabajo del día. • Tirar menos comida.
+ • No saber cuánto pierde realmente. • Algo simple que no le cambie la
+ • Las herramientas que existen son rutina.
+ caras o complicadas. • Una buena imagen en el barrio.
+ oquedicenuestraencuesta:el35,7%deloscomerciostuvoexcedentetodoslosdíasdela
+L
+última semana y otro 22,1%, entre tres y cuatrodías.El58,4%terminótirandopartedeesa
+ comida y el 52% no registra cuánto le sobra, sobre todo porfaltadetiempooporquenadie
+ está a cargo.
+Comercio con mayor volumen (B2B 2)
+Dueño o gerente de un hotel con servicio de comidas o un restaurante grande
+ ¿Qué piensa y siente? ¿Qué ve?
+ • "Sé que se tira mucho, pero no sé • B andejasdebuffetodeservicioque
+ cuánto." vuelven llenas.
+ • Siente presión por bajar costos. • Unacocinaconmuchomovimientoy
+ • Quiere tener más control sin tener poco tiempo para controlar.
+ que sumar personal. • El costodelacomidacomounode
+ los gastos más grandes.
+ ¿Qué oye? ¿Qué dice y hace?
+ • los dueños o a la dirección
+ A • C alcula lo que sobra "a ojo".
+ pidiendo bajar costos. • P roduce de más para no quedarse
+ • Clientes y huéspedes que valoran sin comida en el servicio.
+ que el lugar cuide el medio ambiente. • Alfinaldelserviciotiraloquesobróo
+ • Ofertas de soluciones de medición se lo da al personal.
+ caras.
+ Esfuerzos (lo que le duele o preocupa) Resultados (lo que quiere lograr)
+ • N otenerdatosdecuántopierdeyen • aber cuánto pierde y en qué
+ S
+ qué. alimentos.
+ • Medir a mano lleva tiempo y se • Ajustar cuánto produce.
+ termina abandonando. • Ahorrar en costos de comida.
+ • Lassolucionesqueexistensoncaras • Mostrar que cuida el medio
+ y del exterior. ambiente.
+ Página32
+=== [parte1 pág 33] ===
+APROVECHO ·
+Cadena o empresa con varias sucursales (B2B 3)
+ esponsable de operaciones, compras o sustentabilidad de un supermercado, una cadena
+R
+gastronómica, un grupo hotelero o un catering.
+ ¿Qué piensa y siente? ¿Qué ve?
+ • " Cada sucursal hace las cosas • P roductosenvasadosquesevencen
+ distinto y no las puedo comparar." en la góndola.
+ • Necesitanúmerosconfiablesparalos • Diferencias grandes entre una
+ reportes que le pide la Dirección. sucursal y otra.
+ • Siente que se pierde plata en • Reportes de sustentabilidad de la
+ mermas que nadie mira en detalle. competencia.
+ ¿Qué oye? ¿Qué dice y hace?
+ • A la dirección pidiendo bajar las • Registra las mermas en planillas o
+ mermas. en sistemas separados.
+ • Inversores y clientes que piden • Remata productos cerca del
+ información sobre el impacto vencimiento con descuentos en
+ ambiental. góndola o los dona.
+ • Estándaresdesustentabilidad,como • Arma los reportes ambientales con
+ GRI, que piden datos medibles. estimaciones.
+ Esfuerzos (lo que le duele o preocupa) Resultados (lo que quiere lograr)
+ • La información está dispersa entre • Ver todas las sucursales en un
+ sucursales y áreas. mismo lugar.
+ • Las decisiones son lentas porque • Reducir las mermas.
+ pasan por muchas personas. • Reportar datos reales.
+ • Los reportes se basan en • Anticiparseantesdequeelproducto
+ estimaciones poco confiables. se venza.
+ Página33
+=== [parte1 pág 34] ===
+APROVECHO ·
+7.4. Buyer persona
+ partirdelosresultadosobtenidos,lashipótesisplanteadasylasnecesidadesidentificadas
+A
+en los mapas de empatía, construimos un buyer persona por cada segmento (punto 6c)
+Consumidor (B2C)
+ ofía, 27 años
+ S
+ Analista administrativa · Vive en Villa Crespo y trabaja en Palermo (CABA)
+ "Si me queda de paso y es barato, me lo llevo."
+ Perfil ivesolayalquila.Tieneunsueldomedioylocuida.Pagacasi
+ V
+ todo con billetera digital o QR y usa el celular para todo.
+ Un día típico ale de la oficina a las 18hs y vuelve caminandooensubte.
+ S
+ En el camino suele comprar algo para lameriendaolacena.
+ Algunos días pide delivery, pero le parece caro.
+ Objetivos • Llegar a fin de mes sin dejar de darse algún gusto.
+ • Comer rico sin tener que cocinar todos los días.
+ • Probar lugares nuevos de su barrio.
+ Frustraciones • Los precios suben todo el tiempo.
+ • Las promociones tienen días fijos, topes y letrachica.
+ • El delivery le suma costo de envío y demora.
+ ué tiene en cuenta
+ Q Precio, cercanía, rapidez y que el lugar le dé confianza.
+ para comprar
+ Dónde se informa Instagram, TikTok, Google Maps y recomendaciones de
+ amigos.
+ u relación con el
+ S e molesta ver quesetiracomida,perohoynohacenadaen
+ L
+ desperdicio particular al respecto.
+ Página34
+=== [parte1 pág 35] ===
+APROVECHO ·
+Comercio chico o mediano (B2B 1)
+ artín, 45 años
+ M
+ Dueño de una panadería en Vicente López · 4 empleados · 15 años en el rubro
+ "Lo que tiro al final del día es plata que ya puse."
+ Perfil anejatodoél:compras,producción,cajaypersonal.Tieneun
+ M
+ solo local y conoce a la mayoría de sus clientes.
+ Un día típico rranca a las 5am con el horno, atiende el mostrador a la
+ A
+ mañana y cierra a las 20:30hs. El cierre es lo más pesado:
+ limpieza, caja y lo que sobró.
+ Objetivos • Sostener las ventas en un contexto difícil.
+ • Controlar los costos sin tener que despedir a nadie.
+ • Queelnegociosigafuncionandosindependerdeéltodo
+ el día.
+ Frustraciones • Los aumentos de agua, luz y alquiler.
+ • Vende menos que antes.
+ • Al cierre le sobran medialunas y facturas que termina
+ tirando, regalando a los empleados o vendiendo al otro
+ día más baratas.
+ • No anota cuánto le sobra porque no tiene tiempo ni a
+ nadie a cargo.
+ ué tiene en cuenta
+ Q ue sea simple, que no le cueste plata de entrada, que lo
+ Q
+ para decidir recomiende otro comerciante y que vea resultados rápido.
+ Dónde se informa hatsApp, proveedores, otros comerciantes del barrio y el
+ W
+ Instagram de su local.
+ u relación con el
+ S o ve como algo normal del negocio. Le duele, peronosabe
+ L
+ desperdicio cuánto pierde.
+ Página35
+=== [parte1 pág 36] ===
+APROVECHO ·
+Comercio con mayor volumen (B2B 2)
+ aura, 38 años
+L
+Socia gerente de un restaurante grande en Palermo (CABA) · 180 cubiertos · 35
+ empleados
+"Sé que en la cocina se tira mucho, pero no tengo cómo saber cuánto."
+Perfil s socia del restauranteyseencargadelagestión:compras,
+ E
+ costos,personalyproveedores.Elchefmanejalacocina,pero
+ los números son de ella.
+Un día típico la mañana revisa las ventas del día anterior y hace los
+ A
+ pedidos a proveedores. Al mediodíayalanochehayservicio
+ completo. Al cierre, la cocina descartaloquesepreparóyno
+ salió.
+Objetivos • Bajar el costo de la comida sin afectar la calidad de los
+ platos.
+ • Producirlojustoparanoquedarsesinnadaenelservicio,
+ pero sin que sobre tanto.
+ • Tener números claros para tomar decisiones con su socio.
+Frustraciones • No sabe cuánto se tira ni de qué preparaciones.
+ • La cocina produce de más "por las dudas" y nadie lo
+ controla.
+ • Intentaron anotar lo que sobraba en una planilla y se
+ abandonó a las pocas semanas.
+ • Lassolucionesdemediciónqueconocesonimportadasy
+ caras.
+ ué tiene en cuenta
+Q úmeros concretosdeahorro,verunademostraciónyqueno
+ N
+para decidir le complique el trabajo a la cocina. La decide junto con su
+ socio.
+Dónde se informa Instagram, LinkedIn, proveedores y otros dueños de
+ restaurantes
+ u relación con el
+S abe que es un problema grande en su restaurante, pero no
+ S
+desperdicio tiene datos para medirlo ni para justificar una inversión.
+ Página36
+=== [parte1 pág 37] ===
+APROVECHO ·
+Cadena o empresa con varias sucursales (B2B 3)
+ ustavo, 50 años
+ G
+ Gerente de Operaciones de una cadena de supermercados con 25 sucursales en el
+ AMBA
+ "Cada sucursal me manda la merma en una planilla distinta."
+ Perfil oordina a los gerentes de cada sucursal y trabaja con las
+ C
+ áreas de compras, sistemas y sustentabilidad.
+ Un día típico evisa los informes de ventasymermas,tienereunionescon
+ R
+ gerentes de sucursal y arma reportes para la dirección.
+ Objetivos • Reducir las mermas de toda la cadena.
+ • Que todas las sucursales trabajen igual.
+ • Entregar reportes de sustentabilidad con datos reales.
+ Frustraciones • La información de cada sucursal llega dispersa y en
+ formatos distintos.
+ • Losproductosquesevencenserematanengóndolaose
+ donan, sin saber cuánto se pierde en total.
+ • Las decisiones son lentas porque pasan por muchas
+ áreas.
+ ué tiene en cuenta
+ Q ue se conecte con su sistema de inventario, que tenga un
+ Q
+ para decidir responsable de cuenta y poder probarlo primero en algunas
+ sucursales. La decisión pasa por varias áreas.
+ Dónde se informa LinkedIn, consultoras, informes y eventos del sector retail.
+ u relación con el
+ S ovecomomerma:uncostoquehayquebajaryundatoque
+ L
+ desperdicio la dirección y los inversores le piden.
+ Página37
+=== [parte1 pág 38] ===
+APROVECHO ·
+8. ENFOQUE GENERAL DE SOLUCIÓN
+8.1. Descripción general del enfoque de solución
+ adaexcedentepuedegenerardosvalores.Hoy,unaventaparaelcomercioyunacompra
+C
+barataparaelconsumidor.Mañana,undatosobrequésobra,cuántoycuándo,quesirvepara
+ que sobre menos.
+ or eso la solución tiene tres planes que se suman uno sobre otro. La idea es que
+P
+empezar sea muy fácil para el comercio chico y que,almismotiempo,elcomerciogrande
+ pueda llegar mucho más lejos:
+ • Baseeslapuertadeentrada:funcionaconelcelulardellocal,sinequiposysincosto
+ fijo.
+ • Smart es para comercios con más volumen: suma una estación que pesa todo y
+ reportes mensuales.
+ • Intelligence es para cadenas: usa el historial para comparar sucursales, encontrar
+ causas y recomendar cambios.
+El detalle de cada plan está en la sección 11, y cómo funciona por dentro, en la sección 14.
+8.2. Componentes físicos y digitales
+ PROVECHO arranca siendo casi todo digital y suma equipos sólo cuando el comercio
+A
+realmente los necesita. Así, el equipo nunca es una barrera para empezar, sino un
+ agregadoparaquienquieremedirmejor.Loquetieneunplan,lotienentambiénlospróximos
+ planes.
+ aestaciónesunkitpropioarmadoconunabalanzaSystel(argentina)yunatabletSamsung
+L
+que saca la foto. Más adelante, paraclientesgrandes,sepodráconectarAPROVECHOcon
+ sus sistemas de caja o de gestión;eso no forma parte del lanzamiento.
+Esto se encuentra detallado en la sección 14.3.
+ Página38
+=== [parte1 pág 39] ===
+APROVECHO ·
+8.3. Aproximación inicial del equipo ampliado y expertise necesario
+ demás de los cuatro fundadores, APROVECHO necesita conocimientosquealprincipiose
+A
+pueden cubrir con proveedores externos, freelancers o asesores, para no tener una
+ estructura grande antes de validar el modelo.
+(Falta especificar al equipo de aprovecho completo)
+Cómo crece la estructura con el negocio
+ l equipo crece por etapas,siguiendoelroadmap.Cadavezqueseabreunlugarnuevo,
+E
+primerosesumagenteparavenderydarsoporte,yreciéndespuéssearmaunequipopropio
+ en ese lugar:
+ Etapa Cómo es el equipo
+ 2027: Buenos Aires undadores, equipo comercial en su tamaño más grande, un
+ F
+ ejecutivo de cuenta, soporte, desarrollo externo y los primeros
+ analistas.
+ 2028: Argentina l equipo comercial se mueve a las ciudades nuevas. Más
+ E
+ soporte y un alta más automática, para depender menos de
+ las visitas.
+ 2029–2032: Latinoamérica quipos o socios locales en cada país, más ejecutivos de
+ E
+ cuenta para cadenas y más analistas para Intelligence.
+8.4. Descripción del ecosistema y jugadores de la industria
+ Página39
+=== [parte1 pág 40] ===
+APROVECHO ·
+.
+ nelcentroestánlosclientes:loscomerciosalosquelessobracomidaylosconsumidores
+E
+que la compran. APROVECHO los une y registra lo que pasa en cada operación.
+ osproveedoreshacenposiblequefuncionesindesarrollartododesdecero:MercadoPago
+L
+cobradentrodelaapp34,GoogleMapsmuestralospackscercanos35 yFoodDataCentraldala
+ información nutricional orientativa36. Systel y Samsung proveen losequiposdelaestación,y
+ un proveedor externo fabrica las bolsas.
+ os competidores son de dos tipos: los que también venden excedentes al consumidor
+L
+(CheafyBuenProvecho,yTooGoodToGocomoposibleentrante)ylosquevendenmedición
+ a empresas (Kigüi, KITRO, Winnow, Leanpath y Orbisk). Los analizamos en la sección 12.
+ os aliados ayudan a crecer más rápido: bancos de alimentos para lo que no se vende,
+L
+cámaras del sector para llegar a muchos comercios a la vez, universidades para sumar
+ usuarios y municipios para comunicar el impacto.
+ os reguladoresnoparticipandelaventa,peroponenlasreglas:elCódigoAlimentarioyla
+L
+bromatologíadecadamunicipioparalacomida37,DefensadelConsumidorparalainformación
+ del pack, la AAIP para los datos personales38 y el BCRA para los pagos (sección 15.4).
+34
+ Mercado Pago. (s. f.). Checkout API. Mercado Pago Developers.
+https://www.mercadopago.com.ar/developers/es/docs/checkout-api/landing
+35
+ Google. (s. f.). Google Maps Platform documentation.https://developers.google.com/maps/documentation
+36
+ U.S. Department of Agriculture. (s. f.). FoodData Central API Guide.https://fdc.nal.usda.gov/api-guide
+37
+ Ley 18.284. (1969). Código Alimentario Argentino.https://www.argentina.gob.ar/normativa/nacional/21841/texto
+38
+ Agencia de Acceso a la Información Pública. (s. f.). Protección de datos personales.
+https://www.argentina.gob.ar/aaip/datospersonales
+ Página40
+=== [parte1 pág 41] ===
+APROVECHO ·
+9. PROPUESTA DE VALOR
+9.1. Propósito del emprendimiento
+ odos los días, al cierre, en muchos locales de comida queda producto en buen estado que no
+T
+se vendió. Nuestro propósito es que esa comida vuelva a tener valor y que, con el tiempo,
+ sobre cada vez menos. Por eso lo que realmente buscamos con APROVECHO no es vender
+ más packs, sino que a través de su venta y gestión se reduzca el desperdicio.
+ l camino que planteamos tiene cinco pasos: primero recuperamos lo que ya sobró, después
+E
+lo medimos, entendemos por qué pasó, ayudamos a que pase menos y le damos al comercio
+ con qué demostrarlo.
+ Recuperar → Medir → Entender → Reducir → Demostrar
+9.2. Propuesta de valor integral
+ PROVECHO convierte el excedente en tres cosas: plata, información y mejores
+A
+decisiones. Cadavezquesevendeunpackpasandoscosasalmismotiempo:elcomercio
+ recupera ingresos y el consumidor ahorra, y además queda registrado un datosobrequé
+ sobró, cuánto y cuándo. Con esos datos, el comerciopuede empezar a producir mejor.
+El impacto ambiental
+ oda la comida que se tira ya usó recursos para producirse. Por eso, cada kilo que
+T
+APROVECHOrecuperasemuestracondosindicadoreseneldashboarddelcomercioyen
+ la app del consumidor:
+ • Huella de carbono: unos 2,53 kg de CO₂equivalenteporcadakilodecomida(FAO:
+ 3.300 millones de toneladas de CO₂e asociadas a 1.300 millones de toneladas de
+ comida desperdiciada39).
+ • Huella hídrica: unos 192litrosdeaguadulceporcadakilodecomida(FAO:250km³
+ de agua usada para producir esos 1.300 millones de toneladas40).
+ osdosnúmerossepresentansiemprecomoestimaciones,porquesonpromediosmundiales
+L
+y no se calculan para cada alimento en particular.
+9.2.1. Propuesta de valor para los stakeholders
+ demás del comercio y el consumidor, hay otros actores que ganan algo cuando
+A
+APROVECHO funciona:
+39
+ FAO (2013). Food wastage footprint: Impacts on natural resources:http://www.fao.org/docrep/018/i3347e/i3347e.pdf
+40
+ Resumen del informe de FAO (GreenFacts):https://www.greenfacts.org/en/food-wastage/index.htm
+ Página41
+=== [parte1 pág 42] ===
+APROVECHO ·
+Grupo Stakeholder Qué valor recibe
+Operación mpleados
+ E de los S
+ on los que usan APROVECHO todos los
+ comercios días. En vez de cargar a mano cada
+ producto, cantidad, precio y horario, sacan
+ unafoto(oapoyanlabandejaenlabalanza)
+ y confirman. Tienen menos pasos, menos
+ tiempo al cierre y una herramienta que se
+ aprendeenseguida.Además,nodependede
+ una sola persona: cualquier empleado la
+ puede usar.
+ Cualquier empleado lo puede hacer
+ después de realizar el onboarding (video
+ descriptivo).
+ roveedores de equipos
+ P entas en volumen: APROVECHO compra
+ V
+ (Systel, Samsung) balanzas y tablets para cada estación que
+ instala.
+ ociales
+S y Comunidad osvecinosaccedenacomidamásbarataen
+ L
+ambientales su barrio y más comida de los comercios
+ locales termina en una mesa y no en la
+ basura.
+ Además genera un sentido de pertenenciay
+ ayuda comunitaria.
+ ancos de alimentos y L
+ B a donaciónsiguesiendounaopciónparalo
+ ONG que no se vende. En Smart e Intelligenceel
+ comercio registra ese destino, así que la
+ donación también queda medida.
+ Medio ambiente l desperdicio de alimentos genera entre el
+ E
+ 8% y el 10% de las emisiones de gases de
+ efecto invernadero del mundo (PNUMA,
+ 202441). APROVECHO ayuda primero
+ recuperando lo que sobra y después
+ previniendo: cuando el comercio usa la
+ información para producir lo justo, se ahorra
+ también el agua, la energía y el trabajo que
+ se habrían usado para hacer esa comida.
+ 41
+ PNUMA (2024). Informe sobre el Índice de Desperdicio de Alimentos 2024:
+ https://www.unep.org/es/resources/publicaciones/informe-sobre-el-indice-de-desperdicio-de-alimentos-2024
+ Página42
+=== [parte1 pág 43] ===
+APROVECHO ·
+Institucionales Municipios y gobierno enos residuos para recolectar y, con
+ M
+ y de datos anónimos, información sobre qué se
+ crecimiento desperdicia en cada zona. Esto se alinea
+ con la Ley 27.454, que creó el Plan
+ Nacional de Reducción de Pérdidas y
+ Desperdicio de Alimentos42.
+ Supermercados na forma de bajar sus mermas y de tener
+ U
+ datos reales para sus reportes de
+ sustentabilidad.
+ Inversores Ingresosporcomisióndesdeelprimerpacky
+ abonosmensualesenSmarteIntelligence.A
+ medida que los comercios desperdician
+ menos,másvalorvienedemediryprevenir,y
+ menos de la cantidad de packs vendidos: el
+ negocio crece junto con su impacto.
+ 9.3. Product-Market Fit por segmento
+ PROVECHO funciona como una plataforma de dos lados, por lo que el product–marketfit
+ A
+ depende de generar valor de manera simultánea para consumidores (B2C) y comercios
+ gastronómicos (B2B).
+ 9.3.1. Consumidor (B2C)
+ Jobs to be done:
+ Lo que hace hoy Lo que le duele ómo responde
+ C
+ APROVECHO
+ usca dónde comprar
+ B ener que desviarse o
+ T apa con los packs cercanos y
+ M
+ algo cerca de su camino esperar el horario de retiro antes de
+ comprar
+ ompara precios y busca G
+ C astar mucho; promos acks con 50% de descuento,
+ P
+ promociones con días fijos y topes todos los días
+ 42
+ Ley 27.454, Boletín Oficial (29/10/2018):https://www.boletinoficial.gob.ar/detalleAviso/primera/194679/20181029
+ Página43
+=== [parte1 pág 44] ===
+APROVECHO ·
+ Decide qué comprar o saber qué recibe
+ N ntes de comprar ve el
+ A
+ cuando algo es muy comercio, la categoría, si es
+ barato dulce o salado, la cantidad
+ aproximada y la calificación del
+ local
+ Paga edios de pago
+ M ago con Mercado Pago o
+ P
+ incómodos tarjetas dentro de la app
+ Pasa a retirar Filas y demoras etiro con QR en la franja
+ R
+ horaria elegida
+ uestra encuesta muestra que esto coincide con lo que buscan: el ahorro es el motivo
+N
+principalparausarunservicioasí(35,1%);conun50%dedescuento,el40,3%compraría;el
+ 72,8%compraríasolosielcomerciolequedadepasooanomásdediezminutos;yeldato
+ más valorado antes de comprar es lacategoría de comida(42,9%).
+ l consumidor considera que CALIDAD es que el producto sea del día y esté en buen
+E
+estado,quelacantidadvalgaloquepagó,quelainformaciónseaclara(sobretodoalérgenos
+ y sinTACC)yqueelcomercioseaconfiable.Paracuidaresto,antesdepublicarelcomercio
+ completa un checklist obligatorio: producto del día y alérgenos informados. Después de
+ cada retiro, el consumidor califica al comercio.
+CONTENIDO DE LOS PACKS
+ araquelasorpresanogeneredesconfianza,contienelossiguientesrubrosconsusdetalles
+P
+(estos datos son genéricos, va a depender de la información que nos proporcione cada
+ comercio al subir su menú o información de los productos)
+ Rubro Qué puede traer el pack
+ Panadería edialunas, facturas, pan del día, budines, sándwiches de
+ M
+ miga
+ Cafetería Porciones de torta, cookies, tostados, medialunas
+ Rotisería Empanadas, tartas, milanesas, pollo, guarniciones
+ Restaurante Platos del día, pastas, ensaladas, guarniciones, postres
+ Supermercado rutas y verduras, panificados, lácteos y fiambres cerca de su
+ F
+ fecha de vencimiento
+ Página44
+=== [parte1 pág 45] ===
+APROVECHO ·
+9.3.2. Comercios (B2B)
+ obs to be done: las tareas que hace hoyuncomercioconrelaciónasucomida,ycuáles
+J
+resuelveAPROVECHO.
+ Tarea del comercio La resuelve
+ ¿ Cómo
+ APROVECHO?
+ ecidir cuánto
+ D Sí, con el tiempo Intelligence recomienda cuánto producir y
+ producir o comprar anticipa excedentes con el historial
+ ontrolar el stock del
+ C No o sigue haciendo el comercio. Solo en
+ L
+ día Intelligence se usan los vencimientos del
+ inventario
+ l cierre, ver qué
+ A Sí oto con el celular (Base) o apoyando la
+ F
+ sobró bandeja en la balanza (Smart e Intelligence)
+ erificar que esté apto L
+ V o hace el Con el checklist obligatorio antes de publicar
+ para vender comercio
+ rmar una oferta y
+ A Sí a app propone los packs, el peso, el precio y
+ L
+ ponerle precio el horario
+ uscar a alguien que
+ B Sí l marketplace se lo muestra a consumidores
+ E
+ lo compre cercanos
+ Cobrar Sí Mercado Pago o tarjeta, dentro de la app
+ Entregar o hace el
+ L Valida el QR cuando llega el cliente
+ comercio
+ Saber cuánto pierde Sí ase estima; Smart e Intelligence miden con
+ B
+ peso real
+ ntender por qué le
+ E Sí, en Intelligence uestra en qué producto, día, horario y
+ M
+ sobra sucursal se origina el excedente y qué
+ decisión lo causó.
+ eportar su impacto
+ R í, en Smart e
+ S eportes con kilos, CO₂e y agua, útiles para
+ R
+ ambiental Intelligence GRI o B Corp
+ adasegmentoB2Btieneundolorprincipaldistinto,yporesocadaunoseadaptamejor con
+C
+un plan distinto:
+ Página45
+=== [parte1 pág 46] ===
+APROVECHO ·
+ Segmento u dolor principal
+ S Lo que quiere lograr Plan
+ hoy
+ 2B 1: Comercio
+ B ira plata todos los
+ T ecuperar algo de
+ R Base
+ chico o mediano días y no tiene tiempo plata sin cambiar su
+ (Martín) para hacer nada con rutina
+ eso.
+ 2B 2: Comercio con
+ B abe que se tira
+ S edir lo que pierde y
+ M Smart
+ mayor volumen mucho, pero no sabe producir lo justo
+ (Laura) cuánto ni de qué.
+ 2B 3: Cadena con
+ B Información dispersa er todo en un lugar,
+ V Intelligence
+ varias sucursales entre sucursales y saber por qué sobra y
+ (Gustavo) reportes con reducir las mermas
+ estimaciones.
+ araelcomerciolacalidadimplicaquelaappnoseequivoque(ysiseequivoca,quesea
+P
+fácilcorregir),quepublicarllevemenosdeunminuto,queelpackrepresentebienasumarca,
+ que el cliente se vaya conforme, que los datos sean confiables y que el soporte responda
+ rápido.
+Business case: sin y con APROVECHO
+ Sin APROVECHO Con APROVECHO
+ Martín (panadería) l cierre tira, regala o vende al P
+ A ublica con una foto, vende el
+ otro día más barato. No sabe mismo día y recupera el 75%
+ cuánto pierde. de lo que vende. Ve cuánto
+ rescata en su dashboard.
+ aura (restaurante
+ L alcula "a ojo" y la cocina
+ C esa todo lo que sobra, sabe
+ P
+ grande) produce de más por las cuánto pierde y en qué, y
+ dudas. ajusta la producción.
+ Gustavo (cadena) ecibe planillas distintas de
+ R e todas las sucursales juntas,
+ V
+ cada sucursal y reporta con sabe por qué sobra en cada
+ estimaciones. una, recibe recomendaciones y
+ reporta con datos reales.
+ Página46
+=== [parte1 pág 47] ===
+APROVECHO ·
+ Los números de cuánto ahorra cada uno están en el punto 11.6 (Precios).
+ 9.4. Diferenciales y ventaja competitiva
+ PROVECHO no busca diferenciarse por ser la primera plataforma que permite comercializar
+ A
+ excedentes de alimentos. El modelo de recuperación de comida ya existe y demuestra que
+ hay una necesidad tanto del lado de los consumidores como de los comercios. El diferencial
+ de APROVECHO está encómo busca simplificar esa recuperación gracias al software
+ propio de APROVECHO, y qué hace con la información que se genera a partir de ella
+ En concreto, esto se ve en cuatro aspectos:
+ ● E s simple de usar para el comercio.Se carga con una foto.No hay que escribir
+ productos, precios ni horarios.
+ ● Acompaña al comercio mientras crece.Base recupera,Smart mide e Intelligence
+ explica por qué sobra y cómo evitarlo.
+ ● Mide el impacto de verdad.Kilos, CO₂e, con peso realen Smart e Intelligence.
+ ● Equipos argentinos y accesibles.La estación cuestamucho menos que las
+ soluciones importadas, porque la inteligencia ya está en el software.
+ stos diferenciales se pueden copiar. Lo que no se copia fácil y protege al negocio en el
+ E
+ tiempo es esto:
+Ventaja Por qué es difícil de copiar
+ oops de
+L PROVECHO crece porque sus propios usuarioslo recomiendan.Un
+ A
+recomendación consumidor que invita a un amigo consigue un descuento mayor, y su amigo
+ también. Cuando alguien comparte en TikTok o Instagram qué le tocó en su
+ pack sorpresa, otros se descargan la app. Del lado de los comercios, el que
+ recomienda a otro local recibe un beneficio. Cada vuelta del loop suma
+ usuarios y comercios en el mismo barrio, y eso atrae a más. Un competidor
+ puede copiar la app, pero no los miles de recomendaciones que ya están
+ circulando:tiene que empezar de cero en cada barrio.
+Comunidad PROVECHO no es solo una app para comprar barato: es ungrupo de
+ A
+ vecinos y comercios que rescatan comida juntos.Cadacomercio tiene su
+ APROVECHO Score y aparece en el ranking de su barrio, y cada usuario ve
+ sus packs rescatados, su ahorro y su impacto, y sube de nivel. Además, hay
+ desafíos entre barrios para ver cuál rescata más comida. Esasensación de
+ pertenencialleva tiempo construir y no se copia:un usuario no se va a otra
+ app y pierde su nivel y su historia, y un comercio no quiere perder su lugar en
+ el ranking.
+ Página47
+=== [parte1 pág 48] ===
+APROVECHO ·
+ istorial de cada
+H uanto más tiempo usa APROVECHO, más sabe el comercio sobre su propio
+ C
+comercio desperdicio: qué le sobra, qué días y por qué. Con cada mes, APROVECHO
+ arma un historial cada vezmás personalizadode esecomercio, y las
+ recomendaciones y los reportes se vuelven másprecisosy másútilespara
+ su negocio. Además, acompañamos a cada comercio de cerca, para construir
+ unarelación directay deconfianza. Así, con el tiempo,APROVECHO se
+ vuelve unaparte naturalde cómo el comercio manejasu operación, algo
+ difícil de reemplazarpor una herramienta nueva queno lo conoce. |
+IA que aprende a IA de APROVECHO no solo reconoce la comida:hacecasi todo el
+ L
+ trabajo que hoy hace una persona a mano, y lo hacecada vez mejor. A
+ partir de una foto (y del peso en Smart e Intelligence):
+ Reconoce
+ • Qué alimento es y a qué categoría pertenece.
+ • Cuánto hay: cantidad, porciones y peso aproximado, o el peso real con la
+ balanza.
+ Arma la oferta
+ • Cuántos packs se pueden armar y de qué tamaño.
+ • El precio de cada pack, con el 50% de descuento sobre el precio habitual del
+ comercio.
+ • El horario de retiro, según los horarios que configuró el comercio.
+ • Una estimación nutricional orientativa para el consumidor.
+ Mide el impacto
+ • Los kilos de comida recuperados.
+ • La huella de carbono (CO₂e) y la huella hídrica (agua) de esa
+ comida.(intelligence)
+ Entiende y anticipa(Intelligence)
+ • Qué productos sobran más, en qué días, horarios y sucursales.
+ • Por qué sobran: si se produjo de más, se compró de más, etc
+ • Qué productos envasados están por vencer, a partir del inventario.
+ • Qué packs se venden mejor y en qué momentos.
+ • Cuánto y cuándo va a sobrar, y cuánto conviene producir o comprar.
+ Además, escala:se desarrolla una sola vez y sirvepara todos los comercios,
+ sin hacer una versión nueva para cada uno. Y cada foto que un comercio
+ corrige la entrena, así quecada comercio nuevo lahace más precisa para
+ todos.
+Integración con las na vez que APROVECHO está conectado al inventario de una cadena,
+ U
+ cadenas cambiar de proveedor es caro y lento.
+ omparación con el
+C omo muchos comercios usan APROVECHO, cada uno puede compararse,
+ C
+sector (APROVECHO) de forma anónima, con otros de su mismo rubro y zona, y saber si desperdicia
+ más o menos que el promedio. Un competidor nuevo no tiene con qué
+ comparar.
+ Página48
+=== [parte1 pág 49] ===
+APROVECHO ·
+10. DIMENSIONAMIENTO DEL MERCADO
+10.1 Dimensionamiento del mercado con el modelo TAM - SAM - SOM
+ ara estimar el mercado de APROVECHO utilizamos el método TAM-SAM-SOM. Como la
+P
+plataforma tiene dos tipos de clientes, el cálculo se hizo por separado: primero para los
+ comercios (B2B) y después para los consumidores (B2C).
+10.2 Dimensionamiento del mercado B2B
+ 0.2.1 TAM B2B
+1
+Para calcular nuestro TAM contamos cuántos locales gastronómicos, hoteles y supermercados
+ hay entoda Latinoamérica.
+ tilizamos el dato delinstituto de estadística oficialde cada país (INEGI en México, IBGE
+U
+en Brasil, INEI en Perú, DANE en Colombia, INDEC en Argentina, entre otros). Para países
+ que no cuentan datos oficiales, lo estimamos con el promedio de locales por habitante de
+ países parecidos de la región que sí lo publican, y lo aplicamos a la población de ese país.
+ En el caso de:
+ • Uruguay y Paraguay: usamos el promedio de Chile y Argentina.
+ • Ecuador y Venezuela: usamos el promedio de Colombia y Perú.
+ • Centroamérica y el Caribe: promediamos con México, por ser el país más
+ cercano y parecido.
+ • Supermercados sin datos: promedio de Chile y Argentina.
+ or último, como no todos los locales gastronómicos, supermercados, hoteles, etc, que
+P
+existen son clientes posibles, principalmenteporquenotodossonrentablesonotienenla
+ continuidad necesaria para incorporar nuestro servicio, tomamos el 80% del total.
+ lTAMdeLATAMesde2.365.746locales,enlasiguientetablaseobservaeldetallepor
+E
+país.
+ araexpresarloendólarestomamosquecadalocalpuedevenderhasta608packsporaño,
+P
+que es el promedio de un comercio en Too Good To Go (121,7 millones de comidas
+ salvadasen2023entremásde200.000comercios),aunpreciodeUSD3,99porpack.Así,
+ cadalocalvendehastaUSD2.426porañoenpacks,ylaplataformasequedaconel25%:
+ USD 606 por local.
+Expresado en dólares, el TAM es de 2.365.746 locales × 606 ≈ USD 1.434 millones
+ Página49
+=== [parte1 pág 50] ===
+APROVECHO ·
+ País Locales
+ México 860.364
+ Brasil 473.333
+ Perú 323.260
+ Colombia 247.430
+ Argentina 87.657
+ Resto de Latinoamérica (15 países) 965.138
+ Total Latinoamérica 2.957.182
+ TAM (80%)43 2.365.746
+(La tabla completa por país está en el punto 10 B2B del Anexo)
+43
+ México – DataMéxico (gastronomía y hoteles):
+https://www.economia.gob.mx/datamexico/es/profile/industry/accommodation-and-food-services
+ • México – DataMéxico (supermercados):
+ https://economia.gob.mx/datamexico/en/profile/industry/retail-trade-in-supermarkets-and-department-stores
+ • Brasil – IBGE, Cempre 2024:https://biblioteca.ibge.gov.br/visualizacao/livros/liv102287.pdf
+ • Perú – INEI, Demografía Empresarial IV Trim. 2025:
+ https://www.inei.gob.pe/media/MenuRecursivo/boletines/boletin_demografia_empresarial_ivt2025.pdf
+ • Perú – INEI (supermercados):
+ https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1954/libro.pdf
+ • Colombia – DANE, Censo Económico 2024:
+ ttps://stg.censoeconomiconacionalurbano.dane.gov.co/images/2025/comunicadosDePrensa/20251111_Boletin-de-
+ h
+ Prensa_Resultados-Censo-Economico.pdf
+ • Chile – SII, empresas por rubro:https://www.sii.cl/estadisticas/empresas_rubro.htm
+ • Chile – INE, supermercados:
+ ttps://cnc.cl/wp-content/uploads/2023/09/Ventas-de-Supermercados-por-Region-Base-2018-Julio-2026-31-08-202
+ h
+ 6.pdf
+ • Argentina – Gobierno de la Ciudad de Buenos Aires, ficha Gastronomía:
+ https://buenosaires.gob.ar/sites/default/files/2025-07/Ficha%20Gastronom%C3%ADa%20-%20Junio%202025.pdf
+ • Argentina – INDEC, Encuesta de Supermercados:
+ https://www.indec.gob.ar/uploads/informesdeprensa/super_09_260FBFF11FE1.pdf
+ • Bolivia – SEPREC, estadísticas noviembre 2025:
+ https://www.seprec.gob.bo/wp-content/uploads/2025/12/Informacion-ESTADISTICA-WEB-NOV_v1.pdf
+ • Población por país – ONU, World Population Prospects 2024:https://population.un.org/wpp/
+ •https://www.toogoodtogo.com/de/press/impact-report-2023
+ Página50
+=== [parte1 pág 51] ===
+APROVECHO ·
+10.2.2 SAM B2B
+ araelSAMnosquedamossoloconlaArgentina,porquesegúnelroadmapeselpaísdonde
+P
+APROVECHOvaaserlanzado.PartimosdeloslocalesqueTAMtieneparalaArgentina,que
+ ya incluyen el ajuste del 80%.
+ Locales
+ Gastronomía y hoteles 84.531
+ Supermercados de cadena 3.126
+ SAM (Ajuste del 80% aplicado) 70.126
+El SAM es de 70.126 locales en la Argentina.
+Expresado en dólares, el SAM es de 70.126 locales × USD 606 = USD 42.496.356 por año.
+ 0.2.3 SOM B2B
+1
+ParaestimarelSOMutilizamoscomoreferenciaelcomportamientorealdecompetidoresya
+ instalados en el mercado, lo que permite dimensionar la porción alcanzable del SAM de
+ forma más objetiva. El SOM lo calculamos para el primer año de operación (2027), que
+ siguiendo el roadmap es el año en que lanzamos en Buenos Aires y validamos los tres
+ planes.
+ ompetidor de referencia
+C
+TomamoscomoreferenciaaWinimyaBuenProvecho,porquesonlosquemásseparecen
+ a APROVECHO. Winim llegó a 400 comercios adheridos en su primer año y medio44, y
+ Buen Provecho, se propuso alcanzar 400 comercios en su primer año45.
+ omando los 400comerciosenCABAcomoreferenciadenuestroscompetidores;equivalen
+T
+al 8,4% de los comercios de la Ciudad.
+Partimos del SAM (70.126comercios en la Argentina)y aplicamos estos filtros:
+44
+ Winim, 400 comercios adheridos (Forbes Argentina, 2020):
+https://www.forbesargentina.com/innovacion/winim-eco-delivery-historia-la-app-busca-reducir-desperdicio-comida-n4102
+45
+ Buen Provecho, llegada a la Argentina y objetivo de 400 comercios (El Cronista, 2025):
+ ttps://www.cronista.com/apertura/emprendedoress/una-app-llega-a-la-argentina-para-que-los-comercios-vendan-sus-exceden
+h
+tes-con-descuentos
+ Página51
+=== [parte1 pág 52] ===
+APROVECHO ·
+ Filtro Comercios
+ ona de lanzamiento del primer año: CABA, Vicente López, San
+ Z 6.260
+ Isidro y Pilar (8,9% de la población del país)
+ ienen excedente al menos 3 días por semana (64,3%, encuesta
+ T 4.025
+ propia)
+ Estarían dispuestos a probar la app (63,6%, encuesta propia) 2.560
+ e suman a la plataforma en el primer año (8,4% de los
+ S 525
+ comercios de la zona, misma penetración que la competencia)
+ os2.560comerciosquetienenexcedentesyestaríandispuestosaprobarlaapprepresentan
+L
+nuestro mercado inicial posible. A partir de ese grupo, tomamos como referencia el
+ crecimiento que tuvieron otros competidores ensusprimerosañosyestimamosllegara525
+ comercios, aproximadamente 1 de cada 5. Consideramos que es un objetivo alcanzable
+ porqueduranteelprimerañoAPROVECHOempiezaenunazonapuntualdeBuenosAiresy
+ después va sumando nuevas zonas de manera progresiva.
+ l SOM B2B es de 525 comercios en la zona de lanzamiento al cierre del primer año
+E
+(2027).
+SOM B2B por plan
+ egún el roadmap, en 2027 Base está activo desde elprimertrimestre,mientrasqueSmart
+S
+(segundo trimestre) e Intelligence (tercer trimestre) arrancan como pruebaspilotoconpocos
+ clientes. Por eso, en el primer año la mayoría de los comercios entra por Base:
+ Intelligence:2 supermercados de cadena como piloto.
+ ●
+ ● Smart:5 comercios gastronómicos de mayor volumencomo piloto.
+ ● Base:los 518 comercios restantes.
+ Plan Comercios Ingreso por Total al año
+ comercio al año
+ Base (25% de comisión) 518 USD 606 USD 313.908
+ mart
+ S (USD 300/mes + 5 USD 4.206 USD 21.030
+ comisión)
+ Intelligence (USD 800/mes + 2 USD 10.206 USD 20.412
+ comisión)
+ Total SOM 525 USD 355.350
+(tabla complementaria en el anexo)
+ Página52
+=== [parte1 pág 53] ===
+APROVECHO ·
+ xpresado en dólares, el SOM B2B es de USD 355.350 por año: USD 318.150 de
+E
+comisiones de los 525 comercios, más USD 37.200 de los abonos de Smart e
+ Intelligence.
+ Gráfico del TAM-SAM-SOM B2B:
+10.3 Dimensionamiento del mercado B2C
+ 0.3.1 TAM B2C
+1
+ParaelTAMB2CtomamosalosadultosdeLatinoaméricaqueusanbilleteradigital,porqueel
+ packsepagadesdelaapp.Contamoslosmismos20paísesdeLatinoaméricaqueusamosen
+ el TAM B2B, que suman 655,4 millones de habitantes (Banco Mundial, 2025)46. (La tabla
+ completaporpaísestáenelpunto10B2CdelAnexo).Comonohaydatosregionalesdeedad
+46
+ Población por país 2025 (Banco Mundial, World Development Indicators):https://data.worldbank.org/indicator/SP.POP.TOTL
+ Página53
+=== [parte1 pág 54] ===
+APROVECHO ·
+ de uso de billeteras, usamos como referencia a la Argentina, igualquehicimosenelB2B
+y
+con los países sin dato:
+ • 73,4% de la población es mayor de 18 años (INDEC, Censo 2022).47
+ • 70% de los adultos usa billetera digital (Mastercard, 2026).48
+El TAM B2C es de 336,8 millones de personas.
+ araexpresarloendólarestomamosquecadapersonacompra1,3packsporaño,queesel
+P
+promediodeTooGoodToGo(156millonesdecomidassalvadasen2025entre120millones
+ deusuariosregistrados)49,aUSD3,99porpack,elmismoprecioqueusamosenelB2B.Así,
+ cada persona gasta USD 5,19 por año en packs.
+ xpresadoendólares,elTAMB2Cesde336,8millonesdepersonas×USD5,19≈USD
+E
+1.747 millones por año.
+10.3.2 SAM B2C
+ araelSAMnosquedamosconlaArgentina,siguiendoloplanteadoenelroadmap. Hicimos
+P
+la misma cuenta sobre sus 45,9 millones de habitantes.
+El SAM B2C es de 23,6 millones de personas.
+ xpresado en dólares, elSAMB2Cesde23,6millonesdepersonas×USD5,19≈USD
+E
+122 millones por año.
+10.3.3 SOM B2C
+Igual que en el B2B, el SOM se calcula para el primer año de operación (2027), en el que
+ lanzamos en Buenos Aires. Tomamos como referencia a Buen Provecho, que arrancó en
+ CABAafinesde2024yensusprimerosmesessuperólas20.000descargas50.Estoequivale
+ al 1,25% de los adultos con billetera digital de la Ciudad.
+ Filtro Personas
+ abitantes de la zona de lanzamiento (CABA, Vicente López, San
+ H 4.096.741
+ Isidro y Pilar)
+ Mayores de 18 años (73,4%, INDEC, Censo 2022) 3.007.008
+47
+ Mayores de 18 años, 73,4% (INDEC, Censo 2022, datos definitivos):https://censo.gob.ar/index.php/datos_definitivos/
+48
+ Uso de billeteras digitales, 70% (Mastercard, 2026):
+ ttps://www.mastercard.com/news/latin-america/es/sala-de-prensa/comunicados-de-prensa/pr-es/el-79-de-los-argentinos-ya-a
+h
+dopta-los-pagos-digitales-en-su-vida-cotidiana-segun-un-estudio-de-mastercard/
+49
+ Too Good To Go, 156 millones de comidas y 120 millones de usuarios en 2025:
+https://vakbladvoedingsindustrie.nl/en/article/too-good-to-go-saves-more-than-156-million-meals
+50
+ Buen Provecho, más de 20.000 descargas en Argentina (El Cronista, 2025):
+ ttps://www.cronista.com/apertura/emprendedoress/una-app-llega-a-la-argentina-para-que-los-comercios-vendan-sus-exceden
+h
+tes-con-descuentos
+ Página54
+=== [parte1 pág 55] ===
+APROVECHO ·
+ Usan billetera digital (70%, Mastercard, 2026) 2.104.906
+ Comprarían un pack con 50% de descuento (40,3%, encuesta propia) 848.277
+ e descargan laappenelprimeraño(1,25%delosadultoscon
+ S 26.247
+ billetera de la zona, misma penetración que Buen Provecho)
+ as 848.277 personas que dijeron que comprarían un pack representan el grupo de
+L
+consumidoresalquepodríamosllegarinicialmente.Sobreesetotalaplicamoscomoreferencia
+ la penetración que logró Buen Provecho en sus primeros meses en CABA, lo que nos da
+ 26.247 usuarios, es decir, aproximadamente 3 de cada 100 personas interesadas.
+El SOM B2C es de 26.247 usuarios al cierre del primer año (2027).
+ xpresado en dólares: 26.247 usuarios × USD 5,19 ≈ USD 136.142 por año (34.121
+E
+packs).51
+ Gráfico del TAM-SAM-SOM B2C:
+51
+ Población por país 2025 (Banco Mundial, World Development Indicators):https://data.worldbank.org/indicator/SP.POP.TOTL
+ Página55
+=== [parte1 pág 56] ===
+APROVECHO ·
+10.4 Análisis de la capacidad instalada
+ omo APROVECHO necesita de los dos lados para funcionar, comparamos cuántos packs
+C
+puedenofrecerloscomerciosdelSOMconcuántospackscompranlosusuariosdelSOMen
+ el primer año.
+ Concepto Packs por año
+ apacidad instalada: 525 comercios × 608
+ C 319.200
+ packs
+ Demanda: 26.247 usuarios × 1,3 packs 34.121
+ Uso de la capacidad 11%
+ n el primer año los comercios podrían ofrecer unas nuevevecesmáspacksdelosquese
+E
+vanacomprar,asíqueellímiteloponelademanda.Enpromedio,cadacomerciovendería65
+ packs por año (poco más de uno por semana), cuando podría vender hasta 608. Con la
+ demanda del primer año alcanzaría con unos 56 comercios vendiendo todo lo que la
+ capacidad instalada le permite.
+ ademandayatieneencuentaquealgunosusuariosdejandeusarlaapp(churn),porqueel
+L
+promedio de 1,3 packs por año de Too Good To Go se calcula sobre todos sus usuarios
+ registrados, incluidos los que ya no compran.
+ or eso, el SOM endólareslocalculamossobrelospacksqueefectivamentesecompran,y
+P
+no sobre lo que los comercios podrían publicar:
+ Fuente Cálculo USD por año
+ Comisión por packs 34.121 packs × USD 3,99 × 34.036
+ 25%
+ Abonos Smart 5 clientes × USD 3600 al año 18.000
+ Abonos Intelligence 2 clientes × USD 9600 al año 19.200
+ Total 71.236
+ osUSD136.142delSOMB2Csonloquegastanlosconsumidoresenpacks.Deesemonto,
+L
+el 75% va para el comercio y el 25% para APROVECHO, que son los USD 34.036 de
+ comisión de la tabla.
+El SOM del primer año es de 34.121 packs y USD 71.236 de ingreso para APROVECHO.
+ Página56
+=== [parte1 pág 57] ===
+APROVECHO ·
+ 1- PRODUCTOS Y SERVICIOS
+1
+Aprovecho funciona como una plataforma de dos lados. Por un lado están los comercios
+ (B2B), que generan excedentes de comida y lossubenalaplataformaparavenderlosen
+ packs. Por otro lado están los consumidores (B2C), que usan una app gratuita para
+ encontrar esos packs cerca, comprarlos a menor precio y retirarlos en el local.
+ 1.1 Productos y servicios B2B
+1
+Para los comercios, Aprovecho ofrece tres planes:Base, Smart e Intelligence.Cada uno está
+ pensado para un tipo de operación diferente y cambia principalmente el nivel de precisión de
+ los datos y el análisis que recibe el comercio. Es importante destacar quelos tres niveles
+ cuentan con innovación tecnológica desde el inicio.
+ Página57
+=== [parte1 pág 58] ===
+APROVECHO ·
+11.1.1 Aprovecho Base
+ PROVECHOBaseeselplanpensadoprincipalmenteparacomercioschicosymedianosque
+A
+generan excedentes y quieren recuperar parte de ese valor sin sumar una herramienta
+ complicada a su día a día.
+ aideaprincipaldeBaseesqueelcomerciopuedaempezardeunamanerasimple,utilizael
+L
+celular que ya tiene en el local y desde ahí maneja toda su operación con APROVECHO.
+ Además, no paga un abono mensual, sinounacomisióndel25%únicamentecuandologra
+ vender un pack.
+ aaplicaciónfuncionacomolaherramientadetrabajodelcomerciodentrodeAPROVECHO.
+L
+Desde ahí puede registrar lo que le sobró, revisar las propuestas que genera el sistema,
+ publicar los packs, seguir las ventas, validarlosretirosydespuésverlosresultadosquefue
+ generando.
+ uandoapareceunexcedente,elempleadosolamentetienequeabrirlaaplicaciónysacarle
+C
+una foto.
+ partirdeesaimagen,lainteligenciaartificialhaceunaprimeralecturadelalimentoypropone
+A
+información como la categoría, la cantidad oporciónyunpesoaproximado,acordealmenu
+ proporcionado por cada comercio.
+ Página58
+=== [parte1 pág 59] ===
+APROVECHO ·
+ l valor de la inteligencia artificial en Base está principalmente en evitar que el empleado
+E
+tengaquecargartodaesainformacióndesdecero.Enlugardecompletarmanualmentevarios
+ campos cada vez que sobra comida, APROVECHO prepara una primera propuesta y el
+ empleadosolamentetienequerevisarla,corregirlasihacefaltayconfirmarla.Deestamanera,
+ el proceso puede mantenerse simple inclusosicambialapersonaqueestátrabajandoenel
+ cierre del local.
+ a información relacionada con el alimento siempre se presenta como una estimación. La
+L
+fotografía puede ayudar a reconocer una categoría o estimar una cantidad,peroladecisión
+ final queda en manos del comercio. Lo mismoocurreconinformaciónnutricionalorientativa:
+ APROVECHOpuedeutilizarlacategoríareconocidaparamostrarunareferenciageneral,pero
+ datossensiblescomoalérgenos,condiciónsinTACCuotrainformaciónquepuedaafectarla
+ salud deben ser informados o confirmados por el comercio.
+ na vez reconocido el excedente, la aplicacióntambiénayudaatransformarloenunaoferta
+U
+concreta.Apartirdelacantidaddetectadaproponecuántospackssepuedenarmarydequé
+ tamaño (kg por pack). Por ejemplo, si identifica aproximadamente doce unidades de un
+ producto y para esa categoría el comercio trabaja con packs de cuatro unidades, puede
+ proponer tres packs. Nuevamente, el empleado puede modificar esa propuesta antes de
+ publicarla.
+ a aplicación también puede sugerir un precio para el pack. Para no inventar el valor del
+L
+alimentoapartirdeunafotografía,APROVECHOtomacomoreferencialosprecioshabituales
+ que el comercio haya informado para esa categoría y aplica el descuento correspondiente.
+ Cada pack se vende con un descuento del 50%, que fue el nivel a partir del cual nuestra
+ encuesta mostró un aumento importante en la intención de compra. El comercio siempre
+ puede revisar y confirmar el precio antes de publicar.
+ ambién se propone una franja horaria para el retiro de acuerdo con los horarios que el
+T
+comerciohayaconfiguradopreviamente.Así,elempleadonotienequedecidirtodoslosdías
+ desdecerocómopublicarcadaexcedente:laaplicaciónledejaunapropuestaprácticamente
+ armada y él mantiene el control final.
+ navezconfirmada,APROVECHOseocupadelrestodelaoperación.Publicaelpackdentro
+U
+del marketplace, lomuestraaconsumidoresqueseencuentrancercadelcomercio,gestiona
+ la reserva y el pago y genera el código QR para el retiro.
+ stotambiénaportavaloralcomercioporquenonecesitacrearunapromociónporsucuenta,
+E
+publicarla en redes, buscar compradores ni gestionar el cobro de manera separada.
+ APROVECHO concentra todo dentro de la misma aplicación.
+ Página59
+=== [parte1 pág 60] ===
+APROVECHO ·
+ esdelaapp,elcomerciopuedeverquépackssiguendisponibles,cuálesfueronreservados
+D
+ycuálesyafueronretirados.Cuandollegaelconsumidor,elempleadovalidaelcódigoQRyla
+ operación queda cerrada y registrada automáticamente.
+ navezfinalizadalaoperación,elsistemaempiezaaacumularinformaciónparaasi,generar
+U
+reportes.
+ lprimerindicadorquemuestraeldashboardeslacantidaddepacksrecuperados.Paraque
+E
+el númeroseaclaro,solosecuentancomorecuperadoslospacksquefueronvendidosylos
+ que fueron retirados efectivamente validados mediante el código QR.
+ ambién se muestran las ventas generadasatravésdeAPROVECHO,restandolacomisión
+T
+del 25%, lo que le muestra al comercio la pérdida recuperada.
+ or ejemplo, si durante un período el comercio vende packs por un total de USD 100, el
+P
+tablero muestra:
+ entas generadas: USD 100
+V
+Comisión APROVECHO (25%): USD 25
+ Ingreso recuperado para el comercio: USD 75
+ eestaforma,elcomerciopuedeverdemaneramuyconcretacuántodinerovolvióalnegocio
+D
+a partir de productos que tenían riesgo de terminar sin venderse.
+ ase también muestra una estimación de los kilos de alimento recuperados a partir de la
+B
+fotografía, la categoría del alimento y la cantidad o porción identificada.
+ Página60
+=== [parte1 pág 61] ===
+APROVECHO ·
+ l dashboard también incluye un indicador ambiental, basado en los kilos de alimento
+E
+recuperados.Tambienincluyeunaestimacióndelahuelladecarbonoasociadaaesealimento
+ recuperado. Para esta primera estimación tomamos como referencia unestudiodelaFAO52
+ quecalculóque1,3milmillonesdetoneladasdealimentodesperdiciadoestabanasociadasa
+ aproximadamente 3,3 mil millones de toneladas de CO₂ equivalente. Esto representa un
+ promedio global cercano a 2,53 kg de CO₂e por cada kilo de alimento desperdiciado.
+Por lo tanto, Huella de carbono asociada = kilos estimados recuperados × 2,53 kg de CO₂e
+ n este plan, el indicador se presenta siempre como una estimación. No lo presentamos
+E
+directamentecomo“CO₂evitado”,porqueelalimentoyafueproducidoyunaparteimportante
+ de esas emisiones ya ocurrió.
+ orúltimo,APROVECHOBasereúnepartedeestosresultadosenelAPROVECHOScore,el
+P
+cual es explicado mas adelante.
+ asetambiénincluyesoportedesdelaaplicaciónpararesolverdudasoproblemasduranteel
+B
+uso y, al momento de incorporarse, APROVECHO entrega un primer lote de packaging
+ biodegradableparaqueelcomerciopuedacomenzaraoperarsintenerqueasumiresegasto
+ desde el primer día.
+Dashboard plan base:
+52
+ https://www.fao.org/4/i3347e/i3347e.pdf?utm_source
+ Página61
+=== [parte1 pág 62] ===
+APROVECHO ·
+11.1.2. Aprovecho Smart
+ PROVECHO Smart está pensado para comercios que generan un mayor volumen de
+A
+excedentes y necesitansaberconmásprecisióncuántolessobra,cuántologranrecuperary
+ cómo evoluciona ese resultado con el tiempo.
+ araeso,APROVECHOinstalaenelcomerciounaestaciónSmart.Laideaesqueelcliente
+P
+notengaquecomprarequiposporsucuentaniarmarelsistema, recibeelkitlistoparausary
+ APROVECHO se ocupa de su instalación y configuración.
+ a estación está formada por una balanza Systel Croma de 31 kg, una tablet Samsung
+L
+GalaxyTabA9de8,7pulgadas,unsoportequemantienelatabletfijasobrelabalanzaylos
+ cables necesarios para conectar ambos equipos.
+ La balanza es la que permite que Smart deje de trabajar solamente con estimaciones y
+ empiece a registrar el precio real de los alimentos.
+ a tablet cumple tres funciones al mismo tiempo. Primero, a través de ella, se usa la
+L
+aplicación de APROVECHO. Segundo, recibe automáticamente el peso de la balanza. Y
+ tercero, utiliza su propia cámara para sacar la foto del alimento.
+ a misma queda sostenida sobre la balanza mediante un brazo fijo, permitiendo que las
+L
+fotografías se tomen siempre desde una posición similar y que el empleado pueda usar la
+ aplicación sin tener que sostener el dispositivo.
+ Página62
+=== [parte1 pág 63] ===
+APROVECHO ·
+ uando aparece un excedente, el empleado lo pone sobre la balanza. En ese momento
+C
+APROVECHO recibe dos datos al mismo tiempo: el peso real desde la balanza y una
+ fotografía desde la tablet.
+ a inteligencia artificial analiza la foto, mediante vision recognition, para reconocer qué
+L
+alimento o categoría está viendo y combina esa información con el peso real. El empleado
+ revisa y confirma lo detectado, por lo que la decisión final sigue siendo del comercio.
+ partir de esos datos, APROVECHO propone cómo aprovechar ese excedente: cuántos
+A
+packssepuedenarmar,dequétamaño(kgporpack)yaquéprecio,ydespuésalconfirmarla
+ propuesta, los packs se publican.
+ a estaciónpermiteademásqueAPROVECHOregistreelexcedentedesdeelmomentoen
+L
+que se genera, y no solamente aquello que finalmente se publica para la venta. De esta
+ manera,elcomercioempiezaatenerunavisiónmáscompletadecuántoalimentolesobray
+ quéocurredespuésconeseexcedente.Paraelexcedentequenosehayalogradorecuperar
+ con APROVECHO, el comercio puede indicar de manera simple qué ocurrió con ella, por
+ ejemplo si fue reutilizada, donada, descartada o tuvo otro destino. Esto permite que la
+ información no termine solo en los packs vendidos, sino que refleje mejor lo que realmente
+ pasó con el excedente generado.
+ mart registra eltotaldekilosdeexcedentegenerado,loskilosrecuperadosatravésde
+S
+APROVECHO y los kilos que no lograron recuperarse. A partir de estos datos también
+ calcula la tasa de recuperación, es decir, qué porcentaje del excedente generado logró
+ encontrarunconsumidor,comparandolorecuperadoconloefectivamentepublicado.Através
+ Página63
+=== [parte1 pág 64] ===
+APROVECHO ·
+ e esta tasa, el comercio puede ver quétanbienlogróaprovecharelexcedentequepusoa
+d
+disposición en APROVECHO.
+ a información también se organiza portipodealimento,díayhorario,permitiendoqueel
+L
+comerciopuedaentenderquécategoríasconcentranunamayorcantidaddeexcedentesyen
+ qué momentos se producen.
+ demás, el dashboard muestra la evolución de estos indicadores a lo largo del tiempo. De
+A
+esta manera,elcomerciopuedeversilacantidaddeexcedenteaumentaodisminuye,cómo
+ cambia su tasa de recuperación y qué categorías tienen una mayor participacióndentrodel
+ total, permitiendo así entender qué formatos tienen una mejor respuesta por parte de los
+ consumidores.
+Dashboard del plan smart:
+ martademásdemostrarlosingresosgeneradosporlospacksvendidos,permiteestimarcon
+S
+una alta precisión el valor económico del excedente que no logró recuperarse. Para
+ realizarestecálculo,elcomercioinformavaloresdereferenciaparasusdistintascategoríasde
+ alimentos y APROVECHO los relaciona con los kilos que quedaron sin recuperar.
+ or último, Smart mantiene los indicadores de impacto y el APROVECHO Score, pero con
+P
+información de alta precisión gracias a los datos registrados por la estación. Toda esta
+ información queda disponible en el dashboard y puede reunirse en reportesperiódicospara
+ que el comercio pueda seguir sus resultados en el tiempo.
+Asi,laempresapuedeincorporarinformaciónconcretasobredesperdicioalimentariodentrode
+ Página64
+=== [parte1 pág 65] ===
+APROVECHO ·
+ us reportes internos o externos y tambien puedenservircomoevidenciaenevaluacionesy
+s
+estándares de sustentabilidad que requieran información ambiental, como los estándares
+ GRI53o procesos de evaluación para certificaciones como B Corp54.
+ eestamanera,Smartlepermitealcomerciopasardesimplementegestionarsusexcedentes
+D
+a medirlos y entenderlos con datos concretos, teniendo una visión más completa de
+ cuánto le sobra, qué logra recuperar y dónde todavía existen pérdidas.
+11.1. 3. Aprovecho Intelligence
+ PROVECHO Intelligence está pensado para cadenas, supermercados, hotelesyempresas
+A
+conoperacionesmásgrandes,variassucursalesounvolumendeexcedentesquenecesitaun
+ análisis más profundo. También puede ser utilizado por comercios más chicos que tengan
+ varias sucursales y necesiten entender lo que ocurre en toda su operación.
+ steplanincluyetodoloqueofreceSmart,peroelobjetivoyanoessolamentesabercuánto
+E
+sobra y cuánto se recupera, sino entender qué patrones se repiten y qué decisiones
+ podrían ayudar a reducir esos excedentes en el futuro.
+Intelligence mantiene la estación de medición utilizada en Smart, con la que se registran el
+ pesorealylaimagendelosexcedentes.Enoperacionesgrandespuedenexistirdistintostipos
+ de excedentes y, por eso, Intelligence permite registrarlos de diferentes maneras.
+ aralosproductosfrescos,elaboradosoaquellosquenecesitanpesarse,semantienela
+P
+misma lógica de la estación Smart: se registra el peso real, se toma una imagen y
+ APROVECHO identifica el alimento y guarda la información dentro de la plataforma.
+53
+ https://www.globalreporting.org/publications/documents/english/gri-306-waste-2020/?utm_source
+54
+ https://www.bcorporation.net/en-us/certification/?utm_source
+ Página65
+=== [parte1 pág 66] ===
+APROVECHO ·
+ n el caso de supermercados u otros comercios que trabajen también con productos
+E
+envasados,laempresacompartesubasedeinventarioconAPROVECHO.Deestamanera,
+ el sistema puede identificar qué productos se están acercando a su fechadevencimientoy
+ sugerir con anticipación la creación de packs para darles salida antes de que pierdan su valor.
+ Página66
+=== [parte1 pág 67] ===

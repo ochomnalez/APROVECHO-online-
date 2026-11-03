@@ -1,0 +1,196 @@
+
+##### HOJA: Costos
+B2: Costos variables por cada pack vendido | C2: USD
+B3: Mercado Pago (3,39% del precio) | C3=0.1353 [=3.99*0.0339]
+B4: Visión artificial (1,5 fotos por pack) | C4=0.015 [=0.01*1.5]
+B5: Nube | C5: 0.01
+B6: Devoluciones (0,5% del precio) | C6=0.02 [=3.99*0.005]
+B7: Pack gratis (1 cada 10 compras, lo usa la mitad) | C7=0.1496 [=3.99*0.75/10*0.5]
+B8: Total por pack | C8=0.3298 [=+SUM(C3:C7)]
+B10: Otros costos variables
+B11: Impuestos sobre lo que cobramos (IIBB 5% + débitos y créditos 1,2%) | C11: 0.062
+B12: Estación Smart (por mes) | C12: 15
+B13: Estación Intelligence (por mes) | C13=45 [=15+30]
+B15: Costo de conseguir cada cliente
+B16: Usuario nuevo (pauta $0,58 y referidos $0,06) | C16=0.6432 [=0.35/0.6+0.15*3.99*0.1]
+B17: Comercio nuevo (bolsas, sticker y envío) | C17=29.4902 [=+(100*330+6000)/1530+4]
+B18: Instalación Smart o Intelligence | C18: 150
+B23: Costos por año | C23: 2026 | D23: 2027 | E23: 2028 | F23: 2029 | G23: 2030 | H23: 2031
+B24: Costo de los packs | D24=11,254.3671 [=+'Modelo de demanda'!D10*$C$8] | E24=30,202.4558 [=+'Modelo de demanda'!E10*$C$8] | F24=64,296.1519 [=+'Modelo de demanda'!F10*$C$8] | G24=85,285.6945 [=+'Modelo de demanda'!G10*$C$8] | H24=102,392.1439 [=+'Modelo de demanda'!H10*$C$8]
+B25: Impuestos | D25=4,416.6194 [=+'Modelo de demanda'!D20*$C$11] | E25=13,251.8291 [=+'Modelo de demanda'!E20*$C$11] | F25=28,572.4747 [=+'Modelo de demanda'!F20*$C$11] | G25=40,617.6616 [=+'Modelo de demanda'!G20*$C$11] | H25=53,125.1598 [=+'Modelo de demanda'!H20*$C$11]
+B26: Estaciones Smart | D26=900 [=+'Modelo de demanda'!D12*12*$C$12] | E26=3240 [=+'Modelo de demanda'!E12*12*$C$12] | F26=7560 [=+'Modelo de demanda'!F12*12*$C$12] | G26=10260 [=+'Modelo de demanda'!G12*12*$C$12] | H26=12960 [=+'Modelo de demanda'!H12*12*$C$12]
+B27: Estaciones Intelligence | D27=1080 [=+'Modelo de demanda'!D13*12*$C$13] | E27=3240 [=+'Modelo de demanda'!E13*12*$C$13] | F27=6480 [=+'Modelo de demanda'!F13*12*$C$13] | G27=10800 [=+'Modelo de demanda'!G13*12*$C$13] | H27=16200 [=+'Modelo de demanda'!H13*12*$C$13]
+B28: Total costos variables | D28=17,650.9866 [=+SUM(D24:D27)] | E28=49,934.285 [=+SUM(E24:E27)] | F28=106,908.6265 [=+SUM(F24:F27)] | G28=146,963.3562 [=+SUM(G24:G27)] | H28=184,677.3037 [=+SUM(H24:H27)]
+B30: Usuarios nuevos | D30=16,881.6329 [=+'Modelo de demanda'!D9*$C$16] | E30=33,486.6971 [=+'Modelo de demanda'!E9*$C$16] | F30=64,731.9002 [=+'Modelo de demanda'!F9*$C$16] | G30=60,418.0696 [=+'Modelo de demanda'!G9*$C$16] | H30=64,038.5486 [=+'Modelo de demanda'!H9*$C$16]
+B31: Comercios nuevos | D31=15,482.3529 [=+'Modelo de demanda'!D5*$C$17] | E31=24,594.8235 [=+'Modelo de demanda'!E5*$C$17] | F31=36,626.8235 [=+'Modelo de demanda'!F5*$C$17] | G31=24,801.2549 [=+'Modelo de demanda'!G5*$C$17] | H31=23,562.6667 [=+'Modelo de demanda'!H5*$C$17]
+B32: Instalaciones | D32=1050 [='Modelo de demanda'!D14*$C$18] | E32=2550 [='Modelo de demanda'!E14*$C$18] | F32=4500 [='Modelo de demanda'!F14*$C$18] | G32=3450 [='Modelo de demanda'!G14*$C$18] | H32=3750 [='Modelo de demanda'!H14*$C$18]
+B33: Total costos de adquisición | D33=33,413.9859 [=+SUM(D30:D32)] | E33=60,631.5206 [=+SUM(E30:E32)] | F33=105,858.7237 [=+SUM(F30:F32)] | G33=88,669.3245 [=+SUM(G30:G32)] | H33=91,351.2152 [=+SUM(H30:H32)]
+B35: Costos fijos
+B36: Nube y herramientas | D36=1800 [=150*12] | E36=3600 [=300*12] | F36=6000 [=500*12] | G36=8400 [=700*12] | H36=10800 [=900*12]
+B37: Ejecutivos de cuenta (USD 1.850 por mes cada uno) | D37: 0 | E37=22200 [=1*1850*12] | F37=22200 [=1*1850*12] | G37=44400 [=2*1850*12] | H37=44400 [=2*1850*12]
+B38: Analistas de Intelligence (USD 1.850 por mes cada uno) | D38: 0 | E38=11100 [=0.5*1850*12] | F38=22200 [=1*1850*12] | G38=22200 [=1*1850*12] | H38=44400 [=2*1850*12]
+B39: Equipo de Soporte (USD 1.000 por mes cada uno) | D39: 0 | E39=12000 [=1000*12] | F39=36000 [=3000*12] | G39=60000 [=5000*12] | H39=96000 [=8000*12]
+B40: Marketing (en 2027 con la campaña de lanzamiento) | D40=16000 [=1000*12+4000] | E40=18000 [=1500*12] | F40=12000 [=1000*12] | G40=12000 [=1000*12] | H40=12000 [=1000*12]
+B41: Administración (contador, legales, seguros y banco) | D41=4800 [=400*12] | E41=6000 [=500*12] | F41=7200 [=600*12] | G41=8400 [=700*12] | H41=9600 [=800*12]
+B42: Total costos fijos | D42=22600 [=+SUM(D36:D41)] | E42=72900 [=+SUM(E36:E41)] | F42=105600 [=+SUM(F36:F41)] | G42=155400 [=+SUM(G36:G41)] | H42=217200 [=+SUM(H36:H41)]
+B43: Sueldo de los 4 fundadores (incluye desarrollo y mantenimiento de la plataforma) | D43: 0 | E43=48000 [=4*1000*12] | F43=48000 [=4*1000*12] | G43=48000 [=4*1000*12] | H43=48000 [=4*1000*12]
+  [chart] type=LineChart title='Evolución de ingresos y costos totales (USD)'
+
+##### HOJA: TAM SAM SOM B2B
+B2: Mercado de comercios (TAM, SAM y SOM)
+B3: TAM Latinoamérica (locales) | C3: 2365746
+B4: SAM Argentina | C4: 70126
+B5: Zona de lanzamiento (CABA, V. López, San Isidro, Pilar) | C5: 6260
+B6: Con excedente 3 días por semana (64,3%) | C6=4025 [=ROUND(C5*0.643,0)]
+B7: Dispuestos a probar la app (63,6%) | C7=2560 [=ROUND(C6*0.636,0)]
+B8: SOM del primer año (8,4% de la zona) | C8=525 [=ROUNDDOWN(C5*0.084,0)]
+C10: 2026 | D10: 2027 | E10: 2028 | F10: 2029 | G10: 2030 | H10: 2031
+B11: Mercado inicial posible (con las ciudades desde 2028) | D11=2560 [=+$C$7] | E11=8,026.5392 [=+$C$7*(1+8748045/4096741)] | F11=8,026.5392 [=+$C$7*(1+8748045/4096741)] | G11=8,026.5392 [=+$C$7*(1+8748045/4096741)] | H11=8,026.5392 [=+$C$7*(1+8748045/4096741)]
+B12: SOM: comercios activos al cierre del año | D12=525 [=+C8] | E12: 1201 | F12: 2083 | G12: 2299 | H12: 2408
+B13: Market share sobre el mercado inicial posible | D13=0.2051 [=+D12/D11] | E13=0.1496 [=+E12/E11] | F13=0.2595 [=+F12/F11] | G13=0.2864 [=+G12/G11] | H13=0.3 [=+H12/H11]
+B14: Market share sobre el SAM | D14=0.0075 [=+D12/$C$4] | E14=0.0171 [=+E12/$C$4] | F14=0.0297 [=+F12/$C$4] | G14=0.0328 [=+G12/$C$4] | H14=0.0343 [=+H12/$C$4]
+
+##### HOJA: TAM SAM SOM B2C
+B2: Mercado de usuarios (TAM, SAM y SOM)
+B3: TAM Latinoamérica (personas) | C3: 336800000
+B4: SAM Argentina | C4: 23600000
+B5: Habitantes de la zona de lanzamiento | C5: 4096741
+B6: Mayores de 18 años (73,4%) | C6=3007008 [=ROUND(C5*0.734,0)]
+B7: Usan billetera digital (70%) | C7=2104906 [=ROUND(C6*0.7,0)]
+B8: Comprarían un pack con 50% de descuento (40,3%) | C8=848277 [=ROUND(C7*0.403,0)]
+B9: SOM del primer año (se descargan la app) | C9: 26247
+C11: 2026 | D11: 2027 | E11: 2028 | F11: 2029 | G11: 2030 | H11: 2031
+B12: Mercado inicial posible (con las ciudades desde 2028) | D12=848277 [=+$C$8] | E12=2,659,659.6011 [=+$C$8*(1+8748045/4096741)] | F12=2,659,659.6011 [=+$C$8*(1+8748045/4096741)] | G12=2,659,659.6011 [=+$C$8*(1+8748045/4096741)] | H12=2,659,659.6011 [=+$C$8*(1+8748045/4096741)]
+B13: SOM: usuarios activos al cierre del año | D13=26247 [=+C9] | E13: 70437 | F13: 149949 | G13: 198900 | H13: 238795
+B14: Market share sobre el mercado inicial posible | D14=0.0309 [=+D13/D12] | E14=0.0265 [=+E13/E12] | F14=0.0564 [=+F13/F12] | G14=0.0748 [=+G13/G12] | H14=0.0898 [=+H13/H12]
+B15: Market share sobre el SAM | D15=0.0011 [=+D13/$C$4] | E15=0.003 [=+E13/$C$4] | F15=0.0064 [=+F13/$C$4] | G15=0.0084 [=+G13/$C$4] | H15=0.0101 [=+H13/$C$4]
+
+##### HOJA: Modelo de demanda
+C2: 2026 | D2: 2027 | E2: 2028 | F2: 2029 | G2: 2030 | H2: 2031
+B3: Comercios activos | C3: 0 | D3=525 [=+'TAM SAM SOM B2B'!D12] | E3=1201 [=+'TAM SAM SOM B2B'!E12] | F3=2083 [=+'TAM SAM SOM B2B'!F12] | G3=2299 [=+'TAM SAM SOM B2B'!G12] | H3=2408 [=+'TAM SAM SOM B2B'!H12]
+B4: Comercios que se van (30% por año) | D4=0 [=+ROUND(C3*0.3,0)] | E4=158 [=+ROUND(D3*0.3,0)] | F4=360 [=+ROUND(E3*0.3,0)] | G4=625 [=+ROUND(F3*0.3,0)] | H4=690 [=+ROUND(G3*0.3,0)]
+B5: Comercios nuevos | D5=525 [=+D3-C3+D4] | E5=834 [=+E3-D3+E4] | F5=1242 [=+F3-E3+F4] | G5=841 [=+G3-F3+G4] | H5=799 [=+H3-G3+H4]
+B7: Usuarios activos | C7: 0 | D7=26247 [=+'TAM SAM SOM B2C'!D13] | E7=70437 [=+'TAM SAM SOM B2C'!E13] | F7=149949 [=+'TAM SAM SOM B2C'!F13] | G7=198900 [=+'TAM SAM SOM B2C'!G13] | H7=238795 [=+'TAM SAM SOM B2C'!H13]
+B8: Usuarios que se van (30% por año) | D8=0 [=+ROUND(C7*0.3,0)] | E8=7874 [=+ROUND(D7*0.3,0)] | F8=21131 [=+ROUND(E7*0.3,0)] | G8=44985 [=+ROUND(F7*0.3,0)] | H8=59670 [=+ROUND(G7*0.3,0)]
+B9: Usuarios nuevos | D9=26247 [=+D7-C7+D8] | E9=52064 [=+E7-D7+E8] | F9=100643 [=+F7-E7+F8] | G9=93936 [=+G7-F7+G8] | H9=99565 [=+H7-G7+H8]
+B10: Packs vendidos (1,3 por usuario por año) | D10=34,121.1 [=+D7*1.3] | E10=91,568.1 [=+E7*1.3] | F10=194,933.7 [=+F7*1.3] | G10=258570 [=+G7*1.3] | H10=310,433.5 [=+H7*1.3]
+B12: Clientes Smart | C12: 0 | D12: 5 | E12: 18 | F12: 42 | G12: 57 | H12: 72
+B13: Sucursales Intelligence | C13: 0 | D13: 2 | E13: 6 | F13: 12 | G13: 20 | H13: 30
+B14: Instalaciones nuevas  | D14=7 [=+(D13+D12)-(C13+C12)] | E14=17 [=+(E13+E12)-(D13+D12)] | F14=30 [=+(F13+F12)-(E13+E12)] | G14=23 [=+(G13+G12)-(F13+F12)] | H14=25 [=+(H13+H12)-(G13+G12)]
+B16: Ingresos
+B17: Comisión por packs (25% de USD 3,99) | D17=34,035.7973 [=+D10*3.99*0.25] | E17=91,339.1798 [=+E10*3.99*0.25] | F17=194,446.3658 [=+F10*3.99*0.25] | G17=257,923.575 [=+G10*3.99*0.25] | H17=309,657.4163 [=+H10*3.99*0.25]
+B18: Abonos Smart (USD 300 por mes) | D18=18000 [=+D12*300*12] | E18=64800 [=+E12*300*12] | F18=151200 [=+F12*300*12] | G18=205200 [=+G12*300*12] | H18=259200 [=+H12*300*12]
+B19: Abonos Intelligence (USD 800 por mes) | D19=19200 [=+D13*800*12] | E19=57600 [=+E13*800*12] | F19=115200 [=+F13*800*12] | G19=192000 [=+G13*800*12] | H19=288000 [=+H13*800*12]
+B20: Total ingresos | D20=71,235.7973 [=+SUM(D17:D19)] | E20=213,739.1798 [=+SUM(E17:E19)] | F20=460,846.3657 [=+SUM(F17:F19)] | G20=655,123.575 [=+SUM(G17:G19)] | H20=856,857.4163 [=+SUM(H17:H19)]
+B22: Capacidad de los comercios contra packs vendidos
+B23: Capacidad instalada (comercios x 608 packs por año) | D23=319200 [=+D3*608] | E23=730208 [=+E3*608] | F23=1266464 [=+F3*608] | G23=1397792 [=+G3*608] | H23=1464064 [=+H3*608]
+B24: Packs vendidos | D24=34,121.1 [=+D10] | E24=91,568.1 [=+E10] | F24=194,933.7 [=+F10] | G24=258570 [=+G10] | H24=310,433.5 [=+H10]
+B25: Uso de la capacidad | D25=0.1069 [=+D24/D23] | E25=0.1254 [=+E24/E23] | F25=0.1539 [=+F24/F23] | G25=0.185 [=+G24/G23] | H25=0.212 [=+H24/H23]
+
+##### HOJA: Inversiones
+C2: 2026 | D2: 2027 | E2: 2028 | F2: 2029 | G2: 2030 | H2: 2031
+B3: Plataforma: apps, backend, pagos, QR y mapas | C3: 18000
+B4: Reconocimiento de la foto y armado de packs | C4: 8000
+B5: Diseño | C5: 2500
+B6: Constitución, marca y asesoría bromatológica | C6: 2500
+B7: Módulo Smart | D7: 9000
+B8: Módulos Intelligence | D8: 8000 | F8: 8000
+B9: Conexión por API con el inventario | G9: 5000
+B10: Estaciones  | C10=3661 [=+('Modelo de demanda'!D12+'Modelo de demanda'!D13)*Inversiones!$C$13] | D10=12552 [=+('Modelo de demanda'!E12+'Modelo de demanda'!E13)*Inversiones!$C$13] | E10=28242 [=+('Modelo de demanda'!F12+'Modelo de demanda'!F13)*Inversiones!$C$13] | F10=40271 [=+('Modelo de demanda'!G12+'Modelo de demanda'!G13)*Inversiones!$C$13] | G10=53346 [=+('Modelo de demanda'!H12+'Modelo de demanda'!H13)*Inversiones!$C$13] | H10=0 [=+('Modelo de demanda'!I12+'Modelo de demanda'!I13)*Inversiones!$C$13]
+B11: Total | C11=34661 [=+SUM(C3:C10)] | D11=29552 [=+SUM(D3:D10)] | E11=28242 [=+SUM(E3:E10)] | F11=48271 [=+SUM(F3:F10)] | G11=58346 [=+SUM(G3:G10)] | H11=0 [=+SUM(H3:H10)]
+B13: Precio de una estación (balanza, tablet, cable, hub y soporte) | C13=523 [=215+196+43+29+40]
+B14: Total invertido de 2026 a 2031 | C14=199072 [=+SUM(C11:H11)]
+B18: Las inversiones se amortizan en 3 años: 
+B20: Amortizaciones  | C20=11,553.6667 [=+$C$11/3] | D20=11,553.6667 [=+$C$11/3] | E20=11,553.6667 [=+$C$11/3]
+B21=Amortizaciones  [=+B20] | D21=9,850.6667 [=+$D$11/3] | E21=9,850.6667 [=+$D$11/3] | F21=9,850.6667 [=+$D$11/3]
+B22=Amortizaciones  [=+B21] | E22=9414 [=+$E$11/3] | F22=9414 [=+$E$11/3] | G22=9414 [=+$E$11/3]
+B23=Amortizaciones  [=+B22] | F23=16,090.3333 [=+$F$11/3] | G23=16,090.3333 [=+$F$11/3] | H23=16,090.3333 [=+$F$11/3]
+B24=Amortizaciones  [=+B23] | G24=19,448.6667 [=+$G$11/3] | H24=19,448.6667 [=+$G$11/3]
+B26: Amortizacion total por año  | C26=11,553.6667 [=+SUM(C20:C24)] | D26=21,404.3333 [=+SUM(D20:D24)] | E26=30,818.3333 [=+SUM(E20:E24)] | F26=35355 [=+SUM(F20:F24)] | G26=44953 [=+SUM(G20:G24)] | H26=35539 [=+SUM(H20:H24)]
+
+##### HOJA: EERR y flujo de fondos 
+B1: Estado de resultados: 
+C3: 2026 | D3: 2027 | E3: 2028 | F3: 2029 | G3: 2030 | H3: 2031
+B4: Ingresos totales netos  | D4=71,235.7973 [=+'Modelo de demanda'!D20] | E4=213,739.1798 [=+'Modelo de demanda'!E20] | F4=460,846.3657 [=+'Modelo de demanda'!F20] | G4=655,123.575 [=+'Modelo de demanda'!G20] | H4=856,857.4163 [=+'Modelo de demanda'!H20]
+B5: Costos variables totales | D5=17,650.9866 [=+Costos!D28] | E5=49,934.285 [=+Costos!E28] | F5=106,908.6265 [=+Costos!F28] | G5=146,963.3562 [=+Costos!G28] | H5=184,677.3037 [=+Costos!H28]
+B6: Contribucion marginal  | D6=53,584.8107 [=+D4-D5] | E6=163,804.8948 [=+E4-E5] | F6=353,937.7392 [=+F4-F5] | G6=508,160.2188 [=+G4-G5] | H6=672,180.1125 [=+H4-H5]
+B7: Margen sobre ingresos | D7=0.7522 [=+D6/D4] | E7=0.7664 [=+E6/E4] | F7=0.768 [=+F6/F4] | G7=0.7757 [=+G6/G4] | H7=0.7845 [=+H6/H4]
+B8: Costos de adquisición | D8=33,413.9859 [=+Costos!D33] | E8=60,631.5206 [=+Costos!E33] | F8=105,858.7237 [=+Costos!F33] | G8=88,669.3245 [=+Costos!G33] | H8=91,351.2152 [=+Costos!H33]
+B9: Costos fijos | D9=22600 [=+Costos!D42] | E9=72900 [=+Costos!E42] | F9=105600 [=+Costos!F42] | G9=155400 [=+Costos!G42] | H9=217200 [=+Costos!H42]
+B10: Sueldo de los fundadores | D10=0 [=+Costos!D43] | E10=48000 [=+Costos!E43] | F10=48000 [=+Costos!F43] | G10=48000 [=+Costos!G43] | H10=48000 [=+Costos!H43]
+B11: Resultado operativo (EBITDA) | D11=-2,429.1752 [=+D6-D8-D9-D10] | E11=-17,726.6258 [=+E6-E8-E9-E10] | F11=94,479.0155 [=+F6-F8-F9-F10] | G11=216,090.8943 [=+G6-G8-G9-G10] | H11=315,628.8973 [=+H6-H8-H9-H10]
+B12: Amortizaciones (cada inversión se reparte en 3 años) | D12=11,553.6667 [=+Inversiones!C26] | E12=21,404.3333 [=+Inversiones!D26] | F12=30,818.3333 [=+Inversiones!E26] | G12=35355 [=+Inversiones!F26] | H12=44953 [=+Inversiones!G26]
+B13: Resultado antes de impuestos (EBT) | D13=-13,982.8419 [=+D11-D12] | E13=-39,130.9592 [=+E11-E12] | F13=63,660.6821 [=+F11-F12] | G13=180,735.8943 [=+G11-G12] | H13=270,675.8973 [=+H11-H12]
+B14: Impuesto a las ganancias (35%) | F14=22,281.2387 [=0.35*F13] | G14=63,257.563 [=0.35*G13] | H14=94,736.5641 [=0.35*H13]
+B16: Resultado neto  | D16=-13,982.8419 [=+D13-D14] | E16=-39,130.9592 [=+E13-E14] | F16=41,379.4434 [=+F13-F14] | G16=117,478.3313 [=+G13-G14] | H16=175,939.3332 [=+H13-H14]
+B20: Flujo de fondos: 
+C22: 2026 | D22: 2027 | E22: 2028 | F22: 2029 | G22: 2030 | H22: 2031
+B23: Cobros por comisiones y abonos | C23=0 [=C4] | D23=71,235.7973 [=D4] | E23=213,739.1798 [=E4] | F23=460,846.3657 [=F4] | G23=655,123.575 [=G4] | H23=856,857.4163 [=H4]
+B24: Costos variables  | C24=0 [=+Costos!C28] | D24=17,650.9866 [=+Costos!D28] | E24=49,934.285 [=+Costos!E28] | F24=106,908.6265 [=+Costos!F28] | G24=146,963.3562 [=+Costos!G28] | H24=184,677.3037 [=+Costos!H28]
+B25: Costos de adquisición  | C25=0 [=+Costos!C33] | D25=33,413.9859 [=+Costos!D33] | E25=60,631.5206 [=+Costos!E33] | F25=105,858.7237 [=+Costos!F33] | G25=88,669.3245 [=+Costos!G33] | H25=91,351.2152 [=+Costos!H33]
+B26: Costos fijos  | C26=0 [=+Costos!C42] | D26=22600 [=+Costos!D42] | E26=72900 [=+Costos!E42] | F26=105600 [=+Costos!F42] | G26=155400 [=+Costos!G42] | H26=217200 [=+Costos!H42]
+B27: Sueldo de los 4 fundadores  | C27=0 [=+Costos!C43] | D27=0 [=+Costos!D43] | E27=48000 [=+Costos!E43] | F27=48000 [=+Costos!F43] | G27=48000 [=+Costos!G43] | H27=48000 [=+Costos!H43]
+B28=Impuesto a las ganancias (35%) [=+B14] | C28=0 [=+C14] | D28=0 [=+D14] | E28=0 [=+E14] | F28=22,281.2387 [=+F14] | G28=63,257.563 [=+G14] | H28=94,736.5641 [=+H14]
+B29: FLUJO DE ACTIVIDADES OPERATIVAS | C29=0 [=+C23-SUM(C24:C28)] | D29=-2,429.1752 [=+D23-SUM(D24:D28)] | E29=-17,726.6258 [=+E23-SUM(E24:E28)] | F29=72,197.7767 [=+F23-SUM(F24:F28)] | G29=152,833.3313 [=+G23-SUM(G24:G28)] | H29=220,892.3332 [=+H23-SUM(H24:H28)]
+B30: Inversiones totales | C30=34661 [=+Inversiones!C11] | D30=29552 [=+Inversiones!D11] | E30=28242 [=+Inversiones!E11] | F30=48271 [=+Inversiones!F11] | G30=58346 [=+Inversiones!G11] | H30=0 [=+Inversiones!H11]
+B31: Flujo de caja libre  | C31=-34661 [=+C29-C30] | D31=-31,981.1752 [=+D29-D30] | E31=-45,968.6258 [=+E29-E30] | F31=23,926.7767 [=+F29-F30] | G31=94,487.3313 [=+G29-G30] | H31=220,892.3332 [=+H29-H30]
+B32: Aportes de capital  | C32: 34661 | D32: 31981 | E32: 45969 | F32: 0 | G32: 0 | H32: 0
+B33: Flujo neto del periodo  | C33=0 [=+C31+C32] | D33=-0.1752 [=+D31+D32] | E33=0.3742 [=+E31+E32] | F33=23,926.7767 [=+F31+F32] | G33=94,487.3313 [=+G31+G32] | H33=220,892.3332 [=+H31+H32]
+B35: Saldo de caja inicial  | C35=0 [=+C33] | D35=0 [=+C36] | E35=0.3742 [=+E33] | F35: 0 | G35=23,926.7767 [=+F36] | H35=118,414.108 [=+G36]
+B36: Saldo de caja final  | C36=0 [=+C35] | D36=0 [=+D35+C36] | E36=0.3742 [=+E35+D36] | F36=23,926.7767 [=+F33] | G36=118,414.108 [=+G35+G33] | H36=339,306.4413 [=+H35+H33]
+B40: WACC | C40: 0.3
+B42: VAN | C42=17,003.7529 [=+NPV(C40,D31:H31)-C30]
+B44: TIR | C44=0.3672 [=+IRR(C31:H31)]
+B46: PAYBACK  | C46=3.9386 [=IF(SUM(C56:H56)=0,"No se recupera",MIN(C57:H57))]
+B51: Cálculo auxiliar del payback
+B52: Año | C52=2026 [=C22] | D52=2027 [=D22] | E52=2028 [=E22] | F52=2029 [=F22] | G52=2030 [=G22] | H52=2031 [=H22]
+B53: Flujo de caja libre | C53=-34661 [=C31] | D53=-31,981.1752 [=D31] | E53=-45,968.6258 [=E31] | F53=23,926.7767 [=F31] | G53=94,487.3313 [=G31] | H53=220,892.3332 [=H31]
+B54: Flujo de caja libre acumulado | C54=-34661 [=C53] | D54=-66,642.1752 [=C54+D53] | E54=-112,610.801 [=D54+E53] | F54=-88,684.0243 [=E54+F53] | G54=5,803.307 [=F54+G53] | H54=226,695.6402 [=G54+H53]
+B55: Años transcurridos desde 2026  | C55=0 [=C52-$C$52] | D55=1 [=D52-$C$52] | E55=2 [=E52-$C$52] | F55=3 [=F52-$C$52] | G55=4 [=G52-$C$52] | H55=5 [=H52-$C$52]
+C56=0 [=IF(C54>=0,1,0)] | D56=0 [=IF(AND(C54<0,D54>=0),1,0)] | E56=0 [=IF(AND(D54<0,E54>=0),1,0)] | F56=0 [=IF(AND(E54<0,F54>=0),1,0)] | G56=1 [=IF(AND(F54<0,G54>=0),1,0)] | H56=0 [=IF(AND(G54<0,H54>=0),1,0)]
+B57: Payback en ese año  | C57=None [=IF(C56=1,0,"")] | D57=None [=IF(D56=1,C55-C54/D53,"")] | E57=None [=IF(E56=1,D55-D54/E53,"")] | F57=None [=IF(F56=1,E55-E54/F53,"")] | G57=3.9386 [=IF(G56=1,F55-F54/G53,"")] | H57=None [=IF(H56=1,G55-G54/H53,"")]
+B59: Punto de equilibrio
+B60: Año | D60=2027 [=D3] | E60=2028 [=E3] | F60=2029 [=F3] | G60=2030 [=G3] | H60=2031 [=H3]
+B61: Costos a cubrir (adquisición + fijos + sueldo de fundadores) | D61=56,013.9859 [=D8+D9+D10] | E61=181,531.5206 [=E8+E9+E10] | F61=259,458.7237 [=F8+F9+F10] | G61=292,069.3245 [=G8+G9+G10] | H61=356,551.2153 [=H8+H9+H10]
+B62: Margen de contribución sobre ingresos | D62=0.7522 [=D7] | E62=0.7664 [=E7] | F62=0.768 [=F7] | G62=0.7757 [=G7] | H62=0.7845 [=H7]
+B63: Ventas necesarias para no perder plata (punto de equilibrio) | D63=74,465.1496 [=D61/D62] | E63=236,869.5903 [=E61/E62] | F63=337,829.5012 [=F61/F62] | G63=376,537.7393 [=G61/G62] | H63=454,511.4432 [=H61/H62]
+B64: Ingresos totales netos (proyectados) | D64=71,235.7973 [=D4] | E64=213,739.1798 [=E4] | F64=460,846.3657 [=F4] | G64=655,123.575 [=G4] | H64=856,857.4163 [=H4]
+B65: Ventas sobre el punto de equilibrio | D65=0.9566 [=D64/D63] | E65=0.9023 [=E64/E63] | F65=1.3641 [=F64/F63] | G65=1.7399 [=G64/G63] | H65=1.8852 [=H64/H63]
+  [chart] type=BarChart title='Evolución del resultado neto por año (USD)'
+  [chart] type=BarChart title='Evolución del flujo de caja libre por año (USD)'
+
+##### HOJA: LTV y CAC
+B2: Lo que nos deja cada pack | C2=0.6058 [=3.99*0.25*(1-Costos!C11)-Costos!C8]
+B3: Packs por comercio en 2029 | C3=118.7172 [=+'Modelo de demanda'!F10/(('Modelo de demanda'!E3+'Modelo de demanda'!F3)/2)]
+C5: Usuario | D5: Comercio Base | E5: Cliente Smart | F5: Sucursal Intelligence
+B6: Margen de contribución por año | C6=0.7876 [=+C2*1.3] | D6=71.9212 [=+C2*C3] | E6=3,268.7212 [=300*12*(1-Costos!C11)-Costos!C12*12+C2*C3] | F6=8,536.7212 [=800*12*(1-Costos!C11)-Costos!C13*12+C2*C3]
+B7: Años que se queda (1 / bajas, máximo 5) | C7=3.3333 [=+MIN(1/0.3,5)] | D7=3.3333 [=+MIN(1/0.3,5)] | E7=5 [=+MIN(1/0.15,5)] | F7=5 [=+MIN(1/0.1,5)]
+B8: LTV | C8=2.6252 [=+C6*C7] | D8=239.7372 [=+D6*D7] | E8=16,343.6058 [=+E6*E7] | F8=42,683.6058 [=+F6*F7]
+B9: CAC | C9=0.6432 [=+Costos!C16] | D9=56.4902 [=+Costos!C17+0.5*1350*12/300] | E9=2523 [=+Inversiones!C13+Costos!C18+1850] | F9=6223 [=+Inversiones!C13+Costos!C18+1850*3]
+B10: LTV / CAC | C10=4.0816 [=+C8/C9] | D10=4.2439 [=+D8/D9] | E10=6.4778 [=+E8/E9] | F10=6.859 [=+F8/F9]
+B11: Meses para recuperar el CAC | C11=9.8001 [=+C9/(C6/12)] | D11=9.4254 [=+D9/(D6/12)] | E11=9.2623 [=+E9/(E6/12)] | F11=8.7476 [=+F9/(F6/12)]
+
+##### HOJA: Gráficos
+B1: 16.a Modelo de demanda y proyección de ventas
+B88: 16.b Estructura de costos variables y fijos
+B107: 16.c Principales inversiones
+B126: 16.d LTV vs. CAC
+B145: 16.e Punto de equilibrio
+  [chart] type=BarChart title='Usuarios activos al cierre de cada año'
+  [chart] type=BarChart title='Comercios activos al cierre de cada año'
+  [chart] type=BarChart title='Packs vendidos por año'
+  [chart] type=BarChart title='Ingresos por fuente (USD)'
+  [chart] type=LineChart title='Market share sobre el mercado inicial posible'
+  [chart] type=LineChart title='Market share sobre el SAM'
+  [chart] type=BarChart title='Del SAM al SOM de comercios, 2027 (escala logarítmica)'
+  [chart] type=BarChart title='Del SAM al SOM de usuarios, 2027 (escala logarítmica)'
+  [chart] type=BarChart title='Capacidad de los comercios contra packs vendidos'
+  [chart] type=LineChart title='Uso de la capacidad de los comercios'
+  [chart] type=BarChart title='Costos por año (USD)'
+  [chart] type=BarChart title='Costos fijos por concepto (USD)'
+  [chart] type=BarChart title='Inversiones por año (USD)'
+  [chart] type=BarChart title='Amortización por año (USD)'
+  [chart] type=BarChart title='LTV / CAC por tipo de cliente (veces)'
+  [chart] type=BarChart title='Meses para recuperar el CAC'
+  [chart] type=LineChart title='Ingresos contra punto de equilibrio (USD)'
+  [chart] type=BarChart title='Flujo de caja libre acumulado (USD)'

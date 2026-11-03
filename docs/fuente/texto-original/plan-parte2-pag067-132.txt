@@ -1,0 +1,2399 @@
+
+=== [parte2 pág 1] ===
+APROVECHO ·
+ eestamanera,cadatipodeexcedenteseregistradelaformaqueresultemássimpleparala
+D
+operación, pero toda la información termina conectada dentro de APROVECHO.
+ i una sucursal maneja un volumen muy alto o necesita registrar excedentes en distintos
+S
+sectores al mismo tiempo, puede contar con más de una estación según sus necesidades
+ medida que el comercio acumula información, APROVECHO analiza variables como qué
+A
+alimentosgeneranmásexcedente,enquésucursalocurre,quédíasyhorariosserepite,qué
+ cantidadesaparecenconmásfrecuencia,quéporcentajelograrecuperarseycuáleselvalor
+ económico.
+ demás, APROVECHO cuenta información sobre la demanda que se genera dentro del
+A
+marketplace. Esto permite relacionar lo que le sobra al comercio con la forma en que los
+ consumidores responden a esos excedentes, analizando qué categorías tienen mayor
+ demanda,quépacksfuncionanmejoryenquémomentostienenunamayorposibilidaddeser
+ recuperadosparaasírealizarrecomendacionesconcretasqueayudenalcomercioareducir
+ sus pérdidas.
+ l objetivo es que elcomerciopuedautilizarlainformaciónparatomardecisionesantesde
+E
+que aparezca el excedente, y no una vez que ya se haya desperdiciado.
+Intelligencetambiénpermitehacercomparacionesentresucursales.Lasempresaspueden
+ ver cuáles generan más excedentes, cuáles tienen una mejor tasa de recuperación, qué
+ categorías concentran las mayores pérdidas y cómo evolucionan los resultados de cada local.
+ ara esto, cada sucursal que utilice Intelligence funciona como una cuenta activa del
+P
+planyabonasupropiasuscripción.Laempresapuedeincorporarlacantidaddesucursales
+ que quiera y APROVECHO reúne la informacióndetodasaquellasqueesténactivasdentro
+ de un mismo dashboard corporativo.
+ medidaqueseacumulasuficienteinformaciónhistórica,Intelligenceincorporatambiénuna
+A
+capa de predicción. APROVECHO puede estimarquécategoríastienenmayorprobabilidad
+ de generar excedentes según el comportamiento anterior del comercio y utilizar esa
+ información para anticipar posibles situaciones de sobreproducción.
+ lplanincorporaademásunamiradaeconómicamásprofunda.Conloscostosdereferencia
+E
+informados por la empresa, APROVECHO puede estimar cuántovalorseestáperdiendoen
+ losexcedentesquenologranrecuperarseycuántopodríareducirseesapérdidasielcomercio
+ mejora determinados aspectos de su operación. Todos estos informes son validados y
+ auditados por un equipo de analistas de APROVECHO.
+Intelligence también muestralahuellahídricadelosalimentosrecuperados,esdecir,una
+ estimacióndecuántaaguasenecesitóparaproducirlos.Cuandoseconocededóndevieneel
+ Página67
+=== [parte2 pág 2] ===
+APROVECHO ·
+ limento, APROVECHO también puedemostrarsifueproducidoenunazonadondeelagua
+a
+es más o menos escasa.Esta información ayuda a la empresa a entender mejor el impacto
+ ambiental de sus alimentos y puede servir como apoyo para sus reportes de sustentabilidad.
+Intelligencemantienelosindicadoresdeimpacto,elAPROVECHOScoreylainformaciónque
+ puede utilizarse como respaldo para los reportes de sustentabilidad, pero también permite
+ analizarlos tanto a nivel general como por sucursal.
+ eestamanera,Intelligencetransformalainformaciónacumuladaenunaherramientaparala
+D
+toma de decisiones. El comercio no solamente puede saber qué le sobra y cuánto está
+ perdiendo,sinotambién entenderdóndesegeneraelproblema,quépatronesserepiten
+ y qué puede modificar para que en el futuro sobre menos.
+Dashboard del plan intelligence:
+11.2 Productos y servicios B2C
+ el lado delconsumidor,APROVECHOofrecelaposibilidaddeconseguiralimentosenbuen
+D
+estadoydecomercioscercanosaun50%dedescuento,ayudandoaevitareldesperdiciode
+ comida.
+ apropuestasepresentaatravésdepacks,armadosconlosexcedentesdisponiblesdecada
+L
+comercio.Antesderealizarlacompra,puedeconocerelcomercioqueofreceelpack,eltipoo
+ categoría de alimentos que puede contener, características generales como si se trata de
+ productosdulcesosalados,unacantidadopesoaproximado,elprecioyelhorariodisponible
+ para retirarlo.
+ Página68
+=== [parte2 pág 3] ===
+APROVECHO ·
+ medidaquecompra,APROVECHOtambiénlemuestraalusuarioelresultadoacumuladode
+A
+susdecisiones.Cadaconsumidorpuedevercuántospacksrescató,cuántodineroahorró
+ entotalycuálfueelimpactoambientalestimadoasociadoalosalimentosqueayudóa
+ recuperar, expresado en CO₂e.
+ e esta manera, la propuesta B2C de APROVECHO combina tres beneficios principales:
+D
+ahorro, conveniencia e impacto positivo. La propuesta busca que rescatar un excedente
+ funcionecomounaalternativarealpararesolverunacomidaorealizarunacompraaunprecio
+ más conveniente, sin necesidad de un gran cambio en los hábitos cotidianos del consumidor.
+11.3 Monetización
+ PROVECHOganaplatadedosmaneras,conunacomisiónporcadapackquesevendey
+A
+conunasuscripciónmensualquepaganloscomerciosquequierenmásherramientas.Para
+ elconsumidorlaaplicaciónesgratis:solopagaelpackquecompra,quesiempretieneun50%
+ dedescuento.Cadavezquealguiencompraunpack,APROVECHOsequedaconel25%de
+ lo que pagó y el 75% restante es para el comercio.
+ ● E n el plan Base, el comercio no paga nada para sumarse: APROVECHO gana a
+ medida que el comercio vende.
+ Página69
+=== [parte2 pág 4] ===
+APROVECHO ·
+ E
+ ● n el planSmart, además de la comisión, el comercio paga USD 300 por mes.
+ ● EnelplanIntelligence,elabonoesdeUSD800pormesporcadasucursal,porque
+ cada sucursal funciona como una cuenta propia con su estación.
+ sí, el plan Base nos permite sumar muchos comercios rápido,porquenotienenqueponer
+A
+plata de entrada, y los planes Smart e Intelligence nos dan uningresofijotodoslosmeses,
+ que no depende de cuántos packs se vendan.
+Comparación de funcionalidades por plan
+ ostresplanescompartenlassiguientesfuncionalidades:reconocerelexcedente,armarlos
+L
+packs,publicarlosycobrarlos.Ladiferenciaeslaprecisióndelosdatosylaprofundidaddel
+ análisis. La siguiente tabla resume qué incluye cada plan:
+ Funcionalidad Base Smart Intelligence
+ egistro del excedente a travéstravés de
+ R ✓ ✓ ✓
+ vision recognition
+ Peso del alimento Estimado Real Real (balanza)
+ (balanza)
+ ropuesta automática de packs
+ P ✓ ✓ ✓
+ (cantidad, tamaño, precio y horario)
+ ublicación en el marketplace, cobro y
+ P ✓ ✓ ✓
+ retiro con QR
+ ashboard de packs recuperados e
+ D ✓ ✓ ✓
+ ingreso recuperado
+ ilos recuperados e impacto ambiental
+ K Estimados Medidos Medidos
+ (CO₂e)
+ APROVECHO Score ✓ ✓ ✓
+ oporte en la app y primer lote de
+ S ✓ ✓ ✓
+ packaging
+ stación instalada (balanza, tablet y
+ E — ✓ ✓
+ (una o más
+ soporte) por sucursal)
+ egistro de todo el excedente y de su
+ R — — ✓
+ destino (donado, descartado, etc.)
+ Tasa de recuperación — ✓ ✓
+ nálisis por tipo de alimento, día y
+ A — ✓ ✓
+ horario
+ alor económico del excedente no
+ V — ✓ ✓
+ recuperado
+ Página70
+=== [parte2 pág 5] ===
+APROVECHO ·
+ eportes para sustentabilidad (GRI, B
+ R — ✓ ✓
+ Corp)
+ eportes para sustentabilidad (huella
+ R — — ✓
+ hídrica
+ roductos envasados por vencimiento,
+ P — — ✓
+ con el inventario de la empresa
+ atrones y recomendaciones para
+ P — — ✓
+ reducir excedentes
+ Predicción de excedentes — — ✓
+ omparación entre sucursales y
+ C — — ✓
+ dashboard corporativo
+ Informes validados por analistas de — — ✓
+ APROVECHO
+ os planes están pensados para que el comercio pueda crecerdentrodeAPROVECHOsin
+ L
+ empezar de cero. Si un comercioquearrancóenBasenecesitamásprecisión,secomunica
+ conAPROVECHO,leinstalamoslaestaciónSmartydesdeesemomentoempiezaapagarel
+ abonodelnuevoplan.Todoloqueyahabíaregistradoquedaguardadoensucuenta,asíque
+ no pierde su historial.
+ omismopasadeSmartaIntelligence:elcomercioconservalaestaciónqueyatieneysele
+ L
+ suma la conexión con su inventario, el análisis de patrones,lasrecomendacionesy,sitiene
+ varias sucursales, el dashboard corporativo. Como en Intelligence cada sucursal es una
+ cuentapropia,laempresapuedeempezarconalgunassucursalesysumarotrascuandosea
+ conveniente.
+ 11.4 Matriz de productos y servicios con su alcance
+ asiguientematrizresumeloscuatroproductosdeAPROVECHO:laappparaconsumidores
+ L
+ ylostresplanesparacomercios.Paracadaunomuestraaquiénestádirigido,quéproblema
+ leresuelve,hastadóndellegaelservicio,quéquedaafueraycómoseentrega.Asíseveque
+ cada producto cubre una necesidad distinta y que, a medida que el comercio crece, puede
+ pasar al plan siguiente.
+Producto Para quién ué problema
+ Q lcance: qué
+ A Qué no incluye Cómo se entrega
+ resuelve incluye
+ pp para
+A ersonas de 18 Conseguir
+ P apa de packs
+ M nvío a domicilio, A
+ E pp gratuita para
+consumidores años o más de comida en cercanos, filtros elegir el contenido el celular del
+ la zona de buen estado por tamaño y exacto del pack y consumidor
+ Página71
+=== [parte2 pág 6] ===
+APROVECHO ·
+ obertura que
+ c ás barata,
+ m ondición
+ c r eservar con más
+ compran cerca y alimentaria, detalle de un día de
+ comida ayudando a del pack, pago en anticipación
+ preparada o reducir el la app, retiro con
+ productos de desperdicio QR, historial,
+ almacén ahorro e impacto
+ acumulado
+ PROVECHO C
+A omercios ecuperar
+ R arga del
+ C eso real, registro
+ P pp en el celular
+ A
+Base chicos y ingresos con excedente con una del excedente que que ya tiene el
+ medianos: la comida que foto, propuesta no se vende, comercio + video
+ panaderías, sobra, sin automática de reportes de de onboarding
+ cafeterías, sumar trabajo packs, publicación, desperdicio por
+ rotiserías y ni comprar cobro y QR, producto y
+ restaurantes equipos dashboard de recomendaciones
+ ventas e impacto
+ estimado y
+ APROVECHO
+ Score
+ PROVECHO C
+A omercios con aber con
+ S odo lo de Base
+ T omparación
+ C it APROVECHO
+ K
+Smart más volumen precisión con peso real, entre sucursales, en el local:
+ de excedente: cuánto sobra, registro de todo el productos balanza, tablet,
+ hoteles con cuánto se excedente y su envasados por soporte y cables
+ servicio de recupera y destino, tasa de vencimiento,
+ comidas, cuánto se recuperación, predicción,
+ restaurantes pierde análisis por recomendaciones
+ grandes y alimento, día y e informes
+ comedores horario, valor de lo validados por
+ no recuperado y analistas
+ reportes de
+ sustentabilidad
+ PROVECHO C
+A adenas, ntender por
+ E odo lo de Smart
+ T onsultoría
+ C stación en cada
+ E
+Intelligence supermercados qué se genera con productos presencial y sucursal (una o
+ , hoteles y el excedente y envasados por rediseño de los más según el
+ empresas con tomar vencimiento desde procesos de volumen),
+ varias decisiones el inventario, cocina conexión con el
+ sucursales o para que patrones, inventario de la
+ mucho sobre menos predicción, empresa y
+ volumen recomendaciones, cuenta por
+ comparación entre sucursal
+ sucursales,
+ dashboard
+ corporativo e
+ informes validados
+ por analistas
+ Página72
+=== [parte2 pág 7] ===
+APROVECHO ·
+11.5 Precios
+ ara fijar los precios de APROVECHO tuvimos en cuenta tres cosas: cuánto cobra la
+P
+competencia, cuánto cuesta el equipamiento que entregamos y, sobre todo, cuánto valor le
+ generacadaplanalcomercio.Laideaesqueentodosloscasoselcomercioganemásdelo
+ que paga.
+ Producto Quién paga Precio
+ App para consumidores Nadie Gratuita
+ APROVECHO Base Comercio 5% de cada pack vendido, sin costo
+ 2
+ fijo
+ APROVECHO Smart Comercio SD 300 por mes + 25% de cada pack
+ U
+ vendido
+ APROVECHO Intelligence Comercio SD 800 por mes por sucursal + 25%
+ U
+ de cada pack vendido
+Justificaciones de los precios
+Smart: USD 300 por mes + 25% de cada pack vendido.
+ mart es para comerciosquetiranporlomenosUSD1.150decomidapormes.Orbiskdice
+S
+queeldesperdiciobajaun38%enpromedioyporlomenosun25%55,unavezquealguiense
+ da cuenta de cuanto desperdicia y si impacto.
+Si tomamos en cuenta el % más bajo, el comercio se comportaría de la siguiente manera:
+ De dónde sale la plata Por mes
+ Lo que deja de tirar (25% de USD 1.150) USD 288
+ o que recupera vendiendopacks(59packsaUSD3,92,menosel
+ L USD 173 (anexo 11.5)
+ 25%)
+ Total Hasta unos USD 461
+ sosUSD461sonmásquelosUSD300delpreciodelplanSmart,loquedemuestraqueel
+E
+ingreso extra que segeneraporelmenordesperdiciodecomida,esaúnmayorqueel
+ precio a pagar del plan.
+55
+ Orbisk: precio anual y ahorro promedio:https://orbisk.com/?p=25545706
+ Página73
+=== [parte2 pág 8] ===
+APROVECHO ·
+Intelligence: USD 800 por mes por sucursal + 25% de cada pack vendido
+IntelligenceesparaempresasenlasquecadasucursaldesperdiciaporlomenosUSD3.100
+ de comida por mes. Esto es lo que ahorraría cada sucursal, según cuánto baje el desperdicio:
+ Si el desperdicio baja Ahorra por mes
+ 25% (promedio más conservador) USD 77556
+ 38% (el promedio que informa Orbisk) USD 1.180
+ iaesolesumamosloquerecuperavendiendopacks,elahorroesmayorquelosUSD800
+S
+del pago del plan.
+56
+ Los precios en pesos y en euros se pasaron a dólares con ARS 1.530 por dólar (Banco Nación, venta, 16/09/2026)
+ Página74
+=== [parte2 pág 9] ===
+APROVECHO ·
+12. ANÁLISIS DEL SECTOR Y LA COMPETENCIA
+12.1. Análisis del sector industrial del emprendimiento
+ PROVECHO es parte del mundo FoodTech: empresas que usan tecnología para resolver
+A
+problemas de la comida. Dentro de esemundo,haydostiposdenegocioquetocannuestro
+ problema:
+ • Apps que venden lo que sobra al consumidor (marketplaces B2C).
+ • Herramientas para que las empresas midan su desperdicio (soluciones B2B). Usan
+ cámaras, balanzas e IA en cocinas grandes y supermercados.
+ APROVECHO está en el medio: vende lo que sobra y, además, ayuda a medirlo y
+ reducirlo.
+Evolución del sector
+ nelmundoelmodeloyaesgrande:TooGoodToGotienemásde120millonesdeusuarios
+E
+y 180.000 comercios57. En Argentina es muy nuevo: Cheaf llegó en febrero de 2025 de la
+ mano de Cencosud58 y Buen Provecho empezó con un piloto en Buenos Aires a fines de
+ 202459.Tambiénlleganinversores:KigüirecibiómásdeUSD500.000en2025parasumodelo
+ B2B con IA60.
+ iramos qué hace una gran empresa local con sus excedentes. Molinos Río de la Plata
+M
+trabajaconelBancodeAlimentosdesde2002:en2024donó1.365toneladasdealimentos,
+ ysureportedestacaqueredistribuirloquenosepuedevenderperosigueaptoreduce
+ eldesperdicioymejoralaeficiencia61.Estomuestradoscosas:quelasgrandesempresas
+ ya miden y reportan lo que hacen con sus excedentes, y que su canal principal esla
+ donación, no la venta. Para APROVECHO, este tipo de empresa es un cliente posible de
+ Intelligence(medir,reduciryreportar),ylosbancosdealimentossonaliadosparaloquenose
+ vende.
+57
+ oo Good To Go. (s.f.). About us.https://www.toogoodtogo.com/en-us/about-us
+ T
+58
+ ElCronista.(2025,12defebrero).Alimentosmásbaratos:desembarcaenlaArgentinaunaappquepropone
+una nueva forma de comprar.
+ https://www.cronista.com/infotechnology/actualidad/alimentos-mas-baratos-desembarca-en-la-argentina-una-app
+ -que-propone-una-nueva-forma-de-comprar-y-cuidar-el-medioambiente
+59
+ Hoy Día. (2025). Buen Provecho: vender y comprar alimentos frescos con descuento.
+https://hoydia.com.ar/gastronomia/buen-provecho-vender-y-comprar-alimentos-frescos-con-descuento
+60
+ Startups Latam. (2025, 3 de febrero). Kigüi recibe US$500 mil para potenciar su modelo B2B con IA.
+ ttps://startupslatam.com/kigui-recibe-us-500-mil-para-potenciar-su-modelo-b2b-con-ia-y-reducir-el-desperdicio-d
+h
+e-alimentos/
+61
+ CEADS. (2025). Molinos Río de la Plata: alianza con el Banco de Alimentos.
+https://ods.ceads.org.ar/uploads/iniciativas/2025/2%20Molinos%20A%20BcoAlimentos%2025.pdf
+ Página75
+=== [parte2 pág 10] ===
+APROVECHO ·
+Barreras de entrada
+ rmarunaappquepubliquepacks,cobreycoordineelretiroesfácildecopiar,yporesohay
+A
+varias parecidas. Lo difícil es todo lo que viene después: reconocer la comida en una foto,
+ medir el peso real y convertir los datos en recomendaciones. Y, sobre todo, juntar muchos
+ comerciosyusuariosenlamismazonayunhistorialquesolosearmaconeltiempo(sección
+ 15.2).
+12.2. Análisis de la competencia local e internacional potencial
+ eparamosaloscompetidoressegúnquétancercaestándeloquehaceAPROVECHO.Para
+S
+cada uno miramos cómo atiendeasusclientes,quécondicionescomercialestieneysitiene
+ programas de fidelización:
+Principales competidores
+ Competidor Qué hace anales de
+ C olítica
+ P Fidelización
+ atención comercial
+ Cheaf (directo) acks sorpresa con al
+ P pp y página
+ A omisión no
+ C o se encontró
+ N
+ menos 50% de descuento, para negocios publicada información pública
+ retiro en el local62. Para
+ empresas: varias
+ sucursales, stock,
+ métricas e integración con
+ el sistema del comercio63.
+ uen Provecho P
+ B acks con 35% a 50% de App 0% + IVA
+ 1 No se encontró
+ (directo) descuento, filtros por por venta información pública
+ 65
+ restricción alimentaria y con reserva
+ CO₂ evitado por compra64.
+ inim
+ W ue la primera en CABA
+ F App dhesión
+ A No se encontró
+ (antecedente (2019); el comercio gratis y información pública
+ local) cargaba a mano comisión por
+ descripción y precio. plato vendido
+62
+ ElCronista.(2025,12defebrero).Alimentosmásbaratos:desembarcaenlaArgentinaunaappquepropone
+ na
+u nueva forma de comprar.
+https://www.cronista.com/infotechnology/actualidad/alimentos-mas-baratos-desembarca-en-la-argentina-una-app
+ -que-propone-una-nueva-forma-de-comprar-y-cuidar-el-medioambiente
+63
+ Cheaf. (s. f.). Cheafpara negocios.https://www.cheaf.com/ar/para-negocios
+64
+ Hoy Día. (2025). Buen Provecho: vender y comprar alimentos frescos con descuento.
+https://hoydia.com.ar/gastronomia/buen-provecho-vender-y-comprar-alimentos-frescos-con-descuento
+65
+ Buen Provecho. (s.f.). Términos y condiciones.https://www.buenprovechoapp.com/terminos-y-condiciones
+ Página76
+=== [parte2 pág 11] ===
+APROVECHO ·
+ oo Good To
+ T olsas sorpresa a un
+ B pp y panel
+ A omisión no
+ C eferidos: premia al
+ R
+ Go (potencial) tercio del precio. Hoy no para comercios publicada usuario que suma un
+ opera en Argentina. comercio. "Local Hero":
+ reconoce a los mejores
+ comercios con más
+ visibilidad66.
+ igüi (indirecto
+ K IA para manejar enta directa a
+ V recios no
+ P No aplica
+ B2B) vencimientos y evitar empresas publicados
+ pérdidas en
+ supermercados y
+ marcas.67
+ ITRO,
+ K ámara + balanza para
+ C enta directa a
+ V ITRO:
+ K No aplica
+ Winnow, medir el desperdicio en empresas desde unos
+ Leanpath, cocinas grandes. USD 420 por
+ Orbisk mes por
+ (indirectos cocina68
+ B2B)
+ o que muestra la tabla es que los competidores directos casi no comunicanprogramasde
+L
+fidelización, y ninguno combina venta de excedentes con medición propia para comercios
+ chicos.TooGoodToGoeslaexcepciónenfidelización,conreferidosy"LocalHero",unaidea
+ muy parecida a nuestro "Comercio del mes" y al ranking de la zona.
+12.3. Atributos principales y relevantes para la comparación
+ partir del análisis de los principales competidores se definieron diez atributos que
+A
+permiten comparar las distintas propuestas utilizando criterios comunes. Los atributos
+ seleccionados no buscan medir únicamente el tamaño o la presencia de cada empresa,
+ sino principalmente cómofuncionasusolución,quéesfuerzorequieredelcomercioy
+ qué nivel de información genera a partir del excedente.
+66
+Too Good To Go. (s. f.). Local Hero.https://www.toogoodtogo.com/local-hero
+ 67
+ The Yield Lab Latam. (s. f.). Kigüi.https://theyieldlablatam.com/es/companies/kigui/
+ 68
+ KITRO. (s. f.). KITRO pricing.https://www.kitro.ch/pricing
+ Página77
+=== [parte2 pág 12] ===
+APROVECHO ·
+Modelo y alcance de la solución
+ .Tipo de modelo.
+1
+Permite identificar si la propuesta funciona principalmente como un marketplace B2C,
+ como unasolución tecnológica B2Bo si combina ambos modelos.
+ .Nivel de servicio B2B.
+2
+Evalúahastaquépuntolasoluciónselimitaacomercializarexcedentesoincorporatambién
+ herramientas de medición, seguimiento, análisis y gestión para el comercio.
+Captura y automatización
+ stadimensiónpermitecompararelniveldeesfuerzoquenecesitarealizarelcomerciopara
+E
+utilizar cada plataforma.
+ .Forma de registrar el excedente.
+3
+Distingue entre carga manual, captura mediante fotografía con inteligencia artificial y
+ registro automatizado mediante cámara y balanza.
+ .Necesidad de hardware o integración previa.
+4
+Evalúa si el comercio puede comenzar a utilizar la solución directamente o si necesita
+ instalar equipamiento, integrarse con un POS, ERP o sistema de inventario.
+ .Automatización de la creación de packs.
+5
+Analiza si el comercio debe definir manualmente la publicación o si la plataforma puede
+ sugerir automáticamente cantidad de packs, tamaño, precio y horario de retiro para que el
+ empleado únicamente revise y confirme.
+ Página78
+=== [parte2 pág 13] ===
+APROVECHO ·
+Profundidad del dato y capacidad de gestión
+ aterceradimensiónanalizaquéocurredespuésderegistrarelexcedenteycuántovalor
+L
+puede generar la información obtenida.
+ . Precisión de la medición.
+6
+Diferencia entre datos estimados —por ejemplo, a partirdeunafotografía—ymediciones
+ físicas más precisas mediante peso real y captura continua.
+ . Información adicional para el consumidor.
+7
+Evalúa si la plataforma aporta datos que reduzcan la incertidumbre sobre el pack, como
+ peso aproximado, categoría, composición o información nutricional orientativa.
+ . Medición de impacto y reportes.
+8
+Considera la disponibilidad de indicadores como kilos recuperados, evolución del
+ desperdicio, ingresos recuperados, impacto ambiental y reportes de sustentabilidad o RSE.
+ . Comparación y benchmarking.
+9
+Analiza si la información permite compararperíodos,sucursalesuoperacionessimilaresy
+ generar indicadores de desempeño o reputación.
+ 0.Recomendaciones y capacidad predictiva.
+1
+Representa el nivel más avanzado de la comparación: si la solución se limita a mostrar lo
+ ocurrido o si puede utilizar los datos históricos para detectar patrones, recomendar cambios
+ y, eventualmente, anticipar excedentes futuros.
+ stos atributos serán utilizados en el mapa comparativo del puntosiguiente.Laselección
+E
+prioriza características que influyen directamente en el valor para el comercio y el
+ consumidor. Por este motivo, indicadores como cantidad de usuarios, descargas o
+ comercios asociados no seconsideranatributosdeproducto:sonrelevantesparaanalizar
+ la escala de cada competidor, peronoexplicanporsímismoscómofuncionaniquévalor
+ ofrece cada solución.
+12.4. Mapa comparativo de atributos
+ partir de los diez atributos definidos en el puntoanterior,seelaboróelsiguientemapa
+A
+comparativo. El objetivo es mostrar de forma sintética qué capacidades comunica
+ actualmente cada competidor y cómo se compara con la propuesta de APROVECHO.
+ Página79
+=== [parte2 pág 14] ===
+APROVECHO ·
+Página80
+=== [parte2 pág 15] ===
+APROVECHO ·
+En base a todo esto, armamos el mapa de posicionamiento competitivo de APROVECHO.
+12.5. Conclusiones sobre el mapa competitivo
+ PROVECHO entra a un mercado donde ya hay actividad, por lo tanto confirma que hay
+A
+comercios y consumidores dispuestos a usar este tipo de apps. Pero también obliga a
+ Página81
+=== [parte2 pág 16] ===
+APROVECHO ·
+ iferenciarseconclaridad,porquevenderexcedentescondescuentoyanoalcanza.Delmapa
+d
+salen cuatro espacios donde APROVECHO puede ganar:
+ 1. Empezar es más fácil. Cheaf automatiza los packs conectándose al sistema del
+ comercio;APROVECHOlohaceconunafoto,asíquetambiénllegaalcomerciochico
+ que no tiene ningún sistema.
+ 2. Medir cuesta mucho menos. Las soluciones de medición son importadas y caras.
+ Nuestraestaciónpropia,conequiposqueseconsiguenenelpaís,acercalamedición
+ a comercios que hoy no la pueden pagar.
+ 3. Del vender al reducir. Ningún marketplace relevado combina venta, medición,
+ comparación y recomendaciones. Kigüi y KITRO miden y recomiendan, pero no
+ venden lo que sobra. APROVECHO junta las dos cosas.
+ 4. Fidelización y comunidad. Los competidores locales casi no comunican programas
+ para retener usuarios y comercios. APROVECHO suma niveles, referidos, beneficio
+ por compras, Score, ranking de la zona y "Comercio del mes" (sección 13).
+ a informaciónnutricionalorientativasuma,peroesundiferencialcomplementario.Ylazona
+L
+de lanzamiento no se puede elegirpor"faltadecompetencia",porquenohaydatospúblicos
+ parasaberdóndeestácadaapp.Poreso,antesdelanzar,hayquerelevarcadazonayelegir
+ la que tenga muchos comercios, mucha gente y poca presencia de otras apps.
+ n resumen: Base hace que empezar sea fácil, Smart hace que medir sea accesible e
+E
+Intelligenceconviertelosdatosendecisiones.Esecaminoeselquenosdiferenciayelquelos
+ competidores no recorren completo hoy.
+ Página82
+=== [parte2 pág 17] ===
+APROVECHO ·
+13. PLAN COMERCIAL
+ PROVECHO funciona comounmarketplacededoslados:necesitacomerciosquegeneren
+A
+ofertayconsumidoresquelacompren.Poreso,elobjetivocomercialnoessumarusuariosy
+ comercios de manera aislada, sino construirsuficientedensidaddeofertaydemandadentro
+ de una mismazonaparaquelospackspublicadosencuentrencompradoresylaexperiencia
+ funcione desde el inicio.
+ lprimeraño(2027)eseldemayorinversiónenmarketing. Laprioridadseráconstruiry
+E
+validar un modelo de lanzamiento que luego pueda repetirse en nuevas zonas, ciudades y
+ países. La lógica es concentrar recursos en cada nueva zona hasta alcanzar un volumen
+ suficientedecomerciosyconsumidores;unavezquelazonaganaactividad,lainversiónpaga
+ disminuye y el crecimiento se apoya cada vez más enrecompra,recomendación,contenido
+ generado por usuarios y referidos
+ ase será la principal puerta de entrada para los comerciosen2027porsubajabarrerade
+B
+adopción, mientras Smart e Intelligence comenzarán a desarrollarse mediante pilotos, de
+ acuerdo con el roadmap.
+ bjetivo comercial 2027: Construir zonas activas donde haya suficienteoferta,demanday
+O
+transacciones repetidas para que APROVECHO empiece a crecer por recomendación y
+ recurrencia, y no únicamente por inversión publicitaria.
+Modelo de crecimiento por zona (progresivo, territorial y replicable):
+ Etapa Qué buscamos ué activa la siguiente
+ Q
+ etapa
+ 1. Adquisición de oferta enerar comercios activos
+ G uficientes packs para que
+ S
+ en una zona especifica. la app tenga valor para el
+ (San isidro, Vicente Lopez, consumidor.
+ CABA y Pilar)
+ . Adquisición yactivación Llevar consumidores
+ 2 rimeras compras y retiros
+ P
+ de demanda únicamente donde ya existe exitosos.
+ oferta.
+ 3. Retención ograr recompra y
+ L ayor frecuencia y mejor
+ M
+ publicación recurrente. disponibilidad.
+ 4.Referral / recomendación Activar referidos, contenido enor dependencia de
+ M
+ y comerciantes adquisición paga.
+ embajadores.
+ 5. Expansión / replicación plicar el mismo modelo en
+ A Escalamiento del roadmap.
+ una nueva zona.
+ Página83
+=== [parte2 pág 18] ===
+APROVECHO ·
+ a métrica central del plan comercial será la cantidad de packs efectivamenteretirados
+L
+por zona y por semana, ya que este indicador resume si existe oferta, si el consumidor
+ encuentravalorysilatransacciónsecompleta.Comométricasdeapoyoutilizamoscomercios
+ activos,packspublicados,tasadeventa,compradoresactivos,recompra,costodeadquisición
+ y proporción de clientes que llegan por recomendación.
+13.1. Plan de marketing digital y físico
+ aestrategiademarketingpartedeunprincipiosimple,cadaaccióndebeayudaragenerar
+L
+el siguiente comportamiento del usuario o del comercio. No se busca únicamente
+ visibilidad de marca, sino mover a cada segmento desde el conocimiento de APROVECHO
+ hasta unaprimera experiencia de valory, luego, hacialarecurrencia.
+ Segmento Insight principal ensaje que
+ M
+ priorizamos
+ B2C · Consumidores uieren ahorrar sin resignar
+ Q Comida de comercios
+ comodidad ni confianza. En la cercanos, a un precio
+ encuesta propia, el ahorro fue la mucho menor, sin
+ principal motivación individual y complicar tu rutina.
+ el 72,8% indicó que compraría si
+ el retiro le queda de paso o
+ implica un desvío máximo de
+ diez minutos.
+ B2B · Base l comercio quiere recuperar
+ E o que hoy te sobra
+ L
+ parte del valor de lo que sobra puede volver a generar
+ sin sumar trabajo al cierre. ingresos, de forma
+ simple.
+ B2B · Smart l comercio necesita dejar de
+ E edí lo que te sobra y
+ M
+ estimar y empezar a entender entendé cuánto estás
+ con datos cuánto excedente recuperando y cuánto
+ genera y cuánto valor pierde. seguís perdiendo.
+ B2B · Intelligence as operaciones más complejas
+ L ntendé por qué sobra y
+ E
+ necesitan entender patrones, tomá mejores decisiones
+ comparar sucursales y actuar para que en el futuro
+ antes de que aparezca el sobre menos.
+ excedente.
+ Página84
+=== [parte2 pág 19] ===
+APROVECHO ·
+ MARKETING DIGITAL
+ Canal / acción Rol dentro del plan Contenido o uso principal
+ Instagram y TikTok escubrimiento y prueba P
+ D acks reales, cuánto se ahorra,
+ B2C. comercios de la zona, formato
+ “qué me tocó hoy” y contenido
+ simple que muestre la
+ experiencia.
+ Pauta georreferenciada enerar demanda donde C
+ G ampañas por streams o zona,
+ ya hay oferta. con foco en primera compra y
+ comercios cercanos.
+ ontenido generado
+ C onfianza y
+ C xperiencias reales, packs
+ E
+ por usuarios recomendación. recibidos, ahorro y
+ descubrimiento de comercios.
+ LinkedIn y email B2B enerar oportunidades
+ G asos, resultados, medición de
+ C
+ para Smart e pérdidas, gestión de excedentes
+ Intelligence. y pilotos.
+ Landing B2B onvertir comercios
+ C xplicación corta del modelo,
+ E
+ Base con poca fricción. comisión, alta y contacto.
+ Influencers y embajadores
+Tipo Perfil Ejemplo Seguidores Por qué
+ icro-influencer
+M ecomienda
+ R Rocío Strat .6 millones
+ 5 u público
+ S
+gastronómico lugares para lachicadelbrunch (Instagram)
+ @ busca
+ comer barato en exactamente
+ CABA ahorro y
+ lugares
+ nuevos
+ icro-influencer
+ M ips para llegar a C
+ T oti 68.000
+ 3 lega a
+ L
+de ahorro o vida fin de mes, vida @ratondelahorro (Instagram) personas
+ urbana de estudiante o que buscan
+ de oficina tips de
+ ahorro.
+ Página85
+=== [parte2 pág 20] ===
+APROVECHO ·
+Influencers studiantes de Santiago Ravier
+ E 87.000
+ 2 Influencer
+ universitarios universidades de @santiravier (Instagram) con llegada a
+ la zona los jóvenes
+ estudiantes
+ que buscan
+ probar cosas
+ nuevas.
+ omerciante
+C ueño de un
+ D ecesitamos
+ n — tro
+ O
+embajador comercio investigación comerciante
+ adherido que profunda del lecreemása
+ cuenta su mercado (estamos un par quea
+ experiencia entre 2 opciones) una
+ publicidad
+ MARKETING FISICO
+ l principio, el marketing físico es clave porque todo pasa en pocas zonas. Cada comercio
+ A
+ adherido se vuelve un punto de difusión/ adquisición
+ ● S tickerdevidrieraconQR:secolocaenlaentradadecadacomercioadheridopara
+ que las personas que pasan por el lugar sepan que forma parte de APROVECHOy
+ puedan descargar la aplicación.
+ Página86
+=== [parte2 pág 21] ===
+APROVECHO ·
+● C
+ artel de caja con QR:se ubica en el mostrador para dar a conocer APROVECHO a
+ clientes que ya compran y confían en ese comercio.
+● B
+ olsa biodegradable con marca APROVECHO:acompañala entrega de los packs y
+ permite que la marca siga siendo visible una vez que el consumidor sale del local.
+● F
+ lyer para comercios:pieza visual simple para utilizaren los comercios de las zonas
+ de lanzamiento, explicando rápidamente la propuesta de valor de APROVECHO y
+ despertando interés en potenciales nuevos comercios.
+ Página87
+=== [parte2 pág 22] ===
+APROVECHO ·
+ ● A
+ ctivaciones presenciales:presencia en universidades,ferias y puntos de alta
+ circulación dentro de las zonas de lanzamiento para dar a conocer APROVECHO,
+ mostrar cómo funciona y generar primeras pruebas mediante beneficios de bienvenida.
+Loops de recomendación
+ l objetivo es que, después de la primeracompraoincorporacióndeuncomercio,partedel
+E
+crecimiento empiece a generarse de manera orgánica a través de la recomendación y la
+ recurrencia.
+ ● R
+ eferidos B2C:un usuario invita a otra persona yel beneficio se activa cuando el
+ invitado realiza su primera compra.( descuento del 10%, absorbido por aprovechó) De
+ esta manera, un comprador ayuda a incorporar a otro comprador.
+ Página88
+=== [parte2 pág 23] ===
+APROVECHO ·
+ ● C ontenido compartido:los usuarios pueden compartir su pack, el ahorro obtenido o
+ su experiencia con APROVECHO y recibir un beneficio asociado a una acción
+ verificable. Así, una experiencia real funciona también como forma de adquisición.
+ ● Referidos B2B:un comercio puede recomendar APROVECHOa otro y recibir un
+ beneficio cuando el nuevo comercio se activa. Esto permite que la red crezca a partir
+ de la confianza entre pares.
+ ● Recompra:APROVECHO busca que el usuario vuelva acomprar mostrándole su
+ ahorro acumulado, los packs rescatados y su impacto, y recordandole cuando vuelve a
+ haber oferta relevante cerca. El objetivo es aumentar la frecuencia sin tener que volver
+ a pagar por adquirir al mismo usuario.
+Comunidad y fidelización
+ demás de vender packs, queremos que comercios y vecinos se sientan parte de algo:
+A
+rescatar comida juntos en su zona.
+ • Consumidores: cadausuarioveenlaappcuántospacksrescató,cuántoahorróysu
+ impacto (CO₂e y agua), ysube de nivela medida quecompra.
+ • Comercios:cadacomerciotienesuAPROVECHOScoreyapareceenelrankingde
+ su zona.. Los mejores reciben un reconocimiento, por ejemplo "Comercio del mes",
+ destacado en la app.
+ rograma de beneficio porcompras:Losusuariosquealcancen 10packscomprados,se
+P
+podrán llevar 1 gratis.
+ Aprovecho paga al comercio su75%delpackgratis(unosUSD3),Alcomercionolecuesta
+ nada, así que no rechaza el programa y para APROVECHO es un costo de marketing.
+ alendario y estacionalidad
+C
+Planteamos un calendario promocional teniendo en cuenta cambios en la oferta y en la
+ demanda según el momento del año.
+ Momento Qué podemos hacer
+ echas fuertes del e-commerce Packscondescuentoextraoenvíosdebeneficiosa
+ F
+ (Hot Sale, CyberMonday, Black usuarios inactivos
+ Friday)
+ ía de la Madre, del Padre, del Packs temáticos o "pack para compartir"
+ D
+ Niño, del Amigo, San Valentín
+ Pascuas, Navidad y Año Nuevo acks con roscas, huevos de Pascua o pan dulce
+ P
+ que sobran después de la fecha
+ ines de semana largos y L
+ F os comercios producen de más y les sobra más:
+ feriados más packs y más pauta en esos días
+ Página89
+=== [parte2 pág 24] ===
+APROVECHO ·
+ Verano y receso de vacaciones enosmovimientoenlaciudad:accionesenzonas
+ M
+ de veraneo o con estudiantes que se quedan
+ Sorpresas estacionales acks detemporada(porejemplo,deinviernoode
+ P
+ primavera) para mantener la sorpresa
+13.2. Plan de ventas digital y físico
+13.3. Branding
+ PROVECHO busca cambiar la forma de hablar del
+ A
+ desperdicioalimentario:enlugardecomunicardesde
+ la culpa, muestra una oportunidad concreta de
+ aprovechar mejor algo que todavía tiene valor.
+ a identidad visual serácomúnparaconsumidoresy
+ L
+ comercios, con la misma paleta de verdes, símbolo
+ circular y lenguaje asociado al aprovechamiento. Lo
+ que cambia es el tono y el beneficio que se pone
+ primero.
+ • B2C: cercano, simple y con humor; habla de
+ ahorro, de descubrir lugares y de la sorpresa del
+ pack.
+ • B2B: profesional y concreto; habla de plata
+ recuperada, tiempo ahorrado y datos.
+ La app, las bolsas, los stickers, la cartelería y las
+r edestienenqueversesiemprecomolamismamarca.ElAPROVECHOScoreyelrankingde
+ la zona también son parte de la marca: con el tiempo, estar bien rankeado se vuelve una
+ forma de reputación para el comercio.
+ 3.4. Relacionamiento con clientes
+1
+La relación con el cliente se diseña según cuánto acompañamiento necesita para obtener
+ valor. El objetivo no es agregar contacto humano en todos los casos, sino utilizarlo donde
+ realmente reduce fricción o ayuda a sostener la relación.
+ Segmento Tipo de relación Soporte Cómo lo fidelizamos
+ 2C:
+ B utoservicio en la
+ A hat en la app o N
+ C iveles, impacto
+ Consumidores app WhatsApp acumulado, referidos,
+ beneficio por compras y
+ desafíos entre zonas
+ Página90
+=== [parte2 pág 25] ===
+APROVECHO ·
+ 2B 1: Comercios
+ B utoservicio con
+ A WhatsApp PROVECHO Score,
+ A
+ chicos y medianos acompañamiento ranking de la zona,
+ inicial liviano. reconocimientos y
+ referidos
+ 2B 2: Comercios
+ B compañamiento
+ A quipo de
+ E evisión mensual de los
+ R
+ con mayor volumen virtual especifico APROVECHO reportes con el ejecutivo
+ 2B 3: Cadenas
+ B Relación consultiva quipo de
+ E euniones periódicas,
+ R
+ con varias APROVECHO informes revisados por
+ sucursales analistas y
+ recomendaciones
+ 13.5. Canales de venta
+ PROVECHO diferencia los canales que generan conocimiento ointerésdeaquellosdonde
+ A
+ efectivamente se produce la conversión. Esto evita medir el éxito de todos los canales
+ únicamente por alcance
+ Canal de venta Segmento Función
+ App de APROVECHO B2C Descubrir, reservar, pagar y retirar con QR
+ Landing de alta B2B 1 Que un comercio se sume solo, sin reunión
+ Venta consultiva B2B 2 Demo, propuesta e instalación de la estación
+ Venta corporativa B2B 3 Piloto, integración y contrato por sucursal
+ 13.6. Customer Journey
+ Consumidor (Sofía)
+Etapa Qué hace Dónde ué piensa o R
+ Q iesgo y cómo lo
+ siente resolvemos
+Descubrimiento e un video de un Instagram,
+ V " ¿Mitad de ue desconfíe →
+ Q
+ pack o un sticker TikTok, precio? mostramos packs reales
+ en un local
+ Página91
+=== [parte2 pág 26] ===
+APROVECHO ·
+ idriera, un
+ v Dónde está la y
+ ¿ comercios conocidos
+ amigo trampa?" de la zona
+Exploración e baja la app y
+ S pp: mapa y
+ A " ¿Hay algo ue no haya packs
+ Q
+ mira qué hay lista cerca de mi cerca: el 72,8% solo
+ cerca camino?" compra si le queda de
+ paso → solo hacemos
+ pauta donde hay oferta
+Primera compra lige un pack y
+ E pp y
+ A " ¿Qué me va a Incertidumbre → ve
+ paga Mercado tocar?" categoría, si es dulce o
+ Pago salado y cantidad; la
+ categoría es el dato
+ más valorado (42,9%)
+Retiro a al local y
+ V Comercio " Que esté listo i el pack no está, no
+ S
+ muestra el QR y que valga la vuelve → checklist
+ pena" antes de publicar y
+ calificación
+Recompra Vuelve a comprar App y avisos " Me conviene, Q ue se olvide → avisos
+ lo uso seguido" de packs cerca, niveles
+ y ahorro acumulado
+Recomendación Invita a amigos o eferidos,
+ R " Esto lo tiene ue no tenga motivo →
+ Q
+ comparte su pack TikTok, que conocer descuento para los dos
+ Instagram alguien más" y beneficio por
+ compartir
+ Comercio chico o mediano (Martín, plan Base)
+Etapa Qué hace Dónde ué piensa o R
+ Q iesgo y cómo lo
+ siente resolvemos
+Descubrimiento e lo recomienda S
+ S u local, " Otra app más, echazo inicial →
+ R
+ otro comerciante o WhatsApp o no tengo demo de 5 minutos
+ llega a través de internet tiempo"
+ la landing page.
+Evaluación e que no paga
+ V Landing page " Si no me iedo a la comisión
+ M
+ nada fijo y que cuesta nada, lo (19,5%) → solo paga
+ alcanza con el pruebo" cuando vende
+ celular
+ Página92
+=== [parte2 pág 27] ===
+APROVECHO ·
+Alta e registra y
+ S App " ¿Es ue abandone → alta
+ Q
+ configura su local complicado?" en la misma visita y
+ primer lote de bolsas
+ rimer
+P aca la foto y
+ S pp en el
+ A " ¿La app rrores de la propuesta
+ E
+excedente confirma los packs celular entiende lo que (24,7% los teme) →
+ es?" todo se puede corregir
+ antes de publicar
+Primera venta e vende el pack
+ S pp y
+ A " Funcionó, ue no se venda
+ Q
+ y valida el QR mostrador recuperé plata" (28,6% lo teme) →
+ sumamos usuarios en
+ su zona antes y le
+ avisamos apenas
+ reservan
+Uso recurrente ublica todos los
+ P pp y
+ A " Ya es parte del Q
+ ue lo deje → Score,
+ días dashboard cierre" ranking de la zona y lo
+ que lleva recuperado
+Evolución i crece, pasa a E
+ S quipo de " Quiero saber Miedo a perder lo
+ Smart APROVECH cuánto pierdo hecho → conserva su
+ O de verdad" historial
+ omercio con mayor volumen y cadenas (Laura y Gustavo, planes Smart e
+ C
+ Intelligence)
+Etapa Qué hace Dónde ué piensa o R
+ Q iesgo y cómo lo
+ siente resolvemos
+Primer contacto ecibe la
+ R inkedIn, mail, " Sé que pierdo, Q
+ L ue no le dé prioridad
+ propuesta por cámaras del pero no → caso con números de
+ parte del equipo sector cuánto" un comercio parecido
+ de APROVECHO
+ emo
+D y Ve la estación eunión
+ R " ¿Se paga udas de costo →
+ D
+propuesta funcionando y online sola?" comparación entre
+ cuánto podría ahorro y abono (punto
+ ahorrar 11.6)
+Decisión o aprueba con
+ L euniones
+ R " Necesito ecisión lenta → piloto
+ D
+ su socio o con internas convencer a en un local o en algunas
+ varias áreas otros" sucursales
+ Página93
+=== [parte2 pág 28] ===
+APROVECHO ·
+Instalación e instalan la
+ L u cocina o
+ S "Que no le echazo del personal
+ R
+ estación (y en sus sucursales complique el → capacitación corta e
+ cadenas, se trabajo a la instalación por
+ conecta el cocina" APROVECHO
+ inventario)
+Primer reporte ecibe su primer
+ R ashboard y
+ D " Ahora sé ue el dato no le sirva
+ Q
+ reporte mensual reunión con el cuánto pierdo y → revisión del reporte
+ ejecutivo en qué" con el ejecutivo
+Renovación enueva el abono E
+ R quipo de "Me ahorra ue no vea el valor →
+ Q
+ y, en cadenas, APROVECHO más de lo que seguimiento del ahorro
+ suma sucursales e cuesta"
+ m mes a mes
+ Cierre del plan comercial
+ l objetivo de 2027 es invertir de forma concentrada para generar densidad y validar un
+ E
+ sistemadeadquisición,conversiónyrecurrenciaqueAPROVECHOpuedarepetir.Apartir
+ de 2028, la inversión de mantenimiento será menor en las zonas maduras y volverá a
+ intensificarse de manera puntual cuando se abra una nueva ciudad o país.
+ eestaforma,elcrecimientonodependepermanentementedeaumentarelpresupuesto
+ D
+ publicitario,sinodecombinarunainversióninicialfuerteconunareddecomerciosactiva,
+ consumidores recurrentes,recomendación y un modelode lanzamiento replicable.
+ Página94
+=== [parte2 pág 29] ===
+APROVECHO ·
+14- PLAN DE OPERACIONES Y TECNOLOGÍA
+14.1. Cadena de valor de APROVECHO
+ PROVECHO no produce, compra ni almacena alimentos. Su cadena de valor empieza
+A
+cuandoelcomercioyatieneunexcedenteyterminacuandoeseexcedenteseconvierteen
+ una venta y en información. Por eso adaptamos la cadena de valor tradicional a una
+ plataforma digital: la logísticadeentradaeslacapturadelexcedente,lasoperacionessonel
+ armado del pack con IA, marketing y ventas eslapublicaciónenelmarketplaceyventa, la
+ logística de salida retiro en el local con QR, sin envío, y por último el servicio postventaes
+ medición, reportes y soporte.
+ Actividad Qué hace APROVECHO
+ Primarias 1
+ . Captura del l comercio registra lo que le sobró desde la app o la
+ E
+ excedente estación, según su plan.
+ 2. Armado del pack a IA propone cantidad, tamaño, precio y horario; el
+ L
+ comercio confirma.
+ 3. Publicación y venta E
+ l pack aparece en el marketplace y el consumidor lo
+ paga en la app.
+ 4. Retiro l consumidor retira en el local y el comercio valida el
+ E
+ QR.
+ . Medición e
+ 5 ada operación genera datos para el dashboard y los
+ C
+ información reportes de cada plan.
+ De apoyo Tecnología ision recognition, apps de comercio y consumidor, y
+ V
+ datos en la nube
+ Componentes físicos staciones de Smart e Intelligence y packaging
+ E
+ biodegradable
+ Gestión de comercios A
+ lta del comercio, instalación de estaciones,
+ acompañamiento y soporte
+ Proveedores Pagos, equipos y bolsas
+ Analistas n equipo de APROVECHO valida y audita los
+ U
+ informes de Intelligence
+El valor se genera en dos momentos: cuando el excedente se vende, el comerciorecupera
+ Página95
+=== [parte2 pág 30] ===
+APROVECHO ·
+ingresosy el consumidorahorra; y cuando la operación se registra, el comercioobtiene
+ informaciónpara medir yreducir su desperdicio.
+14.2. Esquema general de la solución y funcionalidades
+ PROVECHOfuncionaatravésdedosinterfacesconectadasaunamismaplataforma:
+A
+una orientada a los comercios y otraalosconsumidores.Elcomercioutilizasuinterfaz
+ para registrar excedentes, revisar y publicar packs y validar los retiros. El
+ consumidor utiliza la suya para descubrirofertascercanas,reservar,pagaryretirar.
+ La plataforma conecta ambas experiencias y registra la información generada en cada
+ operación, que luego ayuda para construir las métricas y herramientas de análisis de los
+ distintos planes.
+ asdosinterfacescontienenlassiguientesfuncionalidadesensurespectivoordensegúnla
+L
+interacción con la aplicación.
+ Página96
+=== [parte2 pág 31] ===
+APROVECHO ·
+ App de comercios:
+Sección de la app Qué se hace ahí y cómo
+Registro del comercio a primera vez, el comercio crea su cuenta con los datos del local (nombre,
+ L
+ dirección, CUIT, rubro), elige su plan ysubelahabilitaciónmunicipal69 yelcarnet
+ de manipulador70. APROVECHO verifica los datos antes de activar la cuenta.
+Configuración del local C
+ argan su menú con los productos detallados,categorías, precios y las franjas
+ horarias de retiro. (esto se puede actualizar a través de la app)
+Cargar excedente selbotónprincipaldelapantalladeinicio.EnBaseabrelacámaradelcelulary
+ E
+ el empleado saca una foto. En Smart e Intelligence el excedente seapoyaenla
+ balanza, la cual registra el peso y la tablet de la estación la foto sola.
+Propuesta de packs na vez que la fotoyafuesubidayprocesadaporlaapp,aparecen:lacategoría
+ U
+ delalimentoreconocido,peso(Kg),cantidaddepacks,tamaño,preciocon50%de
+ descuentoyhorarioderetiro.Cadadatosepuedeeditar.Elempleadoconfirmalos
+ alérgenos o si es sin TACC y toca "Publicar".
+Mis packs istadelospacksdeldíaconsuestado:disponible,reservadooretirado.Permite
+ L
+ eliminar un pack que ya no esté en condiciones de venderse.
+Retiros ista de reservas del día con nombre y horario. Cuando llega el cliente, el
+ L
+ empleadotoca"EscanearQR",escaneaelcódigodelcelulardelclienteylaventa
+ queda cerrada.
+ estino del excedente Al finaldeldía,elempleadomarcaquépasóconloquenosevendió:reutilizado,
+D
+(Intelligence) donado o descartado.
+Dashboard uestra los resultados del comercio: packs recuperados, ventas, ingreso
+ M
+ recuperado (ya sin la comisión), kilos, impacto ambiental y APROVECHO Score.
+ Smart e Intelligence suman sus reportes. Los reportes se pueden descargar.
+ 69
+ Habilitación municipal
+ ● uía de inspecciones de la Agencia Gubernamental de Control (AGC) para locales gastronómicos, Gobierno de la Ciudad
+ G
+ de Buenos Aires:https://buenosaires.gob.ar/sites/default/files/2024-01/agc_gastronomicos_guia_de_inspecciones_0.pdf
+ ● Código Alimentario Argentino, Ley 18.284 (texto de la ley en Argentina.gob.ar):
+ https://www.argentina.gob.ar/normativa/nacional/21841/texto
+ 70
+ Carnet de manipulador de alimentos
+ ● oticia oficial sobre el artículo 21 del Código
+ N
+ Alimentariohttps://www.argentina.gob.ar/noticias/capacitacion-manipuladores-de-alimentos-modificacion-del-articulo-21-del-c
+ aa
+ ● Guía de ANMAT para aplicar el artículo 21:
+ https://www.argentina.gob.ar/sites/default/files/anmat_guia_de_implementacion_art_21_caa_version_final_2019.pdf
+ Página97
+=== [parte2 pág 32] ===
+APROVECHO ·
+Soporte Acceso directo al chat de ayuda por WhatsApp.
+ App de consumidores:
+Sección de la app Qué se hace ahí y cómo
+Registro El usuario crea su cuenta con mail o Google y acepta compartir su ubicación.
+Pantalla “Inicio” uestra los tipos de comercios, las categorías,promociones,filtropor condición
+ M
+ alimentaria (sin TACC, vegetariano o vegano).
+ antalla: “Mapa” y
+P uestra los comercios cercanos que tienen packs disponibles, quesevisualizan
+ M
+lista en un mapa o en una lista ordenada por distancia.
+Detalle del pack omercio,preciooriginalycondescuento,tipodealimentos,siesdulceosalado,
+ C
+ cantidadaproximada,horarioderetiro,calificacióndellocal,estimaciónnutricional
+ orientativa y breve descripción del pack.
+Reserva y pago on el botón "Reservar", el usuario paga dentro de la app con Mercado Pagoo
+ C
+ tarjeta y el pack queda reservado a su nombre.
+“Mis reservas” uestra el código QR de cada reserva activa, la dirección y el horario deretiro.
+ M
+ Después del retiro, permite calificar al comercio.
+“Mi perfil” acks rescatados, plata ahorrada e impacto ambiental estimado (CO₂e)
+ P
+ acumulados, configuraciones de cuenta, metodos de pago adheridos.
+Avisos (previstos) Notificaciones cuando aparece un pack cerca o en un comercio favorito.
+ 14.3. Diseño general de la plataforma y de los componentes físicos
+ iguiendo el modelo de las dos interfaces, una para los comercios y la otra para los
+ S
+ consumidores,planteamosunaplataformadigitaldondeseconectanestosdosyenlacual
+ lainformacióngeneradaencadaoperaciónquedecentralizadaypuedautilizarsetantopara
+ gestionar la transacción comoparaconstruirmétricasyanálisisposteriores.Laplataforma
+ se organiza en los siguientes módulos:
+ Página98
+=== [parte2 pág 33] ===
+APROVECHO ·
+Componentes digitales de la plataforma
+ Componente Función dentro de APROVECHO
+ estión de comercios y
+ G Registra perfiles, establecimientos, horarios, planes y preferencias.
+ usuarios
+ aptura
+ C y ecibelaimagentomadaporelcomercioyutilizavisionrecognition
+ R
+ reconocimiento del para identificar el tipo de alimento y estimar cantidad o volumen.
+ excedente
+ otor de IA para armado Convierte la información del excedente en una propuesta de
+ M
+ de packs cantidad de packs, peso, precio y horario de retiro.
+ Marketplace B2C ublica los packs disponibles y permite que los consumidores los
+ P
+ encuentren según cercanía y disponibilidad.
+ Geolocalización bica comercios y consumidores y facilita el descubrimiento de
+ U
+ ofertas cercanas.
+ Pagos digitales Procesa el pago del consumidor mediante un proveedor externo.
+ QR de retiro Permite validar que el pack fue entregado y cerrar la operación.
+ Base de datos egistrapacks,ventas,retiros,informacióndelexcedenteymétricas
+ R
+ históricas.
+ Analytics y dashboards onvierte los datos acumulados en reportes y, en Intelligence, en
+ C
+ patrones y recomendaciones.
+Componentes físicos
+ ase no necesita equipamiento: el comercio usa el celular queyatieneyelconsumidorusael
+B
+suyo para comprar y mostrar el QR.
+ mart suma la estación de medición, queAPROVECHOarma,entregaeinstalaenellocal.La
+S
+estación tiene:
+ ● U na balanza Systel Croma de 31kg,defabricaciónargentina,quemideelpesorealdel
+ excedente;
+ Página99
+=== [parte2 pág 34] ===
+APROVECHO ·
+ ● U na tablet Samsung Galaxy Tab A9, donde funciona laappysacalafotoconsupropia
+ cámara (La tablet queda configurada para usar solo APROVECHO);
+ ● Un brazo de soporte que mantiene la tablet fija sobre la balanza;
+ ● Un cable y un hub USB-C que conectan la balanza a la tablet y la mantienen cargada.
+El detalle del kit, con precios, está en la sección 10- Productos y Servicios.
+Intelligenceusalamismaestación,unaomásporsucursalsegúnelvolumen.Nonecesitaotro
+ equipo: los productos envasados se registran desde el inventario de la empresa, conectado a
+ APROVECHO.
+ l packaging es el elemento físico común a todos los planes: bolsas biodegradables con la
+E
+marcadeAPROVECHO,acargodeunproveedorexterno.Elprimerloteseentregagratisconel
+ alta.
+ 4.4. Flow de operaciones y soporte de logística
+1
+En estepuntomostramosloquehaceAPROVECHOpordetrásparaquefuncionecadaetapa
+ del customer journey
+ Página100
+=== [parte2 pág 35] ===
+APROVECHO ·
+ l checklist es obligatorio antes de publicar:elcomercioconfirmaqueelproductoesdeldíaY
+E
+que los alérgenos y restricciones alimentarias están informados. Sin checklist, el pack no se
+ publica. Lo pusimos porque si el pack no está o no cumple, el consumidor no vuelve.
+Onboarding
+ ntesdeactivarauncomercio,APROVECHOrevisaquecumplaconlobásico.Asícuidamosla
+A
+calidad de lo que se vende en la plataforma. El paso a paso es:
+ 1. Contacto. El comercio llega por la landing de alta, por la recomendación de otro
+ comerciante o, en Smart e Intelligence, por el contacto del equipo de APROVECHO.
+ 2. Registro. Carga los datos del local (nombre, dirección, CUIT y rubro), elige su plan y
+ conecta su cuenta de Mercado Pago o tarjeta para cobrar.
+ 3. Verificación. Sube la habilitación municipal del local y el carnet de manipulador de
+ alimentosdel personal. APROVECHO los revisa y, siestán bien, aprueba la cuenta.
+ 4. Configuracióndellocal.Carga lascategoríasquevende,elpreciohabitualdecadauna
+ y las franjas horarias de retiro.
+ 5. Arranque.Recibeunacapacitacióncorta(videoexplicativo),elprimerlotedebolsas,el
+ sticker de vidrieray elcartel de caja con QR.
+ 6. Instalación (solo Smart e Intelligence). Se instala la estación y, en Intelligence, se
+ conecta el inventario de la empresa.
+ 7. Primera publicación acompañada. El comercio publica su primer pack con ayuda del
+ equipo, para que la primera experiencia salga bien.
+Soporte de logística
+APROVECHO no hace envíos, pero haycuatro cosas quese mueven:
+ • Packs: no hay envío. El consumidor los retira en el local; esa es nuestra logística de
+ salida.
+ • Packaging: el proveedor produce y guarda las bolsas; APROVECHO no tiene stock. El
+ primerloteseentregaenelalta(oloenvíaelproveedor,sielcomerciosesumósolopor
+ la landing). Para reponer, el comercio le compra directo al proveedor, al precio que
+ APROVECHOnegocióporvolumen.Comosabemoscuántospacksvendecadacomercio,
+ la app le avisa cuándo le conviene reponer.
+ • Estaciones: APROVECHO compra en volumen las balanzas (Systel) y las tablets
+ (Samsung), arma y configura cada kit, lo instala, y lo retira si el comercio deja Smart o
+ Intelligence. Si un equipo falla, se reemplaza.
+ • Plata:elconsumidorpagaconMercadoPagootarjetas,quereparteel75%alcomercioy
+ el 25% a APROVECHO.
+Protocolos ante contingencias
+ uando algo no sale como se esperaba, cada caso tiene una respuesta clara. Todo queda
+C
+registrado como incidencia en la plataforma.
+ Página101
+=== [parte2 pág 36] ===
+APROVECHO ·
+ Situación Qué hacemos
+ El consumidor cancela icancelahasta2horasantesdelhorarioderetiro,seledevuelve
+ S
+ la plata. Después de ese plazo no hay devolución, porque el
+ comercio ya le guardó el pack.
+ El consumidor no retira lpacksecobraigual.Elcomerciopuedevolverapublicarlo,usarlo
+ E
+ o donarlo, y lo marca en la app.
+ l comercio no tiene el S
+ E e le devuelve toda la plata al consumidor. El comerciorecibeun
+ pack aviso y baja su APROVECHO Score; si se repite mucho, se
+ suspende su cuenta.
+ l pack llega en mal E
+ E lconsumidorloreportaconunafotodesdelaappyseledevuelve
+ estado laplata.APROVECHOrevisaelcasoconelcomercioy,siserepite,
+ lo suspende.
+ Falla el pago o se genera la reserva ni el QR. El consumidor puede volver a
+ N
+ intentar.
+ Falla la estación l comercio puede seguir cargando con el celular, comoenBase,
+ E
+ hasta que soporte técnico la repare o la cambie.
+ eclamo por alérgenos o S
+ R oporteatiendeelcasoenelmomento.Losalérgenoslosconfirma
+ salud elcomercioenelchecklist,ylaresponsabilidadsobreelalimentoes
+ del comercio, según los términos y condiciones.
+14.5. Tecnologías utilizadas en las operaciones
+ PROVECHO funciona con un software propio, que maneja casi toda la operación: el
+A
+reconocimiento de la comida en la foto, elarmadodelospacks,lasventasylosreportes.Para
+ algunas tareas usamos servicios de otras empresas, como Mercado Pago para cobrar, Google
+ Maps para mostrar los packs cercanos y la nube para guardar losdatos.Latablamuestraqué
+ tecnología usamos, para qué sirve y si es propia o de terceros.
+Tecnologías principales
+ Tecnología Para qué la usamos Plan Propia o de
+ ¿
+ terceros?
+ pps (comercio y
+ A s por donde comercios y
+ E Todos Propia
+ consumidor) y consumidores usan
+ dashboard web APROVECHO.
+ Vision recognition econoce el alimento y
+ R Todos ropia, sobre un
+ P
+ estima la cantidad a partir de modelo
+ la foto. existente
+ Página102
+=== [parte2 pág 37] ===
+APROVECHO ·
+ Motor IA de packs ropone cantidad, peso,
+ P Todos Propia
+ precio y horario de retiro.
+ stación de
+ E ide el peso real del
+ M mart e
+ S it propio con
+ K
+ medición excedente. Intelligence equipos de
+ Systel y
+ Samsung
+ agos (Mercado
+ P obra al consumidor, reparte Todos
+ C Terceros
+ Pago y tarjeta) el 75/25 y hace devoluciones.
+ apas (Google
+ M uestra los packs cerca del
+ M Todos Terceros
+ Maps Platform) usuario.
+ QR de retiro onfirma la entrega y cierra
+ C Todos Propia
+ la venta.
+ Supabase Es laplataforma de Todos Terceros
+ desarrollo backend.
+ Vercel s la plataforma en la nube
+ E Todos Terceros
+ para desplegar y gestionar el
+ sitio web
+ N8N Es la plataforma donde se Todos Todos
+ utomatizan los flujos de
+ a
+ trabajode la app.
+ Base nutricional a la estimación nutricional
+ D Todos ropio con
+ P
+ orientativa del pack. información real
+ del negocio
+ ashboard y
+ D uestra resultados y
+ M odos (más
+ T Propia
+ reportes evolución. completo en
+ Smart e
+ Intelligence)
+ odelos de
+ M ncuentran patrones y
+ E Intelligence Propia
+ recomendación y sugieren cuánto producir.
+ predicción
+Vision recognition
+ a aplicación de APROVECHO incluye un modelo de vision recognition que ya existe y lo
+L
+ajustamosparacumplirconlasfuncionalidadesdelnegocio.Lafotodelcomerciosirveparasaber
+ qué alimento es, de qué categoría y cuánto hay.
+ omo puede equivocarse, lo que reconoce aparece como una propuesta que el comercio
+C
+puede corregir, siempre hay una persona que confirma antes de publicar. Cada corrección
+ queda guardada y sirve para que el reconocimiento mejore. Así, cuanto más se usa
+ Página103
+=== [parte2 pág 38] ===
+APROVECHO ·
+ PROVECHO, mejor funciona. En Smart e Intelligence, el peso de la balanza hace que la
+A
+propuesta sea todavía más precisa.
+Información nutricional
+ navezquesabemosquéalimentoesycuántopesa,locruzamosconFoodDataCentral,71 Es
+U
+labasedelDepartamentodeAgriculturadeEstadosUnidos,quetieneunaAPIgratuitaparausar
+ en apps. Los valores se muestran comoaproximados,porquenoconocemoslarecetaexacta.
+ Losalérgenos nunca los decide la IA: los informael comercio en el checklist.
+Herramientas internas
+También incluimos otras herramientas que el equipo usa para trabajar:
+ Herramienta Para qué la usa el equipo
+ Nube (Google Cloud,) ervidores, base de datos y guardado delasfotos.Crecea
+ S
+ medida que crecen los usuarios, sin comprar equipos.
+ unciones CRM (desarrollado S
+ F eguir a cada comercio desde el primer contacto hasta el
+ de forma propia) alta, y las grandes cuentas de Smart e Intelligence. Está
+ integrado en la app en el panel interno de aprovecho para
+ quienes tengan el rol de Administradores (solo el equipo
+ interno)
+ WhatsApp Business Soporte a comercios y consumidores.
+ Notificaciones (Firebase) visos de packs cerca, reservas nuevas y recordatorios de
+ A
+ retiro.
+ Panel interno de APROVECHO erificar documentos en el alta, ver incidencias, revisar
+ V
+ comercios suspendidos,controlarlasestacionesinstaladasy
+ hacer seguimiento de clientes.
+Analítica e Intelligence
+Intelligence se construye con los datos que se generan al usar la plataforma, y avanza de a poco:
+ Datos de cada operación → patrones → recomendaciones → predicción
+ rimero mostramos qué sobra, cuánto, cuándo y dónde. Después comparamos períodos y
+P
+sucursales. Recién cuando hay suficiente historial sumamos recomendaciones y predicción,
+ porque sin datos de calidad un modelo predictivo no sirve. Las comparaciones con otras
+ empresas se hacen siempre condatos anónimos.
+Integraciones
+ n Intelligence, APROVECHO se conecta con el inventario de la empresa para registrar los
+E
+productos envasados y avisar cuáles están cerca del vencimiento. Al principio la empresa nos
+ mandasuinventarioenunarchivodeExceloCSV,quesesubealpaneldeAPROVECHOyse
+ guarda en la nube. Cuando elclientelopida,sepasaaunaAPI,queesunaformadequedos
+ sistemas se hablen solos, y así el inventario se actualiza sin que nadie suba nada.
+71
+ FoodData Central API (USDA):https://fdc.nal.usda.gov/api-guide
+ Página104
+=== [parte2 pág 39] ===
+APROVECHO ·
+ ásadelante,paraclientesgrandes,sepodráconectartambiénconsussistemasdecaja(POS)
+M
+o de gestión (ERP), si el sistema del clientelopermite.Estonoformapartedellanzamiento:lo
+ vamos a implementar cuando el volumen de esos clientes lo justifique.
+ Página105
+=== [parte2 pág 40] ===
+APROVECHO ·
+15. POSICIONAMIENTO ESTRATÉGICO Y VARIABLES EXTERNAS
+ nestasecciónmiramosaAPROVECHOdesdeafuera:quétieneafavoryencontra,cómo
+E
+es la competencia, qué puede salir mal, y qué impacto genera.
+15.1. Análisis preliminar del FODA
+Fortalezas
+ • Base sin costo fijo. El comercio usa su celular y solo paga el 25% cuando vende. No
+ arriesga nada para probar.
+ • Cargaconunafoto.Elvisionrecognitionarmalapropuestadepacks,yelchecklistcuida
+ la calidad antes de publicar.
+ • Tresplanesqueacompañanalcomercio.EmpiezaenBasey,sicrece,pasaaSmarto
+ Intelligence sin cambiar de plataforma.
+ • Estación propia. La armamos con una balanzaargentinayunatabletqueseconsiguen
+ en el país. No dependemos de sistemas importados.
+ • Loopsycomunidad.Referidos,contenidocompartido,Score,rankingdelazonayniveles
+ hacen que el crecimiento no dependa solo de la publicidad.
+ Página106
+=== [parte2 pág 41] ===
+APROVECHO ·
+ • Historialeimpactomedible.Cadaoperaciónsumadatosdelcomercioypermitemostrar
+ kilos, CO₂e y agua ahorrados.
+Debilidades
+ • Tecnología sin probar. El vision recognition todavía tiene que demostrar que reconoce
+ bien la comida real y estima bien las cantidades.
+ • Arrancamos de cero. Somos un marketplace de dos lados: sin comercios no vienen
+ usuarios y sin usuarios no se suman comercios.
+ • Mucha inversión al inicio. El plan comercial concentra el gasto en marketing en 2027
+ (sección 13), antes de tener ingresos fuertes.
+ • Las estaciones son trabajo físico.Hay que armarlas,instalarlas y reemplazarlas si fallan.
+ • Equipo chico. Pocas personas para desarrollar, vender, dar soporte y analizar datos al
+ mismo tiempo.
+Oportunidades
+ • La categoría ya existe. Cheaf y Buen Provecho ya enseñaron al consumidor argentino
+ qué es un pack de excedentes.
+ • Elahorroleimportaalconsumidor.Ennuestraencuestafuelaprincipalmotivación,yel
+ 72,8% compraría si le queda de paso.
+ • IA más accesible. Hay modelos de reconocimiento ya entrenados ybasesnutricionales
+ gratuitas, como FoodData Central. No hay que crear todo desde cero.
+ • Medir el desperdicio conviene y se exige cada vez más. En restaurantes,cadapeso
+ invertido en reducir desperdicio devuelve en promedio siete, y la Unión Europea ya fijó
+ metas obligatorias para 2030. Eso le da valor a Smart e Intelligence.
+Amenazas
+ • Competidores que crecen. Cheaf ya ofrece herramientasparaempresas,comogestión
+ de varias sucursales y reportes
+ • Cambiar no cuesta nada.Un usuario o un comerciopuede usar varias apps a la vez.
+ • Que nos salteen. Que elcomercioyelclienteseconozcanenlaappydespuéshaganla
+ venta por fuera.
+ • Inflaciónytipodecambio.Enseptiembrede2026lospreciossubieron1,9%enelmes.
+ Esto afecta el precio de los packs, de los equipos y de los servicios tecnológicos.
+ • Normas distintas en cada país. Desde 2029 cada mercado nuevo tiene sus propias
+ reglas sanitarias, de consumidor y de datos.
+FODA cruzado: qué hacemos con esto
+ Cruce Estrategia
+ ortalezas
+ F + U
+ sar Base sin costo fijo para sumar rápido a los comercios
+ Oportunidades que ya conocen la categoría, y llevar Smart e Intelligencea
+ quienes necesitan medir.
+ Página107
+=== [parte2 pág 42] ===
+APROVECHO ·
+ Fortalezas + Amenazas eniendo en cuenta a la competencia y al bajo costo de
+ T
+ cambio, apoyarnos en lo que no se copia rápido: la
+ comunidad, el historial de cada comercio y la estación propia.
+ ebilidades
+ D + Usar modelos de IA queyaexistenyautomatizacionespara
+ Oportunidades arrancar más rápido y con menos inversión.
+ ebilidades
+ D + Lanzarenpocaszonas,conuncatálogochicodecategorías,
+ Amenazas y no escalar hasta que los números lo confirmen.
+ íntesis.LamayorfortalezadeAPROVECHO,brindaraloscomerciosdatosymediciónmásallá
+S
+del marketplace, es también su mayor desafío, porque depende de que la tecnologíafuncione.
+ Por eso lo primero es que Base funcione bien en la zona de lanzamiento: es la puerta de
+ entrada y la que genera los datos que necesitan Smart e Intelligence.
+15.2. Análisis preliminar del modelo de Fuerzas de Porter
+ as Cinco FuerzasdePorternossirvenparaversienestenegociosepuedeganarplatayqué
+L
+cosas nos complican.
+ ivalidad entre competidores: ALTA. Cheaf y Buen Provecho ya conectan comercios con
+R
+consumidores en Argentina, y Cheaf ya vende herramientas B2B.Competirsoloconpackscon
+ descuentonosllevaaunaguerraporprecios.Nuestradiferenciatienequeestarenlacargacon
+ una foto, en la estación para medir y en los reportes.
+ Página108
+=== [parte2 pág 43] ===
+APROVECHO ·
+ uevos entrantes: MEDIA. Hacer una app para publicar y cobrar packs es fácil de copiar. Lo
+N
+difícil es copiar lo que se construye con el tiempo: muchos comercios y usuarios en la misma
+ zona, la comunidad, el historial de cada comercio y un vision recognition que mejoraconcada
+ corrección.
+ oder de los proveedores: MEDIO-BAJO.Comolaestaciónespropia,yanodependemosde
+P
+proveedoresdemediciónextranjeros.Labalanzaylatablettienenreemplazo(porejemplo,Kretz
+ en lugar de Systel). El poder más alto lo tienen Mercado Pago y Google Maps, que son los
+ servicios más usados de su tipo, pero existen alternativas.
+ oderdelosclientes:ALTO.Elconsumidorpuedecompararappsocomprardirectoenellocal.
+P
+ElcomercioBasenopaganadafijo,asíquetambiénsepuedeirfácil.EnSmarteIntelligenceel
+ poder baja: la estación ya está instalada y el historial de meses queda en los sistemas de
+ APROVECHO.
+ ustitutos: MEDIO. El comercio puede hacer descuentos propios, publicar en redes, darles la
+S
+comida a los empleados, donarla o tirarla. Lascadenaspuedencontratarsistemasdemedición
+ sin marketplace. Ninguno de estos sustitutos junta en un solo lugar laventadelexcedente,los
+ consumidores y los datos.
+ onclusión. Es un negocio con mucha competencia, pero hay lugar para nosotros. La
+C
+competenciayaleenseñóalconsumidorquéesunpackdeexcedentes,asíquenotenemosque
+ explicarlo de cero. Además, que el mercado esté creciendo muestra que hay una necesidad real.
+ adacomercioquesesumaenunbarrioatraemáscompradores,ycadacompradorhacequea
+C
+otro comercio le convenga sumarse. Encima, cadamesjuntamosmásdatosdecadacomercio,
+ quehacenmásútileslosreportesdeSmarteIntelligenceyqueincentivaaqueloscomerciosno
+ sevayanaotraapp.Uncompetidorpuedecopiarlaapp,peronoloscomercios,loscompradores
+ ni el historial que vamos a tener en cada zona.
+15.3. Análisis preliminar de riesgos
+ aracadariesgomiramosdoscosas:quétanprobableesycuántodañoharíasipasa.Eslaformade
+P
+trabajo de la norma ISO 31000. Las notas son una primeraestimación:lasvamosarevisarconlos
+ datos de 2027
+ Página109
+=== [parte2 pág 44] ===
+APROVECHO ·
+Tabla 15.1. Riesgos y cómo los mitigamos
+Riesgo Qué podría pasar rob.
+ P / Cómo lo mitigamos
+ Impacto
+1. Densidad ay comercios pero Alta / Alto
+ H anzar en pocas zonas,
+ L
+ no compradores, o al sumar comercios antes de
+ revés. La app parece hacerpublicidadypautarsolo
+ vacía. donde hay packs (13.1).
+2. Competencia heaf
+ C o Buen Media / Alto elevar lacompetenciaantes
+ R
+ Provecho se quedan de elegir zonas, entrar con
+ con los comercios de Base sin costo fijo y
+ la zona. diferenciarnos con la carga
+ por foto y los reportes.
+3. Tecnológico l vision recognition Media / Alto
+ E mpezar
+ E con pocas
+ se equivoca y el categorías, que siempre
+ comercio tiene que confirme una persona y usar
+ corregir todo. cada correcciónparamejorar.
+ En Smart e Intelligence, la
+ balanza da el peso real.
+4. Adopción B2B E
+ l comercio prueba, Alta / Medio P
+ ublicar en pocos clicks,
+ pero al cierrenotiene primera publicación
+ tiempo de publicar. acompañada y medir cuánto
+ tarda cada comercio.
+ Página110
+=== [parte2 pág 45] ===
+APROVECHO ·
+ . Que cliente y
+ 5 omercio y cliente se Media
+ C / L
+ o que solo existe dentro de
+ comercio se conocen en la app y Medio la app: pago anticipado y
+ conecten por después venden por reserva segura, niveles,
+ fuera fuera. beneficios por compras,
+ Score, ranking e historial. El
+ comercio solo paga cuando
+ vende, así que irse no le
+ ahorra mucho.
+ 6. Financiero eacabaelcapitalde Alta / Alto
+ S structura chica, gasto fuerte
+ E
+ trabajo. en marketing solo en 2027 y
+ estaciones compradas a
+ medida que hay clientes. Los
+ números están en la sección
+ 16.
+ 7. Sanitario n pack en mal Baja / Alto
+ U erificación de habilitación y
+ V
+ estado o un problema carnet en el alta, checklist
+ de alérgenos. obligatorio, alérgenos
+ informados por el comercio y
+ protocolo de reclamos (14.4).
+ 8. Estaciones na estación se Media
+ U / T
+ ablet bloqueada para usar
+ rompe, se pierde o la Bajo solo APROVECHO,
+ usan para otra cosa. reemplazorápidoycargacon
+ el celular mientras tanto.
+ 9. Terceros ercado
+ M Pago, Media / A
+ rmar la plataforma deforma
+ Google Maps o la Medio que se pueda cambiar de
+ nube suben precios o proveedor yteneralternativas
+ cambian condiciones. identificadas.
+ 0.
+ 1 Inflación y tipo de Alta / Alto evisar precios seguido, no
+ R
+ Macroeconómico cambio encarecen asumir costos fijos grandes
+ equipos y servicios, y en dolares y que los abonos
+ achican la capacidad de Smart e Intelligence se
+ de compra. puedan actualizar.
+ 11. Expansión l abrir en un país Media / Alto
+ A ntrar con Base en una sola
+ E
+ nuevo fallan las ciudad, revisar las normas
+ normas,lospagosoel antes(15.4)yaprovecharque
+ idioma. MercadoPagooperaentodos
+ los países del roadmap.
+ rioridades. Los riesgos de densidad, financiero y macroeconómico combinan alta
+P
+probabilidad con alto impacto, así que los seguimos desde el primer día. Después vienen la
+ Página111
+=== [parte2 pág 46] ===
+APROVECHO ·
+ ompetencia,latecnologíaylaexpansión.Elpunto5noeselmásprobable,perosicrecelequita
+c
+sentido al modelo, por eso todo el sistema de fidelización está pensado también para frenarlo.
+15.4. Regulaciones y contexto
+ PROVECHO combina venta de alimentos en una app conpagosdigitalesydatospersonales,
+A
+asíqueloalcanzanvariasnormas.Lafiguramuestraenquémomentodelaoperaciónaparece
+ cada una.
+Alimentos
+ lCódigoAlimentarioArgentinoestablecelascondicionesdehigienedelosalimentosydelos
+E
+lugaresdondesevenden.Suartículo21exigequequienmanipulaalimentostengaelcarnetde
+ manipulador, y cada local necesita su habilitación municipal; en la CiudaddeBuenosAires,
+ por ejemplo, la controla la Agencia Gubernamental de Control.
+ PROVECHO no fabrica,noguardaynotransportacomida:elpackquedaenellocalhasta
+A
+que lo retiran. Por eso la responsabilidad sobre el alimento es del comercio. Igual, nosotros
+ pedimos la habilitación y el carnet en el alta, exigimos el checklist antes de publicar y nunca
+ dejamosquelaIAinformealérgenosnisiunproductoessinTACC,vegetarianoounacategoría
+ de restricción alimentaria. (14.4).
+Consumidor y venta digital
+ aLeydeDefensadelConsumidorpideinformaciónclaraantesdecomprar.Poresoeldetalle
+L
+delpackmuestraelcomercio,elprecio,eldescuento,elhorario,eltipodealimentoyquédatos
+ son estimados. El Código Civil y Comercial da derecho a arrepentirse de una compra a
+ distancia, pero hace una excepción con los productos que se echan a perder rápido. Esto
+ respalda nuestros protocolos de cancelación y devolución (14.4).
+Datos personales
+ a Ley 25.326 protege los datos delosusuarios,comoelcontacto,laubicaciónylascompras.
+L
+Vamos a tener una política de privacidad simple. Los datos de los comercios (qué les sobra,
+ cuánto y cuándo) no siempre son datos personales, pero son sensibles: los tratamos como
+ confidenciales y solo los comparamos de forma anónima.
+ Página112
+=== [parte2 pág 47] ===
+APROVECHO ·
+Pagos
+ l cobro lo hace Mercado Pago, ya sea con plata en cuenta o con una tarjeta cargada en
+E
+Mercado pago, que está inscripto en el registro de proveedores de servicios de pago del
+ BCRA[18]. Como Mercado Pago reparte la plata directamente (75% al comercio y 25% a
+ APROVECHO), nosotros no guardamos plata de terceros.
+Desperdicio de alimentos
+ a Ley 27.454 creó el Plan Nacional de Reducción de Pérdidas y Desperdicio de Alimentos y
+L
+facilitóladonacióndealimentosenbuenestado.APROVECHOnodona:vende,yloquehacees
+ darle a la comida que sobra la posibilidad de venderseenvezdetirarse.Igual,laleynossirve
+ porquemuestraquereducireldesperdicioyaesunametadelpaís,yesoledamáspesoaloque
+ hacemos.
+Tendencia internacional
+ ameta12.3delosObjetivosdeDesarrolloSostenibleproponereduciralamitadeldesperdicio
+L
+dealimentosencomerciosyhogarespara2030.LaUniónEuropeayalavolvióobligatoria:10%
+ menos en procesamiento y fabricación,y30%menosporpersonaencomercios,restaurantesy
+ hogares.EnArgentinatodavíanohayunaobligaciónasí,peromuestrahaciadóndevaelmundo:
+ medirydemostrarlareducciónvaavalercadavezmás,sobretodoparacadenasgrandes.Ahí
+ es donde aparecen Smart e Intelligence.
+Expansión: qué hay que revisar en cada país
+ esde 2029 el roadmap suma países. Antes de abrir cada uno hay que revisar sus normas
+D
+sanitarias, de consumidor y de datos. Las leyes de datos personales son las siguientes:
+ País (año de entrada) Ley de datos personales
+ Chile y Uruguay (2029) Chile: Ley 21.719. Uruguay: Ley 18.331.
+ erú (piloto en
+ P 2029, Ley 29733.
+ operación en 2030)
+ Colombia y México (2030) olombia: Ley 1581 de 2012. México: Ley Federal de
+ C
+ Protección de Datos Personales en Posesión de los
+ Particulares.
+ Brasil (2031) ei Geral de Proteção de Dados (LGPD). Además, hay
+ L
+ que adaptar el idioma.
+ n resumen, las normas nos definen cómo diseñamos el alta, la información del pack, los
+E
+reclamos y el uso de los datos. Y la tendencia mundial juega a favor del proyecto.
+ Página113
+=== [parte2 pág 48] ===
+APROVECHO ·
+15.5. Análisis de impacto ético, social y ambiental
+Impacto ambiental
+ ldesperdicioylapérdidadealimentosgeneranentreel8%yel10%delasemisionesdegases
+E
+deefectoinvernaderodelmundo.Cadapackvendidoescomidaquenosetira,yenlasección9
+ ya calculamos cuánto CO₂e y cuántaaguaseahorraporkilo.Lasbolsasbiodegradablesevitan
+ sumar plástico.
+ l impactomásgrandellegaconSmarteIntelligence:cuandoelcomerciosabequélesobray
+E
+porqué,puedeproducirrespondiendomejorasudemanda.Poresonomedimoseléxitosolopor
+ packs vendidos, sino también por cuánto excedente genera cada comercio mes a mes y si
+ baja con el tiempo.
+Impacto social
+ • Consumidores:accedenacomidaricaamitaddepreciocercadedondevivenotrabajan.
+ No reemplaza la ayuda alimentaria, pero es una forma más barata de comer bien.
+ • Comercios chicos:recuperan plata de lo que antestiraban, sin pagar nada fijo.
+ • Comunidad: lo que no se vende puede ir a bancos de alimentos, y los desafíos entre
+ zonas convierten el rescate de comida en algo que se hace en conjunto.
+ • Empleo:elequipocomercial,elsoporteylosanalistascrecenconcadaciudadnuevadel
+ roadmap.
+Impacto ético
+ eguimos los principios de la UNESCO sobre inteligencia artificial: transparencia, privacidad,
+S
+responsabilidad y supervisión humana. En la práctica:
+ • Transparencia:la app avisa qué dato es estimadopor IA y cuál es medido.
+ • Supervisión humana:la IA propone, pero siempreconfirma una persona.
+ • Salud: la estimación nutricional es solo orientativa, y los alérgenos y categorías de
+ alimentos que cumplen restricciones alimentarias los informa el comercio.
+ • Datos: los datos de un comercio nunca se usan para beneficiar a otro, y las
+ comparaciones son anónimas.
+ Página114
+=== [parte2 pág 49] ===
+APROVECHO ·
+ • Comunicación honesta: separamos lo medido de lo estimado para no exagerar el
+ impacto, y los influencers aclaran cuando algo es publicidad.
+Tabla 15.2. Efectos no deseados y cómo los cuidamos
+ Efecto no deseado Cómo lo cuidamos
+ ue el comercio produzca de M
+ Q ostrar la evolución del excedente total en el
+ más para vender packs dashboardypremiarenelScoreaquienreduce,noa
+ quien vende más packs.
+ uelaIAseequivoqueenalgo LaIAnuncadecidesobrealérgenosnisalud;siempre
+ Q
+ sensible confirma una persona.
+ ametafinalesclara:novendercadavezmáscomidaquesobra,sinoquecadavezsobre
+L
+menos.
+15.6. Roadmap de Aprovecho
+ l roadmap avanza dedeformaprogresiva.En2027probamoslostresplanesenBuenosAires.
+E
+En2028llevamosloquefuncionóaotrasciudadesdeArgentina.En2029empezamosaabriren
+ otros países, y entre 2030 y 2032 nos consolidamos en la región.
+Resumen del roadmap
+ Año Foco Mercados Hito principal
+ ase, Smart e Intelligence
+ B
+ 2027 Validar Buenos Aires
+ activos en el primer año.
+ emostrar que el modelo
+ D
+ rincipales zonas
+ P
+ 2028 Escalar Argentina puede repetirse fuera de
+ urbanas y turísticas
+ Buenos Aires.
+ hile y Uruguay +
+ C rimera operación
+ P
+ 2029 Internacionalizar
+ piloto en Perú internacional.
+ erú, Colombia y
+ P rgentina + cinco mercados
+ A
+ 2030 Escalar región
+ México internacionales.
+ Entrada a São Paulo y
+ rasil + mercados ya
+ B
+ 2031 Profundizar recimiento regional de
+ c
+ abiertos
+ Intelligence.
+ ayor recurrencia,
+ M
+ 2032 Consolidar Red regional rentabilidad y profundidad
+ de uso.
+ Página115
+=== [parte2 pág 50] ===
+APROVECHO ·
+2027 · Lanzamiento y validación rápida
+ 027 es el año más detallado del roadmap porque define el orden de lanzamiento de los tres
+2
+planes.Laideanoeslanzarlosjuntos,sinovalidarcadanivelamedidaquelaoperacióngenera
+ información suficiente.
+ Trimestre Producto / mercado Hito clave
+ ase en una zona inicial de M
+ B arketplace B2B/B2C operativo y
+ Q1
+ Buenos Aires. primeros comercios.
+ ase crece + piloto Smart
+ B
+ rueba de la estación Smart y
+ P
+ Q2 con operaciones de mayor
+ primeras mediciones precisas.
+ volumen.
+ rimeros análisis con datos
+ P
+ ase y Smart funcionando
+ B
+ Q3 históricos y clientes de mayor
+ + piloto Intelligence.
+ complejidad.
+ ada comercio entra al plan que
+ C
+ mejor se adapta con su operación;
+ Q4 Los tres planes activos.
+ preparación para expansión
+ nacional.
+ Página116
+=== [parte2 pág 51] ===
+APROVECHO ·
+ n tecnología, el año parte con visual recognition, pagos, QR y geolocalización; luego suma
+E
+mejoras de captura, datos históricos, detección de patrones y un primer motor de
+ recomendaciones de IA.
+2028 · Expansión nacional
+ a ideaesqueelmodelopuedarepetirseendistintasciudadesargentinas.Basefuncionacomo
+L
+puerta de entrada; Smart se incorpora donde haya operaciones de suficiente volumen e
+ Intelligence se ofrece a cadenas y clientes grandes.
+ Inicio: Buenos Aires + apertura en Córdoba y Mendoza.
+ ●
+ ● Luego: Rosario, Mar del Plata y Salta; después Tucumán, Neuquén, Bariloche y Santa Fe.
+ ● Cierre d
+ el año: incorporación de otraszonasturísticascomoPosadas,SanJuan,Puerto
+ Madryn y Ushuaia.
+2029 · Primera expansión internacional
+ a entrada internacional empieza con Base por ser el producto más sencillo para abrir en el
+L
+mercado, mientras Smart e Intelligence se incorporan donde ya existe volumen y hay una
+ necesidad de medición.
+ C
+ ● hile: inició en Santiago.
+ ● Uruguay: Montevideo como primer mercado.
+ ● Perú: preparación durante el año, para comenzar un piloto en Lima al cierre del año.
+2030 · Escala regional
+ n 2030 dejamos de hacer pruebas y empezamos a funcionar de verdad en varios países.En
+E
+Perú ya vendemos en serio, y después abrimos Colombia y México. Al terminar el año,
+ APROVECHO está en Argentina y en cinco países más: Chile, Uruguay, Perú, Colombia y
+ México.
+2031 · Brasil y profundización regional
+ aprioridaddejadeserabrirmuchosmercadosnuevosypasaaprofundizarlosyaexistentes.El
+L
+nuevo mercado del año es Brasil, comenzando por São Paulo.
+2032 · Consolidación de la plataforma regional
+ lfocopasadeexpansiónaconsolidación.Laprioridadesmejorarlaadopciónyrecurrencia,de
+E
+uso de Smart e Intelligence. Con varios años de información acumulada, los modelos de
+ recomendación y predicción se volverán más precisos y útiles.
+ as nuevas expansiones a mercados dejan de ser automáticas: sólo se consideran si los
+L
+mercados existentes muestran resultados sólidos y si la organización puede crecer sin perder
+ calidad.
+15.7. Evaluación del posicionamiento estratégico y conclusiones
+ PROVECHO entra a un mercado que ya tiene competidores, pero no quiere ser "otraappde
+A
+packscondescuento".Sulugarestáentredosmundos:laventadeexcedentesalconsumidory
+ la gestión del desperdicio para el comercio.
+ Página117
+=== [parte2 pág 52] ===
+APROVECHO ·
+ Posicionamiento:APROVECHO es la plataforma que le permite al comerciovender lo que le
+ sobra con una foto y usar esos datos para que le sobre menos.
+Qué nos hace difíciles de copiar
+ l FODA y Porter muestran que la app solasecopiafácil.Loquenosecopiarápidoesloque
+E
+desarrollamos como moat en la sección 9: los loops de recomendación, la comunidad, el
+ historial de cada comercio, una IA que mejora con el uso, la estación propia y la
+ comparación entre sucursales y mercados. Todo esto crece con cada zona y cada país del
+ roadmap.
+Qué tiene que pasar para seguir avanzando
+ lroadmaptienefechas,perocadapasotienequeestarrespaldadoporresultados.Estassonlas
+E
+señales que vamos a mirar:
+ Antes de Tiene que pasar que
+ brir Córdoba y Mendoza L
+ A a zona de lanzamiento tiene comercios que publican
+ (2028) seguido,lamayoríadelospackssevendenylosusuarios
+ vuelven a comprar.
+ Salir de Argentina (2029) l modelo funcionó igual en varias ciudades, y Smart e
+ E
+ Intelligence tienen clientes que renuevan.
+ scalar Intelligence en la H
+ E ay historial suficiente para que las recomendaciones
+ región (2031) sean útiles y las cadenas multinacionales vean el ahorro.
+Conclusión
+ l análisis muestra un sector con competencia altayclientesconpoder,peroconespaciopara
+E
+diferenciarse. APROVECHO entra porBase,queessimpleynocuestanadafijo,ampliasured
+ declientesencadazonayusaesosdatosparacrecerhaciaSmarteIntelligence,dondeelvalor
+ deja de ser solo vender el excedente y pasa a ser reducirlo. Los riesgos más importantes
+ (densidad, plata y contexto económico) se cuidan creciendo por etapas, como plantea el
+ roadmap.
+ Página118
+=== [parte2 pág 53] ===
+APROVECHO ·
+16. ANÁLISIS DE ECONOMICS BÁSICO
+ nestepuntohacemoslascuentasdelproyectoparaversiAPROVECHOpuedefuncionarcomo
+E
+negocio. Armamos una proyección a cinco años, de 2027 a 2031, soloparaArgentina,ytodo
+ está en dólares. Son números preliminares: cuando no tenemos un dato real usamos un
+ supuestodelequipoylodecimos.LascuentasestánenelExceldelpunto16,ylastablasylos
+ gráficos de este texto salen de ahí.
+16.1. Modelo de demanda y proyección de ventas
+ mpezamos por el tamaño del mercado que calculamos en el punto 10. El TAM es todo el
+E
+mercadoposible:loscomerciosdeLatinoaméricaquepodríanusarAPROVECHO.ElSAMesla
+ parte de ese mercado a la que podemos llegar: Argentina. El SOM es la parte que podemos
+ conseguirenelprimerañoconloquetenemos.ParallegaralSOMvamossacando,confiltros,a
+ los que no sirven.
+ Paso Comercios Usuarios
+ TAM Latinoamérica 2.365.746 comercios 336.800.000 personas
+ SAM Argentina 70.126 comercios 23.600.000 personas
+ Zona de lanzamiento 6.260 comercios (CABA, Vicente 4.096.741 habitantes de esa zona
+ López, San Isidro y Pilar)
+ Filtros de la encuesta 4.025 tienen sobrante 3 días por 3.007.008 mayores de 18 años
+ semana (64,3%); 2.560 están ( 73,4%); 2.104.906 usan billetera
+ dispuestos a probar la app digital (70%); 848.277 comprarían
+ (63,6%) un pack con 50% de descuento
+ (40,3%)
+ Mercado inicial posible 2.560 848.277
+ OM del primer año
+ S 525 comercios 26.247 usuarios
+ (2027)
+ os2.560comerciosylas848.277personasdelatablasonelmercadoinicialposible:losque
+L
+tienen comida que sobra o quieren comprar un pack, y dijeronenlaencuestaqueprobaríanla
+ app. De ese grupo conseguimos el SOM en 2027.
+ n 2027 el market share es el 20,5% de los comercios (525 de 2.560) y el 3,1% de los
+E
+usuarios.Despuéssuponemosquecrece:en2031llegamosal30,0%deloscomerciosyal9,0%
+ de los usuarios. En 2028 el porcentaje baja (15,0% y 2,6%) porquesesumanlasciudadesdel
+ roadmap y su mercado entra completo, aunque todavía no tenemos clientes en ellas. Medido
+ contra el SAM de todo el país, en 2031 tenemos el 3,4% de los comercios y el 1,0% de los
+ usuarios.
+Market share de comercios y usuarios
+ Página119
+=== [parte2 pág 54] ===
+APROVECHO ·
+ ambiéncontamoslosquesevan.Suponemosquecadaañosevael30%deloscomerciosy
+T
+de los usuarios que teníamos el año anterior. Es un supuesto nuestro, que hay quemediren
+ 2027.Poresohayqueconseguirmásclientesnuevosqueelaumento:en2028,porejemplo,los
+ comercios pasan de 525 a 1.201, pero conseguimos 834 nuevos, porque se fueron 158.
+Clientes proyectados
+ 2027 2028 2029 2030 2031
+ Comercios activos 525 1.201 2.083 2.299 2.408
+ Comercios que se van (30%) 0 158 360 625 690
+ Comercios nuevos 525 834 1.242 841 799
+ Usuarios activos 26.247 70.437 149.949 198.900 238.795
+ Usuarios que se van (30%) 0 7.874 21.131 44.985 59.670
+ Usuarios nuevos 26.247 52.064 100.643 93.936 99.565
+ Clientes Smart 5 18 42 57 72
+ Sucursales Intelligence 2 6 12 20 30
+Clientes al cierre de cada año.
+ arapasardeclientesaplatausamoslospreciosdelpunto11.Cadausuariocompra1,3packs
+P
+poraño(elpromediodeTooGoodToGo)aUSD3,99,yAPROVECHOsequedael25%,casiun
+ dólar por pack. Los clientes Smart pagan USD 300 por mes ylassucursalesIntelligenceUSD
+ 800 por mes, además de la comisión. Las cuentas usan losclientesquehayalcierredecada
+ año.
+Ventas e ingresos de APROVECHO (USD)
+ 2027 2028 2029 2030 2031
+ Packs vendidos 34.121 91.568 194.934 258.570 310.434
+ Comisión por packs 34.036 91.339 194.446 257.924 309.657
+ Abonos Smart 18.000 64.800 151.200 205.200 259.200
+ Abonos Intelligence 19.200 57.600 115.200 192.000 288.000
+ Total de ingresos 71.236 213.739 460.846 655.124 856.857
+ Parte que viene de abonos 52% 57% 58% 61% 64%
+ Página120
+=== [parte2 pág 55] ===
+APROVECHO ·
+ so de la capacidad de los
+U 10,7% 12,5% 15,4% 18,5% 21,2%
+comercios
+Ingresos por fuente
+ alta revisar que los comercios puedan entregar todos esos packs. Uncomerciopuedevender
+F
+hasta608packsporaño(elpromediodeuncomercioenTooGoodToGo).Conloscomercios
+ de 2027 la capacidad es de 319.200 packs y vendemos 34.121: usamos el 10,7%. En 2031
+ usamosel21,2%.Entoncesellímiteloponelademandaynoloscomercios:enloscomercios
+ hay lugar de sobra, lo difícil es conseguir usuarios.
+16.2. Principales conceptos de costos variables y fijos
+ os costos son lo que gastamos para que el negocio funcione. Los separamosentresgrupos.
+L
+Loscostosvariablessubencuandovendemosmás:sonlosdecadapackylosdecadaabono.
+ Loscostosdeadquisiciónsonloquecuestaconseguircadaclientenuevo.Loscostosfijoslos
+ pagamos aunque vendamos poco: sueldos, herramientas y administración.
+Costos variables
+Concepto USD Qué es
+Mercado Pago, por pack 0,135 l 3,39% del precio de USD 3,99, por cobrar el
+ E
+ pago.
+ econocimiento de la foto,
+R 0,015 USD 0,01 por foto, con 1,5 fotos por pack.
+por pack
+Nube, por pack 0,01 Guardar las fotos y los datos.
+Devoluciones, por pack 0,02 El 0,5% del precio.
+Pack gratis, por pack 0,15 ada10compras,1gratis.APROVECHOlepaga
+ C
+ al comercio el 75% (unos USD 3) y suponemos
+ que la mitad de los packs se llega a usar.
+Total por pack 0,33
+Impuestos 6,2% obreloquecobramos:IngresosBrutos(5%)yel
+ S
+ impuesto a los débitos y créditos (1,2%).
+Estación Smart, por mes 15 Conectividad y soporte de la estación.
+ Página121
+=== [parte2 pág 56] ===
+APROVECHO ·
+ stación Intelligence, por
+E 45 sosmismosUSD15másUSD30paraprocesar
+ E
+mes los análisis y las predicciones.
+ ada pack deja USD 0,61 después de impuestos y costos: un dólar de comisión, menos el
+C
+impuesto y menos los USD 0,33 de costos del pack.
+Costos de adquisición
+ onseguirunusuarionuevocuestaUSD0,64.Suponemosqueel35%llegaporpublicidadpaga
+C
+(USD1porinstalación,y6decada10seregistran)yel15%porreferidos,alosquelesdamos
+ un10%dedescuento.Elrestollegasolo.ConseguiruncomercionuevocuestaUSD29,49:100
+ bolsas con la marca(ARS330cadauna),elstickerdevidriera(ARS6.000)yelenvío(USD4),
+ con el dólar a ARS 1.530.Instalarla estación deun cliente Smart o Intelligence cuestaUSD 150.
+Costos fijos
+ lequipode2027esmínimo:loscuatrofundadoresnocobranyhaceneldesarrollo,elsoporte
+E
+y la venta. Desde 2028 cada fundador cobra USD1.000pormes(USD48.000alañoentrelos
+ cuatro), y ese sueldo incluye el desarrollo y el mantenimiento de la plataforma. Se suman
+ ejecutivosdecuenta,porquealosclientesgrandesnoselospuedeatendersoloconunchatbot
+ (uno en 2028 y 2029, dos desde 2030), y analistas para revisar los informes de Intelligence
+ (medio en 2028, uno en 2029 y 2030, dos en 2031). Cada uno cuesta USD 1.850pormes.El
+ equipo de soporte pasa de una persona en 2028 a ocho en 2031, a USD 1.000 por mes cada una.
+Costos fijos (USD por año)
+ 2027 2028 2029 2030 2031
+Nube y herramientas 1.800 3.600 6.000 8.400 10.800
+Ejecutivos de cuenta 0 22.200 22.200 44.400 44.400
+Analistas de Intelligence 0 11.100 22.200 22.200 44.400
+Soporte 0 12.000 36.000 60.000 96.000
+Marketing 16.000 18.000 12.000 12.000 12.000
+Administración 4.800 6.000 7.200 8.400 9.600
+Total costos fijos 22.600 72.900 105.600 155.400 217.200
+Sueldo de los 4 fundadores 0 48.000 48.000 48.000 48.000
+Todos los costos por año (USD)
+ 2027 2028 2029 2030 2031
+Costos variables 17.651 49.934 106.909 146.963 184.677
+Costos de adquisición 33.414 60.632 105.859 88.669 91.351
+Costos fijos 22.600 72.900 105.600 155.400 217.200
+Sueldo de los fundadores 0 48.000 48.000 48.000 48.000
+Total de costos 73.665 231.466 366.367 439.033 541.229
+Ingresos 71.236 213.739 460.846 655.124 856.857
+Costos por año
+ Página122
+=== [parte2 pág 57] ===
+APROVECHO ·
+16.3. Principales inversiones
+ as inversiones siguen el orden del roadmap. Antes de lanzar, en2026,tienequeestarlistala
+L
+plataforma del plan Base. Smart e Intelligence arrancan como pilotos en 2027, por eso sus
+ módulos se desarrollan ese año. Las recomendaciones y la predicción de Intelligence van en
+ 2029, porque necesitan datos de dos años para servir. La conexión con el inventario de los
+ clientes (API) se hace en 2030, cuando un cliente la pide.
+Inversiones (USD)
+ 2026 2027 2028 2029 2030 2031
+ lataforma:
+P apps, 18.000
+backend, pagos, QR y
+ mapas
+ econocimiento de la
+R 8.000
+foto y armado de packs
+Diseño 2.500
+ onstitución, marca y
+C 2.500
+asesoría bromatológica
+Módulo Smart 9.000
+Módulos Intelligence 8.000 8.000
+ onexión por API con el
+C 5.000
+inventario
+Estaciones 3.661 12.552 28.242 40.271 53.346
+Total 34.661 29.552 28.242 48.271 58.346 0
+ ntotalseinviertenUSD199.072entre2026y2031.CadaestacióncuestaUSD523:labalanza
+E
+(USD 215), la tablet (USD 196), el cable (USD 43), el hub (USD 29) y el soporte (unos USD 40).
+ ascosasquecompramosseusanduranteaños.Poresoelgastosereparteentresaños,que
+L
+se llama amortización: 11.554 en 2027, 21.404 en 2028, 30.818 en 2029, 35.355 en 2030 y
+ 44.953 en 2031.
+ Página123
+=== [parte2 pág 58] ===
+APROVECHO ·
+ ecesidad de financiamiento. Entre 2026 y 2028 el negocio no genera plata suficiente para
+N
+pagarlasinversionesyloscostos,asíquehayqueponerladeafuera:USD34.661en2026,USD
+ 31.981 en 2027 y USD 45.969 en 2028, en total USD112.611.Desde2029elnegociogenera
+ más plata de la que gasta.
+Inversiones por año
+16.4. Análisis preliminar: LTV vs. CAC
+LTV y CAC por tipo de cliente (USD)
+ Usuario Comercio Cliente Smart Sucursal
+ Base Intelligence
+ Lo que deja por año 0,79 71,92 3.268,72 8.536,72
+ Años que se queda 3,3 3,3 5,0 5,0
+ LTV 2,63 239,74 16.343,61 42.683,61
+ CAC 0,64 56,49 2.523,00 6.223,00
+ LTV / CAC 4,1 4,2 6,5 6,9
+ eses para recuperar el
+ M 9,8 9,4 9,3 8,7
+ CAC
+ o que deja por año. Cada pack deja USD 0,61. Un usuario compra 1,3 packs. Un comercio
+L
+Base vende 119 packs por año (el promedio de 2029). UnclienteSmartdejaelabonodeUSD
+ 300 por mes, sin impuestos y sin los USD 15 de la estación, más los packs. Una sucursal
+ Intelligence deja el abono de USD 800, sinimpuestosysinlosUSD45delaestación,máslos
+ packs. Las bajas son 30% para usuarios y comercios Base, 15% para Smart y 10% para
+ Intelligence.
+ l CAC. El del usuario es USD 0,64. El del comercio Base es USD 56,49: los USD 29,49 de
+E
+arriba más USD 27 por el tiempo del vendedor de calle. El del cliente Smart esUSD2.523:la
+ estación(USD523),lainstalación(USD150)yunmesdeunejecutivodecuentas(USD1.850).
+ El de Intelligence es USD 6.223, porque la venta es más lenta y le dedicamos tres meses del
+ ejecutivo.
+LTV / CAC por tipo de cliente
+ Página124
+=== [parte2 pág 59] ===
+APROVECHO ·
+ oscuatrotiposdeclientepasande3,asíqueconvieneconseguiratodos.SmarteIntelligence
+L
+valenmásde6vecesloquecuestanyrecuperamosloquegastamosenellosenunos9meses.
+ El valor de un comercio Base depende de cuántos packs venda, y eso depende de cuántos
+ usuarios haya cerca: si la demanda no crece, el comercio vende poco y casi no cubre lo que
+ costó sumarlo.
+16.5. Análisis preliminar del punto de equilibrio
+ ocalculamossumandoloscostosquepagamosigual(losdeadquisición,losfijosyelsueldode
+L
+losfundadores)ydividiendoporelmargendecontribución.Elmargendecontribucióneslaparte
+ de cada dólar que cobramos que queda después de los costos variables: entre el 75% y el 78%.
+Punto de equilibrio y resultado (USD)
+ 2027 2028 2029 2030 2031
+Ingresos 71.236 213.739 460.846 655.124 856.857
+Punto de equilibrio 74.465 236.870 337.830 376.538 454.511
+Ingresos sobre el punto de 96% 90% 136% 174% 189%
+ equilibrio
+ esultado del año (antes de
+R -2.429 -17.727 94.479 216.091 315.629
+amortizaciones e impuestos)
+Impuesto a las Ganancias 0 0 22.281 63.258 94.737
+ (35%)
+Resultado final del año -13.983 -39.131 41.379 117.478 175.939
+ n 2027 y 2028 vendemos un poco menos que el punto de equilibrio (96% y 90%), por eso
+E
+perdemospoco.Desde2029vendemosmásqueelpuntodeequilibrioyempezamosaganar
+ plata:eseañolosingresossonel136%delpuntodeequilibrioyen2031,el189%.Desde2029
+ también pagamos el 35% de Impuesto a las Ganancias sobre lo que ganamos.
+ Página125
+=== [parte2 pág 60] ===
+APROVECHO ·
+Ingresos contra punto de equilibrio
+ ecuperar todo lo que invertimos lleva un poco más. Si sumamos año a año lo que genera el
+R
+negocio y restamos lo invertido, el saldo se vuelve positivo durante 2030, unos 3,9 años
+ después de empezar(contando 2026 como el año 0).
+Lo que genera el negocio, sumado año a año (USD)
+16.6. Comentarios preliminares sobre los economics del proyecto
+ adaventadejaplata.CadapackdejaUSD0,61yelmargendecontribuciónesde75%a78%
+C
+deloquecobramos.Loquehaceperderplataenlosprimerosañosnoeselcostodecadaventa:
+ es que todavía hay pocas ventas para pagar la estructura.
+ os abonos sostienen el negocio. Smart e Intelligencesonpocosclientes(72y30en2031),
+L
+pero aportan el 52% de los ingresos en 2027 y el 64% en 2031.
+ lcrecimientodependedesupuestosquehayquemedir.Elmarketshare(hasta30%delos
+E
+comercios y 9% de los usuarios) y las bajas (30% por año) son supuestosdelequipo.Conlos
+ datos de 2027 en la zona de lanzamiento hay que revisarlos.
+ lprimerañoesmásfácilquelosquesiguen.En2027casinoperdemosplata(USD2.429)
+E
+porqueelequipoeschicoylosfundadoresnocobran.Desde2028selespagaysesumagente,
+ y recién en 2029 el negocio gana plata.
+ acefaltaconseguirUSD112.611.Esloquehayqueponerentre2026y2028.Desde2029la
+H
+cajaespositivayafinesde2030serecuperaloinvertido.Laexpansiónaotrospaísesquemarca
+ el roadmap no está en estos números y necesitaría su propia plata.
+ Página126
+=== [parte2 pág 61] ===
+APROVECHO ·
+17. ANEXO
+9. PROPUESTA DE VALOR
+Value Proposition Canvas B2C:
+ Página127
+=== [parte2 pág 62] ===
+APROVECHO ·
+Value Proposition Canvas B2B 1:
+Value Proposition Canvas B2B 2:
+ Página128
+=== [parte2 pág 63] ===
+APROVECHO ·
+Value Proposition Canvas B2B 3:
+ 0. DIMENSIONAMIENTO DEL MERCADO
+1
+ 10-B2B
+TAM-Tabla completa por país
+ País Gastronomía Supermerc Total
+ y hoteles ados
+ México 805.179 55.185 860.364
+ Brasil 458.777 14.556 * 473.333
+ Perú 322.452 808 323.260
+ Colombia 243.775 3.655 * 247.430
+ Venezuela 198.033 * 1.951 * 199.984
+ Ecuador 127.000 * 1.251 * 128.251
+ Guatemala 114.092 * 1.278 * 115.370
+ Argentina 84.531 * 3.126 87.657
+ Haití 72.704 * 815 * 73.519
+ República Dominicana 70.323 * 788 * 71.111
+ Página129
+=== [parte2 pág 64] ===
+APROVECHO ·
+ Cuba 66.783 * 748 * 67.531
+ Honduras 66.111 * 741 * 66.852
+ Chile 51.091 1.364 52.455
+ Nicaragua 42.792 * 479 * 43.271
+ El Salvador 38.885 * 436 * 39.321
+ Costa Rica 31.438 * 352 * 31.790
+ Panamá 27.897 * 313 * 28.210
+ Bolivia 22.969 860 * 23.829
+ Paraguay 15.473 * 479 * 15.952
+ Uruguay 7.461 * 231 * 7.692
+ Total 2.867.766 89.416 2.957.182
+ TAM (80%) 2.365.746
+ 0-B2C
+1
+TAM- cantidad de habitantes por país
+ País Habitantes
+ Brasil 212.812.405
+ México 131.946.900
+ Colombia 53.425.635
+ Argentina 45.851.378
+ Perú 34.576.665
+ Venezuela 28.516.896
+ Chile 19.859.921
+ Guatemala 18.687.881
+ Ecuador 18.289.896
+ Bolivia 12.581.843
+ Haití 11.906.095
+ República Dominicana 11.520.487
+ Honduras 11.005.850
+ Cuba 10.937.203
+ Paraguay 7.013.078
+ Nicaragua 7.007.502
+ El Salvador 6.365.503
+ Costa Rica 5.152.950
+ Panamá 4.571.189
+ Página130
+=== [parte2 pág 65] ===
+APROVECHO ·
+ Uruguay 3.384.688
+ Total (20 países) 655.413.965
+ 0.2.3 SOM B2B
+1
+SOM B2B por fuente de ingreso
+ Concepto Cálculo USD por año
+ omisiones de los 525
+ C 525 × 606 318.150
+ comercios
+ Abonos Smart ×USD300×12
+ 5 18.000
+ meses
+ Abonos Intelligence ×USD800×12
+ 2 19.200
+ meses
+ Total SOM 355.350
+11.5 Justificaciones de los precios
+Cálculo de la recuperación al vender packs
+ Paso Cuenta Resultado
+ Packs por mes 706 por año ÷ 12 59
+ Precio del pack - USD 3,92
+ total de las ventas 59 × USD 3,92 USD 231
+ o que le queda al comercio con comisión del 75% de USD 231
+ L USD 173
+ 25%
+ Página131
+=== [parte2 pág 66] ===
+APROVECHO ·
+ Cuadro 1. Plan Smart: desperdicio mínimo por mes
+ Dato De dónde sale Valor
+ Abono mensual Precio del plan USD 300
+ Baja del desperdicio esultado más bajo entre 9 cocinas
+ R 25%
+ medidas de 12 a 15 meses (Orbisk)
+ Desperdicio mínimo USD 300 ÷ 25% USD 1.150
+ Comprobación 25% de USD 1.150 USD 300 de ahorro
+ ncomercioquetiraUSD1.150pormesahorraUSD300,lomismoquepagaporelplan.Sitira
+ U
+ más, ahorra más que el abono.
+ Dato De dónde sale Valor
+ Abono mensual Precio del plan, por sucursal USD 800
+ Baja del desperdicio esultado más bajo entre 9 cocinas
+ R 25%
+ medidas de 12 a 15 meses (Orbisk)
+ Desperdicio mínimo USD 800 ÷ 25% USD 3.100
+ Comprobación 25% de USD 3.100 USD 800 de ahorro
+ nasucursalquetiraUSD3.100pormesahorraUSD800,lomismoquepagaporelplan.Sitira
+ U
+ más, ahorra más que el abono.
+14.1 Cadena de valor de APROVECHO
+ Página132
+=== [parte2 pág 67] ===
