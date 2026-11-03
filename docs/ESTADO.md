@@ -26,7 +26,7 @@
 |---|---|---|---|---|
 | **Líder / orquestador** | `claude/gallant-planck-ps6te6` (integración) | Activo | — | `handoffs/2026-11-03-lider-lectura-fuente.md` |
 | Marca y marketing | `claude/aprovecho-marca` · sesión `session_01YPepJHdCqz7XdEnK5xUA9t` (Opus) | ✅ Entregado e integrado (falta validar D-016 a D-020) | Mié 4/11 | `handoffs/2026-11-04-marca-plataforma-y-contenidos.md` |
-| UX | `claude/aprovecho-ux` · sesión `session_01YPepJKgdnbFvSwNNSb7n4e` (Sonnet) | App v1 integrada; v2 (flujo simplificado + Vision Recognition) ✅ entregada, falta validación del usuario · Landing 🔄 en curso con el copy de Marca | App: jue 5/11 a mediodía · Landing: jue 5/11 a la noche | `handoffs/2026-11-05-ux-flujo-v2.md` |
+| UX | `claude/aprovecho-ux` · sesión `session_01YPepJKgdnbFvSwNNSb7n4e` (Sonnet) | App v1 integrada; v2 (flujo simplificado + Vision Recognition) ✅ entregada, falta validación del usuario · Landing ✅ wireframe entregado (`handoffs/2026-11-05-ux-landing.md`) | App: jue 5/11 a mediodía · Landing: jue 5/11 a la noche | `handoffs/2026-11-05-ux-flujo-v2.md` |
 | Identidad visual / UI | `claude/aprovecho-identidad` | Sin abrir (espera a Marca) | Vie 6/11 | — |
 | Guion y video | `claude/aprovecho-video` | Sin abrir (espera a Marca) | Guiones: vie 6/11 · Videos: mar 10/11 | — |
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
