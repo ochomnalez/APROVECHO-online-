@@ -64,6 +64,8 @@ Al terminar cada bloque de trabajo:
 2. Actualizar tu fila en `docs/ESTADO.md`
 3. Commit y push
 
+Las decisiones que proponga un agente van en su handoff como `PROPUESTA-<rol>-N`; **el número D-NNN lo asigna el líder** al integrar (así no chocan).
+
 Mensajes de commit en español, con prefijo del rol, por ejemplo: `marca: propuesta de paleta v1`, `landing: estructura inicial`.
 
 ## 6. Créditos y validaciones

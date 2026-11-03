@@ -14,6 +14,8 @@
 | A4 | **Identidad visual inconsistente** | Detalle en `docs/marca/marca-actual.md`: wordmark serif en la portada y Montserrat en el manual; marca con hoja en gráficos y ecosistema; el mockup del manual dice "PROVECHO" y "2024"; logo raster generado con IA | Base débil para una marca "muy profesional" | ABIERTO |
 | A5 | "Micro-influencer" con 5,6 M de seguidores | Rocío Strat (@lachicadelbrunch) figura como micro-influencer, pero es una macro o mega influencer | Costo y estrategia distintos | ABIERTO |
 | A6 | Evidencia de muestra chica | Encuesta B2C de **77 respuestas**; la muestra B2B no se informa. El resumen ejecutivo dice que APROVECHO "validó su solución" | En piezas públicas, no sobreafirmar: hablar de "interés" o "señales", no de validación | ABIERTO |
+| A7 | **"Te quedás con el 75%" puede leerse mal** (agregado por marca, 2026-11-04) | El 75% es del **precio del pack** (ya con 50% de descuento): sobre el valor de mostrador, el comercio recupera el 37,5%. Ej.: contenido de ARS 12.200 → pack ARS 6.100 → comercio ARS 4.575 | Para no parecer engañoso, la landing lo aclara en la FAQ con un ejemplo | ABIERTO |
+| A8 | **Precios en USD sin aclarar IVA ni moneda de facturación** (agregado por marca) | El plan da USD 300 y USD 800/mes sin decir si incluyen IVA ni si se cobran en pesos | La landing muestra precios: confirmar con el CFO | ABIERTO |
 
 ## B. Producto (impacto en la app)
 
