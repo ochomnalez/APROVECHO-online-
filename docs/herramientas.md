@@ -11,6 +11,17 @@
 | **Remotion** | Código, gratis | Edición y motion graphics con código: textos, logo, pantallas de la app, subtítulos y montaje de clips. Revisar la licencia si se comercializa |
 | **Código propio (SVG/HTML)** | Gratis | Logo vectorial, íconos y piezas con texto exacto (sticker, cartel, posteos) |
 
+## Presupuesto (techo del usuario: USD 10/mes)
+
+| Opción | Precio | ¿Conviene? |
+|---|---|---|
+| ElevenLabs **Free** | USD 0: 10.000 créditos/mes, **sin licencia comercial** | Alcanza para las voces en off de los 3 videos en una presentación académica |
+| ElevenLabs **Starter** | **~USD 6/mes** (≈ USD 5 en el plan anual): 30.000 créditos y **licencia comercial** (precio de terceros, oct 2026; confirmar en elevenlabs.io/pricing) | **Sí, solo el mes de los videos**, si las publicidades se van a usar de verdad |
+| Higgsfield Plus | USD 49/mes (USD 39 en el plan anual). La prueba de 3 días con 100 créditos **cobra USD 49 si no se cancela** | No: supera el techo |
+| **Fotos de stock** (Unsplash, Pexels) | Gratis, uso comercial permitido | Sí: fotos reales de comida y comercios |
+| **ChatGPT pago** (del usuario) | Ya pagado | Sí: generar imágenes a medida sin costo extra (el texto y el logo se agregan después con código) |
+| **Codex** (del usuario) | Ya pagado | Sí: tareas de código pesadas (prototipo, landing, Remotion) para ahorrar créditos de Claude |
+
 ## Reglas de uso
 
 1. **Logo, íconos y cualquier pieza con texto se hacen en código** (SVG/HTML), no con IA: es exacto, editable, escalable y no consume créditos externos. La IA (Recraft Vector) se usa, como mucho, para explorar ideas.
