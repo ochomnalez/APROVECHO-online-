@@ -26,7 +26,7 @@
 |---|---|---|---|---|
 | **Líder / orquestador** | `claude/gallant-planck-ps6te6` (integración) | Activo | — | `handoffs/2026-11-03-lider-lectura-fuente.md` |
 | Marca y marketing | `claude/aprovecho-marca` | Abierta | Mié 4/11 | — |
-| UX | `claude/aprovecho-ux` | Abierta | App: jue 5/11 a mediodía · Landing: jue 5/11 a la noche | — |
+| UX | `claude/aprovecho-ux` | App ✅ entregada · Landing ⏳ espera `landing-contenido.md` de Marca | App: jue 5/11 a mediodía · Landing: jue 5/11 a la noche | `handoffs/2026-11-05-ux-prototipo-app.md` |
 | Identidad visual / UI | `claude/aprovecho-identidad` | Sin abrir (espera a Marca) | Vie 6/11 | — |
 | Guion y video | `claude/aprovecho-video` | Sin abrir (espera a Marca) | Guiones: vie 6/11 · Videos: mar 10/11 | — |
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
