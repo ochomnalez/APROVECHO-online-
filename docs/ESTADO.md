@@ -26,8 +26,8 @@
 |---|---|---|---|---|
 | **Líder / orquestador** | `claude/gallant-planck-ps6te6` (integración) | Activo | — | `handoffs/2026-11-03-lider-lectura-fuente.md` |
 | Marca y marketing | `claude/aprovecho-marca` · sesión `session_01YPepJHdCqz7XdEnK5xUA9t` (Opus) | ✅ Entregado e integrado (falta validar D-016 a D-020) | Mié 4/11 | `handoffs/2026-11-04-marca-plataforma-y-contenidos.md` |
-| UX | `claude/aprovecho-ux` · sesión `session_01YPepJKgdnbFvSwNNSb7n4e` (Sonnet) | App v1 integrada; el usuario la rechazó (genérica, demasiados botones, sin Vision Recognition) → **v2 en curso** (flujo simplificado, Vision Recognition como protagonista, skin de marca provisoria) · Landing: el copy de Marca ya está | App v2: jue 5/11 a mediodía · Landing: jue 5/11 a la noche | `handoffs/2026-11-05-ux-prototipo-app.md` |
-| Identidad visual / UI | `claude/aprovecho-identidad` (Sonnet) | Abierta | Vie 6/11 18:00 | — |
+| UX | `claude/aprovecho-ux` · sesión `session_01YPepJKgdnbFvSwNNSb7n4e` (Sonnet) | ✅ App v2 (10 pantallas, flujo simplificado y Vision Recognition) + ✅ estructura de la landing. Integradas; falta validación del usuario | Jue 5/11 | `handoffs/2026-11-05-ux-flujo-v2.md` · `handoffs/2026-11-05-ux-landing.md` |
+| Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | Trabajando | Vie 6/11 18:00 | — |
 | Guion y video | `claude/aprovecho-video` | Sin abrir (espera a Marca) | Guiones: vie 6/11 · Videos: mar 10/11 | — |
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
 | Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
