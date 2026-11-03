@@ -1,38 +1,38 @@
 # Estado del proyecto · tablero
 
-> Lo mantiene el **agente líder**. Cada agente actualiza su fila al terminar un bloque de trabajo.
-> Última actualización: 2026-11-03 (líder).
+> Lo mantiene el **líder**. Cada agente actualiza su fila al terminar un bloque.
+> **Entrega final: jueves 12/11/2026.** Última actualización: 2026-11-03 (líder).
 
-## Etapas
+## Calendario
 
-| Etapa | Qué se hace | Depende de | Estado |
-|---|---|---|---|
-| 0. Fundamentos | Leer la fuente completa, extracto en `docs/fuente/`, reglas (`CLAUDE.md`), estructura del repo | — | ✅ Hecho · **falta la validación del usuario** |
-| 1. Estrategia de marca y marketing | Plataforma de marca (propósito, posicionamiento, personalidad, voz y tono), arquitectura de marca, mensajes por segmento, chequeo del nombre, estrategia de lanzamiento y contenidos | Etapa 0 + respuestas del usuario | ⏳ Pendiente |
-| 2a. Identidad visual / UI | Logo vectorial y sus versiones, paleta, tipografía, iconografía, fotografía, componentes, design tokens y guía de marca | Etapa 1 | ⏳ Pendiente |
-| 2b. UX | Flujos de la app (consumidor y comercio), arquitectura de la landing, wireframes | Etapa 1 (en paralelo con 2a) | ⏳ Pendiente |
-| 3a. Landing | Desarrollo y despliegue de la landing | 2a + 2b | ⏳ Pendiente |
-| 3b. App | Prototipo o MVP (alcance a definir) | 2a + 2b | ⏳ Pendiente |
-| 3c. Video | Concepto, guion, storyboard y producción | 1 + 2a | ⏳ Pendiente |
+| Fecha | Qué |
+|---|---|
+| Mar 3 – Mié 4 | **Etapa 1:** Marca y marketing (estrategia, mensajes, copy de la landing, conceptos de video, brief visual) · **UX** del prototipo de app (en paralelo) |
+| Jue 5 – Vie 6 | **Etapa 2:** Identidad visual / UI (logo vectorial, sistema y componentes) · UX: wireframe de la landing · Video: guiones, storyboard y elección de herramientas |
+| Sáb 7 – Mar 10 | **Etapa 3:** desarrollo de la landing, desarrollo del prototipo de app y producción de los 3 videos |
+| Mié 11 | Integración, QA, ajustes finales y publicación |
+| **Jue 12** | **Entrega** |
 
-## Agentes / sesiones
+## Entregables finales
 
-| Rol | Sesión | Rama | Estado | Último handoff |
+1. **Landing:** alta de comercios + sección para inversores (D-005)
+2. **Prototipo de app** (D-006)
+3. **3 videos:** presentación (60–90 s) + publicidad para comercios + publicidad para consumidores (D-009)
+4. **Identidad visual** profesionalizada (D-011)
+
+## Sesiones
+
+| Rol | Rama | Estado | Entrega | Último handoff |
 |---|---|---|---|---|
-| **Líder / orquestador** | Sesión actual | `claude/gallant-planck-ps6te6` (integración) | Activo | `handoffs/2026-11-03-lider-lectura-fuente.md` |
-| Marca y marketing | Sin abrir | A definir | — | — |
-| Identidad visual / UI | Sin abrir | A definir | — | — |
-| UX | Sin abrir | A definir | — | — |
-| Desarrollo web (landing) | Sin abrir | A definir | — | — |
-| Desarrollo de app | Sin abrir | A definir | — | — |
-| Guion y video | Sin abrir | A definir | — | — |
+| **Líder / orquestador** | `claude/gallant-planck-ps6te6` (integración) | Activo | — | `handoffs/2026-11-03-lider-lectura-fuente.md` |
+| Marca y marketing | `claude/aprovecho-marca` | Abierta | Mié 4/11 | — |
+| UX | `claude/aprovecho-ux` | Abierta | App: jue 5/11 a mediodía · Landing: jue 5/11 a la noche | — |
+| Identidad visual / UI | `claude/aprovecho-identidad` | Sin abrir (espera a Marca) | Vie 6/11 | — |
+| Guion y video | `claude/aprovecho-video` | Sin abrir (espera a Marca) | Guiones: vie 6/11 · Videos: mar 10/11 | — |
+| Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
+| Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
 
 ## Pendientes del usuario
 
-- Validar el extracto de `docs/fuente/` y la revisión crítica (`09-inconsistencias-y-preguntas.md`).
-- Responder las preguntas abiertas (sección E del archivo 09): objetivo de la landing, alcance de la app, formato del video, marca, comisión, plazos.
-- Definir el esquema de sesiones y ramas para los agentes.
-
-## Próximo paso propuesto
-
-Abrir **una** sesión: **Marca y marketing** (Etapa 1). Las demás dependen de ella.
+- Validar las decisiones provisorias D-012 a D-015 (se juntan en la próxima validación).
+- Más adelante: dominio propio, Vercel y Supabase (después de tener la landing y el prototipo).

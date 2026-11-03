@@ -81,5 +81,19 @@ Mensajes de commit en español, con prefijo del rol, por ejemplo: `marca: propue
 ## 8. Git
 
 - No pushear a `main` sin autorización del usuario.
-- Cada sesión trabaja en la rama que le asigna el líder (ver `docs/ESTADO.md`).
+- **Cada sesión trabaja en su propia rama** (`claude/aprovecho-<rol>`); el líder revisa e integra en la rama de integración (ver `docs/ESTADO.md`).
 - Nunca reescribir el historial de una rama compartida.
+
+## 9. Preferencias permanentes del usuario (aplican siempre, a todos los agentes)
+
+Cuando el usuario pida algo "para siempre", se agrega acá.
+
+1. **Mensajes cortos y simples**, sin relleno. Ahorran créditos.
+2. **Guardar todo en el repo**: cada avance se commitea y se pushea; el tablero (`docs/ESTADO.md`) siempre está al día.
+3. **Validación intermedia antes de tareas largas o caras** (generar imágenes, video o voz, investigación profunda, construcciones grandes): consultar primero con alcance y costo estimado.
+4. **Pensamiento crítico**: cuestionar, detectar errores e inconsistencias, y **preguntar todo lo que haga falta**.
+5. **Trabajo dividido por roles**: el líder orquesta; cada rol trabaja en su sesión; las tareas que dependen de otra esperan a que esa termine; todos reportan y mantienen el repo actualizado.
+6. **Usar la skill o plugin adecuado para cada rol** y buscar nuevas cuando haga falta. Instalados: Marketing, Design y frontend-design.
+7. **Evaluar herramientas** (Higgsfield, Remotion, ElevenLabs u otras) por simplicidad, consumo de créditos, costo en dinero y calidad. Proponer alternativas cuando convenga.
+8. **Resultado muy profesional.**
+9. **Usar los conceptos de marketing** del plan y de la disciplina en todo lo que se produzca.
