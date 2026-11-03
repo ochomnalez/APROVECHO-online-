@@ -99,3 +99,5 @@ Cuando el usuario pida algo "para siempre", se agrega acá.
 7. **Evaluar herramientas** (Higgsfield, Remotion, ElevenLabs u otras) por simplicidad, consumo de créditos, costo en dinero y calidad. Proponer alternativas cuando convenga.
 8. **Resultado muy profesional.**
 9. **Usar los conceptos de marketing** del plan y de la disciplina en todo lo que se produzca.
+10. **Evitar a toda costa el "AI slop"**: nada que parezca hecho por IA en automático. No usar tipografías genéricas de IA (Inter, Space Grotesk, Poppins, Roboto o Montserrat como protagonista), degradés violetas, glassmorphism, íconos de destellos o "magia" para la IA, emojis como íconos, ilustraciones 3D de stock ni layouts de plantilla. Cada pieza tiene que verse diseñada a propósito para APROVECHO.
+11. **Fotos reales y variadas**: comida y comercios reales (panadería, facturas, tortas, empanadas, tartas, platos del día, frutas y verduras), no solo medialunas. Usar fotos de stock con licencia libre o propias.

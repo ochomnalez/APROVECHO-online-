@@ -34,5 +34,8 @@
 
 ## Pendientes del usuario
 
+- **Mandar las pantallas de ejemplo de su prototipo anterior** (referencia para el prototipo final).
+- Confirmar: ¿redibujamos el logo original en vector, idéntico? ¿Formato del onboarding (D-030)?
+
 - Validar las decisiones provisorias D-012 a D-015 (se juntan en la próxima validación).
 - Más adelante: dominio propio, Vercel y Supabase (después de tener la landing y el prototipo).
