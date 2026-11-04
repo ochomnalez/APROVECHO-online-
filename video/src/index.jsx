@@ -1,4 +1,5 @@
 import React from 'react';
+import { Onboarding, DURACION_ONB } from './Onboarding.jsx';
 import {
   AbsoluteFill, Composition, Easing, Img, Sequence, interpolate, registerRoot,
   staticFile, useCurrentFrame, useVideoConfig,
@@ -299,7 +300,10 @@ function UnaFoto() {
 }
 
 function Raiz() {
-  return <Composition id="UnaFoto" component={UnaFoto} durationInFrames={DURACION * FPS} fps={FPS} width={1080} height={1920} />;
+  return <>
+    <Composition id="Onboarding" component={Onboarding} durationInFrames={DURACION_ONB * FPS} fps={FPS} width={1920} height={1080} />
+    <Composition id="UnaFoto" component={UnaFoto} durationInFrames={DURACION * FPS} fps={FPS} width={1080} height={1920} />
+  </>;
 }
 
 registerRoot(Raiz);
