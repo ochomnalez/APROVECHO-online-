@@ -301,7 +301,7 @@ function UnaFoto() {
 
 function Raiz() {
   return <>
-    <Composition id="Onboarding" component={Onboarding} durationInFrames={DURACION_ONB * FPS} fps={FPS} width={1920} height={1080} />
+    <Composition id="Onboarding" component={Onboarding} durationInFrames={Math.round(DURACION_ONB * FPS)} fps={FPS} width={1920} height={1080} />
     <Composition id="UnaFoto" component={UnaFoto} durationInFrames={DURACION * FPS} fps={FPS} width={1080} height={1920} />
   </>;
 }
