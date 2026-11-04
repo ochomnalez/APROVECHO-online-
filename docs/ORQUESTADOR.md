@@ -5,14 +5,15 @@
 ## 0. Traspaso a otra persona del equipo (ej. Lola con su Claude)
 
 1. **Acceso:** Octavio agrega a Lola como colaboradora del repo `ochomnalez/APROVECHO-online-` en GitHub (Settings → Collaborators). Lola conecta GitHub en su Claude (claude.ai/code) o en su Codex y abre este repo en la rama **`claude/gallant-planck-ps6te6`**.
-2. **Primer mensaje para su Claude:**
-   > Trabajás en el proyecto APROVECHO y firmás como `claude-lola-<rol>`. Leé AGENTS.md, CLAUDE.md y docs/ORQUESTADOR.md; después docs/BITACORA.md y el tablero (docs/tablero/visual.html). Creá tu rama `claude/lola-<rol>` desde `claude/gallant-planck-ps6te6` y trabajá **solo ahí** (nunca pushees a otra rama). Seguí desde la cola de trabajo, subí todo a tu rama después de cada cambio y avisame qué hiciste. Para integrar, abrí un Pull Request que revisa Octavio.
+2. **Primer mensaje para su Claude:** alcanza con escribir **"seguí el trabajo de Octi"**. Las instrucciones completas están en `CLAUDE.md` (sección "Si te dicen seguí el trabajo de Octi").
 3. **Guardado automático:** Lola no necesita pedir nada: su Claude tiene que commitear y pushear a su rama después de cada cambio (CLAUDE.md §0, y un hook lo obliga). Su rama: `claude/lola-<rol>` (solo esa). Lo de Lola entra a la integración por PR que aprueba Octavio; si algo sale mal, se descarta su rama y lo tuyo queda intacto. Recomendado: en GitHub (Settings → Branches) proteger `claude/gallant-planck-ps6te6` y `main` para que solo se cambien por PR.
 4. **Firmas:** cada agente firma `<herramienta>-<persona>-<rol>` (CLAUDE.md §9.13). Así la bitácora muestra si lo hizo el Claude de Octi, el de Lola o Codex.
 5. **Tablero publicado:** https://claude.ai/artifact/Bpquyus65SucbgcwkDgfqV (artifact de Octavio). Quien no tenga acceso usa `docs/tablero/visual.html` del repo y lo abre en el navegador.
 6. **Antes de tomar el mando:** fijate en la bitácora quién está trabajando; si hay otro líder activo, coordiná con el usuario para no pisarse.
 
 ### Estado al 4/11 (último traspaso)
+
+- **Video de onboarding:** primer corte montado en Remotion (`video/src/Onboarding.jsx`, 85 s, 16:9, sin voz: la voz va como subtítulo). Render en `video/salidas/onboarding.mp4`. Falta: OK de Octavio, voz (ElevenLabs) y música.
 
 - **App:** prototipo hecho por Codex en `codex/aprovecho-app` (falta revisión e integración). Bug de texto: en "Elegí tu plan" dice "La comisión por pack todavía no está definida" (ya es 25%, D-007).
 - **Video:** rama `claude/aprovecho-video` (incluye el trabajo de Codex). Guion del **onboarding** en `video/01-onboarding/guion.md` (prioridad del usuario, falta su OK). Base Remotion en `video/` y primer corte de «Una foto». Para las capturas del onboarding: el recorrido "Entrar como local → plan → carta de ejemplo" funciona; la carta queda trabada en "Falta 1 precio" (hay que cargarle precio a "Tarta de ricota" en su hoja y tocar Guardar). Servir la app con `python -m http.server 8765` desde la raíz del repo de la rama de la app.

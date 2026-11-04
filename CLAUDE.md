@@ -20,6 +20,17 @@ Hay un hook (`.claude/settings.json` → `scripts/hooks/exigir-push.sh`) que **n
 - Lo de otra persona entra a la integración **solo por Pull Request**, y lo revisa y aprueba **Octavio**.
 - Si algo sale mal, se descarta la rama de esa persona y lo demás queda intacto.
 
+## Si te dicen "seguí el trabajo de Octi" (o "segui el trabajo de octi")
+
+Es **Lola** (compañera de Octavio). No sabe usar git ni Claude: hacé todo vos, sin pedirle nada técnico.
+
+1. Firmás como **`claude-lola-<rol>`** (el rol según la tarea: `video`, `landing`, `app` o `lider`).
+2. Traé lo último: `git fetch origin` y creá tu rama desde la integración: `git checkout -b claude/lola-<rol> origin/claude/gallant-planck-ps6te6` (si ya existe, `git checkout claude/lola-<rol> && git pull`).
+3. Leé, en este orden: `docs/BITACORA.md` (últimas 20 líneas: qué hizo Octi y qué sigue), `docs/ORQUESTADOR.md` §0 y §6 (cola de trabajo), `docs/decisiones.md` y el bloque `DATOS` de `docs/tablero/visual.html` (prioridades y pedidos).
+4. El trabajo de video de Octi está en la rama **`claude/aprovecho-video`** (ahí está el video de onboarding en Remotion: `video/src/Onboarding.jsx`). Leelo desde ahí, pero **trabajá en tu rama**.
+5. Contale a Lola en 3 líneas qué vas a hacer (la próxima tarea de la cola) y arrancá. Pedile OK solo para lo caro o largo (§6).
+6. Después de cada cambio: tablero + bitácora + commit + push a `claude/lola-<rol>` (§0). Para integrar, abrí un PR contra `claude/gallant-planck-ps6te6` que revisa Octavio.
+
 ## 1. El proyecto
 
 APROVECHO es un emprendimiento (Universidad Austral, materia Emprendimientos 2026) que conecta comercios de comida que tienen excedentes aptos para consumo con consumidores cercanos que los compran en **packs a 50% de descuento** y los retiran en el local. Además usa los datos de cada operación para ayudar al comercio a **medir, entender y reducir** su desperdicio (planes Base, Smart e Intelligence).
