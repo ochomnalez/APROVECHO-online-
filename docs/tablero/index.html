@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APROVECHO · Tablero de trabajo</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #1a4d3a;
+      --cream: #fbf3e4;
+      --paper: #fffaf0;
+      --ink: #14281f;
+      --muted: #4f6357;
+      --border: #c9c9b5;
+      --mint: #dfffd6;
+      --crust: #a9490b;
+      --soft-crust: #ffe5cf;
+      font: 100%/1.5 "Trebuchet MS", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 62rem; margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    h1, p { margin: 0; }
+    h1 { font: bold clamp(2.3rem, 6vw, 4rem)/1.04 Georgia, serif; }
+    a { color: var(--forest); text-underline-offset: .2em; }
+    header { border-bottom: 2px solid var(--forest); padding-bottom: 1.1rem; }
+    .marca { color: var(--forest); font-weight: bold; letter-spacing: .16em; }
+    .meta { margin-top: .65rem; color: var(--muted); }
+    .prioridades { display: flex; flex-wrap: wrap; gap: .45rem .9rem; padding: 0; list-style: none; }
+    .prioridades a { display: inline-block; padding: .6rem .1rem; }
+    .prioridades li:first-child a { font-weight: bold; }
+    .criterio { color: var(--muted); margin-bottom: 1rem; font-size: .9rem; }
+    #frentes { display: grid; gap: .85rem; }
+    details { background: var(--paper); border: 1px solid var(--border); border-radius: .65rem; }
+    details:first-child { border-left: .35rem solid var(--forest); }
+    summary { padding: 1rem 1.15rem; cursor: pointer; }
+    summary::marker { color: var(--forest); }
+    .fase { color: var(--crust); font-size: .83rem; font-weight: bold; }
+    .cabecera-frente { display: flex; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; flex-wrap: wrap; margin: .18rem 0; }
+    .titulo-frente { font-size: 1.45rem; line-height: 1.25; font-weight: bold; }
+    .resumen { display: block; color: var(--muted); }
+    .avance { color: var(--forest); font-weight: bold; }
+    progress { display: block; width: 100%; height: .45rem; margin: .6rem 0 .15rem; appearance: none; border: 0; border-radius: 1rem; overflow: hidden; background: var(--border); }
+    progress::-webkit-progress-bar { background: var(--border); }
+    progress::-webkit-progress-value { background: var(--forest); }
+    progress::-moz-progress-bar { background: var(--forest); }
+    .hitos { list-style: none; padding: 0 1.15rem; margin: 0; }
+    .hitos li { border-top: 1px solid var(--border); padding: .8rem 0; }
+    .hito-encabezado { display: flex; gap: .3rem .65rem; align-items: baseline; flex-wrap: wrap; }
+    .estado { border-radius: .3rem; background: var(--cream); font-size: .82rem; padding: .1rem .45rem; }
+    .listo { background: var(--mint); color: var(--forest); }
+    .revision, .en-curso { background: var(--soft-crust); color: var(--crust); }
+    .nota { color: var(--muted); margin: .15rem 0; }
+    .registro { font-size: .86rem; color: var(--muted); }
+  </style>
+  <script defer src="datos.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="marca">APROVECHO</p>
+      <h1>Tablero de trabajo</h1>
+      <p class="meta">Entrega prevista: 12 de noviembre de 2026 · <a id="actualizacion" href="../ESTADO.md">Registro de cambios</a></p>
+    </header>
+    <nav aria-label="Orden de trabajo">
+      <ol class="prioridades">
+        <li><a href="#app">01 Aplicación</a></li>
+        <li><a href="#video">02 Videos</a></li>
+        <li><a href="#landing">03 Landing</a></li>
+      </ol>
+    </nav>
+    <p class="criterio">Avance por hitos completados. Abrí cada frente para ver pendientes y responsables.</p>
+    <noscript><p>Para ver el tablero, activá JavaScript o abrí <a href="../ESTADO.md">el estado del proyecto</a>.</p></noscript>
+    <div id="frentes"></div>
+  </main>
+  <template id="frente">
+    <details>
+      <summary>
+        <span class="fase"></span>
+        <span class="cabecera-frente"><span class="titulo-frente"></span><span class="avance"></span></span>
+        <span class="resumen"></span>
+        <progress></progress>
+      </summary>
+      <ul class="hitos"></ul>
+    </details>
+  </template>
+  <template id="hito">
+    <li>
+      <div class="hito-encabezado"><strong></strong><span class="estado"></span></div>
+      <p class="nota"></p>
+      <p class="registro"></p>
+    </li>
+  </template>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const etiquetas = {
+        listo: "Listo",
+        revision: "En revisión",
+        "en-curso": "En curso",
+        pendiente: "Pendiente"
+      };
+      const actualizacion = document.getElementById("actualizacion");
+      const fecha = new Intl.DateTimeFormat("es-AR", { dateStyle: "medium", timeZone: "UTC" });
+      actualizacion.textContent = "Actualizado por " + tablero.por + " el " + fecha.format(new Date(tablero.actualizado));
+      actualizacion.href = tablero.registro;
+
+      const frentes = document.getElementById("frentes");
+      for (const frente of tablero.frentes) {
+        const panel = document.getElementById("frente").content.firstElementChild.cloneNode(true);
+        panel.id = frente.id;
+        panel.open = location.hash === "#" + frente.id;
+        panel.querySelector(".fase").textContent = frente.fase;
+        panel.querySelector(".titulo-frente").textContent = frente.titulo;
+        panel.querySelector(".resumen").textContent = frente.resumen;
+
+        const listos = frente.hitos.filter(hito => hito.estado === "listo").length;
+        panel.querySelector(".avance").textContent = listos + " de " + frente.hitos.length + " hitos listos";
+        const barra = panel.querySelector("progress");
+        barra.max = frente.hitos.length;
+        barra.value = listos;
+        barra.setAttribute("aria-label", "Hitos listos de " + frente.titulo);
+
+        for (const hito of frente.hitos) {
+          const fila = document.getElementById("hito").content.firstElementChild.cloneNode(true);
+          fila.id = hito.id;
+          fila.querySelector("strong").textContent = hito.titulo;
+          const estado = fila.querySelector(".estado");
+          estado.textContent = etiquetas[hito.estado];
+          estado.classList.add(hito.estado);
+          fila.querySelector(".nota").textContent = hito.nota;
+          const registro = fila.querySelector(".registro");
+          registro.textContent = hito.id + " · " + (hito.por || "Sin asignar");
+          if (hito.enlace) {
+            const enlace = document.createElement("a");
+            enlace.href = hito.enlace;
+            enlace.textContent = "Ver registro";
+            enlace.setAttribute("aria-label", "Ver registro de " + hito.titulo);
+            registro.append(" · ", enlace);
+          }
+          panel.querySelector(".hitos").append(fila);
+        }
+        frentes.append(panel);
+      }
+
+      function abrirFrente() {
+        const panel = document.getElementById(location.hash.slice(1));
+        if (panel instanceof HTMLDetailsElement) panel.open = true;
+      }
+      window.addEventListener("hashchange", abrirFrente);
+    });
+  </script>
+</body>
+</html>

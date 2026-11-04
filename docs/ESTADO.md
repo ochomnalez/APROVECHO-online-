@@ -1,9 +1,23 @@
 # Estado del proyecto · tablero
 
 > Lo mantiene el **líder**. Cada agente actualiza su fila al terminar un bloque.
-> **Entrega final: jueves 12/11/2026.** Última actualización: 2026-11-03 (líder).
+> **Entrega prevista: jueves 12/11/2026 (D-010).** Última actualización: 2026-11-03 (Codex).
 
-## Calendario
+## Tablero visual y orden de trabajo
+
+Abrí [el tablero](tablero/index.html) en el navegador desde la copia local. Ahí están los hitos, su avance, los pendientes y la autoría de cada cambio.
+
+| Prioridad | Frente | Estado y próximo paso |
+|---|---|---|
+| 1 | **Aplicación** | UX v2 integrada. Cerrar alcance y brief para consumidor, Base, Smart e Intelligence. |
+| 2 | **Videos** | Tres conceptos aprobados. Elegir la primera pieza cuando toque este frente. |
+| 3 | **Landing** | Textos y boceto integrados. Cerrar contenidos y brief antes de construir. |
+
+**Un frente a la vez**, por indicación del usuario. Cada bloque se registra en [los datos del tablero](tablero/datos.js) con el estado del hito, el agente o responsable, un comentario corto y un enlace al handoff, PR o entregable. Al actualizar, cambiá también la fecha, el autor y el registro de la última actualización. La barra cuenta hitos listos sobre el total de cada frente.
+
+## Calendario original
+
+Las fechas intermedias eran para trabajo en paralelo. Quedan por revisar según el nuevo orden.
 
 | Fecha | Qué |
 |---|---|
@@ -25,6 +39,7 @@
 | Rol | Rama | Estado | Entrega | Último handoff |
 |---|---|---|---|---|
 | **Líder / orquestador** | `claude/gallant-planck-ps6te6` (integración) | Activo | — | `handoffs/2026-11-03-lider-lectura-fuente.md` |
+| Tablero compartido | `codex/aprovecho-tablero` · Codex | Tablero inicial listo para revisión. Aplicación primero | — | [2026-11-03-tablero-prioridades-y-trazabilidad](handoffs/2026-11-03-tablero-prioridades-y-trazabilidad.md) |
 | Marca y marketing | `claude/aprovecho-marca` · sesión `session_01YPepJHdCqz7XdEnK5xUA9t` (Opus) | ✅ Entregado e integrado (falta validar D-016 a D-020) | Mié 4/11 | `handoffs/2026-11-04-marca-plataforma-y-contenidos.md` |
 | UX | `claude/aprovecho-ux` · sesión `session_01YPepJKgdnbFvSwNNSb7n4e` (Sonnet) | ✅ App v2 (10 pantallas, flujo simplificado y Vision Recognition) + ✅ estructura de la landing. Integradas; falta validación del usuario | Jue 5/11 | `handoffs/2026-11-05-ux-flujo-v2.md` · `handoffs/2026-11-05-ux-landing.md` |
 | Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | ✅ Entregado e integrado (falta validar PROPUESTA-identidad-1 a 5) | Vie 6/11 18:00 | `handoffs/2026-11-05-identidad-sistema-visual.md` |
