@@ -35,3 +35,4 @@
 | 2026-11-04 19:47 | claude-octi-video | `integ` | `b03a807` | Primer corte del video de onboarding (Remotion, 85 s, sin voz) integrado; Lola arranca con «seguí el trabajo de Octi» | OK de Octavio al corte; después voz (ElevenLabs) y música |
 | 2026-11-04 19:56 | claude-octi-video | `integ` | `b872605` | Onboarding v2: transiciones, motion graphics, apertura animada, carta sin menú falso; voz en off escrita | OK de Octavio; voz y música |
 | 2026-11-04 20:04 | claude-octi-video | `integ` | `64cd21e` | Onboarding v3: pantalla de descarga de informes, dispositivos más grandes, subtítulos dinámicos; voz bloqueada por ElevenLabs (free tier) | Conseguir la voz (navegador de Octavio o Starter) y sincronizar |
+| 2026-11-04 20:09 | claude-octi-video | `integ` | `2ed504c` | Voz en off del onboarding (ElevenLabs, Chelo, ~1.000 créditos) cortada por escena y sincronizada con subtítulos | OK de Octavio; música de fondo |
