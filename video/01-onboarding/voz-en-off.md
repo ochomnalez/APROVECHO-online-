@@ -1,7 +1,7 @@
 # Voz en off · Onboarding para comercios (85 s)
 
 > Texto para grabar (ElevenLabs o voz propia). Español rioplatense, tono B2B cercano y directo, ritmo tranquilo.
-> ~165 palabras. Sin 75% ni 25% (D-031). Pendiente de OK de Octavio.
+> ~175 palabras. Sin 75% ni 25% (D-031). Grabada el 4/11 con ElevenLabs (voz "Chelo", modelo v4, tono publicitario entusiasta): `video/public/voz/`. Pendiente de OK de Octavio.
 
 | # | Tiempo | Voz en off |
 |---|---|---|
