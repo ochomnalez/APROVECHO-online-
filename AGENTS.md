@@ -14,3 +14,4 @@ Resumen obligatorio:
 6. **Textos públicos** en español rioplatense con voseo. Separar siempre lo **medido** de lo **estimado**.
 7. **No** generes imágenes, videos ni voces pagas, **no** crees cuentas o proyectos externos y **no** publiques nada sin el OK del usuario.
 8. **Bitácora:** en cada push o merge corré `scripts/bitacora.sh "<agente>" "<qué hice>" "<próximo paso>"` y commiteá `docs/BITACORA.md`. Tus commits llevan el trailer `Agente: <agente>` (por ejemplo `Agente: codex-app`).
+9. **Tablero (obligatorio):** al terminar cada bloque, actualizá `docs/tablero/visual.html` (bloque `DATOS`: `pct` de los pasos, `pedidos`, `actualizado` y la entrada del día en `historial`). Detalle en `CLAUDE.md` §9.12.
