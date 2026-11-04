@@ -3,7 +3,7 @@
 // Sin voz todavía: el texto de la voz va como subtítulo. Regla D-031: no se muestra el 75% ni el 25%.
 import React from 'react';
 import {
-  AbsoluteFill, Easing, Img, continueRender, delayRender, interpolate,
+  AbsoluteFill, Audio, Easing, Img, Sequence, continueRender, delayRender, interpolate,
   spring, staticFile, useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import { TransitionSeries, springTiming } from '@remotion/transitions';
@@ -105,10 +105,10 @@ function Aparece({ desde = 0, children, dx = 0, dy = 26, style }) {
 }
 
 // Subtítulo = voz en off (hasta grabar la voz): las palabras entran al ritmo de la locución, sin cartel
-function Subtitulo({ texto, claro = false, dur = 8 }) {
+function Subtitulo({ texto, claro = false, dur = 8, voz }) {
   const f = useCurrentFrame();
   const palabras = texto.split(' ');
-  const ini = 8, fin = s(dur) - 20;
+  const ini = voz ? s(voz[0]) : 8, fin = voz ? s(voz[0] + voz[1]) - 6 : s(dur) - 20;
   const paso = (fin - ini) / palabras.length;
   const barra = ease(f, 0, 16);
   return (
@@ -242,7 +242,7 @@ function E1() {
           </div>
         </div>
       </div>
-      <Subtitulo dur={8} claro texto="Al cierre, siempre sobra algo. Y lo que sobra, hoy se tira o se regala." />
+      <Subtitulo voz={[0.5, 4.99]} dur={8} claro texto="Al cierre, siempre sobra algo. Y lo que sobra, hoy se tira o se regala." />
     </AbsoluteFill>
   );
 }
@@ -313,7 +313,7 @@ function E2() {
         <Campo label="Habilitación municipal" valor="habilitacion.pdf" desde={s(4.3)} archivo />
         <Campo label="Carnet de manipulador" valor="carnet.jpg" desde={s(5.1)} archivo />
       </div>
-      <Subtitulo dur={8} texto="Sumarte es simple: cargás los datos de tu local, elegís tu plan y subís tu habilitación y tu carnet de manipulador." />
+      <Subtitulo voz={[0.5, 6.3]} dur={8} texto="Sumarte es simple: cargás los datos de tu local, elegís tu plan y subís tu habilitación y tu carnet de manipulador." />
     </AbsoluteFill>
   );
 }
@@ -405,7 +405,7 @@ function E3() {
         <Kit desde={s(5)} />
       </div>
       <Celular tomas={[{ render: PantallaCarta, desde: 0 }]} desde={4} />
-      <Subtitulo dur={8} texto="Le sacás una foto a tu lista de precios y la carta se carga sola. Te damos el primer lote de bolsas, el sticker y el cartel con QR." />
+      <Subtitulo voz={[0.3, 7.89]} dur={8} texto="Le sacás una foto a tu lista de precios y la carta se carga sola. Te damos el primer lote de bolsas, el sticker y el cartel con QR." />
     </AbsoluteFill>
   );
 }
@@ -448,7 +448,7 @@ function E4() {
             transformOrigin: '44% 50%', transform: `scale(${zoom})` }} />
         </AbsoluteFill>
       )}
-      <Subtitulo dur={12} texto="Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." />
+      <Subtitulo voz={[0.5, 5.49]} dur={12} texto="Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." />
     </AbsoluteFill>
   );
 }
@@ -484,7 +484,7 @@ function E5() {
             stroke={i % 2 ? CORTEZA : VERDE} strokeWidth="6" strokeLinecap="round" />;
         })}
       </svg>
-      <Subtitulo dur={10} texto="La app arma los packs, el precio y el horario. Vos revisás, confirmás y publicás. La decisión siempre es tuya." />
+      <Subtitulo voz={[0.5, 7.55]} dur={10} texto="La app arma los packs, el precio y el horario. Vos revisás, confirmás y publicás. La decisión siempre es tuya." />
     </AbsoluteFill>
   );
 }
@@ -509,7 +509,7 @@ function E6() {
         { src: '17-retiros.jpg', desde: 6.4, toque: { x: 50, y: 9.5, en: 8 } },
         { src: '18-retiro-validado.jpg', desde: 8.4, toque: { x: 50, y: 78.5, en: 9.8 } },
       ]} />
-      <Subtitulo dur={11} texto="Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." />
+      <Subtitulo voz={[0.5, 6.43]} dur={11} texto="Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." />
     </AbsoluteFill>
   );
 }
@@ -570,7 +570,7 @@ function E7() {
       ]} />
       <Archivo desde={s(10.2)} />
       <div style={{ position: 'absolute', right: 120, top: 46, fontFamily: CUERPO, fontSize: 18, color: '#7C8A82' }}>Datos de ejemplo</div>
-      <Subtitulo dur={13} texto="Cada venta suma a tu panel: plata recuperada, kilos rescatados y tu Score. Y cuando quieras, descargás tu informe en Excel o PDF." />
+      <Subtitulo voz={[0.5, 8.28]} dur={13} texto="Cada venta suma a tu panel: plata recuperada, kilos rescatados y tu Score. Y cuando quieras, descargás tu informe en Excel o PDF." />
     </AbsoluteFill>
   );
 }
@@ -613,7 +613,7 @@ function E8() {
       </div>
       <Pantalla src="03-smart.png" x={800} y={90} w={1020} desde={s(2.6)} giro={-6} />
       <Pantalla src="04-intelligence.png" x={880} y={330} w={990} desde={s(5.6)} web giro={-6} />
-      <Subtitulo dur={10} texto="Y si querés medir más, sumás la estación Smart. Con Intelligence, entendés por qué sobra y cuánto conviene producir." />
+      <Subtitulo voz={[0.5, 6.9]} dur={10} texto="Y si querés medir más, sumás la estación Smart. Con Intelligence, entendés por qué sobra y cuánto conviene producir." />
     </AbsoluteFill>
   );
 }
@@ -660,10 +660,17 @@ const TRANS = [
   () => fade(),
 ];
 
+// Voz en off (ElevenLabs, voz "Chelo"): [segundo de entrada dentro de la escena, duración]
+const VOZ = [[0.5, 4.99], [0.5, 6.3], [0.3, 7.89], [0.5, 5.49], [0.5, 7.55], [0.5, 6.43], [0.5, 8.28], [0.5, 6.9], [0.5, 3.74]];
+const INICIOS = ESCENAS.reduce((acc, [, seg], i) => [...acc, i ? acc[i - 1] + ESCENAS[i - 1][1] : 0], []);
+
 export function Onboarding() {
   // cada escena se alarga lo que se come la transición, así el total sigue en 85 s
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
+      {VOZ.map(([ini], i) => (
+        <Sequence key={'v' + i} from={s(INICIOS[i] + ini)}><Audio src={staticFile(`voz/v${i + 1}.mp3`)} /></Sequence>
+      ))}
       <TransitionSeries>
         {ESCENAS.map(([C, seg], i) => (
           <React.Fragment key={i}>
