@@ -1,0 +1,74 @@
+/* Vincula la base v3.2.1 con el sistema visual de APROVECHO. */
+:root {
+  --verde: var(--color-primary);
+  --verde-2: var(--color-primary-hover);
+  --verde-3: var(--palette-forest-dark);
+  --verde-vivo: var(--color-success);
+  --verde-50: #eef6ec;
+  --verde-100: var(--color-bg-soft);
+  --tinta: var(--color-text-strong);
+  --tinta-2: var(--color-text);
+  --gris: var(--color-text-muted);
+  --linea: var(--color-border);
+  --linea-2: #f3ebdc;
+  --fondo: var(--color-surface);
+  --fondo-2: var(--color-bg);
+  --fondo-3: #f2e9d9;
+  --horno: var(--color-accent-text);
+  --horno-50: var(--color-accent-soft);
+  --rojo: var(--color-error);
+  --ui: 'DM Sans', 'Trebuchet MS', system-ui, sans-serif;
+  --display: var(--font-display);
+  --marca: var(--font-display);
+}
+
+#splash { background: #1a4d3a; }
+#splash img { border-radius: 50%; }
+#app, .pantalla { overflow: clip; }
+.icbtn, .link, .pestanas button { min-height: 44px; }
+.icbtn { min-width: 44px; }
+.chip, .btn.chico, .fila .intel-sucursal { min-height: 44px; }
+.tachado { color: var(--gris); }
+.card.verde, .banner.verde { background: var(--verde); color: var(--color-on-primary); }
+.banner.verde h3 { color: var(--color-on-primary); }
+.tabs, .circulo-tab, .det-barra.solida, .det-cta, .cargando, .toast {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.tabs, .circulo-tab, .det-barra.solida, .det-cta { background: var(--fondo); }
+.cargando { background: var(--fondo-2); }
+.toast { background: var(--tinta); }
+
+.intel-encabezado { background: var(--fondo-2); padding-inline: 18px; }
+.intel-encabezado h1 { flex: 1; font-size: 1.65rem; }
+.intel-demo { display: none; }
+.intel-layout { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.intel-lateral { display: grid; gap: 10px; padding: 0 18px 12px; }
+.intel-pestanas { overflow-x: auto; }
+.intel-pestanas button { flex: 0 0 auto; }
+.intel-sucursal { width: 100%; min-height: 44px; padding: 0 14px; border-radius: 12px; background: var(--fondo); border: 1px solid var(--linea); }
+.intel-sucursal .fila { gap: 8px; }
+.intel-archivo { display: grid; gap: 6px; font-weight: 700; }
+.intel-archivo input { max-width: 100%; min-height: 44px; }
+.intel-tabla { overflow: auto; }
+.intel-tabla table { width: 100%; border-collapse: collapse; text-align: left; }
+.intel-tabla th, .intel-tabla td { padding: 10px; border-bottom: 1px solid var(--linea); }
+.intel-tabla thead { color: var(--verde); }
+
+@media (min-width: 760px) and (orientation: landscape) {
+  #app.ancho-estacion { max-width: min(100%, 1040px); }
+  #app.ancho-estacion .estacion-foto { width: min(100%, 260px); }
+}
+
+@media (min-width: 900px) {
+  #app.ancho-intelligence { max-width: min(100%, 1240px); }
+  .intel-encabezado { padding: 18px 26px; border-bottom: 1px solid var(--linea); }
+  .intel-encabezado h1 { font-size: 2rem; }
+  .intel-demo { display: inline; margin-right: 16px; }
+  .intel-layout { display: grid; grid-template-columns: 212px minmax(0, 1fr); }
+  .intel-lateral { align-content: start; padding: 18px 14px; border-right: 1px solid var(--linea); }
+  .intel-pestanas { flex-direction: column; align-items: stretch; }
+  .intel-pestanas button { width: 100%; text-align: left; }
+  .intel-contenido { padding: 18px 26px var(--tab-hueco); }
+  .intel-detalle .cuerpo { width: min(100%, 760px); margin-inline: auto; }
+}
