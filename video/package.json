@@ -1,0 +1,15 @@
+{
+  "name": "aprovecho-videos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "remotion studio src/index.jsx",
+    "render:una-foto": "remotion render src/index.jsx UnaFoto salidas/una-foto.mp4 --codec=h264 --crf=23 --concurrency=3"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.540",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.540"
+  }
+}
