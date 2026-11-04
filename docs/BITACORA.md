@@ -28,3 +28,4 @@
 | 2026-11-04 19:15 | claude-video | `integ` | `9ad0e33` | Regla fija: todos los agentes actualizan el tablero; tablero integrado en la rama principal | — |
 | 2026-11-04 19:20 | claude-octi-video | `integ` | `e441c00` | Repo listo para traspaso a Lola (firmas persona+herramienta, estado al 4/11); tablero publicado | Lola: seguir ORQUESTADOR §0 |
 | 2026-11-04 19:26 | claude-octi-video | `integ` | `00677ff` | Tablero rediseñado: prioridades, pedidos, avance por video y por frente, avance diario | Actualizar DATOS al cerrar cada bloque |
+| 2026-11-04 19:36 | claude-octi-video | `integ` | `f134ece` | Decisiones D-031 a D-035 (sin 75%, inversores como sección, cálculo en Sumá tu comercio, alérgenos, carta por foto); guion ajustado | Montar el onboarding |
