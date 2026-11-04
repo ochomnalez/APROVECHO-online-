@@ -27,3 +27,8 @@
 | 2026-11-03 23:22 | claude-lider | `claude/gallant-planck-ps6te6` | `5ea19f3` | Traspaso listo: ORQUESTADOR.md, bitácora, briefs 03b a 06, referencias v3, logo oficial | Usuario: responder ORQUESTADOR §7; asignar briefs 03b, 04 y 06 (Codex o Claude) |
 | 2026-11-04 18:57 | claude-video | `claude/aprovecho-video` | `9ad0e33` | Fase 1: guion del video de onboarding y plan de producción de los 4 videos | Usuario aprueba el guion; Codex entrega capturas limpias |
 | 2026-11-04 22:00 | codex-video | `codex/aprovecho-video` | `612b601` | Cuatro guiones y primer corte vertical de Una foto, verificado en 1080x1920 | Revisar el corte y pasar a la landing |
+| 2026-11-04 19:15 | claude-video | `integ` | `9ad0e33` | Regla fija: todos los agentes actualizan el tablero; tablero integrado en la rama principal | — |
+| 2026-11-04 19:20 | claude-octi-video | `integ` | `e441c00` | Repo listo para traspaso a Lola (firmas persona+herramienta, estado al 4/11); tablero publicado | Lola: seguir ORQUESTADOR §0 |
+| 2026-11-04 19:26 | claude-octi-video | `integ` | `00677ff` | Tablero rediseñado: prioridades, pedidos, avance por video y por frente, avance diario | Actualizar DATOS al cerrar cada bloque |
+| 2026-11-04 19:36 | claude-octi-video | `integ` | `f134ece` | Decisiones D-031 a D-035 (sin 75%, inversores como sección, cálculo en Sumá tu comercio, alérgenos, carta por foto); guion ajustado | Montar el onboarding |
+| 2026-11-04 19:40 | claude-octi-video | `integ` | `ff1f785` | Guardado obligatorio (hook Stop), ramas separadas por persona con PR y bloqueo de push a integración; D-036 checklist opción B | Montar video de onboarding en Remotion |

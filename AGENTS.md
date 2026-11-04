@@ -4,6 +4,10 @@ Este repo lo coordina un **agente líder (Claude)**. Las reglas completas están
 
 **¿Te toca ser el líder/orquestador?** (por ejemplo, ChatGPT reemplazando a Claude): leé **`docs/ORQUESTADOR.md`** antes de hacer nada.
 
+**OBLIGATORIO en cada tarea, aunque el usuario no lo pida:** al terminar, actualizá tablero y bitácora, commiteá y pusheá a tu rama propia (`CLAUDE.md` §0). El equipo no sabe usar git: hacelo vos siempre.
+
+**Separación por persona:** trabajá solo en ramas tuyas (`codex/<persona>-<rol>`); nunca pushees a ramas de otra persona, a la integración ni a `main`. Lo tuyo entra por PR (CLAUDE.md §0).
+
 Resumen obligatorio:
 
 1. **Fuente de verdad:** `docs/fuente/` (extracto del plan de negocios). No inventes datos; revisá `docs/fuente/09-inconsistencias-y-preguntas.md` antes de usar números.
@@ -14,3 +18,5 @@ Resumen obligatorio:
 6. **Textos públicos** en español rioplatense con voseo. Separar siempre lo **medido** de lo **estimado**.
 7. **No** generes imágenes, videos ni voces pagas, **no** crees cuentas o proyectos externos y **no** publiques nada sin el OK del usuario.
 8. **Bitácora:** en cada push o merge corré `scripts/bitacora.sh "<agente>" "<qué hice>" "<próximo paso>"` y commiteá `docs/BITACORA.md`. Tus commits llevan el trailer `Agente: <agente>` (por ejemplo `Agente: codex-app`).
+9. **Tablero (obligatorio):** al terminar cada bloque, actualizá `docs/tablero/visual.html` (bloque `DATOS`: `pct` de los pasos, `pedidos`, `actualizado` y la entrada del día en `historial`). Detalle en `CLAUDE.md` §9.12.
+10. **Firma:** identificate como `<herramienta>-<persona>-<rol>` (ej. `codex-lola-landing`, `claude-octi-video`) en bitácora, commits y handoffs (`CLAUDE.md` §9.13).

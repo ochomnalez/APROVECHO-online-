@@ -15,10 +15,10 @@
 |---|---|---|---|---|---|
 | 1 | 0–8 | Cierre de una panadería: bandeja con medialunas y facturas que sobraron. Luz de tarde | "Al cierre, siempre sobra algo. Y lo que sobra, hoy se tira o se regala." | "35,7% tuvo excedente todos los días de la última semana" (encuesta propia) | Stock real (Pexels) |
 | 2 | 8–16 | Landing → botón "Sumá tu comercio" → formulario de alta | "Sumarte es simple: cargás los datos de tu local, elegís tu plan y subís tu habilitación y tu carnet de manipulador." | "1 · Alta" · "2 · Verificación" | Landing / formulario (animado) |
-| 3 | 16–24 | Carta con productos y precios; franjas de retiro; bolsa y sticker de vidriera | "Cargás tu carta y tus horarios de retiro. Te damos el primer lote de bolsas, el sticker y el cartel con QR." | "3 · Tu carta" · "4 · Arranque" | App (configuración) + `docs/marca/aplicaciones/` |
+| 3 | 16–24 | El comercio le saca una foto a su pizarra de precios → la app lee y carga los productos solos ("Leí 14 productos"); franjas de retiro; bolsa y sticker | "Le sacás una foto a tu lista de precios y la carta se carga sola. Te damos el primer lote de bolsas, el sticker y el cartel con QR." | "3 · Tu carta" · "4 · Arranque" | App (configuración) + `docs/marca/aplicaciones/` |
 | 4 | 24–38 | Celular sobre la bandeja. La app dibuja cajas sobre cada producto: "Medialuna ×5 · Factura surtida ×2" | "Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." | "Estimado por IA" | `app/capturas/06-deteccion.png` |
 | 5 | 38–48 | Propuesta: 3 packs, precio con 50% de descuento, retiro 19–20 h. Checklist: producto del día · cadena de frío · alérgenos. Botón "Publicar" | "Arma los packs, el precio y el horario. Vos revisás, confirmás y publicás. La decisión siempre es tuya." | "La IA propone. Vos confirmás." | App (revisar y publicar) |
-| 6 | 48–60 | Un vecino reserva y paga; llega con el QR; el comercio escanea. Desglose: pack $6.100 → comisión → **$4.575 para vos** | "Un vecino reserva y paga desde la app, y lo retira con un QR. De cada venta, vos te quedás con el 75%." | "$6.100 → $4.575 para tu comercio" (D-015) | App (reserva/retiros) + stock (manos con celular) |
+| 6 | 48–60 | Un vecino reserva y paga; llega con el QR; el comercio escanea. El pack aparece como "retirado" y la venta se suma al panel | "Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." | "Pagás solo cuando vendés" | App (reserva/retiros) + stock (manos con celular) |
 | 7 | 60–70 | Panel Base: ingreso recuperado, packs retirados, kilos [Estimado], Score | "Cada venta suma a tu panel: plata recuperada, kilos rescatados y tu Score." | "Medido · Estimado" (etiquetas) | `app/capturas/02-base.png` (recapturar con datos) |
 | 8 | 70–80 | Escalera: Base → Smart (balanza + tablet, peso real) → Intelligence (panel de cadena: sucursales, vencimientos) | "Y si querés medir más, sumás la estación Smart. Con Intelligence, entendés por qué sobra y cuánto conviene producir." | "Base · Smart · Intelligence" | `03-smart.png`, `04-intelligence.png` |
 | 9 | 80–85 | Logo oficial sobre fondo de marca | "Menos desperdicio, más aprovecho. Sumá tu comercio." | Logo + "Sumá tu comercio" + URL (a definir) | `docs/marca/logo-oficial/` |
@@ -30,8 +30,8 @@
 - El único dato duro es el 35,7% (encuesta propia, con fuente en pantalla). No usar VAN, TIR ni resultados de terceros (D-019, archivo 09).
 - Nunca "CO₂ evitado": si aparece, "huella asociada (estimada)".
 - Sin promesas de tiempo ("en 2 minutos") ni de ahorro: no están medidos (archivo 09, A6).
-- Comisión del 25% dicha como "te quedás con el 75%" (D-007).
-- Escena 6: los montos de ejemplo son los de D-015; dejar la etiqueta "Datos de ejemplo".
+- **No mencionar el 75% ni el 25% explícitamente** (D-031). Decir "pagás solo cuando vendés" / "sin abono fijo".
+- Montos de ejemplo (si aparecen en pantalla) según D-015, con la etiqueta "Datos de ejemplo".
 
 ## Para producir (Fase 2) hace falta
 

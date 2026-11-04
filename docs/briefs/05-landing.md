@@ -17,9 +17,9 @@ Una landing **muy profesional** cuyo objetivo principal es que **se sumen comerc
 ## Contenido
 
 - **Home (comercios):** las secciones C-1 a C-9 del copy, con un solo CTA principal, "Sumá tu comercio".
-  - Si el usuario aprobó PROPUESTA-ux-2, incluir **"Mirá cuánto te queda"**: $12.200 → $6.100 → $4.575 para el comercio.
+  - Si el usuario aprobó PROPUESTA-ux-2, incluir **"Mirá cuánto te queda"** dentro de la sección "Sumá tu comercio" (D-033): $12.200 → $6.100 → lo que recibe el comercio.
 - **Alta de comercio:** el formulario en 2 pasos (F-1). Al enviarlo se muestra la **sección de onboarding** (D-030, si está aprobada; ver abajo).
-- **/inversores:** las secciones I-1 a I-8. Números según D-019 y D-025, con el aviso "proyecciones preliminares".
+- **Sección inversores dentro de la misma landing (D-032, no página aparte):** las secciones I-1 a I-8, resumidas. Números según D-019 y D-025, con el aviso "proyecciones preliminares".
 - **Lista de espera de consumidores:** "Avisame cuando llegue a mi barrio" (zona + email).
 - **Footer:** si el usuario lo aprueba, "Proyecto académico · Universidad Austral".
 

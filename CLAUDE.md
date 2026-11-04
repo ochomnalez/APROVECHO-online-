@@ -2,6 +2,24 @@
 
 Este archivo lo lee **cada sesión/agente al arrancar**. Define el proyecto, la fuente de verdad y cómo trabajamos.
 
+## 0. OBLIGATORIO en cada respuesta (aunque el usuario no lo pida)
+
+Las personas del equipo (Octavio, Lola, etc.) **no saben usar git ni van a pedirlo**. Por eso, **cada vez que hagas cualquier cambio**, antes de terminar tu respuesta y sin preguntar:
+
+1. Actualizá el tablero (`docs/tablero/visual.html`, bloque `DATOS`) y agregá una línea a la bitácora: `scripts/bitacora.sh "<tu firma>" "<qué hiciste>" "<qué sigue>"`.
+2. `git add -A` y commit con el trailer `Agente: <tu firma>` (firma = `<herramienta>-<persona>-<rol>`, ej. `claude-lola-app`).
+3. `git push` a **tu rama propia** (la de tu sesión o `claude/aprovecho-<persona>-<rol>`). Nunca a `main`.
+4. Contale al usuario en una línea qué subiste y a qué rama.
+
+Hay un hook (`.claude/settings.json` → `scripts/hooks/exigir-push.sh`) que **no te deja terminar** si quedan cambios sin commitear o sin pushear.
+
+### Separación por persona (para que nadie contamine el trabajo de otro)
+
+- Cada persona tiene **sus propias ramas**: `claude/lola-<rol>` para Lola, `claude/octi-<rol>` o las ramas de sesión de Octavio. Al arrancar, si no estás en una rama tuya, creala desde la rama de integración: `git checkout -b claude/<persona>-<rol> origin/claude/gallant-planck-ps6te6`.
+- **Nunca** pushees, mergees ni reescribas ramas de otra persona ni la de integración (`claude/gallant-planck-ps6te6`) ni `main`.
+- Lo de otra persona entra a la integración **solo por Pull Request**, y lo revisa y aprueba **Octavio**.
+- Si algo sale mal, se descarta la rama de esa persona y lo demás queda intacto.
+
 ## 1. El proyecto
 
 APROVECHO es un emprendimiento (Universidad Austral, materia Emprendimientos 2026) que conecta comercios de comida que tienen excedentes aptos para consumo con consumidores cercanos que los compran en **packs a 50% de descuento** y los retiran en el local. Además usa los datos de cada operación para ayudar al comercio a **medir, entender y reducir** su desperdicio (planes Base, Smart e Intelligence).
@@ -104,3 +122,5 @@ Cuando el usuario pida algo "para siempre", se agrega acá.
 9. **Usar los conceptos de marketing** del plan y de la disciplina en todo lo que se produzca.
 10. **Evitar a toda costa el "AI slop"**: nada que parezca hecho por IA en automático. No usar tipografías genéricas de IA (Inter, Space Grotesk, Poppins, Roboto o Montserrat como protagonista), degradés violetas, glassmorphism, íconos de destellos o "magia" para la IA, emojis como íconos, ilustraciones 3D de stock ni layouts de plantilla. Cada pieza tiene que verse diseñada a propósito para APROVECHO.
 11. **Fotos reales y variadas**: comida y comercios reales (panadería, facturas, tortas, empanadas, tartas, platos del día, frutas y verduras), no solo medialunas. Usar fotos de stock con licencia libre o propias.
+12. **Actualizar siempre el tablero** (`docs/tablero/visual.html`, bloque `DATOS`) al terminar cada bloque de trabajo, sea Claude o Codex: subir el `pct` de los pasos que avanzaste, actualizar `pedidos` y `actualizado`, y agregar lo que hiciste en la entrada del día en `historial` (si es un día nuevo, crear la entrada con la fecha; el total de días anteriores se deja fijo). Fondo blanco. Va en el mismo commit que tu trabajo.
+13. **Firmar todo con persona + herramienta + rol.** Cada agente se identifica como `<herramienta>-<persona>-<rol>`: por ejemplo `claude-octi-video`, `claude-lola-app`, `chatgpt-octi-lider`, `codex-lola-landing`. Esa firma va en la bitácora (`scripts/bitacora.sh "claude-lola-app" ...`), en el trailer del commit (`Agente: claude-lola-app`) y en el handoff. Al terminar cada bloque, **avisá qué hiciste** con esa firma (bitácora + tablero + mensaje al usuario).

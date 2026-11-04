@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Bloquea pushes directos a main y a la rama de integración, salvo que APROVECHO_LIDER=1.
+# Instalar: git config core.hooksPath scripts/hooks
+while read -r _ _ remote_ref _; do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/claude/gallant-planck-ps6te6)
+      if [ "${APROVECHO_LIDER:-0}" != "1" ]; then
+        echo "Bloqueado: no se pushea directo a ${remote_ref#refs/heads/}. Usá tu rama propia y abrí un PR (CLAUDE.md §0). Solo Octavio (líder) puede, con APROVECHO_LIDER=1." >&2; exit 1; fi;;
+  esac
+done
+exit 0
