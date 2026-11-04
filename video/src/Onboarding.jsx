@@ -104,14 +104,28 @@ function Aparece({ desde = 0, children, dx = 0, dy = 26, style }) {
   return <div style={{ opacity: Math.min(1, v * 1.4), transform: `translate(${(1 - v) * dx}px, ${(1 - v) * dy}px)`, ...style }}>{children}</div>;
 }
 
-// Subtítulo = voz en off (hasta grabar la voz)
-function Subtitulo({ texto, claro = false }) {
+// Subtítulo = voz en off (hasta grabar la voz): las palabras entran al ritmo de la locución, sin cartel
+function Subtitulo({ texto, claro = false, dur = 8 }) {
   const f = useCurrentFrame();
-  const v = ease(f, 8, 22);
+  const palabras = texto.split(' ');
+  const ini = 8, fin = s(dur) - 20;
+  const paso = (fin - ini) / palabras.length;
+  const barra = ease(f, 0, 16);
   return (
-    <div style={{ position: 'absolute', left: 140, width: 900, bottom: 60, opacity: v, transform: `translateY(${(1 - v) * 12}px)` }}>
-      <div style={{ display: 'inline-block', padding: '12px 22px', borderRadius: 10, background: claro ? 'rgba(15,51,38,.82)' : 'rgba(20,40,31,.9)',
-        color: PAPEL, fontFamily: CUERPO, fontSize: 27, lineHeight: 1.35 }}>{texto}</div>
+    <div style={{ position: 'absolute', left: 140, width: 940, bottom: 56, display: 'flex', gap: 18 }}>
+      <div style={{ width: 4, borderRadius: 2, background: CORTEZA, transform: `scaleY(${barra})`, transformOrigin: 'top' }} />
+      <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 9, rowGap: 2, fontFamily: CUERPO, fontSize: 29, lineHeight: 1.35,
+        color: claro ? PAPEL : TINTA, textShadow: claro ? '0 2px 12px rgba(0,0,0,.5)' : 'none' }}>
+        {palabras.map((w, i) => {
+          const a = ini + i * paso;
+          const v = ease(f, a, a + 8);
+          const dicha = f > a + paso * 1.5;
+          return (
+            <span key={i} style={{ opacity: 0.12 + v * (dicha ? 0.62 : 0.88), transform: `translateY(${(1 - v) * 10}px)`,
+              display: 'inline-block', fontWeight: dicha ? 400 : 700 }}>{w}</span>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -146,11 +160,11 @@ function Toque({ x, y, en }) {
 
 // Celular: entra con giro, flota, y las pantallas se empujan como navegación real
 // tomas: [{src | render, desde (seg), toque:{x,y,en(seg)}}]
-function Celular({ tomas, x = 1230, y = 112, desde = 0, giro = -8 }) {
+function Celular({ tomas, x = 1200, y = 62, desde = 0, giro = -8 }) {
   const f = useCurrentFrame();
   const e = useSpring(desde, { damping: 15, mass: 0.9 });
   const t = f / FPS;
-  const W = 410, H = 860, R = 52, B = 13;
+  const W = 450, H = 956, R = 56, B = 14;
   const flotaY = Math.sin(t * 1.3) * 10;
   const rotY = giro * (1 - e) + Math.sin(t * 0.7) * 3;
   const rotZ = (1 - e) * 6 + Math.sin(t * 0.9) * 0.8;
@@ -224,12 +238,11 @@ function E1() {
               <div style={{ fontFamily: CUERPO, fontSize: 32, lineHeight: 1.3, color: PAPEL, maxWidth: 440 }}>
                 de los comercios tuvo excedente <b style={{ color: CORTEZA }}>todos los días</b> de la última semana
               </div>
-              <div style={{ fontFamily: CUERPO, fontSize: 19, color: '#B9D3C4', marginTop: 12 }}>Encuesta propia a comercios · APROVECHO 2026</div>
             </Aparece>
           </div>
         </div>
       </div>
-      <Subtitulo claro texto="Al cierre, siempre sobra algo. Y lo que sobra, hoy se tira o se regala." />
+      <Subtitulo dur={8} claro texto="Al cierre, siempre sobra algo. Y lo que sobra, hoy se tira o se regala." />
     </AbsoluteFill>
   );
 }
@@ -300,7 +313,7 @@ function E2() {
         <Campo label="Habilitación municipal" valor="habilitacion.pdf" desde={s(4.3)} archivo />
         <Campo label="Carnet de manipulador" valor="carnet.jpg" desde={s(5.1)} archivo />
       </div>
-      <Subtitulo texto="Sumarte es simple: cargás los datos de tu local, elegís tu plan y subís tu habilitación y tu carnet de manipulador." />
+      <Subtitulo dur={8} texto="Sumarte es simple: cargás los datos de tu local, elegís tu plan y subís tu habilitación y tu carnet de manipulador." />
     </AbsoluteFill>
   );
 }
@@ -392,7 +405,7 @@ function E3() {
         <Kit desde={s(5)} />
       </div>
       <Celular tomas={[{ render: PantallaCarta, desde: 0 }]} desde={4} />
-      <Subtitulo texto="Le sacás una foto a tu lista de precios y la carta se carga sola. Te damos el primer lote de bolsas, el sticker y el cartel con QR." />
+      <Subtitulo dur={8} texto="Le sacás una foto a tu lista de precios y la carta se carga sola. Te damos el primer lote de bolsas, el sticker y el cartel con QR." />
     </AbsoluteFill>
   );
 }
@@ -412,22 +425,22 @@ function E4() {
         <Cinetico texto="Sacás una foto. La app reconoce y cuenta lo que sobró." tam={80} desde={intro + 4} />
         <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 14 }}>
           {items.map(([p, c], i) => (
-            <Aparece key={p} desde={s(9.6) + i * 6} dx={-40} dy={0}>
+            <Aparece key={p} desde={s(8.6) + i * 6} dx={-40} dy={0}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: 560, padding: '16px 22px', borderRadius: 14,
                 background: '#fff', border: `1px solid ${LINEA}`, fontFamily: CUERPO, fontSize: 27, color: TINTA }}>
-                <span>{p}</span><b style={{ fontFamily: TITULO, fontSize: 32 }}>× <Contador hasta={c} desde={s(9.8) + i * 6} dur={16} /></b>
+                <span>{p}</span><b style={{ fontFamily: TITULO, fontSize: 32 }}>× <Contador hasta={c} desde={s(8.8) + i * 6} dur={16} /></b>
               </div>
             </Aparece>
           ))}
-          <Aparece desde={s(10.4)}><span style={{ display: 'inline-block', padding: '8px 16px', borderRadius: 999, background: '#F6E3CF', color: '#7A3D10',
+          <Aparece desde={s(9.4)}><span style={{ display: 'inline-block', padding: '8px 16px', borderRadius: 999, background: '#F6E3CF', color: '#7A3D10',
             fontFamily: CUERPO, fontWeight: 700, fontSize: 21 }}>Estimado por IA · vos lo corregís</span></Aparece>
         </div>
       </div>
       <Celular desde={intro - 4} tomas={[
         { src: '08-camara.jpg', desde: 0, toque: { x: 50, y: 15, en: 4.4 } },
-        { src: '09-analizando.jpg', desde: 4.8 },
-        { src: '10-analizando-b.jpg', desde: 7.2 },
-        { src: '11-tras-analisis.jpg', desde: 9.6 },
+        { src: '09-analizando.jpg', desde: 4.6 },
+        { src: '10-analizando-b.jpg', desde: 6.6 },
+        { src: '11-tras-analisis.jpg', desde: 8.4 },
       ]} />
       {f < intro + 8 && (
         <AbsoluteFill style={{ opacity: 1 - fueraFoto, overflow: 'hidden' }}>
@@ -435,7 +448,7 @@ function E4() {
             transformOrigin: '44% 50%', transform: `scale(${zoom})` }} />
         </AbsoluteFill>
       )}
-      <Subtitulo texto="Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." />
+      <Subtitulo dur={12} texto="Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." />
     </AbsoluteFill>
   );
 }
@@ -459,7 +472,7 @@ function E5() {
           ))}
         </div>
       </div>
-      <Celular x={1230} tomas={[
+      <Celular tomas={[
         { src: '12-revisar-checklist.jpg', desde: 0, toque: { x: 50, y: 92.5, en: 5.8 } },
         { src: '13-publicado.jpg', desde: 6.2 },
       ]} />
@@ -467,11 +480,11 @@ function E5() {
       <svg width="1920" height="1080" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: f > pub + 8 ? 1 - burst : 0 }}>
         {Array.from({ length: 12 }, (_, i) => {
           const a = (i / 12) * Math.PI * 2; const r1 = 250 + burst * 120; const r2 = r1 + 40;
-          return <line key={i} x1={1435 + Math.cos(a) * r1} y1={420 + Math.sin(a) * r1} x2={1435 + Math.cos(a) * r2} y2={420 + Math.sin(a) * r2}
+          return <line key={i} x1={1425 + Math.cos(a) * r1} y1={540 + Math.sin(a) * r1} x2={1425 + Math.cos(a) * r2} y2={540 + Math.sin(a) * r2}
             stroke={i % 2 ? CORTEZA : VERDE} strokeWidth="6" strokeLinecap="round" />;
         })}
       </svg>
-      <Subtitulo texto="La app arma los packs, el precio y el horario. Vos revisás, confirmás y publicás. La decisión siempre es tuya." />
+      <Subtitulo dur={10} texto="La app arma los packs, el precio y el horario. Vos revisás, confirmás y publicás. La decisión siempre es tuya." />
     </AbsoluteFill>
   );
 }
@@ -494,10 +507,31 @@ function E6() {
         { src: '14-cliente-ve-pack.jpg', desde: 0, toque: { x: 61, y: 95, en: 2.8 } },
         { src: '16-reserva-qr.jpg', desde: 3.2 },
         { src: '17-retiros.jpg', desde: 6.4, toque: { x: 50, y: 9.5, en: 8 } },
-        { src: '18-retiro-validado.jpg', desde: 8.4, toque: { x: 50, y: 78.5, en: 10.4 } },
+        { src: '18-retiro-validado.jpg', desde: 8.4, toque: { x: 50, y: 78.5, en: 9.8 } },
       ]} />
-      <Subtitulo texto="Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." />
+      <Subtitulo dur={11} texto="Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." />
     </AbsoluteFill>
+  );
+}
+
+// Documento que sale del celular al descargar el informe
+function Archivo({ desde }) {
+  const e = useSpring(desde, { damping: 13, mass: 0.8 });
+  const f = useCurrentFrame();
+  if (f < desde) return null;
+  return (
+    <div style={{ position: 'absolute', left: 1200 - e * 1000, top: 620 - e * 80, width: 320, padding: '22px 22px 20px', borderRadius: 14, background: '#fff',
+      boxShadow: '0 30px 60px rgba(15,51,38,.22)', transform: `rotate(${-10 * e + 4}deg) scale(${0.4 + e * 0.6})`, opacity: Math.min(1, e * 2), fontFamily: CUERPO }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+        <span style={{ padding: '4px 10px', borderRadius: 6, background: CORTEZA, color: '#fff', fontWeight: 700, fontSize: 16 }}>PDF</span>
+        <span style={{ fontWeight: 700, fontSize: 17, color: BOSQUE }}>Informe de noviembre</span>
+      </div>
+      {[90, 70, 82, 55].map((w, i) => <div key={i} style={{ height: 9, width: `${w}%`, borderRadius: 5, background: i === 0 ? '#B8D8BE' : '#EEE6D8', marginBottom: 9 }} />)}
+      <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end', height: 50, marginTop: 6 }}>
+        {[0.6, 0.8, 0.5, 0.9, 0.7].map((h, i) => <div key={i} style={{ flex: 1, height: `${h * 100 * ease(f, desde + 10 + i * 3, desde + 22 + i * 3)}%`, borderRadius: 3, background: i === 3 ? VERDE : '#B8D8BE' }} />)}
+      </div>
+      <div style={{ fontSize: 14, color: GRIS, marginTop: 10 }}>aprovecho-la-espiga-2026-11.pdf</div>
+    </div>
   );
 }
 
@@ -510,8 +544,8 @@ function E7() {
       <FondoVivo semilla={6} />
       <div style={{ position: 'absolute', left: 140, top: 200, width: 860 }}>
         <Rotulo texto="Tu panel" n="6" />
-        <Cinetico texto="Plata recuperada, kilos rescatados y tu Score." tam={84} />
-        <div style={{ marginTop: 44, display: 'flex', gap: 40, alignItems: 'flex-end' }}>
+        <Cinetico texto="Plata recuperada, kilos rescatados y tu Score. Y tus informes." tam={80} />
+        <div style={{ marginTop: 44, display: 'flex', gap: 40, alignItems: 'flex-end', opacity: 1 - ease(f, s(9.6), s(10.2)), transform: `translateY(${ease(f, s(9.6), s(10.2)) * 30}px)` }}>
           <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end', height: 170 }}>
             {barras.map((b, i) => {
               const v = useSpring(s(1.8) + i * 4, { damping: 14 });
@@ -528,9 +562,15 @@ function E7() {
           </div>
         </div>
       </div>
-      <Celular tomas={[{ src: '20-impacto.jpg', desde: 0 }]} />
+      <Celular tomas={[
+        { src: '20-impacto.jpg', desde: 0, toque: { x: 88, y: 3.6, en: 5.6 } },
+        { src: '21-reporte.jpg', desde: 6, toque: { x: 72, y: 53, en: 7.6 } },
+        { src: '22-reporte-pdf.jpg', desde: 8, toque: { x: 50, y: 71.5, en: 9.4 } },
+        { src: '24-reporte-listo.jpg', desde: 9.8 },
+      ]} />
+      <Archivo desde={s(10.2)} />
       <div style={{ position: 'absolute', right: 120, top: 46, fontFamily: CUERPO, fontSize: 18, color: '#7C8A82' }}>Datos de ejemplo</div>
-      <Subtitulo texto="Cada venta suma a tu panel: plata recuperada, kilos rescatados y tu Score." />
+      <Subtitulo dur={13} texto="Cada venta suma a tu panel: plata recuperada, kilos rescatados y tu Score. Y cuando quieras, descargás tu informe en Excel o PDF." />
     </AbsoluteFill>
   );
 }
@@ -571,9 +611,9 @@ function E8() {
           ))}
         </div>
       </div>
-      <Pantalla src="03-smart.png" x={870} y={140} w={900} desde={s(2.6)} giro={-6} />
-      <Pantalla src="04-intelligence.png" x={990} y={380} w={850} desde={s(5.6)} web giro={-6} />
-      <Subtitulo texto="Y si querés medir más, sumás la estación Smart. Con Intelligence, entendés por qué sobra y cuánto conviene producir." />
+      <Pantalla src="03-smart.png" x={800} y={90} w={1020} desde={s(2.6)} giro={-6} />
+      <Pantalla src="04-intelligence.png" x={880} y={330} w={990} desde={s(5.6)} web giro={-6} />
+      <Subtitulo dur={10} texto="Y si querés medir más, sumás la estación Smart. Con Intelligence, entendés por qué sobra y cuánto conviene producir." />
     </AbsoluteFill>
   );
 }
@@ -607,7 +647,7 @@ function E9() {
 // ---------- Montaje con transiciones ----------
 const T = 18; // frames de cada transición
 const ESCENAS = [
-  [E1, 8], [E2, 8], [E3, 8], [E4, 14], [E5, 10], [E6, 12], [E7, 10], [E8, 10], [E9, 5],
+  [E1, 8], [E2, 8], [E3, 8], [E4, 12], [E5, 10], [E6, 11], [E7, 13], [E8, 10], [E9, 5],
 ];
 const TRANS = [
   () => wipe({ direction: 'from-left' }),
