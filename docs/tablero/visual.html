@@ -4,188 +4,264 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>APROVECHO · Avance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* Tablero de seguimiento: resumen arriba, detalle abajo. Fondo blanco, verde de marca como acento, corteza = en curso. */
 :root{
-  --forest:#1A4D3A; --forest-d:#0F3326; --crust:#E07A2E; --crust-s:#A9490B; --crust-soft:#FBE3CC;
-  --cream:#FFFFFF; --mint:#DFFFD6; --ink:#14281F; --muted:#5B6B62; --line:#E4D9C3; --card:#FFFFFF; --ok:#2E7D32;
+  color-scheme: light;
+  --bg:#FFFFFF; --panel:#F6F8F6; --ink:#14281F; --muted:#5E6E65; --line:#E3E8E4;
+  --brand:#1A4D3A; --brand-soft:#E6F0EA;
+  --ok:#2E7D4F; --ok-soft:#E3F4EA; --doing:#C4621C; --doing-soft:#FDEBDC; --todo:#9AA7A0; --todo-soft:#EEF1EF; --risk:#B42318; --risk-soft:#FDE8E6;
+  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
 }
-*{box-sizing:border-box;margin:0}
-body{background:var(--cream);color:var(--ink);font:16px/1.5 "Bricolage Grotesque","Outfit",system-ui,sans-serif;padding:20px 16px 60px}
-.wrap{max-width:980px;margin:0 auto}
-h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;line-height:1.1}
-.sub{color:var(--muted);margin:6px 0 22px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
-.hero{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
-@media(max-width:620px){.hero{grid-template-columns:1fr;justify-items:center;text-align:center}}
-.big{font-size:44px;font-weight:700;color:var(--forest)}
-.days{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.chip{background:var(--crust-soft);color:var(--crust-s);border-radius:99px;padding:4px 12px;font-size:14px;font-weight:600}
-.chip.g{background:var(--mint);color:var(--forest-d)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0 26px}
-.mini{text-align:center;cursor:pointer;transition:transform .15s}
-.mini:hover{transform:translateY(-2px)}
-.mini b{display:block;margin-top:4px}
-.mini small{color:var(--muted)}
-h2{font-size:22px;margin:30px 0 4px;letter-spacing:-.01em}
-.goal{color:var(--muted);margin-bottom:12px;font-size:15px}
-.head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.pct{margin-left:auto;font-size:30px;font-weight:700;color:var(--forest)}
-.steps{list-style:none;padding:0;position:relative}
-.step{display:grid;grid-template-columns:34px 1fr 48px;gap:12px;align-items:start;padding:10px 0;position:relative}
-.step:not(:last-child)::before{content:"";position:absolute;left:16px;top:40px;bottom:-8px;width:2px;background:var(--line)}
-.dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;border:2px solid var(--line);background:var(--card);color:var(--muted);z-index:1}
-.dot.done{background:var(--forest);border-color:var(--forest);color:var(--cream)}
-.dot.half{border-color:var(--crust);color:var(--crust-s);background:var(--crust-soft)}
-.dot.now{box-shadow:0 0 0 4px var(--crust-soft);border-color:var(--crust)}
-.t{font-weight:600;line-height:1.3}
-.n{color:var(--muted);font-size:14px;margin:2px 0 6px}
-.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--forest);border-radius:9px}
-.bar i.h{background:var(--crust)}
-.sp{font-weight:700;text-align:right;font-size:15px;padding-top:4px}
-.card{box-shadow:0 1px 3px rgba(20,40,31,.06)}
-.dia{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
-.dia:first-of-type{border-top:0}
-.dia b{font-size:15px}.dia ul{margin:0;padding-left:18px;font-size:15px}
-.note{margin-top:14px;background:var(--mint);border-radius:12px;padding:12px 14px;font-size:15px}
-.note b{display:block;margin-bottom:4px;color:var(--forest-d)}
-.note ul{padding-left:18px}
-.ask{background:var(--crust-soft)}
-.ask b{color:var(--crust-s)}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:6px 0 0}
-.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--forest)}
-.legend .h::before{background:var(--crust)}.legend .p::before{background:var(--line)}
-footer{margin-top:34px;color:var(--muted);font-size:13px}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--body)}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 56px;display:grid;gap:20px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:28px;font-weight:800}
+h2{font-size:19px;font-weight:800}
+h3{font-size:16px;font-weight:600}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px}
+.panel.alt{background:var(--panel);border-color:transparent}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{padding:14px 16px;border:1px solid var(--line);border-radius:12px;display:grid;gap:4px}
+.kpi b{font-family:var(--display);font-size:30px;line-height:1.1}
+.kpi span{color:var(--muted);font-size:13px}
+.kpi.warn{border-color:var(--doing);background:var(--doing-soft)}
+/* chips */
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:2px 10px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.s-hecho{background:var(--ok-soft);color:var(--ok)}
+.s-curso{background:var(--doing-soft);color:var(--doing)}
+.s-revisar{background:var(--brand-soft);color:var(--brand)}
+.s-pendiente{background:var(--todo-soft);color:#5E6E65}
+.s-bloqueado{background:var(--risk-soft);color:var(--risk)}
+.prio{font-size:12px;font-weight:700;border:1px solid currentColor;border-radius:6px;padding:1px 7px}
+.p-alta{color:var(--risk)}.p-media{color:var(--doing)}.p-baja{color:var(--muted)}
+/* grid principal */
+.two{display:grid;grid-template-columns:1.45fr 1fr;gap:20px}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+/* tabla de prioridades */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;font-weight:700;padding:0 8px 8px}
+.tbl td{padding:10px 8px;border-top:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{font-family:var(--display);font-weight:800;color:var(--muted);width:28px}
+.who{font-size:12.5px;color:var(--muted)}
+.scroll{overflow-x:auto}
+/* pedidos */
+.ask{border-left:4px solid var(--doing);background:var(--doing-soft);border-radius:0 12px 12px 0;padding:16px 18px}
+.ask ol{margin:8px 0 0;padding-left:20px;display:grid;gap:6px}
+/* barras */
+.bar{height:8px;background:var(--todo-soft);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--brand)}
+.bar i.c{background:var(--doing)}
+/* videos */
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.vid{border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;align-content:start}
+.vid.top{border-color:var(--brand);box-shadow:inset 0 3px 0 var(--brand)}
+.vid-h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.big{font-family:var(--display);font-size:26px;font-weight:800}
+.meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--muted)}
+.stages{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.stages li{display:grid;grid-template-columns:18px 1fr 40px;gap:8px;align-items:center;font-size:13.5px}
+.mark{width:14px;height:14px;border-radius:50%;border:2px solid var(--todo)}
+.mark.h{background:var(--ok);border-color:var(--ok)}
+.mark.c{border-color:var(--doing);background:conic-gradient(var(--doing) var(--p), transparent 0)}
+.next{font-size:13.5px;background:var(--panel);border-radius:8px;padding:8px 10px}
+/* frentes */
+.fronts{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+details.front{border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+details.front summary{cursor:pointer;list-style:none;display:grid;gap:8px}
+details.front summary::-webkit-details-marker{display:none}
+details.front summary:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:6px}
+.steps{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.steps li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:13.5px;border-top:1px solid var(--line);padding-top:8px}
+.steps small{grid-column:1/-1;color:var(--muted)}
+/* historial */
+.days{display:grid;gap:0}
+.day{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.day ul{margin:0;padding-left:18px;display:grid;gap:3px}
+@media (max-width:520px){.day{grid-template-columns:1fr}}
+footer{font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .6s ease}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Cómo va APROVECHO</h1>
-  <p class="sub" id="fecha"></p>
-
-  <div class="card hero">
-    <div id="ringTotal"></div>
+  <header>
     <div>
-      <div class="big" id="totalPct"></div>
-      <div>del proyecto terminado, contando los 4 frentes por igual.</div>
-      <div class="days" id="days"></div>
-      <div class="legend"><span>Hecho</span><span class="h">En camino / a revisar</span><span class="p">Todavía no empezó</span></div>
+      <h1>APROVECHO · Avance del proyecto</h1>
+      <div class="muted" id="fecha"></div>
     </div>
+    <div class="meta" id="leyenda"></div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Resumen"></section>
+
+  <div class="two">
+    <section class="panel">
+      <div class="sec-h"><h2>Prioridades</h2><span class="muted">en orden de urgencia</span></div>
+      <div class="scroll"><table class="tbl" id="prio"><thead><tr><th>#</th><th>Tarea</th><th>Estado</th><th>Vence</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="ask" aria-label="Lo que necesito de vos">
+      <h2>Lo que necesito de vos</h2>
+      <ol id="pedidos"></ol>
+    </section>
   </div>
 
-  <div class="card" style="margin-top:18px"><h2 style="margin:0 0 4px">Avance día a día</h2><p class="sub" style="margin:0 0 12px">Porcentaje total al cierre de cada día y lo que se hizo.</p><div id="chart"></div><div id="dias"></div></div>
+  <section class="panel">
+    <div class="sec-h"><h2>Videos</h2><span class="muted" id="vidRes"></span></div>
+    <div class="vids" id="vids"></div>
+  </section>
 
-  <div class="grid" id="resumen"></div>
-  <div id="frentes"></div>
+  <section class="panel">
+    <div class="sec-h"><h2>Frentes</h2><span class="muted">Tocá un frente para ver sus pasos</span></div>
+    <div class="fronts" id="fronts"></div>
+  </section>
 
-  <div class="note ask" id="pedidos"></div>
+  <section class="panel">
+    <div class="sec-h"><h2>Avance día a día</h2><span class="muted">% total al cierre de cada día</span></div>
+    <div id="chart"></div>
+    <div class="days" id="dias"></div>
+  </section>
 
-  <footer>Los porcentajes son <b>estimados</b>: un paso hecho vale 100%, a revisar 75% y lo que ya tiene base pero falta cerrar, un parcial. Se actualizan a mano en este archivo (bloque <code>DATOS</code>).</footer>
+  <footer>Porcentajes estimados por el equipo de agentes. Se actualizan en el bloque <code>DATOS</code> de este archivo (regla de CLAUDE.md §9.12). Cada cambio lo firma su agente en <code>docs/BITACORA.md</code>.</footer>
 </div>
 
 <script>
-// ===== DATOS: editar acá. pct = 0 a 100 (estimado) =====
+// ===== DATOS: editar acá. pct = 0 a 100. estado: hecho | curso | revisar | pendiente | bloqueado =====
 const DATOS = {
   actualizado: "2026-11-04",
   entrega: "2026-11-12",
-  // Avance diario: agregar una entrada por día (total = % al cierre; si es hoy, se calcula solo)
   historial: [
-    { fecha:"2026-11-03", total:39, hechos:["Lectura completa del plan y del Excel; extracto en docs/fuente","Marca: plataforma, mensajes, textos de la landing y conceptos de video","UX: bocetos v1 y v2 de la app; estructura de la landing","Identidad visual v1 (después se volvió al logo original)","Traspaso listo para ChatGPT: manual del líder y bitácora"] },
-    { fecha:"2026-11-04", hechos:["Codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales, inventario CSV)","Codex: tipografía y logo vigente; tablero de prioridades","Codex: 4 guiones y primer corte de «Una foto» (24 s)","Claude: guion detallado del onboarding y plan de producción; integración del trabajo de video","Decisiones tuyas: seguir la v3.2.1, onboarding primero, ChatGPT lidera"] }
+    { fecha:"2026-11-03", total:39, hechos:["Lectura completa del plan y del Excel; extracto en docs/fuente","Marca: plataforma, mensajes, textos de la landing y conceptos de video","UX: bocetos de la app y estructura de la landing","Identidad visual v1 (después se volvió al logo original)","Traspaso listo para ChatGPT: manual del líder y bitácora"] },
+    { fecha:"2026-11-04", hechos:["codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales)","codex: tipografía, logo vigente y 4 guiones; primer corte de «Una foto»","claude-octi-video: guion del onboarding, plan de producción, tablero y reglas de traspaso","Decisiones: seguir la v3.2.1, onboarding primero, ChatGPT lidera"] }
   ],
-  frentes: [
-    { id:"app", titulo:"Aplicación", prioridad:"Prioridad 1",
-      objetivo:"Prototipo navegable: consumidor + planes Base, Smart e Intelligence.",
-      pasos:[
-        {t:"Bocetos de consumidor y Base", pct:100, n:"UX v2: 10 pantallas con detección por foto."},
-        {t:"Cerrar alcance y brief", pct:100, n:"Aprobaste seguir el código de la v3.2.1."},
-        {t:"Completar consumidor y Base", pct:75, n:"Codex sumó barra inferior, fotos reales y varios productos con cantidades. A revisar."},
-        {t:"Smart (estación en tablet)", pct:75, n:"Hecha: peso, destino del excedente y tasa de recuperación. A revisar."},
-        {t:"Intelligence (panel de escritorio)", pct:75, n:"Hecho: sucursales, inventario CSV, sugerencias. A revisar."},
-        {t:"Integrar y corregir", pct:10, n:"Falta revisión del líder e integración en la rama principal."},
-        {t:"Probar y preparar la entrega", pct:0, n:"Recorrido completo y capturas finales."}
-      ],
-      coment:["El prototipo ya existe (rama codex/aprovecho-app): falta que lo revises.","La captura de inventario es una prueba: hay que rehacerla.","Quedan por decidir las funciones opcionales que venían de la v3.2.1."] },
-    { id:"video", titulo:"Videos", prioridad:"Prioridad 2",
-      objetivo:"4 videos: onboarding para comercios (primero), presentación y 2 publicidades.",
-      pasos:[
-        {t:"Aprobar los conceptos", pct:100, n:"«La vida de una medialuna», «Una foto», «¿Qué me tocó hoy?»."},
-        {t:"Elegir cuál va primero", pct:100, n:"Elegiste el onboarding para comercios."},
-        {t:"Guiones y storyboard", pct:75, n:"4 guiones + onboarding escena por escena. Falta tu OK."},
-        {t:"Producir el onboarding", pct:10, n:"Sacando capturas limpias del prototipo para montarlo."},
-        {t:"Producir «Una foto»", pct:50, n:"Primer corte de 24 s hecho; hay que mejorarlo (muy estático)."},
-        {t:"Producir «La vida de una medialuna»", pct:0, n:"Video de presentación."},
-        {t:"Producir «¿Qué me tocó hoy?»", pct:0, n:"Publicidad para consumidores."}
-      ],
-      coment:["Costo hasta ahora: USD 0 (Remotion + fotos aprobadas).","La voz en off se suma cuando apruebes los guiones."] },
-    { id:"landing", titulo:"Landing", prioridad:"Prioridad 3",
-      objetivo:"Alta de comercios, sección para inversores y lista de espera por barrio.",
-      pasos:[
-        {t:"Preparar los textos", pct:100, n:"Copy final escrito."},
-        {t:"Ordenar las secciones", pct:100, n:"Estructura hecha por UX."},
-        {t:"Cerrar contenido y brief", pct:40, n:"Brief 05 listo. Faltan decisiones de UX y onboarding."},
-        {t:"Construir y probar", pct:0, n:"Se publica solo con tu OK."}
-      ],
-      coment:["Es lo que más atrasado está en construcción: conviene arrancarla ya.","Las cifras con errores conocidos no se publican."] },
-    { id:"identidad", titulo:"Identidad visual", prioridad:"Apoyo a los 3 frentes",
-      objetivo:"Sistema visual único: logo, colores, tipografía y componentes.",
-      pasos:[
-        {t:"Sistema visual v1", pct:100, n:"Colores, componentes y guía."},
-        {t:"Logo oficial", pct:100, n:"Queda el sello original (1254 px, no hace falta vectorizar)."},
-        {t:"Tipografía sin estilo IA", pct:75, n:"Codex la actualizó; falta tu OK."}
-      ],
-      coment:["Solo falta tu OK de la tipografía."] }
+  prioridades: [
+    { t:"Video de onboarding para comercios", estado:"curso", prio:"alta", quien:"claude-octi-video", vence:"2026-11-06" },
+    { t:"Revisar e integrar el prototipo de la app", estado:"revisar", prio:"alta", quien:"líder (ChatGPT)", vence:"2026-11-06" },
+    { t:"Construir la landing", estado:"pendiente", prio:"alta", quien:"sin asignar", vence:"2026-11-10" },
+    { t:"Revisar propuestas de UX e identidad, una por una", estado:"pendiente", prio:"media", quien:"Octavio", vence:"2026-11-06" },
+    { t:"Mejorar el corte de «Una foto»", estado:"pendiente", prio:"media", quien:"video", vence:"2026-11-09" },
+    { t:"Presentación y publicidad para consumidores", estado:"pendiente", prio:"media", quien:"video", vence:"2026-11-10" },
+    { t:"Integración final y prueba completa", estado:"pendiente", prio:"alta", quien:"líder", vence:"2026-11-11" }
   ],
-  pedidos:[
-    "Revisar las propuestas de UX e identidad, una por una.",
+  pedidos: [
     "Aprobar el guion del onboarding (video/01-onboarding/guion.md).",
     "Revisar el prototipo de la app que hizo Codex.",
-    "Elegir un solo tablero: hay dos versiones en ramas distintas.",
-    "Pendientes de marca: IVA y moneda de precios, pie académico, datos del equipo y dominio."
+    "Revisar las propuestas de UX e identidad, una por una.",
+    "Agregar a Lola como colaboradora del repo en GitHub.",
+    "Pendientes de marca: IVA y moneda, pie académico, datos del equipo y dominio."
+  ],
+  etapasVideo: ["Guion","Storyboard","Material","Montaje","Voz y música","Revisión"],
+  videos: [
+    { id:"onb", titulo:"Onboarding para comercios", formato:"85 s · 16:9", prio:"alta", quien:"claude-octi-video", vence:"2026-11-06",
+      etapas:[75,50,20,0,0,0], estado:"curso", siguiente:"Terminar capturas limpias del prototipo y montar el primer corte en Remotion." },
+    { id:"pres", titulo:"Presentación · «La vida de una medialuna»", formato:"60–90 s · 16:9", prio:"media", quien:"video", vence:"2026-11-10",
+      etapas:[50,25,0,0,0,0], estado:"pendiente", siguiente:"Guion completo escena por escena (después del OK del onboarding)." },
+    { id:"foto", titulo:"Publicidad comercios · «Una foto»", formato:"24 s · 9:16", prio:"media", quien:"codex-video", vence:"2026-11-09",
+      etapas:[75,75,75,50,0,25], estado:"revisar", siguiente:"Primer corte hecho: darle movimiento y llenar el formato vertical." },
+    { id:"toco", titulo:"Publicidad consumidores · «¿Qué me tocó hoy?»", formato:"15–30 s · 9:16", prio:"media", quien:"video", vence:"2026-11-10",
+      etapas:[50,0,0,0,0,0], estado:"pendiente", siguiente:"Guion completo y elegir fotos reales para el unboxing." }
+  ],
+  frentes: [
+    { id:"app", titulo:"Aplicación", prio:"alta", objetivo:"Prototipo navegable: consumidor + Base, Smart e Intelligence.",
+      pasos:[
+        {t:"Bocetos de consumidor y Base", pct:100, n:"10 pantallas con detección por foto."},
+        {t:"Alcance y brief", pct:100, n:"Se sigue el código de la v3.2.1."},
+        {t:"Consumidor y Base", pct:75, n:"Barra inferior, fotos reales y varios productos. A revisar."},
+        {t:"Smart en tablet", pct:75, n:"Peso, destino del excedente y tasa de recuperación. A revisar."},
+        {t:"Intelligence en escritorio", pct:75, n:"Sucursales, inventario CSV y sugerencias. A revisar."},
+        {t:"Integrar y corregir", pct:10, n:"Hay un texto viejo sobre la comisión en «Elegí tu plan»."},
+        {t:"Prueba final", pct:0, n:"Recorrido completo y capturas."}
+      ]},
+    { id:"landing", titulo:"Landing", prio:"alta", objetivo:"Alta de comercios, inversores y lista de espera.",
+      pasos:[
+        {t:"Textos", pct:100, n:"Copy final escrito."},
+        {t:"Estructura", pct:100, n:"Hecha por UX."},
+        {t:"Cerrar contenido", pct:40, n:"Faltan decisiones de UX y onboarding."},
+        {t:"Construir y probar", pct:0, n:"Se publica solo con tu OK."}
+      ]},
+    { id:"identidad", titulo:"Identidad visual", prio:"media", objetivo:"Logo, colores, tipografía y componentes.",
+      pasos:[
+        {t:"Sistema visual v1", pct:100, n:"Colores, componentes y guía."},
+        {t:"Logo oficial", pct:100, n:"El sello original (1254 px)."},
+        {t:"Tipografía", pct:75, n:"Actualizada; falta tu OK."}
+      ]}
   ]
 };
 
 // ===== Código =====
 const $ = s => document.querySelector(s);
-const avg = a => Math.round(a.reduce((x,y)=>x+y,0)/a.length);
-const cls = p => p>=100?"done":p>0?"half":"";
-function ring(p,size=120,w=12,label=true){
-  const r=(size-w)/2,c=2*Math.PI*r,o=c*(1-p/100);
-  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="${p}%">
-  <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${w}"/>
-  <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${p>=100?'var(--ok)':'var(--forest)'}" stroke-width="${w}" stroke-linecap="round"
-    stroke-dasharray="${c}" stroke-dashoffset="${o}" transform="rotate(-90 ${size/2} ${size/2})"/>
-  ${label?`<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" font-size="${size/4}" font-weight="700" fill="var(--ink)">${p}%</text>`:""}</svg>`;
-}
-DATOS.frentes.forEach(f=>f.pct=avg(f.pasos.map(p=>p.pct)));
-const total = avg(DATOS.frentes.map(f=>f.pct));
+const avg = a => a.length ? Math.round(a.reduce((x,y)=>x+y,0)/a.length) : 0;
+const ESTADO = {hecho:"Hecho",curso:"En curso",revisar:"A revisar",pendiente:"Sin empezar",bloqueado:"Bloqueado"};
+const pill = e => `<span class="pill s-${e}">${ESTADO[e]}</span>`;
+const prio = p => `<span class="prio p-${p}">${p[0].toUpperCase()+p.slice(1)}</span>`;
+const dia = f => new Date(f+"T12:00").toLocaleDateString("es-AR",{weekday:"short",day:"numeric",month:"numeric"});
+const bar = p => `<div class="bar" role="img" aria-label="${p}%"><i class="${p<100?'c':''}" style="width:${p}%"></i></div>`;
+
+DATOS.videos.forEach(v => v.pct = avg(v.etapas));
+DATOS.frentes.forEach(f => f.pct = avg(f.pasos.map(p=>p.pct)));
+const videoPct = avg(DATOS.videos.map(v=>v.pct));
+const frentesTodos = [...DATOS.frentes, {titulo:"Videos", pct:videoPct}];
+const total = avg(frentesTodos.map(f=>f.pct));
 const hoy = new Date(DATOS.actualizado+"T12:00"), fin = new Date(DATOS.entrega+"T12:00");
 const dias = Math.round((fin-hoy)/864e5);
-$("#fecha").textContent = "Actualizado el " + hoy.toLocaleDateString("es-AR",{day:"numeric",month:"long"}) + " · entrega el jueves 12 de noviembre";
-$("#ringTotal").innerHTML = ring(total,150,16);
-$("#totalPct").textContent = total+"%";
-const hechos = DATOS.frentes.flatMap(f=>f.pasos).filter(p=>p.pct>=100).length, cant = DATOS.frentes.flatMap(f=>f.pasos).length;
-$("#days").innerHTML = `<span class="chip">Quedan ${dias} días</span><span class="chip g">${hechos} de ${cant} pasos hechos</span>`;
-$("#resumen").innerHTML = DATOS.frentes.map(f=>`<a class="card mini" href="#${f.id}" style="text-decoration:none;color:inherit">${ring(f.pct,96,10)}<b>${f.titulo}</b><small>${f.pasos.filter(p=>p.pct>=100).length} de ${f.pasos.length} pasos</small></a>`).join("");
-$("#frentes").innerHTML = DATOS.frentes.map(f=>{
-  const sig = f.pasos.findIndex(p=>p.pct<100);
-  return `<section id="${f.id}" class="card" style="margin-top:18px">
-  <div class="head">${ring(f.pct,64,8,false)}<div><span class="chip">${f.prioridad}</span><h2 style="margin:4px 0 0">${f.titulo}</h2></div><div class="pct">${f.pct}%</div></div>
-  <p class="goal"><b>Objetivo:</b> ${f.objetivo}</p>
-  <ol class="steps">${f.pasos.map((p,i)=>`<li class="step">
-    <div class="dot ${cls(p.pct)} ${i===sig?'now':''}">${p.pct>=100?'✓':i+1}</div>
-    <div><div class="t">${p.t}</div><div class="n">${p.n}</div><div class="bar"><i class="${p.pct<100?'h':''}" style="width:${p.pct}%"></i></div></div>
-    <div class="sp">${p.pct}%</div></li>`).join("")}</ol>
-  <div class="note"><b>Lo que hay pendiente</b><ul>${f.coment.map(c=>`<li>${c}</li>`).join("")}</ul></div>
-  </section>`}).join("");
-const H = DATOS.historial.map(h=>({...h,total:h.fecha===DATOS.actualizado?total:h.total}));
-const fmt = f => new Date(f+"T12:00").toLocaleDateString("es-AR",{weekday:"short",day:"numeric",month:"numeric"});
-{ const W=640,Hh=180,pad=30,bw=Math.min(70,(W-pad*2)/H.length-20);
-  $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${Hh+40}" width="100%" role="img" aria-label="Avance diario">
-  ${[0,25,50,75,100].map(v=>`<line x1="${pad}" x2="${W-pad}" y1="${10+Hh*(1-v/100)}" y2="${10+Hh*(1-v/100)}" stroke="var(--line)"/><text x="${pad-6}" y="${14+Hh*(1-v/100)}" text-anchor="end" font-size="11" fill="var(--muted)">${v}</text>`).join("")}
-  ${H.map((h,i)=>{const x=pad+20+i*(bw+40),hgt=Hh*h.total/100;return `<rect x="${x}" y="${10+Hh-hgt}" width="${bw}" height="${hgt}" rx="6" fill="${i===H.length-1?'var(--forest)':'#9BC4AE'}"/><text x="${x+bw/2}" y="${4+Hh-hgt}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">${h.total}%</text><text x="${x+bw/2}" y="${Hh+28}" text-anchor="middle" font-size="12" fill="var(--muted)">${fmt(h.fecha)}</text>`}).join("")}</svg>`;
-  $("#dias").innerHTML = H.slice().reverse().map(h=>`<div class="dia"><div><b>${fmt(h.fecha)}</b><div class="sub">${h.total}% total</div></div><ul>${h.hechos.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join(""); }
-$("#pedidos").innerHTML = `<b>Lo que necesito de vos</b><ul>${DATOS.pedidos.map(c=>`<li>${c}</li>`).join("")}</ul>`;
+
+$("#fecha").textContent = `Actualizado ${hoy.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"})} · Entrega jueves 12 de noviembre`;
+$("#leyenda").innerHTML = Object.keys(ESTADO).map(pill).join("");
+
+const enCurso = DATOS.prioridades.filter(p=>p.estado==="curso"||p.estado==="revisar").length;
+$("#kpis").innerHTML = [
+  [total+"%","Avance total del proyecto"],
+  [dias,"Días hasta la entrega", dias<=3],
+  [enCurso+" / "+DATOS.prioridades.length,"Prioridades en marcha"],
+  [DATOS.pedidos.length,"Decisiones que esperan por vos", DATOS.pedidos.length>0]
+].map(([b,s,w])=>`<div class="kpi ${w?'warn':''}"><b class="num">${b}</b><span>${s}</span></div>`).join("");
+
+$("#prio tbody").innerHTML = DATOS.prioridades.map((p,i)=>`<tr>
+  <td class="num">${i+1}</td>
+  <td><div><b>${p.t}</b></div><div class="who">${prio(p.prio)} · ${p.quien}</div></td>
+  <td>${pill(p.estado)}</td>
+  <td class="num">${dia(p.vence)}</td></tr>`).join("");
+$("#pedidos").innerHTML = DATOS.pedidos.map(p=>`<li>${p}</li>`).join("");
+
+$("#vidRes").textContent = `${videoPct}% en conjunto · ${DATOS.videos.length} piezas`;
+$("#vids").innerHTML = DATOS.videos.map((v,i)=>`<article class="vid ${i===0?'top':''}">
+  <div class="vid-h"><div><h3>${v.titulo}</h3><div class="meta"><span>${v.formato}</span><span>Vence ${dia(v.vence)}</span></div></div><div class="big num">${v.pct}%</div></div>
+  ${bar(v.pct)}
+  <div class="meta">${pill(v.estado)} ${prio(v.prio)} <span>${v.quien}</span></div>
+  <ul class="stages">${DATOS.etapasVideo.map((e,k)=>{const p=v.etapas[k];return `<li><span class="mark ${p>=100?'h':p>0?'c':''}" style="--p:${p}%"></span><span>${e}</span><span class="num muted" style="text-align:right">${p}%</span></li>`}).join("")}</ul>
+  <div class="next"><b>Sigue:</b> ${v.siguiente}</div>
+</article>`).join("");
+
+$("#fronts").innerHTML = DATOS.frentes.map(f=>`<details class="front">
+  <summary><div class="vid-h"><h3>${f.titulo}</h3><span class="big num">${f.pct}%</span></div>${bar(f.pct)}<div class="meta">${prio(f.prio)}<span>${f.objetivo}</span></div></summary>
+  <ul class="steps">${f.pasos.map(p=>`<li><span>${p.t}</span><span class="num">${p.pct}%</span><small>${p.n}</small></li>`).join("")}</ul>
+</details>`).join("");
+
+const H = DATOS.historial.map(h=>({...h, total: h.fecha===DATOS.actualizado ? total : h.total}));
+{ const W=720,Hh=170,L=70,R=60,T=24;
+  const x = i => H.length<2 ? L+(W-L-R)/2 : L + i*(W-L-R)/(H.length-1);
+  const y = v => T + Hh*(1-v/100);
+  const pts = H.map((h,i)=>`${x(i)},${y(h.total)}`).join(" ");
+  $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${Hh+T+34}" width="100%" role="img" aria-label="Avance total por día">
+  ${[0,25,50,75,100].map(v=>`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${v}%</text>`).join("")}
+  <polygon points="${x(0)},${y(0)} ${pts} ${x(H.length-1)},${y(0)}" fill="var(--brand-soft)"/>
+  <polyline points="${pts}" fill="none" stroke="var(--brand)" stroke-width="2.5"/>
+  ${H.map((h,i)=>`<circle cx="${x(i)}" cy="${y(h.total)}" r="${i===H.length-1?6:4}" fill="${i===H.length-1?'var(--brand)':'#fff'}" stroke="var(--brand)" stroke-width="2"/>
+  <text x="${x(i)+12}" y="${y(h.total)-12}" text-anchor="start" font-size="13" font-weight="700" fill="var(--ink)">${h.total}%</text>
+  <text x="${x(i)}" y="${Hh+T+24}" text-anchor="middle" font-size="12" fill="var(--muted)">${dia(h.fecha)}</text>`).join("")}</svg>`;
+  $("#dias").innerHTML = H.slice().reverse().map(h=>`<div class="day"><div><b>${dia(h.fecha)}</b><div class="muted num">${h.total}% total</div></div><ul>${h.hechos.map(t=>`<li>${t}</li>`).join("")}</ul></div>`).join("");
+}
 </script>
 </body>
 </html>

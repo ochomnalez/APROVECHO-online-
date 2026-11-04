@@ -27,3 +27,4 @@
 | 2026-11-03 23:22 | claude-lider | `claude/gallant-planck-ps6te6` | `5ea19f3` | Traspaso listo: ORQUESTADOR.md, bitácora, briefs 03b a 06, referencias v3, logo oficial | Usuario: responder ORQUESTADOR §7; asignar briefs 03b, 04 y 06 (Codex o Claude) |
 | 2026-11-04 19:15 | claude-video | `integ` | `9ad0e33` | Regla fija: todos los agentes actualizan el tablero; tablero integrado en la rama principal | — |
 | 2026-11-04 19:20 | claude-octi-video | `integ` | `e441c00` | Repo listo para traspaso a Lola (firmas persona+herramienta, estado al 4/11); tablero publicado | Lola: seguir ORQUESTADOR §0 |
+| 2026-11-04 19:26 | claude-octi-video | `integ` | `00677ff` | Tablero rediseñado: prioridades, pedidos, avance por video y por frente, avance diario | Actualizar DATOS al cerrar cada bloque |
