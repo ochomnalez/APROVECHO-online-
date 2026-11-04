@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APROVECHO · Avance</title>
+<style>
+:root{
+  --forest:#1A4D3A; --forest-d:#0F3326; --crust:#E07A2E; --crust-s:#A9490B; --crust-soft:#FBE3CC;
+  --cream:#FBF3E4; --mint:#DFFFD6; --ink:#14281F; --muted:#5B6B62; --line:#E4D9C3; --card:#fff; --ok:#2E7D32;
+}
+@media (prefers-color-scheme:dark){
+  :root{--cream:#0F1A15;--card:#16251E;--ink:#F3EBDA;--muted:#9DB0A5;--line:#2A3C33;--forest:#6FC79B;--forest-d:#9BE0BC;--crust-soft:#3A2614;--crust-s:#F0A468;--mint:#173626}
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--cream);color:var(--ink);font:16px/1.5 "Bricolage Grotesque","Outfit",system-ui,sans-serif;padding:20px 16px 60px}
+.wrap{max-width:980px;margin:0 auto}
+h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;line-height:1.1}
+.sub{color:var(--muted);margin:6px 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+@media(max-width:620px){.hero{grid-template-columns:1fr;justify-items:center;text-align:center}}
+.big{font-size:44px;font-weight:700;color:var(--forest)}
+.days{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.chip{background:var(--crust-soft);color:var(--crust-s);border-radius:99px;padding:4px 12px;font-size:14px;font-weight:600}
+.chip.g{background:var(--mint);color:var(--forest-d)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0 26px}
+.mini{text-align:center;cursor:pointer;transition:transform .15s}
+.mini:hover{transform:translateY(-2px)}
+.mini b{display:block;margin-top:4px}
+.mini small{color:var(--muted)}
+h2{font-size:22px;margin:30px 0 4px;letter-spacing:-.01em}
+.goal{color:var(--muted);margin-bottom:12px;font-size:15px}
+.head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.pct{margin-left:auto;font-size:30px;font-weight:700;color:var(--forest)}
+.steps{list-style:none;padding:0;position:relative}
+.step{display:grid;grid-template-columns:34px 1fr 48px;gap:12px;align-items:start;padding:10px 0;position:relative}
+.step:not(:last-child)::before{content:"";position:absolute;left:16px;top:40px;bottom:-8px;width:2px;background:var(--line)}
+.dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;border:2px solid var(--line);background:var(--card);color:var(--muted);z-index:1}
+.dot.done{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+.dot.half{border-color:var(--crust);color:var(--crust-s);background:var(--crust-soft)}
+.dot.now{box-shadow:0 0 0 4px var(--crust-soft);border-color:var(--crust)}
+.t{font-weight:600;line-height:1.3}
+.n{color:var(--muted);font-size:14px;margin:2px 0 6px}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--forest);border-radius:9px}
+.bar i.h{background:var(--crust)}
+.sp{font-weight:700;text-align:right;font-size:15px;padding-top:4px}
+.note{margin-top:14px;background:var(--mint);border-radius:12px;padding:12px 14px;font-size:15px}
+.note b{display:block;margin-bottom:4px;color:var(--forest-d)}
+.note ul{padding-left:18px}
+.ask{background:var(--crust-soft)}
+.ask b{color:var(--crust-s)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:6px 0 0}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--forest)}
+.legend .h::before{background:var(--crust)}.legend .p::before{background:var(--line)}
+footer{margin-top:34px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cómo va APROVECHO</h1>
+  <p class="sub" id="fecha"></p>
+
+  <div class="card hero">
+    <div id="ringTotal"></div>
+    <div>
+      <div class="big" id="totalPct"></div>
+      <div>del proyecto terminado, contando los 4 frentes por igual.</div>
+      <div class="days" id="days"></div>
+      <div class="legend"><span>Hecho</span><span class="h">En camino / a revisar</span><span class="p">Todavía no empezó</span></div>
+    </div>
+  </div>
+
+  <div class="grid" id="resumen"></div>
+  <div id="frentes"></div>
+
+  <div class="note ask" id="pedidos"></div>
+
+  <footer>Los porcentajes son <b>estimados</b>: un paso hecho vale 100%, a revisar 75% y lo que ya tiene base pero falta cerrar, un parcial. Se actualizan a mano en este archivo (bloque <code>DATOS</code>).</footer>
+</div>
+
+<script>
+// ===== DATOS: editar acá. pct = 0 a 100 (estimado) =====
+const DATOS = {
+  actualizado: "2026-11-04",
+  entrega: "2026-11-12",
+  frentes: [
+    { id:"app", titulo:"Aplicación", prioridad:"Prioridad 1",
+      objetivo:"Prototipo navegable: consumidor + planes Base, Smart e Intelligence.",
+      pasos:[
+        {t:"Bocetos de consumidor y Base", pct:100, n:"UX v2 hecha: 10 pantallas con detección por foto simulada."},
+        {t:"Cerrar alcance y brief", pct:30, n:"Brief 04 escrito. Falta tu OK para seguir con la v3.2.1 y tus pantallas de ejemplo."},
+        {t:"Completar UX consumidor y Base", pct:25, n:"Falta barra inferior, fotos reales variadas y varios productos con cantidades."},
+        {t:"Diseñar Smart", pct:0, n:"Tablet con balanza, destino del excedente y tasa de recuperación."},
+        {t:"Diseñar Intelligence", pct:0, n:"Panel de sucursales, inventario, predicción y recomendaciones."},
+        {t:"Construir el prototipo", pct:0, n:"Se programa recién con UX e identidad cerradas."},
+        {t:"Probar y preparar la entrega", pct:0, n:"Separar datos medidos, estimados y simulados."}
+      ],
+      coment:["El diseño ya tiene una base buena, pero falta decidir qué hacemos con la app anterior.","Es lo más largo del proyecto: 5 de 7 pasos sin empezar y quedan 8 días.","Sin tu OK al paso 2 no puedo arrancar la construcción."] },
+    { id:"video", titulo:"Videos", prioridad:"Prioridad 2",
+      objetivo:"3 videos: presentación, publicidad para comercios y para consumidores.",
+      pasos:[
+        {t:"Aprobar los conceptos", pct:100, n:"Ya aprobados: «La vida de una medialuna», «Una foto» y «¿Qué me tocó hoy?»."},
+        {t:"Elegir cuál se hace primero", pct:0, n:"Hay que decidir uno y su presupuesto."},
+        {t:"Guion y storyboard", pct:10, n:"Hay conceptos y un brief (06), pero no guion escrito."},
+        {t:"Producir «La vida de una medialuna»", pct:0, n:"Video de presentación (60–90 s)."},
+        {t:"Producir «Una foto»", pct:0, n:"Publicidad para comercios."},
+        {t:"Producir «¿Qué me tocó hoy?»", pct:0, n:"Publicidad para consumidores."}
+      ],
+      coment:["Los videos usan capturas de la app, así que dependen de que avance el prototipo.","Producir cuesta créditos: te voy a pasar el costo antes de generar nada.","Los guiones sí se pueden adelantar ya, sin gastar."] },
+    { id:"landing", titulo:"Landing", prioridad:"Prioridad 3",
+      objetivo:"Alta de comercios, sección para inversores y lista de espera por barrio.",
+      pasos:[
+        {t:"Preparar los textos", pct:100, n:"Contenido base integrado."},
+        {t:"Ordenar las secciones", pct:100, n:"Estructura de la landing hecha por UX."},
+        {t:"Cerrar contenido y brief", pct:30, n:"Brief 05 listo. Falta lista de espera, cifras públicas y onboarding."},
+        {t:"Construir y probar", pct:0, n:"Se publica solo con tu OK."}
+      ],
+      coment:["Es la más simple y está bien encaminada: ya tiene textos y estructura.","Hay cifras del plan con errores conocidos: las reviso antes de publicar.","Se construye al final, cuando la identidad esté confirmada."] },
+    { id:"identidad", titulo:"Identidad visual", prioridad:"Apoyo a los 3 frentes",
+      objetivo:"Sistema visual único: logo, colores, tipografía y componentes.",
+      pasos:[
+        {t:"Sistema visual v1", pct:100, n:"Colores, componentes y guía integrados."},
+        {t:"Revisar tipografía y logo", pct:75, n:"Cambio hecho, falta tu OK."},
+        {t:"Decidir el logo vectorial", pct:0, n:"Por ahora se usa el logo original. Hay que confirmar si lo redibujamos idéntico."}
+      ],
+      coment:["Casi terminada: lo que falta son 2 decisiones tuyas, no trabajo.","Con esto cerrado, app y landing pueden avanzar sin retrabajo."] }
+  ],
+  pedidos:[
+    "Mandame las pantallas de tu prototipo anterior.",
+    "Decime si seguimos con el código de la app v3.2.1 (yo digo que sí).",
+    "Aprobá o corregí las propuestas de UX e identidad.",
+    "Elegí qué video se hace primero.",
+    "Decime si el logo se redibuja idéntico en vector."
+  ]
+};
+
+// ===== Código =====
+const $ = s => document.querySelector(s);
+const avg = a => Math.round(a.reduce((x,y)=>x+y,0)/a.length);
+const cls = p => p>=100?"done":p>0?"half":"";
+function ring(p,size=120,w=12,label=true){
+  const r=(size-w)/2,c=2*Math.PI*r,o=c*(1-p/100);
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="${p}%">
+  <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${w}"/>
+  <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${p>=100?'var(--ok)':'var(--forest)'}" stroke-width="${w}" stroke-linecap="round"
+    stroke-dasharray="${c}" stroke-dashoffset="${o}" transform="rotate(-90 ${size/2} ${size/2})"/>
+  ${label?`<text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" font-size="${size/4}" font-weight="700" fill="var(--ink)">${p}%</text>`:""}</svg>`;
+}
+DATOS.frentes.forEach(f=>f.pct=avg(f.pasos.map(p=>p.pct)));
+const total = avg(DATOS.frentes.map(f=>f.pct));
+const hoy = new Date(DATOS.actualizado+"T12:00"), fin = new Date(DATOS.entrega+"T12:00");
+const dias = Math.round((fin-hoy)/864e5);
+$("#fecha").textContent = "Actualizado el " + hoy.toLocaleDateString("es-AR",{day:"numeric",month:"long"}) + " · entrega el jueves 12 de noviembre";
+$("#ringTotal").innerHTML = ring(total,150,16);
+$("#totalPct").textContent = total+"%";
+const hechos = DATOS.frentes.flatMap(f=>f.pasos).filter(p=>p.pct>=100).length, cant = DATOS.frentes.flatMap(f=>f.pasos).length;
+$("#days").innerHTML = `<span class="chip">Quedan ${dias} días</span><span class="chip g">${hechos} de ${cant} pasos hechos</span>`;
+$("#resumen").innerHTML = DATOS.frentes.map(f=>`<a class="card mini" href="#${f.id}" style="text-decoration:none;color:inherit">${ring(f.pct,96,10)}<b>${f.titulo}</b><small>${f.pasos.filter(p=>p.pct>=100).length} de ${f.pasos.length} pasos</small></a>`).join("");
+$("#frentes").innerHTML = DATOS.frentes.map(f=>{
+  const sig = f.pasos.findIndex(p=>p.pct<100);
+  return `<section id="${f.id}" class="card" style="margin-top:18px">
+  <div class="head">${ring(f.pct,64,8,false)}<div><span class="chip">${f.prioridad}</span><h2 style="margin:4px 0 0">${f.titulo}</h2></div><div class="pct">${f.pct}%</div></div>
+  <p class="goal"><b>Objetivo:</b> ${f.objetivo}</p>
+  <ol class="steps">${f.pasos.map((p,i)=>`<li class="step">
+    <div class="dot ${cls(p.pct)} ${i===sig?'now':''}">${p.pct>=100?'✓':i+1}</div>
+    <div><div class="t">${p.t}</div><div class="n">${p.n}</div><div class="bar"><i class="${p.pct<100?'h':''}" style="width:${p.pct}%"></i></div></div>
+    <div class="sp">${p.pct}%</div></li>`).join("")}</ol>
+  <div class="note"><b>Lo que hay pendiente</b><ul>${f.coment.map(c=>`<li>${c}</li>`).join("")}</ul></div>
+  </section>`}).join("");
+$("#pedidos").innerHTML = `<b>Lo que necesito de vos</b><ul>${DATOS.pedidos.map(c=>`<li>${c}</li>`).join("")}</ul>`;
+</script>
+</body>
+</html>
