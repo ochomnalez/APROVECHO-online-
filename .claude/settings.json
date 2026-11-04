@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/scripts/hooks/exigir-push.sh\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git config core.hooksPath scripts/hooks; echo 'Recordá: trabajá solo en TU rama (claude/<persona>-<rol>) y subí todo al terminar cada cambio (CLAUDE.md §0).'"
+          }
+        ]
+      }
+    ]
+  }
+}

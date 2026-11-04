@@ -2,6 +2,24 @@
 
 Este archivo lo lee **cada sesión/agente al arrancar**. Define el proyecto, la fuente de verdad y cómo trabajamos.
 
+## 0. OBLIGATORIO en cada respuesta (aunque el usuario no lo pida)
+
+Las personas del equipo (Octavio, Lola, etc.) **no saben usar git ni van a pedirlo**. Por eso, **cada vez que hagas cualquier cambio**, antes de terminar tu respuesta y sin preguntar:
+
+1. Actualizá el tablero (`docs/tablero/visual.html`, bloque `DATOS`) y agregá una línea a la bitácora: `scripts/bitacora.sh "<tu firma>" "<qué hiciste>" "<qué sigue>"`.
+2. `git add -A` y commit con el trailer `Agente: <tu firma>` (firma = `<herramienta>-<persona>-<rol>`, ej. `claude-lola-app`).
+3. `git push` a **tu rama propia** (la de tu sesión o `claude/aprovecho-<persona>-<rol>`). Nunca a `main`.
+4. Contale al usuario en una línea qué subiste y a qué rama.
+
+Hay un hook (`.claude/settings.json` → `scripts/hooks/exigir-push.sh`) que **no te deja terminar** si quedan cambios sin commitear o sin pushear.
+
+### Separación por persona (para que nadie contamine el trabajo de otro)
+
+- Cada persona tiene **sus propias ramas**: `claude/lola-<rol>` para Lola, `claude/octi-<rol>` o las ramas de sesión de Octavio. Al arrancar, si no estás en una rama tuya, creala desde la rama de integración: `git checkout -b claude/<persona>-<rol> origin/claude/gallant-planck-ps6te6`.
+- **Nunca** pushees, mergees ni reescribas ramas de otra persona ni la de integración (`claude/gallant-planck-ps6te6`) ni `main`.
+- Lo de otra persona entra a la integración **solo por Pull Request**, y lo revisa y aprueba **Octavio**.
+- Si algo sale mal, se descarta la rama de esa persona y lo demás queda intacto.
+
 ## 1. El proyecto
 
 APROVECHO es un emprendimiento (Universidad Austral, materia Emprendimientos 2026) que conecta comercios de comida que tienen excedentes aptos para consumo con consumidores cercanos que los compran en **packs a 50% de descuento** y los retiran en el local. Además usa los datos de cada operación para ayudar al comercio a **medir, entender y reducir** su desperdicio (planes Base, Smart e Intelligence).

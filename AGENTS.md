@@ -4,6 +4,10 @@ Este repo lo coordina un **agente líder (Claude)**. Las reglas completas están
 
 **¿Te toca ser el líder/orquestador?** (por ejemplo, ChatGPT reemplazando a Claude): leé **`docs/ORQUESTADOR.md`** antes de hacer nada.
 
+**OBLIGATORIO en cada tarea, aunque el usuario no lo pida:** al terminar, actualizá tablero y bitácora, commiteá y pusheá a tu rama propia (`CLAUDE.md` §0). El equipo no sabe usar git: hacelo vos siempre.
+
+**Separación por persona:** trabajá solo en ramas tuyas (`codex/<persona>-<rol>`); nunca pushees a ramas de otra persona, a la integración ni a `main`. Lo tuyo entra por PR (CLAUDE.md §0).
+
 Resumen obligatorio:
 
 1. **Fuente de verdad:** `docs/fuente/` (extracto del plan de negocios). No inventes datos; revisá `docs/fuente/09-inconsistencias-y-preguntas.md` antes de usar números.
