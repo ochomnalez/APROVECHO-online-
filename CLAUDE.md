@@ -62,7 +62,10 @@ Al terminar cada bloque de trabajo:
 
 1. Crear `docs/handoffs/AAAA-MM-DD-<rol>-<tema>.md` con la plantilla `docs/handoffs/_plantilla.md`
 2. Actualizar tu fila en `docs/ESTADO.md`
-3. Commit y push
+3. Agregar una línea a `docs/BITACORA.md` con `scripts/bitacora.sh "<agente>" "<qué hice>" "<próximo paso>"`
+4. Commit (con el trailer `Agente: <agente>`) y push
+
+Si te toca ser el **líder** (incluso ChatGPT/Codex reemplazando a Claude), seguí `docs/ORQUESTADOR.md`.
 
 Las decisiones que proponga un agente van en su handoff como `PROPUESTA-<rol>-N`; **el número D-NNN lo asigna el líder** al integrar (así no chocan).
 

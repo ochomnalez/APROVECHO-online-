@@ -32,6 +32,10 @@
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
 | Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
 
+## Próximos pasos
+
+Cola de trabajo y preguntas al usuario: **`docs/ORQUESTADOR.md` §6 y §7**. Historial: `docs/BITACORA.md`. Briefs listos: 03b (identidad), 04 (app), 05 (landing) y 06 (video).
+
 ## Pendientes del usuario
 
 - **Mandar las pantallas de ejemplo de su prototipo anterior** (referencia para el prototipo final).
