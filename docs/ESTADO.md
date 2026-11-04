@@ -30,7 +30,7 @@
 | Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | ✅ Entregado e integrado (falta validar PROPUESTA-identidad-1 a 5) | Vie 6/11 18:00 | `handoffs/2026-11-05-identidad-sistema-visual.md` |
 | Guion y video | `claude/aprovecho-video` | Sin abrir (espera a Marca) | Guiones: vie 6/11 · Videos: mar 10/11 | — |
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
-| Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
+| Desarrollo de la app | `codex/aprovecho-app` · Codex | Prototipo navegable v3.2.1 adaptado: consumidor, Base, Smart e Intelligence. Verificación local completada, listo para revisión | Mar 10/11 | [Prototipo y verificación](handoffs/2026-11-04-app-prototipo-navegable.md) |
 
 ## Próximos pasos
 
