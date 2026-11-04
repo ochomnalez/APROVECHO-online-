@@ -1,7 +1,7 @@
 // Video 1 · Onboarding para comercios (guion: video/01-onboarding/guion.md · voz: video/01-onboarding/voz-en-off.md)
 // 1920×1080 · 30 fps · 85 s. v2: transiciones suaves, motion graphics, celular siempre en movimiento.
 // Sin voz todavía: el texto de la voz va como subtítulo. Regla D-031: no se muestra el 75% ni el 25%.
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import {
   AbsoluteFill, Audio, Easing, Img, Sequence, continueRender, delayRender, interpolate,
   spring, staticFile, useCurrentFrame, useVideoConfig,
@@ -22,7 +22,7 @@ const GRIS = '#5E6F66';
 const TITULO = '"Bricolage Grotesque", Georgia, serif';
 const CUERPO = '"Atkinson Hyperlegible", "Trebuchet MS", sans-serif';
 export const FPS = 30;
-export const DURACION_ONB = 85;
+export const DURACION_ONB = 66.4;
 
 // ---- Fuentes locales ----
 const fuentes = [
@@ -38,11 +38,15 @@ if (typeof document !== 'undefined') {
 }
 
 const s = (seg) => Math.round(seg * FPS);
+// Cada escena corre a su propia velocidad (montaje ágil): el reloj interno avanza Vel veces más rápido
+const Vel = createContext(1);
+const useFrameReal = useCurrentFrame;
+const useF = () => useFrameReal() * useContext(Vel);
 const CL = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' };
 const ease = (f, a, b) => interpolate(f, [a, b], [0, 1], { ...CL, easing: Easing.out(Easing.cubic) });
 const suave = (f, a, b) => interpolate(f, [a, b], [0, 1], { ...CL, easing: Easing.inOut(Easing.cubic) });
 const useSpring = (desde = 0, cfg = { damping: 16, mass: 0.7 }) => {
-  const f = useCurrentFrame(); const { fps } = useVideoConfig();
+  const f = useF(); const { fps } = useVideoConfig();
   return spring({ frame: f - desde, fps, config: cfg });
 };
 
@@ -50,7 +54,7 @@ const useSpring = (desde = 0, cfg = { damping: 16, mass: 0.7 }) => {
 
 // Fondo vivo: formas de marca que derivan lento (no es una diapositiva quieta)
 function FondoVivo({ oscuro = false, semilla = 0 }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const t = f / FPS + semilla * 7;
   const c1 = oscuro ? 'rgba(223,255,214,.06)' : 'rgba(26,77,58,.06)';
   const c2 = oscuro ? 'rgba(224,122,46,.22)' : 'rgba(224,122,46,.16)';
@@ -69,7 +73,7 @@ function FondoVivo({ oscuro = false, semilla = 0 }) {
 
 // Título cinético: palabra por palabra, desde abajo con máscara
 function Cinetico({ texto, desde = 0, tam = 84, color = BOSQUE, paso = 3, peso = 800 }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const palabras = texto.split(' ');
   return (
     <h1 style={{ fontFamily: TITULO, fontWeight: peso, fontSize: tam, lineHeight: 1.04, letterSpacing: -1.5,
@@ -87,7 +91,7 @@ function Cinetico({ texto, desde = 0, tam = 84, color = BOSQUE, paso = 3, peso =
 }
 
 function Rotulo({ texto, desde = 0, claro = false, n }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const v = ease(f, desde, desde + 14);
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 26, opacity: v }}>
@@ -106,9 +110,10 @@ function Aparece({ desde = 0, children, dx = 0, dy = 26, style }) {
 
 // Subtítulo = voz en off (hasta grabar la voz): las palabras entran al ritmo de la locución, sin cartel
 function Subtitulo({ texto, claro = false, dur = 8, voz }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const palabras = texto.split(' ');
-  const ini = voz ? s(voz[0]) : 8, fin = voz ? s(voz[0] + voz[1]) - 6 : s(dur) - 20;
+  const k = useContext(Vel);
+  const ini = voz ? s(voz[0]) * k : 8, fin = voz ? s(voz[0] + voz[1]) * k - 6 : s(dur) - 20;
   const paso = (fin - ini) / palabras.length;
   const barra = ease(f, 0, 16);
   return (
@@ -131,7 +136,7 @@ function Subtitulo({ texto, claro = false, dur = 8, voz }) {
 }
 
 function Check({ desde = 0, size = 30, color = VERDE }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const c = ease(f, desde, desde + 8); const d = ease(f, desde + 5, desde + 16);
   return (
     <svg width={size} height={size} viewBox="0 0 26 26" style={{ flex: 'none' }}>
@@ -144,7 +149,7 @@ function Check({ desde = 0, size = 30, color = VERDE }) {
 
 // Toque en pantalla (onda que se expande)
 function Toque({ x, y, en }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const v = interpolate(f, [en, en + 18], [0, 1], CL);
   if (f < en - 6 || f > en + 20) return null;
   const pre = ease(f, en - 6, en);
@@ -161,7 +166,7 @@ function Toque({ x, y, en }) {
 // Celular: entra con giro, flota, y las pantallas se empujan como navegación real
 // tomas: [{src | render, desde (seg), toque:{x,y,en(seg)}}]
 function Celular({ tomas, x = 1200, y = 62, desde = 0, giro = -8 }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const e = useSpring(desde, { damping: 15, mass: 0.9 });
   const t = f / FPS;
   const W = 450, H = 956, R = 56, B = 14;
@@ -198,7 +203,7 @@ function Celular({ tomas, x = 1200, y = 62, desde = 0, giro = -8 }) {
 }
 
 const Contador = ({ hasta, desde, dur = 30, dec = 0, pre = '', suf = '' }) => {
-  const f = useCurrentFrame();
+  const f = useF();
   const v = interpolate(f, [desde, desde + dur], [0, hasta], { ...CL, easing: Easing.out(Easing.cubic) });
   return <>{pre}{v.toFixed(dec).replace('.', ',')}{suf}</>;
 };
@@ -207,7 +212,7 @@ const Contador = ({ hasta, desde, dur = 30, dec = 0, pre = '', suf = '' }) => {
 
 // 1 · Apertura: cámara en movimiento sobre la foto + gráfico 35,7% que se dibuja
 function E1() {
-  const f = useCurrentFrame();
+  const f = useF();
   const z = interpolate(f, [0, s(8.5)], [1.32, 1.04], { ...CL, easing: Easing.out(Easing.quad) });
   const px = interpolate(f, [0, s(8.5)], [-90, 40], CL);
   const mascara = suave(f, 0, 22);
@@ -248,7 +253,7 @@ function E1() {
 }
 
 function Campo({ label, valor, desde, archivo }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const n = Math.floor(interpolate(f, [desde, desde + s(0.8)], [0, valor.length], CL));
   const activo = f > desde;
   const sube = ease(f, desde, desde + 14);
@@ -268,7 +273,7 @@ function Campo({ label, valor, desde, archivo }) {
 
 // 2 · Alta: formulario que se completa solo, con pasos 1 → 2
 function E2() {
-  const f = useCurrentFrame();
+  const f = useF();
   const plan = f > s(3.4) ? 1 : -1;
   const e = useSpring(4, { damping: 17 });
   const ver = ease(f, s(6.2), s(6.8));
@@ -412,7 +417,7 @@ function E3() {
 
 // 4 · Foto del excedente: zoom desde la foto real hacia el celular, después la app detecta
 function E4() {
-  const f = useCurrentFrame();
+  const f = useF();
   const intro = s(2.4);
   const zoom = interpolate(f, [0, intro], [1, 3.1], { ...CL, easing: Easing.in(Easing.cubic) });
   const fueraFoto = suave(f, intro - 10, intro + 6);
@@ -455,7 +460,7 @@ function E4() {
 
 // 5 · Revisás y publicás
 function E5() {
-  const f = useCurrentFrame();
+  const f = useF();
   const pub = s(6.2);
   const burst = ease(f, pub + 10, pub + 30);
   return (
@@ -491,7 +496,7 @@ function E5() {
 
 // 6 · Venta y retiro
 function E6() {
-  const f = useCurrentFrame();
+  const f = useF();
   const sello = useSpring(s(7.4), { damping: 9, mass: 0.6 });
   return (
     <AbsoluteFill>
@@ -517,7 +522,7 @@ function E6() {
 // Documento que sale del celular al descargar el informe
 function Archivo({ desde }) {
   const e = useSpring(desde, { damping: 13, mass: 0.8 });
-  const f = useCurrentFrame();
+  const f = useF();
   if (f < desde) return null;
   return (
     <div style={{ position: 'absolute', left: 1200 - e * 1000, top: 620 - e * 80, width: 320, padding: '22px 22px 20px', borderRadius: 14, background: '#fff',
@@ -537,7 +542,7 @@ function Archivo({ desde }) {
 
 // 7 · Panel: barras y contadores animados
 function E7() {
-  const f = useCurrentFrame();
+  const f = useF();
   const barras = [1.7, 1.4, 1.2, 1.8, 1.3, 1.9, 0.6];
   return (
     <AbsoluteFill>
@@ -576,7 +581,7 @@ function E7() {
 }
 
 function Pantalla({ src, x, y, w, desde = 0, web = false, giro = 0 }) {
-  const f = useCurrentFrame();
+  const f = useF();
   const e = useSpring(desde, { damping: 16 });
   return (
     <div style={{ position: 'absolute', left: x, top: y, width: w, padding: web ? 10 : 16, borderRadius: web ? 14 : 30, background: TINTA,
@@ -589,7 +594,7 @@ function Pantalla({ src, x, y, w, desde = 0, web = false, giro = 0 }) {
 
 // 8 · Escalera de planes
 function E8() {
-  const f = useCurrentFrame();
+  const f = useF();
   const activo = f < s(3) ? 0 : f < s(6) ? 1 : 2;
   return (
     <AbsoluteFill>
@@ -620,7 +625,7 @@ function E8() {
 
 // 9 · Cierre: anillo que se dibuja alrededor del sello
 function E9() {
-  const f = useCurrentFrame();
+  const f = useF();
   const sc = useSpring(4, { damping: 12 });
   const anillo = ease(f, 0, 30);
   const C = 2 * Math.PI * 190;
@@ -639,16 +644,25 @@ function E9() {
         <Aparece desde={34}>
           <div style={{ marginTop: 30, padding: '20px 44px', borderRadius: 999, background: CORTEZA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 34 }}>Sumá tu comercio</div>
         </Aparece>
+        <div style={{ position: 'absolute', bottom: 28, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Daily Beetle”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
       </AbsoluteFill>
     </AbsoluteFill>
   );
 }
 
 // ---------- Montaje con transiciones ----------
-const T = 18; // frames de cada transición
+function Empuje({ children }) {
+  const f = useFrameReal();
+  const z = 1 + Math.min(f, 300) * 0.00012;
+  return <AbsoluteFill style={{ transform: `scale(${z})` }}>{children}</AbsoluteFill>;
+}
+
+const T = 12; // frames de cada transición
 const ESCENAS = [
-  [E1, 8], [E2, 8], [E3, 8], [E4, 12], [E5, 10], [E6, 11], [E7, 13], [E8, 10], [E9, 5],
+  // [escena, segundos reales] · el reloj interno se acelera para que entre todo (ORIG / real)
+  [E1, 6], [E2, 7], [E3, 8.6], [E4, 7.4], [E5, 8.4], [E6, 7.4], [E7, 9.2], [E8, 7.8], [E9, 4.6],
 ];
+const ORIG = [8, 8, 8, 12, 10, 11, 13, 10, 5];
 const TRANS = [
   () => wipe({ direction: 'from-left' }),
   () => slide({ direction: 'from-right' }),
@@ -661,20 +675,31 @@ const TRANS = [
 ];
 
 // Voz en off (ElevenLabs, voz "Chelo"): [segundo de entrada dentro de la escena, duración]
-const VOZ = [[0.5, 4.99], [0.5, 6.3], [0.3, 7.89], [0.5, 5.49], [0.5, 7.55], [0.5, 6.43], [0.5, 8.28], [0.5, 6.9], [0.5, 3.74]];
+const VOZ = [[0.4, 4.99], [0.35, 6.3], [0.25, 7.89], [1.2, 5.49], [0.35, 7.55], [0.35, 6.43], [0.35, 8.28], [0.35, 6.9], [0.35, 3.74]];
 const INICIOS = ESCENAS.reduce((acc, [, seg], i) => [...acc, i ? acc[i - 1] + ESCENAS[i - 1][1] : 0], []);
 
 export function Onboarding() {
   // cada escena se alarga lo que se come la transición, así el total sigue en 85 s
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
+      {/* Música: "Daily Beetle", Kevin MacLeod (incompetech.com), CC BY 4.0 — crédito en video/CREDITOS.md */}
+      <Audio src={staticFile('musica/daily-beetle.mp3')} volume={(f) => {
+        const total = Math.round(DURACION_ONB * FPS);
+        const entra = interpolate(f, [0, 12], [0, 1], CL);
+        const sale = interpolate(f, [total - 60, total], [1, 0], CL);
+        const t = f / FPS;
+        const hablando = VOZ.some(([ini, d], i) => t > INICIOS[i] + ini - 0.15 && t < INICIOS[i] + ini + d + 0.1);
+        return entra * sale * (hablando ? 0.2 : 0.42);
+      }} />
       {VOZ.map(([ini], i) => (
         <Sequence key={'v' + i} from={s(INICIOS[i] + ini)}><Audio src={staticFile(`voz/v${i + 1}.mp3`)} /></Sequence>
       ))}
       <TransitionSeries>
         {ESCENAS.map(([C, seg], i) => (
           <React.Fragment key={i}>
-            <TransitionSeries.Sequence durationInFrames={s(seg) + (i < ESCENAS.length - 1 ? T : 0)}><C /></TransitionSeries.Sequence>
+            <TransitionSeries.Sequence durationInFrames={s(seg) + (i < ESCENAS.length - 1 ? T : 0)}>
+              <Vel.Provider value={Math.max(1, ORIG[i] / seg)}><Empuje><C /></Empuje></Vel.Provider>
+            </TransitionSeries.Sequence>
             {i < ESCENAS.length - 1 && (
               <TransitionSeries.Transition presentation={TRANS[i]()} timing={springTiming({ config: { damping: 200 }, durationInFrames: T })} />
             )}
