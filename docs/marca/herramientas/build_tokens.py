@@ -41,8 +41,8 @@ for t,b,u,m in PAIRS:
     contrast.append({"texto":t,"fondo":b,"uso":u,"ratio":r,"minimo":m,"cumple":ok})
 if bad: print("FALLAN",[c for c in contrast if not c['cumple']]); sys.exit(1)
 T={
- "font":{"display":"'Bricolage Grotesque', 'Outfit', system-ui, sans-serif","body":"'Inter', system-ui, -apple-system, sans-serif",
-   "google-fonts-url":"https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap"},
+ "font":{"display":"'Bricolage Grotesque', 'Outfit', system-ui, sans-serif","body":"'DM Sans', system-ui, -apple-system, sans-serif",
+   "google-fonts-url":"https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap"},
  "size":{"xs":"0.75rem","sm":"0.875rem","base":"1rem","lg":"1.125rem","xl":"1.375rem","2xl":"1.75rem","3xl":"2.25rem","4xl":"3rem","5xl":"4rem","display-metric":"3.5rem"},
  "weight":{"regular":"400","medium":"500","semibold":"600","bold":"700","display":"800"},
  "line-height":{"tight":"1.1","snug":"1.25","normal":"1.5"},
