@@ -143,7 +143,7 @@ const DATOS = {
   entrega: "2026-11-12",
   historial: [
     { fecha:"2026-11-03", total:39, hechos:["Lectura completa del plan y del Excel; extracto en docs/fuente","Marca: plataforma, mensajes, textos de la landing y conceptos de video","UX: bocetos de la app y estructura de la landing","Identidad visual v1 (después se volvió al logo original)","Traspaso listo para ChatGPT: manual del líder y bitácora"] },
-    { fecha:"2026-11-04", hechos:["codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales)","codex: tipografía, logo vigente y 4 guiones; primer corte de «Una foto»","claude-octi-video: guion del onboarding, plan de producción, tablero y reglas de traspaso","Decisiones: seguir la v3.2.1, onboarding primero, ChatGPT lidera","claude-octi-video: capturas del onboarding (20 pantallas), guion ajustado sin el 75%, D-031 a D-036","claude-octi-video: guardado obligatorio y ramas separadas por persona (Lola no toca lo de Octavio)","claude-octi-video: primer corte del video de onboarding en Remotion (85 s, sin voz)","Lola arranca con solo decir «seguí el trabajo de Octi»"] }
+    { fecha:"2026-11-04", hechos:["codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales)","codex: tipografía, logo vigente y 4 guiones; primer corte de «Una foto»","claude-octi-video: guion del onboarding, plan de producción, tablero y reglas de traspaso","Decisiones: seguir la v3.2.1, onboarding primero, ChatGPT lidera","claude-octi-video: capturas del onboarding (20 pantallas), guion ajustado sin el 75%, D-031 a D-036","claude-octi-video: guardado obligatorio y ramas separadas por persona (Lola no toca lo de Octavio)","claude-octi-video: onboarding v2 en Remotion (transiciones, motion graphics, carta en código) y texto de la voz en off","Lola arranca con solo decir «seguí el trabajo de Octi»"] }
   ],
   prioridades: [
     { t:"Video de onboarding para comercios", estado:"curso", prio:"alta", quien:"claude-octi-video", vence:"2026-11-06" },
@@ -155,7 +155,7 @@ const DATOS = {
     { t:"Integración final y prueba completa", estado:"pendiente", prio:"alta", quien:"líder", vence:"2026-11-11" }
   ],
   pedidos: [
-    "Ver el primer corte del onboarding (video/salidas/onboarding.mp4) y aprobar.",
+    "Ver el onboarding v2 (video/salidas/onboarding.mp4) y aprobar el texto de la voz (video/01-onboarding/voz-en-off.md).",
     "Revisar el prototipo de la app que hizo Codex.",
     "Propuestas de identidad 5 a 9 (UX ya resuelta: D-032 a D-036).",
     "Proteger main y la rama de integración en GitHub (Settings → Branches).",
@@ -165,7 +165,7 @@ const DATOS = {
   etapasVideo: ["Guion","Storyboard","Material","Montaje","Voz y música","Revisión"],
   videos: [
     { id:"onb", titulo:"Onboarding para comercios", formato:"85 s · 16:9", prio:"alta", quien:"claude-octi-video", vence:"2026-11-06",
-      etapas:[100,100,90,70,0,0], estado:"revisar", siguiente:"Primer corte listo (sin voz): OK de Octavio, después voz y música." },
+      etapas:[100,100,90,70,0,0], estado:"revisar", siguiente:"v2 con transiciones y motion graphics: OK de Octavio, después voz y música." },
     { id:"pres", titulo:"Presentación · «La vida de una medialuna»", formato:"60–90 s · 16:9", prio:"media", quien:"video", vence:"2026-11-10",
       etapas:[50,25,0,0,0,0], estado:"pendiente", siguiente:"Guion completo escena por escena (después del OK del onboarding)." },
     { id:"foto", titulo:"Publicidad comercios · «Una foto»", formato:"24 s · 9:16", prio:"media", quien:"codex-video", vence:"2026-11-09",

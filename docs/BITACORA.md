@@ -33,3 +33,4 @@
 | 2026-11-04 19:36 | claude-octi-video | `integ` | `f134ece` | Decisiones D-031 a D-035 (sin 75%, inversores como sección, cálculo en Sumá tu comercio, alérgenos, carta por foto); guion ajustado | Montar el onboarding |
 | 2026-11-04 19:40 | claude-octi-video | `integ` | `ff1f785` | Guardado obligatorio (hook Stop), ramas separadas por persona con PR y bloqueo de push a integración; D-036 checklist opción B | Montar video de onboarding en Remotion |
 | 2026-11-04 19:47 | claude-octi-video | `integ` | `b03a807` | Primer corte del video de onboarding (Remotion, 85 s, sin voz) integrado; Lola arranca con «seguí el trabajo de Octi» | OK de Octavio al corte; después voz (ElevenLabs) y música |
+| 2026-11-04 19:56 | claude-octi-video | `integ` | `b872605` | Onboarding v2: transiciones, motion graphics, apertura animada, carta sin menú falso; voz en off escrita | OK de Octavio; voz y música |
