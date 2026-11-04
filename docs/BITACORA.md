@@ -26,3 +26,4 @@
 | 2026-11-03 19:54 | claude-lider | — | `776a1cf` | lider: logo original se mantiene, regla anti AI slop, prototipo con Base, Smart e Intelligence | — |
 | 2026-11-03 23:22 | claude-lider | `claude/gallant-planck-ps6te6` | `5ea19f3` | Traspaso listo: ORQUESTADOR.md, bitácora, briefs 03b a 06, referencias v3, logo oficial | Usuario: responder ORQUESTADOR §7; asignar briefs 03b, 04 y 06 (Codex o Claude) |
 | 2026-11-04 18:42 | claude-tablero | `claude/bold-allen-cji06c` | `9ad0e33` | Tablero visual con % por paso y comentarios (docs/tablero/visual.html) | Actualizar el bloque DATOS al cerrar cada paso |
+| 2026-11-04 19:15 | claude-video | `tablero-tmp` | `c6c381a` | Tablero: fondo blanco, avance día a día y estado real (app de Codex, videos) | Agregar una entrada en historial cada día |

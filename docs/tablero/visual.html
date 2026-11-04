@@ -7,10 +7,7 @@
 <style>
 :root{
   --forest:#1A4D3A; --forest-d:#0F3326; --crust:#E07A2E; --crust-s:#A9490B; --crust-soft:#FBE3CC;
-  --cream:#FBF3E4; --mint:#DFFFD6; --ink:#14281F; --muted:#5B6B62; --line:#E4D9C3; --card:#fff; --ok:#2E7D32;
-}
-@media (prefers-color-scheme:dark){
-  :root{--cream:#0F1A15;--card:#16251E;--ink:#F3EBDA;--muted:#9DB0A5;--line:#2A3C33;--forest:#6FC79B;--forest-d:#9BE0BC;--crust-soft:#3A2614;--crust-s:#F0A468;--mint:#173626}
+  --cream:#FFFFFF; --mint:#DFFFD6; --ink:#14281F; --muted:#5B6B62; --line:#E4D9C3; --card:#FFFFFF; --ok:#2E7D32;
 }
 *{box-sizing:border-box;margin:0}
 body{background:var(--cream);color:var(--ink);font:16px/1.5 "Bricolage Grotesque","Outfit",system-ui,sans-serif;padding:20px 16px 60px}
@@ -46,6 +43,10 @@ h2{font-size:22px;margin:30px 0 4px;letter-spacing:-.01em}
 .bar i{display:block;height:100%;background:var(--forest);border-radius:9px}
 .bar i.h{background:var(--crust)}
 .sp{font-weight:700;text-align:right;font-size:15px;padding-top:4px}
+.card{box-shadow:0 1px 3px rgba(20,40,31,.06)}
+.dia{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.dia:first-of-type{border-top:0}
+.dia b{font-size:15px}.dia ul{margin:0;padding-left:18px;font-size:15px}
 .note{margin-top:14px;background:var(--mint);border-radius:12px;padding:12px 14px;font-size:15px}
 .note b{display:block;margin-bottom:4px;color:var(--forest-d)}
 .note ul{padding-left:18px}
@@ -72,6 +73,8 @@ footer{margin-top:34px;color:var(--muted);font-size:13px}
     </div>
   </div>
 
+  <div class="card" style="margin-top:18px"><h2 style="margin:0 0 4px">Avance día a día</h2><p class="sub" style="margin:0 0 12px">Porcentaje total al cierre de cada día y lo que se hizo.</p><div id="chart"></div><div id="dias"></div></div>
+
   <div class="grid" id="resumen"></div>
   <div id="frentes"></div>
 
@@ -85,54 +88,60 @@ footer{margin-top:34px;color:var(--muted);font-size:13px}
 const DATOS = {
   actualizado: "2026-11-04",
   entrega: "2026-11-12",
+  // Avance diario: agregar una entrada por día (total = % al cierre; si es hoy, se calcula solo)
+  historial: [
+    { fecha:"2026-11-03", total:39, hechos:["Lectura completa del plan y del Excel; extracto en docs/fuente","Marca: plataforma, mensajes, textos de la landing y conceptos de video","UX: bocetos v1 y v2 de la app; estructura de la landing","Identidad visual v1 (después se volvió al logo original)","Traspaso listo para ChatGPT: manual del líder y bitácora"] },
+    { fecha:"2026-11-04", hechos:["Codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales, inventario CSV)","Codex: tipografía y logo vigente; tablero de prioridades","Codex: 4 guiones y primer corte de «Una foto» (24 s)","Claude: guion detallado del onboarding y plan de producción; integración del trabajo de video","Decisiones tuyas: seguir la v3.2.1, onboarding primero, ChatGPT lidera"] }
+  ],
   frentes: [
     { id:"app", titulo:"Aplicación", prioridad:"Prioridad 1",
       objetivo:"Prototipo navegable: consumidor + planes Base, Smart e Intelligence.",
       pasos:[
-        {t:"Bocetos de consumidor y Base", pct:100, n:"UX v2 hecha: 10 pantallas con detección por foto simulada."},
-        {t:"Cerrar alcance y brief", pct:30, n:"Brief 04 escrito. Falta tu OK para seguir con la v3.2.1 y tus pantallas de ejemplo."},
-        {t:"Completar UX consumidor y Base", pct:25, n:"Falta barra inferior, fotos reales variadas y varios productos con cantidades."},
-        {t:"Diseñar Smart", pct:0, n:"Tablet con balanza, destino del excedente y tasa de recuperación."},
-        {t:"Diseñar Intelligence", pct:0, n:"Panel de sucursales, inventario, predicción y recomendaciones."},
-        {t:"Construir el prototipo", pct:0, n:"Se programa recién con UX e identidad cerradas."},
-        {t:"Probar y preparar la entrega", pct:0, n:"Separar datos medidos, estimados y simulados."}
+        {t:"Bocetos de consumidor y Base", pct:100, n:"UX v2: 10 pantallas con detección por foto."},
+        {t:"Cerrar alcance y brief", pct:100, n:"Aprobaste seguir el código de la v3.2.1."},
+        {t:"Completar consumidor y Base", pct:75, n:"Codex sumó barra inferior, fotos reales y varios productos con cantidades. A revisar."},
+        {t:"Smart (estación en tablet)", pct:75, n:"Hecha: peso, destino del excedente y tasa de recuperación. A revisar."},
+        {t:"Intelligence (panel de escritorio)", pct:75, n:"Hecho: sucursales, inventario CSV, sugerencias. A revisar."},
+        {t:"Integrar y corregir", pct:10, n:"Falta revisión del líder e integración en la rama principal."},
+        {t:"Probar y preparar la entrega", pct:0, n:"Recorrido completo y capturas finales."}
       ],
-      coment:["El diseño ya tiene una base buena, pero falta decidir qué hacemos con la app anterior.","Es lo más largo del proyecto: 5 de 7 pasos sin empezar y quedan 8 días.","Sin tu OK al paso 2 no puedo arrancar la construcción."] },
+      coment:["El prototipo ya existe (rama codex/aprovecho-app): falta que lo revises.","La captura de inventario es una prueba: hay que rehacerla.","Quedan por decidir las funciones opcionales que venían de la v3.2.1."] },
     { id:"video", titulo:"Videos", prioridad:"Prioridad 2",
-      objetivo:"3 videos: presentación, publicidad para comercios y para consumidores.",
+      objetivo:"4 videos: onboarding para comercios (primero), presentación y 2 publicidades.",
       pasos:[
-        {t:"Aprobar los conceptos", pct:100, n:"Ya aprobados: «La vida de una medialuna», «Una foto» y «¿Qué me tocó hoy?»."},
-        {t:"Elegir cuál se hace primero", pct:0, n:"Hay que decidir uno y su presupuesto."},
-        {t:"Guion y storyboard", pct:10, n:"Hay conceptos y un brief (06), pero no guion escrito."},
-        {t:"Producir «La vida de una medialuna»", pct:0, n:"Video de presentación (60–90 s)."},
-        {t:"Producir «Una foto»", pct:0, n:"Publicidad para comercios."},
+        {t:"Aprobar los conceptos", pct:100, n:"«La vida de una medialuna», «Una foto», «¿Qué me tocó hoy?»."},
+        {t:"Elegir cuál va primero", pct:100, n:"Elegiste el onboarding para comercios."},
+        {t:"Guiones y storyboard", pct:75, n:"4 guiones + onboarding escena por escena. Falta tu OK."},
+        {t:"Producir el onboarding", pct:10, n:"Sacando capturas limpias del prototipo para montarlo."},
+        {t:"Producir «Una foto»", pct:50, n:"Primer corte de 24 s hecho; hay que mejorarlo (muy estático)."},
+        {t:"Producir «La vida de una medialuna»", pct:0, n:"Video de presentación."},
         {t:"Producir «¿Qué me tocó hoy?»", pct:0, n:"Publicidad para consumidores."}
       ],
-      coment:["Los videos usan capturas de la app, así que dependen de que avance el prototipo.","Producir cuesta créditos: te voy a pasar el costo antes de generar nada.","Los guiones sí se pueden adelantar ya, sin gastar."] },
+      coment:["Costo hasta ahora: USD 0 (Remotion + fotos aprobadas).","La voz en off se suma cuando apruebes los guiones."] },
     { id:"landing", titulo:"Landing", prioridad:"Prioridad 3",
       objetivo:"Alta de comercios, sección para inversores y lista de espera por barrio.",
       pasos:[
-        {t:"Preparar los textos", pct:100, n:"Contenido base integrado."},
-        {t:"Ordenar las secciones", pct:100, n:"Estructura de la landing hecha por UX."},
-        {t:"Cerrar contenido y brief", pct:30, n:"Brief 05 listo. Falta lista de espera, cifras públicas y onboarding."},
+        {t:"Preparar los textos", pct:100, n:"Copy final escrito."},
+        {t:"Ordenar las secciones", pct:100, n:"Estructura hecha por UX."},
+        {t:"Cerrar contenido y brief", pct:40, n:"Brief 05 listo. Faltan decisiones de UX y onboarding."},
         {t:"Construir y probar", pct:0, n:"Se publica solo con tu OK."}
       ],
-      coment:["Es la más simple y está bien encaminada: ya tiene textos y estructura.","Hay cifras del plan con errores conocidos: las reviso antes de publicar.","Se construye al final, cuando la identidad esté confirmada."] },
+      coment:["Es lo que más atrasado está en construcción: conviene arrancarla ya.","Las cifras con errores conocidos no se publican."] },
     { id:"identidad", titulo:"Identidad visual", prioridad:"Apoyo a los 3 frentes",
       objetivo:"Sistema visual único: logo, colores, tipografía y componentes.",
       pasos:[
-        {t:"Sistema visual v1", pct:100, n:"Colores, componentes y guía integrados."},
-        {t:"Revisar tipografía y logo", pct:75, n:"Cambio hecho, falta tu OK."},
-        {t:"Decidir el logo vectorial", pct:0, n:"Por ahora se usa el logo original. Hay que confirmar si lo redibujamos idéntico."}
+        {t:"Sistema visual v1", pct:100, n:"Colores, componentes y guía."},
+        {t:"Logo oficial", pct:100, n:"Queda el sello original (1254 px, no hace falta vectorizar)."},
+        {t:"Tipografía sin estilo IA", pct:75, n:"Codex la actualizó; falta tu OK."}
       ],
-      coment:["Casi terminada: lo que falta son 2 decisiones tuyas, no trabajo.","Con esto cerrado, app y landing pueden avanzar sin retrabajo."] }
+      coment:["Solo falta tu OK de la tipografía."] }
   ],
   pedidos:[
-    "Mandame las pantallas de tu prototipo anterior.",
-    "Decime si seguimos con el código de la app v3.2.1 (yo digo que sí).",
-    "Aprobá o corregí las propuestas de UX e identidad.",
-    "Elegí qué video se hace primero.",
-    "Decime si el logo se redibuja idéntico en vector."
+    "Revisar las propuestas de UX e identidad, una por una.",
+    "Aprobar el guion del onboarding (video/01-onboarding/guion.md).",
+    "Revisar el prototipo de la app que hizo Codex.",
+    "Elegir un solo tablero: hay dos versiones en ramas distintas.",
+    "Pendientes de marca: IVA y moneda de precios, pie académico, datos del equipo y dominio."
   ]
 };
 
@@ -169,6 +178,13 @@ $("#frentes").innerHTML = DATOS.frentes.map(f=>{
     <div class="sp">${p.pct}%</div></li>`).join("")}</ol>
   <div class="note"><b>Lo que hay pendiente</b><ul>${f.coment.map(c=>`<li>${c}</li>`).join("")}</ul></div>
   </section>`}).join("");
+const H = DATOS.historial.map(h=>({...h,total:h.fecha===DATOS.actualizado?total:h.total}));
+const fmt = f => new Date(f+"T12:00").toLocaleDateString("es-AR",{weekday:"short",day:"numeric",month:"numeric"});
+{ const W=640,Hh=180,pad=30,bw=Math.min(70,(W-pad*2)/H.length-20);
+  $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${Hh+40}" width="100%" role="img" aria-label="Avance diario">
+  ${[0,25,50,75,100].map(v=>`<line x1="${pad}" x2="${W-pad}" y1="${10+Hh*(1-v/100)}" y2="${10+Hh*(1-v/100)}" stroke="var(--line)"/><text x="${pad-6}" y="${14+Hh*(1-v/100)}" text-anchor="end" font-size="11" fill="var(--muted)">${v}</text>`).join("")}
+  ${H.map((h,i)=>{const x=pad+20+i*(bw+40),hgt=Hh*h.total/100;return `<rect x="${x}" y="${10+Hh-hgt}" width="${bw}" height="${hgt}" rx="6" fill="${i===H.length-1?'var(--forest)':'#9BC4AE'}"/><text x="${x+bw/2}" y="${4+Hh-hgt}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">${h.total}%</text><text x="${x+bw/2}" y="${Hh+28}" text-anchor="middle" font-size="12" fill="var(--muted)">${fmt(h.fecha)}</text>`}).join("")}</svg>`;
+  $("#dias").innerHTML = H.slice().reverse().map(h=>`<div class="dia"><div><b>${fmt(h.fecha)}</b><div class="sub">${h.total}% total</div></div><ul>${h.hechos.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join(""); }
 $("#pedidos").innerHTML = `<b>Lo que necesito de vos</b><ul>${DATOS.pedidos.map(c=>`<li>${c}</li>`).join("")}</ul>`;
 </script>
 </body>
