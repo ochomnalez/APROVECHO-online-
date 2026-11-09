@@ -1,0 +1,151 @@
+{
+ "e1": {
+  "dur": 5.28,
+  "a0": 0.23,
+  "a1": 4.89,
+  "segs": [
+   {
+    "t": "Bienvenido a APROVECHO.",
+    "a": 0.23,
+    "b": 1.7
+   },
+   {
+    "t": "Te mostramos cómo empezar, paso a paso.",
+    "a": 2.35,
+    "b": 4.89
+   }
+  ]
+ },
+ "e2": {
+  "dur": 12.92,
+  "a0": 0.25,
+  "a1": 12.51,
+  "segs": [
+   {
+    "t": "Entrás como comercio y elegís tu plan.",
+    "a": 0.25,
+    "b": 2.59
+   },
+   {
+    "t": "Cargás tu carta con una foto de tu lista de precios: la app lee los productos y los precios sola.",
+    "a": 2.96,
+    "b": 9.24
+   },
+   {
+    "t": "Y llegás a Hoy, tu pantalla principal.",
+    "a": 9.9,
+    "b": 12.51
+   }
+  ]
+ },
+ "e3": {
+  "dur": 18.88,
+  "a0": 0.35,
+  "a1": 18.61,
+  "segs": [
+   {
+    "t": "Cuando sobra mercadería, sacás una foto.",
+    "a": 0.35,
+    "b": 2.76
+   },
+   {
+    "t": "La app reconoce cada producto y cuenta cuántos hay.",
+    "a": 3.47,
+    "b": 6.48
+   },
+   {
+    "t": "Arma los packs, el precio y el horario de retiro.",
+    "a": 7.21,
+    "b": 10.17
+   },
+   {
+    "t": "Vos revisás, confirmás que la comida es del día, la cadena de frío y los alérgenos, y publicás.",
+    "a": 10.91,
+    "b": 16.44
+   },
+   {
+    "t": "La decisión siempre es tuya.",
+    "a": 17.05,
+    "b": 18.61
+   }
+  ]
+ },
+ "e4": {
+  "dur": 13.48,
+  "a0": 0.29,
+  "a1": 13.13,
+  "segs": [
+   {
+    "t": "El vecino ve tu pack en la app, reserva y paga.",
+    "a": 0.29,
+    "b": 3.63
+   },
+   {
+    "t": "Recibe un código QR para retirarlo.",
+    "a": 4.3,
+    "b": 6.37
+   },
+   {
+    "t": "Vos lo escaneás en el local y la venta queda registrada.",
+    "a": 7.06,
+    "b": 10.07
+   },
+   {
+    "t": "Cobrás cada venta, sin abono fijo.",
+    "a": 10.91,
+    "b": 13.13
+   }
+  ]
+ },
+ "e5": {
+  "dur": 5.48,
+  "a0": 0.26,
+  "a1": 5.14,
+  "segs": [
+   {
+    "t": "En Impacto ves cuánto recuperaste y descargás tu informe en Excel o PDF.",
+    "a": 0.26,
+    "b": 5.14
+   }
+  ]
+ },
+ "e6": {
+  "dur": 14.88,
+  "a0": 0.3,
+  "a1": 14.65,
+  "segs": [
+   {
+    "t": "Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.",
+    "a": 0.3,
+    "b": 6.01
+   },
+   {
+    "t": "La balanza pesa lo que sobra y la cámara lo reconoce.",
+    "a": 6.74,
+    "b": 9.78
+   },
+   {
+    "t": "Vos elegís si va a venta o a la basura, y registrás el motivo.",
+    "a": 10.63,
+    "b": 14.65
+   }
+  ]
+ },
+ "e9": {
+  "dur": 4.64,
+  "a0": 0.29,
+  "a1": 4.27,
+  "segs": [
+   {
+    "t": "Menos desperdicio, más aprovecho.",
+    "a": 0.29,
+    "b": 2.61
+   },
+   {
+    "t": "Sumá tu comercio.",
+    "a": 3.31,
+    "b": 4.27
+   }
+  ]
+ }
+}
