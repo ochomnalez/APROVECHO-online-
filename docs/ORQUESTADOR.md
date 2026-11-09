@@ -11,11 +11,10 @@
 5. **Tablero publicado:** https://claude.ai/artifact/Bpquyus65SucbgcwkDgfqV (artifact de Octavio). Quien no tenga acceso usa `docs/tablero/visual.html` del repo y lo abre en el navegador.
 6. **Antes de tomar el mando:** fijate en la bitácora quién está trabajando; si hay otro líder activo, coordiná con el usuario para no pisarse.
 
-### Facundo (se suma al video y a lo que haga falta)
+### Facundo (usa Gemini; se suma al video y a lo que haga falta)
 1. Octavio lo agrega como colaborador del repo en GitHub (Settings → Collaborators → Add people) y Facundo acepta la invitación.
-2. Facundo abre claude.ai/code, elige el repo `ochomnalez/APROVECHO-online-` y escribe: **"Hola, soy Facundo. Octavio me pidió que me muestres la bienvenida."**
-3. Su Claude sigue `docs/bienvenida/facundo.md` (explica el proyecto, el repo y cómo conectar las aplicaciones) y trabaja en su rama (firma `claude-facundo-<rol>`), con PR para que revise Octavio.
-4. Mensaje listo para mandarle: `docs/bienvenida/mensaje-para-facundo.md`.
+2. Facundo abre el repo en **GitHub Codespaces** (navegador), instala Gemini CLI y escribe: **"Hola, soy Facundo. Octavio me pidió que me muestres la bienvenida."** (pasos en `docs/bienvenida/mensaje-para-facundo.md`).
+3. Su Gemini sigue `docs/bienvenida/facundo.md` y trabaja en `gemini/facundo-<rol>` (firma `gemini-facundo-<rol>`), con PR para que revise Octavio.
 
 ### Traspaso a alguien que usa Gemini
 Instructivo completo en `docs/INSTRUCTIVO-GEMINI.md`; reglas para el agente en `GEMINI.md`. Rama propia `gemini/<persona>-<rol>`, firma `gemini-<persona>-<rol>`, mensaje inicial "seguí el trabajo de Octi". Gemini no tiene los controles automáticos de Claude Code (no hay hook que obligue a guardar): la regla está escrita y hay que recordársela. El hook `pre-push` sí se activa con `git config core.hooksPath scripts/hooks`.

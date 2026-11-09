@@ -33,6 +33,8 @@ Es **Lola** (compañera de Octavio). No sabe usar git ni Claude: hacé todo vos,
 
 ## Si es la primera vez de una persona nueva (ej. Facundo) o te dicen "Octavio me pidió que me muestres la bienvenida"
 
+> Nota: Facundo usa **Gemini**, no Claude (sus reglas están en `GEMINI.md`). Este bloque aplica a cualquier persona nueva que use Claude.
+
 1. Si no sabés quién es, preguntale el nombre una sola vez. Firmás `claude-<nombre>-<rol>`.
 2. Mostrale la **bienvenida guiada**: leé `docs/bienvenida/<nombre>.md` (si existe; para Facundo: `docs/bienvenida/facundo.md`) y seguila **paso a paso, un mensaje corto por vez**. La persona puede no saber nada de GitHub, repositorios, ramas ni conectores: explicalo en palabras simples y no le pidas usar la terminal.
 3. Rama: si tu sesión ya te asignó una rama, esa es tu rama propia (usala). Si no, creá `claude/<nombre>-<rol>` desde `origin/claude/gallant-planck-ps6te6`. Nunca pushees a la rama de integración ni a `main` (ver "Separación por persona").

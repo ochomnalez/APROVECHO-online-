@@ -14,6 +14,12 @@ La persona del equipo **no sabe usar git**: hacé todo vos, sin pedirle nada té
 5. El video de Octi está en la rama `claude/aprovecho-video` (`video/src/Onboarding.jsx`). Leelo desde ahí, pero **trabajá en tu rama**.
 6. Contale a la persona en 3 líneas qué vas a hacer y arrancá. Pedile OK solo para lo caro o largo (créditos, generar imágenes/video/voz, publicar).
 
+## Si es la primera vez de una persona nueva (ej. Facundo) o te dicen "Octavio me pidió que me muestres la bienvenida"
+1. Si no sabés quién es, preguntale el nombre una sola vez. Firmás `gemini-<nombre>-<rol>`.
+2. Leé `docs/bienvenida/<nombre>.md` (para Facundo: `docs/bienvenida/facundo.md`) y mostrala **paso a paso, un mensaje corto por vez**. La persona puede no saber nada de GitHub, ramas ni conectores: explicalo en palabras simples y no le pidas comandos de git.
+3. Tu rama es `gemini/<nombre>-<rol>`. Nunca pushees a la rama de integración ni a `main`.
+4. Orientala para usar las aplicaciones externas (Higgsfield, ElevenLabs, Google AI Studio, etc.), de lo más simple (la web de cada app) a lo avanzado (conectores), **sin gastar créditos ni generar nada sin OK de Octavio**.
+
 ## Reglas obligatorias (aunque nadie te lo pida)
 - **Después de cada cambio:** actualizá el tablero (`docs/tablero/visual.html`, bloque `DATOS`), corré `scripts/bitacora.sh "<tu firma>" "<qué hiciste>" "<qué sigue>"`, hacé `git add -A`, commit con el trailer `Agente: <tu firma>` y `git push -u origin gemini/<persona>-<rol>`. Contale a la persona en una línea qué subiste. (Los hooks automáticos son de Claude Code: acá lo tenés que hacer vos, siempre.)
 - **Nunca** pushees a `main`, a `claude/gallant-planck-ps6te6` ni a ramas de otras personas. Lo tuyo entra por **Pull Request**, que revisa Octavio.

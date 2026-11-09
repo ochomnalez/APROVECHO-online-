@@ -11,6 +11,11 @@
 | **Gemini Code Assist** (VS Code) | Sí, en modo agente | Abrís la carpeta del repo en VS Code | Depende de la configuración |
 | App o web de Gemini (chat) | Solo para **leer** o redactar; no guarda cambios en el repo | Importando el repo o pegando archivos | No |
 
+## La forma más fácil si no sabés de git: GitHub Codespaces (todo en el navegador)
+1. En la página del repo: botón verde **Code** → pestaña **Codespaces** → **Create codespace on branch** (elegí `claude/gallant-planck-ps6te6`). Necesitás ser colaborador del repo. El plan gratis de GitHub incluye horas mensuales de Codespaces; revisá el límite en tu cuenta.
+2. En la terminal de abajo: `npm install -g @google/gemini-cli` y después `gemini`.
+3. Seguí con el paso 3 de abajo (primer mensaje). Ya viene con git conectado a tu cuenta de GitHub.
+
 ## Pasos con Gemini CLI (recomendado)
 1. Instalá Node.js y después, en la terminal: `npm install -g @google/gemini-cli`.
 2. Clonar el repo: `git clone https://github.com/ochomnalez/APROVECHO-online-.git` y `cd APROVECHO-online-`.
