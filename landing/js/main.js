@@ -111,6 +111,29 @@
     });
   }, 'tilt');
 
+  // Balanza y tablet: también con teclado
+  safe(function () {
+    $$('[data-tilt]').forEach(function (el) {
+      var ry = 0, rx = 0;
+      el.addEventListener('keydown', function (e) {
+        var k = e.key, h = false;
+        if (k === 'ArrowLeft') { ry -= 8; h = true; } else if (k === 'ArrowRight') { ry += 8; h = true; }
+        else if (k === 'ArrowUp') { rx += 6; h = true; } else if (k === 'ArrowDown') { rx -= 6; h = true; }
+        else if (k === 'Escape' || k === '0') { ry = 0; rx = 0; h = true; }
+        if (!h) return;
+        e.preventDefault();
+        ry = Math.max(-18, Math.min(18, ry)); rx = Math.max(-10, Math.min(10, rx));
+        el.style.setProperty('--ry', ry + 'deg'); el.style.setProperty('--rx', rx + 'deg');
+      });
+    });
+  }, 'tilt-teclado');
+
+  // Pausa el anillo del hero cuando no se ve
+  safe(function () {
+    var hero = $('.hero'); if (!hero || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) { hero.classList.toggle('is-offscreen', !es[0].isIntersecting); }).observe(hero);
+  }, 'hero-pausa');
+
   // Regiones con scroll horizontal: accesibles con teclado
   safe(function () {
     $$('.tablewrap,.road,.tabsbar__in').forEach(function (n) { n.setAttribute('tabindex', '0'); });

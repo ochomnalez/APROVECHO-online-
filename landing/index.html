@@ -20,7 +20,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="css/tokens.css?v=20261109">
 <link rel="stylesheet" href="css/styles.css?v=20261109">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -92,11 +91,11 @@
     <p class="sec__text">Empezás con Base. Si querés medir con precisión, pasás a Smart. Si tenés varias sucursales, Intelligence. Siempre conservás tu historial.</p>
   </div>
   <div class="tabsbar" data-tabsbar>
-    <div class="wrap tabsbar__in" role="tablist" aria-label="Planes">
+    <nav class="wrap tabsbar__in" aria-label="Planes">
       <a href="#plan-base" class="tab is-on" data-tab="plan-base">Base · Recuperá</a>
       <a href="#plan-smart" class="tab" data-tab="plan-smart">Smart · Medí</a>
       <a href="#plan-intelligence" class="tab" data-tab="plan-intelligence">Intelligence · Anticipá</a>
-    </div>
+    </nav>
   </div>
 </section>
 
@@ -117,14 +116,14 @@
       </div>
       <div class="story__vis" data-vis>
         <div class="layer is-on">
-          <div class="phone"><div class="phone__screen phone__screen--photo"><img src="img/foto/tartas.webp" alt="" width="1400" height="933">
+          <div class="phone"><div class="phone__screen phone__screen--photo"><img loading="lazy" decoding="async" src="img/foto/tartas.webp" alt="" width="1400" height="933">
             <span class="scanline"></span>
             <span class="det" style="left:6%;top:30%;width:44%;height:22%"><em>Tarta ×4</em></span>
             <span class="det" style="left:46%;top:52%;width:42%;height:24%"><em>Tarta ×3</em></span>
             <div class="phone__bar"><b>Leyendo tu foto…</b><span>7 productos · 3 packs propuestos</span></div></div></div>
         </div>
-        <div class="layer"><div class="phone"><div class="phone__screen"><img src="img/app/deteccion.webp" alt="Pantalla de la app que detecta el excedente en la foto" width="390" height="844"></div></div></div>
-        <div class="layer"><div class="panel"><img src="img/app/tablero-base.webp" alt="Panel de Base con ingreso recuperado, ventas por semana y APROVECHO Score" width="1600" height="1000"></div><p class="cap">Panel de Base · datos de ejemplo</p></div>
+        <div class="layer"><div class="phone"><div class="phone__screen"><img loading="lazy" decoding="async" src="img/app/deteccion.webp" alt="Pantalla de la app que detecta el excedente en la foto" width="390" height="844"></div></div></div>
+        <div class="layer"><div class="panel"><img loading="lazy" decoding="async" src="img/app/tablero-base.webp" alt="Panel de Base con ingreso recuperado, ventas por semana y APROVECHO Score" width="1600" height="1000"></div><p class="cap">Panel de Base · datos de ejemplo</p></div>
       </div>
     </div>
   </div>
@@ -146,14 +145,14 @@
         <a class="btn" href="#alta" data-plan="smart" data-cta="story-smart">Pedí una demo</a>
       </div>
       <div class="story__vis" data-vis>
-        <div class="layer is-on"><div class="floatstage" data-tilt>
+        <div class="layer is-on"><div class="floatstage" data-tilt tabindex="0" role="img" aria-label="Balanza y tablet de la estación. Con las flechas del teclado, o arrastrando, se mueven.">
           <span class="floatstage__shadow"></span>
-          <img class="fs fs--scale" src="img/producto/balanza.webp" width="1400" height="985" alt="Balanza de la estación con una caja de comida encima">
-          <img class="fs fs--tab" src="img/producto/tablet.webp" width="983" height="561" alt="Tablet de la estación mostrando el peso medido">
+          <img loading="lazy" decoding="async" class="fs fs--scale" src="img/producto/balanza.webp" width="1400" height="985" alt="Balanza de la estación con una caja de comida encima">
+          <img loading="lazy" decoding="async" class="fs fs--tab" src="img/producto/tablet.webp" width="983" height="561" alt="Tablet de la estación mostrando el peso medido">
           <span class="floatstage__hint">Arrastrá para moverla</span>
         </div></div>
-        <div class="layer"><div class="closeup"><img src="img/producto/tablet.webp" alt="Tablet de la estación mostrando 1,24 kg medidos con el contenido de la caja" width="983" height="561"></div></div>
-        <div class="layer"><div class="panel panel--tablet"><img src="img/app/smart.webp" alt="Pantalla de la estación Smart con el peso y el destino del excedente" width="1024" height="600"></div><p class="cap">Estación Smart · demo</p></div>
+        <div class="layer"><div class="closeup"><img loading="lazy" decoding="async" src="img/producto/tablet.webp" alt="Tablet de la estación mostrando 1,24 kg medidos con el contenido de la caja" width="983" height="561"></div></div>
+        <div class="layer"><div class="panel panel--tablet"><img loading="lazy" decoding="async" src="img/app/smart.webp" alt="Pantalla de la estación Smart con el peso y el destino del excedente" width="1024" height="600"></div><p class="cap">Estación Smart · demo</p></div>
       </div>
     </div>
   </div>
@@ -175,14 +174,14 @@
         <a class="btn" href="#alta" data-plan="intelligence" data-cta="story-intelligence">Hablá con ventas</a>
       </div>
       <div class="story__vis" data-vis>
-        <div class="layer is-on"><div class="floatstage" data-tilt>
+        <div class="layer is-on"><div class="floatstage" data-tilt tabindex="0" role="img" aria-label="Balanza y tablet de la estación. Con las flechas del teclado, o arrastrando, se mueven.">
           <span class="floatstage__shadow"></span>
-          <img class="fs fs--scale" src="img/producto/balanza.webp" width="1400" height="985" alt="Balanza de la estación con una caja de comida encima">
-          <img class="fs fs--tab" src="img/producto/tablet.webp" width="983" height="561" alt="Tablet de la estación mostrando el peso medido">
+          <img loading="lazy" decoding="async" class="fs fs--scale" src="img/producto/balanza.webp" width="1400" height="985" alt="Balanza de la estación con una caja de comida encima">
+          <img loading="lazy" decoding="async" class="fs fs--tab" src="img/producto/tablet.webp" width="983" height="561" alt="Tablet de la estación mostrando el peso medido">
           <span class="floatstage__hint">Arrastrá para moverla</span>
         </div></div>
-        <div class="layer"><div class="panel"><img src="img/app/intelligence.webp" alt="Panel de Intelligence con todas las sucursales" width="1440" height="900"></div><p class="cap">Panel de Intelligence · datos de ejemplo</p></div>
-        <div class="layer"><div class="panel"><img src="img/app/inventario.webp" alt="Inventario con vencimientos y predicción de excedentes" width="1440" height="900"></div><p class="cap">Inventario y predicción · datos de ejemplo</p></div>
+        <div class="layer"><div class="panel"><img loading="lazy" decoding="async" src="img/app/intelligence.webp" alt="Panel de Intelligence con todas las sucursales" width="1440" height="900"></div><p class="cap">Panel de Intelligence · datos de ejemplo</p></div>
+        <div class="layer"><div class="panel"><img loading="lazy" decoding="async" src="img/app/inventario.webp" alt="Inventario con vencimientos y predicción de excedentes" width="1440" height="900"></div><p class="cap">Inventario y predicción · datos de ejemplo</p></div>
       </div>
     </div>
   </div>
@@ -396,7 +395,7 @@
     <div class="inv-block">
       <h3>Un mercado grande y una categoría que ya existe.</h3>
       <div class="tablewrap"><table class="mkt">
-        <thead><tr><th scope="col"></th><th scope="col">Comercios (B2B)</th><th scope="col">Consumidores (B2C)</th></tr></thead>
+        <thead><tr><th scope="col"><span class="sr">Mercado</span></th><th scope="col">Comercios (B2B)</th><th scope="col">Consumidores (B2C)</th></tr></thead>
         <tbody>
           <tr><th scope="row">TAM · Latinoamérica</th><td>2,37 M de comercios<br><span>≈ USD 1.434 M/año en comisión potencial</span></td><td>336,8 M de adultos con billetera digital<br><span>≈ USD 1.747 M/año de gasto en packs</span></td></tr>
           <tr><th scope="row">SAM · Argentina</th><td>70.126 comercios<br><span>≈ USD 42,5 M/año</span></td><td>23,6 M de adultos<br><span>≈ USD 122 M/año</span></td></tr>
