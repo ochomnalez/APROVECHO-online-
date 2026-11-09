@@ -3,7 +3,7 @@
 // Sin voz todavía: el texto de la voz va como subtítulo. Regla D-031: no se muestra el 75% ni el 25%.
 import React, { createContext, useContext } from 'react';
 import {
-  AbsoluteFill, Audio, Easing, Img, Sequence, continueRender, delayRender, interpolate,
+  AbsoluteFill, Audio, Easing, Img, OffthreadVideo, Sequence, continueRender, delayRender, interpolate,
   spring, staticFile, useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import { TransitionSeries, springTiming } from '@remotion/transitions';
@@ -38,6 +38,15 @@ if (typeof document !== 'undefined') {
 }
 
 const s = (seg) => Math.round(seg * FPS);
+
+// Tomas reales con personas (ver video/01-onboarding/tomas-reales.md).
+// Cuando existan los clips, poner el archivo (dentro de public/) acá; hasta entonces se usa la foto aprobada.
+const TOMAS = { apertura: null, foto: null }; // ej.: 'tomas/apertura.mp4'
+function Plano({ toma, style }) {
+  return TOMAS[toma]
+    ? <OffthreadVideo src={staticFile(TOMAS[toma])} muted style={{ width: '100%', height: '100%', objectFit: 'cover', ...style }} />
+    : <Img src={staticFile('foto-caja.jpg')} style={{ width: '100%', height: '100%', objectFit: 'cover', ...style }} />;
+}
 // Cada escena corre a su propia velocidad (montaje ágil): el reloj interno avanza Vel veces más rápido
 const Vel = createContext(1);
 const useFrameReal = useCurrentFrame;
@@ -109,7 +118,7 @@ function Aparece({ desde = 0, children, dx = 0, dy = 26, style }) {
 }
 
 // Subtítulo = voz en off (hasta grabar la voz): las palabras entran al ritmo de la locución, sin cartel
-function Subtitulo({ texto, claro = false, dur = 8, voz }) {
+function Subtitulo({ texto, claro = false, dur = 8, voz, der = false }) {
   const f = useF();
   const palabras = texto.split(' ');
   const k = useContext(Vel);
@@ -117,7 +126,7 @@ function Subtitulo({ texto, claro = false, dur = 8, voz }) {
   const paso = (fin - ini) / palabras.length;
   const barra = ease(f, 0, 16);
   return (
-    <div style={{ position: 'absolute', left: 140, width: 940, bottom: 56, display: 'flex', gap: 18 }}>
+    <div style={{ position: 'absolute', left: der ? 720 : 140, width: der ? 1000 : 940, bottom: 56, display: 'flex', gap: 18 }}>
       <div style={{ width: 4, borderRadius: 2, background: CORTEZA, transform: `scaleY(${barra})`, transformOrigin: 'top' }} />
       <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: 9, rowGap: 2, fontFamily: CUERPO, fontSize: 29, lineHeight: 1.35,
         color: claro ? PAPEL : TINTA, textShadow: claro ? '0 2px 12px rgba(0,0,0,.5)' : 'none' }}>
@@ -221,8 +230,7 @@ function E1() {
   return (
     <AbsoluteFill style={{ background: BOSQUE, overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, clipPath: `inset(${(1 - mascara) * 50}% 0 ${(1 - mascara) * 50}% 0)` }}>
-        <Img src={staticFile('foto-caja.jpg')} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
-          transform: `scale(${z}) translateX(${px}px)` }} />
+        <Plano toma="apertura" style={{ position: 'absolute', inset: 0, transform: TOMAS.apertura ? 'none' : `scale(${z}) translateX(${px}px)` }} />
         <AbsoluteFill style={{ background: 'linear-gradient(90deg, rgba(15,51,38,.94) 0%, rgba(15,51,38,.75) 40%, rgba(15,51,38,0) 72%)',
           opacity: ease(f, 10, 30) }} />
       </div>
@@ -379,22 +387,64 @@ function PantallaCarta(fr) {
   );
 }
 
-function Kit({ desde }) {
-  const items = [
-    ['Bolsas', <path key="b" d="M10 18h28l-3 24H13zM17 18v-4a7 7 0 0114 0v4" />],
-    ['Sticker', <g key="s"><circle cx="24" cy="26" r="15" /><path d="M17 26l5 5 9-10" /></g>],
-    ['Cartel con QR', <g key="q"><rect x="9" y="11" width="30" height="30" rx="3" /><path d="M15 17h7v7h-7zM26 17h7v7h-7zM15 28h7v7h-7zM28 30h5M30 28v7" /></g>],
+// Piezas de marca hechas en código con el SELLO OFICIAL (docs/marca/logo-oficial), no con el logo de la propuesta v1 (D-026).
+// Se dibujan al doble de tamaño y se reducen, para que el texto quede nítido.
+function PiezaBolsa() {
+  return (
+    <div style={{ width: 404, height: 520, position: 'relative', overflow: 'hidden', borderRadius: 6,
+      background: 'linear-gradient(100deg,#CFA974 0%,#D9B684 38%,#C9A06A 70%,#BC9360 100%)' }}>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 62, background: 'linear-gradient(#B48B56,#C29A66)', borderBottom: '3px solid rgba(90,60,25,.25)' }} />
+      <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: 'rgba(255,255,255,.12)' }} />
+      <Img src={staticFile('onboarding/logo-sello.png')} style={{ position: 'absolute', left: 82, top: 96, width: 240, height: 240 }} />
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 362, textAlign: 'center', fontFamily: TITULO, fontWeight: 800, fontSize: 40, color: BOSQUE }}>Pack sorpresa</div>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 418, textAlign: 'center', fontFamily: CUERPO, fontSize: 21, color: BOSQUE, opacity: 0.85 }}>Comida rica del día, a mitad de precio</div>
+    </div>
+  );
+}
+function PiezaCartel() {
+  return (
+    <div style={{ width: 736, height: 520, boxSizing: 'border-box', border: `14px solid ${VERDE}`, background: PAPEL, position: 'relative', fontFamily: CUERPO }}>
+      <div style={{ position: 'absolute', left: 48, top: 66, width: 380, fontFamily: TITULO, fontWeight: 800, fontSize: 54, lineHeight: 1.02, color: BOSQUE, letterSpacing: -1 }}>
+        Hoy hay <span style={{ color: '#B5470F' }}>pack sorpresa</span>
+      </div>
+      <div style={{ position: 'absolute', left: 48, top: 250, width: 330, fontSize: 22, lineHeight: 1.35, color: TINTA }}>
+        Comida rica del día, a mitad de precio. Reservalo desde la app y retiralo acá con tu QR.
+      </div>
+      <Img src={staticFile('onboarding/logo-sello.png')} style={{ position: 'absolute', left: 40, bottom: 28, width: 92, height: 92 }} />
+      <div style={{ position: 'absolute', right: 40, top: 62, width: 262, padding: '18px 18px 14px', borderRadius: 22, background: VERDE, textAlign: 'center' }}>
+        <div style={{ background: '#fff', borderRadius: 12, padding: 14 }}>
+          <Img src={staticFile('onboarding/qr-demo.png')} style={{ width: '100%', display: 'block' }} />
+        </div>
+        <div style={{ marginTop: 12, color: PAPEL, fontWeight: 700, fontSize: 19 }}>Escaneá y probá la app</div>
+      </div>
+    </div>
+  );
+}
+
+function Piezas() {
+  const f = useF();
+  const lista = [
+    { t: 5.45, w: 202, h: 260, nombre: 'Bolsas', r: -4, c: <PiezaBolsa />, k: 0.5 },
+    { t: 6.2, w: 260, h: 260, nombre: 'Sticker', r: 3, circulo: true, k: 0 },
+    { t: 6.75, w: 368, h: 260, nombre: 'Cartel con QR', r: -2, c: <PiezaCartel />, k: 0.5 },
   ];
   return (
-    <div style={{ display: 'flex', gap: 16, marginTop: 40 }}>
-      {items.map(([t, ic], i) => (
-        <Aparece key={t} desde={desde + i * 6}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 22px 14px 16px', borderRadius: 16, background: '#fff', border: `1px solid ${LINEA}`,
-            fontFamily: CUERPO, fontWeight: 700, fontSize: 24, color: BOSQUE }}>
-            <svg width="44" height="44" viewBox="0 0 48 52" fill="none" stroke={VERDE} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">{ic}</svg>{t}
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: 26, marginTop: 36 }}>
+      {lista.map((x) => {
+        const v = spring({ frame: f - s(x.t), fps: FPS, config: { damping: 11, mass: 0.7 } });
+        const flota = Math.sin((f + x.t * 40) / 24) * 4;
+        return (
+          <div key={x.nombre} style={{ width: x.w, opacity: Math.min(1, v * 2.2), transform: `translateY(${(1 - v) * 90 + flota}px) scale(${0.6 + v * 0.4}) rotate(${x.r * v}deg)` }}>
+            <div style={{ width: x.w, height: x.h, borderRadius: x.circulo ? '50%' : 8, overflow: 'hidden',
+              boxShadow: '0 26px 40px rgba(15,51,38,.22), 0 4px 10px rgba(15,51,38,.14)' }}>
+              {x.circulo
+                ? <Img src={staticFile('onboarding/pieza-sticker-vidriera.jpg')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                : <div style={{ width: x.w / x.k, height: x.h / x.k, transform: `scale(${x.k})`, transformOrigin: 'top left' }}>{x.c}</div>}
+            </div>
+            <div style={{ marginTop: 14, textAlign: 'center', fontFamily: CUERPO, fontWeight: 700, fontSize: 22, color: VERDE, opacity: ease(f, s(x.t) + 6, s(x.t) + 16) }}>{x.nombre}</div>
           </div>
-        </Aparece>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -407,7 +457,7 @@ function E3() {
       <div style={{ position: 'absolute', left: 140, top: 200, width: 860 }}>
         <Rotulo texto="Tu carta, en una foto" n="2" />
         <Cinetico texto="Una foto a tu lista de precios. La carta se carga sola." tam={80} />
-        <Kit desde={s(5)} />
+        <Piezas />
       </div>
       <Celular tomas={[{ render: PantallaCarta, desde: 0 }]} desde={4} />
       <Subtitulo voz={[0.3, 7.89]} dur={8} texto="Le sacás una foto a tu lista de precios y la carta se carga sola. Te damos el primer lote de bolsas, el sticker y el cartel con QR." />
@@ -425,7 +475,7 @@ function E4() {
   return (
     <AbsoluteFill>
       <FondoVivo semilla={3} />
-      <div style={{ position: 'absolute', left: 140, top: 200, width: 860, opacity: ease(f, intro, intro + 12) }}>
+      <div style={{ position: 'absolute', left: 720, top: 200, width: 1000, opacity: ease(f, intro, intro + 12) }}>
         <Rotulo texto="Todos los días, al cierre" n="3" desde={intro} />
         <Cinetico texto="Sacás una foto. La app reconoce y cuenta lo que sobró." tam={80} desde={intro + 4} />
         <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -441,7 +491,7 @@ function E4() {
             fontFamily: CUERPO, fontWeight: 700, fontSize: 21 }}>Estimado por IA · vos lo corregís</span></Aparece>
         </div>
       </div>
-      <Celular desde={intro - 4} tomas={[
+      <Celular x={170} giro={8} desde={intro - 4} tomas={[
         { src: '08-camara.jpg', desde: 0, toque: { x: 50, y: 15, en: 4.4 } },
         { src: '09-analizando.jpg', desde: 4.6 },
         { src: '10-analizando-b.jpg', desde: 6.6 },
@@ -449,11 +499,10 @@ function E4() {
       ]} />
       {f < intro + 8 && (
         <AbsoluteFill style={{ opacity: 1 - fueraFoto, overflow: 'hidden' }}>
-          <Img src={staticFile('foto-caja.jpg')} style={{ width: '100%', height: '100%', objectFit: 'cover',
-            transformOrigin: '44% 50%', transform: `scale(${zoom})` }} />
+          <Plano toma="foto" style={{ transformOrigin: '44% 50%', transform: TOMAS.foto ? 'none' : `scale(${zoom})` }} />
         </AbsoluteFill>
       )}
-      <Subtitulo voz={[0.5, 5.49]} dur={12} texto="Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." />
+      <Subtitulo der voz={[0.5, 5.49]} dur={12} texto="Cuando sobra, sacás una foto. La app reconoce cada producto y cuenta cuántos hay." />
     </AbsoluteFill>
   );
 }
@@ -501,20 +550,20 @@ function E6() {
   return (
     <AbsoluteFill>
       <FondoVivo semilla={5} />
-      <div style={{ position: 'absolute', left: 140, top: 200, width: 860 }}>
+      <div style={{ position: 'absolute', left: 720, top: 200, width: 1000 }}>
         <Rotulo texto="Venta y retiro" n="5" />
         <Cinetico texto="Un vecino reserva, paga y lo retira con un QR." tam={84} />
         <div style={{ marginTop: 50, display: 'inline-block', padding: '22px 32px', borderRadius: 18, background: BOSQUE, color: PAPEL,
           fontFamily: TITULO, fontWeight: 800, fontSize: 48, transform: `scale(${sello}) rotate(${(1 - sello) * -8 - 1.5}deg)`, opacity: Math.min(1, sello * 2),
           boxShadow: `0 0 0 ${8 * (1 - ease(f, s(7.4), s(8.4)))}px rgba(224,122,46,.5)` }}>Pagás solo cuando vendés.</div>
       </div>
-      <Celular tomas={[
+      <Celular x={170} giro={8} tomas={[
         { src: '14-cliente-ve-pack.jpg', desde: 0, toque: { x: 61, y: 95, en: 2.8 } },
         { src: '16-reserva-qr.jpg', desde: 3.2 },
         { src: '17-retiros.jpg', desde: 6.4, toque: { x: 50, y: 9.5, en: 8 } },
         { src: '18-retiro-validado.jpg', desde: 8.4, toque: { x: 50, y: 78.5, en: 9.8 } },
       ]} />
-      <Subtitulo voz={[0.5, 6.43]} dur={11} texto="Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." />
+      <Subtitulo der voz={[0.5, 6.43]} dur={11} texto="Un vecino reserva y paga desde la app, y lo retira con un QR. Vos cobrás cada venta, sin abono fijo." />
     </AbsoluteFill>
   );
 }
@@ -644,7 +693,7 @@ function E9() {
         <Aparece desde={34}>
           <div style={{ marginTop: 30, padding: '20px 44px', borderRadius: 999, background: CORTEZA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 34 }}>Sumá tu comercio</div>
         </Aparece>
-        <div style={{ position: 'absolute', bottom: 28, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Daily Beetle”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
+        <div style={{ position: 'absolute', bottom: 28, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Inspired”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -682,14 +731,14 @@ export function Onboarding() {
   // cada escena se alarga lo que se come la transición, así el total sigue en 85 s
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
-      {/* Música: "Daily Beetle", Kevin MacLeod (incompetech.com), CC BY 4.0 — crédito en video/CREDITOS.md */}
-      <Audio src={staticFile('musica/daily-beetle.mp3')} volume={(f) => {
+      {/* Música: "Inspired", Kevin MacLeod (incompetech.com), CC BY 4.0 — crédito en video/CREDITOS.md */}
+      <Audio src={staticFile('musica/inspired.mp3')} volume={(f) => {
         const total = Math.round(DURACION_ONB * FPS);
         const entra = interpolate(f, [0, 12], [0, 1], CL);
         const sale = interpolate(f, [total - 60, total], [1, 0], CL);
         const t = f / FPS;
         const hablando = VOZ.some(([ini, d], i) => t > INICIOS[i] + ini - 0.15 && t < INICIOS[i] + ini + d + 0.1);
-        return entra * sale * (hablando ? 0.2 : 0.42);
+        return entra * sale * (hablando ? 0.13 : 0.3);
       }} />
       {VOZ.map(([ini], i) => (
         <Sequence key={'v' + i} from={s(INICIOS[i] + ini)}><Audio src={staticFile(`voz/v${i + 1}.mp3`)} /></Sequence>
