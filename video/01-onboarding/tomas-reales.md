@@ -6,6 +6,18 @@
 ## Formato común
 16:9, 1080p, 24–30 fps, 6–8 s por clip, sin audio (el montaje pone voz y música), cámara estable, luz natural cálida, color realista (sin filtro "de IA": sin piel de plástico, sin manos deformes).
 
+## PENDIENTE DE VALIDACIÓN: fotos de partida (video/01-onboarding/referencias-tomas.png)
+Octavio pidió (9/11) **partir de las fotos del entregable final** (no inventar escenas) y que en **Smart e Intelligence se vea bien la balanza con la cámara/tablet**. Antes de generar nada, él valida cuáles:
+| Foto | Origen | Uso propuesto |
+|---|---|---|
+| A · Smart, estación de pesaje | `docs/fuente/imagenes/11-1-2-smart-estacion-pesaje.jpg` | Escena Smart: toma real usando balanza + tablet |
+| B · Intelligence, estación en supermercado | `docs/fuente/imagenes/11-1-3-intelligence-estacion-supermercado.jpg` | Escena Intelligence |
+| D · Base, propuesta en celular | `docs/fuente/imagenes/11-1-1-base-propuesta-en-celular.jpg` | Escena Base: publicar desde el celular |
+| F · celular sobre caja | `docs/marca/imagenes-aprobadas/foto-celu-caja.jpg` | Apertura y foto del excedente |
+| E · balanza + tablet | `docs/marca/imagenes-aprobadas/estacion-balanza-tablet.jpg` | Alternativa para Smart |
+| C · Smart con dashboard | `docs/fuente/imagenes/11-1-2-smart-estacion-dashboard.jpg` | Alternativa (pantalla con informe) |
+Método: **imagen a video** (se anima la foto validada: la persona, la balanza y la tablet son los mismos), no escenas nuevas.
+
 ## Toma A · Apertura (escena 1, 0–6 s)
 **Prompt:** Cinematic shot inside a small neighborhood bakery in Buenos Aires at closing time, warm late-afternoon light through the window. A baker in his mid-30s, dark green apron, stands behind the counter looking at a wooden tray of leftover croissants and facturas. Calm, neutral expression, a quiet end-of-day mood. Slow gentle dolly-in, shallow depth of field, natural color grade, realistic hands and skin, no text, no logos.
 **Uso:** a la izquierda queda un degradé verde oscuro para el texto, así que el sujeto tiene que estar hacia la **derecha** del cuadro.
