@@ -1,14 +1,17 @@
 import base64, json, re, subprocess, sys
 VOZ='es-419-training-6'
-E="Serious, calm and professional onboarding narrator. Clear Argentine Rioplatense Spanish, measured pace, no excitement, no advertising tone."
+E="Calm, clear and natural Argentine Rioplatense Spanish, like a friendly colleague showing how a tool works. Relaxed steady pace, natural intonation and small natural pauses. Serious but not stiff, not robotic, no advertising tone."
 ESC={
- 'e1':['Bienvenido a APROVECHO.','Te mostramos cómo empezar, paso a paso.'],
- 'e2':['Entrás como comercio y elegís tu plan.','Cargás tu carta con una foto de tu lista de precios: la app lee los productos y los precios sola.','Y llegás a Hoy, tu pantalla principal.'],
- 'e3':['Cuando sobra mercadería, sacás una foto.','La app reconoce cada producto y cuenta cuántos hay.','Arma los packs, el precio y el horario de retiro.','Vos revisás, confirmás que la comida es del día, la cadena de frío y los alérgenos, y publicás.','La decisión siempre es tuya.'],
- 'e4':['El vecino ve tu pack en la app, reserva y paga.','Recibe un código QR para retirarlo.','Vos lo escaneás en el local y la venta queda registrada.','Cobrás cada venta, sin abono fijo.'],
- 'e5':['En Impacto ves cuánto recuperaste y descargás tu informe en Excel o PDF.'],
- 'e6':['Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.','La balanza pesa lo que sobra y la cámara lo reconoce.','Vos elegís si va a venta o a la basura, y registrás el motivo.'],
- 'e9':['Menos desperdicio, más aprovecho.','Sumá tu comercio.'],
+ 'e1':['Bienvenido a APROVECHO.','Te cuento cómo arrancar, paso a paso.'],
+ 'e2':['Entrás como comercio y elegís tu plan.'],
+ 'e2b':['Después le sacás una foto a tu menú, y la app lee los productos y los precios por vos.'],
+ 'e3a':['Cuando te sobra algo, otra foto.','La app reconoce qué es y cuántos hay, y te arma una propuesta.'],
+ 'e3b':['Vos elegís el horario de retiro.','Marcás con un toque las condiciones, como sin TACC o vegetariano, y confirmás los alérgenos.','Publicás, y listo.'],
+ 'e4':['El vecino reserva y paga desde la app.','Te muestra un código QR, lo escaneás en el local y listo.','Cobrás cada venta, sin abono fijo.'],
+ 'e5':['En Impacto ves lo que recuperaste, los kilos rescatados y la huella de carbono asociada, siempre como estimación.','Y bajás tu informe en Excel o PDF.'],
+ 'e6':['Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.','Apoyás lo que sobró, la balanza lo pesa, y vos decidís si se vende o se descarta.'],
+ 'e7':['Y si tenés varias sucursales, sumás Intelligence.','Ves todos tus locales en un solo panel, con la huella de carbono, la huella hídrica y sugerencias para desperdiciar menos.'],
+ 'e9':['Ya sabés cómo funciona.','Sumá tu comercio y empezá a aprovechar lo que sobra.'],
 }
 OUT='/tmp/claude-0/-home-user-APROVECHO-online-/7307efeb-ff1a-5892-b0ae-9ea3495aac20/scratchpad/vidwt/video/public/voz2/'
 res={}

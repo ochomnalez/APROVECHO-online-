@@ -25,6 +25,10 @@ await shot('analizando',900); await shot('analizando-b',1500); await shot('tras-
 for(let i=0;i<5;i++){ const c=p.locator('button').filter({hasText:/^(Seguir|Continuar|Confirmar|Listo|Revisar)/}).last(); if(await c.count()){await c.click(); await shot('paso'+i,1500); await bt('paso'+i);} }
 const cbs=p.locator('input[type=checkbox]'); const nc=await cbs.count(); for(let i=0;i<nc;i++){ await cbs.nth(i).check().catch(()=>{}); }
 await shot('revisar-checklist',600);
+{ const r={}; const q=async(nm,loc)=>{ try{ const bb=await loc.first().boundingBox(); r[nm]=bb; }catch(e){ r[nm]=null; } };
+  await q('retiro_seg', p.locator('.seg')); await q('condiciones', p.locator('.chips')); await q('alergenos_caja', p.getByText('Confirmá antes de publicar').locator('xpath=ancestor::*[self::fieldset or contains(@class,"card")][1]')); await q('publicar', p.locator('button').filter({hasText:/Publicar/}).last()); await q('retiro_label', p.getByText('Retiro').first());
+  require('fs').writeFileSync(out+'/cajas-revisar.json', JSON.stringify(r,null,1)); }
+
 const pub=p.locator('button').filter({hasText:/Publicar/}).last(); if(await pub.count()){ await pub.click(); await shot('publicado',1800); await bt('publicado'); }
 const tryc=async(re,nm,w=1500)=>{const l=p.locator('button, a').filter({hasText:re}).last(); if(await l.count()){await l.click().catch(e=>console.log('clickerr',nm)); await shot(nm,w); await bt(nm); return true;} console.log('NO',nm); return false;};
 await tryc(/Ver cómo lo ve el cliente/,'cliente-ve-pack');
@@ -35,6 +39,10 @@ await p.goto('http://127.0.0.1:8765/app/#/b/retiros'); await shot('retiros',1800
 if(code){ await p.locator('input:visible').first().fill(code[0]); await tryc(/^Validar/,'retiro-validado',1800); }
 await p.goto('http://127.0.0.1:8765/app/#/b/hoy'); await shot('hoy-final',1800);
 await p.goto('http://127.0.0.1:8765/app/#/b/impacto'); await shot('impacto',2000);
+{ const r={}; try{ r.co2=await p.getByText('huella asociada').first().locator('xpath=ancestor::*[contains(@class,"card") or contains(@class,"kpi")][1]').boundingBox(); }catch(e){ r.co2=null; }
+  try{ r.kpis=await p.getByText('recuperados').first().locator('xpath=ancestor::*[contains(@class,"card")][1]').boundingBox(); }catch(e){ r.kpis=null; }
+  require('fs').writeFileSync(out+'/cajas-impacto.json', JSON.stringify(r,null,1)); }
+
 await tryc(/Descargar/,'reporte',1500);
 await tryc(/^PDF/,'reporte-pdf',800);
 await p.locator('#btn-descargar').click().catch(()=>{}); await shot('reporte-descargando',700); await shot('reporte-listo',2500);
