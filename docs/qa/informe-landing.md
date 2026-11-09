@@ -108,3 +108,42 @@ Aprobado: sin destellos, glassmorphism, degradé violeta, emojis ni 3D de stock;
 
 ## Veredicto ronda 2 (landing v2)
 **No cerrar todavía.** Corregir B-1, B-2, I-6, I-7, I-8 (y de paso el scroll horizontal a 768) y avisar para una última pasada (ronda 3 = límite acordado de 2 rondas; la ronda 1 fue sobre v1, esta es la 1.ª sobre v2).
+
+---
+
+# Ronda 3 (pasada final) · Landing v2 · 2026-11-09 · `claude/aprovecho-landing` @ `88f3b09`
+Evidencia: `docs/qa/capturas/landing-v2b/` (full 390/768/1440, roadmap en los 3 anchos, recorrido Base).
+
+| Medición | Ronda 2 | **Final** |
+|---|---|---|
+| Lighthouse móvil: rendimiento | 84 | **99** (FCP 1,6 s · LCP 1,6 s · TBT 0 ms · CLS 0) |
+| Accesibilidad / Buenas prácticas / SEO | 92 / 100 / 100 | **100 / 100 / 100** |
+| axe 390 · 768 · 1440 (WCAG 2.2 AA) | 3 violaciones (1 crítica) | **0 · 0 · 0** |
+| Consola / requests fallidos | 0 | 0 |
+| Scroll horizontal de página (390 / 768 / 1440) | sí en 768 | **no en ninguno** |
+| `prefers-reduced-motion` | 15 animaciones corriendo | **0 corriendo** (regla `@media` presente) |
+
+## Verificación de lo corregido
+- **B-1 rendimiento** ✅ (84 → 99). **B-2 ARIA** ✅ (axe 0; las pestañas ya no declaran `tablist`).
+- **I-6 reduced-motion** ✅. **I-7 contraste** ✅ (axe `color-contrast` 0).
+- **I-8 roadmap** ✅: en 1440 las 7 etapas entran completas (hasta «2030–31»); en 768 y 390 es una tira con scroll horizontal accesible por teclado (`tabindex=0`); ya no hay scroll horizontal de página.
+- **I-9 arrastrables** ✅: los objetos arrastrables reciben foco con teclado (la pista «ARRASTRÁ PARA MOVERLA» es focusable).
+- **M-1 áreas táctiles** ◐ Mejoraron los chips del anillo y los filtros; **quedan** los links de la sub-navegación del pie «Comercios / Planes / Inversores / Preguntas» a 36 px de alto y el checkbox de consentimiento a 28×28. **M-2 `th` vacío** ✅. **M-4 CTA fijo** ✅ (no tapa contenido relevante en las capturas).
+
+## Bloqueantes
+**Ninguno.** Landing v2 cumple los criterios de aceptación del brief en lo técnico: Lighthouse ≥ 90, AA, 390/768/1440 sin errores ni desbordes, copy en voseo, Medido/Estimado, anti «AI slop».
+
+## Menores que quedan (no bloquean)
+1. Links de sub-navegación del pie a 36 px y checkbox de 28 px (< 44 px).
+2. El H1 es el slogan; la promesa B2B está en el subtítulo y el `<title>` (decisión de diseño de Octavio).
+3. «Sumate en 2 minutos» / «48 h hábiles» (SUPUESTO) siguen sin confirmar.
+
+## Decisiones de Octavio que siguen abiertas
+1. **Bloque financiero de Inversores** publicado (USD 112.611 · 3,9 años · VAN USD 17.004 · TIR 36,7 %): D-025 (válida) vs D-019 (provisoria).
+2. **Balanza y tablet** de los recorridos: recortes de una imagen generada con IA; ¿se aceptan con rótulo «Ilustrativo» hasta tener fotos reales?
+3. **Pie «Proyecto académico · Universidad Austral · 2026»** y **«2 minutos / 48 h»**: ¿se aprueban o se sacan?
+4. **IVA y moneda de los precios USD 300 / 800** (A8), **T&C y política de privacidad** (el formulario las cita y no existen), email/WhatsApp de contacto y `og:image` absoluta al publicar.
+5. **Onboarding paso a paso de 7 pasos** (`fuente/07`, concepto A elegido en la Fase 1): en la v2 no está; los recorridos por plan lo reemplazan en parte. ¿Se agrega o queda así?
+
+## Veredicto
+✅ **Aprobada para integrar** (landing v2 @ `88f3b09`), salvo las decisiones de Octavio de arriba. Nada se publicó ni se conectó.

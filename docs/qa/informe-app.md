@@ -64,3 +64,5 @@ Evidencia: `docs/qa/capturas/app-r2/`. Se repitió el recorrido completo en 390�
 **Veredicto:** sin bloqueantes ni importantes pendientes. App lista para integrar salvo las decisiones de Octavio y la prueba de la PWA instalada en un celular real (no se puede hacer desde este entorno).
 
 > **Nota 2026-11-09 (landing v2):** la app no tuvo commits nuevos desde `0fd1e93`; el veredicto de la ronda 2 se mantiene.
+
+> **Aprobación final 2026-11-09:** `claude/aprovecho-app` @ `0fd1e93` sin cambios desde la ronda 2 → ✅ **aprobada para integrar**. Pendientes fuera de QA: packs de ejemplo ~ARS 6.100 (M-8), vista «kiosco» en tablet y prueba de la PWA instalada en un celular real.
