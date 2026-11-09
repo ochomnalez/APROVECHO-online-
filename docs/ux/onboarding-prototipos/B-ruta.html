@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concepto B · La ruta de 7 paradas</title>
+<link rel="stylesheet" href="../../marca/tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0}
+.intro,.outro{min-height:60vh;display:grid;place-content:center;padding:var(--space-6) var(--space-4);max-width:760px;margin:auto}
+.intro h2,.outro h2{font-size:clamp(2rem,6vw,3.5rem);margin:0 0 var(--space-3)}
+.intro p,.outro p{color:var(--color-text-muted);margin:0;font-size:var(--size-lg)}
+.tag{display:inline-block;font:600 var(--size-xs)/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-text);margin-bottom:var(--space-3)}
+
+.scene{height:640vh;position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--color-primary);color:var(--color-on-primary);display:flex;flex-direction:column;justify-content:center}
+.head{padding:0 clamp(16px,4vw,64px) var(--space-5);display:flex;justify-content:space-between;align-items:end;gap:var(--space-4)}
+.head h3{color:var(--color-on-primary);font-size:clamp(1.4rem,3vw,2.2rem);margin:0;max-width:18ch}
+.count{font:800 clamp(2.4rem,5vw,4rem)/1 var(--font-display);color:var(--color-accent);letter-spacing:-.03em;white-space:nowrap}
+.count small{font-size:.4em;color:var(--palette-mint);opacity:.7;font-weight:500}
+.viewport{overflow:hidden;padding-block:var(--space-4)}
+.track{display:flex;gap:clamp(16px,2.4vw,32px);padding-inline:clamp(16px,4vw,64px) 50vw;will-change:transform}
+.card{flex:0 0 clamp(250px,32vw,400px);background:var(--color-bg);color:var(--color-text);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);transition:transform .35s,opacity .35s;opacity:.5;transform:scale(.94);position:relative}
+.card.on{opacity:1;transform:none;box-shadow:var(--shadow-lg)}
+.card .n{font:800 4.4rem/.8 var(--font-display);color:var(--color-accent-text);letter-spacing:-.04em}
+.card .ill{height:120px;display:grid;place-items:center;background:var(--color-surface);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border)}
+.card .ill svg{height:100%;width:auto}
+.card h4{font:800 var(--size-2xl)/1.05 var(--font-display);color:var(--color-primary);margin:0}
+.card p{margin:0;font-size:var(--size-lg);color:var(--color-text-strong)}
+.card .vid{border-radius:var(--radius-md);overflow:hidden;background:var(--color-primary);aspect-ratio:16/9}
+.card .vid video{width:100%;height:100%;object-fit:cover;display:block}
+.fork{position:absolute;top:-14px;right:16px;background:var(--color-accent);color:var(--color-on-accent);font:700 var(--size-xs)/1 var(--font-body);padding:7px 10px;border-radius:var(--radius-pill);letter-spacing:.03em}
+.route{position:relative;margin:var(--space-5) clamp(16px,4vw,64px) 0;height:36px}
+.route::before{content:"";position:absolute;left:0;right:0;top:16px;height:4px;border-radius:2px;background:repeating-linear-gradient(90deg,rgba(251,243,228,.35) 0 10px,transparent 10px 18px)}
+.route .fill{position:absolute;left:0;top:14px;height:8px;border-radius:4px;background:var(--color-accent);width:calc(var(--p,0)*100%)}
+.route .stops{position:absolute;inset:0}
+.route .stops i{position:absolute;top:10px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--color-primary);border:3px solid var(--palette-cream);opacity:.6}
+.route .stops i.pass{background:var(--color-accent);opacity:1}
+.route .stops i.alt{border-style:dashed}
+.bag{position:absolute;top:-6px;left:calc(var(--p,0)*100%);width:34px;height:42px;margin-left:-17px;transition:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:640px){.head{flex-direction:column;align-items:start;gap:var(--space-2)}.card{padding:var(--space-4);flex-basis:78vw}.card .ill{height:96px}.card .n{font-size:3.4rem}}
+.static .scene{height:auto}
+.static .stage{position:static;height:auto;padding-block:var(--space-7)}
+.static .track{flex-direction:column;padding-inline:clamp(16px,4vw,64px)}
+.static .card{opacity:1;transform:none;flex-basis:auto}
+.static .route,.static .count{display:none}
+.static .viewport{overflow:visible}
+</style>
+</head>
+<body>
+<header class="intro">
+  <span class="tag">Concepto B · prototipo</span>
+  <h2>Del primer mensaje a tu primer pack.</h2>
+  <p>Siete paradas. Scrolleá y la ruta avanza sola.</p>
+</header>
+
+<section class="scene" id="scene" aria-label="Cómo te sumás a APROVECHO, en 7 pasos">
+ <div class="stage">
+  <div class="head"><h3 id="ht">Contacto</h3><div class="count" aria-hidden="true"><span id="n">1</span><small> / 7</small></div></div>
+  <div class="viewport"><div class="track" id="track"></div></div>
+  <div class="route" aria-hidden="true">
+    <div class="fill"></div><div class="stops" id="stops"></div>
+    <svg class="bag" viewBox="0 0 34 42"><path d="M3 14h28l-3 26H6z" fill="#C99B63"/><path d="M10 14c0-9 14-9 14 0" fill="none" stroke="#FBF3E4" stroke-width="3"/><rect x="9" y="22" width="16" height="9" rx="2" fill="#FBF3E4"/></svg>
+  </div>
+ </div>
+</section>
+
+<footer class="outro">
+  <span class="tag">Y ahora</span>
+  <h2>La parada 7 es tu primera venta.</h2>
+  <p>Sumá tu comercio.</p>
+</footer>
+
+<script>
+const ILL={
+ phone:'<svg viewBox="0 0 160 120"><rect x="56" y="10" width="48" height="100" rx="10" fill="#14281F"/><rect x="62" y="20" width="36" height="80" rx="4" fill="#FBF3E4"/><rect x="66" y="30" width="22" height="9" rx="4.5" fill="#DFFFD6"/><rect x="72" y="45" width="22" height="9" rx="4.5" fill="#1A4D3A"/><circle cx="80" cy="82" r="9" fill="#E07A2E"/><path d="M116 28q14 0 14 12t-14 12l-8 8v-8" fill="none" stroke="#E07A2E" stroke-width="4" stroke-linecap="round"/></svg>',
+ form:'<svg viewBox="0 0 160 120"><rect x="34" y="10" width="92" height="100" rx="8" fill="#fff" stroke="#E4D9C3" stroke-width="3"/><rect x="46" y="24" width="40" height="8" rx="4" fill="#1A4D3A"/><rect x="46" y="42" width="68" height="12" rx="4" fill="#F7ECD6"/><rect x="46" y="60" width="68" height="12" rx="4" fill="#F7ECD6"/><rect x="46" y="84" width="22" height="18" rx="9" fill="#1A4D3A"/><rect x="72" y="84" width="22" height="18" rx="9" fill="none" stroke="#1A4D3A" stroke-width="2.5"/><rect x="98" y="84" width="22" height="18" rx="9" fill="none" stroke="#1A4D3A" stroke-width="2.5"/></svg>',
+ stamp:'<svg viewBox="0 0 160 120"><circle cx="80" cy="60" r="44" fill="#fff" stroke="#1A4D3A" stroke-width="7"/><circle cx="80" cy="60" r="34" fill="none" stroke="#1A4D3A" stroke-width="2" stroke-dasharray="3 5"/><path d="M62 62l12 12 26-28" fill="none" stroke="#2E7D32" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ cfg:'<svg viewBox="0 0 160 120"><rect x="18" y="14" width="124" height="26" rx="13" fill="#fff" stroke="#E4D9C3" stroke-width="2.5"/><circle cx="32" cy="27" r="6" fill="#E07A2E"/><rect x="44" y="23" width="46" height="8" rx="4" fill="#1A4D3A"/><rect x="104" y="23" width="26" height="8" rx="4" fill="#E4D9C3"/><rect x="18" y="47" width="124" height="26" rx="13" fill="#fff" stroke="#E4D9C3" stroke-width="2.5"/><circle cx="32" cy="60" r="6" fill="#1A4D3A"/><rect x="44" y="56" width="36" height="8" rx="4" fill="#1A4D3A"/><rect x="104" y="56" width="26" height="8" rx="4" fill="#E4D9C3"/><rect x="18" y="80" width="124" height="26" rx="13" fill="#FBE3CC" stroke="#E07A2E" stroke-width="2.5"/><circle cx="32" cy="93" r="6" fill="none" stroke="#14281F" stroke-width="2.5"/><rect x="44" y="89" width="56" height="8" rx="4" fill="#14281F"/></svg>',
+ kit:'<svg viewBox="0 0 160 120"><path d="M14 104l9-40h50l9 40z" fill="#C99B63"/><path d="M23 64h50l-6-12H29z" fill="#B3844C"/><rect x="30" y="80" width="30" height="14" rx="3" fill="#FBF3E4"/><circle cx="108" cy="40" r="24" fill="#1A4D3A"/><circle cx="108" cy="40" r="19" fill="none" stroke="#FBF3E4" stroke-width="2"/><path d="M98 44a11 11 0 0 1 19-6m0 0v7m0-7h-7" stroke="#E07A2E" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="100" y="72" width="50" height="40" rx="5" fill="#fff" stroke="#14281F" stroke-width="3"/><g fill="#14281F"><rect x="108" y="80" width="10" height="10"/><rect x="132" y="80" width="10" height="10"/><rect x="108" y="96" width="10" height="10"/><rect x="124" y="88" width="8" height="8"/><rect x="134" y="98" width="8" height="8"/></g></svg>',
+ pub:'<svg viewBox="0 0 160 120"><rect x="18" y="26" width="124" height="72" rx="16" fill="#fff" stroke="#E4D9C3" stroke-width="2"/><rect x="30" y="38" width="48" height="48" rx="10" fill="#FBE3CC"/><path d="M42 72c4-14 22-14 26 0z" fill="#C99B63"/><rect x="88" y="42" width="40" height="9" rx="4" fill="#14281F"/><rect x="88" y="58" width="30" height="8" rx="4" fill="#E4D9C3"/><rect x="88" y="72" width="38" height="14" rx="7" fill="#E07A2E"/><circle cx="138" cy="26" r="13" fill="#E07A2E"/><circle cx="138" cy="26" r="4.5" fill="#14281F"/></svg>'
+};
+const PASOS=[
+ {t:'Contacto',d:'Escribinos o sumate desde la web.',i:'phone'},
+ {t:'Registro',d:'Cargá tus datos y elegí tu plan.',i:'form'},
+ {t:'Verificación',d:'Revisamos habilitación y carnet.',i:'stamp'},
+ {t:'Configuración',d:'Categorías, precios y horarios.',i:'cfg'},
+ {t:'Arranque',d:'Bolsas, sticker y cartel con QR.',i:'kit',v:'H-apertura'},
+ {t:'Instalación',d:'Balanza, tablet y cámara en tu mostrador.',v:'G-smart',alt:true},
+ {t:'Primera publicación',d:'Publicamos juntos tu primer pack.',i:'pub',v:'D-base'}
+];
+const $=s=>document.querySelector(s),track=$('#track'),stops=$('#stops'),scene=$('#scene');
+PASOS.forEach((p,k)=>{
+ track.insertAdjacentHTML('beforeend',`<article class="card" data-k="${k}" ${p.alt?'':''}>
+  ${p.alt?'<span class="fork">Solo Smart e Intelligence</span>':''}
+  <div class="n" aria-hidden="true">${k+1}</div>
+  ${p.v?`<div class="vid"><video muted loop playsinline preload="none" data-src="media/${p.v}.mp4" poster="media/${p.v}.jpg"></video></div>`:`<div class="ill" aria-hidden="true">${ILL[p.i]}</div>`}
+  <h4>${p.t}</h4><p>${p.d}</p></article>`);
+ stops.insertAdjacentHTML('beforeend',`<i class="${p.alt?'alt':''}" style="left:${k/(PASOS.length-1)*100}%"></i>`);
+});
+const cards=[...track.children],dots=[...stops.children],vids=[...track.querySelectorAll('video')];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+let cur=-1;
+function frame(){
+  const r=scene.getBoundingClientRect(),p=clamp(-r.top/(r.height-innerHeight));
+  const vp=track.parentElement.clientWidth,max=track.scrollWidth-vp-innerWidth*.5+Math.min(vp*.5,400); // deja la última card centrada
+  const first=cards[0].offsetLeft,last=cards[cards.length-1];
+  const endX=last.offsetLeft+last.offsetWidth/2-vp/2,startX=first+cards[0].offsetWidth/2-vp/2;
+  const x=startX+(endX-startX)*p;
+  track.style.transform=`translateX(${-Math.max(0,x)}px)`;
+  $('.route').style.setProperty('--p',p);
+  const s=Math.round(p*(PASOS.length-1));
+  dots.forEach((d,i)=>d.classList.toggle('pass',i<=s));
+  if(s!==cur){cur=s;
+    cards.forEach((c,i)=>c.classList.toggle('on',i===s));
+    $('#n').textContent=s+1;$('#ht').textContent=PASOS[s].t;
+    vids.forEach(v=>{const on=v.closest('.card')===cards[s];if(on){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()});
+  }
+}
+if(reduce){document.documentElement.classList.add('static');vids.forEach(v=>{v.src=v.dataset.src;v.controls=true});cards.forEach(c=>c.classList.add('on'))}
+else{let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{frame();tk=false})}},{passive:true});addEventListener('resize',()=>{cur=-1;frame()});frame()}
+</script>
+</body>
+</html>

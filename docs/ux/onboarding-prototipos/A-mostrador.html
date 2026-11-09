@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concepto A · El mostrador que se arma</title>
+<link rel="stylesheet" href="../../marca/tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0}
+.intro,.outro{min-height:60vh;display:grid;place-content:center;padding:var(--space-6) var(--space-4);max-width:760px;margin:auto}
+.intro h2,.outro h2{font-size:clamp(2rem,6vw,3.5rem);margin:0 0 var(--space-3)}
+.intro p,.outro p{color:var(--color-text-muted);margin:0;font-size:var(--size-lg)}
+.tag{display:inline-block;font:600 var(--size-xs)/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-text);margin-bottom:var(--space-3)}
+
+/* escena: 700vh de recorrido, un escenario fijo de 100vh */
+.scene{height:760vh;position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(280px,.8fr) 1.6fr;align-items:center;gap:var(--space-6);padding:var(--space-5) clamp(16px,4vw,64px);background:var(--color-bg);overflow:hidden}
+.copy{position:relative}
+.num{font:800 clamp(4rem,10vw,8rem)/.9 var(--font-display);color:var(--color-accent);letter-spacing:-.04em}
+.num small{font-size:.28em;color:var(--color-text-muted);letter-spacing:0;font-weight:500}
+.copy h3{font-size:clamp(1.6rem,3.4vw,2.6rem);margin:var(--space-2) 0 var(--space-2)}
+.copy p{font-size:var(--size-xl);margin:0;color:var(--color-text-strong);max-width:20ch;min-height:2.6em}
+.solo{display:inline-block;margin-top:var(--space-3);font:600 var(--size-sm)/1 var(--font-body);padding:6px 10px;border-radius:var(--radius-pill);background:var(--color-primary);color:var(--color-on-primary);opacity:0;transition:opacity .3s}
+.solo.on{opacity:1}
+.rail{display:flex;gap:6px;margin-top:var(--space-5)}
+.rail i{flex:1;height:6px;border-radius:3px;background:var(--color-border);overflow:hidden;position:relative}
+.rail i::after{content:"";position:absolute;inset:0;background:var(--color-accent);transform:scaleX(var(--k,0));transform-origin:left}
+.art{position:relative;min-width:0}
+.art svg{width:100%;height:auto;max-height:78vh;display:block}
+.art [data-i]{opacity:0;will-change:transform,opacity}
+.inset{position:absolute;right:0;top:0;width:min(46%,320px);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);border:3px solid var(--color-surface);opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s;background:var(--color-primary)}
+.inset.on{opacity:1;transform:none}
+.inset video{display:block;width:100%;height:auto}
+.inset span{position:absolute;left:8px;bottom:8px;font:600 var(--size-xs)/1 var(--font-body);background:var(--color-surface);color:var(--color-text-strong);padding:5px 8px;border-radius:var(--radius-pill)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:760px){
+ .stage{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:var(--space-3);padding-top:var(--space-4)}
+ .art{order:-1}
+ .copy{display:grid;grid-template-columns:auto 1fr;column-gap:var(--space-4);align-items:center}
+ .num{grid-row:1/3;font-size:4rem}
+ .copy h3{margin:0;font-size:1.4rem}
+ .copy p{font-size:1.05rem;min-height:0;max-width:none}
+ .solo,.rail{grid-column:1/-1}
+ .rail{margin-top:var(--space-3)}
+ .inset{width:44%}
+}
+/* sin animación: todo visible y apilado */
+.static .scene{height:auto}
+.static .stage{position:static;height:auto;padding-block:var(--space-7)}
+.static .art [data-i]{opacity:1!important;transform:none!important}
+.static .copy .num,.static .rail,.static .copy p,.static .copy h3,.static .solo{display:none}
+.static .sr{position:static;width:auto;height:auto;clip:auto;white-space:normal;font-size:var(--size-lg)}
+.static .copy{display:block}
+.static .inset{position:static;opacity:1;transform:none;margin-top:var(--space-4);width:min(100%,360px)}
+@media (max-width:760px){.static .stage{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="intro">
+  <span class="tag">Concepto A · prototipo</span>
+  <h2>Tu mostrador, listo para vender lo que sobra.</h2>
+  <p>Scrolleá: cada paso suma una pieza al local.</p>
+</header>
+
+<section class="scene" id="scene" aria-label="Cómo te sumás a APROVECHO, en 7 pasos">
+ <div class="stage">
+  <div class="copy" aria-hidden="true">
+    <div class="num"><span id="n">1</span><small> / 7</small></div>
+    <h3 id="t">Contacto</h3>
+    <p id="d">Escribinos o sumate desde la web.</p>
+    <span class="solo" id="solo">Solo Smart e Intelligence</span>
+    <div class="rail" id="rail"></div>
+  </div>
+
+  <div class="art">
+   <svg viewBox="0 0 800 460" role="img" aria-label="Un mostrador de comercio que se va equipando: celular, formulario, sello de verificación, categorías, bolsas con sticker y cartel QR, estación con balanza y tablet, y el primer pack publicado.">
+    <!-- fondo del local -->
+    <rect width="800" height="460" fill="#F3E6CC"/>
+    <rect x="0" y="0" width="800" height="300" fill="#F7ECD6"/>
+    <rect x="0" y="296" width="800" height="26" fill="#C99B63"/>
+    <rect x="0" y="322" width="800" height="138" fill="#1A4D3A"/>
+    <rect x="0" y="322" width="800" height="6" fill="#0F3326"/>
+    <!-- ventana (fija) -->
+    <rect x="590" y="28" width="170" height="110" rx="6" fill="#DFFFD6" stroke="#14281F" stroke-width="4"/>
+    <path d="M675 28V138M590 83H760" stroke="#14281F" stroke-width="3" opacity=".35"/>
+
+    <!-- 1 contacto -->
+    <g data-i="0">
+      <rect x="44" y="92" width="86" height="150" rx="14" fill="#14281F"/>
+      <rect x="51" y="104" width="72" height="126" rx="6" fill="#FBF3E4"/>
+      <rect x="58" y="116" width="44" height="12" rx="6" fill="#DFFFD6"/>
+      <rect x="70" y="136" width="46" height="12" rx="6" fill="#1A4D3A"/>
+      <rect x="58" y="156" width="36" height="12" rx="6" fill="#DFFFD6"/>
+      <circle cx="108" cy="196" r="12" fill="#E07A2E"/>
+      <path d="M102 196h12m-5-5 5 5-5 5" stroke="#14281F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- 2 registro -->
+    <g data-i="1">
+      <rect x="150" y="70" width="170" height="156" rx="10" fill="#fff" stroke="#E4D9C3" stroke-width="3"/>
+      <rect x="166" y="88" width="70" height="9" rx="4" fill="#1A4D3A"/>
+      <rect x="166" y="110" width="138" height="14" rx="4" fill="#F7ECD6"/>
+      <rect x="166" y="132" width="138" height="14" rx="4" fill="#F7ECD6"/>
+      <rect x="166" y="154" width="90" height="14" rx="4" fill="#F7ECD6"/>
+      <rect x="166" y="184" width="40" height="26" rx="13" fill="#1A4D3A"/>
+      <rect x="212" y="184" width="40" height="26" rx="13" fill="none" stroke="#1A4D3A" stroke-width="2.5"/>
+      <rect x="258" y="184" width="40" height="26" rx="13" fill="none" stroke="#1A4D3A" stroke-width="2.5"/>
+    </g>
+    <!-- 3 verificación -->
+    <g data-i="2">
+      <circle cx="435" cy="118" r="42" fill="#fff" stroke="#1A4D3A" stroke-width="7"/>
+      <circle cx="435" cy="118" r="32" fill="none" stroke="#1A4D3A" stroke-width="2" stroke-dasharray="3 5"/>
+      <path id="chk" d="M418 120l12 12 24-26" fill="none" stroke="#2E7D32" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    </g>
+    <!-- 4 configuración -->
+    <g data-i="3">
+      <rect x="356" y="182" width="164" height="30" rx="15" fill="#fff" stroke="#E4D9C3" stroke-width="2.5"/>
+      <circle cx="372" cy="197" r="7" fill="#E07A2E"/><rect x="386" y="192" width="64" height="9" rx="4" fill="#1A4D3A"/><rect x="470" y="192" width="38" height="9" rx="4" fill="#E4D9C3"/>
+      <rect x="356" y="220" width="164" height="30" rx="15" fill="#fff" stroke="#E4D9C3" stroke-width="2.5"/>
+      <circle cx="372" cy="235" r="7" fill="#1A4D3A"/><rect x="386" y="230" width="50" height="9" rx="4" fill="#1A4D3A"/><rect x="470" y="230" width="38" height="9" rx="4" fill="#E4D9C3"/>
+      <rect x="356" y="258" width="164" height="30" rx="15" fill="#FBE3CC" stroke="#E07A2E" stroke-width="2.5"/>
+      <circle cx="372" cy="273" r="7" fill="none" stroke="#14281F" stroke-width="2.5"/><path d="M372 269v4h3" stroke="#14281F" stroke-width="2" fill="none"/><rect x="386" y="268" width="74" height="9" rx="4" fill="#14281F"/>
+    </g>
+    <!-- 5 arranque: bolsas + cartel QR + sticker en vidriera -->
+    <g data-i="4">
+      <g id="bags">
+        <path d="M54 296l8-34h46l8 34z" fill="#C99B63"/><path d="M62 262h46l-6-10H68z" fill="#B3844C"/>
+        <path d="M116 296l8-34h46l8 34z" fill="#C99B63"/><path d="M124 262h46l-6-10h-34z" fill="#B3844C"/>
+        <rect x="70" y="274" width="30" height="14" rx="3" fill="#FBF3E4"/><rect x="132" y="274" width="30" height="14" rx="3" fill="#FBF3E4"/>
+      </g>
+      <rect x="224" y="232" width="78" height="64" rx="6" fill="#fff" stroke="#14281F" stroke-width="3"/>
+      <g id="qr" transform="translate(237 240)"></g>
+      <path d="M263 296v10" stroke="#14281F" stroke-width="3"/>
+      <circle cx="675" cy="83" r="30" fill="#1A4D3A"/><circle cx="675" cy="83" r="24" fill="none" stroke="#FBF3E4" stroke-width="2"/>
+      <path d="M663 88a14 14 0 0 1 24-8m0 0v8m0-8h-8" stroke="#E07A2E" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- 6 estación -->
+    <g data-i="5">
+      <rect x="606" y="150" width="124" height="82" rx="8" fill="#14281F"/>
+      <rect x="613" y="157" width="110" height="68" rx="4" fill="#FBF3E4"/>
+      <text x="668" y="198" text-anchor="middle" font-family="Bricolage Grotesque,system-ui" font-weight="800" font-size="24" fill="#1A4D3A">0,42 kg</text>
+      <rect x="640" y="206" width="56" height="9" rx="4.5" fill="#DFFFD6"/>
+      <path d="M744 160c24 10 18 70-8 86" stroke="#14281F" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="744" cy="158" r="8" fill="#E07A2E"/><circle cx="744" cy="158" r="3.5" fill="#14281F"/>
+      <path d="M580 296l14-40h112l14 40z" fill="#E4D9C3"/>
+      <rect x="592" y="250" width="116" height="8" rx="3" fill="#8A97A0"/>
+      <rect x="560" y="288" width="196" height="10" rx="4" fill="#14281F"/>
+    </g>
+    <!-- 7 primera publicación -->
+    <g data-i="6">
+      <rect x="290" y="346" width="240" height="84" rx="16" fill="#fff"/>
+      <rect x="304" y="360" width="56" height="56" rx="10" fill="#FBE3CC"/>
+      <path d="M318 396c4-14 22-14 26 0z" fill="#C99B63"/><path d="M314 400h34" stroke="#A9490B" stroke-width="3" stroke-linecap="round"/>
+      <rect x="374" y="364" width="98" height="11" rx="5" fill="#14281F"/>
+      <rect x="374" y="384" width="70" height="9" rx="4" fill="#E4D9C3"/>
+      <rect x="374" y="400" width="52" height="16" rx="8" fill="#E07A2E"/>
+      <circle cx="514" cy="346" r="14" fill="#E07A2E"/><circle cx="514" cy="346" r="5" fill="#14281F"/>
+    </g>
+   </svg>
+   <div class="inset" id="inset"><video id="vid" muted loop playsinline preload="none" poster=""></video><span id="vlabel">Así se ve de verdad</span></div>
+  </div>
+
+  <ol class="sr" id="lista"></ol>
+ </div>
+</section>
+
+<footer class="outro">
+  <span class="tag">Y ahora</span>
+  <h2>Tu primera venta está a un pack de distancia.</h2>
+  <p>Sumá tu comercio.</p>
+</footer>
+
+<script>
+const PASOS=[
+ ['Contacto','Escribinos o sumate desde la web.',false],
+ ['Registro','Cargá tus datos y elegí tu plan.',false],
+ ['Verificación','Revisamos habilitación y carnet.',false],
+ ['Configuración','Categorías, precios y horarios.',false],
+ ['Arranque','Bolsas, sticker y cartel con QR.',false],
+ ['Instalación','Balanza, tablet y cámara en tu mostrador.',true],
+ ['Primera publicación','Publicamos juntos tu primer pack.',false]
+];
+const VIDEO={5:['media/G-smart.mp4','media/G-smart.jpg','Estación Smart real'],6:['media/D-base.mp4','media/D-base.jpg','Publicar desde el celu']};
+const $=s=>document.querySelector(s), scene=$('#scene'), items=[...document.querySelectorAll('[data-i]')];
+const rail=$('#rail'), vid=$('#vid'), inset=$('#inset');
+PASOS.forEach((p,i)=>{rail.insertAdjacentHTML('beforeend','<i></i>');$('#lista').insertAdjacentHTML('beforeend',`<li><strong>${p[0]}.</strong> ${p[1]}${p[2]?' (solo Smart e Intelligence)':''}</li>`)});
+// QR decorativo
+const qr=$('#qr');const pat=[1,1,1,0,1,1,1, 1,0,1,1,1,0,1, 1,1,1,0,0,1,1, 0,1,0,1,1,0,0, 1,0,1,1,0,1,1, 1,0,1,0,1,0,1, 1,1,1,0,1,1,0];
+pat.forEach((v,i)=>{if(v)qr.insertAdjacentHTML('beforeend',`<rect x="${(i%7)*8}" y="${Math.floor(i/7)*7.4}" width="7" height="6.4" fill="#14281F"/>`)});
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), ease=t=>1-Math.pow(1-t,3);
+let cur=-1;
+function setStep(s){
+  if(s===cur)return;cur=s;
+  $('#n').textContent=s+1;$('#t').textContent=PASOS[s][0];$('#d').textContent=PASOS[s][1];
+  $('#solo').classList.toggle('on',PASOS[s][2]);
+  const v=VIDEO[s];
+  if(v){if(!vid.src.endsWith(v[0])){vid.src=v[0];vid.poster=v[1];}$('#vlabel').textContent=v[2];inset.classList.add('on');vid.play().catch(()=>{});}
+  else{inset.classList.remove('on');vid.pause();}
+}
+function frame(){
+  const r=scene.getBoundingClientRect();
+  const p=clamp(-r.top/(r.height-innerHeight));
+  const total=p*PASOS.length;
+  items.forEach((el,i)=>{const k=ease(clamp(total-i+0.15,0,1)*1.0);
+    el.style.opacity=clamp(k*1.6);el.style.transform=`translateY(${(1-k)*26}px)`;});
+  $('#chk').style.strokeDashoffset=1-ease(clamp(total-2,0,1));
+  [...rail.children].forEach((e,i)=>e.style.setProperty('--k',clamp(total-i)));
+  setStep(Math.min(PASOS.length-1,Math.floor(total)));
+}
+if(reduce){document.documentElement.classList.add('static');
+  vid.src=VIDEO[5][0];vid.poster=VIDEO[5][1];vid.removeAttribute('autoplay');$('#vlabel').textContent=VIDEO[5][2];
+}else{
+  let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{frame();tk=false})}},{passive:true});
+  addEventListener('resize',frame);frame();
+}
+</script>
+</body>
+</html>

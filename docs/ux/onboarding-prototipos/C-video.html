@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concepto C · El video que avanza con vos</title>
+<link rel="stylesheet" href="../../marca/tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0}
+.intro,.outro{min-height:60vh;display:grid;place-content:center;padding:var(--space-6) var(--space-4);max-width:760px;margin:auto}
+.intro h2,.outro h2{font-size:clamp(2rem,6vw,3.5rem);margin:0 0 var(--space-3)}
+.intro p,.outro p{color:var(--color-text-muted);margin:0;font-size:var(--size-lg)}
+.tag{display:inline-block;font:600 var(--size-xs)/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-text);margin-bottom:var(--space-3)}
+
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,5vw,80px);padding:0 clamp(16px,4vw,64px);max-width:1360px;margin:auto;align-items:start}
+.media{position:sticky;top:0;height:100vh;height:100svh;display:grid;align-content:center;gap:var(--space-4)}
+.frame{position:relative;aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-primary);box-shadow:var(--shadow-lg)}
+.frame .clip{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+.frame .clip.on{opacity:1}
+.frame video,.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame img{animation:kb 14s ease-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.chip{position:absolute;left:14px;bottom:14px;display:flex;gap:8px;align-items:center;background:var(--color-surface);color:var(--color-text-strong);font:700 var(--size-sm)/1 var(--font-body);padding:9px 14px;border-radius:var(--radius-pill);box-shadow:var(--shadow-md);opacity:0;transform:translateY(10px);transition:.4s;z-index:2}
+.chip.on{opacity:1;transform:none}
+.chip b{font-family:var(--font-display);font-size:1.15em;color:var(--color-primary);font-variant-numeric:tabular-nums}
+.chip em{font-style:normal;font-weight:600;font-size:var(--size-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--color-medido);border:1.5px solid var(--color-medido);padding:3px 7px;border-radius:var(--radius-pill)}
+.ticks{display:flex;gap:6px}
+.ticks i{flex:1;height:8px;border-radius:4px;background:var(--color-border);transition:background .3s}
+.ticks i.on{background:var(--color-accent)}
+.ticks i.cur{background:var(--color-primary)}
+
+.steps{padding-block:30vh 30vh}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;gap:var(--space-3);opacity:.35;transition:opacity .4s}
+.step.on{opacity:1}
+.step .n{font:800 clamp(5rem,11vw,9rem)/.85 var(--font-display);color:var(--color-accent);letter-spacing:-.05em}
+.step h3{font-size:clamp(1.6rem,3vw,2.4rem);margin:0}
+.step p{margin:0;font-size:var(--size-xl);color:var(--color-text-strong);max-width:18ch}
+.solo{align-self:start;font:600 var(--size-sm)/1 var(--font-body);padding:6px 10px;border-radius:var(--radius-pill);background:var(--color-primary);color:var(--color-on-primary)}
+
+@media (max-width:860px){
+ .split{grid-template-columns:1fr;gap:0;padding:0}
+ .media{height:auto;z-index:5;background:var(--color-bg);padding:var(--space-3) var(--space-4);gap:var(--space-2);box-shadow:0 8px 16px -12px rgba(20,40,31,.35)}
+ .frame{aspect-ratio:16/9;border-radius:var(--radius-md)}
+ .steps{padding:8vh var(--space-4) 20vh}
+ .step{min-height:62vh}
+ .step .n{font-size:4.6rem}
+ .step p{font-size:var(--size-lg)}
+}
+.static .step{opacity:1;min-height:0;padding-block:var(--space-5)}
+.static .steps{padding-block:var(--space-5)}
+.static .media{position:static;height:auto}
+.static .frame img{animation:none}
+@media (prefers-reduced-motion:reduce){.frame img{animation:none}.frame .clip,.chip{transition:none}}
+</style>
+</head>
+<body>
+<header class="intro">
+  <span class="tag">Concepto C · prototipo</span>
+  <h2>Mirá cómo es, no cómo te lo contamos.</h2>
+  <p>El video queda fijo y cambia con cada paso.</p>
+</header>
+
+<div class="split" id="split">
+ <div class="media">
+  <div class="frame" id="frame" aria-live="off">
+    <div class="clip" data-c="H"><video muted loop playsinline preload="none" data-src="media/H-apertura.mp4" poster="media/H-apertura.jpg"></video></div>
+    <div class="clip" data-c="F"><video muted loop playsinline preload="none" data-src="media/F-apertura.mp4" poster="media/F-apertura.jpg"></video></div>
+    <div class="clip" data-c="P"><img src="../../marca/imagenes-aprobadas/estacion-balanza-tablet.jpg" alt="Estación APROVECHO con balanza, tablet y cámara en el mostrador de una cafetería" loading="lazy"></div>
+    <div class="clip" data-c="G"><video muted loop playsinline preload="none" data-src="media/G-smart.mp4" poster="media/G-smart.jpg"></video></div>
+    <div class="clip" data-c="D"><video muted loop playsinline preload="none" data-src="media/D-base.mp4" poster="media/D-base.jpg"></video></div>
+    <div class="chip" id="chip"></div>
+  </div>
+  <div class="ticks" id="ticks" aria-hidden="true"></div>
+ </div>
+
+ <div class="steps" id="steps" aria-label="Cómo te sumás a APROVECHO, en 7 pasos"></div>
+</div>
+
+<footer class="outro">
+  <span class="tag">Y ahora</span>
+  <h2>Sumá tu comercio.</h2>
+  <p>Menos desperdicio, más aprovecho.</p>
+</footer>
+
+<script>
+const PASOS=[
+ {t:'Contacto',d:'Escribinos o sumate desde la web.',c:'H'},
+ {t:'Registro',d:'Cargá tus datos y elegí tu plan.',c:'H'},
+ {t:'Verificación',d:'Revisamos habilitación y carnet.',c:'H',chip:'Verificado'},
+ {t:'Configuración',d:'Categorías, precios y horarios.',c:'F'},
+ {t:'Arranque',d:'Bolsas, sticker y cartel con QR.',c:'P'},
+ {t:'Instalación',d:'Balanza, tablet y cámara en tu mostrador.',c:'G',solo:true,chip:'kg'},
+ {t:'Primera publicación',d:'Publicamos juntos tu primer pack.',c:'D',chip:'Pack publicado'}
+];
+const $=s=>document.querySelector(s),box=$('#steps'),ticks=$('#ticks'),chip=$('#chip');
+PASOS.forEach((p,i)=>{
+ box.insertAdjacentHTML('beforeend',`<section class="step" data-i="${i}"><div class="n" aria-hidden="true">${i+1}</div><h3>${p.t}</h3><p>${p.d}</p>${p.solo?'<span class="solo">Solo Smart e Intelligence</span>':''}</section>`);
+ ticks.insertAdjacentHTML('beforeend','<i></i>');
+});
+const steps=[...box.children],tk=[...ticks.children],clips=Object.fromEntries([...document.querySelectorAll('.clip')].map(c=>[c.dataset.c,c]));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cur=-1,kgT;
+function kg(){ // cuenta la balanza: valor medido de ejemplo
+  clearInterval(kgT);let v=0;const t=.42;
+  kgT=setInterval(()=>{v=Math.min(t,v+.03);chip.innerHTML=`<em>Medido</em><b>${v.toFixed(2).replace('.',',')} kg</b>`;if(v>=t)clearInterval(kgT)},45);
+}
+function go(i){
+  if(i===cur)return;cur=i;const p=PASOS[i];
+  steps.forEach((s,k)=>s.classList.toggle('on',k===i));
+  tk.forEach((t,k)=>{t.classList.toggle('on',k<i);t.classList.toggle('cur',k===i)});
+  Object.entries(clips).forEach(([k,el])=>{
+    const on=k===p.c;el.classList.toggle('on',on);
+    const v=el.querySelector('video');
+    if(v){if(on){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()}
+    const im=el.querySelector('img');if(im&&on){im.style.animation='none';im.offsetWidth;im.style.animation=''}
+  });
+  chip.classList.remove('on');clearInterval(kgT);
+  if(p.chip){setTimeout(()=>{ if(cur!==i)return; if(p.chip==='kg')kg(); else chip.innerHTML=`<em>${p.chip==='Verificado'?'OK':'Listo'}</em><b>${p.chip}</b>`; chip.classList.add('on')},500)}
+}
+if(reduce){document.documentElement.classList.add('static');go(5);steps.forEach(s=>s.classList.add('on'))}
+else{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)go(+e.target.dataset.i)}),{rootMargin:'-45% 0px -45% 0px'});
+  steps.forEach(s=>io.observe(s));
+  go(0);
+}
+</script>
+</body>
+</html>
