@@ -17,3 +17,5 @@ Los datos se guardan en este navegador. IA, balanza, pagos, inventario inicial y
 ## Cambios de la versión final (claude-octi-app, 9/11)
 
 Sin límite de publicación ni visor 3D (D-039). Checklist como confirmación al tocar «Publicar» (D-036). Comisión 25% (D-007). Capturas en `capturas/`. Detalle en `docs/handoffs/2026-11-09-app-final.md`.
+
+**Sin dependencias externas:** Leaflet, QR, PDF y las tipografías están en `vendor/` y `css/tokens.css` es copia de `docs/marca/tokens.css`. Solo las calles del mapa (OpenStreetMap) necesitan conexión; las ya vistas quedan en caché.

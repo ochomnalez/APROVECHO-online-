@@ -5,7 +5,7 @@ import { S, hoy, ahora, miComercio, tienePlan } from './store.js';
 import { filtrar, resumen, porDia, sugerencias, ranking, METODOLOGIA, SUCURSALES, periodoDias, semanas } from './intel.js';
 import { CONFIG, PLANES } from './data.js';
 
-export const JSPDF_JS = 'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js';
+export const JSPDF_JS = './vendor/jspdf.umd.min.js';
 
 // ---------------------------------------------------------------------------
 // datos del reporte

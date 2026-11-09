@@ -33,7 +33,8 @@ function horarioReserva(r, c) {
 }
 const retiroReserva = (r, c) => { const { desde, hasta } = horarioReserva(r, c); return retiroTxt(c, desde, hasta); };
 const sello = tam => `<img src="./img/sello-aprovecho.webp" width="${tam}" height="${tam}" alt="APROVECHO" class="sello-cliente">`;
-const fotoPack = (p, carga) => `<img class="foto-pack-cliente" src="${esc(fotoComercio(p.comercioId, p.cat, p.tam))}" alt=""${carga ? ' loading="lazy"' : ''}>`;
+const tituloPack = p => p.titulo || `Pack sorpresa de ${p.cat.toLowerCase()}`;
+const fotoPack = (p, carga) => `<img class="foto-pack-cliente" src="${esc(fotoComercio(p.comercioId, p.cat, p.tam, String(p.id).startsWith('ps') ? null : p.productoId))}" alt=""${carga ? ' loading="lazy"' : ''}>`;
 export function nutriPack(p) {
   const n100 = p.nutri100 || producto(p.productoId)?.nutri;
   return n100 && p.pesoG > 0 ? nutricion(n100, p.pesoG, p.medido ? 0.08 : CONFIG.rangoNutri) : null;
@@ -471,7 +472,7 @@ function detalle(id) {
           ${icon('adelante', 18)}
         </button>
         <div class="det-titulo">
-          <h1>Pack sorpresa de ${esc(p.cat.toLowerCase())}</h1>
+          <h1>${esc(tituloPack(p))}</h1>
           <div class="det-precio"><strong>${plata(p.precio)}</strong><s>${plata(p.valor)}</s><span class="ahorro">Ahorrás ${plata(p.valor - p.precio)}</span></div>
         </div>
         <ul class="det-datos">
@@ -541,7 +542,7 @@ function pago(id) {
     <div class="cuerpo">
       ${errorPago?.estado === S && errorPago.id === id ? '<p role="alert" class="nota horno">No pudimos cobrar. No se generó una reserva ni un QR. Podés reintentar.</p>' : ''}
       <div class="card">
-        <div class="fila">${logoLocal(c, 52, 15)}<div class="col crece"><span class="fuerte">Pack sorpresa · ${esc(p.cat)}</span><span class="chico">${esc(c.nombre)} · hoy ${retiroTxt(c, p.retiroDesde, p.retiroHasta)}</span></div></div>
+        <div class="fila">${logoLocal(c, 52, 15)}<div class="col crece"><span class="fuerte">${esc(p.titulo || 'Pack sorpresa · ' + p.cat)}</span><span class="chico">${esc(c.nombre)} · hoy ${retiroTxt(c, p.retiroDesde, p.retiroHasta)}</span></div></div>
         <div class="sep"></div>
         <div class="fila entre"><span class="chico">Valor en el local</span><span class="tachado">${plata(p.valor)}</span></div>
         <div class="fila entre"><span class="chico">Precio del pack · 50% de descuento</span><span>${plata(p.precio)}</span></div>
@@ -909,7 +910,7 @@ export const acciones = {
   'compartir-pack': async ds => {
     const p0 = S.packs.find(x => x.id === ds.id); if (!p0) return;
     const p = conDatos(p0);
-    const datos = { title: 'Aprovecho', text: `Pack sorpresa de ${p.c.nombre} a ${plata(p.precio)} (antes ${plata(p.valor)}).`, url: 'https://ochomnalez.github.io/aprovecho-app/' };
+    const datos = { title: 'Aprovecho', text: `${p.titulo || 'Pack sorpresa'} de ${p.c.nombre} a ${plata(p.precio)} (antes ${plata(p.valor)}).`, url: 'https://ochomnalez.github.io/aprovecho-app/' };
     try {
       if (navigator.share) { await navigator.share(datos); return; }
       await navigator.clipboard.writeText(datos.text + ' ' + datos.url);

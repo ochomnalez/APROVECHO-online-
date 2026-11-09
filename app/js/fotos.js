@@ -56,7 +56,13 @@ const FOTOS_CATEGORIA = {
   Viandas: 'ensalada',
 };
 
-export function fotoComercio(comercioId, categoria, tam) {
+const FOTO_PRODUCTO = {
+  medialuna: 'medialunas', grasa: 'medialunas', factura: 'facturas', bizcocho: 'facturas', chipa: 'facturas', alfajor: 'torta',
+  pan: 'pan', frances: 'pan', salvado: 'pan', miga: 'sandwiches', empanada: 'empanadas', torta: 'torta', budin: 'torta', ricota: 'tarta',
+};
+
+export function fotoComercio(comercioId, categoria, tam, productoId) {
+  if (productoId && FOTO_PRODUCTO[productoId]) return ruta(FOTO_PRODUCTO[productoId]);
   if (comercioId === 'c2') {
     const rotiseria = { grande: 'tarta', mediano: 'plato-del-dia', chico: 'empanadas' };
     return ruta(rotiseria[tam] || 'empanadas');

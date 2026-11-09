@@ -1,0 +1,85 @@
+/* APROVECHO · design tokens v1 (identidad visual). Generado por herramientas/build_tokens.py — no editar a mano. */
+/* Copia local de docs/marca/tokens.css (sin @import de Google Fonts; las fuentes están en vendor/fuentes.css). Al cambiar los tokens, volver a copiar. */
+:root{
+  /* Paleta base */
+  --palette-forest: #1A4D3A;
+  --palette-forest-dark: #0F3326;
+  --palette-crust: #E07A2E;
+  --palette-crust-strong: #A9490B;
+  --palette-crust-soft: #FBE3CC;
+  --palette-cream: #FBF3E4;
+  --palette-mint: #DFFFD6;
+  --palette-surface: #FFFFFF;
+  --palette-text: #333333;
+  --palette-ink: #14281F;
+  --palette-text-muted: #5B6B62;
+  --palette-border: #E4D9C3;
+  --palette-success: #2E7D32;
+  --palette-error: #B3261E;
+  --palette-estimado: #A9490B;
+  --palette-medido: #1A4D3A;
+  /* Semánticos (usar estos en app y landing) */
+  --color-primary: var(--palette-forest);
+  --color-primary-hover: var(--palette-forest-dark);
+  --color-accent: var(--palette-crust);
+  --color-accent-text: var(--palette-crust-strong);
+  --color-accent-soft: var(--palette-crust-soft);
+  --color-bg: var(--palette-cream);
+  --color-bg-soft: var(--palette-mint);
+  --color-surface: var(--palette-surface);
+  --color-text: var(--palette-text);
+  --color-text-strong: var(--palette-ink);
+  --color-text-muted: var(--palette-text-muted);
+  --color-border: var(--palette-border);
+  --color-success: var(--palette-success);
+  --color-error: var(--palette-error);
+  --color-estimado: var(--palette-estimado);
+  --color-medido: var(--palette-medido);
+  --color-on-primary: var(--palette-cream);
+  --color-on-accent: var(--palette-ink);
+  --color-focus: var(--palette-crust);
+  /* Tipografía */
+  --font-display: 'Bricolage Grotesque', 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --size-xs: 0.75rem;
+  --size-sm: 0.875rem;
+  --size-base: 1rem;
+  --size-lg: 1.125rem;
+  --size-xl: 1.375rem;
+  --size-2xl: 1.75rem;
+  --size-3xl: 2.25rem;
+  --size-4xl: 3rem;
+  --size-5xl: 4rem;
+  --size-display-metric: 3.5rem;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-display: 800;
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(20,40,31,.08);
+  --shadow-md: 0 6px 18px rgba(20,40,31,.10);
+  --shadow-lg: 0 16px 40px rgba(20,40,31,.16);
+}
+
+/* Base */
+body{background:var(--color-bg);color:var(--color-text);font:var(--weight-regular) var(--size-base)/var(--line-height-normal) var(--font-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--color-primary);font-weight:var(--weight-display);line-height:var(--line-height-tight);letter-spacing:-0.01em}
+.num,.metric{font-variant-numeric:tabular-nums;font-feature-settings:'tnum'}
+:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+

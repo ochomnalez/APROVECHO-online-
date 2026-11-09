@@ -3,8 +3,8 @@
 // las teselas cada vez que el usuario vuelve a la pestaña.
 import { cargarScript, cargarCss, esc, plata } from './util.js';
 
-export const LEAFLET_JS = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
-export const LEAFLET_CSS = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css';
+export const LEAFLET_JS = './vendor/leaflet.js';
+export const LEAFLET_CSS = './vendor/leaflet.css';
 const TESELAS = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
 let L = null, mapa = null, caja = null, capa = null, marcaVos = null, pines = {}, alTocar = null;
@@ -60,7 +60,7 @@ export function ponerPines(comercios, seleccionado) {
     const html = `<button class="pin-precio${c.id === seleccionado ? ' sel' : ''}${c.agotado ? ' agotado' : ''}" aria-label="${esc(c.nombre)}">${c.agotado ? 'Agotado' : plata(c.desde)}</button>`;
     const m = L.marker([c.lat, c.lng], {
       icon: L.divIcon({ className: '', html, iconSize: [0, 0] }),
-      zIndexOffset: c.id === seleccionado ? 1000 : 0, keyboard: true, title: c.nombre,
+      zIndexOffset: c.id === seleccionado ? 1000 : 0, keyboard: false,
     });
     m.on('click', e => { L.DomEvent.stopPropagation(e); alTocar && alTocar(c.id); });
     m.addTo(capa);

@@ -1,14 +1,14 @@
 /* Service worker de APROVECHO v2.
-   - La app, las librerías y las tipografías se guardan al instalar: abre sin internet.
+   - La app, las librerías (vendor/) y las tipografías se guardan al instalar: abre sin internet.
    - Las calles del mapa que ya viste quedan guardadas (hasta 500 teselas).
    Al cambiar cualquier archivo, subí VERSION: invalida el cache viejo en los celus. */
 
-const VERSION = 'aprovecho-prototipo-plan-v3';
+const VERSION = 'aprovecho-prototipo-plan-v4';
 const TESELAS = 'aprovecho-prototipo-plan-teselas';
 const FUENTES = 'aprovecho-prototipo-plan-fuentes';
 
 const LOCALES = [
-  './', './index.html', './manifest.webmanifest', './css/app.css', './css/plan.css', './css/cliente-plan.css', './css/comercio-plan.css', '../docs/marca/tokens.css',
+  './', './index.html', './manifest.webmanifest', './css/app.css', './css/plan.css', './css/cliente-plan.css', './css/comercio-plan.css', './css/tokens.css', './vendor/fuentes.css',
   './js/main.js', './js/nav.js', './js/util.js', './js/icons.js', './js/store.js', './js/data.js',
   './js/fotos.js', './js/intel.js', './js/ui.js', './js/mapa.js', './js/qr.js', './js/export.js',
   './js/pwa.js', './js/cliente.js', './js/comercio.js', './js/intelui.js', './js/inventario.js', './js/ilus.js',
@@ -19,20 +19,25 @@ const LOCALES = [
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
   './icons/apple-touch-icon.png', './icons/favicon-32.png', './icons/favicon-64.png', './icons/favicon.svg',
 ];
-const LIBRERIAS = [
-  'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js',
-  'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css',
-  'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js',
-  'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js',
-  'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js',
-];
+const LIBRERIAS = ["./vendor/leaflet.js",
+  "./vendor/leaflet.css",
+  "./vendor/qrcode.js",
+  "./vendor/jsQR.js",
+  "./vendor/jspdf.umd.min.js",
+  "./vendor/images/layers-2x.png",
+  "./vendor/images/layers.png",
+  "./vendor/images/marker-icon-2x.png",
+  "./vendor/images/marker-icon.png",
+  "./vendor/images/marker-shadow.png",
+  "./vendor/fonts/40fe3cf7.woff2",
+  "./vendor/fonts/a9723242.woff2"];
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const c = await caches.open(VERSION);
     await c.addAll(LOCALES);
-    // las librerías de CDN no deben trabar la instalación si alguna falla
-    await Promise.all(LIBRERIAS.map(u => fetch(u, { mode: 'cors' }).then(r => r.ok && c.put(u, r)).catch(() => {})));
+    // librerías y tipografías propias (carpeta vendor/): la app abre sin internet; solo las calles del mapa necesitan red
+    await c.addAll(LIBRERIAS);
     await self.skipWaiting();
   })());
 });

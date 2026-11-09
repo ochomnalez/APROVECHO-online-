@@ -2,8 +2,8 @@
 // validar una reserva hecha en otro celu aunque la demo no tenga servidor.
 import { cargarScript } from './util.js';
 
-export const QR_JS = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js';
-export const JSQR_JS = 'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js';
+export const QR_JS = './vendor/qrcode.js';
+export const JSQR_JS = './vendor/jsQR.js';
 
 export function payload(res, pack, comercio) {
   return ['APV2', res.code, pack.id, comercio.id, pack.tam, pack.cat, res.cliente || 'Cliente', res.dia, comercio.nombre].join('|');
