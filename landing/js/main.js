@@ -1,4 +1,4 @@
-/* APROVECHO · landing · interacciones */
+/* APROVECHO · landing v2 · interacciones (IIFE, sin módulos) */
 (function () {
   'use strict';
 
@@ -8,131 +8,111 @@
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
+  function safe(fn, name) { try { fn(); } catch (e) { if (window.console) console.warn('init ' + name, e); } }
 
-  // WhatsApp
-  if (WHATSAPP_URL) $$('[data-whatsapp]').forEach(function (a) { a.href = WHATSAPP_URL; a.target = '_blank'; a.rel = 'noopener'; });
+  safe(function () {
+    if (WHATSAPP_URL) $$('[data-whatsapp]').forEach(function (a) { a.href = WHATSAPP_URL; a.target = '_blank'; a.rel = 'noopener'; });
+  }, 'whatsapp');
 
   // Menú mobile
-  var burger = $('.nav__burger'), menu = $('#menu');
-  burger.addEventListener('click', function () {
-    var open = menu.classList.toggle('is-open');
-    burger.setAttribute('aria-expanded', open);
-  });
-  $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { menu.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); }); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { menu.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); } });
+  safe(function () {
+    var burger = $('.nav__burger'), menu = $('#menu');
+    function cerrar() { menu.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); }
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    $$('#menu a').forEach(function (a) { a.addEventListener('click', cerrar); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') cerrar(); });
+  }, 'menu');
 
   // Barra fija mobile: se oculta cuando el formulario está a la vista
-  var sticky = $('[data-sticky]'), alta = $('#alta');
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { sticky.classList.toggle('is-hidden', es[0].isIntersecting); }, { threshold: 0.12 }).observe(alta);
-  }
+  safe(function () {
+    var sticky = $('[data-sticky]'), alta = $('#alta');
+    if (!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) { sticky.classList.toggle('is-hidden', es[0].isIntersecting); }, { threshold: 0.1 }).observe(alta);
+  }, 'sticky');
 
-  // Cuenta: "Mirá cuánto te queda"
-  var slider = $('#valor');
-  if (slider) {
+  // Mirá cuánto te queda
+  safe(function () {
+    var slider = $('#valor'); if (!slider) return;
     var fmt = function (n) { return '$' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
     var out = $('#valor-out');
     var pintar = function () {
       var v = +slider.value, pack = v / 2, com = pack * 0.75;
       out.textContent = fmt(v);
-      $('[data-out="valor"]').textContent = fmt(v);
-      $('[data-out="pack"]').textContent = fmt(pack);
-      $('[data-out="comercio"]').textContent = fmt(com);
+      $$('[data-out="valor"]').forEach(function (n) { n.textContent = fmt(v); });
+      $$('[data-out="pack"]').forEach(function (n) { n.textContent = fmt(pack); });
+      $$('[data-out="comercio"]').forEach(function (n) { n.textContent = fmt(com); });
     };
-    slider.addEventListener('input', pintar);
-    pintar();
-  }
+    slider.addEventListener('input', pintar); pintar();
+  }, 'cuenta');
 
-  // Cómo funciona: la imagen cambia con el paso (desktop)
-  var steps = $$('#como-steps .step'), layers = $$('.stage .layer');
-  if (steps.length && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var i = +e.target.getAttribute('data-layer');
-        steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-        layers.forEach(function (l, k) { l.classList.toggle('is-on', k === i); });
-      });
-    }, { rootMargin: '-42% 0px -50% 0px' });
-    steps.forEach(function (s) { io.observe(s); });
-  }
-
-  // Clips: se reproducen solo cuando están a la vista
-  var vids = $$('video[data-lazyvideo]');
-  if (vids.length && 'IntersectionObserver' in window && !reduce) {
-    var vio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        var v = e.target;
-        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else { v.pause(); }
-      });
-    }, { threshold: 0.4 });
-    vids.forEach(function (v) { vio.observe(v); });
-  }
-
-  // Video completo: se carga al tocar
-  var fv = $('[data-fullvideo]');
-  if (fv) {
-    $('button', fv).addEventListener('click', function () {
-      var v = document.createElement('video');
-      v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
-      v.setAttribute('aria-label', 'Video de onboarding de APROVECHO');
-      v.innerHTML = '<source src="video/onboarding.mp4" type="video/mp4">';
-      fv.innerHTML = ''; fv.appendChild(v);
-      v.play().catch(function () {});
+  // Recorridos de planes: la escena queda fija y se va contando al bajar
+  safe(function () {
+    var stories = $$('[data-story]'); if (!stories.length) return;
+    var tabs = $$('[data-tab]');
+    var HEAD = window.innerWidth < 900 ? 116 : 122;
+    var data = stories.map(function (s) {
+      s.classList.add('story--scroll');
+      return {
+        el: s,
+        steps: $$('.sstep', s),
+        layers: $$('.layer', s),
+        rail: $$('.story__rail i', s),
+        cur: -1
+      };
     });
-  }
-
-  // ===== Onboarding scroll-driven =====
-  var onb = $('#onboarding'), track = $('[data-onb]');
-  var scene = $('.scene', onb);
-  var weights = $$('[data-weight]', onb), weights2 = $$('[data-weight2]', onb);
-  var fmtKg = function (n) { return n.toFixed(2).replace('.', ','); };
-
-  function estatica() {
-    onb.classList.add('onb--static');
-    weights.forEach(function (w) { w.textContent = '1,24 kg'; });
-    weights2.forEach(function (w) { w.textContent = '1,24'; });
-  }
-
-  if (!reduce && scene) {
-    onb.classList.add('onb--scroll');
-    var items = $$('[data-f]', scene).map(function (el) {
-      var a = el.getAttribute('data-f').split(',').map(Number), o = el.getAttribute('data-o');
-      return { el: el, a: a, o: o ? o.split(',').map(Number) : null, t: -1, ov: -1 };
-    });
-    var ostep = $$('.ostep', onb), rail = $$('.onb__rail i', onb);
-    var cur = -1, ticking = false;
-    var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
-
-    var update = function () {
+    var ticking = false;
+    function update() {
       ticking = false;
-      var r = track.getBoundingClientRect();
-      var span = r.height - window.innerHeight * 0.9;
-      var p = clamp(-(r.top - 68) / Math.max(1, span));
-      var f = Math.min(7, p * 7.15);
-      items.forEach(function (it) {
-        var t = clamp((f - it.a[0]) / (it.a[1] - it.a[0]));
-        var o = it.o ? clamp((f - it.o[0]) / (it.o[1] - it.o[0])) : 0;
-        if (t !== it.t) { it.el.style.setProperty('--t', t.toFixed(3)); it.t = t; }
-        if (o !== it.ov) { it.el.style.setProperty('--o', o.toFixed(3)); it.ov = o; }
+      var vh = window.innerHeight, head = window.innerWidth < 900 ? 116 : 122;
+      var activo = null;
+      data.forEach(function (d) {
+        var r = d.el.getBoundingClientRect();
+        var span = r.height - (vh - head);
+        var p = clamp((head - r.top) / Math.max(1, span));
+        var n = d.steps.length;
+        var idx = Math.min(n - 1, Math.floor(p * n));
+        if (idx !== d.cur) {
+          d.cur = idx;
+          d.steps.forEach(function (s, k) { s.classList.toggle('is-on', k === idx); });
+          d.layers.forEach(function (l, k) { l.classList.toggle('is-on', k === idx); });
+          d.rail.forEach(function (i, k) { i.className = k < idx ? 'is-done' : (k === idx ? 'is-now' : ''); });
+        }
+        if (r.top <= vh * 0.45 && r.bottom > vh * 0.45) activo = d.el.id;
       });
-      var idx = Math.min(6, Math.floor(f));
-      if (idx !== cur) {
-        cur = idx;
-        ostep.forEach(function (s, k) { s.classList.toggle('is-on', k === idx); });
-        rail.forEach(function (d, k) { d.className = k < idx ? 'is-done' : (k === idx ? 'is-now' : ''); });
-      }
-      var kg = 1.24 * (1 - Math.pow(1 - clamp((f - 6.1) / 0.45), 3));
-      var txt = fmtKg(kg);
-      weights.forEach(function (w) { w.textContent = txt + ' kg'; });
-      weights2.forEach(function (w) { w.textContent = txt; });
-    };
-    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      if (activo) tabs.forEach(function (t) { t.classList.toggle('is-on', t.getAttribute('data-tab') === activo); });
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     update();
-  } else {
-    estatica();
-  }
+  }, 'stories');
+
+  // Balanza y tablet flotando: se mueven con el mouse o el dedo
+  safe(function () {
+    $$('[data-tilt]').forEach(function (el) {
+      var drag = false;
+      function mover(e) {
+        var r = el.getBoundingClientRect();
+        var x = clamp((e.clientX - r.left) / r.width), y = clamp((e.clientY - r.top) / r.height);
+        el.style.setProperty('--ry', ((x - 0.5) * 36).toFixed(1) + 'deg');
+        el.style.setProperty('--rx', ((0.5 - y) * 20).toFixed(1) + 'deg');
+      }
+      function reset() { el.style.setProperty('--ry', '0deg'); el.style.setProperty('--rx', '0deg'); }
+      el.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse' || drag) mover(e); });
+      el.addEventListener('pointerdown', function (e) { drag = true; el.classList.add('is-drag'); try { el.setPointerCapture(e.pointerId); } catch (x) {} mover(e); });
+      function fin() { drag = false; el.classList.remove('is-drag'); }
+      el.addEventListener('pointerup', fin);
+      el.addEventListener('pointercancel', fin);
+      el.addEventListener('pointerleave', function () { if (!drag) reset(); });
+    });
+  }, 'tilt');
+
+  // Regiones con scroll horizontal: accesibles con teclado
+  safe(function () {
+    $$('.tablewrap,.road,.tabsbar__in').forEach(function (n) { n.setAttribute('tabindex', '0'); });
+  }, 'a11y');
 })();

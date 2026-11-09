@@ -1,10 +1,9 @@
-# Créditos de imágenes y videos · landing
+# Créditos · landing v2
 
 | Archivo | Origen |
 |---|---|
-| `fotos/*.webp` | Copia de `app/img/fotos/` (Pexels y Unsplash, licencia libre). Autoría en `app/img/CREDITOS.md` |
-| `aprobadas/*.webp` | Imágenes aprobadas por Octavio (`docs/marca/imagenes-aprobadas/`), recomprimidas a WebP |
-| `app/*.webp` | Capturas del prototipo (`app/capturas/`). **Para reemplazarlas cuando la sesión App las mejore: pisar estos archivos con el mismo nombre** (`deteccion`, `consumidor`, `base`, `smart`, `intelligence`) |
-| `logo/*`, `og-image.jpg` | Identidad oficial (`docs/marca/logo/`, `docs/marca/logo-oficial/`) |
-| `../video/F-apertura, D-base, H-apertura, G-smart` | Clips con personas generados con Gemini Omni 1.2 (ver `video/CREDITOS.md`), recomprimidos a 960 px sin audio |
-| `../video/onboarding.mp4` | Render del onboarding de Remotion (`video/salidas/`), 720p, 3,4 MB. Incluye música Daily Beetle/Inspired: ver `video/CREDITOS.md` |
+| `foto/*.webp`, `foto/hojas.webp` | Fotos reales de licencia CC0 buscadas en Openverse, sin IA. Autoría: ver `propuestas/CREDITOS.md` (mercado/morrones: rawpixel, dominio público; pan-manos: Matt Bango, StockSnap; pan-masa: rawpixel; tartas: Nilo Velez, WordPress Photos; hojas: Tawhid Sadman, WordPress Photos) |
+| `producto/balanza.webp`, `producto/tablet.webp` | Recortes de la imagen de la estación que pasó Octavio (generada por él). **Provisorios: reemplazar por fotos reales de la balanza y la tablet** (misma ruta y nombre, PNG/WebP con fondo transparente) |
+| `app/*.webp` | Capturas del prototipo (`app/capturas/`) y tablero aprobado. Reemplazables con el mismo nombre |
+| `logo/sello.webp`, favicons | Sello oficial (`docs/marca/logo-oficial/`). Faltan los logos del entregable final que Octavio va a pasar |
+| `ring3.svg` | Anillo de tres flechas Recuperá · Medí · Anticipá, hecho en código |
