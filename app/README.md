@@ -13,3 +13,7 @@ Desde la raíz de este repositorio, ejecutá `python -m http.server 8765 --bind 
 - **Intelligence:** elegí ese plan y abrí **Intelligence**. En escritorio vas a ver el panel con navegación lateral. En **Inventario**, podés cargar un CSV local y revisar packs sugeridos.
 
 Los datos se guardan en este navegador. IA, balanza, pagos, inventario inicial y análisis histórico son simulados. La opción **Reiniciar demo** restablece el estado. Para cargar el mapa real y las librerías de QR, PDF y visor 3D en una primera visita hace falta conexión.
+
+## Cambios de la versión final (claude-octi-app, 9/11)
+
+Sin límite de publicación ni visor 3D (D-039). Checklist como confirmación al tocar «Publicar» (D-036). Comisión 25% (D-007). Capturas en `capturas/`. Detalle en `docs/handoffs/2026-11-09-app-final.md`.

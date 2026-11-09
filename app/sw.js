@@ -3,7 +3,7 @@
    - Las calles del mapa que ya viste quedan guardadas (hasta 500 teselas).
    Al cambiar cualquier archivo, subí VERSION: invalida el cache viejo en los celus. */
 
-const VERSION = 'aprovecho-prototipo-plan-v2';
+const VERSION = 'aprovecho-prototipo-plan-v3';
 const TESELAS = 'aprovecho-prototipo-plan-teselas';
 const FUENTES = 'aprovecho-prototipo-plan-fuentes';
 

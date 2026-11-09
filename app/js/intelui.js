@@ -86,9 +86,9 @@ function resumenPantalla() {
     </div>
     <div class="stats dos">
       <div class="stat"><span class="n verde">${plata(mes.costoEvitado)}</span><span class="k">Costo evitado · sugerencias aplicadas, 30 días</span></div>
-      <div class="stat"><span class="n">${plata(imp.recuperado)}</span><span class="k">$ recuperados con packs · 30 días</span></div>
-      <div class="stat"><span class="n">${dec(imp.kgRescatado)} kg</span><span class="k">Alimento recuperado · peso demo</span></div>
-      <div class="stat"><span class="n">${dec(mes.mermaKg)} kg</span><span class="k">A la basura · Medido en la estación simulada</span></div>
+      <div class="stat"><span class="n">${plata(imp.recuperado)}</span><span class="k">Ingreso recuperado con packs · 30 días · Medido</span></div>
+      <div class="stat"><span class="n">${dec(imp.kgRescatado)} kg</span><span class="k">Alimento recuperado · 30 días · Medido</span></div>
+      <div class="stat"><span class="n">${dec(mes.mermaKg)} kg</span><span class="k">Descartado · 30 días · Medido en la estación</span></div>
     </div>
     <div class="card">
       <h3>Huella asociada a los alimentos recuperados</h3>
@@ -107,7 +107,10 @@ function resumenPantalla() {
       <div class="item"><span class="ic-caja">${icon('grafico', 20)}</span><span class="col crece"><span class="fuerte">Historial de ventas</span><span class="mini">14 meses simulados</span></span><span class="badge">Demo</span></div>
       <div class="item"><span class="ic-caja">${icon('bolsa', 20)}</span><span class="col crece"><span class="fuerte">Packs de Aprovecho</span><span class="mini">${num(resumen(filtrar('todo', S.sucursal, ahora())).packsPub)} packs publicados</span></span><span class="badge">● OK</span></div>
     </div>
-    <div class="card"><h3>Informe de analistas</h3><p class="chico">En el servicio, los analistas de APROVECHO revisan y validan los informes. Esta vista usa historial y conclusiones de demostración.</p><button class="btn sec" data-go="b/reporte">Ver reporte de ejemplo</button></div>
+    <div class="card sel"><div class="fila entre"><h3>Informe mensual de octubre</h3><span class="badge">${icon('check', 14)} Validado por analista</span></div>
+      <p class="chico">Un analista de APROVECHO revisa y valida cada informe antes de que llegue al comercio: qué sobró, dónde, cuándo y qué cambiar. Útil para reportes de sustentabilidad (GRI 306).</p>
+      <p class="mini">Ejemplo de demostración: el contenido usa historial simulado.</p>
+      <button class="btn sec" data-go="b/reporte">Ver y descargar el informe</button></div>
     ${nota('Demo: el historial de ventas y de la estación es simulado.')}`;
 }
 

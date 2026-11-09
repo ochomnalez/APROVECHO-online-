@@ -43,7 +43,7 @@ function altaPlan() {
     return `<button class="card toque${on ? ' sel' : ''}" data-act="plan-alta" data-v="${k}" style="text-align:left" aria-pressed="${on}">
       <div class="fila entre"><h3 style="font-size:19px">${pl.nombre}</h3>${k === 'basico' ? '<span class="badge">Para empezar</span>' : ''}</div>
       <p class="chico">${esc(pl.lema)}</p>
-      <div class="fila entre"><span class="fuerte verde">${esc(pr.txt)}</span><span class="mini">${esc(pr.sub)}</span></div>
+      <div class="fila entre"><span class="fuerte verde" style="white-space:nowrap">${esc(pr.txt)}</span><span class="mini">${esc(pr.sub)}</span></div>
     </button>`;
   };
   return {
@@ -503,6 +503,11 @@ function estacion() {
   };
 }
 function mostrarPesoFinal(el, b) {
+  const caja = el.querySelector('.estacion-foto');
+  if (caja && b.muestra && !caja.querySelector('.caja-det')) {
+    const cajas = foto(b.muestra).cajas.slice(0, 6);
+    caja.insertAdjacentHTML('beforeend', cajas.map(c => `<div class="caja-det" style="${cajaPct(c)}"><b>${esc(producto(c.producto)?.nombre.split(' ')[0] || '')}</b></div>`).join(''));
+  }
   el.querySelector('#peso').textContent = b.kg.toFixed(2).replace('.', ',') + ' kg';
   el.querySelector('#reco').innerHTML = `${esc(b.producto ? producto(b.producto).nombre : b.nombre)}${b.unidades ? ' · ' + b.unidades + ' u' : ''} · ${Math.round(b.conf * 100)}%`;
   el.querySelector('#botones-balanza').disabled = false;
@@ -766,6 +771,8 @@ function score() {
     { nombre: 'Almacén del Río', puntos: 87, mejora: 8, retiros: 27, reportes: 0 },
     { nombre: 'Rotisería La Plaza', puntos: 81, mejora: 3, retiros: 18, reportes: 0 },
   ];
+  const ranking = [...ejemplos, { nombre: miComercio().nombre, puntos, mio: true, calibrando: puntos == null }]
+    .sort((x, y) => (y.puntos ?? -1) - (x.puntos ?? -1));
   const destacado = ejemplos.filter(x => x.puntos >= 80 && x.retiros >= 20 && !x.reportes).sort((a, b) => b.mejora - a.mejora)[0];
   return {
     html: `${barra({ titulo: 'Score y ranking' })}
@@ -777,7 +784,7 @@ function score() {
         <p class="mini">Reglas propuestas para la demo. ${smart ? '' : 'Base estima la reducción usando los packs publicados como referencia.'}</p>
       </div>
       <div class="seccion"><h2>Ranking de Olivos</h2><span class="badge gris">Ejemplo</span></div>
-      <div class="lista">${ejemplos.map((x, i) => `<div class="item"><span class="ic-caja">${i + 1}</span><span class="crece fuerte">${x.nombre}</span><strong>${x.puntos}/100</strong></div>`).join('')}</div>
+      <div class="lista">${ranking.map((x, i) => `<div class="item${x.mio ? ' mio' : ''}"><span class="ic-caja">${i + 1}</span><span class="col crece"><span class="fuerte">${x.nombre}${x.mio ? ' · vos' : ''}</span>${x.mio && x.calibrando ? '<span class="mini">Calibrando: las primeras 4 semanas no cuentan para el ranking.</span>' : ''}</span><strong>${x.puntos == null ? '—' : x.puntos + '/100'}</strong></div>`).join('')}</div>
       <div class="card sel"><span class="eti">Comercio del mes · Ejemplo</span><h2>${destacado.nombre}</h2><p class="chico">Fue el comercio elegible que más mejoró su Score este mes (+${destacado.mejora} puntos).</p></div>
     </div>`,
   };

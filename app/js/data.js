@@ -139,14 +139,14 @@ export const kmAuto = kgCO2 => kgCO2 / CONFIG.kgCO2PorKm;
 
 // ---------- comercios de ejemplo (ficticios), ubicados alrededor tuyo ----------
 export const COMERCIOS_BASE = [
-  { id: 'c1', corto: 'La Espiga', logo: { bg: '#E3A93B', fg: '#FFFFFF', emblema: 'espiga' }, nombre: 'Panadería La Espiga', cat: 'Panificados', cierre: '21:00', rating: 4.7, resenas: 312, dist: 350, rumbo: 40, color: '#E7C27E', esMio: true },
+  { id: 'c1', corto: 'La Espiga', logo: { bg: '#9A6200', fg: '#FFFFFF', emblema: 'espiga' }, nombre: 'Panadería La Espiga', cat: 'Panificados', cierre: '21:00', rating: 4.7, resenas: 312, dist: 350, rumbo: 40, color: '#E7C27E', esMio: true },
   { id: 'c2', corto: 'Don Luis', logo: { bg: '#C4432D', fg: '#FFFFFF', emblema: 'chef' }, nombre: 'Rotisería Don Luis', cat: 'Viandas', cierre: '22:00', rating: 4.5, resenas: 188, dist: 900, rumbo: 120, color: '#D9C39A', estacion: true },
   { id: 'c3', corto: 'Café Plaza', logo: { bg: '#6B4430', fg: '#F6E7D6', emblema: 'taza' }, nombre: 'Café Plaza', cat: 'Pastelería', cierre: '20:30', rating: 4.8, resenas: 97, dist: 600, rumbo: 250, color: '#E9B8A7' },
-  { id: 'c4', corto: 'Lulú', logo: { bg: '#F2A0B4', fg: '#FFFFFF', emblema: 'cupcake' }, nombre: 'Pastelería Lulú', cat: 'Pastelería', cierre: '20:00', rating: 4.6, resenas: 141, dist: 1300, rumbo: 310, color: '#E9B8A7' },
-  { id: 'c5', corto: 'Brote', logo: { bg: '#3E8E52', fg: '#FFFFFF', emblema: 'hoja' }, nombre: 'Almacén Natural Brote', cat: 'Viandas', cierre: '21:30', rating: 4.9, resenas: 76, dist: 1800, rumbo: 190, color: '#C9DDBC' },
-  { id: 'c6', corto: 'El Buen Pan', logo: { bg: '#F08A24', fg: '#FFFFFF', emblema: 'sandwich' }, nombre: 'Sandwichería El Buen Pan', cat: 'Sándwiches', cierre: '21:00', rating: 4.4, resenas: 203, dist: 750, rumbo: 80, color: '#EAD8A6' },
+  { id: 'c4', corto: 'Lulú', logo: { bg: '#B13F69', fg: '#FFFFFF', emblema: 'cupcake' }, nombre: 'Pastelería Lulú', cat: 'Pastelería', cierre: '20:00', rating: 4.6, resenas: 141, dist: 1300, rumbo: 310, color: '#E9B8A7' },
+  { id: 'c5', corto: 'Brote', logo: { bg: '#2F7A44', fg: '#FFFFFF', emblema: 'hoja' }, nombre: 'Almacén Natural Brote', cat: 'Viandas', cierre: '21:30', rating: 4.9, resenas: 76, dist: 1800, rumbo: 190, color: '#C9DDBC' },
+  { id: 'c6', corto: 'El Buen Pan', logo: { bg: '#B05200', fg: '#FFFFFF', emblema: 'sandwich' }, nombre: 'Sandwichería El Buen Pan', cat: 'Sándwiches', cierre: '21:00', rating: 4.4, resenas: 203, dist: 750, rumbo: 80, color: '#EAD8A6' },
   { id: 'c7', corto: 'Mamma Rosa', logo: { bg: '#D6363A', fg: '#FFFFFF', emblema: 'pizza' }, nombre: 'Pizzería Mamma Rosa', cat: 'Viandas', cierre: '23:30', rating: 4.3, resenas: 265, dist: 2200, rumbo: 20, color: '#F0C5A8', estacion: true },
-  { id: 'c8', corto: 'Celia', logo: { bg: '#23907F', fg: '#FFFFFF', emblema: 'sintacc' }, nombre: 'Panadería Celia Sin TACC', cat: 'Panificados', cierre: '20:30', rating: 4.8, resenas: 59, dist: 1100, rumbo: 160, color: '#E7C27E' },
+  { id: 'c8', corto: 'Celia', logo: { bg: '#1B7766', fg: '#FFFFFF', emblema: 'sintacc' }, nombre: 'Panadería Celia Sin TACC', cat: 'Panificados', cierre: '20:30', rating: 4.8, resenas: 59, dist: 1100, rumbo: 160, color: '#E7C27E' },
 ];
 
 export function ubicarComercios(centro) {

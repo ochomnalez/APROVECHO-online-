@@ -17,6 +17,8 @@
   --horno: var(--color-accent-text);
   --horno-50: var(--color-accent-soft);
   --rojo: var(--color-error);
+  --gris-2: var(--color-text-muted);
+  --oro: #A65F00;
   --ui: 'DM Sans', 'Trebuchet MS', system-ui, sans-serif;
   --display: var(--font-display);
   --marca: var(--font-display);
@@ -57,7 +59,6 @@
 
 @media (min-width: 760px) and (orientation: landscape) {
   #app.ancho-estacion { max-width: min(100%, 1040px); }
-  #app.ancho-estacion .estacion-foto { width: min(100%, 260px); }
 }
 
 @media (min-width: 900px) {
@@ -77,3 +78,18 @@
 .confirma-lista { list-style: none; margin: 4px 0 8px; padding: 0; display: grid; gap: 10px; }
 .confirma-lista li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 15px; line-height: 1.35; color: var(--tinta); }
 .confirma-lista .ic { color: var(--color-success); margin-top: 1px; }
+
+/* Escritorio (Intelligence): la barra de secciones queda como un dock centrado, no como barra de celular */
+@media (min-width: 900px) {
+  #barra-tabs .tabs.con-circulo { left: 50%; right: auto; width: 540px; transform: translateX(-50%); }
+  #barra-tabs.oculta .tabs.con-circulo { transform: translate3d(-50%, 150%, 0); }
+  #barra-tabs .circulo-tab { right: auto; left: calc(50% + 288px); }
+}
+
+.item.mio { background: var(--verde-50); box-shadow: inset 0 0 0 1.5px var(--verde-200); }
+
+/* Áreas táctiles de 44 px (AA) */
+.demo-pill { min-height: 44px; }
+.flecha-redonda { width: 44px; height: 44px; }
+.avatar-perfil:not([style]) { width: 44px; height: 44px; }
+.volver-arriba { min-height: 44px; }

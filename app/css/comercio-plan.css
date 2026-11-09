@@ -99,6 +99,18 @@
     padding-inline: 24px;
   }
 }
+/* Estación en la tablet Samsung (horizontal): peso grande, foto con cajas y cuatro destinos en una fila */
+@media (min-width: 760px) and (orientation: landscape) {
+  .estacion-foto { max-width: 440px; width: 100%; position: relative; }
+  .estacion-foto .caja-det b { top: 6px; left: 6px; border-radius: 7px; }
+  .estacion-destinos .btn.sec { background: var(--fondo); box-shadow: inset 0 0 0 1.5px var(--verde-200); }
+  .estacion-pesaje .kpi .n { font-size: 72px; line-height: 1; }
+  .estacion-pesaje h1 { font-size: 2rem; }
+  .estacion-destinos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .estacion-destinos .bloque { grid-column: auto; }
+  .estacion-destinos .btn { min-height: 58px; font-size: 16px; }
+  .estacion-destinos legend { grid-column: 1 / -1; padding: 0 0 4px; }
+}
 @media (prefers-reduced-motion: reduce) {
   .foto-deteccion .caja-det,
   .deteccion-comercio .paso i { animation: none; }
