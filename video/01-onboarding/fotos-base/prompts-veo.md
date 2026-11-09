@@ -5,11 +5,11 @@ Cómo: en Google Flow elegí **Veo 3.1** y la opción **Frames to Video** (prime
 Regla para todos (pegar al final de cada prompt):
 `Keep the exact same person, apron, scale, tablet arm, boxes and bakery from the image. No new objects, no text or logos added, realistic hands and skin, natural motion, no cuts.`
 
-## A · Smart (balanza + cámara) → escena Smart
-`Slow gentle push-in. The worker lowers his hand from the cardboard box resting on the scale; the scale display settles on 1.24 kg and the tablet on the support arm updates; he taps the green Confirm button with his finger.`
+## A2 · Smart (balanza + cámara) → escena Smart · foto `A2-smart-medialunas-042kg.jpg` (VALIDADA por Octavio, reemplaza a A)
+`Slow gentle push-in. The worker rests his hand on the cardboard box of croissants on the scale; the scale display reads 0.42 kg and the tablet on the support arm shows the same weight; he lifts his hand and taps the green Confirmar button with his finger.`
 
-## B · Intelligence (supermercado) → escena Intelligence
-`Slow gentle push-in. The worker presses the Publish button on the tablet with his index finger; the tablet on the arm and the scale with the produce box stay in focus; subtle steady camera.`
+## B2 · Intelligence (balanza + cámara, supermercado) → escena Intelligence · foto `B2-intelligence-tomates-076kg.jpg` (VALIDADA por Octavio, reemplaza a B)
+`Slow gentle push-in. The worker presses the green Publicar button on the tablet with his index finger; the scale below shows 0.76 kg of tomatoes and stays in focus; subtle steady camera, natural hand movement.`
 
 ## D · Base (celular) → escena Base
 `Subtle handheld feel. The worker taps Publicar on the phone with his thumb, the phone screen stays steady; slight camera drift towards the phone; the cardboard boxes stay still on the counter.`
