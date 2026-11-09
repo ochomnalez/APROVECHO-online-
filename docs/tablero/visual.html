@@ -139,23 +139,25 @@ footer{font-size:12.5px;color:var(--muted)}
 <script>
 // ===== DATOS: editar acá. pct = 0 a 100. estado: hecho | curso | revisar | pendiente | bloqueado =====
 const DATOS = {
-  actualizado: "2026-11-04",
+  actualizado: "2026-11-09",
   entrega: "2026-11-12",
   historial: [
     { fecha:"2026-11-03", total:39, hechos:["Lectura completa del plan y del Excel; extracto en docs/fuente","Marca: plataforma, mensajes, textos de la landing y conceptos de video","UX: bocetos de la app y estructura de la landing","Identidad visual v1 (después se volvió al logo original)","Traspaso listo para ChatGPT: manual del líder y bitácora"] },
-    { fecha:"2026-11-04", hechos:["codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales)","codex: tipografía, logo vigente y 4 guiones; primer corte de «Una foto»","claude-octi-video: guion del onboarding, plan de producción, tablero y reglas de traspaso","Decisiones: seguir la v3.2.1, onboarding primero, ChatGPT lidera","claude-octi-video: capturas del onboarding (20 pantallas), guion ajustado sin el 75%, D-031 a D-036","claude-octi-video: guardado obligatorio y ramas separadas por persona (Lola no toca lo de Octavio)","claude-octi-video: onboarding v2 y v3 (transiciones, motion graphics, descarga de informes, subtítulos dinámicos) y texto de la voz en off","Lola arranca con solo decir «seguí el trabajo de Octi»","claude-octi-video: voz en off del onboarding con ElevenLabs (Chelo), sincronizada","claude-octi-video: onboarding más ágil (66 s) con música de fondo"] }
+    { fecha:"2026-11-04", hechos:["codex: prototipo de la app sobre la v3.2.1 (Base, Smart en tablet, Intelligence en escritorio, fotos reales)","codex: tipografía, logo vigente y 4 guiones; primer corte de «Una foto»","claude-octi-video: guion del onboarding, plan de producción, tablero y reglas de traspaso","Decisiones: seguir la v3.2.1, onboarding primero, ChatGPT lidera","claude-octi-video: capturas del onboarding (20 pantallas), guion ajustado sin el 75%, D-031 a D-036","claude-octi-video: guardado obligatorio y ramas separadas por persona (Lola no toca lo de Octavio)","claude-octi-video: onboarding v2 y v3 (transiciones, motion graphics, descarga de informes, subtítulos dinámicos) y texto de la voz en off","Lola arranca con solo decir «seguí el trabajo de Octi»","claude-octi-video: voz en off del onboarding con ElevenLabs (Chelo), sincronizada","claude-octi-video: onboarding más ágil (66 s) con música de fondo"] },
+    { fecha:"2026-11-09", hechos:["claude-octi-video: onboarding con música más sobria («Inspired») y layout alternado para que no se vea a plantilla","claude-octi-video: pedido de tomas reales con personas (video/01-onboarding/tomas-reales.md) y el montaje listo para recibir los clips","claude-octi-video: en la escena 3 aparecen la bolsa, el sticker y el cartel con QR cuando la voz los nombra, con el sello oficial (no el logo de la propuesta v1)","Bloqueos: ElevenLabs sin créditos y sin plan de video; Higgsfield con 0 créditos"] }
   ],
   prioridades: [
-    { t:"Video de onboarding para comercios", estado:"curso", prio:"alta", quien:"claude-octi-video", vence:"2026-11-06" },
-    { t:"Revisar e integrar el prototipo de la app", estado:"revisar", prio:"alta", quien:"líder (ChatGPT)", vence:"2026-11-06" },
-    { t:"Construir la landing", estado:"pendiente", prio:"alta", quien:"sin asignar", vence:"2026-11-10" },
+    { t:"Video de onboarding: pulida, voz seria y tomas reales con personas", estado:"curso", prio:"alta", quien:"claude-octi-video", vence:"2026-11-10" },
+    { t:"Revisar e integrar el prototipo de la app", estado:"revisar", prio:"alta", quien:"líder (ChatGPT)", vence:"2026-11-10" },
+    { t:"Construir la landing (sin empezar; quedan 3 días)", estado:"pendiente", prio:"alta", quien:"sin asignar", vence:"2026-11-11" },
     { t:"Revisar propuestas de UX e identidad, una por una", estado:"pendiente", prio:"media", quien:"Octavio", vence:"2026-11-06" },
     { t:"Mejorar el corte de «Una foto»", estado:"pendiente", prio:"media", quien:"video", vence:"2026-11-09" },
     { t:"Presentación y publicidad para consumidores", estado:"pendiente", prio:"media", quien:"video", vence:"2026-11-10" },
     { t:"Integración final y prueba completa", estado:"pendiente", prio:"alta", quien:"líder", vence:"2026-11-11" }
   ],
   pedidos: [
-    "Ver el onboarding final (66 s, voz y música) y aprobar.",
+    "Conectar una app de video con IA (recomiendo Veo 3.1) o cargar créditos: hacen falta 2 tomas con personas.",
+    "Voz seria: ElevenLabs no tiene créditos; hace falta Starter (~USD 6) o regrabarla desde tu navegador.",
     "Revisar el prototipo de la app que hizo Codex.",
     "Propuestas de identidad 5 a 9 (UX ya resuelta: D-032 a D-036).",
     "Proteger main y la rama de integración en GitHub (Settings → Branches).",
@@ -165,7 +167,7 @@ const DATOS = {
   etapasVideo: ["Guion","Storyboard","Material","Montaje","Voz y música","Revisión"],
   videos: [
     { id:"onb", titulo:"Onboarding para comercios", formato:"66 s · 16:9", prio:"alta", quien:"claude-octi-video", vence:"2026-11-06",
-      etapas:[100,100,100,95,90,50], estado:"revisar", siguiente:"66 s, con voz y música. Falta el OK de Octavio." },
+      etapas:[100,100,55,85,55,25], estado:"curso", siguiente:"Falta: 2 tomas reales con personas (pedido en tomas-reales.md), regrabar la voz en tono serio y pulir." },
     { id:"pres", titulo:"Presentación · «La vida de una medialuna»", formato:"60–90 s · 16:9", prio:"media", quien:"video", vence:"2026-11-10",
       etapas:[50,25,0,0,0,0], estado:"pendiente", siguiente:"Guion completo escena por escena (después del OK del onboarding)." },
     { id:"foto", titulo:"Publicidad comercios · «Una foto»", formato:"24 s · 9:16", prio:"media", quien:"codex-video", vence:"2026-11-09",
@@ -188,7 +190,7 @@ const DATOS = {
       pasos:[
         {t:"Textos", pct:100, n:"Copy final escrito."},
         {t:"Estructura", pct:100, n:"Hecha por UX."},
-        {t:"Cerrar contenido", pct:40, n:"Faltan decisiones de UX y onboarding."},
+        {t:"Cerrar contenido", pct:85, n:"Decisiones D-032 a D-036 tomadas; falta el OK del onboarding en scroll (D-030)."},
         {t:"Construir y probar", pct:0, n:"Se publica solo con tu OK."}
       ]},
     { id:"identidad", titulo:"Identidad visual", prio:"media", objetivo:"Logo, colores, tipografía y componentes.",
