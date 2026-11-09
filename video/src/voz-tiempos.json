@@ -1,150 +1,171 @@
 {
  "e1": {
-  "dur": 5.28,
-  "a0": 0.23,
-  "a1": 4.89,
+  "dur": 4.12,
+  "a0": 0.27,
+  "a1": 3.84,
   "segs": [
    {
     "t": "Bienvenido a APROVECHO.",
-    "a": 0.23,
-    "b": 1.7
+    "a": 0.27,
+    "b": 1.63
    },
    {
-    "t": "Te mostramos cómo empezar, paso a paso.",
-    "a": 2.35,
-    "b": 4.89
+    "t": "Te cuento cómo arrancar, paso a paso.",
+    "a": 2.25,
+    "b": 3.84
    }
   ]
  },
  "e2": {
-  "dur": 12.92,
-  "a0": 0.25,
-  "a1": 12.51,
+  "dur": 2.72,
+  "a0": 0.28,
+  "a1": 2.34,
   "segs": [
    {
     "t": "Entrás como comercio y elegís tu plan.",
-    "a": 0.25,
-    "b": 2.59
-   },
-   {
-    "t": "Cargás tu carta con una foto de tu lista de precios: la app lee los productos y los precios sola.",
-    "a": 2.96,
-    "b": 9.24
-   },
-   {
-    "t": "Y llegás a Hoy, tu pantalla principal.",
-    "a": 9.9,
-    "b": 12.51
+    "a": 0.28,
+    "b": 2.34
    }
   ]
  },
- "e3": {
-  "dur": 18.88,
-  "a0": 0.35,
-  "a1": 18.61,
+ "e2b": {
+  "dur": 5.04,
+  "a0": 0.24,
+  "a1": 4.73,
   "segs": [
    {
-    "t": "Cuando sobra mercadería, sacás una foto.",
-    "a": 0.35,
-    "b": 2.76
+    "t": "Después le sacás una foto a tu menú, y la app lee los productos y los precios por vos.",
+    "a": 0.24,
+    "b": 4.73
+   }
+  ]
+ },
+ "e3a": {
+  "dur": 6.52,
+  "a0": 0.26,
+  "a1": 6.22,
+  "segs": [
+   {
+    "t": "Cuando te sobra algo, otra foto.",
+    "a": 0.26,
+    "b": 2.29
    },
    {
-    "t": "La app reconoce cada producto y cuenta cuántos hay.",
-    "a": 3.47,
-    "b": 6.48
+    "t": "La app reconoce qué es y cuántos hay, y te arma una propuesta.",
+    "a": 2.87,
+    "b": 6.22
+   }
+  ]
+ },
+ "e3b": {
+  "dur": 10.08,
+  "a0": 0.32,
+  "a1": 9.73,
+  "segs": [
+   {
+    "t": "Vos elegís el horario de retiro.",
+    "a": 0.32,
+    "b": 1.82
    },
    {
-    "t": "Arma los packs, el precio y el horario de retiro.",
-    "a": 7.21,
-    "b": 10.17
+    "t": "Marcás con un toque las condiciones, como sin TACC o vegetariano, y confirmás los alérgenos.",
+    "a": 2.35,
+    "b": 8.04
    },
    {
-    "t": "Vos revisás, confirmás que la comida es del día, la cadena de frío y los alérgenos, y publicás.",
-    "a": 10.91,
-    "b": 16.44
-   },
-   {
-    "t": "La decisión siempre es tuya.",
-    "a": 17.05,
-    "b": 18.61
+    "t": "Publicás, y listo.",
+    "a": 8.58,
+    "b": 9.73
    }
   ]
  },
  "e4": {
-  "dur": 13.48,
-  "a0": 0.29,
-  "a1": 13.13,
+  "dur": 8.56,
+  "a0": 0.0,
+  "a1": 8.23,
   "segs": [
    {
-    "t": "El vecino ve tu pack en la app, reserva y paga.",
-    "a": 0.29,
-    "b": 3.63
+    "t": "El vecino reserva y paga desde la app.",
+    "a": 0.0,
+    "b": 2.04
    },
    {
-    "t": "Recibe un código QR para retirarlo.",
-    "a": 4.3,
-    "b": 6.37
-   },
-   {
-    "t": "Vos lo escaneás en el local y la venta queda registrada.",
-    "a": 7.06,
-    "b": 10.07
+    "t": "Te muestra un código QR, lo escaneás en el local y listo.",
+    "a": 2.5,
+    "b": 5.81
    },
    {
     "t": "Cobrás cada venta, sin abono fijo.",
-    "a": 10.91,
-    "b": 13.13
+    "a": 6.29,
+    "b": 8.23
    }
   ]
  },
  "e5": {
-  "dur": 5.48,
-  "a0": 0.26,
-  "a1": 5.14,
+  "dur": 9.64,
+  "a0": 0.31,
+  "a1": 9.23,
   "segs": [
    {
-    "t": "En Impacto ves cuánto recuperaste y descargás tu informe en Excel o PDF.",
-    "a": 0.26,
-    "b": 5.14
+    "t": "En Impacto ves lo que recuperaste, los kilos rescatados y la huella de carbono asociada, siempre como estimación.",
+    "a": 0.31,
+    "b": 6.77
+   },
+   {
+    "t": "Y bajás tu informe en Excel o PDF.",
+    "a": 7.16,
+    "b": 9.23
    }
   ]
  },
  "e6": {
-  "dur": 14.88,
+  "dur": 12.28,
   "a0": 0.3,
-  "a1": 14.65,
+  "a1": 11.89,
   "segs": [
    {
     "t": "Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.",
     "a": 0.3,
-    "b": 6.01
+    "b": 5.96
    },
    {
-    "t": "La balanza pesa lo que sobra y la cámara lo reconoce.",
-    "a": 6.74,
-    "b": 9.78
+    "t": "Apoyás lo que sobró, la balanza lo pesa, y vos decidís si se vende o se descarta.",
+    "a": 6.64,
+    "b": 11.89
+   }
+  ]
+ },
+ "e7": {
+  "dur": 10.08,
+  "a0": 0.0,
+  "a1": 9.59,
+  "segs": [
+   {
+    "t": "Y si tenés varias sucursales, sumás Intelligence.",
+    "a": 0.0,
+    "b": 2.41
    },
    {
-    "t": "Vos elegís si va a venta o a la basura, y registrás el motivo.",
-    "a": 10.63,
-    "b": 14.65
+    "t": "Ves todos tus locales en un solo panel, con la huella de carbono, la huella hídrica y sugerencias para desperdiciar menos.",
+    "a": 2.99,
+    "b": 9.59
    }
   ]
  },
  "e9": {
-  "dur": 4.64,
-  "a0": 0.29,
-  "a1": 4.27,
+  "dur": 4.72,
+  "a0": 0.24,
+  "a1": 4.39,
   "segs": [
    {
-    "t": "Menos desperdicio, más aprovecho.",
-    "a": 0.29,
-    "b": 2.61
+    "t": "Ya sabés cómo funciona.",
+    "a": 0.24,
+    "b": 1.36
    },
    {
-    "t": "Sumá tu comercio.",
-    "a": 3.31,
-    "b": 4.27
+    "t": "Sumá tu comercio y empezá a aprovechar lo que sobra.",
+    "a": 1.71,
+    "b": 4.39
    }
   ]
  }
