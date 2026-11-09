@@ -1,5 +1,5 @@
 /* APROVECHO · design tokens v1 (identidad visual). Generado por herramientas/build_tokens.py — no editar a mano. */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap');
 :root{
   /* Paleta base */
   --palette-forest: #1A4D3A;
@@ -40,7 +40,7 @@
   --color-focus: var(--palette-crust);
   /* Tipografía */
   --font-display: 'Bricolage Grotesque', 'Outfit', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
   --size-xs: 0.75rem;
   --size-sm: 0.875rem;
   --size-base: 1rem;

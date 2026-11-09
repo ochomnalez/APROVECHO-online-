@@ -30,7 +30,7 @@ for k,lab in (('color','Color'),('mono','Monocromo'),('negativo','Negativo'),('m
     vers+=tile(f'../logo/logo-horizontal-{k}.svg',f'Horizontal · {lab}',bg,220).replace('<figcaption>',f'<figcaption style="color:{fc}">')
     vers+=tile(f'../logo/logo-wordmark-{k}.svg',f'Wordmark · {lab}',bg,200).replace('<figcaption>',f'<figcaption style="color:{fc}">')
 html=f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guía de marca · APROVECHO</title>
-<link rel="icon" href="../logo/favicon.svg"><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../componentes.css">
+<link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../componentes.css">
 <style>
 html{{scroll-behavior:smooth}} body{{margin:0}}
 .layout{{display:grid;grid-template-columns:220px 1fr;min-height:100vh}}
@@ -50,18 +50,17 @@ table{{border-collapse:collapse;width:100%;font-size:var(--size-sm);background:v
 .photo{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-3)}} .ph{{aspect-ratio:4/5;border-radius:var(--radius-md);display:flex;align-items:flex-end;padding:var(--space-3);font:600 var(--size-sm) var(--font-body);color:#fff;background-size:cover}}
 @media(max-width:820px){{.layout{{grid-template-columns:1fr}} aside{{position:static;height:auto}} main{{padding:var(--space-5)}} .cols{{grid-template-columns:1fr}}}}
 </style></head><body><div class="layout">
-<aside><img src="../logo/logo-horizontal-negativo.svg" alt="APROVECHO"><nav><a href="#logo">Logo</a><a href="#resguardo">Resguardo y tamaños</a><a href="#color">Color</a><a href="#tipografia">Tipografía</a><a href="#tono">Tono</a><a href="#iconos">Iconografía</a><a href="#fotos">Fotografía</a><a href="#ilustracion">Ilustración</a><a href="#incorrectos">Usos incorrectos</a><a href="#apps">Aplicaciones</a><a href="../componentes.html">Componentes UI ↗</a></nav><small>Guía de marca v1 · nov 2026</small></aside>
+<aside><img src="../referencias-plan/logo-actual-badge.png" alt="APROVECHO"><nav><a href="#logo">Logo</a><a href="#resguardo">Resguardo y tamaños</a><a href="#color">Color</a><a href="#tipografia">Tipografía</a><a href="#tono">Tono</a><a href="#iconos">Iconografía</a><a href="#fotos">Fotografía</a><a href="#ilustracion">Ilustración</a><a href="#incorrectos">Usos incorrectos</a><a href="#apps">Aplicaciones</a><a href="../componentes.html">Componentes UI ↗</a></nav><small>Guía de marca v1 · nov 2026</small></aside>
 <main>
 <h1>Guía de marca</h1><p class="lead">APROVECHO conecta comercios con excedentes aptos y consumidores cercanos, y ayuda a medir y reducir el desperdicio. Esta guía es la fuente para app, landing, videos y piezas físicas.</p>
 
 <section id="logo"><h2>Logo</h2>
-<p>Profesionalizamos el logo actual (D-011): se mantiene el <b>badge circular</b>, la base verde y el slogan; se redibujó en <b>vector</b> y el ícono ambiguo se reemplazó por una <b>medialuna integrada a la flecha circular</b> (D-018): se lee en un segundo, es del rubro n.º 1 de excedentes y muy argentina. Una sola marca: sin hojas ni otros símbolos.</p>
-<p class="box ok"><b>Por qué se ve distinto de la categoría:</b> Too Good To Go, Cheaf y Buen Provecho usan verde + hoja. Nosotros sumamos el acento <b>corteza</b> y un símbolo propio del producto.</p>
-<h3>Versiones</h3><div class="g">{vers}</div>
-<p>Cuándo usar cada una: <b>Badge</b> (≥ 64 px): portadas, bolsa, sticker, avatar. <b>Horizontal</b>: barras de navegación, firmas, documentos. <b>Isotipo</b>: espacios chicos y cuadrados, sellos. <b>Wordmark</b>: cuando el símbolo ya aparece cerca. <b>Mono</b>: una tinta (sellos, fax, grabado). <b>Negativo</b>: sobre verde o fondos oscuros. Íconos: <code>app-icon-1024.svg</code> (el sistema aplica la máscara) y <code>favicon.svg</code> (isotipo simplificado de 3 gajos).</p>
+<p class="box ok"><b>Logo vigente (D-026).</b> Usá el <a href="../referencias-plan/logo-actual-badge.png">badge original del plan</a> en la app, la landing y los videos. La vectorización fiel queda pendiente de confirmación.</p>
+<h3>Versiones archivadas de la propuesta con medialuna (D-018)</h3><div class="g">{vers}</div>
+<p>Usos previstos en la propuesta: <b>Badge</b> (≥ 64 px): portadas, bolsa, sticker, avatar. <b>Horizontal</b>: barras de navegación, firmas, documentos. <b>Isotipo</b>: espacios chicos y cuadrados, sellos. <b>Wordmark</b>: cuando el símbolo ya aparece cerca. <b>Mono</b>: una tinta (sellos, fax, grabado). <b>Negativo</b>: sobre verde o fondos oscuros. Íconos: <code>app-icon-1024.svg</code> (el sistema aplica la máscara) y <code>favicon.svg</code> (isotipo simplificado de 3 gajos).</p>
 <div class="g"><figure class="tile"><img src="../logo/app-icon-1024.svg" style="width:120px;border-radius:26px" alt=""><figcaption>Ícono de app (verde)</figcaption></figure><figure class="tile"><img src="../logo/app-icon-corteza-1024.svg" style="width:120px;border-radius:26px" alt=""><figcaption>Ícono alternativo (corteza)</figcaption></figure><figure class="tile"><img src="../logo/app-icon-1024.svg" style="width:48px;border-radius:11px" alt=""><figcaption>A 48 px</figcaption></figure><figure class="tile"><img src="../logo/favicon.svg" style="width:64px" alt=""><figcaption>Favicon (16/32 px y SVG)</figcaption></figure></div></section>
 
-<section id="resguardo"><h2>Área de resguardo y tamaño mínimo</h2>
+<section id="resguardo"><h2>Resguardo y tamaños de la propuesta archivada</h2>
 <div class="cols"><div><div class="clear"><img src="../logo/logo-horizontal-color.svg" alt=""><span style="left:12px;top:12px">x</span><span style="right:14px;bottom:12px">x</span></div><p><b>x = la altura de la medialuna.</b> Dejá al menos <b>x</b> libre en los cuatro lados. Nada de texto, bordes ni imágenes dentro de ese margen.</p></div>
 <table><tr><th>Versión</th><th>Mínimo digital</th><th>Mínimo impreso</th></tr><tr><td>Badge</td><td>64 px</td><td>20 mm</td></tr><tr><td>Horizontal</td><td>96 px de ancho</td><td>30 mm</td></tr><tr><td>Isotipo</td><td>24 px</td><td>8 mm</td></tr><tr><td>Wordmark</td><td>80 px de ancho</td><td>25 mm</td></tr><tr><td>Favicon</td><td>16 px</td><td>—</td></tr></table></div></section>
 
@@ -72,7 +71,7 @@ table{{border-collapse:collapse;width:100%;font-size:var(--size-sm);background:v
 <h3>Contraste verificado (WCAG AA)</h3><table><tr><th></th><th>Par</th><th>Uso</th><th>Ratio</th><th>Estado</th></tr>{rows}</table></section>
 
 <section id="tipografia"><h2>Tipografía</h2>
-<p><b>Bricolage Grotesque</b> (títulos y wordmark): grotesca con carácter y terminaciones amables; reemplaza a Montserrat para diferenciarnos. <b>Inter</b> (texto e interfaz): legibilidad en celular y cifras tabulares para los dashboards. Ambas en Google Fonts, gratis para web y app.</p>
+<p><b>Bricolage Grotesque</b> (títulos): grotesca con carácter y terminaciones amables; reemplaza a Montserrat para diferenciarnos. <b>DM Sans</b> (texto e interfaz): legibilidad en celular y cifras tabulares para los dashboards. Ambas en Google Fonts, gratis para web y app.</p>
 <div class="scale"><div><small>Display 56 · 800</small><span style="font:800 56px var(--font-display);color:var(--palette-forest);line-height:1">Menos desperdicio</span></div><div><small>H1 48 · 800</small><span style="font:800 48px var(--font-display);color:var(--palette-forest);line-height:1">Más aprovecho</span></div><div><small>H2 36 · 800</small><span style="font:800 36px var(--font-display);color:var(--palette-forest)">Sumá tu comercio</span></div><div><small>H3 22 · 800</small><span style="font:800 22px var(--font-display);color:var(--palette-forest)">Pack sorpresa de panadería</span></div><div><small>Texto 16 · 400</small><span>Comida rica del día, a mitad de precio y a la vuelta de tu casa.</span></div><div><small>Chico 14 · 500</small><span style="font-size:14px;font-weight:500">Retiro de 19:00 a 20:30</span></div><div><small>Métrica 56 · 800 tabular</small><span class="metric" style="font:800 56px var(--font-display);color:var(--palette-forest);line-height:1">1.284,5 kg</span></div></div></section>
 
 <section id="tono"><h2>Tono</h2><p>Personalidad: <b>pícara, práctica, honesta, de barrio, optimista</b>. Arquetipo Vecino (+ Sabio en B2B). Voz única en español rioplatense con voseo; cambia el tono por audiencia. El desperdicio se comunica como oportunidad, no desde la culpa. Detalle completo en <code>marca/plataforma-de-marca.md</code>.</p>
@@ -86,10 +85,10 @@ table{{border-collapse:collapse;width:100%;font-size:var(--size-sm);background:v
 <p><b>Dónde conseguirlas (gratis, D-023):</b> Unsplash o Pexels; buscar "panadería de barrio", "medialunas", "caja kraft", "mostrador de cafetería", "atardecer en la vereda". Revisar la licencia de cada foto. Si se generan con IA: pedir validación antes y cuidar manos, texto y logos falsos.</p>
 <p><b>Tratamiento:</b> color natural, ligero tinte cálido, sin filtros fuertes. Sobre foto, el logo va en negativo dentro de una banda verde bosque o con overlay de 40% de ink.</p></section>
 
-<section id="ilustracion"><h2>Ilustración</h2><p>Personajes-alimento simples (medialuna protagonista, porción de torta, empanada) para el humor B2C: stickers, estados vacíos, redes. Trazo y formas redondeadas coherentes con el isotipo; paleta limitada (bosque, corteza, crema). En B2B, diagramas limpios de la escalera <b>Recuperá → Medí → Anticipá</b>. <i>Pendiente: dibujar el set cuando arranquen landing y video.</i></p></section>
+<section id="ilustracion"><h2>Ilustración</h2><p>Personajes-alimento simples (medialuna protagonista, porción de torta, empanada) para el humor B2C: stickers, estados vacíos, redes. Trazo y formas redondeadas coherentes con la identidad; paleta limitada (bosque, corteza, crema). En B2B, diagramas limpios de la escalera <b>Recuperá → Medí → Anticipá</b>. <i>Pendiente: dibujar el set cuando arranquen landing y video.</i></p></section>
 
-<section id="incorrectos"><h2>Usos incorrectos</h2><div class="bads">{badh}</div></section>
+<section id="incorrectos"><h2>Ejemplos de uso de la propuesta archivada</h2><div class="bads">{badh}</div></section>
 
-<section id="apps"><h2>Aplicaciones</h2><p>Sticker de vidriera, cartel de caja, bolsa y posteo de Instagram: <a href="../aplicaciones/index.html">ver mockups</a> (PNG en <code>aplicaciones/png/</code>). Piezas UI: <a href="../componentes.html">componentes base</a>. Tokens: <code>tokens.css</code> y <code>tokens.json</code>.</p></section>
+<section id="apps"><h2>Aplicaciones</h2><p>Sticker de vidriera, cartel de caja, bolsa y posteo de Instagram: <a href="../aplicaciones/index.html">ver mockups históricos con el logo de la propuesta archivada</a> (PNG en <code>aplicaciones/png/</code>). Piezas UI: <a href="../componentes.html">componentes base</a>. Tokens: <code>tokens.css</code> y <code>tokens.json</code>.</p></section>
 </main></div></body></html>'''
 open('guia/index.html','w',encoding='utf-8').write(html); print(len(html))

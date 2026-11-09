@@ -1,0 +1,105 @@
+.foto-deteccion { aspect-ratio: 4 / 3; }
+.foto-revision { width: min(100%, 360px); }
+.deteccion-comercio .pasos {
+  background: var(--fondo-2);
+  box-shadow: inset 0 0 0 1px var(--linea);
+}
+.deteccion-comercio .paso,
+.deteccion-comercio .paso.hecho,
+.deteccion-comercio .paso.ahora { color: var(--tinta-2); }
+.deteccion-comercio .paso i,
+.deteccion-comercio .paso.ahora i { box-shadow: inset 0 0 0 2px var(--verde-200); }
+.deteccion-comercio .paso.ahora i {
+  border-top-color: var(--verde);
+  border-top-width: 2px;
+}
+.deteccion-comercio .paso.hecho i {
+  background: var(--verde-100);
+  color: var(--verde-3);
+  box-shadow: none;
+}
+.foto-deteccion .caja-det {
+  border-radius: 5px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--verde-3);
+}
+.foto-deteccion .caja-det b {
+  border-radius: 4px 4px 4px 0;
+  background: var(--verde-3);
+}
+.foto-deteccion .caja-det.duda { border-style: dashed; }
+.foto-deteccion .caja-det.duda b { background: var(--tinta); }
+.deteccion-fila {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  align-items: center;
+  border-top: 1px solid var(--linea);
+  padding-top: 6px;
+}
+.deteccion-producto {
+  gap: 6px;
+  text-align: left;
+  min-height: 44px;
+}
+.deteccion-fila .stepper button { min-width: 44px; min-height: 44px; }
+.deteccion-fila .stepper { flex-shrink: 0; }
+.deteccion-aviso { grid-column: 1 / -1; }
+.quitar-propuesta { align-self: flex-start; min-height: 44px; }
+.comercio-check {
+  border: 1px solid var(--linea);
+  margin: 0;
+  min-width: 0;
+}
+.comercio-check legend,
+.estacion-destinos legend { font-weight: 700; }
+.comercio-check legend { padding: 0 6px; }
+.comercio-check label:not(.campo) {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 10px;
+}
+.comercio-check input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--verde-3);
+}
+.estacion-badge { margin-right: 8px; }
+.estacion-destinos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  border: 0;
+  padding: 4px 0 0;
+  margin: 0;
+  min-width: 0;
+}
+.estacion-destinos .bloque { grid-column: 1 / -1; }
+.estacion-destinos .btn { padding-inline: 8px; }
+.estacion-resultados { display: grid; align-content: start; gap: 14px; }
+.estacion-foto { max-width: 360px; }
+.estacion-sin-foto { height: 100%; display: grid; place-items: center; color: var(--tinta-2); }
+.estacion-metricas .fila {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 8px;
+  min-height: 34px;
+}
+.score-comercio { text-align: left; }
+.score-comercio .verde { display: flex; align-items: center; gap: 6px; }
+@media (min-width: 760px) and (orientation: landscape) {
+  #app:has(.pantalla.actual.estacion-comercio) { max-width: 1160px; }
+  .estacion-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 20px;
+    padding-inline: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foto-deteccion .caja-det,
+  .deteccion-comercio .paso i { animation: none; }
+}
