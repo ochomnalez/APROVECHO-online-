@@ -43,3 +43,22 @@ Aprobado en lo revisado en capturas: sin destellos ni degradé violeta visibles,
 
 ## Lo que sigue
 Ronda 2: reverificar I-1 a I-3 cuando App avise; probar la PWA instalada en un celular real (no se puede desde este entorno).
+
+---
+
+# Ronda 2 · 2026-11-09 · `claude/aprovecho-app` @ `0fd1e93`
+Evidencia: `docs/qa/capturas/app-r2/`. Se repitió el recorrido completo en 390×844 **con toda la red externa bloqueada** y axe en Mapa, Inicio, Reservas y Perfil.
+
+| Hallazgo ronda 1 | Estado | Verificación |
+|---|---|---|
+| **I-1** pack publicado ≠ pack reservado | ✅ Resuelto | El comercio publica «1 × Pack chico $2.500 (5 u de medialuna de manteca)»; el cliente ve, reserva y paga exactamente «5 u de medialuna de manteca $2.500» con foto de medialunas y el QR repite «Pack chico · Panificados · $2.500» (`r2-5-cliente-m.png`, `r2-7-reservar-m.png`, `r2-9-qr-m.png`) |
+| **I-2** mapa con interactivos anidados | ✅ Resuelto | axe en Mapa: **0 violaciones**; marcador = un solo `role=button tabindex=0` sin hijos interactivos |
+| **I-3** dependencia de CDN | ✅ Resuelto | Con red externa bloqueada: fuente Bricolage Grotesque OK, flujo completo sin errores, **0 hosts externos pedidos** salvo las teselas del mapa (`tile.openstreetmap.org`, esperado). `app/vendor/` + `sw.js` v4 |
+| axe en Inicio, Reservas, Perfil | ✅ 0 violaciones | — |
+
+**Nuevos / menores (no bloquean):**
+- **M-8 · El mapa y el listado siguen mostrando packs de $6.100** («Panadería La Espiga · Pack mediano · $6.100») mientras el recorrido del comercio publica $2.500. Es la PREGUNTA 1 (¿packs de ejemplo ~ARS 6.100?). Si Octavio dice que sí, subir también el pack publicado por la demo.
+- **M-9 · Los marcadores del mapa no tienen nombre accesible explícito** (`aria-label` ausente; axe no lo marca porque el contenido es el precio). Sumar «Panadería La Espiga, $6.100, a 350 m».
+- Siguen abiertos de la ronda 1: M-1 a M-7 (no se re-verificaron; son de diseño).
+
+**Veredicto:** sin bloqueantes ni importantes pendientes. App lista para integrar salvo las decisiones de Octavio y la prueba de la PWA instalada en un celular real (no se puede hacer desde este entorno).
