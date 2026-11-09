@@ -62,3 +62,5 @@ Evidencia: `docs/qa/capturas/app-r2/`. Se repitió el recorrido completo en 390�
 - Siguen abiertos de la ronda 1: M-1 a M-7 (no se re-verificaron; son de diseño).
 
 **Veredicto:** sin bloqueantes ni importantes pendientes. App lista para integrar salvo las decisiones de Octavio y la prueba de la PWA instalada en un celular real (no se puede hacer desde este entorno).
+
+> **Nota 2026-11-09 (landing v2):** la app no tuvo commits nuevos desde `0fd1e93`; el veredicto de la ronda 2 se mantiene.

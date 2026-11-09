@@ -50,3 +50,61 @@ Aprobado. Sin destellos, sin glassmorphism, sin degradé violeta, sin emojis com
 
 ## Lo que sigue
 Ronda 2 cuando Landing avise cambios: re-medir Lighthouse, I-2 a I-5 y revisar el onboarding con videos.
+
+---
+
+# Ronda 2 · Landing **v2** · 2026-11-09 · `claude/aprovecho-landing` @ `f7a6209`
+> La v1 se rehízo desde cero por pedido de Octavio; los hallazgos I-1 a I-5 de arriba aplican solo a v1 (estado de los que persisten en la tabla de abajo). Evidencia: `docs/qa/capturas/landing-v2/` (full-390/768/1440, hero y recorrido Base en 390). Herramientas: Lighthouse mobile, axe 4, Playwright.
+
+## Resultado en una línea
+Muy buen diseño y copy (fondo blanco, anillo Recuperá · Medí · Anticipá, recorridos por plan, fotos reales CC0, sin naranja), pero **no cumple el criterio de Lighthouse ≥ 90 en rendimiento (84)** y tiene **1 error crítico de ARIA**. **0 bloqueantes de contenido; 2 bloqueantes técnicos contra los criterios de aceptación del brief** (rendimiento < 90 y A11y 92 con un `critical`), más 4 importantes.
+
+| Medición | v1 | **v2** |
+|---|---|---|
+| Lighthouse rendimiento (móvil) | 94 | **84** ✖ (FCP 2,4 s · LCP 2,4 s · **TBT 440 ms** · CLS 0) |
+| Accesibilidad | 100 | **92** |
+| Buenas prácticas / SEO | 100 / 100 | 100 / 100 |
+| Peso total | — | 914 KiB |
+| Consola / requests | 0 | 0 errores (390, 768, 1440) |
+| Scroll horizontal | No | **Sí en 768 px** (772 > 768) |
+| Tipografía | OK | OK (Bricolage + DM Sans) |
+
+## Bloqueantes (contra los criterios de aceptación del brief)
+**B-1 · Rendimiento 84 < 90.** El problema es hilo principal: TBT 440 ms y 2,8 s de trabajo del hilo (JS de los recorridos fijos/animaciones + 15 animaciones infinitas), y CSS/JS que bloquea el render (Lighthouse estima 1,67 s). Arreglos probables: `defer` en scripts, CSS crítico inline/`preload`, pausar animaciones fuera de pantalla (`IntersectionObserver`), usar `transform/opacity` con `will-change` solo en las visibles, `fetchpriority="high"` en la imagen del hero.
+**B-2 · `aria-required-children` (critical).** `div.tabsbar__in[role=tablist]` contiene `<a>` sin `role="tab"`. O se completa el patrón (`role=tab`, `aria-selected`, `aria-controls`, flechas) o se quita `role=tablist` y quedan como navegación de anclas (`<nav>`), que es lo más simple.
+
+## Importantes
+- **I-6 · No respeta `prefers-reduced-motion`.** Hay 0 reglas `@media (prefers-reduced-motion)` y con la preferencia activada siguen corriendo **15 animaciones infinitas** (anillo, `bob` de teléfono/paneles/balanza/tablet, `scan`, `det`). El handoff lo declara como decisión; incumple WCAG 2.2.2/2.3.3 (movimiento continuo sin forma de pausarlo) y el criterio del brief. Arreglo: `@media (prefers-reduced-motion: reduce){ *{animation:none!important} }` y dejar los recorridos fijos funcionando igual.
+- **I-7 · Contraste AA en los pasos inactivos de cada recorrido (1440).** axe: 14 nodos, ratios **1,85 a 2,14** (`#plan-base .sstep:nth-child(2) h4/p`…) más `span[title="Próximamente"]` 4,47 en los links del pie (390) y `em` dentro del teléfono de la tarjeta. Es el mismo problema de v1 (I-3) y la mejora anunciada no alcanza. Subir el color de los pasos inactivos a ≥ 4,5:1 (o usar opacidad en el contenedor solo con texto grande ≥ 3:1 y verificar).
+- **I-8 · Roadmap sigue recortado en escritorio** (v1 I-2 sin resolver): `ol.road` 1330 px en contenedor de 1160; 2029–2031 quedan fuera («Per…», «Bra…») y en 768 sus ítems llegan a 970 y 1160 px. Probablemente es lo que además produce el **scroll horizontal de la página a 768 px** (772 > 768; también `div.pricetag--b` a 772). Captura: `landing-v2/full-1440.jpg` (sección Roadmap), `full-768.jpg`.
+- **I-9 · La balanza y la tablet «arrastrables» no se operan con teclado ni lector** (`.floatstage` sin `tabindex` ni alternativa; la pista «ARRASTRÁ PARA MOVERLA» solo sirve con mouse/dedo). Es decorativo: marcarlo `aria-hidden="true"` / `role=presentation` y no esconder información ahí, o sumar flechas.
+
+## Menores
+- **M-1 · Áreas táctiles < 44 px:** chips del anillo «Recuperá / Medí / Anticipá» 40 px de alto; sub-navegación «Comercios / Planes / Inversores / Preguntas» 36 px; checkbox de consentimiento 24×24; slider 36 px; chips «¿Qué te interesa?» 38 px. (Persisten de v1.)
+- **M-2 · `th` vacío** en la tabla de mercado (persiste de v1).
+- **M-3 · Frase de entrada y hero.** El H1 pasó a ser el slogan «Menos desperdicio, más aprovecho.» con la etiqueta «QUIÉNES SOMOS»; ya no está la promesa B2B «Vendé lo que te sobra con una foto» (queda solo en `<title>`). D-005 pide que el objetivo principal sea que se sumen comercios: el CTA «Sumá tu comercio» está, pero el titular ya no dice qué hacemos por el comercio. Decisión de diseño de Octavio (mockups G1/G2): solo señalarlo.
+- **M-4 · Mobile:** el CTA fijo «Sumá tu comercio» tapa el borde inferior del contenido en todas las pantallas (`hero-390.png`, `planbase-390-*.png`); sumar `padding-bottom` o ocultarlo cuando el formulario esté en pantalla.
+- **M-5 · Páginas largas en blanco en las capturas completas** (recorridos fijos de 3 planes): es esperable por el `position: sticky`; verificar a mano que no haya «huecos» en tablet (768).
+
+## Estado de los hallazgos de la ronda 1 (v1) en v2
+| v1 | En v2 |
+|---|---|
+| I-1 75% en hero/meta | ✅ Resuelto: queda solo en «Mirá cuánto te queda», nota de la cuenta y FAQ (permitido por D-031) |
+| I-2 Roadmap recortado | ❌ Persiste (I-8) |
+| I-3 Contraste pasos inactivos | ❌ Persiste (I-7) |
+| I-4 Regiones con scroll sin teclado | ✅ `.road` con `tabindex` (axe ya no lo marca); revisar si el roadmap se puede desplazar con flechas |
+| I-5 Onboarding débil | ➖ No aplica: se sacó el onboarding de v1; **el onboarding de QA (prototipo A) no está** en v2. Los recorridos por plan lo reemplazan en parte; el paso a paso de alta (los 7 pasos de `fuente/07`) hoy no aparece en la landing |
+| M-1 áreas táctiles | ❌ Persiste |
+| M-3 `th` vacío | ❌ Persiste |
+| M-4 «2 minutos» (SUPUESTO) | ❌ Persiste (sigue «Sumate en 2 minutos») |
+| M-5 pie «Proyecto académico» | ❌ Persiste (pendiente de OK) |
+
+## Copy, marca y números (re-chequeo)
+OK ✔ voseo; Medido/Estimado rotulado; sin «CO₂ evitado» (aclaración «no equivale…»); cifras de validación e inversores coinciden con la fuente; $12.200 → $6.100 → $4.575 coherente (D-015, D-033); descriptores Recuperá / Medí / Anticipá (D-016); sin umbrales Smart/Intelligence ni ingresos 2027. **Siguen pendientes de Octavio** (sin cambios): el bloque financiero con USD 112.611 / 3,9 años / VAN / TIR (D-019 vs D-025); IVA y moneda de los precios (A8); T&C y política de privacidad que el formulario cita pero no existen todavía.
+**Nueva pregunta:** la balanza y la tablet de los recorridos son **recortes de una imagen generada con IA** (la que pasó Octavio; `img/CREDITOS.md`). El handoff los marca provisorios. Confirmar que es aceptable mostrarlos así (con rótulo «Ilustrativo») hasta tener fotos reales.
+
+## Anti «AI slop»
+Aprobado: sin destellos, glassmorphism, degradé violeta, emojis ni 3D de stock; tipografía de marca; fotos reales CC0 y variadas; composición con arcos y anillo propia de APROVECHO. Reparo: el producto recortado de una imagen generada se ve «de render» frente a las fotos reales (contraste de estilos) — ver pregunta anterior.
+
+## Veredicto ronda 2 (landing v2)
+**No cerrar todavía.** Corregir B-1, B-2, I-6, I-7, I-8 (y de paso el scroll horizontal a 768) y avisar para una última pasada (ronda 3 = límite acordado de 2 rondas; la ronda 1 fue sobre v1, esta es la 1.ª sobre v2).
