@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git config core.hooksPath scripts/hooks; echo 'Recordá: trabajá solo en TU rama (claude/<persona>-<rol>) y subí todo al terminar cada cambio (CLAUDE.md §0).'"
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git config core.hooksPath scripts/hooks; echo 'Recordá: trabajá solo en TU rama (claude/<persona>-<rol>) y subí todo al terminar cada cambio (CLAUDE.md §0). Si es la primera vez de la persona (ej. Facundo), mostrale la bienvenida de docs/bienvenida/.'"
           }
         ]
       }

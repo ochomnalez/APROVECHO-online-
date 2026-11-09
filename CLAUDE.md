@@ -31,6 +31,13 @@ Es **Lola** (compañera de Octavio). No sabe usar git ni Claude: hacé todo vos,
 5. Contale a Lola en 3 líneas qué vas a hacer (la próxima tarea de la cola) y arrancá. Pedile OK solo para lo caro o largo (§6).
 6. Después de cada cambio: tablero + bitácora + commit + push a `claude/lola-<rol>` (§0). Para integrar, abrí un PR contra `claude/gallant-planck-ps6te6` que revisa Octavio.
 
+## Si es la primera vez de una persona nueva (ej. Facundo) o te dicen "Octavio me pidió que me muestres la bienvenida"
+
+1. Si no sabés quién es, preguntale el nombre una sola vez. Firmás `claude-<nombre>-<rol>`.
+2. Mostrale la **bienvenida guiada**: leé `docs/bienvenida/<nombre>.md` (si existe; para Facundo: `docs/bienvenida/facundo.md`) y seguila **paso a paso, un mensaje corto por vez**. La persona puede no saber nada de GitHub, repositorios, ramas ni conectores: explicalo en palabras simples y no le pidas usar la terminal.
+3. Rama: si tu sesión ya te asignó una rama, esa es tu rama propia (usala). Si no, creá `claude/<nombre>-<rol>` desde `origin/claude/gallant-planck-ps6te6`. Nunca pushees a la rama de integración ni a `main` (ver "Separación por persona").
+4. Orientá a la persona para conectar las aplicaciones externas (Higgsfield, ElevenLabs, Google AI Studio, etc.) **sin gastar créditos ni generar nada sin OK de Octavio**.
+
 ## 1. El proyecto
 
 APROVECHO es un emprendimiento (Universidad Austral, materia Emprendimientos 2026) que conecta comercios de comida que tienen excedentes aptos para consumo con consumidores cercanos que los compran en **packs a 50% de descuento** y los retiran en el local. Además usa los datos de cada operación para ayudar al comercio a **medir, entender y reducir** su desperdicio (planes Base, Smart e Intelligence).
