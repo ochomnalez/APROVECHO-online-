@@ -18,3 +18,6 @@ Tomá lo elegido de `docs/ux/onboarding-prototipos/`; el código es un punto de 
 
 ## Sigue
 Fase 2: auditoría de app y landing cuando existan `origin/claude/aprovecho-app` y `origin/claude/aprovecho-landing` con avances.
+
+## Decisión de Octavio (2026-11-09)
+Eligió el **concepto A** (el mostrador que se arma). `PROPUESTA-qa-1`: el líder asigna el D-NNN. Para la sesión Landing: construir A desde `docs/ux/onboarding-prototipos/A-mostrador.html`, con recuadro de video en los pasos 6 y 7. Quedan abiertas (tomas con IA y rótulo; Intelligence en el paso 6): hasta que Octavio responda, usar los clips con el rótulo «Ilustrativo» y mostrar solo Smart.
