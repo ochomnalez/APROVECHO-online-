@@ -15,7 +15,7 @@ Hay un hook (`.claude/settings.json` → `scripts/hooks/exigir-push.sh`) que **n
 
 ### Separación por persona (para que nadie contamine el trabajo de otro)
 
-- Cada persona tiene **sus propias ramas**: `claude/lola-<rol>` para Lola, `claude/octi-<rol>` o las ramas de sesión de Octavio. Al arrancar, si no estás en una rama tuya, creala desde la rama de integración: `git checkout -b claude/<persona>-<rol> origin/claude/gallant-planck-ps6te6`.
+- Cada persona tiene **sus propias ramas**: `claude/lola-<rol>` para Lola, `gemini/<persona>-<rol>` para quien use Gemini (ver `GEMINI.md` y `docs/INSTRUCTIVO-GEMINI.md`), `claude/octi-<rol>` o las ramas de sesión de Octavio. Al arrancar, si no estás en una rama tuya, creala desde la rama de integración: `git checkout -b claude/<persona>-<rol> origin/claude/gallant-planck-ps6te6`.
 - **Nunca** pushees, mergees ni reescribas ramas de otra persona ni la de integración (`claude/gallant-planck-ps6te6`) ni `main`.
 - Lo de otra persona entra a la integración **solo por Pull Request**, y lo revisa y aprueba **Octavio**.
 - Si algo sale mal, se descarta la rama de esa persona y lo demás queda intacto.

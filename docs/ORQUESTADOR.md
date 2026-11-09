@@ -11,6 +11,9 @@
 5. **Tablero publicado:** https://claude.ai/artifact/Bpquyus65SucbgcwkDgfqV (artifact de Octavio). Quien no tenga acceso usa `docs/tablero/visual.html` del repo y lo abre en el navegador.
 6. **Antes de tomar el mando:** fijate en la bitácora quién está trabajando; si hay otro líder activo, coordiná con el usuario para no pisarse.
 
+### Traspaso a alguien que usa Gemini
+Instructivo completo en `docs/INSTRUCTIVO-GEMINI.md`; reglas para el agente en `GEMINI.md`. Rama propia `gemini/<persona>-<rol>`, firma `gemini-<persona>-<rol>`, mensaje inicial "seguí el trabajo de Octi". Gemini no tiene los controles automáticos de Claude Code (no hay hook que obligue a guardar): la regla está escrita y hay que recordársela. El hook `pre-push` sí se activa con `git config core.hooksPath scripts/hooks`.
+
 ### Estado al 4/11 (último traspaso)
 
 - **Video de onboarding:** primer corte montado en Remotion (`video/src/Onboarding.jsx`, 85 s, 16:9, sin voz: la voz va como subtítulo). Render en `video/salidas/onboarding.mp4`. Falta: OK de Octavio, voz (ElevenLabs) y música.
