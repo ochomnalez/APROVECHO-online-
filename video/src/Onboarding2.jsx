@@ -8,6 +8,7 @@ import {
   interpolate, spring, staticFile, useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import { TransitionSeries, springTiming } from '@remotion/transitions';
+import VT from './voz-tiempos.json';
 import { fade } from '@remotion/transitions/fade';
 import { slide } from '@remotion/transitions/slide';
 import { wipe } from '@remotion/transitions/wipe';
@@ -225,173 +226,182 @@ function Tarjeta({ src, x, y, w, h, desde = 0, hasta, desdeVideo = 0, cortes, ch
           <Sequence key={i} from={s(c0)} durationInFrames={s(c1 - c0) + 1}>
             <OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(vs)} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </Sequence>))
-        : <OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(desdeVideo)} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+        : <Sequence from={s(desde)}><OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(desdeVideo)} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></Sequence>}
       {children}
     </div>
   );
 }
 
-// ---------- Escenas ----------
-const SEG1 = segmentar(['Bienvenido a APROVECHO.', 'Te mostramos cómo empezar, paso a paso.'], 0.5);
+// ---------- Escenas (todo se sincroniza con la voz real: src/voz-tiempos.json) ----------
+const OFF = 0.45; // la voz entra 0.45 s después de que empieza cada escena
+const segsDe = (k) => VT[k].segs.map((x) => ({ t: x.t, a: x.a + OFF, b: x.b + OFF }));
+const durDe = (k, min = 0) => Math.max(min, VT[k].dur + OFF + 0.9);
+const Voz = ({ k }) => <Sequence from={s(OFF)}><Audio src={staticFile(`voz2/${k}.mp3`)} /></Sequence>;
+
 function E1() {
-  const f = useCurrentFrame();
-  const z = interpolate(f, [0, s(6)], [1.14, 1.02], { ...CL, easing: Easing.out(Easing.quad) });
+  const f = useCurrentFrame(); const sg = segsDe('e1');
+  const z = interpolate(f, [0, s(6.7)], [1.14, 1.02], { ...CL, easing: Easing.out(Easing.quad) });
   const m = suave(f, 0, 18); const lg = useSp(8, { damping: 13 });
   return (
     <AbsoluteFill style={{ background: BOSQUE, overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, clipPath: `inset(${(1 - m) * 50}% 0 ${(1 - m) * 50}% 0)` }}>
-        <OffthreadVideo src={staticFile('tomas/H-apertura.mp4')} muted style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${z})` }} />
+        <OffthreadVideo src={staticFile('tomas/H-apertura.mp4')} playbackRate={0.75} muted style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${z})` }} />
         <AbsoluteFill style={{ background: 'linear-gradient(90deg, rgba(15,51,38,.93) 0%, rgba(15,51,38,.7) 38%, rgba(15,51,38,0) 72%)', opacity: ease(f, 8, 28) }} />
       </div>
       <div style={{ position: 'absolute', left: 140, top: 190, width: 880 }}>
         <Img src={staticFile(SELLO)} style={{ width: 190, height: 190, transform: `scale(${0.7 + lg * 0.3}) rotate(${(1 - lg) * -18}deg)`, opacity: Math.min(1, lg * 2), marginBottom: 30 }} />
         <Cinetico texto="Tu guía para empezar." desde={18} tam={104} color={PAPEL} />
       </div>
-      <Subs segs={SEG1} />
+      <Voz k="e1" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
-const SEG2 = segmentar(['Entrás como comercio y elegís tu plan.', 'Cargás tu carta con una foto de tu lista de precios: la app lee los productos y los precios sola.', 'Y llegás a Hoy, tu pantalla principal.'], 0.3);
 function E2() {
+  const sg = segsDe('e2'); const at = (i, o = 0) => sg[i].a + o;
   return (
     <AbsoluteFill>
       <Fondo k={1} />
       <div style={{ position: 'absolute', left: 140, top: 150, width: 900 }}>
         <Capitulo n="1" texto="Primeros pasos" />
         <Cinetico texto="Armá tu comercio en minutos." tam={86} desde={6} />
-        <Lista items={[['Entrás como comercio', 0.9], ['Elegís tu plan', 3.0], ['Cargás tu carta con una foto', 5.6], ['Llegás a Hoy, tu pantalla principal', 11.6]]} />
+        <Lista items={[['Entrás como comercio', at(0)], ['Elegís tu plan', at(0, 1.4)], ['Cargás tu carta con una foto', at(1)], ['Llegás a Hoy, tu pantalla principal', at(2)]]} />
       </div>
       <Celular tomas={[
-        { src: '01-bienvenida', desde: 0, toque: { x: 50, y: 75, en: 2.2 } },
-        { src: '02-plan', desde: 2.8, toque: { x: 50, y: 92, en: 4.6 } },
-        { src: '04-carta', desde: 5.2, toque: { x: 50, y: 66, en: 6.8 } },
-        { src: '05-carta-cargada', desde: 7.4 },
-        { src: '07-hoy', desde: 11.2 },
+        { src: '01-bienvenida', desde: 0, toque: { x: 50, y: 75, en: at(0, 0.8) } },
+        { src: '02-plan', desde: at(0, 1.5), toque: { x: 50, y: 92, en: at(0, 2.3) } },
+        { src: '04-carta', desde: at(1, -0.3), toque: { x: 50, y: 66, en: at(1, 1.2) } },
+        { src: '05-carta-cargada', desde: at(1, 2.6) },
+        { src: '07-hoy', desde: at(2, -0.2) },
       ]} />
-      <Subs segs={SEG2} />
+      <Voz k="e2" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
-const SEG3 = segmentar(['Cuando sobra mercadería, sacás una foto.', 'La app reconoce cada producto y cuenta cuántos hay.', 'Arma los packs, el precio y el horario de retiro.', 'Vos revisás, confirmás que la comida es del día, la cadena de frío y los alérgenos, y publicás.', 'La decisión siempre es tuya.'], 0.3);
+function ColumnaE3({ at0 }) {
+  return (
+    <div style={{ position: 'absolute', left: 140, top: 150, width: 900 }}>
+      <Capitulo n="2" texto="Base · publicar con una foto" />
+      <Cinetico texto="Una foto y la app arma tus packs." tam={78} desde={6} />
+      <Lista items={[['Reconoce cada producto y cuenta cuántos hay', 0.4], ['Arma packs, precio y horario de retiro', at0[0]], ['Vos confirmás: día, frío y alérgenos', at0[1]]]} ancho={900} />
+    </div>
+  );
+}
 function E3() {
+  const sg = segsDe('e3'); const at = (i, o = 0) => sg[i].a + o;
+  const tI = 6.0; const tD = at(3, 3.4);
   return (
     <AbsoluteFill>
       <Fondo k={2} />
-      <div style={{ position: 'absolute', left: 140, top: 150, width: 900, opacity: 1 }}>
-        <Capitulo n="2" texto="Base · publicar con una foto" />
-        <Cinetico texto="Una foto y la app arma tus packs." tam={78} desde={6} />
-        <Lista items={[['Reconoce cada producto y cuenta cuántos hay', 5.8], ['Arma packs, precio y horario de retiro', 9.5], ['Vos confirmás: día, frío y alérgenos', 13.2], ['La decisión siempre es tuya', 19.8]]} ancho={900} />
-      </div>
-      <Tarjeta src="F-apertura.mp4" x={90} y={560} w={760} h={428} desde={0.2} hasta={5.6} />
-      <Tarjeta src="D-base.mp4" x={90} y={560} w={760} h={428} desde={19.4} hasta={25.4} />
+      <Sequence from={s(tI)} durationInFrames={s(tD - tI)}><ColumnaE3 at0={[at(2) - tI, at(3) - tI]} /></Sequence>
+      <Tarjeta src="F-apertura.mp4" x={90} y={110} w={1040} h={585} desde={0.2} hasta={tI} />
+      <Tarjeta src="D-base.mp4" x={90} y={110} w={1040} h={585} desde={tD} hasta={tD + 5.4} />
       <Celular tomas={[
-        { src: '08-camara', desde: 0, toque: { x: 50, y: 22, en: 4.6 } },
-        { src: '09-analizando', desde: 5.4 },
-        { src: '11-tras-analisis', desde: 8.4 },
-        { src: '12-revisar-checklist', desde: 13, toque: { x: 50, y: 93, en: 22.2 } },
-        { src: '13-publicado', desde: 23.2 },
+        { src: '08-camara', desde: 0, toque: { x: 50, y: 22, en: at(0, 1.7) } },
+        { src: '09-analizando', desde: at(1, 0) },
+        { src: '11-tras-analisis', desde: at(1, 2.0) },
+        { src: '12-revisar-checklist', desde: at(2, 0), toque: { x: 50, y: 93, en: tD + 1.2 } },
+        { src: '13-publicado', desde: tD + 2.8 },
       ]} />
-      <Subs segs={SEG3} />
+      <Voz k="e3" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
-const SEG4 = segmentar(['El vecino ve tu pack en la app, reserva y paga.', 'Recibe un código QR para retirarlo.', 'Vos lo escaneás en el local y la venta queda registrada.', 'Cobrás cada venta, sin abono fijo.'], 0.3);
 function E4() {
+  const sg = segsDe('e4'); const at = (i, o = 0) => sg[i].a + o;
   return (
     <AbsoluteFill>
       <Fondo k={3} />
       <div style={{ position: 'absolute', left: 720, top: 150, width: 1000 }}>
         <Capitulo n="3" texto="Base · vender y cobrar" />
         <Cinetico texto="Reserva, QR y retiro." tam={92} desde={6} />
-        <Lista items={[['El vecino ve tu pack, reserva y paga', 0.8], ['Recibe un código QR', 4.6], ['Vos lo escaneás en el local', 8.2], ['La venta queda registrada: cobrás sin abono fijo', 12.2]]} ancho={1000} />
+        <Lista items={[['El vecino ve tu pack, reserva y paga', at(0)], ['Recibe un código QR', at(1)], ['Vos lo escaneás en el local', at(2)], ['La venta queda registrada: cobrás sin abono fijo', at(3)]]} ancho={1000} />
       </div>
       <Celular x={170} giro={8} tomas={[
-        { src: '14-cliente-ve-pack', desde: 0, toque: { x: 62, y: 96, en: 3.2 } },
-        { src: '16-reserva-qr', desde: 3.8 },
-        { src: '17-retiros', desde: 8, toque: { x: 50, y: 6.5, en: 10.2 } },
-        { src: '18-retiro-validado', desde: 11.2, toque: { x: 50, y: 80, en: 13.4 } },
+        { src: '14-cliente-ve-pack', desde: 0, toque: { x: 62, y: 96, en: at(0, 2.4) } },
+        { src: '16-reserva-qr', desde: at(1, -0.2) },
+        { src: '17-retiros', desde: at(2, -0.2), toque: { x: 50, y: 6.5, en: at(2, 0.9) } },
+        { src: '18-retiro-validado', desde: at(2, 1.6), toque: { x: 50, y: 80, en: at(2, 2.4) } },
+        { src: '19-hoy-final', desde: at(3, 0) },
       ]} />
-      <Subs segs={SEG4} />
+      <Voz k="e4" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
-const SEG5 = segmentar(['En Impacto ves cuánto recuperaste y descargás tu informe en Excel o PDF.'], 0.3);
 function E5() {
+  const sg = segsDe('e5'); const at = (i, o = 0) => sg[i].a + o;
   return (
     <AbsoluteFill>
       <Fondo k={4} />
       <div style={{ position: 'absolute', left: 140, top: 150, width: 900 }}>
         <Capitulo n="4" texto="Base · tus números" />
         <Cinetico texto="Mirá lo que recuperás." tam={92} desde={6} />
-        <Lista items={[['Plata y kilos recuperados', 0.8], ['Lo medido y lo estimado, separados', 2.4], ['Informe en Excel o PDF', 4.4]]} />
+        <Lista items={[['Plata y kilos recuperados', at(0)], ['Lo medido y lo estimado, separados', at(0, 1.4)], ['Informe en Excel o PDF', at(0, 3.0)]]} />
       </div>
       <Celular tomas={[
-        { src: '20-impacto', desde: 0, toque: { x: 87, y: 3.8, en: 3.2 } },
-        { src: '21-reporte', desde: 3.7, toque: { x: 50, y: 71, en: 5 } },
-        { src: '24-reporte-listo', desde: 5.8 },
+        { src: '20-impacto', desde: 0, toque: { x: 87, y: 3.8, en: at(0, 2.6) } },
+        { src: '21-reporte', desde: at(0, 3.1), toque: { x: 50, y: 71, en: at(0, 4.1) } },
+        { src: '24-reporte-listo', desde: at(0, 4.8) },
       ]} />
-      <Subs segs={SEG5} />
+      <Voz k="e5" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
-const SEG6 = segmentar(['Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.', 'La balanza pesa lo que sobra y la cámara lo reconoce.', 'Vos elegís si va a venta o a la basura, y registrás el motivo.'], 0.3);
 function E6() {
-  const f = useCurrentFrame();
-  const grande = suave(f, s(6.8), s(7.8));
+  const sg = segsDe('e6'); const at = (i, o = 0) => sg[i].a + o;
+  const tC = Math.min(6.4, at(0, 5.8));
   return (
     <AbsoluteFill>
       <Fondo k={5} />
-      <div style={{ position: 'absolute', left: 140, top: 100, width: 800, opacity: 1 - grande * 0.0 }}>
+      <div style={{ position: 'absolute', left: 140, top: 100, width: 800 }}>
         <Capitulo n="5" texto="Smart · la estación" />
         <Cinetico texto="Medí con balanza y cámara." tam={78} desde={6} />
-        <Lista items={[['Balanza + tablet con cámara', 1], ['Peso real, no estimado', 7.4], ['¿Venta o basura? Con motivo', 11.5]]} ancho={780} />
+        <Lista items={[['Balanza + tablet con cámara', tC + 0.2], ['Peso real, no estimado', at(1, 1.6)], ['¿Venta o basura? Con motivo', at(2)]]} ancho={780} />
       </div>
-      <Tarjeta src="G-smart.mp4" x={110} y={450} w={800} h={450} desde={0.2} hasta={6.4} cortes={[[0, 1.9, 0], [1.9, 6.5, 3.6]]} />
+      <Tarjeta src="G-smart.mp4" x={110} y={410} w={760} h={428} desde={0.2} hasta={tC} cortes={[[0, 1.9, 0], [1.9, 6.5, 3.6]]} />
       <Tableta x={930} y={170} W={900} tomas={[
         { src: 't-02-estacion-vacia', desde: 0 },
-        { src: 't-03-pesando', desde: 4.2 },
-        { src: 't-04-pesado', desde: 6.2 },
-        { src: 't-06-basura-motivo', desde: 10 },
-        { src: 't-07-basura-motivo-elegido', desde: 12.6 },
-        { src: 't-08-registro', desde: 14.2 },
+        { src: 't-03-pesando', desde: at(1, 0) },
+        { src: 't-04-pesado', desde: at(1, 1.5) },
+        { src: 't-06-basura-motivo', desde: at(2, 0.6) },
+        { src: 't-07-basura-motivo-elegido', desde: at(2, 2.4) },
+        { src: 't-08-registro', desde: at(2, 3.5) },
       ]} />
-      <Subs segs={SEG6} />
+      <Voz k="e6" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
 // INTELLIGENCE_PENDIENTE: acá va el capítulo 6 (varias sucursales) cuando Octavio lo defina.
 
-const SEG9 = segmentar(['Menos desperdicio, más aprovecho.', 'Sumá tu comercio.'], 0.4);
 function E9() {
-  const f = useCurrentFrame(); const sc = useSp(4, { damping: 12 });
+  const f = useCurrentFrame(); const sc = useSp(4, { damping: 12 }); const sg = segsDe('e9');
   return (
     <AbsoluteFill>
       <Fondo oscuro k={8} />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
         <Img src={staticFile(SELLO)} style={{ width: 360, height: 360, transform: `scale(${0.7 + sc * 0.3}) rotate(${(1 - sc) * -20}deg)`, opacity: Math.min(1, sc * 2) }} />
         <div style={{ marginTop: 36 }}><Cinetico texto="Menos desperdicio, más aprovecho." tam={72} color={PAPEL} desde={12} /></div>
-        <div style={{ marginTop: 34, padding: '20px 46px', borderRadius: 999, background: MENTA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 36, opacity: ease(f, 30, 44) }}>Sumá tu comercio</div>
+        <div style={{ marginTop: 34, padding: '20px 46px', borderRadius: 999, background: MENTA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 36, opacity: ease(f, 36, 50) }}>Sumá tu comercio</div>
         <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Inspired”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
       </AbsoluteFill>
-      <Subs segs={SEG9} />
+      <Voz k="e9" /><Subs segs={sg} />
     </AbsoluteFill>
   );
 }
 
-const ESCENAS = [[E1, 6], [E2, 15], [E3, 26], [E4, 16.5], [E5, 8], [E6, 17.5], [E9, 5]];
+const ESCENAS = [[E1, durDe('e1', 6.7)], [E2, durDe('e2')], [E3, durDe('e3')], [E4, durDe('e4')], [E5, durDe('e5')], [E6, durDe('e6')], [E9, durDe('e9', 5.5)]];
 const TRANS = [() => wipe({ direction: 'from-left' }), () => slide({ direction: 'from-right' }), () => slide({ direction: 'from-bottom' }), () => slide({ direction: 'from-right' }), () => fade(), () => fade()];
-export const DURACION_ONB2 = ESCENAS.reduce((n, [, d]) => n + d, 0) - (ESCENAS.length - 1) * (T / FPS) + 0.2;
+export const DURACION_ONB2 = ESCENAS.reduce((n, [, d]) => n + d, 0) + 0.1; // las transiciones se solapan: el total es la suma de las escenas
 
 export function Onboarding2() {
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
-      <Audio src={staticFile('musica/inspired-largo.mp3')} volume={(f) => 0.26 * interpolate(f, [0, 12], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 60, s(DURACION_ONB2)], [1, 0], CL)} />
+      <Audio src={staticFile('musica/inspired-largo.mp3')} volume={(f) => 0.13 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
       <TransitionSeries>
         {ESCENAS.map(([C, seg], i) => (
           <React.Fragment key={i}>
