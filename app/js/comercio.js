@@ -12,68 +12,14 @@ import { datosReporte, armarExcel, armarPdf, entregar, nombreArchivo, seccionesD
 import { nav } from './nav.js';
 import { sumarAlPerfil, retiroTxt } from './cliente.js';
 import { instalarUI } from './pwa.js';
-import { montarVisor, posterDe, visorUsado } from './visor3d.js';
-import { spinner } from './ui.js';
 
 // ---------------------------------------------------------------------------
 // helpers
 // ---------------------------------------------------------------------------
 const cierre = () => miComercio()?.cierre || '21:00';
-function limite() {
-  const [h, m] = cierre().split(':').map(Number);
-  const d = new Date(ahora()); d.setHours(h - CONFIG.horasAnticipacion, m, 0, 0);
-  return d;
-}
-const minutosAlLimite = () => Math.round((limite() - ahora()) / 60000);
-const puedePublicar = () => minutosAlLimite() > 0;
-const CHECKLIST = [
-  ['dia', 'La comida es del día y está en condiciones.'],
-  ['frio', 'Verifiqué la cadena de frío cuando corresponde.'],
-  ['alergenos', 'Revisé los alérgenos y la declaración sin TACC.'],
-];
 const DESTINOS = { vender: 'Para vender', donado: 'Donado', reutilizado: 'Reutilizado', basura: 'Descartado' };
-// Smart usa balanza y tablet; Intelligence despliega una o más estaciones por sucursal.
-const equipoDelPlan = () => (tienePlan('intelligence') ? 'estacion' : 'balanza');
-const EQUIPOS = {
-  balanza: {
-    nombre: 'Balanza Smart', plan: 'Smart', icono: 'balanza',
-    lema: 'La balanza Systel pesa lo que sobró y la tablet Samsung toma la foto.',
-    datos: [
-      ['balanza', 'Mide por peso', 'El dato sale de la balanza, no de una foto'],
-      ['camara', 'Foto desde la tablet', 'El peso y la foto llegan juntos a la app'],
-      ['etiqueta', 'Viene con el plan Smart', 'Se instala con el alta'],
-    ],
-  },
-  estacion: {
-    nombre: 'Estación completa', plan: 'Smart e Intelligence', icono: 'camara',
-    lema: 'La tablet queda fija sobre la balanza. En Intelligence se instala una o más por sucursal.',
-    datos: [
-      ['camara', 'Captura automática', 'Fotografía y pesa lo que se apoya'],
-      ['grafico', 'Para cocinas de mucho volumen', 'Se suma según el volumen de cada local'],
-      ['sucursales', 'Por sucursal', 'En Intelligence, cada sucursal recibe los equipos que necesita'],
-    ],
-  },
-};
-let equipoSel = null;
-const equipoVisto = () => equipoSel || equipoDelPlan();
-function verEquipo(cual) {
-  const antes = equipoVisto(), claves = Object.keys(EQUIPOS);
-  if (!EQUIPOS[cual] || cual === antes) return;
-  equipoSel = cual;
-  vibrar(8);
-  nav.render();
-  document.querySelector('.pantalla.actual #eq-info')?.classList.add(claves.indexOf(cual) > claves.indexOf(antes) ? 'anim-tab-der' : 'anim-tab-izq');
-}
-function visorHtml(mod, compacto = false) {
-  const e = EQUIPOS[mod], p = posterDe(mod);
-  return `<div class="visor3d${compacto ? ' compacto' : ''}${visorUsado() ? ' usado' : ''}" id="visor3d" tabindex="0" role="img" aria-label="Modelo 3D de la ${e.nombre.toLowerCase()}. Arrastrá hacia los costados para girarlo."${p ? ` style="--poster:url(${p})"` : ''}>
-    <span class="v3-carga">${spinner()}</span>
-    <span class="v3-fallo">${icon('alerta', 22)}<span>No se pudo cargar el modelo 3D. Revisá la conexión y volvé a entrar.</span></span>
-    <span class="v3-360">${icon('girar', 14)} 360°</span>
-    <span class="v3-pista">${icon('girar', 16)} Arrastrá para girar</span>
-  </div>`;
-}
-const selectorEquipo = mod => `<div class="seg" role="tablist" aria-label="Equipo">${Object.entries(EQUIPOS).map(([k, e]) => `<button class="${mod === k ? 'on' : ''}" role="tab" aria-selected="${mod === k}" data-act="equipo" data-v="${k}">${e.nombre}</button>`).join('')}</div>`;
+// Smart usa balanza + tablet; Intelligence suma una o más estaciones por sucursal.
+const nombreEquipo = () => (tienePlan('intelligence') ? 'Estación completa' : 'Balanza Smart');
 
 const misPacksHoy = () => S.packs.filter(p => p.comercioId === 'c1' && p.dia === hoy() && !String(p.id).startsWith('ps'));
 const semillaMia = () => S.packs.filter(p => p.comercioId === 'c1' && p.dia === hoy() && String(p.id).startsWith('ps'));
@@ -107,7 +53,7 @@ function altaPlan() {
       <h1 class="gran-titulo">Elegí tu plan</h1>
       <p class="subtitulo" style="margin-top:0">Lo podés cambiar cuando quieras.</p>
       ${card('basico')}${card('smart')}${card('intelligence')}
-      <p class="mini">Precios de ejemplo. La comisión por pack todavía no está definida.</p>
+      <p class="mini">Smart e Intelligence suman un abono fijo. En los tres planes, la comisión es del 25% por cada pack vendido: el comercio se queda con el 75%.</p>
       <button class="btn bloque" data-go="b/carta">Seguir con ${nombrePlan()}</button>
     </div>`,
   };
@@ -175,7 +121,6 @@ function hoyPantalla() {
   const vendidos = todos.reduce((a, p) => a + (p.vendidos || 0), 0);
   const ventas = reservasMias().filter(r => ['activa', 'retirada', 'no_retirada'].includes(r.estado)).reduce((a, r) => a + r.precio, 0);
   const recuperado = ventas * (1 - CONFIG.comision);
-  const min = minutosAlLimite();
   const ult = S.capturas.filter(c => c.tipo === 'pesaje' && c.dia === hoy()).slice(-1)[0];
   const sugN = tienePlan('intelligence') ? sugerencias(S.sucursal, ahora(), S.sugerencias).filter(s => s.estado === 'nueva').length : 0;
   const activos = todos.filter(p => p.estado === 'activo' || p.estado === 'agotado');
@@ -183,16 +128,12 @@ function hoyPantalla() {
     tabs: tabs('b/hoy'), clase: 'con-tabs gris',
     html: `<header class="barra" style="background:var(--fondo-2);padding-left:18px;padding-right:14px;gap:12px">${logoLocal(miComercio(), 44, 13)}<div class="titulo" style="font-size:20px;font-weight:700;padding:0">${esc(miComercio().nombre.replace('Panadería ', ''))}<span class="mini" style="display:block;font-family:var(--ui);font-weight:550;letter-spacing:-.01em">Hoy${sucLocal() || ' · cierra ' + cierre()}</span></div>${demoPill()}</header>
     <div class="cuerpo">
-      ${min > 0 ? `<div class="limite${min <= 30 ? ' urge' : ''}">
-          <span class="col"><span class="eti">Límite para publicar</span><b>${hhmm(limite())} h</b><span class="mini">Cerrás a las ${cierre()}</span></span>
-          <span class="limite-reloj"><b>${min >= 60 ? `${Math.floor(min / 60)}:${pad(min % 60)}` : min}</b><span>${min >= 60 ? 'horas' : 'minutos'}</span></span></div>`
-        : `<div class="card plana fila">${icon('reloj', 22)}<span class="col"><span class="fuerte">Ya pasó el límite de hoy</span><span class="chico">Lo que sobre se puede publicar mañana. ${tienePlan('smart') ? 'La estación sigue registrando lo que se tira.' : ''}</span></span></div>`}
       <div class="card">
         <h2>¿Qué te sobró hoy?</h2>
         ${tienePlan('smart') ? `<p class="chico">Apoyá el excedente en la balanza para pesar y fotografiar.</p><button class="btn bloque" data-go="b/estacion">${icon('balanza', 20)} Abrir estación</button>` :
-          `<p class="chico">Sacale una foto y revisá los packs que propone la IA.</p><button class="btn bloque" data-go="b/camara" ${min > 0 ? '' : 'disabled'}>${icon('camara', 20)} Sacar foto</button>`}
+          `<p class="chico">Sacale una foto y revisá los packs que propone la IA.</p><button class="btn bloque" data-go="b/camara">${icon('camara', 20)} Sacar foto</button>`}
       </div>
-      ${tienePlan('smart') ? `<button class="card toque" data-go="b/camara" ${min > 0 ? '' : 'disabled'} style="text-align:left">
+      ${tienePlan('smart') ? `<button class="card toque" data-go="b/camara" style="text-align:left">
         <span class="fila" style="gap:8px">${icon('camara', 22, 'verde')}<span class="fuerte">Cargar con el celular</span>${badgeDato(false)}</span>
         <span class="chico">${ult ? `Último pesaje: ${hhmm(new Date(ult.t))} · ${dec(ult.kg)} kg de ${esc(ult.producto)}` : 'También podés cargar con una foto.'}</span>
       </button>` : ''}
@@ -222,20 +163,18 @@ let yaAnimoHoy = false;
 // ---------------------------------------------------------------------------
 let flujo = null;
 function camara() {
-  const puede = puedePublicar();
   return {
     html: `${barra({ titulo: 'Foto del excedente', cerrar: true, centro: true })}
     <div class="cuerpo">
-      ${puede ? '' : nota('Pasó el límite de publicación de hoy (2 horas antes del cierre). Para la demo podés volver a la hora simulada desde Cuenta.', 'reloj', 'horno')}
-      <label class="card toque${puede ? '' : ' off'}" style="align-items:center;text-align:center;padding:26px 16px;gap:8px;background:var(--verde-50);box-shadow:inset 0 0 0 1.5px var(--verde-200)">
+      <label class="card toque" style="align-items:center;text-align:center;padding:26px 16px;gap:8px;background:var(--verde-50);box-shadow:inset 0 0 0 1.5px var(--verde-200)">
         <span class="ok-grande" style="width:74px;height:74px;box-shadow:none;animation:none">${icon('camara', 34)}</span>
         <span class="fuerte" style="font-size:18px">Sacar una foto</span>
         <span class="chico">Poné todo junto y sacá de arriba, con buena luz.</span>
-        <input type="file" accept="image/*" capture="environment" data-act-change="foto-propia" hidden ${puede ? '' : 'disabled'}>
+        <input type="file" accept="image/*" capture="environment" data-act-change="foto-propia" hidden
       </label>
-      <label class="btn bloque sec${puede ? '' : ' off'}">${icon('galeria', 20)} Elegir de la galería<input type="file" accept="image/*" data-act-change="foto-propia" hidden></label>
+      <label class="btn bloque sec">${icon('galeria', 20)} Elegir de la galería<input type="file" accept="image/*" data-act-change="foto-propia" hidden></label>
       <div class="seccion"><h3>O probá con una foto de muestra</h3></div>
-      <div class="muestras">${MUESTRAS.map(id => `<button class="muestra" data-act="usar-muestra" data-v="${id}"${puede ? '' : ' disabled'}><div class="mini-foto">${fotoSvg(id)}</div><span>${esc(nombreMuestra(id))}</span></button>`).join('')}</div>
+      <div class="muestras">${MUESTRAS.map(id => `<button class="muestra" data-act="usar-muestra" data-v="${id}"><div class="mini-foto">${fotoSvg(id)}</div><span>${esc(nombreMuestra(id))}</span></button>`).join('')}</div>
       ${nota('La detección está simulada en las fotos de muestra. Si cargás una foto tuya, completás los datos a mano.')}
     </div>`,
   };
@@ -409,11 +348,9 @@ function revisar() {
         <div class="chips">${CONDICIONES.map(x => `<button class="chip${f.cond.includes(x) ? ' on' : ''}" data-act="cond-pack" data-v="${x}"${S.condLocal.includes(x) ? '' : ' disabled'}>${x}</button>`).join('')}</div>
         ${S.condLocal.length < 3 ? '<span class="mini">Las que no ofrecés están apagadas. Se habilitan en Cuenta → Datos del local.</span>' : ''}</div>
       ${pesoTot ? `<div class="fila entre"><span class="chico">Comida en los packs: <b>${dec(pesoTot)} kg</b></span>${badgeDato(f.medido)}</div>` : ''}
-      <fieldset class="card comercio-check">
-        <legend>Confirmá antes de publicar</legend>
-        <label class="campo"><span>Alérgenos posibles de este lote</span><input class="input" data-act-change="alergenos-pack" value="${esc(alergenos)}" placeholder="Ej. trigo, huevo y leche" maxlength="120"><span class="mini">${f.inventario ? 'Completalos según el etiquetado.' : 'Si están cargados en la carta, aparecen acá para que los revises.'}</span></label>
-        ${CHECKLIST.map(([k, texto]) => `<label><input type="checkbox" data-act-change="check-pack" data-v="${k}"${f.check?.[k] ? ' checked' : ''}> <span>${texto}</span></label>`).join('')}
-      </fieldset>
+      <div class="card comercio-check">
+        <label class="campo"><span>Alérgenos posibles de este lote</span><input class="input" data-act-change="alergenos-pack" value="${esc(alergenos)}" placeholder="Ej. trigo, huevo y leche" maxlength="120"><span class="mini">${f.inventario ? 'Completalos según el etiquetado.' : 'Vienen de tu carta. Los confirmás al publicar.'}</span></label>
+      </div>
       <button class="btn bloque" data-act="publicar" ${n ? '' : 'disabled'}>Publicar ${n} pack${n === 1 ? '' : 's'}</button>
     </div>`,
   };
@@ -460,12 +397,6 @@ function publicado(ids) {
 function publicar() {
   const f = flujo;
   if (!f?.packs?.length) return [];
-  if (!puedePublicar()) { toast('Pasó el límite de publicación de hoy.', { ic: 'alerta' }); return []; }
-  if (!CHECKLIST.every(([k]) => f.check?.[k])) {
-    toast('Completá los tres controles antes de publicar.', { ic: 'alerta' });
-    document.querySelector('.pantalla.actual .comercio-check input[type="checkbox"]:not(:checked)')?.focus();
-    return [];
-  }
   if (f.consumirInventario && !f.consumirInventario()) {
     toast('La sugerencia del inventario ya no está disponible.', { ic: 'alerta' });
     return [];
@@ -539,12 +470,11 @@ function estacion() {
           <p class="chico" id="reco" aria-live="polite">Leyendo el peso y la foto…</p>
           <fieldset class="estacion-destinos" id="botones-balanza" disabled>
             <legend>¿Qué vas a hacer con el excedente?</legend>
-            <button class="btn bloque" data-act="pesaje-vender" ${puedePublicar() && !b.soloBasura ? '' : 'disabled'}>${icon('etiqueta', 20)} Para vender</button>
+            <button class="btn bloque" data-act="pesaje-vender" ${b.soloBasura ? 'disabled' : ''}>${icon('etiqueta', 20)} Para vender</button>
             <button class="btn sec" data-act="destino-pesaje" data-v="donado" ${b.soloBasura ? 'disabled' : ''}>Donar</button>
             <button class="btn sec" data-act="destino-pesaje" data-v="reutilizado" ${b.soloBasura ? 'disabled' : ''}>Reutilizar</button>
             <button class="btn sec" data-act="destino-pesaje" data-v="basura">${icon('basura', 20)} Descartar</button>
-          </fieldset>
-          ${!puedePublicar() && !b.soloBasura ? '<span class="mini">Pasó el límite de publicación. Todavía podés registrar el destino.</span>' : ''}`
+          </fieldset>`
         : `<div class="vacio"><div class="circ">${icon('balanza', 30)}</div><p class="chico">Apoyá lo que sobró. La balanza lo pesa y la tablet toma la foto desde arriba.</p></div>
           <button class="btn bloque" data-act="simular-pesaje">${icon('balanza', 20)} Simular pesaje y foto</button>`}
       </div>
@@ -873,17 +803,13 @@ function cuenta() {
         <button class="item" data-act="ver-carta"><span class="ic-caja">${icon('etiqueta', 20)}</span><span class="col crece"><span class="fuerte">Tu carta</span><span class="mini">${S.carta.length} productos</span></span>${icon('adelante', 20, 'chev')}</button>
         <button class="item" data-go="b/local"><span class="ic-caja">${icon('local', 20)}</span><span class="col crece"><span class="fuerte">Datos del local</span><span class="mini">Cierre ${cierre()} · packs al 50%</span></span>${icon('adelante', 20, 'chev')}</button>
         <button class="item" data-go="b/score"><span class="ic-caja">${icon('grafico', 20)}</span><span class="col crece"><span class="fuerte">APROVECHO Score</span><span class="mini">Ranking y comercio del mes</span></span>${icon('adelante', 20, 'chev')}</button>
-        ${tienePlan('smart') ? `<button class="item" data-go="b/estacion"><span class="ic-caja">${icon('balanza', 20)}</span><span class="col crece"><span class="fuerte">${EQUIPOS[equipoDelPlan()].nombre}</span><span class="mini">Conectada · calibrada hoy 08:10</span></span>${icon('adelante', 20, 'chev')}</button>` : ''}
-        <button class="item" data-go="b/equipos"><span class="ic-caja">${icon('girar', 20)}</span><span class="col crece"><span class="fuerte">Equipos de cada plan</span><span class="mini">Miralos en 360° y giralos con el dedo</span></span>${icon('adelante', 20, 'chev')}</button>
+        ${tienePlan('smart') ? `<button class="item" data-go="b/estacion"><span class="ic-caja">${icon('balanza', 20)}</span><span class="col crece"><span class="fuerte">${nombreEquipo()}</span><span class="mini">Conectada · calibrada hoy 08:10</span></span>${icon('adelante', 20, 'chev')}</button>` : ''}
         <button class="item" data-go="b/reporte"><span class="ic-caja">${icon('bajar', 20)}</span><span class="col crece"><span class="fuerte">Descargar reporte</span><span class="mini">Excel o PDF</span></span>${icon('adelante', 20, 'chev')}</button>
       </div>
       <span class="eti">Modo demo</span>
       <div class="card">
         <span class="fuerte">Plan de la demo</span>
         <div class="seg">${Object.entries(PLANES).map(([k, v]) => `<button class="${S.plan === k ? 'on' : ''}" data-act="plan-demo" data-v="${k}">${v.nombre}</button>`).join('')}</div>
-        <div class="sep"></div>
-        <div class="fila entre"><span class="col crece"><span class="fuerte">Usar la hora real</span><span class="mini">${S.horaReal ? 'Ahora usa la hora de tu celu.' : 'Apagado: la demo arranca a las 17:10 para que siempre se pueda publicar.'}</span></span>
-          <label class="switch"><input type="checkbox" data-act-change="hora-real" ${S.horaReal ? 'checked' : ''} aria-label="Usar la hora real"><i></i></label></div>
       </div>
       <div class="lista">
         <button class="item" data-act="entrar-cliente"><span class="ic-caja">${icon('usuario', 20)}</span><span class="col crece"><span class="fuerte">Pasar al modo cliente</span><span class="mini">Para ver tus packs como los ve la gente</span></span>${icon('adelante', 20, 'chev')}</button>
@@ -981,59 +907,7 @@ async function descargar(b) {
   }
 }
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// Equipos de cada plan, con visor 360°
-// ---------------------------------------------------------------------------
-function equipos() {
-  const mod = equipoVisto(), e = EQUIPOS[mod], claves = Object.keys(EQUIPOS);
-  return {
-    clase: 'gris',
-    html: `${barra({ titulo: 'Equipos' })}
-    <div class="cuerpo" id="sc-equipos">
-      ${visorHtml(mod)}
-      ${selectorEquipo(mod)}
-      <div class="eq-puntos" aria-hidden="true">${claves.map(k => `<i class="${k === mod ? 'on' : ''}"></i>`).join('')}</div>
-      <div class="eq-info" id="eq-info">
-        <div class="col" style="gap:8px">
-          <div class="fila entre" style="align-items:flex-start"><h1 class="gran-titulo" style="font-size:26px">${e.nombre}</h1><span class="plan-tag" style="margin-top:6px;flex:none">Plan ${e.plan}</span></div>
-          <p class="chico" style="font-size:15px;line-height:1.45">${e.lema}</p>
-        </div>
-        <ul class="det-datos" style="background:var(--fondo)">
-          ${e.datos.map(([ic, t, s]) => `<li><span class="dd-ic">${icon(ic, 20)}</span><span class="col crece"><b>${t}</b><span>${s}</span></span></li>`).join('')}
-        </ul>
-        ${nota('Los modelos 3D son ilustrativos: muestran cómo es cada tipo de equipo, no un producto ya elegido.', 'info')}
-        <div class="card plana fila">${icon('camara', 22)}<span class="col"><span class="fuerte">El plan Base funciona con tu celular</span><span class="chico">Sacás una foto y la app arma los packs.</span></span></div>
-      </div>
-    </div>`,
-    montar: el => {
-      montarVisor(el.querySelector('#visor3d'), mod);
-      // Deslizar de costado sobre la ficha pasa al otro equipo. Sobre el modelo 3D no: ahí el gesto lo gira.
-      // Tampoco arranca pegado a los bordes, para no pisar el gesto de "volver" del teléfono.
-      const sc = el.querySelector('#sc-equipos');
-      let g = null;
-      sc.addEventListener('touchstart', ev => {
-        g = null;
-        if (ev.touches.length > 1 || ev.target.closest('.visor3d,.seg,a,input')) return;
-        const t = ev.touches[0], ancho = sc.clientWidth, x = t.clientX - sc.getBoundingClientRect().left;
-        if (x < 28 || x > ancho - 28) return;
-        g = { x: t.clientX, y: t.clientY };
-      }, { passive: true });
-      sc.addEventListener('touchmove', ev => {
-        if (!g) return;
-        const t = ev.touches[0], dx = t.clientX - g.x, dy = t.clientY - g.y;
-        if (Math.abs(dy) > 14 && Math.abs(dy) > Math.abs(dx)) { g = null; return; }   // es un scroll para abajo
-        if (Math.abs(dx) < 56 || Math.abs(dx) < Math.abs(dy) * 1.6) return;
-        const i = claves.indexOf(mod) + (dx < 0 ? 1 : -1);
-        g = null;
-        if (claves[i]) verEquipo(claves[i]);
-      }, { passive: true });
-    },
-  };
-}
-
 export const pantallas = {
-  'b/equipos': equipos,
   'b/plan': altaPlan, 'b/carta': altaCarta, 'b/local': altaLocal, 'b/hoy': hoyPantalla,
   'b/camara': camara, 'b/analizando': analizando, 'b/duda': duda, 'b/revisar': revisar, 'b/publicado': publicado,
   'b/estacion': estacion, 'b/merma': merma, 'b/retiros': retiros, 'b/escanear': escanearPantalla,
@@ -1109,7 +983,22 @@ export const acciones = {
     if (ds.v === 'Sin TACC' && flujo.check) flujo.check.alergenos = false;
     nav.render();
   },
-  publicar: () => { const ids = publicar(); if (ids.length) nav.go('b/publicado/' + ids.join(','), { replace: true }); },
+  publicar: async () => {
+    if (!flujo?.packs?.length) return;
+    const alerg = alergenosDetectados(flujo).trim();
+    const ok = await confirmar({
+      titulo: 'Antes de publicar, confirmá',
+      lista: [
+        'La comida es de hoy y está en buen estado.',
+        'Mantuviste la cadena de frío cuando corresponde.',
+        alerg ? `Alérgenos informados: ${alerg}.` : 'Este lote no declara alérgenos.',
+      ],
+      si: 'Confirmo y publico', no: 'Volver a revisar',
+    });
+    if (!ok) return;
+    const ids = publicar();
+    if (ids.length) nav.go('b/publicado/' + ids.join(','), { replace: true });
+  },
   'opciones-pack': ds => opcionesPack(ds.id),
   'simular-pesaje': () => {
     const i = (S.capturas.filter(c => c.tipo === 'pesaje').length) % PESAJES.length;
@@ -1166,7 +1055,6 @@ export const acciones = {
   'ver-planes': () => hojaPlanes(),
   'elegir-plan-demo': () => hojaPlanes({ demo: true }),
   'plan-demo': ds => cambiarPlan(ds.v),
-  equipo: ds => verEquipo(ds.v),
   'ver-carta': () => {
     const h = abrirHoja(`<h2>Tu carta</h2><p class="chico">Tocá un producto para cambiar el precio.</p><div class="lista">${S.carta.map(p => `<button class="item" data-p="${p.id}"><span class="col crece"><span class="fuerte trunc2">${esc(p.nombre)}</span><span class="mini">${p.u === 'kg' ? 'por kg' : gramos(p.peso) + ' por unidad'}</span></span><span class="fuerte">${p.precio == null ? '—' : plata(p.precio)}</span></button>`).join('')}</div>`);
     h.addEventListener('click', e => { const b = e.target.closest('[data-p]'); if (b) { cerrarHoja(true); editarPrecio(b.dataset.p); } });
@@ -1193,16 +1081,7 @@ export const accionesCambio = {
     evento('foto_analizada', { propia: true });
     nav.go('b/analizando');
   },
-  'alergenos-pack': input => {
-    flujo.alergenos = input.value;
-    if (flujo.check?.alergenos) {
-      flujo.check.alergenos = false;
-      const confirmacion = input.closest('fieldset')?.querySelector('[data-v="alergenos"]');
-      if (confirmacion) confirmacion.checked = false;
-    }
-  },
-  'check-pack': input => { flujo.check ||= {}; flujo.check[input.dataset.v] = input.checked; },
-  'hora-real': input => { S.horaReal = input.checked; guardar(); nav.render(); },
+  'alergenos-pack': input => { flujo.alergenos = input.value; },
   'rep-sec': input => { const v = input.dataset.v; const i = rep.secciones.indexOf(v); if (input.checked && i < 0) rep.secciones.push(v); if (!input.checked && i >= 0) rep.secciones.splice(i, 1); nav.render(); },
 };
 
@@ -1288,7 +1167,7 @@ function destinoDePack(p) {
 
 function pesajeVender() {
   const b = enBalanza;
-  if (!b?.listo || !b.producto || b.soloBasura || !puedePublicar()) return;
+  if (!b?.listo || !b.producto || b.soloBasura) return;
   const prod = producto(b.producto);
   flujo = { producto: prod.id, kg: prod.u === 'kg' ? b.kg : null, unidades: prod.u === 'kg' ? null : b.unidades,
     pesoBalanza: b.kg, confianza: b.conf, medido: true, muestraId: b.muestra, t0: Date.now(), cond: [], retiro: 0, correcciones: [] };

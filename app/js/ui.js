@@ -223,11 +223,12 @@ export function toast(msg, { ic = 'check', accion = null, sinTabs = false, ms = 
   toastT = setTimeout(() => { t.style.transition = 'opacity .25s'; t.style.opacity = '0'; setTimeout(() => t.remove(), 260); }, ms);
 }
 
-export function confirmar({ titulo, texto, si = 'Confirmar', no = 'Cancelar', peligro = false }) {
+export function confirmar({ titulo, texto, lista, si = 'Confirmar', no = 'Cancelar', peligro = false }) {
   return new Promise(ok => {
     const h = abrirHoja(`
       <h2>${esc(titulo)}</h2>
       ${texto ? `<p class="chico">${esc(texto)}</p>` : ''}
+      ${lista ? `<ul class="confirma-lista">${lista.map(t => `<li>${icon('check', 18)}<span>${esc(t)}</span></li>`).join('')}</ul>` : ''}
       <div class="pila">
         <button class="btn bloque${peligro ? ' peligro' : ''}" data-r="1">${esc(si)}</button>
         <button class="btn bloque gris" data-r="0">${esc(no)}</button>

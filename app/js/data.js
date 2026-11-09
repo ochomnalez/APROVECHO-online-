@@ -8,7 +8,6 @@ const PRECIO_PACK_DEMO = 6100;    // D-015 · aproximación en ARS a USD 3,99
 export const CONFIG = {
   descuentoDefault: DESCUENTO,
   descuentoMin: DESCUENTO, descuentoMax: DESCUENTO,
-  horasAnticipacion: 2,           // publicar hasta 2 h antes del cierre
   radioKm: 3,
   factorCO2: 2.53,                // huella asociada estimada · kg CO₂e/kg · fuente 04, D-013
   factorAgua: 192,                // huella asociada estimada · l/kg · solo Intelligence

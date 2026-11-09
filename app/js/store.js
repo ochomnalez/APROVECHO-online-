@@ -6,9 +6,8 @@ const CLAVE = 'aprovecho_prototipo_plan'; // separada de la demo v3.2.1 publicad
 export const ZONA_NORTE = { lat: -34.5087, lng: -58.4877, fuente: 'default', barrio: 'Olivos' };
 
 // ---------- reloj de la demo ----------
-// Arranca a las 17:10 cada vez que se abre la app, para que siempre haya margen
-// antes del límite de publicación (19:00 con cierre a las 21:00). Se puede
-// pasar a la hora real desde Cuenta.
+// Arranca a las 17:10 cada vez que se abre la app, para que la demo siempre
+// muestre el mismo momento del día (el cierre del local es a las 21:00).
 const ARRANQUE = Date.now();
 export function ahora() {
   if (S.horaReal) return new Date();

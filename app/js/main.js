@@ -415,8 +415,7 @@ if (splash) setTimeout(() => { splash.classList.add('fuera'); setTimeout(() => s
 // la historia de Intelligence se calcula en segundo plano, así las pantallas abren al instante
 (window.requestIdleCallback || (f => setTimeout(f, 600)))(() => import('./intel.js').then(m => m.historia(new Date())));
 
-// la cuenta regresiva de Hoy y el cambio de día
-setInterval(() => { if (nav.ruta === 'b/hoy' && !hojaAbierta() && !gt) nav.render(); }, 30000);
+// el cambio de día
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible' && S.dia !== hoy()) { cargar(); nav.render(); }
 });

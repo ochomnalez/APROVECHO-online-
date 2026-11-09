@@ -72,3 +72,8 @@
   .intel-contenido { padding: 18px 26px var(--tab-hueco); }
   .intel-detalle .cuerpo { width: min(100%, 760px); margin-inline: auto; }
 }
+
+/* Confirmación antes de publicar (D-036) */
+.confirma-lista { list-style: none; margin: 4px 0 8px; padding: 0; display: grid; gap: 10px; }
+.confirma-lista li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 15px; line-height: 1.35; color: var(--tinta); }
+.confirma-lista .ic { color: var(--color-success); margin-top: 1px; }
