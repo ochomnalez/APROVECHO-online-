@@ -136,19 +136,19 @@
   ]
  },
  "e9": {
-  "dur": 4.27,
+  "dur": 3.74,
   "a0": 0.0,
-  "a1": 4.27,
+  "a1": 3.74,
   "segs": [
    {
-    "t": "Ya sabés cómo funciona.",
+    "t": "Empezar es simple.",
     "a": 0.0,
-    "b": 1.08
+    "b": 0.88
    },
    {
-    "t": "Sumá tu comercio y empezá a aprovechar lo que sobra.",
-    "a": 1.4,
-    "b": 4.27
+    "t": "Sumá tu comercio y mirá cuánto podés recuperar.",
+    "a": 1.17,
+    "b": 3.74
    }
   ]
  },
@@ -170,19 +170,19 @@
   ]
  },
  "e7a": {
-  "dur": 7.94,
+  "dur": 7.06,
   "a0": 0.0,
-  "a1": 7.94,
+  "a1": 7.06,
   "segs": [
    {
-    "t": "Y si tenés varias sucursales, sumás Intelligence.",
+    "t": "Si querés ir un paso más, sumás Intelligence.",
     "a": 0.0,
-    "b": 2.56
+    "b": 2.15
    },
    {
-    "t": "Ves todos tus locales en un solo panel, con la huella de carbono y la huella hídrica.",
-    "a": 2.97,
-    "b": 7.94
+    "t": "Todos tus locales en un solo panel, con la huella de carbono y la huella hídrica.",
+    "a": 2.57,
+    "b": 7.06
    }
   ]
  }

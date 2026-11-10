@@ -579,9 +579,9 @@ function E9() {
       <Fondo oscuro k={8} />
       <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
         <Img src={staticFile(SELLO)} style={{ width: 360, height: 360, transform: `scale(${0.7 + sc * 0.3}) rotate(${(1 - sc) * -20}deg)`, opacity: Math.min(1, sc * 2) }} />
-        <div style={{ marginTop: 36 }}><Cinetico texto="Ya sabés cómo funciona." tam={76} color={PAPEL} desde={12} /></div>
+        <div style={{ marginTop: 36 }}><Cinetico texto="Empezar es simple." tam={76} color={PAPEL} desde={12} /></div>
         <div style={{ marginTop: 34, padding: '20px 46px', borderRadius: 999, background: MENTA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 36, opacity: ease(f, 36, 50) }}>Sumá tu comercio</div>
-        <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Carefree”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
+        <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Easy Lemon”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
       </AbsoluteFill>
       <Voz k="e9" /><Subs segs={sg} />
     </AbsoluteFill>
@@ -598,7 +598,7 @@ export const DURACION_ONB2 = ESCENAS.reduce((n, [, d]) => n + d, 0) + 0.1; // la
 export function Onboarding2() {
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
-      <Audio src={staticFile('musica/carefree-largo.mp3')} volume={(f) => 0.26 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
+      <Audio src={staticFile('musica/easylemon-largo.mp3')} volume={(f) => 0.24 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
       <TransitionSeries>
         {ESCENAS.map(([C, seg], i) => (
           <React.Fragment key={i}>
