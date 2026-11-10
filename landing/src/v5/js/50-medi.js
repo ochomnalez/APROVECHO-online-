@@ -17,9 +17,9 @@ APV5.scene('medi', function (ctx) {
   // pose armada = pose final (CSS) + este desplazamiento; k reduce el despiece en celular
   function build(k) {
     var tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
-    tl.fromTo(tab, { xPercent: 20.75 * k, yPercent: 53.7 * k, rotation: 7 * k }, { xPercent: 0, yPercent: 0, rotation: 0, duration: 3 }, 1)
-      .fromTo(arm, { xPercent: -4.7 * k, yPercent: -16 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
-      .fromTo(bal, { xPercent: -22.9 * k, yPercent: -27 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
+    tl.fromTo(tab, { xPercent: 11 * k, yPercent: 35.6 * k, rotation: 7 * k, scale: 1 - .06 * k }, { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, duration: 3 }, 1)
+      .fromTo(arm, { xPercent: 10.9 * k, yPercent: -17.8 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
+      .fromTo(bal, { xPercent: -24.8 * k, yPercent: -21.2 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
       .fromTo(shadows, { opacity: 0, scaleX: .45 }, { opacity: 1, scaleX: 1, duration: 3 }, 1)
       .fromTo(lines, { opacity: 0 }, { opacity: .55, duration: .8, ease: 'none' }, 3.6)
       .fromTo(dots, { opacity: 0, scale: .2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: .6, stagger: .08, ease: 'back.out(2)' }, 3.7);
@@ -64,7 +64,7 @@ APV5.scene('medi', function (ctx) {
     var tl = build(.7);
     steps.forEach(function (li) { li.classList.remove('is-on'); });
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 88%', end: 'bottom 38%', scrub: .6,
+      animation: tl, trigger: stage, start: 'top 85%', end: 'center 40%', scrub: .6,
       invalidateOnRefresh: true,
       onUpdate: function (self) {
         var t = self.progress * 10;

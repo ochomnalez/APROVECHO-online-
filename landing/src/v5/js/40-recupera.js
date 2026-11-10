@@ -90,7 +90,7 @@ APV5.scene('recupera', function (ctx) {
   // ---------- celular: pila chica y fija arriba; los pasos la activan al bajar ----------
   ctx.mm.add(ctx.mobile, function () {
     var tl = gsap.timeline({ defaults: { ease: 'none' } });
-    separation(tl, 17.2, 1.2, 10, 0, 1);
+    separation(tl, 19.2, 1.2, 11, 0, 1);
     ScrollTrigger.create({ trigger: stage, start: 'top 92%', end: 'top 32%', scrub: 0.5, animation: tl, invalidateOnRefresh: true });
     apply(0, -1);
     lis.forEach(function (li, i) {

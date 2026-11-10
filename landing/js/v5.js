@@ -17,7 +17,9 @@ window.APV5 = (function () {
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
   }
-  if (document.readyState !== 'loading') start(); else document.addEventListener('DOMContentLoaded', start);
+  // v5.js se carga con defer: las escenas se registran después de este bloque, así que se arranca
+  // recién en DOMContentLoaded (o en el próximo ciclo si el documento ya terminó de cargar).
+  if (document.readyState === 'complete') setTimeout(start, 0); else document.addEventListener('DOMContentLoaded', start);
   return { reduce: reduce, scene: function (name, fn) { scenes.push([name, fn]); } };
 })();
 
@@ -96,9 +98,9 @@ APV5.scene('hero', function (ctx) {
     });
     tl.to(wrap, { scale: scaleTo, duration: 1 }, 0);
     arcs.forEach(function (a) {
-      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0, svgOrigin: '160 160', duration: 1 }, 0);
+      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0.08, svgOrigin: '160 160', duration: 1 }, 0);
     });
-    tl.to(core, { scale: 0.55, opacity: 0.25, duration: 1 }, 0);
+    tl.to(core, { scale: 0.6, opacity: 0.55, duration: 1 }, 0);
     tl.to(chips, { opacity: 0, duration: 0.35 }, 0);
     if (copyY !== null) {
       tl.to(copy, { y: copyY, opacity: 0, duration: 0.7 }, 0);
@@ -235,7 +237,7 @@ APV5.scene('recupera', function (ctx) {
   // ---------- celular: pila chica y fija arriba; los pasos la activan al bajar ----------
   ctx.mm.add(ctx.mobile, function () {
     var tl = gsap.timeline({ defaults: { ease: 'none' } });
-    separation(tl, 17.2, 1.2, 10, 0, 1);
+    separation(tl, 19.2, 1.2, 11, 0, 1);
     ScrollTrigger.create({ trigger: stage, start: 'top 92%', end: 'top 32%', scrub: 0.5, animation: tl, invalidateOnRefresh: true });
     apply(0, -1);
     lis.forEach(function (li, i) {
@@ -270,9 +272,9 @@ APV5.scene('medi', function (ctx) {
   // pose armada = pose final (CSS) + este desplazamiento; k reduce el despiece en celular
   function build(k) {
     var tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
-    tl.fromTo(tab, { xPercent: 20.75 * k, yPercent: 53.7 * k, rotation: 7 * k }, { xPercent: 0, yPercent: 0, rotation: 0, duration: 3 }, 1)
-      .fromTo(arm, { xPercent: -4.7 * k, yPercent: -16 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
-      .fromTo(bal, { xPercent: -22.9 * k, yPercent: -27 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
+    tl.fromTo(tab, { xPercent: 11 * k, yPercent: 35.6 * k, rotation: 7 * k, scale: 1 - .06 * k }, { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, duration: 3 }, 1)
+      .fromTo(arm, { xPercent: 10.9 * k, yPercent: -17.8 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
+      .fromTo(bal, { xPercent: -24.8 * k, yPercent: -21.2 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
       .fromTo(shadows, { opacity: 0, scaleX: .45 }, { opacity: 1, scaleX: 1, duration: 3 }, 1)
       .fromTo(lines, { opacity: 0 }, { opacity: .55, duration: .8, ease: 'none' }, 3.6)
       .fromTo(dots, { opacity: 0, scale: .2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: .6, stagger: .08, ease: 'back.out(2)' }, 3.7);
@@ -317,7 +319,7 @@ APV5.scene('medi', function (ctx) {
     var tl = build(.7);
     steps.forEach(function (li) { li.classList.remove('is-on'); });
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 88%', end: 'bottom 38%', scrub: .6,
+      animation: tl, trigger: stage, start: 'top 85%', end: 'center 40%', scrub: .6,
       invalidateOnRefresh: true,
       onUpdate: function (self) {
         var t = self.progress * 10;
@@ -326,3 +328,211 @@ APV5.scene('medi', function (ctx) {
     });
   });
 });
+
+/* 60-anticipa.js */
+/* v5 · 03 Anticipá · el tablero se arma con las piezas de todas las sucursales y se dibuja la línea. */
+APV5.scene('anticipa', function (ctx) {
+  var gsap = ctx.gsap;
+  var root = document.getElementById('plan-intelligence');
+  if (!root) return;
+  var board = root.querySelector('.an-board');
+  var tiles = gsap.utils.toArray('[data-an-t]', root);
+  var shadows = root.querySelectorAll('.an-t__sh');
+  var full = root.querySelector('.an-full');
+  var frame = root.querySelector('.an-frame');
+  var cap = root.querySelector('.an-cap');
+  var line = root.querySelector('.an-line__m');
+  var dots = root.querySelectorAll('.an-line__dots circle');
+  var pt = root.querySelector('.an-line__pt');
+  var base = root.querySelector('.an-line__base');
+  var note = root.querySelector('.an-note');
+  var steps = root.querySelectorAll('.ch__steps li');
+
+  // desde dónde llega cada pieza (en % de su propio tamaño): sucursales sueltas que llegan de los costados
+  var FROM = [
+    { x: -75, y: -45, r: -13 }, { x: 8, y: -105, r: 5 }, { x: 80, y: -40, r: 11 },
+    { x: -80, y: 55, r: 9 }, { x: -6, y: 100, r: -6 }, { x: 85, y: 50, r: -10 }
+  ];
+  // se llega en este orden escalonado
+  var ORDER = [0, 2, 3, 5, 1, 4];
+
+  function build(k) {
+    var tl = gsap.timeline();
+    gsap.set(full, { opacity: 0 });
+    gsap.set(frame, { opacity: 0 });
+    gsap.set(line, { strokeDasharray: 1, strokeDashoffset: 1 });
+    gsap.set([dots, pt], { opacity: 0, transformOrigin: '50% 50%' });
+    gsap.set([base, note, cap], { opacity: 0 });
+    tiles.forEach(function (t, i) {
+      var f = FROM[i], n = ORDER.indexOf(i);
+      var at = .4 + n * .35;
+      tl.fromTo(t, { xPercent: f.x * k, yPercent: f.y * k, rotation: f.r * k, scale: .94, opacity: 0 },
+        { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, opacity: 1, duration: 2.4, ease: 'power3.out' }, at);
+      tl.fromTo(shadows[i], { opacity: 0 }, { opacity: 1, duration: 1, ease: 'none' }, at);
+      tl.to(shadows[i], { opacity: 0, duration: .6, ease: 'none' }, 4.1);
+    });
+    // clic de encastre: tablero de una sola pieza
+    tl.to(full, { opacity: 1, duration: .3, ease: 'none' }, 4.1)
+      .to(frame, { opacity: 1, duration: .5, ease: 'none' }, 4.1)
+      .to(cap, { opacity: 1, duration: .5, ease: 'none' }, 4.3)
+      .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22, ease: 'power2.out', transformOrigin: '50% 50%' }, 4.1)
+      .to(board, { scale: 1, duration: .38, ease: 'power2.inOut' }, 4.32)
+      // línea ilustrativa
+      .to(base, { opacity: 1, duration: .5, ease: 'none' }, 4.9)
+      .to(note, { opacity: 1, duration: .6, ease: 'none' }, 4.9)
+      .to(line, { strokeDashoffset: 0, duration: 2.2, ease: 'none' }, 5.2)
+      .to(pt, { opacity: 1, duration: .3, ease: 'none' }, 7.3)
+      .fromTo(pt, { scale: .3 }, { scale: 1, duration: .5, ease: 'back.out(2.5)' }, 7.3)
+      .to(dots, { opacity: 1, duration: .25, stagger: .07, ease: 'none' }, 7.7);
+    tl.to({}, { duration: .4 }, 9.6);
+    return tl;
+  }
+
+  var cur = -1;
+  function mark(p) {
+    var t = p * 10, s = t < 4.4 ? 0 : t < 6.4 ? 1 : t < 8.2 ? 2 : 3;
+    if (s !== cur) {
+      cur = s;
+      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === s); });
+    }
+  }
+
+  ctx.mm.add(ctx.desktop, function () {
+    var tl = build(1);
+    mark(0);
+    ctx.ScrollTrigger.create({
+      animation: tl, trigger: root, start: 'top top', end: '+=180%',
+      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
+      onUpdate: function (self) { mark(self.progress); }
+    });
+    return function () { steps.forEach(function (li) { li.classList.remove('is-on'); }); cur = -1; };
+  });
+
+  ctx.mm.add(ctx.mobile, function () {
+    var tl = build(.55);
+    steps.forEach(function (li) { li.classList.remove('is-on'); });
+    ctx.ScrollTrigger.create({
+      animation: tl, trigger: root.querySelector('.an-stage'), start: 'top 85%', end: 'bottom 62%', scrub: .6,
+      invalidateOnRefresh: true
+    });
+  });
+});
+
+/* 70-quienes.js */
+/* v5 · quiénes somos: rotador de 4 videos de fondo (campo → fábrica → camiones → supermercado) */
+(function () {
+  'use strict';
+  var sec = document.querySelector('.qs');
+  if (!sec) return;
+  var clips = [].slice.call(sec.querySelectorAll('.qs__clip'));
+  var vids = clips.map(function (c) { return c.querySelector('video'); });
+  var bars = [].slice.call(sec.querySelectorAll('.qs__bars b'));
+  var cap = sec.querySelector('[data-qs-cap]');
+  var btn = sec.querySelector('[data-qs-pause]');
+  var LABELS = ['Se cultiva', 'Se produce', 'Se transporta', 'Llega a la góndola'];
+  var DUR = 4500, FADE = 1000;
+  var N = clips.length;
+  var ahorro = !!(navigator.connection && navigator.connection.saveData);
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || ahorro || !('IntersectionObserver' in window)) { sec.classList.add('is-static'); return; }
+
+  var small = window.matchMedia('(max-width: 899px)').matches;
+  var cur = 0, elapsed = 0, waited = 0, last = 0, raf = 0, started = false;
+  var userPaused = false, offscreen = true, hidden = document.hidden;
+
+  function load(i) {
+    var v = vids[i];
+    if (!v || v.getAttribute('src')) return;
+    v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
+    v.src = 'video/hero/' + clips[i].getAttribute('data-clip') + (small ? '-640.mp4' : '-1280.mp4');
+    v.preload = 'auto';
+    try { v.load(); } catch (e) {}
+  }
+  function play(i) {
+    var v = vids[i];
+    if (!v || !v.getAttribute('src')) return;
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function isPaused() { return userPaused || offscreen || hidden; }
+
+  function setBars() {
+    for (var i = 0; i < N; i++) {
+      var p = i < cur ? 1 : i === cur ? Math.min(1, elapsed / DUR) : 0;
+      bars[i].style.transform = 'scaleX(' + p.toFixed(3) + ')';
+    }
+  }
+  function go(next) {
+    var old = clips[cur];
+    var nv = vids[next];
+    if (nv && nv.getAttribute('src')) { try { nv.currentTime = 0; } catch (e) {} play(next); }
+    old.classList.remove('is-on'); old.classList.add('is-prev');
+    clips[next].classList.add('is-on');
+    var oldIdx = cur;
+    setTimeout(function () {
+      clips[oldIdx].classList.remove('is-prev');
+      if (oldIdx !== cur && vids[oldIdx]) { vids[oldIdx].pause(); }
+    }, FADE + 80);
+    cur = next; elapsed = 0; waited = 0;
+    cap.textContent = LABELS[cur];
+    load((cur + 1) % N);
+    setBars();
+  }
+  function tick(t) {
+    raf = 0;
+    if (isPaused()) return;
+    var dt = Math.min(t - last, 100); last = t;
+    elapsed += dt;
+    if (elapsed >= DUR) {
+      var nxt = (cur + 1) % N, nv = vids[nxt];
+      // espera (hasta 3 s) a que el próximo clip esté listo, así el fundido no tiene saltos
+      if (nv && nv.getAttribute('src') && nv.readyState < 2 && waited < 3000) { waited += dt; elapsed = DUR; setBars(); }
+      else go(nxt);
+    }
+    setBars();
+    raf = requestAnimationFrame(tick);
+  }
+  function sync() {
+    if (!started) return;
+    if (isPaused()) {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      vids.forEach(function (v) { if (v) v.pause(); });
+    } else {
+      play(cur);
+      if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+    }
+  }
+  function begin() {
+    if (started) return;
+    started = true;
+    load(0); load(1);
+    clips[0].querySelector('video').addEventListener('canplay', function () { if (!isPaused()) play(0); }, { once: true });
+    setBars();
+    sync();
+  }
+
+  btn.addEventListener('click', function () {
+    userPaused = !userPaused;
+    sec.classList.toggle('is-userpaused', userPaused);
+    btn.setAttribute('aria-label', userPaused ? 'Reproducir el video de fondo' : 'Pausar el video de fondo');
+    sync();
+  });
+  document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
+
+  // los videos se piden cuando la sección se acerca; se pausan al salir de pantalla
+  function afterLoad(fn) { if (document.readyState === 'complete') fn(); else window.addEventListener('load', fn, { once: true }); }
+  var near = new IntersectionObserver(function (es) {
+    if (es[0].isIntersecting) { near.disconnect(); afterLoad(begin); }
+  }, { rootMargin: '700px 0px' });
+  near.observe(sec);
+  new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
+
+  // entrada escalonada y paralaje leve (solo con movimiento)
+  APV5.scene('quienes', function (ctx) {
+    var g = ctx.gsap;
+    var items = sec.querySelectorAll('.eyebrow, .qs__title, .qs__lead, .qs__card');
+    g.set(items, { opacity: 0, y: 34 });
+    g.to(items, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.12, scrollTrigger: { trigger: sec, start: 'top 65%', once: true } });
+    g.fromTo(sec.querySelector('.qs__bg'), { yPercent: -3 }, { yPercent: 3, ease: 'none', scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+  });
+})();

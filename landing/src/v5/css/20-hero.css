@@ -37,4 +37,4 @@
   .hr__art{position:absolute;right:calc(var(--rs) * -.1);top:50%;width:var(--rs);height:var(--rs);margin:0;transform:translateY(-50%)}
 }
 @media(min-width:1200px){.hr{--rs:clamp(640px,57vw,860px)}.hr__copy{max-width:min(54%,720px)}}
-@media(max-width:899px){.hr__art{margin-top:28px}.hr__foot{margin-top:8px}}
+@media(max-width:899px){.hr__in{display:contents}.hr__copy{order:1;padding:0 var(--gutter)}.hr__art{order:2;margin-top:20px}.hr__foot{order:3;margin-top:8px;padding:0 var(--gutter)}.hr .hero__actions{margin-top:26px}}

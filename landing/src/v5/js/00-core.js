@@ -15,6 +15,8 @@ window.APV5 = (function () {
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
   }
-  if (document.readyState !== 'loading') start(); else document.addEventListener('DOMContentLoaded', start);
+  // v5.js se carga con defer: las escenas se registran después de este bloque, así que se arranca
+  // recién en DOMContentLoaded (o en el próximo ciclo si el documento ya terminó de cargar).
+  if (document.readyState === 'complete') setTimeout(start, 0); else document.addEventListener('DOMContentLoaded', start);
   return { reduce: reduce, scene: function (name, fn) { scenes.push([name, fn]); } };
 })();

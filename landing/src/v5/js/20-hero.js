@@ -17,9 +17,9 @@ APV5.scene('hero', function (ctx) {
     });
     tl.to(wrap, { scale: scaleTo, duration: 1 }, 0);
     arcs.forEach(function (a) {
-      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0, svgOrigin: '160 160', duration: 1 }, 0);
+      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0.08, svgOrigin: '160 160', duration: 1 }, 0);
     });
-    tl.to(core, { scale: 0.55, opacity: 0.25, duration: 1 }, 0);
+    tl.to(core, { scale: 0.6, opacity: 0.55, duration: 1 }, 0);
     tl.to(chips, { opacity: 0, duration: 0.35 }, 0);
     if (copyY !== null) {
       tl.to(copy, { y: copyY, opacity: 0, duration: 0.7 }, 0);
