@@ -1,5 +1,18 @@
 # Imágenes para el hero (idea A + toma cinematográfica de la D)
 
+> **ACTUALIZACIÓN 2026-11-10 (pedido de Octavio): estilo MIXTO.**
+> Solo el **paisaje** es foto realista (cielo, campo, trigo, camino, alambrado, árboles). **Todo lo de la cadena va dibujado en código como ilustración animada** (estilo dibujito): vacas, camión, molino/fábrica con chimenea, súper, panadería, tacho y vecinos.
+> Referencia aprobada del paisaje: `img/referencia-paisaje-v1.webp` (le gustó el paisaje; los edificios reales sobran).
+>
+> **Cómo conseguir el fondo (recomendado, mantiene el mismo paisaje):** en Gemini, adjuntá `referencia-paisaje-v1.webp` y pedí:
+> *«Edit this photo: remove all buildings, the chimney and its smoke, the car, the cows, the bicycles, the benches and the electric poles. Keep the sky, the light, the wheat fields, the dirt road, the fence and the trees exactly the same. Fill the removed areas with matching grass and field. No text.»*
+> Pedí también la versión vertical 9:16 con la misma edición. Guardalas como `panorama.jpg` y `panorama-celu.jpg`.
+>
+> Si preferís generarla de cero: *«Photorealistic wide panoramic landscape at golden hour in the Argentine pampas: a dirt country road winds from the far horizon to the foreground through golden wheat fields and green pasture with a wire fence and a few trees. NO buildings, NO vehicles, NO animals, NO people. Keep flat empty grass areas next to the road on the far left, at the middle bend and on the right foreground. Large sky with soft clouds. 21:9.»*
+>
+> **Tomas del zoom (3 a 5):** la calle puede ser la panadería dibujada (la cámara entra en el dibujo); el **mostrador y el vecino conviene que sean fotos reales** (la comida tiene que verse real, regla de la marca). Los prompts 3, 4 y 5 de abajo siguen sirviendo para el interior. **Los prompts 1 y 2 de abajo quedan reemplazados por esta nota.**
+
+
 > Para Octavio. Generalas en la app de Gemini en este orden, **sin texto ni logos en la imagen** (los íconos, flechas y el sello los pongo yo en código). Pasámelas por el chat con estos nombres.
 
 ## Cómo se usan

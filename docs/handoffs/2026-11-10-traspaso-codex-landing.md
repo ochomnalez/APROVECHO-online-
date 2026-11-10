@@ -27,6 +27,20 @@
 - **Prototipo funcional ya hecho:** `docs/ux/hero-prototipo/index.html` (JS/CSS puro, sin librerías). Probado en 1440 y 390 sin errores. Hoy muestra un **boceto** porque faltan las fotos.
 - **Las fotos las genera Octavio** en Gemini con `docs/ux/hero-prototipo/PROMPTS.md` y las pasa por chat: `panorama.jpg` (21:9), `panorama-celu.jpg` (9:16), `calle.jpg`, `mostrador.jpg`, `vecinos.jpg` (16:9). Van en `docs/ux/hero-prototipo/img/` (y después en `landing/img/hero/`, en WebP ≤ 250 KB c/u con `srcset`). **No generes imágenes vos** sin OK de Octavio.
 
+
+### ⚠ Cambio de estilo pedido por Octavio (2026-11-10, último)
+- **Paisaje = foto realista** (cielo, campo, camino). Referencia que le gustó: `docs/ux/hero-prototipo/img/referencia-paisaje-v1.webp`. Octavio la va a reeditar en Gemini **sin edificios, autos, vacas ni postes** (instrucciones en `PROMPTS.md`).
+- **La cadena = ilustraciones animadas hechas en código (SVG), estilo dibujito**, apoyadas sobre los huecos del paisaje y con la perspectiva del camino (más chicas a lo lejos):
+  1. Vacas en el campo de la izquierda (mueven la cabeza/cola) + chip **CH₄**.
+  2. Camión que recorre el camino soltando un humito + chip **CO₂**.
+  3. Molino/fábrica en la curva del medio, chimenea con humo animado + chips **CO₂** y **Agua**.
+  4. Súper chico.
+  5. Panadería en primer plano a la derecha (la protagonista, con luz cálida en la ventana); ahí entra el zoom.
+  6. Al final del camino: tacho (con **CH₄**) ✕ y vecinos con bolsa ✓ → sello APROVECHO con el anillo de 3 flechas.
+- **Estilo del dibujo:** plano con sombreado suave, una sola línea de contorno fina y pareja, paleta de marca (verde bosque `#1A4D3A`, menta `#DFFFD6`, crema `#FBF3E4`, ladrillo y kraft apagados), sin brillos ni degradés chillones; tiene que parecer ilustración editorial hecha a propósito, no clipart. Todos los dibujos con el mismo estilo y la misma luz cálida que la foto (sombra hacia la izquierda).
+- **Zoom:** la cámara entra a la panadería dibujada; el interior (mostrador con lo que sobró y el vecino retirando) **en foto real** (prompts 3–5 de `PROMPTS.md`), porque la comida tiene que verse real.
+- En el prototipo, la estructura (`ESCENAS`, ruta, chips, zoom, reduced-motion) sirve igual: sacá el `boceto()` y reemplazalo por una capa SVG `edificios` con cada ilustración en su coordenada.
+
 ### Pasos
 1. Cuando lleguen las fotos: convertí a WebP y **calibrá las coordenadas** del objeto `ESCENAS` en el `<script>` del prototipo (en píxeles de la imagen: `ruta`, `chimenea`, `panaderia`, `chips`). Hoy están puestas para el boceto, por eso algunos chips se pisan con el título: ubicá los chips **fuera del área del texto** (tercio superior izquierdo) y cerca de lo que señalan (vacas, chimenea, ruta, campo).
 2. Mostralo a Octavio (capturas 1440 y 390) y ajustá.
