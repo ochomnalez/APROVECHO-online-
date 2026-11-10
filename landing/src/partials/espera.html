@@ -1,0 +1,16 @@
+<!-- ============ 10 · LISTA DE ESPERA CONSUMIDORES (D-024) ============ -->
+<section class="sec sec--espera" id="consumidores">
+  <div class="wrap espera">
+    <img src="img/foto/morrones-1000.webp" srcset="img/foto/morrones-640.webp 640w, img/foto/morrones-1000.webp 1000w" sizes="(min-width: 900px) 560px, 100vw" width="1000" height="667" alt="Cajones con morrones y berenjenas en un mercado" loading="lazy" decoding="async">
+    <form class="form form--espera" id="form-espera" novalidate data-form="lista-espera" aria-labelledby="esp-t">
+      <h2 id="esp-t" class="sec__title">¿Querés comprar packs?</h2>
+      <p>La app llega pronto a tu barrio. Dejanos tu zona y tu email y te avisamos.</p>
+      <div class="form__grid form__grid--2">
+        <div class="field"><label for="e-zona">Tu barrio o zona</label><input id="e-zona" name="zona" type="text" list="zonas" placeholder="Olivos, Belgrano, Pilar…" autocomplete="address-level2" required><datalist id="zonas"><option>CABA</option><option>Vicente López</option><option>San Isidro</option><option>Pilar</option></datalist><p class="err" role="alert"></p></div>
+        <div class="field"><label for="e-email">Email</label><input id="e-email" name="email" type="email" autocomplete="email" placeholder="vos@mail.com" required><p class="err" role="alert"></p></div>
+      </div>
+      <button class="btn" type="submit">Avisame cuando llegue a mi barrio</button>
+      <div class="form__ok" hidden tabindex="-1" data-ok><p class="form__ok-t">Listo, te avisamos.</p><p>Cuando APROVECHO llegue a tu barrio, te escribimos.</p></div>
+    </form>
+  </div>
+</section>

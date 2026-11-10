@@ -29,7 +29,7 @@
 | UX | `claude/aprovecho-ux` · sesión `session_01YPepJKgdnbFvSwNNSb7n4e` (Sonnet) | ✅ App v2 (10 pantallas, flujo simplificado y Vision Recognition) + ✅ estructura de la landing. Integradas; falta validación del usuario | Jue 5/11 | `handoffs/2026-11-05-ux-flujo-v2.md` · `handoffs/2026-11-05-ux-landing.md` |
 | Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | ✅ Entregado e integrado (falta validar PROPUESTA-identidad-1 a 5) | Vie 6/11 18:00 | `handoffs/2026-11-05-identidad-sistema-visual.md` |
 | Guion y video | `codex/aprovecho-video` · Codex | Cuatro guiones y storyboard. Primer corte de «Una foto» listo para revisión | Guiones: vie 6/11 · Videos: mar 10/11 | [Video y plan de producción](handoffs/2026-11-04-video-una-foto.md) |
-| Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
+| Desarrollo de la landing | `claude/aprovecho-landing` · `claude-octi-landing` | ✅ v4 lista para revisión: una idea por pantalla, planes e inversores en pestañas, video de Cómo funciona con HyperFrames, gráficos del Excel. Falta OK para publicar | Mar 10/11 | `handoffs/2026-11-10-landing-v4.md` |
 | Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
 
 ## Próximos pasos

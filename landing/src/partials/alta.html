@@ -1,0 +1,67 @@
+<!-- ============ 8 · ALTA (F-1 / F-2) ============ -->
+<section class="sec sec--alta" id="alta" aria-labelledby="alta-titulo">
+  <div class="wrap alta">
+    <div class="alta__copy">
+      <h2 class="sec__title" id="alta-titulo">Esta noche, en vez de tirarlo, vendelo.</h2>
+      <p class="sec__text">Sumate en 2 minutos. Sin costo fijo. Pagás solo cuando vendés.</p>
+      <p class="alta__alt">¿Preferís hablar? <a href="#alta" data-whatsapp>Escribinos por WhatsApp.</a></p>
+      <img class="alta__sello" src="img/logo/sello.webp" width="180" height="180" alt="Sello de APROVECHO: menos desperdicio, más aprovecho" loading="lazy" decoding="async">
+    </div>
+
+    <form class="form" id="form-alta" novalidate data-form="alta" aria-labelledby="alta-t">
+      <h3 id="alta-t" class="sr">Alta de comercio</h3>
+      <ol class="form__steps" aria-hidden="true"><li class="is-on">1 · Tu comercio</li><li>2 · Cómo te encontramos</li></ol>
+
+      <fieldset class="form__pane" data-pane="1">
+        <legend class="sr">Paso 1: tu comercio</legend>
+        <div class="field"><label for="a-nombre">Nombre del comercio</label><input id="a-nombre" name="nombre" type="text" autocomplete="organization" placeholder="Panadería La Esquina" required><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-rubro">Rubro</label>
+          <select id="a-rubro" name="rubro" required><option value="">Elegí uno</option><option>Panadería</option><option>Cafetería</option><option>Rotisería</option><option>Restaurante</option><option>Hotel o comedor</option><option>Supermercado</option><option>Otro</option></select><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-wsp">WhatsApp</label><input id="a-wsp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="11 2345-6789" required><p class="err" role="alert"></p></div>
+        <button class="btn btn--lg" type="button" data-next>Seguir</button>
+      </fieldset>
+
+      <fieldset class="form__pane" data-pane="2" hidden>
+        <legend class="sr">Paso 2: cómo te encontramos</legend>
+        <div class="field"><label for="a-zona">Barrio o localidad</label>
+          <select id="a-zona" name="zona" required><option value="">Elegí una zona</option><option>CABA</option><option>Vicente López</option><option>San Isidro</option><option>Pilar</option><option>Otra zona</option></select><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-dir">Dirección</label><input id="a-dir" name="direccion" type="text" autocomplete="street-address" placeholder="Av. Maipú 1234" required><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-persona">Tu nombre</label><input id="a-persona" name="persona" type="text" autocomplete="name" placeholder="Martín Pérez" required><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email" placeholder="martin@tucomercio.com" required><p class="err" role="alert"></p></div>
+
+        <details class="mas">
+          <summary>Contanos un poco más <span>(opcional)</span></summary>
+          <div class="mas__grid">
+            <div class="field"><label for="a-rol">Tu rol</label><select id="a-rol" name="rol"><option value="">—</option><option>Dueño/a</option><option>Encargado/a</option><option>Otro</option></select></div>
+            <div class="field"><label for="a-dias">¿Cuántos días por semana te sobra comida?</label><select id="a-dias" name="dias"><option value="">—</option><option>Todos los días</option><option>3 a 6</option><option>1 o 2</option><option>Casi nunca</option></select></div>
+            <div class="field"><label for="a-cierre">¿A qué hora cerrás?</label><input id="a-cierre" name="cierre" type="time"></div>
+            <div class="field"><label for="a-locales">¿Cuántos locales tenés?</label><input id="a-locales" name="locales" type="number" min="1" placeholder="1" inputmode="numeric"><p class="hint" data-intel hidden>Te puede servir Intelligence. Te contactamos.</p></div>
+          </div>
+          <fieldset class="plansel"><legend>Plan que te interesa</legend>
+            <label><input type="radio" name="plan" value="base" checked><span>Base</span></label>
+            <label><input type="radio" name="plan" value="smart"><span>Smart</span></label>
+            <label><input type="radio" name="plan" value="intelligence"><span>Intelligence</span></label>
+            <label><input type="radio" name="plan" value="nose"><span>No sé</span></label>
+          </fieldset>
+          <div class="mas__grid" data-demo hidden>
+            <div class="field"><label for="a-cubiertos">Cantidad de cubiertos o sucursales</label><input id="a-cubiertos" name="cubiertos" type="text"></div>
+            <div class="field"><label for="a-mide">¿Hoy medís lo que sobra?</label><select id="a-mide" name="mide"><option value="">—</option><option>No</option><option>A mano</option><option>Con un sistema</option></select></div>
+          </div>
+        </details>
+
+        <div class="check"><input id="a-ok" name="consent" type="checkbox" required><label for="a-ok">Acepto los Términos y la Política de privacidad y que APROVECHO me contacte por WhatsApp o email.</label></div><p class="err" role="alert" data-for="consent"></p>
+        <div class="form__row">
+          <button class="btn btn--ghost" type="button" data-back>Volver</button>
+          <button class="btn btn--lg btn--accent" type="submit" data-submit>Sumá tu comercio</button>
+        </div>
+        <p class="micro micro--dark">Te escribimos por WhatsApp para activar tu cuenta. Vas a necesitar tu habilitación municipal y el carnet de manipulador.</p>
+      </fieldset>
+
+      <div class="form__ok" hidden tabindex="-1" data-ok>
+        <p class="form__ok-t" data-ok-t>¡Listo, ya estás adentro!</p>
+        <p data-ok-p>Te escribimos por WhatsApp en las próximas 48 h hábiles para activar tu cuenta.</p>
+        <a class="link" href="#como-funciona">Mirá cómo funciona tu primer día <span aria-hidden="true">→</span></a>
+      </div>
+    </form>
+  </div>
+</section>

@@ -32,6 +32,7 @@
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType image/avif "access plus 1 month"
   ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
 
   # Fonts — cache long, immutable
   ExpiresByType font/woff2 "access plus 1 year"
@@ -53,7 +54,7 @@
   </FilesMatch>
 
   # Images & fonts: long cache
-  <FilesMatch "\.(webp|jpg|jpeg|png|svg|avif|ico|woff|woff2)$">
+  <FilesMatch "\.(webp|jpg|jpeg|png|svg|avif|ico|woff|woff2|mp4)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 
@@ -73,6 +74,13 @@
   AddType font/woff2 .woff2
   AddType font/woff .woff
   AddType image/svg+xml .svg
+  AddType video/mp4 .mp4
+</IfModule>
+
+# ----- Carpetas internas de APROVECHO: no se publican -----
+# src/ (fuentes de la página y del video) y propuestas/ (bocetos) quedan fuera del sitio.
+<IfModule mod_alias.c>
+  RedirectMatch 404 /(src|propuestas)(/|$)
 </IfModule>
 
 # ----- Gzip compression for text assets -----
