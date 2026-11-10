@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap"><link rel="stylesheet" href="estructura.css"><style>
+.panel{position:absolute;top:110px;height:700px;border-radius:36px;overflow:hidden}
+.p-soft{background:var(--soft)}.p-dark{background:var(--forest-d);color:#fff}
+.rail{position:absolute;top:96px;left:0;right:0;display:flex;gap:0}
+.chips{position:absolute;top:100px;left:40px;display:flex;gap:8px;z-index:3}
+.chips span{padding:8px 16px;border-radius:99px;border:2px solid #cfd6d2;font-weight:700;font-size:13.5px;background:#fff}
+.chips .on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.num{font-family:'Bricolage Grotesque';font-weight:800;letter-spacing:-.04em}
+</style></head><body>
+<!-- Pantalla 1: carrusel horizontal, panel Planes en el centro y vecinos asomando -->
+<section class="screen" style="background:#fff">
+<div class="nav"><img class="logo" src="img/sello.png"><div class="menu"><span>Quiénes somos</span><span>Cómo funciona</span><span class="on">Planes</span><span>Mirá cuánto te queda</span><span>Inversores</span><span>Preguntas</span></div><div class="sp"></div><span class="pill out">⬇ Descargar app</span><span class="pill g">Sumá tu comercio</span></div>
+<div class="panel p-soft" style="left:-540px;width:900px"><div style="padding:60px"><p class="eyebrow">Cómo funciona</p><h2 style="font-size:70px;margin-top:12px">Así de simple.</h2></div></div>
+<div class="panel" style="left:392px;width:880px;background:#fff;border:1px solid #dfe5e1;box-shadow:0 30px 60px rgba(0,0,0,.1)">
+  <div style="padding:50px 56px 0"><p class="eyebrow">Planes</p><h2 style="font-size:64px;margin-top:10px">Un plan para cada etapa.</h2></div>
+  <div style="position:absolute;left:56px;right:56px;top:240px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+    <div class="card" style="position:static;padding:24px;background:var(--ink);color:#fff;border-color:var(--ink)"><p class="verb" style="color:var(--mint)">Recuperá</p><h3 style="font-size:42px;color:#fff">Base</h3><ul style="font-size:15px"><li>Foto y packs</li><li>Cobro y QR</li><li>Panel de ventas</li></ul><p style="margin-top:18px;font-weight:700">Sin costo fijo</p></div>
+    <div class="card" style="position:static;padding:24px"><p class="verb">Medí</p><h3 style="font-size:42px">Smart</h3><ul style="font-size:15px"><li>Balanza y tablet</li><li>Peso real</li><li>Tasa de recuperación</li></ul><p style="margin-top:18px;font-weight:700">USD 300/mes</p></div>
+    <div class="card" style="position:static;padding:24px"><p class="verb">Anticipá</p><h3 style="font-size:42px">Intelligence</h3><ul style="font-size:15px"><li>Todas tus sucursales</li><li>Predicción</li><li>Informes</li></ul><p style="margin-top:18px;font-weight:700">USD 800/mes por sucursal</p></div>
+  </div>
+  <div style="position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;color:#555;font-weight:700">Tocá un plan para ver su recorrido →</span><span class="pill" style="padding:16px 28px">Sumá tu comercio</span></div>
+</div>
+<div class="panel p-dark" style="left:1310px;width:900px"><div style="padding:60px"><p class="eyebrow" style="color:var(--mint)">Mirá cuánto te queda</p><h2 style="font-size:70px;margin-top:12px;color:#fff">$4.575</h2></div></div>
+<div class="arrow" style="left:30px;top:440px">‹</div><div class="arrow" style="right:30px;top:440px">›</div>
+<div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+<div class="fab"><i class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#111"/></svg></i><i class="wa"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z"/></svg></i></div>
+</section>
+
+<!-- Pantalla 2: panel Smart dentro del carrusel -->
+<section class="screen" style="background:#fff">
+<div class="nav"><img class="logo" src="img/sello.png"><div class="menu"><span>Quiénes somos</span><span>Cómo funciona</span><span class="on">Planes</span><span>Mirá cuánto te queda</span><span>Inversores</span><span>Preguntas</span></div><div class="sp"></div><span class="pill out">⬇ Descargar app</span><span class="pill g">Sumá tu comercio</span></div>
+<div class="panel p-soft" style="left:70px;width:1300px">
+  <div style="position:absolute;left:60px;top:60px;width:480px"><p class="eyebrow">Smart · Medí</p><h2 style="font-size:70px;margin:12px 0 24px">Pesá y entendé.</h2><div style="display:grid;gap:16px;font-size:19px"><div><b>1 · Una estación en tu mostrador.</b><br>Balanza y tablet instaladas por nosotros.</div><div style="opacity:.55"><b>2 · Pesás lo que sobra.</b></div><div style="opacity:.55"><b>3 · Entendés tu desperdicio.</b></div></div><div style="margin-top:34px;display:flex;gap:12px"><span class="pill" style="padding:16px 28px">Pedí una demo</span></div></div>
+  <img src="img/tablet-real.webp" style="position:absolute;left:560px;top:90px;width:430px;filter:drop-shadow(0 26px 26px rgba(0,0,0,.28))">
+  <img src="img/balanza-real.webp" style="position:absolute;left:900px;top:150px;width:360px;filter:drop-shadow(0 30px 28px rgba(0,0,0,.3))">
+</div>
+<div class="chips" style="top:128px;display:none"></div>
+<div class="arrow" style="left:12px;top:440px">‹</div><div class="arrow" style="right:12px;top:440px">›</div>
+<div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+<div class="fab"><i class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#111"/></svg></i><i class="wa"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z"/></svg></i></div>
+</section></body></html>

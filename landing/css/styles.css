@@ -769,3 +769,10 @@ input[type=range]{height:44px}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
   .scanline{display:none}
 }
+
+/* estación real: balanza Systel + tablet Samsung + soporte dibujado */
+.floatstage{aspect-ratio:1.1}
+.fs--scale{width:50%;left:auto;right:4%;bottom:0}
+.fs--tab{width:56%;left:0;top:4%}
+.fs--arm{width:100%;height:100%;left:0;top:0;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25));transform:translate3d(calc(var(--ry) * -.4),0,20px)}
+.floatstage__shadow{left:30%;right:0;bottom:-2%}
