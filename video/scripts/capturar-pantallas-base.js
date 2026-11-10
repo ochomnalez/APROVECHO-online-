@@ -3,10 +3,13 @@ const { chromium } = require('playwright');
 const LIMPIAR = () => { const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
  const rx=/(\+\s*)?\d+\s?%\s*por pack vendido|\s*La comisión por pack todavía no está definida\.?|Te quedás con el 75%[^.]*\.?\s*|APROVECHO cobra el 25%[^.]*\.?|\s*[·]?\s*Comisión del 25%\s*\$?[\d.,]+|\s*·\s*\$[\d.,]+ de comisión/gi;
  let n; while((n=w.nextNode())){ const v=n.nodeValue; const r=v.replace(rx,''); if(r!==v) n.nodeValue=r; } };
+
 (async()=>{const out=process.argv[2];const b=await chromium.launch();
 const ctx=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:2});const p=await ctx.newPage();
 p.on('pageerror',e=>console.log('ERR',e.message));
-let n=0; const shot=async(nm,w=1200)=>{await p.waitForTimeout(w);await p.evaluate(LIMPIAR); await p.screenshot({path:`${out}/${String(++n).padStart(2,'0')}-${nm}.png`});};
+const BOXES={}; const MAPA={'bienvenida':/Entrar como local/,'plan':/^Seguir/,'plan-elegido':/^Seguir/,'carta':/Sacarle foto|foto a mi lista/,'carta-cargada':/Guardar carta|Seguir|Terminar/,'local':/Terminar/,'hoy':/Sacar foto/,'camara':/Medialunas|Facturas|Empanadas/,'tras-analisis':/Seguir|Continuar|Confirmar|Revisar/,'revisar-checklist':/Publicar/,'publicado':/Ver cómo lo ve/,'cliente-ve-pack':/Reservar/,'reservar':/Pagar|Confirmar/,'retiros':/Escanear el QR/,'retiro-validado':/Volver|Listo/,'hoy-final':/Sacar foto/,'impacto':/Descargar/,'reporte':/Descargar (Excel|PDF)/,'reporte-pdf':/Descargar PDF/};
+const REC=async(nm)=>{ const rx=MAPA[nm]; if(!rx) return; try{ const l=p.locator('button, a').filter({hasText:rx}).last(); const bb=await l.boundingBox(); if(bb) BOXES[nm]=bb; }catch(e){} };
+let n=0; const shot=async(nm,w=1200)=>{await p.waitForTimeout(w);await p.evaluate(LIMPIAR); await REC(nm); await p.screenshot({path:`${out}/${String(++n).padStart(2,'0')}-${nm}.png`});};
 const click=async(re)=>{const l=p.getByText(re).first(); if(await l.count()){await l.click();return true;} console.log('no encontré',re);return false;};
 await p.goto('http://127.0.0.1:8765/app/');await shot('bienvenida');
 await click(/Entrar como local/);await shot('plan');
@@ -46,4 +49,4 @@ await p.goto('http://127.0.0.1:8765/app/#/b/impacto'); await shot('impacto',2000
 await tryc(/Descargar/,'reporte',1500);
 await tryc(/^PDF/,'reporte-pdf',800);
 await p.locator('#btn-descargar').click().catch(()=>{}); await shot('reporte-descargando',700); await shot('reporte-listo',2500);
-await b.close();})();
+{ BOXES['confirmar-entrega']=null; } require('fs').writeFileSync(out+'/cajas-botones.json', JSON.stringify(BOXES,null,1)); await b.close();})();

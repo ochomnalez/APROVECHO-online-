@@ -1,18 +1,18 @@
 {
  "e1": {
-  "dur": 4.12,
-  "a0": 0.27,
-  "a1": 3.84,
+  "dur": 5.08,
+  "a0": 0.22,
+  "a1": 4.78,
   "segs": [
    {
     "t": "Bienvenido a APROVECHO.",
-    "a": 0.27,
-    "b": 1.63
+    "a": 0.22,
+    "b": 1.54
    },
    {
-    "t": "Te cuento cómo arrancar, paso a paso.",
-    "a": 2.25,
-    "b": 3.84
+    "t": "Acá vas a ver cómo empezar a usar la app, paso a paso.",
+    "a": 2.08,
+    "b": 4.78
    }
   ]
  },
@@ -58,24 +58,24 @@
   ]
  },
  "e3b": {
-  "dur": 10.08,
-  "a0": 0.32,
-  "a1": 9.73,
+  "dur": 9.68,
+  "a0": 0.34,
+  "a1": 9.38,
   "segs": [
    {
     "t": "Vos elegís el horario de retiro.",
-    "a": 0.32,
-    "b": 1.82
+    "a": 0.34,
+    "b": 1.74
    },
    {
-    "t": "Marcás con un toque las condiciones, como sin TACC o vegetariano, y confirmás los alérgenos.",
-    "a": 2.35,
-    "b": 8.04
+    "t": "Marcás con un clic las condiciones, como sin TACC o vegetariano, y confirmás las alergias posibles.",
+    "a": 2.12,
+    "b": 7.69
    },
    {
     "t": "Publicás, y listo.",
-    "a": 8.58,
-    "b": 9.73
+    "a": 8.2,
+    "b": 9.38
    }
   ]
  },
@@ -135,23 +135,6 @@
    }
   ]
  },
- "e7": {
-  "dur": 10.08,
-  "a0": 0.0,
-  "a1": 9.59,
-  "segs": [
-   {
-    "t": "Y si tenés varias sucursales, sumás Intelligence.",
-    "a": 0.0,
-    "b": 2.41
-   },
-   {
-    "t": "Ves todos tus locales en un solo panel, con la huella de carbono, la huella hídrica y sugerencias para desperdiciar menos.",
-    "a": 2.99,
-    "b": 9.59
-   }
-  ]
- },
  "e9": {
   "dur": 4.72,
   "a0": 0.24,
@@ -166,6 +149,40 @@
     "t": "Sumá tu comercio y empezá a aprovechar lo que sobra.",
     "a": 1.71,
     "b": 4.39
+   }
+  ]
+ },
+ "e7b": {
+  "dur": 8.56,
+  "a0": 0.23,
+  "a1": 8.27,
+  "segs": [
+   {
+    "t": "Y te sugiere qué hacer.",
+    "a": 0.23,
+    "b": 1.37
+   },
+   {
+    "t": "Por ejemplo: hacer 18 medialunas menos los martes, o publicar los packs antes de las 18.",
+    "a": 1.95,
+    "b": 8.27
+   }
+  ]
+ },
+ "e7a": {
+  "dur": 8.96,
+  "a0": 0.27,
+  "a1": 8.61,
+  "segs": [
+   {
+    "t": "Y si tenés varias sucursales, sumás Intelligence.",
+    "a": 0.27,
+    "b": 2.96
+   },
+   {
+    "t": "Ves todos tus locales en un solo panel, con la huella de carbono y la huella hídrica.",
+    "a": 3.69,
+    "b": 8.61
    }
   ]
  }

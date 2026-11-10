@@ -2,20 +2,25 @@ import base64, json, re, subprocess, sys
 VOZ='es-419-training-6'
 E="Calm, clear and natural Argentine Rioplatense Spanish, like a friendly colleague showing how a tool works. Relaxed steady pace, natural intonation and small natural pauses. Serious but not stiff, not robotic, no advertising tone."
 ESC={
- 'e1':['Bienvenido a APROVECHO.','Te cuento cómo arrancar, paso a paso.'],
+ 'e1':['Bienvenido a APROVECHO.','Acá vas a ver cómo empezar a usar la app, paso a paso.'],
  'e2':['Entrás como comercio y elegís tu plan.'],
  'e2b':['Después le sacás una foto a tu menú, y la app lee los productos y los precios por vos.'],
  'e3a':['Cuando te sobra algo, otra foto.','La app reconoce qué es y cuántos hay, y te arma una propuesta.'],
- 'e3b':['Vos elegís el horario de retiro.','Marcás con un toque las condiciones, como sin TACC o vegetariano, y confirmás los alérgenos.','Publicás, y listo.'],
+ 'e3b':['Vos elegís el horario de retiro.','Marcás con un clic las condiciones, como sin TACC o vegetariano, y confirmás las alergias posibles.','Publicás, y listo.'],
  'e4':['El vecino reserva y paga desde la app.','Te muestra un código QR, lo escaneás en el local y listo.','Cobrás cada venta, sin abono fijo.'],
  'e5':['En Impacto ves lo que recuperaste, los kilos rescatados y la huella de carbono asociada, siempre como estimación.','Y bajás tu informe en Excel o PDF.'],
  'e6':['Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.','Apoyás lo que sobró, la balanza lo pesa, y vos decidís si se vende o se descarta.'],
- 'e7':['Y si tenés varias sucursales, sumás Intelligence.','Ves todos tus locales en un solo panel, con la huella de carbono, la huella hídrica y sugerencias para desperdiciar menos.'],
+ 'e7a':['Y si tenés varias sucursales, sumás Intelligence.','Ves todos tus locales en un solo panel, con la huella de carbono y la huella hídrica.'],
+ 'e7b':['Y te sugiere qué hacer.','Por ejemplo: hacer 18 medialunas menos los martes, o publicar los packs antes de las 18.'],
  'e9':['Ya sabés cómo funciona.','Sumá tu comercio y empezá a aprovechar lo que sobra.'],
 }
 OUT='/tmp/claude-0/-home-user-APROVECHO-online-/7307efeb-ff1a-5892-b0ae-9ea3495aac20/scratchpad/vidwt/video/public/voz2/'
-res={}
+import os
+J='/tmp/claude-0/-home-user-APROVECHO-online-/7307efeb-ff1a-5892-b0ae-9ea3495aac20/scratchpad/vidwt/video/src/voz-tiempos.json'
+res=json.load(open(J)) if os.path.exists(J) else {}
+SOLO=sys.argv[1:] or list(ESC)
 for k,fr in ESC.items():
+    if k not in SOLO: continue
     texto=' '.join(fr)
     body={"model":"gemini-3.8-flash-tts","input":[{"type":"user_input","content":[{"type":"text","text":texto,"annotations":[{"type":"speech_metadata","style":E}]}]}],"response_format":{"type":"audio"},"generation_config":{"speech_config":[{"voice":VOZ}]}}
     json.dump(body,open(f'{k}.req.json','w'))

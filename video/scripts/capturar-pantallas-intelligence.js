@@ -20,6 +20,7 @@ await p.locator('button').filter({hasText:/Terminar|Seguir|Listo/}).last().click
 await p.goto('http://127.0.0.1:8765/app/#/b/intel'); await shot('resumen',2200);
 const tab=async(v)=>{const l=p.locator('button[data-v="'+v+'"]').first(); if(await l.count()){await l.click();return true;} console.log('sin tab',v);return false;};
 await tab('sugerencias'); await shot('sugerencias',1500);
+{ const bx=await p.locator('[data-go^="b/sugerencia"]').evaluateAll(els=>els.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,t:e.innerText.slice(0,60)}})); require('fs').writeFileSync(out+'/cajas-sugerencias.json', JSON.stringify(bx,null,1)); }
 const sg=p.locator('[data-go^="b/sugerencia"]').first(); if(await sg.count()){await sg.click(); await shot('sugerencia-detalle',1800);} else console.log('sin sugerencia');
 await p.goto('http://127.0.0.1:8765/app/#/b/intel'); await p.waitForTimeout(800); await tab('datos'); await shot('datos',1500);
 await p.goto('http://127.0.0.1:8765/app/#/b/intel'); await p.waitForTimeout(800); await tab('sucursales'); await shot('sucursales',1500);
