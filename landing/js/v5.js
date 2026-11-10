@@ -76,6 +76,180 @@ window.APV5 = (function () {
   });
 })();
 
+/* 20-hero.js */
+/* v5 · portada: «el anillo se abre» al bajar (solo con movimiento) */
+APV5.scene('hero', function (ctx) {
+  var g = ctx.gsap;
+  var hero = document.querySelector('.hr');
+  if (!hero) return;
+  var wrap = hero.querySelector('.hr__ringwrap');
+  var core = hero.querySelector('.hr__core');
+  var chips = hero.querySelectorAll('.hr__chip');
+  var arcs = hero.querySelectorAll('.hr-a');
+  var copy = hero.querySelector('.hr__copy');
+  var foot = hero.querySelector('.hr__foot');
+
+  function build(trig, dist, pinEnd, start, scaleTo, copyY) {
+    var tl = g.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: { trigger: trig, start: start, end: pinEnd, scrub: 0.6, pin: pinEnd.indexOf('+=') === 0, anticipatePin: 1, invalidateOnRefresh: true }
+    });
+    tl.to(wrap, { scale: scaleTo, duration: 1 }, 0);
+    arcs.forEach(function (a) {
+      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0, svgOrigin: '160 160', duration: 1 }, 0);
+    });
+    tl.to(core, { scale: 0.55, opacity: 0.25, duration: 1 }, 0);
+    tl.to(chips, { opacity: 0, duration: 0.35 }, 0);
+    if (copyY !== null) {
+      tl.to(copy, { y: copyY, opacity: 0, duration: 0.7 }, 0);
+      tl.to(foot, { opacity: 0, duration: 0.4 }, 0);
+    }
+    return tl;
+  }
+  ctx.mm.add(ctx.desktop, function () {
+    build(hero, 1, '+=60%', 'top top+=68', 1.2, -90);
+  });
+  ctx.mm.add(ctx.mobile, function () {
+    build(hero.querySelector('.hr__art'), 0.7, 'bottom top+=68', 'center 75%', 1.1, null);
+  });
+});
+
+/* 30-problema.js */
+/* v5 · el problema: la cifra cuenta de 0 a 58,4 y la foto de adentro se desplaza (solo con movimiento) */
+APV5.scene('problema', function (ctx) {
+  var g = ctx.gsap;
+  var live = document.querySelector('[data-pb-count]');
+  var sec = document.getElementById('problema');
+  if (!live || !sec) return;
+  var fmt = function (n) { return n.toFixed(1).replace('.', ',') + '%'; };
+  var o = { v: 0 };
+  live.textContent = fmt(0);
+  g.to(o, {
+    v: 58.4, duration: 1.7, ease: 'power2.out',
+    onUpdate: function () { live.textContent = fmt(o.v); },
+    onComplete: function () { live.textContent = '58,4%'; },
+    scrollTrigger: { trigger: live, start: 'top 82%', once: true }
+  });
+  g.fromTo(live, { backgroundPositionY: '10%' }, {
+    backgroundPositionY: '90%', ease: 'none',
+    scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 0.8 }
+  });
+  var items = sec.querySelectorAll('.pb__side li, .pb__cap');
+  g.set(items, { opacity: 0, y: 28 });
+  g.to(items, {
+    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.14,
+    scrollTrigger: { trigger: sec.querySelector('.pb__cap'), start: 'top 88%', once: true }
+  });
+});
+
+/* 40-recupera.js */
+/* APROVECHO · landing v5 · 01 Recuperá (Plan Base): la app se desarma capa por capa al bajar.
+   Solo corre con html.motion; sin eso la pila queda desarmada y estática (CSS). */
+APV5.scene('recupera', function (ctx) {
+  'use strict';
+  var gsap = ctx.gsap, ScrollTrigger = ctx.ScrollTrigger;
+  var root = document.getElementById('plan-base');
+  if (!root) return;
+  var $$ = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
+  var pls = $$('.rc-pl'), labws = $$('.rc-labw'), labs = $$('.rc-lab'), layers = $$('.rc-layer');
+  var lis = $$('.ch__steps li'), rects = $$('.rc-det rect'), tags = $$('.rc-tag');
+  var amount = root.querySelector('.rc-amount');
+  var stage = root.querySelector('.rc-stage');
+  if (pls.length !== 5 || labws.length !== 5 || lis.length !== 5) return;
+  var H = 23; // alto de una placa, en em (las posiciones se animan en % de ese alto: escalan solas)
+
+  // recuadros de detección: se dibujan al activarse el paso 2
+  var detTl = gsap.timeline({ paused: true })
+    .fromTo(rects, { strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.out', stagger: 0.14 }, 0)
+    .fromTo(tags, { autoAlpha: 0, y: 5 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power2.out', stagger: 0.14 }, 0.35);
+  detTl.progress(0);
+  var counter = { v: 4575 };
+  function fmt(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
+
+  var cur = { idx: -2, hl: -2 };
+  function apply(idx, hl) {
+    if (idx !== cur.idx) {
+      lis.forEach(function (li, i) { li.classList.toggle('is-on', i === idx); });
+    }
+    if (hl !== cur.hl) {
+      layers.forEach(function (l, i) { l.classList.toggle('is-on', i === hl); });
+      labs.forEach(function (l, i) { l.classList.toggle('is-on', i === hl); });
+      pls.forEach(function (p, i) {
+        gsap.to(p, { xPercent: i === hl ? -4 : 0, scale: i === hl ? 1.045 : 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+      });
+      // detección
+      if (hl >= 1) detTl.play(); else detTl.reverse();
+      // conteo de la plata
+      if (amount) {
+        gsap.killTweensOf(counter);
+        if (hl === 4) {
+          counter.v = 0;
+          gsap.to(counter, { v: 4575, duration: 0.9, ease: 'power2.out', onUpdate: function () { amount.textContent = fmt(counter.v); }, onComplete: function () { amount.textContent = '$4.575'; } });
+        } else { counter.v = 4575; amount.textContent = '$4.575'; }
+      }
+    }
+    cur.idx = idx; cur.hl = hl;
+  }
+  function reset() {
+    lis.forEach(function (li, i) { li.classList.toggle('is-on', i === 0); });
+    layers.concat(labs).forEach(function (l) { l.classList.remove('is-on'); });
+    gsap.killTweensOf(pls);
+    gsap.set(pls, { clearProps: 'all' });
+    detTl.progress(1);
+    if (amount) amount.textContent = '$4.575';
+    cur = { idx: -2, hl: -2 };
+  }
+
+  // separación de las capas (compacta -> desarmada) y aparición de los rótulos
+  function separation(tl, y0, c, pitch, t0, dur) {
+    pls.forEach(function (p, i) {
+      tl.fromTo(p, { yPercent: (y0 + c * i) / H * 100 }, { yPercent: pitch * i / H * 100, ease: 'power2.inOut', duration: dur }, t0 + i * dur * 0.05);
+    });
+    labws.forEach(function (w, i) {
+      tl.fromTo(w, { yPercent: (y0 + c * i) / H * 100 }, { yPercent: pitch * i / H * 100, ease: 'power2.inOut', duration: dur }, t0 + i * dur * 0.05);
+    });
+    labs.forEach(function (l, i) {
+      tl.fromTo(l, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, ease: 'power2.out', duration: dur * 0.28 }, t0 + dur * 0.4 + i * dur * 0.11);
+    });
+  }
+
+  // ---------- escritorio: la sección se fija y se recorre paso por paso ----------
+  ctx.mm.add(ctx.desktop, function () {
+    var SEP = 0.28, STEP = (1 - SEP) / 5;
+    var tl = gsap.timeline({ defaults: { ease: 'none' } });
+    separation(tl, 24.25, 1.4, 13.5, 0, 2.8);
+    tl.set({}, {}, 10);
+    apply(0, -1);
+    ScrollTrigger.create({
+      trigger: root, start: 'top top', end: '+=220%', pin: true, scrub: 0.6, anticipatePin: 1,
+      animation: tl, invalidateOnRefresh: true,
+      onUpdate: function (self) {
+        var p = self.progress;
+        if (p < SEP) apply(0, -1);
+        else { var i = Math.min(4, Math.floor((p - SEP) / STEP)); apply(i, i); }
+      }
+    });
+    return function () { reset(); };
+  });
+
+  // ---------- celular: pila chica y fija arriba; los pasos la activan al bajar ----------
+  ctx.mm.add(ctx.mobile, function () {
+    var tl = gsap.timeline({ defaults: { ease: 'none' } });
+    separation(tl, 17.2, 1.2, 10, 0, 1);
+    ScrollTrigger.create({ trigger: stage, start: 'top 92%', end: 'top 32%', scrub: 0.5, animation: tl, invalidateOnRefresh: true });
+    apply(0, -1);
+    lis.forEach(function (li, i) {
+      ScrollTrigger.create({
+        trigger: li, start: 'top 74%', end: 'bottom 74%',
+        onEnter: function () { apply(i, i); },
+        onEnterBack: function () { apply(i, i); },
+        onLeaveBack: function () { if (i === 0) apply(0, -1); }
+      });
+    });
+    return function () { reset(); };
+  });
+});
+
 /* 50-medi.js */
 /* v5 · 02 Medí · la estación se desarma pieza por pieza (tablet, soporte, balanza). */
 APV5.scene('medi', function (ctx) {
