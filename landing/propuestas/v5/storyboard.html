@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>APROVECHO · landing v5 · storyboard</title>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:700;src:url(../../fonts/bricolage-grotesque-700.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:400 700;src:url(../../fonts/dm-sans-400-700.woff2) format('woff2')}
+:root{--ink:#0b0b0b;--muted:#555;--line:#E3E8E5;--soft:#F3F6F4;--mint:#DFFFD6;--forest:#1A4D3A;--mid:#2E7D32;--light:#7BC67B}
+*{box-sizing:border-box}
+body{margin:0;background:#ddd;font:400 16px/1.5 'DM Sans',sans-serif;color:var(--ink)}
+h1,h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.96;margin:0}
+p{margin:0}
+.frame{position:relative;width:1440px;height:900px;overflow:hidden;background:#fff;margin:0 auto 24px}
+.tagf{position:absolute;left:0;top:0;z-index:9;background:var(--ink);color:#fff;font-weight:700;font-size:13px;letter-spacing:.08em;padding:8px 14px;border-radius:0 0 12px 0;text-transform:uppercase}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--forest)}
+.btn{display:inline-flex;align-items:center;height:56px;padding:0 30px;border-radius:99px;background:var(--ink);color:#fff;font-weight:700;font-size:17px}
+.btn--g{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+/* navegación persistente: mini anillo */
+.mini{position:absolute;right:40px;top:28px;z-index:8;display:flex;align-items:center;gap:14px;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.mini svg{width:54px;height:54px}
+.logo{position:absolute;left:44px;top:24px;width:56px;height:56px;z-index:8}
+.cta-top{position:absolute;right:210px;top:30px;z-index:8;height:44px;padding:0 20px;font-size:15px}
+
+/* ---------- 1 · PORTADA ---------- */
+.f1 .bg{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:60% 40%}
+.f1 .veil{position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.96) 36%,rgba(255,255,255,.55) 62%,rgba(255,255,255,.15) 100%)}
+.f1 .copy{position:absolute;left:96px;top:190px;width:640px}
+.f1 h1{font-size:104px;margin-top:22px}
+.f1 h1 em{font-style:normal;color:var(--forest)}
+.f1 .lead{font-size:21px;line-height:1.45;margin-top:28px;max-width:520px;color:#222}
+.f1 .row{display:flex;gap:14px;margin-top:34px}
+.f1 .ring{position:absolute;left:720px;top:86px;width:820px;height:820px}
+.f1 .core{position:absolute;left:965px;top:331px;width:330px;height:330px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 30px 70px rgba(0,0,0,.3)}
+.f1 .core img{width:300px;height:300px}
+.port{position:absolute;width:176px;height:176px;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 22px 44px rgba(0,0,0,.3)}
+.port img{width:100%;height:100%;object-fit:cover}
+.chip{position:absolute;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:99px;background:#fff;border:2px solid var(--ink);font-weight:700;font-size:15px;box-shadow:0 10px 22px rgba(0,0,0,.16)}
+.f1 .index{position:absolute;left:96px;bottom:44px;display:flex;gap:34px;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#333}
+.f1 .index b{color:var(--forest);margin-right:8px}
+.f1 .scroll{position:absolute;right:56px;bottom:44px;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- 2 · PROBLEMA ---------- */
+.f2{background:#fff}
+.f2 .big{position:absolute;left:70px;top:150px;font:700 520px/0.8 'Bricolage Grotesque';letter-spacing:-.06em;background:url(../../img/super/medialunas-arco.webp) center/cover;-webkit-background-clip:text;background-clip:text;color:transparent;background-size:1300px auto;background-position:30% 55%}
+.f2 .cap{position:absolute;left:96px;top:640px;width:620px}
+.f2 .cap h2{font-size:56px}
+.f2 .cap p{font-size:20px;margin-top:16px;color:#333}
+.f2 .side{position:absolute;right:96px;top:600px;width:380px;display:grid;gap:18px}
+.f2 .side div{border-top:2px solid var(--ink);padding-top:12px}
+.f2 .side b{font:700 44px/1 'Bricolage Grotesque';letter-spacing:-.04em;color:var(--forest);display:block}
+.f2 .src{position:absolute;left:96px;bottom:36px;font-size:13px;color:var(--muted)}
+
+/* ---------- 3 · RECUPERÁ ---------- */
+.f3{background:var(--soft)}
+.chap{position:absolute;left:96px;top:170px;width:470px}
+.chap h2{font-size:76px;margin-top:18px}
+.chap .for{font-size:19px;margin-top:18px;color:#333}
+.steps{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:0}
+.steps li{display:flex;gap:14px;align-items:center;padding:13px 0;border-top:1px solid #cfd8d3;font-weight:600;color:#6a6a6a}
+.steps li i{font-style:normal;width:30px;height:30px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font:700 14px 'Bricolage Grotesque'}
+.steps li.on{color:var(--ink)}
+.steps li.on i{background:var(--forest);border-color:var(--forest);color:#fff}
+.price{margin-top:22px;display:flex;align-items:baseline;gap:14px}
+.price b{font:700 30px 'Bricolage Grotesque';letter-spacing:-.02em}
+.price span{color:var(--muted);font-size:14px}
+.stack{position:absolute;left:640px;top:60px;width:560px;height:800px;perspective:2400px}
+.layer{position:absolute;left:110px;width:330px;height:230px;border-radius:26px;background:#fff;border:1px solid #d9e0dc;box-shadow:-30px 40px 50px rgba(0,0,0,.16);transform:rotateX(58deg) rotateZ(-38deg);overflow:hidden}
+.layer img{width:100%;height:100%;object-fit:cover}
+.lab{position:absolute;left:470px;padding-left:76px;font-weight:700;font-size:15px;line-height:1.3;white-space:nowrap}
+.lab::before{content:"";position:absolute;left:0;top:10px;width:64px;height:1.5px;background:var(--ink)}
+.lab small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.lab.on{color:var(--forest)}
+.det{position:absolute;border:3px solid var(--mid);border-radius:10px}
+.pk{position:absolute;left:22px;right:22px;height:78px;border:1.5px solid #d9e0dc;border-radius:14px;display:flex;align-items:center;gap:12px;padding:10px;font-weight:700}
+.pk img{width:58px;height:58px;border-radius:10px}
+.pk em{font-style:normal;color:var(--forest);font-family:'Bricolage Grotesque';font-size:20px}
+.qr{position:absolute;inset:38px 88px;background:
+  conic-gradient(from 90deg at 12px 12px,#0b0b0b 25%,transparent 0) 0 0/24px 24px,
+  linear-gradient(#0b0b0b,#0b0b0b) 0 0/52px 52px no-repeat,linear-gradient(#0b0b0b,#0b0b0b) 100% 0/52px 52px no-repeat,linear-gradient(#0b0b0b,#0b0b0b) 0 100%/52px 52px no-repeat}
+.pay{position:absolute;inset:0;background:var(--mint);display:grid;place-content:center;text-align:center;font-weight:700;color:var(--forest)}
+.pay b{font:700 54px/1 'Bricolage Grotesque';letter-spacing:-.04em;display:block}
+
+/* ---------- 4 · MEDÍ ---------- */
+.f4{background:#fff}
+.f4 .chap{left:auto;right:96px;width:440px}
+.f4 .stage{position:absolute;left:60px;top:70px;width:800px;height:800px}
+.f4 .tab{position:absolute;left:20px;top:10px;width:430px;filter:drop-shadow(0 30px 30px rgba(0,0,0,.25));transform:rotate(-6deg)}
+.f4 .bal{position:absolute;left:330px;top:330px;width:420px;filter:drop-shadow(0 34px 30px rgba(0,0,0,.28))}
+.f4 .arm{position:absolute;left:330px;top:250px;width:210px;transform:rotate(8deg)}
+.call{position:absolute;font-weight:700;font-size:15px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.call::before{content:"";width:70px;border-top:1.5px dashed var(--ink)}
+.call.l{flex-direction:row-reverse}
+.call small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.datum{position:absolute;padding:10px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 30px rgba(0,0,0,.14);font-weight:700;font-size:14px}
+.datum b{display:block;font:700 26px/1.1 'Bricolage Grotesque';letter-spacing:-.03em;color:var(--forest)}
+
+/* ---------- 5 · ANTICIPÁ ---------- */
+.f5{background:var(--soft)}
+.tiles{position:absolute;left:640px;top:150px;width:720px;height:450px}
+.tile{position:absolute;width:232px;height:217px;border-radius:14px;background:url(../../img/app/intelligence.webp) 0 0/720px 450px;box-shadow:0 22px 40px rgba(0,0,0,.2);border:1px solid #d9e0dc}
+.pred{position:absolute;left:640px;top:650px;width:720px}
+.pred svg{width:100%;height:150px}
+.pred p{font-size:13px;color:var(--muted);margin-top:4px}
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="frame f1" id="f1">
+  <span class="tagf">1 · Portada: el anillo vivo</span>
+  <img class="bg" src="../../img/super/pasillo.webp" alt="">
+  <div class="veil"></div>
+  <img class="logo" src="../../img/logo/sello.webp" alt="" style="top:44px">
+  <span class="btn cta-top">Sumá tu comercio</span>
+  <div class="mini">Menú <svg viewBox="0 0 320 320"><use href="#ring"/></svg></div>
+  <div class="copy">
+    <p class="eyebrow">Menos desperdicio, más aprovecho</p>
+    <h1>Lo que sobra hoy vale. <em>Y mañana, que sobre menos.</em></h1>
+    <p class="lead">Vendé lo que te sobra con una foto y usá esos datos para que cada vez te sobre menos.</p>
+    <div class="row"><span class="btn">Sumá tu comercio</span><span class="btn btn--g">Mirá cómo funciona</span></div>
+  </div>
+  <svg class="ring" viewBox="0 0 320 320"><use href="#ring"/></svg>
+  <div class="core"><img src="../../img/logo/sello.webp" alt=""></div>
+  <div class="port" style="left:1238px;top:150px"><img src="../../img/super/changuito-arco.webp" alt=""></div>
+  <div class="port" style="left:1040px;top:668px"><img src="../../img/super/frutas-verduras-arco.webp" alt=""></div>
+  <div class="port" style="left:760px;top:300px"><img src="../../img/super/medialunas-arco.webp" alt=""></div>
+  <span class="chip" style="left:1290px;top:336px">Recuperá</span>
+  <span class="chip" style="left:1210px;top:760px">Medí</span>
+  <span class="chip" style="left:776px;top:486px">Anticipá</span>
+  <div class="index"><span><b>01</b>Recuperá</span><span><b>02</b>Medí</span><span><b>03</b>Anticipá</span></div>
+  <div class="scroll">Bajá: el anillo se abre ↓</div>
+</section>
+
+<!-- 2 · PROBLEMA -->
+<section class="frame f2" id="f2">
+  <span class="tagf">2 · El problema: la cifra hecha de comida</span>
+  <div class="mini">El problema <svg viewBox="0 0 320 320"><use href="#ring-off"/></svg></div>
+  <div class="big">58,4%</div>
+  <div class="cap"><h2>terminó tirando parte de lo que le sobró.</h2><p>Comida rica que ya te costó ingredientes, horas y luz.</p></div>
+  <div class="side">
+    <div><b>35,7%</b>tuvo excedente apto todos los días de la última semana.</div>
+    <div><b>52%</b>no registra cuánto le sobra. ¿El motivo? No hay tiempo.</div>
+  </div>
+  <p class="src">Fuente: encuesta propia de APROVECHO a comercios gastronómicos (2026).</p>
+</section>
+
+<!-- 3 · RECUPERÁ -->
+<section class="frame f3" id="f3">
+  <span class="tagf">3 · Recuperá: la app se desarma capa por capa al bajar</span>
+  <div class="mini">01 · Recuperá <svg viewBox="0 0 320 320"><use href="#ring-1"/></svg></div>
+  <div class="chap">
+    <p class="eyebrow">01 · Recuperá · Plan Base</p>
+    <h2>Una foto y listo.</h2>
+    <p class="for">Para panaderías, cafeterías, rotiserías y restaurantes chicos o medianos.</p>
+    <ol class="steps">
+      <li><i>1</i>Sacás una foto</li>
+      <li class="on"><i>2</i>La app arma los packs</li>
+      <li><i>3</i>Vecinos reservan y pagan</li>
+      <li><i>4</i>Retiran con un QR</li>
+      <li><i>5</i>Sabés cuánto rescatás</li>
+    </ol>
+    <div class="price"><b>Sin costo fijo</b><span>Comisión solo por cada pack vendido</span></div>
+  </div>
+  <div class="stack">
+    <div class="layer" style="top:40px"><img src="../../img/super/medialunas-arco.webp" alt=""></div>
+    <div class="lab" style="top:150px">La foto<small>al cierre, con el celular del local</small></div>
+    <div class="layer" style="top:175px;background:rgba(255,255,255,.75)"><span class="det" style="left:40px;top:34px;width:110px;height:90px"></span><span class="det" style="left:170px;top:90px;width:120px;height:100px"></span></div>
+    <div class="lab" style="top:285px">Lo que reconoce<small>vos corregís antes de publicar</small></div>
+    <div class="layer" style="top:310px;box-shadow:-30px 40px 60px rgba(26,77,58,.35);border:2px solid var(--forest)">
+      <div class="pk" style="top:26px"><img src="../../img/super/medialunas-arco.webp" alt=""><span>Pack sorpresa<br><em>$6.100</em></span></div>
+      <div class="pk" style="top:122px"><img src="../../img/super/medialunas-arco.webp" alt=""><span>Pack sorpresa<br><em>$6.100</em></span></div>
+    </div>
+    <div class="lab on" style="top:420px">Los packs propuestos<small>cantidad, precio y horario</small></div>
+    <div class="layer" style="top:445px"><div class="qr"></div></div>
+    <div class="lab" style="top:555px">El QR de retiro<small>lo validás en el mostrador</small></div>
+    <div class="layer" style="top:580px"><div class="pay"><span>Te queda a vos</span><b>$4.575</b></div></div>
+    <div class="lab" style="top:690px">La plata<small>directo a tu cuenta, por Mercado Pago</small></div>
+  </div>
+</section>
+
+<!-- 4 · MEDÍ -->
+<section class="frame f4" id="f4">
+  <span class="tagf">4 · Medí: la estación se desarma pieza por pieza</span>
+  <div class="mini">02 · Medí <svg viewBox="0 0 320 320"><use href="#ring-2"/></svg></div>
+  <div class="stage">
+    <img class="tab" src="../../img/producto/tablet.webp" alt="">
+    <svg class="arm" viewBox="38 24 36 42"><path d="M67 56 C 60 56, 57 50, 53 44 S 49 36, 46 31" fill="none" stroke="#3a3f3d" stroke-width="2.4" stroke-linecap="round"/><rect x="64.5" y="50" width="5" height="12" rx="1.6" fill="#2b2f2d"/><circle cx="57.2" cy="52" r="2" fill="#555c59"/><circle cx="52.8" cy="43.6" r="2" fill="#555c59"/><rect x="42" y="27" width="8" height="6" rx="1.5" fill="#2b2f2d"/></svg>
+    <img class="bal" src="../../img/producto/balanza.webp" alt="">
+    <div class="call" style="left:440px;top:120px">Tablet<small>qué sobró, cuánto y cuándo</small></div>
+    <div class="call l" style="left:150px;top:390px">Soporte<small>todo en una sola estación</small></div>
+    <div class="call" style="left:640px;top:560px">Balanza<small>peso real, no estimado</small></div>
+    <div class="datum" style="left:40px;top:560px">Ejemplo<b>0,87 kg</b>en la balanza</div>
+    <div class="datum" style="left:120px;top:690px">Medido<b>Tasa de recuperación</b></div>
+  </div>
+  <div class="chap">
+    <p class="eyebrow">02 · Medí · Plan Smart</p>
+    <h2>Pesá y entendé.</h2>
+    <p class="for">Para restaurantes grandes, hoteles con comidas y comedores.</p>
+    <ol class="steps">
+      <li class="on"><i>1</i>Peso real de todo lo que sobra</li>
+      <li><i>2</i>Análisis por alimento, día y horario</li>
+      <li><i>3</i>Valor de lo que no se recupera</li>
+      <li><i>4</i>Reportes para GRI y B Corp</li>
+    </ol>
+    <div class="price"><b>USD 300/mes</b><span>Más la comisión por pack</span></div>
+  </div>
+</section>
+
+<!-- 5 · ANTICIPÁ -->
+<section class="frame f5" id="f5">
+  <span class="tagf">5 · Anticipá: el tablero se arma con todas las sucursales</span>
+  <div class="mini">03 · Anticipá <svg viewBox="0 0 320 320"><use href="#ring-3"/></svg></div>
+  <div class="chap">
+    <p class="eyebrow">03 · Anticipá · Plan Intelligence</p>
+    <h2>Todas tus sucursales, juntas.</h2>
+    <p class="for">Para cadenas, supermercados, grupos hoteleros y empresas con varias sucursales.</p>
+    <ol class="steps">
+      <li><i>1</i>Todas las sucursales en un tablero</li>
+      <li><i>2</i>Envasados por vencer</li>
+      <li class="on"><i>3</i>Predicción de excedentes</li>
+      <li><i>4</i>Informes revisados por analistas</li>
+    </ol>
+    <div class="price"><b>USD 800/mes</b><span>por sucursal, más la comisión por pack</span></div>
+  </div>
+  <div class="tiles">
+    <div class="tile" style="left:-26px;top:-30px;transform:rotate(-5deg);background-position:0 0"></div>
+    <div class="tile" style="left:244px;top:0;background-position:-244px 0"></div>
+    <div class="tile" style="left:520px;top:-40px;transform:rotate(6deg);background-position:-488px 0"></div>
+    <div class="tile" style="left:-40px;top:262px;transform:rotate(4deg);background-position:0 -233px"></div>
+    <div class="tile" style="left:244px;top:233px;background-position:-244px -233px"></div>
+    <div class="tile" style="left:516px;top:258px;transform:rotate(-4deg);background-position:-488px -233px"></div>
+  </div>
+  <div class="pred">
+    <svg viewBox="0 0 720 150"><line x1="0" y1="130" x2="720" y2="130" stroke="#9AA59F"/><polyline points="0,60 90,74 180,52 270,80 360,66 450,88" fill="none" stroke="#1A4D3A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><polyline points="450,88 540,96 630,104 720,110" fill="none" stroke="#1A4D3A" stroke-width="4" stroke-dasharray="3 10" stroke-linecap="round"/><circle cx="450" cy="88" r="7" fill="#fff" stroke="#1A4D3A" stroke-width="4"/></svg>
+    <p>Línea ilustrativa: lo medido (continua) y lo que la app anticipa (punteada). No son datos reales.</p>
+  </div>
+</section>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <g id="a1"><path d="M176.1 45.1 A116 116 0 0 1 275.4 172.1" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="301.2,174.8 271.8,205.9 249.5,169.4" fill="currentColor"/></g>
+    <g id="a2"><path d="M251.4 231.4 A116 116 0 0 1 91.8 253.8" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="76.5,274.9 64.3,233.9 107.1,232.8" fill="currentColor"/></g>
+    <g id="a3"><path d="M52.4 203.5 A116 116 0 0 1 112.8 54.0" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="102.2,30.3 143.9,40.2 123.4,77.8" fill="currentColor"/></g>
+    <g id="ring"><use href="#a1" color="#1A4D3A"/><use href="#a2" color="#2E7D32"/><use href="#a3" color="#7BC67B"/></g>
+    <g id="ring-off"><use href="#a1" color="#cfd8d3"/><use href="#a2" color="#cfd8d3"/><use href="#a3" color="#cfd8d3"/></g>
+    <g id="ring-1"><use href="#a1" color="#1A4D3A"/><use href="#a2" color="#cfd8d3"/><use href="#a3" color="#cfd8d3"/></g>
+    <g id="ring-2"><use href="#a1" color="#1A4D3A"/><use href="#a2" color="#2E7D32"/><use href="#a3" color="#cfd8d3"/></g>
+    <g id="ring-3"><use href="#a1" color="#1A4D3A"/><use href="#a2" color="#2E7D32"/><use href="#a3" color="#7BC67B"/></g>
+  </defs>
+</svg>
+</body>
+</html>
