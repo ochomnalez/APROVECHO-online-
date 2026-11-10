@@ -27,19 +27,180 @@
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
-<header class="nav" id="top"><div class="wrap nav__in"><a class="nav__logo" href="#top" aria-label="APROVECHO, inicio"><img src="img/logo/sello.webp" alt="APROVECHO" width="52" height="52"></a></div></header>
+<header class="nav nv" id="top">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="#top" aria-label="APROVECHO, inicio"><img src="img/logo/sello.webp" alt="APROVECHO" width="52" height="52"></a>
+    <a class="btn btn--sm nav__cta" href="#alta" data-cta="nav">Sumá tu comercio</a>
+    <button class="nav__burger nv-ring" type="button" aria-expanded="false" aria-controls="menu" data-ch="0" aria-label="Menú">
+      <span class="nv-ring__label" data-nv-label>Menú</span>
+      <svg class="nv-ring__svg" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
+        <g class="nv-a nv-a1"><path d="M176.1 45.1 A116 116 0 0 1 275.4 172.1" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="301.2,174.8 271.8,205.9 249.5,169.4" fill="currentColor"/></g>
+        <g class="nv-a nv-a2"><path d="M251.4 231.4 A116 116 0 0 1 91.8 253.8" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="76.5,274.9 64.3,233.9 107.1,232.8" fill="currentColor"/></g>
+        <g class="nv-a nv-a3"><path d="M52.4 203.5 A116 116 0 0 1 112.8 54.0" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="102.2,30.3 143.9,40.2 123.4,77.8" fill="currentColor"/></g>
+      </svg>
+    </button>
+    <nav class="nav__links" id="menu" aria-label="Principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#plan-base"><b>01</b> Recuperá · Base</a>
+      <a href="#plan-smart"><b>02</b> Medí · Smart</a>
+      <a href="#plan-intelligence"><b>03</b> Anticipá · Intelligence</a>
+      <a href="#suma">Cuánto te queda</a>
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#inversores">Inversores</a>
+      <a href="#consumidores" data-app>Descargar app</a>
+    </nav>
+  </div>
+</header>
 
 <main id="contenido">
 
-<section class="hero" id="quienes-somos"><div class="wrap"><h1>Lo que sobra hoy vale. <em>Y mañana, que sobre menos.</em></h1><div class="hero__actions"><a class="btn btn--lg" href="#alta">Sumá tu comercio</a></div></div></section>
+<section class="hero hr" id="inicio" aria-labelledby="hero-t">
+  <span class="hr__shape" aria-hidden="true"></span>
+  <div class="wrap hr__in">
+    <div class="hr__copy">
+      <p class="eyebrow">Para comercios de comida</p>
+      <h1 id="hero-t">Vendé lo que te sobra <em>con una foto.</em></h1>
+      <p class="hr__lead">Publicá packs a mitad de precio para tus vecinos y medí para que cada vez te sobre menos. Sin costo fijo: pagás solo cuando vendés.</p>
+      <div class="hero__actions">
+        <a class="btn btn--lg" href="#alta" data-cta="hero">Sumá tu comercio</a>
+        <a class="btn btn--lg btn--ghost" href="#plan-base">Mirá cómo funciona</a>
+      </div>
+    </div>
+    <div class="hr__foot">
+      <nav class="hr__index" aria-label="Capítulos">
+        <a href="#plan-base"><b>01</b>Recuperá</a>
+        <a href="#plan-smart"><b>02</b>Medí</a>
+        <a href="#plan-intelligence"><b>03</b>Anticipá</a>
+      </nav>
+      <p class="hr__hint" aria-hidden="true">Bajá: el anillo se abre
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v11M3 9l5 5 5-5"/></svg></p>
+    </div>
+  </div>
+  <div class="hr__art">
+    <div class="hr__ringwrap">
+      <svg class="hr__ring" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
+        <g class="hr-a hr-a1" data-dx="80" data-dy="-70"><path d="M176.1 45.1 A116 116 0 0 1 275.4 172.1" fill="none" stroke="#1A4D3A" stroke-width="26"/><polygon points="301.2,174.8 271.8,205.9 249.5,169.4" fill="#1A4D3A"/></g>
+        <g class="hr-a hr-a2" data-dx="14" data-dy="100"><path d="M251.4 231.4 A116 116 0 0 1 91.8 253.8" fill="none" stroke="#2E7D32" stroke-width="26"/><polygon points="76.5,274.9 64.3,233.9 107.1,232.8" fill="#2E7D32"/></g>
+        <g class="hr-a hr-a3" data-dx="-90" data-dy="-40"><path d="M52.4 203.5 A116 116 0 0 1 112.8 54.0" fill="none" stroke="#7BC67B" stroke-width="26"/><polygon points="102.2,30.3 143.9,40.2 123.4,77.8" fill="#7BC67B"/></g>
+      </svg>
+      <div class="hr__core"><img src="img/logo/sello.webp" width="300" height="300" alt=""></div>
+      <a class="hr__chip hr__chip--1" href="#plan-base">Recuperá</a>
+      <a class="hr__chip hr__chip--2" href="#plan-smart">Medí</a>
+      <a class="hr__chip hr__chip--3" href="#plan-intelligence">Anticipá</a>
+    </div>
+  </div>
+</section>
 
 <section class="sec" id="problema"><div class="wrap"><h2 class="sec__title">Pendiente: problema</h2></div></section>
 
 <!-- Los tres capítulos del anillo: cada uno es un plan -->
 <div id="planes">
-<section class="sec" id="plan-base"><a id="como-funciona"></a><div class="wrap"><h2 class="sec__title">Pendiente: Recuperá</h2></div></section>
+<!-- ============ v5 · 01 RECUPERÁ · PLAN BASE (la app se desarma capa por capa) ============ -->
+<section class="chap chap--soft rc" id="plan-base" aria-labelledby="rc-t">
+  <a id="como-funciona"></a>
+  <div class="wrap chap__in rc__in">
+    <div class="ch rc__ch">
+      <p class="eyebrow">01 · Recuperá · Plan Base</p>
+      <h2 class="ch__title" id="rc-t">Una foto y listo.</h2>
+      <p class="ch__for">Para panaderías, cafeterías, rotiserías y restaurantes chicos o medianos.</p>
+      <ol class="ch__steps">
+        <li class="is-on"><span class="rc-st"><b>Sacás una foto.</b><small>Al cierre, a lo que te sobró. Con el celular del local.</small></span></li>
+        <li><span class="rc-st"><b>La app arma los packs.</b><small>Propone cuántos, de qué tamaño, el precio (tu precio habitual con 50% de descuento) y el horario. Revisás y publicás.</small></span></li>
+        <li><span class="rc-st"><b>Vecinos reservan y pagan en la app.</b><small>Te avisamos apenas alguien reserva.</small></span></li>
+        <li><span class="rc-st"><b>Retiran con un QR.</b><small>Lo validás en el mostrador y la plata llega por Mercado Pago.</small></span></li>
+        <li><span class="rc-st"><b>Sabés cuánto rescatás.</b><small>Packs vendidos, plata recuperada y kilos rescatados (estimados).</small></span></li>
+      </ol>
+      <p class="ch__price"><b>Sin costo fijo</b><span>Comisión solo por cada pack vendido</span></p>
+      <p class="ch__more"><span class="rc-inc">Incluye:</span> Carga con foto · Packs, precio y horario propuestos · Publicación, cobro y retiro con QR · Panel de ventas y kilos estimados · Huella de carbono asociada (estimada) · APROVECHO Score · Primer lote de bolsas biodegradables gratis · Soporte por WhatsApp</p>
+      <a class="btn btn--lg" href="#alta" data-plan="base" data-cta="plan-base">Sumá tu comercio</a>
+      <p class="rc-close">La app propone. <strong>Vos decidís.</strong> Siempre.</p>
+    </div>
 
-<section class="sec" id="plan-smart"><div class="wrap"><h2 class="sec__title">Pendiente: Medí</h2></div></section>
+    <div class="rc-stage">
+      <div class="rc-box">
+        <div class="rc-board" role="img" aria-label="Ilustración de la app en cinco capas: la foto de lo que sobró, lo que la app reconoce, los packs propuestos con precio y horario, el QR de retiro y la plata que te queda a vos, $4.575 en el ejemplo.">
+          <div class="rc-stack">
+            <div class="rc-pl" data-i="0"><div class="rc-layer rc-l1"><img src="img/v5/medialunas-660.webp" alt="" width="660" height="495" decoding="async"></div></div>
+            <div class="rc-pl" data-i="1"><div class="rc-layer rc-l2">
+              <img src="img/v5/medialunas-660.webp" alt="" width="660" height="495" decoding="async">
+              <svg class="rc-det" viewBox="0 0 330 230" aria-hidden="true">
+                <rect pathLength="100" x="135" y="39" width="80" height="97" rx="9"/>
+                <rect pathLength="100" x="47" y="91" width="88" height="120" rx="9"/>
+                <rect pathLength="100" x="198" y="116" width="80" height="95" rx="9"/>
+              </svg>
+              <span class="rc-tag" style="left:13.5em;top:3.9em">Medialuna</span>
+              <span class="rc-tag" style="left:4.7em;top:9.1em">Medialuna</span>
+              <span class="rc-tag" style="left:19.8em;top:11.6em">Medialuna</span>
+            </div></div>
+            <div class="rc-pl" data-i="2"><div class="rc-layer rc-l3">
+              <div class="rc-pk" style="top:1.6em"><img src="img/v5/medialunas-660.webp" alt="" width="660" height="495" decoding="async"><span class="rc-pk__t"><b>Pack sorpresa</b><s>$12.200</s><em>$6.100</em></span><span class="rc-chips"><i>Retiro 19 a 20 h</i><i>50% off</i></span></div>
+              <div class="rc-pk" style="top:12.2em"><img src="img/v5/medialunas-660.webp" alt="" width="660" height="495" decoding="async"><span class="rc-pk__t"><b>Pack sorpresa</b><s>$12.200</s><em>$6.100</em></span><span class="rc-chips"><i>Retiro 19 a 20 h</i><i>50% off</i></span></div>
+            </div></div>
+            <div class="rc-pl" data-i="3"><div class="rc-layer rc-l4">
+              <svg class="rc-qr" viewBox="0 0 25 25" shape-rendering="crispEdges" aria-hidden="true"><path fill="#0b0b0b" d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM13 0h2v1h-2zM16 0h1v1h-1zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h4v1h-4zM13 1h2v1h-2zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h1v1h-1zM11 2h1v1h-1zM13 2h4v1h-4zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h1v1h-1zM12 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h2v1h-2zM12 4h2v1h-2zM16 4h1v1h-1zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM12 5h1v1h-1zM14 5h2v1h-2zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM8 7h3v1h-3zM15 7h1v1h-1zM2 8h1v1h-1zM5 8h2v1h-2zM8 8h1v1h-1zM13 8h2v1h-2zM16 8h5v1h-5zM22 8h3v1h-3zM1 9h2v1h-2zM8 9h3v1h-3zM13 9h5v1h-5zM19 9h4v1h-4zM4 10h1v1h-1zM6 10h1v1h-1zM10 10h3v1h-3zM14 10h11v1h-11zM2 11h4v1h-4zM7 11h1v1h-1zM10 11h6v1h-6zM17 11h2v1h-2zM21 11h1v1h-1zM23 11h1v1h-1zM3 12h4v1h-4zM10 12h2v1h-2zM18 12h1v1h-1zM20 12h5v1h-5zM2 13h1v1h-1zM7 13h5v1h-5zM15 13h1v1h-1zM18 13h1v1h-1zM23 13h2v1h-2zM1 14h1v1h-1zM4 14h3v1h-3zM9 14h3v1h-3zM14 14h1v1h-1zM18 14h1v1h-1zM20 14h2v1h-2zM1 15h1v1h-1zM4 15h2v1h-2zM7 15h2v1h-2zM10 15h3v1h-3zM14 15h2v1h-2zM18 15h1v1h-1zM23 15h2v1h-2zM0 16h2v1h-2zM3 16h2v1h-2zM6 16h1v1h-1zM8 16h1v1h-1zM12 16h1v1h-1zM14 16h7v1h-7zM9 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM20 17h2v1h-2zM0 18h7v1h-7zM9 18h1v1h-1zM13 18h4v1h-4zM18 18h1v1h-1zM20 18h4v1h-4zM0 19h1v1h-1zM6 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM16 19h1v1h-1zM20 19h2v1h-2zM23 19h2v1h-2zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM10 20h2v1h-2zM13 20h8v1h-8zM22 20h1v1h-1zM24 20h1v1h-1zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM8 21h2v1h-2zM12 21h1v1h-1zM16 21h3v1h-3zM20 21h3v1h-3zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM8 22h2v1h-2zM13 22h2v1h-2zM16 22h2v1h-2zM21 22h1v1h-1zM23 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h2v1h-2zM12 23h2v1h-2zM15 23h7v1h-7zM23 23h1v1h-1zM0 24h7v1h-7zM8 24h5v1h-5zM15 24h2v1h-2zM18 24h1v1h-1zM20 24h2v1h-2zM23 24h1v1h-1z"/></svg>
+            </div></div>
+            <div class="rc-pl" data-i="4"><div class="rc-layer rc-l5">
+              <div class="rc-pay"><span>Te queda a vos</span><b class="rc-amount" data-to="4575">$4.575</b></div>
+            </div></div>
+          </div>
+          <div class="rc-labs">
+            <div class="callout rc-lab" data-i="0">La foto<small>al cierre, con el celular del local</small></div>
+            <div class="callout rc-lab" data-i="1">Lo que reconoce<small>vos corregís antes de publicar</small></div>
+            <div class="callout rc-lab" data-i="2">Los packs propuestos<small>cantidad, precio y horario</small></div>
+            <div class="callout rc-lab" data-i="3">El QR de retiro<small>lo validás en el mostrador</small></div>
+            <div class="callout rc-lab" data-i="4">La plata<small>directo a tu cuenta, por Mercado Pago</small></div>
+          </div>
+        </div>
+        <p class="rc-note">Ejemplo, en pesos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chap chap--flip md" id="plan-smart" aria-labelledby="md-t">
+  <div class="wrap chap__in">
+    <div class="md-stage" role="img" aria-label="Estación Smart desarmada: tablet, soporte y balanza">
+      <div class="md-piece md-piece--bal" data-md="bal">
+        <span class="md-sh"></span>
+        <img src="img/producto/balanza.webp" width="908" height="1000" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="md-piece md-piece--arm" data-md="arm">
+        <svg viewBox="38 24 36 42" aria-hidden="true"><path d="M67 56 C 60 56, 57 50, 53 44 S 49 36, 46 31" fill="none" stroke="#3a3f3d" stroke-width="2.4" stroke-linecap="round"/><path d="M67 56 C 60 56, 57 50, 53 44 S 49 36, 46 31" fill="none" stroke="#8d9692" stroke-width=".7" stroke-linecap="round"/><rect x="64.5" y="50" width="5" height="12" rx="1.6" fill="#2b2f2d"/><circle cx="57.2" cy="52" r="2" fill="#555c59"/><circle cx="52.8" cy="43.6" r="2" fill="#555c59"/><rect x="42" y="27" width="8" height="6" rx="1.5" fill="#2b2f2d"/></svg>
+      </div>
+      <div class="md-piece md-piece--tab" data-md="tab">
+        <span class="md-sh"></span>
+        <img src="img/producto/tablet.webp" width="817" height="555" alt="" loading="lazy" decoding="async">
+      </div>
+      <svg class="md-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M30 30 L 45 36" vector-effect="non-scaling-stroke"/>
+        <path d="M59 58.5 L 66.5 63" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <svg class="md-dots" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <circle cx="30" cy="30" r="0.9"/><circle cx="45" cy="36" r="0.9"/><circle cx="59" cy="58.5" r="0.9"/><circle cx="66.5" cy="63" r="0.9"/>
+      </svg>
+      <div class="callout md-c md-c--tab" data-md-c="0">Tablet<small>qué sobró, cuánto y cuándo</small></div>
+      <div class="callout callout--l md-c md-c--arm" data-md-c="1">Soporte<small>todo en una sola estación</small></div>
+      <div class="callout callout--l md-c md-c--bal" data-md-c="2">Balanza<small>peso real, no estimado</small></div>
+      <div class="datum md-d md-d--a" data-md-d>Ejemplo<b>0,87 kg</b>en la balanza</div>
+      <div class="datum md-d md-d--b" data-md-d>Medido<b>Tasa de recuperación</b></div>
+    </div>
+    <div class="ch">
+      <p class="eyebrow">02 · Medí · Plan Smart</p>
+      <h2 class="ch__title" id="md-t">Pesá y entendé.</h2>
+      <p class="ch__for">Para restaurantes grandes, hoteles con comidas y comedores.</p>
+      <ol class="ch__steps">
+        <li>Peso real de todo lo que sobra</li>
+        <li>Análisis por alimento, día y horario</li>
+        <li>Valor de lo que no se recupera</li>
+        <li>Reportes para GRI y B Corp</li>
+      </ol>
+      <div class="ch__price"><b>USD 300/mes</b><span>Más la comisión por cada pack vendido</span></div>
+      <p class="ch__more">Incluye todo Base, la estación con balanza y tablet instalada y la tasa de recuperación.</p>
+      <a class="btn btn--lg" href="#alta" data-plan="smart" data-cta="plan-smart">Pedí una demo</a>
+    </div>
+  </div>
+</section>
 
 <section class="sec" id="plan-intelligence"><div class="wrap"><h2 class="sec__title">Pendiente: Anticipá</h2></div></section>
 </div>
