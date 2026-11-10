@@ -11,7 +11,7 @@ Dirección de diseño: `landing/propuestas/v5/DIRECCION.md`. Storyboard (referen
   - `src/v5/partials/<escena>.html`
   - `src/v5/css/<nn>-<escena>.css`
   - `src/v5/js/<nn>-<escena>.js`
-- Escenas y números: `10-nav`, `20-hero`, `30-problema`, `40-recupera`, `50-medi`, `60-anticipa`.
+- Escenas y números: `10-nav`, `20-hero`, `30-problema`, `40-recupera`, `50-medi`, `60-anticipa`, `70-quienes`.
 - El CSS de la v4 (`css/styles.css`) ya viene incluido: usar sus variables (`--ink`, `--forest`, `--mint`,
   `--soft`, `--line`, `--r-lg`, `--ease-out`, `--nav-h`, `--gutter`…) y clases (`.wrap`, `.btn`, `.btn--lg`,
   `.btn--ghost`, `.eyebrow`, `.sec`, `.sec__title`, `.num`, `.sr`). **No editar `css/styles.css`** ni
@@ -50,7 +50,8 @@ APV5.scene('recupera', function (ctx) {
 
 ## IDs y clases que el resto de la página necesita (no cambiar)
 
-- Portada: `<section class="hero" id="quienes-somos">` y los botones dentro de `<div class="hero__actions">`.
+- Portada (orientada a comercios): `<section class="hero" id="inicio">` y los botones dentro de `<div class="hero__actions">`.
+- Quiénes somos (sección aparte, después de «Mirá cuánto te queda»): `id="quienes-somos"`; ahí va el fondo con los videos.
 - Problema: `id="problema"`.
 - Capítulos: `id="plan-base"` (con `<a id="como-funciona"></a>` como primer hijo), `id="plan-smart"`, `id="plan-intelligence"`.
 - Botones de cada plan: `<a class="btn btn--lg" href="#alta" data-plan="base|smart|intelligence">` (preselecciona el plan en el formulario).

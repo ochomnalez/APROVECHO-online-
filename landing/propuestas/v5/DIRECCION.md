@@ -54,3 +54,12 @@ El director revisa cada entrega contra este documento y el storyboard, con captu
 - **Fotos de producto**: balanza y tablet siguen siendo de catálogo (provisorias); la escena 4 las usa mucho.
 - **Fondo en movimiento**: con la foto actual es un movimiento sutil. Un video real de un comercio se vería
   mejor, pero hay que conseguirlo (propio o de stock con licencia libre).
+
+## Cambios pedidos por Octavio (10/11, después del storyboard)
+
+- **La portada es para comercios**: «Vendé lo que te sobra con una foto», botón «Sumá tu comercio», el anillo vivo como
+  único movimiento de fondo (sin foto del supermercado y sin círculos con fotos).
+- **«Quiénes somos» pasa a ser una sección aparte**, después de «Mirá cuánto te queda»: ahí va la idea de marca, los
+  pilares y el propósito, con el fondo de 4 videos que se turnan (campo → fábrica → camiones → supermercado).
+- Videos: se arranca con clips reales de stock (Mixkit). Octavio duda de que el realismo sirva para todas las tomas:
+  queda abierta la opción de generarlos con IA en un estilo alineado a la página (pide OK y costo antes).

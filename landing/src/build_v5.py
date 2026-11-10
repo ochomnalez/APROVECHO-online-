@@ -28,7 +28,7 @@ def read(p):
 # reutiliza FAQ, JSON-LD, gráficos y formularios de la v4 (también regenera index.html, sin cambios)
 v4 = runpy.run_path(os.path.join(HERE, 'build.py'))
 parts = dict(v4['parts'])
-for name in ('nav', 'hero', 'problema', 'recupera', 'medi', 'anticipa'):
+for name in ('nav', 'hero', 'problema', 'recupera', 'medi', 'anticipa', 'quienes'):
     parts['V5_' + name.upper()] = read(os.path.join(V5, 'partials', name + '.html')).rstrip()
 
 out = read(os.path.join(V5, 'index.tpl.html'))
