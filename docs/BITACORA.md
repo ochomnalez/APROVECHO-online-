@@ -53,3 +53,4 @@
 | 2026-11-09 19:53 | claude-octi-video | `integ` | `ff04ed2` | Capturas del panel de Intelligence guardadas como referencia para la foto del gerente (Gemini) | Octavio genera la foto del gerente y la del menú |
 | 2026-11-09 23:12 | claude-octi-video | `integ` | `afdb34b` | Onboarding v4 (109 s): clics con cuadradito y zoom, clips de menú y gerente, sugerencias de Intelligence, Smart con foto, música Wholesome, voces nuevas (apertura, condiciones, Intelligence) | OK de Octavio y ajustes |
 | 2026-11-09 23:52 | claude-octi-video | `integ` | `a85b05f` | Onboarding v5 (1:31): más ágil sin perder las pantallas, voz con menos pausas, música Carefree más audible | OK de Octavio |
+| 2026-11-10 00:05 | claude-octi-video | `integ` | `8c1dfb9` | Onboarding v6 (1:31): frase de Intelligence y cierre elegidos por Octavio, música Easy Lemon | OK de Octavio |
