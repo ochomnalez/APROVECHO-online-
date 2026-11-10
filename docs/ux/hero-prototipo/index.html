@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero · El camino de la comida</title>
+<link rel="stylesheet" href="../../marca/tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--color-text)}
+.hero{position:relative;height:460vh;background:#10251c}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+/* mundo = la panorámica + todo lo que se mueve encima, en coordenadas de la imagen */
+.world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.world img,.world .boceto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.world .boceto{display:none}
+.world.sin-foto img{display:none}
+.world.sin-foto .boceto{display:block}
+.fx{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ruta{fill:none;stroke:#fff;stroke-width:5;stroke-dasharray:2 16;stroke-linecap:round;opacity:.85}
+.ruta-mask{fill:none;stroke:#fff;stroke-width:40}
+.humo circle{fill:#eef0f0;transform-box:fill-box;transform-origin:center;animation:humo 6s linear infinite;opacity:0}
+@keyframes humo{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:.75}100%{transform:translate(70px,-190px) scale(2.6);opacity:0}}
+.nubes{position:absolute;left:-10%;right:-10%;top:0;height:42%;pointer-events:none}
+.nube{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,0));filter:blur(6px);animation:nube linear infinite}
+@keyframes nube{from{transform:translateX(-12vw)}to{transform:translateX(112vw)}}
+/* íconos de impacto: viven en el mundo (escalan con la foto) */
+.chip{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--color-text-strong);font:700 26px/1 var(--font-body);box-shadow:0 8px 24px rgba(0,0,0,.18);white-space:nowrap;animation:flota 5s ease-in-out infinite}
+.chip svg{width:34px;height:34px}
+.chip small{font-weight:500;font-size:20px;color:var(--color-text-muted)}
+@keyframes flota{0%,100%{translate:0 0}50%{translate:0 -12px}}
+/* tomas del zoom */
+.toma{position:absolute;inset:0;opacity:0;will-change:opacity,transform}
+.toma img{width:100%;height:100%;object-fit:cover;display:block}
+.toma.sin-foto{background:linear-gradient(135deg,#3a2a1c,#14281F)}
+.toma.sin-foto > img{display:none}
+.toma .falta{display:none;position:absolute;inset:auto 0 18% 0;text-align:center;color:#fff8;font:600 14px var(--font-body);letter-spacing:.08em;text-transform:uppercase}
+.toma.sin-foto .falta{display:block}
+.velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,15,.55) 0%,rgba(10,20,15,0) 38%,rgba(10,20,15,0) 60%,rgba(10,20,15,.55) 100%);pointer-events:none}
+/* bifurcación en el mostrador */
+.fork{position:absolute;right:6vw;top:50%;transform:translateY(-50%);display:grid;gap:14px;width:min(360px,80vw)}
+.opcion{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:18px;background:rgba(255,255,255,.95);font:700 18px/1.2 var(--font-body);color:var(--color-text-strong);opacity:0;transform:translateX(30px);transition:.5s}
+.opcion svg{width:40px;height:40px;flex:none}
+.opcion small{display:block;font-weight:500;font-size:13px;color:var(--color-text-muted);margin-top:3px}
+.opcion.on{opacity:1;transform:none}
+.opcion.tacho.off{opacity:.45;text-decoration:line-through}
+.opcion.vecino.win{outline:3px solid var(--palette-mint);background:#fff}
+/* sello final */
+.final{position:absolute;right:8vw;top:50%;width:min(300px,56vw);aspect-ratio:1;transform:translateY(-50%) scale(.8);opacity:0;transition:.6s}
+.final.on{opacity:1;transform:translateY(-50%) scale(1)}
+.final .anillo{position:absolute;inset:0;width:100%;animation:gira 24s linear infinite}
+.final .sello{position:absolute;inset:22%;width:56%;border-radius:50%;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@keyframes gira{to{transform:rotate(360deg)}}
+/* textos */
+.copy{position:absolute;left:clamp(16px,6vw,96px);top:clamp(80px,14vh,140px);max-width:min(640px,88vw);color:#fff;opacity:0;transform:translateY(16px);transition:.5s;pointer-events:none}
+.copy.on{opacity:1;transform:none;pointer-events:auto}
+.copy .eyebrow{font:700 13px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.copy h1,.copy h2{color:#fff;font:800 clamp(2.4rem,6vw,4.6rem)/1 var(--font-display);letter-spacing:-.02em;margin:12px 0 14px;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.copy p{font:500 clamp(1rem,1.6vw,1.25rem)/1.45 var(--font-body);margin:0 0 22px;max-width:36ch;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#fff;color:var(--palette-ink);font:700 16px var(--font-body);text-decoration:none}
+.btn:focus-visible{outline:3px solid var(--palette-mint);outline-offset:3px}
+.pista{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:#fff;font:600 12px var(--font-body);letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.after{min-height:60vh;display:grid;place-content:center;text-align:center;padding:48px 16px}
+.after h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 8px}
+@media (max-width:760px){
+ .copy{top:72px}
+ .fork{right:16px;left:16px;width:auto;top:auto;bottom:90px;transform:none}
+ .final{right:50%;transform:translate(50%,0) scale(.8);top:auto;bottom:110px;width:58vw}
+ .final.on{transform:translate(50%,0) scale(1)}
+ .chip{font-size:30px}
+}
+/* sin animaciones: todo quieto y en orden */
+.estatico .hero{height:auto}
+.estatico .stage{position:relative;height:100svh}
+.estatico .nube,.estatico .humo circle,.estatico .chip,.estatico .final .anillo{animation:none}
+.estatico .humo circle{opacity:.5}
+.estatico .tomas-estaticas{display:grid}
+.tomas-estaticas{display:none;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:32px 16px;max-width:1200px;margin:auto}
+.tomas-estaticas figure{margin:0}.tomas-estaticas img{width:100%;border-radius:12px;aspect-ratio:16/9;object-fit:cover;background:#ddd}
+.tomas-estaticas figcaption{font:700 18px var(--font-display);color:var(--color-primary);margin-top:8px}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero" aria-label="Del campo a tu mostrador">
+ <div class="stage" id="stage">
+  <div class="world" id="world">
+   <img id="pano" alt="Una ruta de campo va desde un trigal con vacas, pasa por un molino y un súper, y termina en una panadería de barrio al atardecer." fetchpriority="high">
+   <svg class="boceto" id="boceto" aria-hidden="true"></svg>
+   <div class="nubes" id="nubes" aria-hidden="true"></div>
+   <svg class="fx" id="fx" aria-hidden="true"></svg>
+   <div id="chips" aria-hidden="true"></div>
+  </div>
+
+  <div class="toma" id="t-calle"><img data-src="img/calle.jpg" alt="La panadería de noche, vista desde la vereda al cierre."><span class="falta">Toma 3 · calle.jpg</span></div>
+  <div class="toma" id="t-mostrador"><img data-src="img/mostrador.jpg" alt="Una bandeja con medialunas y facturas que sobraron al cierre."><span class="falta">Toma 4 · mostrador.jpg</span>
+    <div class="fork" aria-hidden="true">
+      <div class="opcion tacho" id="op-tacho"><svg viewBox="0 0 40 40"><path d="M10 13h20l-2 21H12z" fill="#5B6B62"/><rect x="8" y="9" width="24" height="4" rx="2" fill="#14281F"/><path d="M16 9V6h8v3" stroke="#14281F" stroke-width="2.4" fill="none"/></svg><span>Al tacho<small>Se pudre y genera metano (CH₄)</small></span></div>
+      <div class="opcion vecino" id="op-vecino"><svg viewBox="0 0 40 40"><path d="M9 14h22l-2 21H11z" fill="#C99B63"/><path d="M15 14c0-7 10-7 10 0" fill="none" stroke="#14281F" stroke-width="2.4"/><rect x="14" y="21" width="12" height="7" rx="2" fill="#FBF3E4"/></svg><span>A un vecino<small>Pack a mitad de precio, retiro en el local</small></span></div>
+    </div>
+  </div>
+  <div class="toma" id="t-vecinos"><img data-src="img/vecinos.jpg" alt="Una vecina retira su bolsa en la panadería."><span class="falta">Toma 5 · vecinos.jpg</span>
+    <div class="final" id="final" aria-hidden="true"><img class="anillo" src="img/ring3.svg" alt=""><img class="sello" src="img/sello.webp" alt=""></div>
+  </div>
+  <div class="velo"></div>
+
+  <div class="copy on" id="c0">
+    <div class="eyebrow">Del campo a tu mostrador</div>
+    <h1>Menos desperdicio, más aprovecho.</h1>
+    <p>Cada pan viene de lejos: campo, agua, camión y fábrica. Que no termine en el tacho.</p>
+    <a class="btn" href="#sumate">Sumá tu comercio</a>
+  </div>
+  <div class="copy" id="c1"><h2>Al cierre, siempre sobra algo.</h2></div>
+  <div class="copy" id="c2"><h2>¿Al tacho o a un vecino?</h2></div>
+  <div class="copy" id="c3"><h2>Con APROVECHO, a un vecino.</h2><p>Sacás una foto, la app arma los packs y tus vecinos los retiran.</p><a class="btn" href="#sumate">Sumá tu comercio</a></div>
+  <div class="pista" id="pista" aria-hidden="true">Bajá</div>
+ </div>
+ <div class="tomas-estaticas" aria-label="El recorrido, en fotos">
+  <figure><img data-src="img/calle.jpg" alt=""><figcaption>Al cierre, siempre sobra algo.</figcaption></figure>
+  <figure><img data-src="img/mostrador.jpg" alt=""><figcaption>¿Al tacho o a un vecino?</figcaption></figure>
+  <figure><img data-src="img/vecinos.jpg" alt=""><figcaption>Con APROVECHO, a un vecino.</figcaption></figure>
+ </div>
+</section>
+
+<section class="after" id="sumate"><h2>Acá sigue la landing</h2><p>(sección siguiente)</p></section>
+
+<script>
+/* ====== CONFIGURACIÓN: coordenadas en píxeles de la imagen (se calibran con la foto real) ====== */
+const ESCENAS = {
+  compu: { src:'img/panorama.jpg', w:2100, h:900,
+    ruta:[[260,470],[520,500],[760,520],[980,560],[1150,600],[1320,640],[1480,700],[1620,760],[1760,800]],
+    chimenea:[1088,250], panaderia:[1800,720],
+    chips:[ {x:560,y:372,t:'CH₄',s:'metano',i:'gas'}, {x:300,y:372,t:'Agua',s:'riego',i:'gota'},
+            {x:1150,y:205,t:'CO₂',s:'energía',i:'gas'}, {x:960,y:330,t:'Agua',s:'proceso',i:'gota'},
+            {x:1320,y:560,t:'CO₂',s:'transporte',i:'gas'} ] },
+  celu: { src:'img/panorama-celu.jpg', w:900, h:1600,
+    ruta:[[450,700],[380,820],[470,960],[560,1100],[500,1250],[450,1400]],
+    chimenea:[560,560], panaderia:[450,1420],
+    chips:[ {x:300,y:430,t:'CH₄',s:'metano',i:'gas'}, {x:640,y:500,t:'CO₂',s:'energía',i:'gas'},
+            {x:300,y:620,t:'Agua',s:'riego',i:'gota'}, {x:620,y:1060,t:'CO₂',s:'transporte',i:'gas'} ] }
+};
+/* ============================================================================================== */
+const $=s=>document.querySelector(s), stage=$('#stage'), world=$('#world'), hero=$('#hero');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esCelu=()=>innerWidth<=760;
+const ICON={gas:'<svg viewBox="0 0 34 34"><circle cx="13" cy="19" r="8" fill="#B9C2BD"/><circle cx="21" cy="14" r="9" fill="#9AA7A0"/><circle cx="22" cy="22" r="6" fill="#C9D0CC"/></svg>',
+            gota:'<svg viewBox="0 0 34 34"><path d="M17 4c5 7 9 12 9 17a9 9 0 0 1-18 0c0-5 4-10 9-17z" fill="#3E7CB1"/><path d="M13 21a4 4 0 0 0 4 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>'};
+let E, usaBoceto=false;
+
+function boceto(){ // se ve solo hasta que llegue panorama.jpg
+  return `<defs><linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FA9BF"/><stop offset=".55" stop-color="#E9C99A"/><stop offset="1" stop-color="#F1D7AE"/></linearGradient></defs>
+  <rect width="2100" height="900" fill="url(#cielo)"/>
+  <path d="M0 430 Q300 380 600 420 T1200 410 T2100 420 V900 H0Z" fill="#9AA27A"/>
+  <path d="M0 450 Q350 420 760 470 L760 560 L0 600Z" fill="#D9B45E"/>
+  ${Array.from({length:14},(_,i)=>`<path d="M${i*55} ${470+i*2} q30 -6 60 0" stroke="#C49A43" stroke-width="4" fill="none"/>`).join('')}
+  <g fill="#3a2f28"><ellipse cx="540" cy="442" rx="16" ry="8"/><ellipse cx="600" cy="452" rx="15" ry="7"/><ellipse cx="640" cy="440" rx="14" ry="7"/></g>
+  <path d="M600 480 Q1300 440 2100 520 V900 H0 V620Z" fill="#7F8E5E"/>
+  <rect x="1010" y="300" width="130" height="150" fill="#8C4B34"/><rect x="1070" y="240" width="34" height="70" fill="#6E3A28"/><polygon points="1000,300 1075,250 1150,300" fill="#5B3324"/>
+  <rect x="1300" y="400" width="160" height="70" fill="#EDEBE4"/><rect x="1300" y="400" width="160" height="14" fill="#1A4D3A"/>
+  <path d="M240 480 C520 500 900 540 1150 600 S1600 760 1800 820 L1860 900 L1700 900 C1600 820 1250 680 1100 640 S500 520 220 492Z" fill="#8B8478" opacity=".85"/>
+  <rect x="1650" y="560" width="330" height="260" fill="#C9A27A"/><polygon points="1630,565 1815,470 2000,565" fill="#6B3D2A"/>
+  <rect x="1690" y="640" width="120" height="90" fill="#FFD48A"/><rect x="1840" y="640" width="100" height="180" fill="#FFC56B"/>
+  <text x="1050" y="860" text-anchor="middle" font-family="DM Sans,system-ui" font-size="26" font-weight="700" fill="#14281F" opacity=".6">BOCETO · se reemplaza por panorama.jpg</text>`;
+}
+
+function armar(){
+  E = esCelu()? ESCENAS.celu : ESCENAS.compu;
+  const pano=$('#pano');
+  world.style.width=E.w+'px'; world.style.height=E.h+'px';
+  pano.onerror=()=>{ // sin foto: en compu se ve el boceto; en celu, la panorámica de compu
+    if(E===ESCENAS.celu){E=ESCENAS.compu;world.style.width=E.w+'px';world.style.height=E.h+'px';pano.src=E.src;armarCapas();layout();return}
+    usaBoceto=true;world.classList.add('sin-foto');$('#boceto').setAttribute('viewBox','0 0 2100 900');$('#boceto').innerHTML=boceto();
+  };
+  pano.src=E.src;
+  armarCapas();
+}
+function armarCapas(){
+  const fx=$('#fx'); fx.setAttribute('viewBox',`0 0 ${E.w} ${E.h}`);
+  const d='M'+E.ruta.map(p=>p.join(' ')).join(' L');
+  const [cx,cy]=E.chimenea;
+  fx.innerHTML=`<defs><mask id="dibuja"><path id="rm" class="ruta-mask" d="${d}" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></mask></defs>
+   <path class="ruta" d="${d}" mask="url(#dibuja)"/>
+   <g class="humo">${[0,1,2,3,4,5].map(i=>`<circle cx="${cx}" cy="${cy}" r="18" style="animation-delay:${i}s"/>`).join('')}</g>
+   <g id="camion"><rect x="-26" y="-14" width="34" height="20" rx="3" fill="#F4F1EA"/><rect x="8" y="-10" width="16" height="16" rx="3" fill="#1A4D3A"/><circle cx="-16" cy="8" r="5" fill="#222"/><circle cx="14" cy="8" r="5" fill="#222"/>
+     <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" path="${d}"/></g>
+   <g class="humo">${[0,1,2].map(i=>`<circle r="8" style="animation-duration:3s;animation-delay:${i}s"><animateMotion dur="16s" repeatCount="indefinite" path="${d}"/></circle>`).join('')}</g>`;
+  $('#chips').innerHTML=E.chips.map((c,i)=>`<div class="chip" style="left:${c.x}px;top:${c.y}px;animation-delay:${i*.7}s">${ICON[c.i]}${c.t}<small>${c.s}</small></div>`).join('');
+  const n=$('#nubes');n.innerHTML='';
+  for(let i=0;i<7;i++){const w=260+Math.random()*320;n.insertAdjacentHTML('beforeend',`<span class="nube" style="width:${w}px;height:${w*.32}px;top:${8+Math.random()*60}%;animation-duration:${70+Math.random()*60}s;animation-delay:-${Math.random()*90}s"></span>`)}
+}
+
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), seg=(p,a,b)=>clamp((p-a)/(b-a)), ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, lerp=(a,b,t)=>a+(b-a)*t;
+let p=0;
+function layout(){
+  const W=stage.clientWidth,H=stage.clientHeight;
+  const base=Math.max(W/E.w,H/E.h);
+  const z=ease(seg(p,.28,.56));                       // empuje hacia la panadería
+  const k=base*lerp(1,3.4,z);
+  const fx0=E.w/2, fy0=E.h*(esCelu()?.55:.5);
+  const fx=lerp(fx0,E.panaderia[0],z), fy=lerp(fy0,E.panaderia[1],z);
+  world.style.transform=`translate(${W/2-fx*k}px,${H/2-fy*k}px) scale(${k})`;
+}
+function frame(){
+  const r=hero.getBoundingClientRect(); p=clamp(-r.top/(r.height-innerHeight));
+  layout();
+  $('#rm').style.strokeDashoffset=1-ease(seg(p,.02,.26));
+  $('#chips').style.opacity=1-seg(p,.28,.36);
+  const calle=$('#t-calle'),most=$('#t-mostrador'),vec=$('#t-vecinos');
+  calle.style.opacity=seg(p,.46,.56)*(1-seg(p,.62,.70)); calle.style.transform=`scale(${lerp(1.15,1,seg(p,.46,.70))})`;
+  most.style.opacity=seg(p,.62,.70)*(1-seg(p,.84,.90)); most.style.transform=`scale(${lerp(1.08,1,seg(p,.62,.88))})`;
+  vec.style.opacity=seg(p,.84,.90); vec.style.transform=`scale(${lerp(1.06,1,seg(p,.84,1))})`;
+  $('#op-tacho').classList.toggle('on',p>.68); $('#op-vecino').classList.toggle('on',p>.72);
+  $('#op-tacho').classList.toggle('off',p>.78); $('#op-vecino').classList.toggle('win',p>.78);
+  $('#final').classList.toggle('on',p>.9);
+  const fase=p<.3?0:p<.62?1:p<.86?2:3;
+  ['c0','c1','c2','c3'].forEach((id,i)=>$('#'+id).classList.toggle('on',i===fase));
+  $('#pista').style.opacity=p<.04?.8:0;
+  if(p>.4) cargarTomas();
+}
+let tomas=false;
+function cargarTomas(){ if(tomas)return; tomas=true;
+  document.querySelectorAll('img[data-src]').forEach(im=>{im.onerror=()=>im.closest('.toma')?.classList.add('sin-foto');im.src=im.dataset.src});}
+
+armar();
+if(reduce){document.documentElement.classList.add('estatico');p=0;layout();cargarTomas();$('#rm').style.strokeDashoffset=0;$('#pista').remove()}
+else{let tk=false;addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(()=>{frame();tk=false})}},{passive:true});
+ addEventListener('resize',()=>{const c=esCelu();if((E===ESCENAS.celu)!==c&&!usaBoceto)armar();frame()});frame();}
+</script>
+</body>
+</html>
