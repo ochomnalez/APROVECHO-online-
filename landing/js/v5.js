@@ -373,6 +373,7 @@ APV5.scene('anticipa', function (ctx) {
     });
     // clic de encastre: tablero de una sola pieza
     tl.to(full, { opacity: 1, duration: .3, ease: 'none' }, 4.1)
+      .to(tiles, { opacity: 0, duration: .1, ease: 'none' }, 4.45)
       .to(frame, { opacity: 1, duration: .5, ease: 'none' }, 4.1)
       .to(cap, { opacity: 1, duration: .5, ease: 'none' }, 4.3)
       .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22, ease: 'power2.out', transformOrigin: '50% 50%' }, 4.1)

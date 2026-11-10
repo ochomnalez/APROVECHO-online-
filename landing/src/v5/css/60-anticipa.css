@@ -3,7 +3,8 @@
 .an-board{position:relative;width:100%;aspect-ratio:1440/900}
 /* imagen completa debajo: tapa cualquier costura entre piezas cuando el tablero está armado */
 .an-full{position:absolute;inset:0;width:100%;height:100%;border-radius:16px;display:block}
-.an-t{position:absolute;width:33.3334%;height:50%}
+.an-t{position:absolute;width:33.3334%;height:50%;visibility:hidden}
+html.motion .an-t{visibility:visible}
 .an-t__sh,.an-t__img{position:absolute;inset:0;border-radius:16px}
 .an-t__sh{box-shadow:0 22px 40px rgba(0,0,0,.2);opacity:0}
 .an-t__img{background:url(../img/app/intelligence.webp) 0 0/300% 200% no-repeat}
