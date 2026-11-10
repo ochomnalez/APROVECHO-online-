@@ -269,10 +269,10 @@ function Tarjeta({ src, x, y, w, h, desde = 0, hasta, desdeVideo = 0, cortes, ch
 }
 
 // ---------- Escenas (todo se sincroniza con la voz real: src/voz-tiempos.json) ----------
-const OFFS = { e1: 0.3 }; const OFF = 0.8; // la voz entra un poco después de que aparece cada escena (así se ve la pantalla antes)
+const OFFS = { e1: 0.25 }; const OFF = 0.5; // la voz entra un poco después de que aparece cada escena (así se ve la pantalla antes)
 const offDe = (k) => (OFFS[k] ?? OFF);
 const segsDe = (k) => VT[k].segs.map((x) => ({ t: x.t, a: x.a + offDe(k), b: x.b + offDe(k) }));
-const durDe = (k, min = 0, cola = 1.4) => Math.max(min, VT[k].dur + offDe(k) + cola);
+const durDe = (k, min = 0, cola = 0.8) => Math.max(min, VT[k].dur + offDe(k) + cola);
 const Voz = ({ k }) => (VT[k] && VT[k].audio === false ? null : <Sequence from={s(offDe(k))}><Audio src={staticFile(`voz2/${VT[k] ? k : 'e7'}.mp3`)} /></Sequence>);
 const CLIPS = { menu: true };
 const REV = [390, 844]; // tamaño de la pantalla del celular en las capturas
@@ -299,7 +299,7 @@ function E1() {
 }
 
 function E2() {
-  const sg = segsDe('e2'); const at = (i, o = 0) => sg[i].a + o;
+  const sg = segsDe('e2'); const at = (i, o = 0) => sg[i].a + o * 0.85;
   return (
     <AbsoluteFill>
       <Fondo k={1} />
@@ -318,7 +318,7 @@ function E2() {
 }
 
 function ColumnaMenu({ off }) {
-  const sg = segsDe('e2b'); const at = (i, o = 0) => sg[i].a + o;
+  const sg = segsDe('e2b'); const at = (i, o = 0) => sg[i].a + o * 0.85;
   return (
     <div style={{ position: 'absolute', left: 140, top: 150, width: 900 }}>
       <Capitulo n="1" texto="Tu carta, con una foto" />
@@ -328,7 +328,7 @@ function ColumnaMenu({ off }) {
   );
 }
 function E2b() {
-  const sg = segsDe('e2b'); const at = (i, o = 0) => sg[i].a + o; const tI = at(0, 2.6);
+  const sg = segsDe('e2b'); const at = (i, o = 0) => sg[i].a + o * 0.85; const tI = at(0, 2.6);
   return (
     <AbsoluteFill>
       <Fondo k={6} />
@@ -344,7 +344,7 @@ function E2b() {
 }
 
 function E3a() {
-  const sg = segsDe('e3a'); const at = (i, o = 0) => sg[i].a + o; const fin = durDe('e3a', 7.4, 1.6) - 0.4;
+  const sg = segsDe('e3a'); const at = (i, o = 0) => sg[i].a + o * 0.85; const fin = durDe('e3a', 5.9, 0.9) - 0.4;
   return (
     <AbsoluteFill>
       <Fondo k={2} />
@@ -371,7 +371,7 @@ function ColumnaE3b({ r }) {
   );
 }
 function E3b() {
-  const at = (i, o = 0) => sg3b[i].a + o;
+  const at = (i, o = 0) => sg3b[i].a + o * 0.85;
   return (
     <AbsoluteFill>
       <Fondo k={7} />
@@ -394,7 +394,7 @@ function E3b() {
 }
 
 function E4() {
-  const sg = segsDe('e4'); const at = (i, o = 0) => sg[i].a + o;
+  const sg = segsDe('e4'); const at = (i, o = 0) => sg[i].a + o * 0.85;
   return (
     <AbsoluteFill>
       <Fondo k={3} />
@@ -417,7 +417,7 @@ function E4() {
 }
 
 function E5() {
-  const sg = segsDe('e5'); const at = (i, o = 0) => sg[i].a + o;
+  const sg = segsDe('e5'); const at = (i, o = 0) => sg[i].a + o * 0.85;
   return (
     <AbsoluteFill>
       <Fondo k={4} />
@@ -458,7 +458,7 @@ function FotoSmart({ x, y, w, h, desde, hasta }) {
 }
 
 function E6() {
-  const sg = segsDe('e6'); const at = (i, o = 0) => sg[i].a + o;
+  const sg = segsDe('e6'); const at = (i, o = 0) => sg[i].a + o * 0.85;
   const tC = Math.min(at(0, 6.2), durDe('e6') - 3.2);
   return (
     <AbsoluteFill>
@@ -524,7 +524,7 @@ function Sucursales() {
 
 const K7A = VT.e7a ? 'e7a' : 'e7'; // mientras no exista la voz nueva, se usa la anterior
 function E7a() {
-  const sg = segsDe(K7A); const at = (i, o = 0) => sg[i].a + o; const L1 = sg[1].b - sg[1].a; const tA = at(1, -0.3);
+  const sg = segsDe(K7A); const at = (i, o = 0) => sg[i].a + o * 0.85; const L1 = sg[1].b - sg[1].a; const tA = at(1, -0.3);
   const f = useCurrentFrame();
   return (
     <AbsoluteFill>
@@ -550,7 +550,7 @@ function E7a() {
 }
 
 function E7b() {
-  const sg = segsDe('e7b'); const at = (i, o = 0) => sg[i].a + o; const L1 = sg[1].b - sg[1].a;
+  const sg = segsDe('e7b'); const at = (i, o = 0) => sg[i].a + o * 0.85; const L1 = sg[1].b - sg[1].a;
   const f = useCurrentFrame();
   return (
     <AbsoluteFill>
@@ -581,7 +581,7 @@ function E9() {
         <Img src={staticFile(SELLO)} style={{ width: 360, height: 360, transform: `scale(${0.7 + sc * 0.3}) rotate(${(1 - sc) * -20}deg)`, opacity: Math.min(1, sc * 2) }} />
         <div style={{ marginTop: 36 }}><Cinetico texto="Ya sabés cómo funciona." tam={76} color={PAPEL} desde={12} /></div>
         <div style={{ marginTop: 34, padding: '20px 46px', borderRadius: 999, background: MENTA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 36, opacity: ease(f, 36, 50) }}>Sumá tu comercio</div>
-        <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Wholesome”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
+        <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Carefree”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
       </AbsoluteFill>
       <Voz k="e9" /><Subs segs={sg} />
     </AbsoluteFill>
@@ -589,8 +589,8 @@ function E9() {
 }
 
 const ESCENAS = [
-  [E1, Math.max(5.2, VT.e1.dur + offDe('e1') + 0.5)], [E2, durDe('e2', 5.0)], [E2b, durDe('e2b', 7.5)], [E3a, durDe('e3a', 7.8, 1.6)], [E3b, Math.max(durDe('e3b'), tD3b + 6.0)],
-  [E4, durDe('e4', 0, 1.6)], [E5, durDe('e5', 0, 1.6)], [E6, durDe('e6', 0, 1.6)], [E7a, durDe(K7A, 11, 1.4)], [E7b, durDe('e7b', 8, 1.6)], [E9, durDe('e9', 5.6)],
+  [E1, Math.max(4.6, VT.e1.dur + offDe('e1') + 0.4)], [E2, durDe('e2', 4.0)], [E2b, durDe('e2b', 6.0)], [E3a, durDe('e3a', 6.2, 0.9)], [E3b, Math.max(durDe('e3b'), tD3b + 5.6)],
+  [E4, durDe('e4', 0.0, 0.9)], [E5, durDe('e5', 0.0, 0.9)], [E6, durDe('e6', 0.0, 0.9)], [E7a, durDe(K7A, 9.0, 0.8)], [E7b, durDe('e7b', 6.4, 0.9)], [E9, durDe('e9', 4.5)],
 ];
 const TRANS = [() => wipe({ direction: 'from-left' }), () => slide({ direction: 'from-right' }), () => fade(), () => slide({ direction: 'from-bottom' }), () => slide({ direction: 'from-right' }), () => fade(), () => slide({ direction: 'from-right' }), () => wipe({ direction: 'from-right' }), () => fade(), () => fade()];
 export const DURACION_ONB2 = ESCENAS.reduce((n, [, d]) => n + d, 0) + 0.1; // las transiciones se solapan: el total es la suma de las escenas
@@ -598,7 +598,7 @@ export const DURACION_ONB2 = ESCENAS.reduce((n, [, d]) => n + d, 0) + 0.1; // la
 export function Onboarding2() {
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
-      <Audio src={staticFile('musica/wholesome-largo.mp3')} volume={(f) => 0.2 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
+      <Audio src={staticFile('musica/carefree-largo.mp3')} volume={(f) => 0.26 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
       <TransitionSeries>
         {ESCENAS.map(([C, seg], i) => (
           <React.Fragment key={i}>

@@ -11,3 +11,4 @@
 - **Voz v3:** misma voz (`es-419-training-6`) con guion más conversacional, por pedido de Octavio.
 - **Música v4:** "Wholesome", Kevin MacLeod (incompetech.com), CC BY 4.0 (reemplaza a "Inspired").
 - **Clips v4:** menú (`menu.mp4`) y gerente con dashboard (`N-gerente.mp4`) generados con Gemini Omni 1.2 desde las fotos de Octavio. La balanza con la tablet va como foto (`fotos/K-smart.jpg`), no como clip.
+- **Música v5:** "Carefree", Kevin MacLeod (incompetech.com), CC BY 4.0. Voz acelerada (pausas largas recortadas y 7% más rápida) a partir de las tomas originales en `public/voz2-orig/`.
