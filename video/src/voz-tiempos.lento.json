@@ -1,0 +1,189 @@
+{
+ "e1": {
+  "dur": 5.08,
+  "a0": 0.22,
+  "a1": 4.78,
+  "segs": [
+   {
+    "t": "Bienvenido a APROVECHO.",
+    "a": 0.22,
+    "b": 1.54
+   },
+   {
+    "t": "Acá vas a ver cómo empezar a usar la app, paso a paso.",
+    "a": 2.08,
+    "b": 4.78
+   }
+  ]
+ },
+ "e2": {
+  "dur": 2.72,
+  "a0": 0.28,
+  "a1": 2.34,
+  "segs": [
+   {
+    "t": "Entrás como comercio y elegís tu plan.",
+    "a": 0.28,
+    "b": 2.34
+   }
+  ]
+ },
+ "e2b": {
+  "dur": 5.04,
+  "a0": 0.24,
+  "a1": 4.73,
+  "segs": [
+   {
+    "t": "Después le sacás una foto a tu menú, y la app lee los productos y los precios por vos.",
+    "a": 0.24,
+    "b": 4.73
+   }
+  ]
+ },
+ "e3a": {
+  "dur": 6.52,
+  "a0": 0.26,
+  "a1": 6.22,
+  "segs": [
+   {
+    "t": "Cuando te sobra algo, otra foto.",
+    "a": 0.26,
+    "b": 2.29
+   },
+   {
+    "t": "La app reconoce qué es y cuántos hay, y te arma una propuesta.",
+    "a": 2.87,
+    "b": 6.22
+   }
+  ]
+ },
+ "e3b": {
+  "dur": 9.68,
+  "a0": 0.34,
+  "a1": 9.38,
+  "segs": [
+   {
+    "t": "Vos elegís el horario de retiro.",
+    "a": 0.34,
+    "b": 1.74
+   },
+   {
+    "t": "Marcás con un clic las condiciones, como sin TACC o vegetariano, y confirmás las alergias posibles.",
+    "a": 2.12,
+    "b": 7.69
+   },
+   {
+    "t": "Publicás, y listo.",
+    "a": 8.2,
+    "b": 9.38
+   }
+  ]
+ },
+ "e4": {
+  "dur": 8.56,
+  "a0": 0.0,
+  "a1": 8.23,
+  "segs": [
+   {
+    "t": "El vecino reserva y paga desde la app.",
+    "a": 0.0,
+    "b": 2.04
+   },
+   {
+    "t": "Te muestra un código QR, lo escaneás en el local y listo.",
+    "a": 2.5,
+    "b": 5.81
+   },
+   {
+    "t": "Cobrás cada venta, sin abono fijo.",
+    "a": 6.29,
+    "b": 8.23
+   }
+  ]
+ },
+ "e5": {
+  "dur": 9.64,
+  "a0": 0.31,
+  "a1": 9.23,
+  "segs": [
+   {
+    "t": "En Impacto ves lo que recuperaste, los kilos rescatados y la huella de carbono asociada, siempre como estimación.",
+    "a": 0.31,
+    "b": 6.77
+   },
+   {
+    "t": "Y bajás tu informe en Excel o PDF.",
+    "a": 7.16,
+    "b": 9.23
+   }
+  ]
+ },
+ "e6": {
+  "dur": 12.28,
+  "a0": 0.3,
+  "a1": 11.89,
+  "segs": [
+   {
+    "t": "Si querés medir con precisión, sumás la estación Smart: una balanza y una tablet con cámara.",
+    "a": 0.3,
+    "b": 5.96
+   },
+   {
+    "t": "Apoyás lo que sobró, la balanza lo pesa, y vos decidís si se vende o se descarta.",
+    "a": 6.64,
+    "b": 11.89
+   }
+  ]
+ },
+ "e9": {
+  "dur": 4.72,
+  "a0": 0.24,
+  "a1": 4.39,
+  "segs": [
+   {
+    "t": "Ya sabés cómo funciona.",
+    "a": 0.24,
+    "b": 1.36
+   },
+   {
+    "t": "Sumá tu comercio y empezá a aprovechar lo que sobra.",
+    "a": 1.71,
+    "b": 4.39
+   }
+  ]
+ },
+ "e7b": {
+  "dur": 8.56,
+  "a0": 0.23,
+  "a1": 8.27,
+  "segs": [
+   {
+    "t": "Y te sugiere qué hacer.",
+    "a": 0.23,
+    "b": 1.37
+   },
+   {
+    "t": "Por ejemplo: hacer 18 medialunas menos los martes, o publicar los packs antes de las 18.",
+    "a": 1.95,
+    "b": 8.27
+   }
+  ]
+ },
+ "e7a": {
+  "dur": 8.96,
+  "a0": 0.27,
+  "a1": 8.61,
+  "segs": [
+   {
+    "t": "Y si tenés varias sucursales, sumás Intelligence.",
+    "a": 0.27,
+    "b": 2.96
+   },
+   {
+    "t": "Ves todos tus locales en un solo panel, con la huella de carbono y la huella hídrica.",
+    "a": 3.69,
+    "b": 8.61
+   }
+  ]
+ }
+}
