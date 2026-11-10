@@ -9,3 +9,5 @@
 - **Voz en off v2:** Gemini TTS (`gemini-3.8-flash-tts`), voz `es-419-training-6` (español argentino, 31 años, tono objetivo), generada con la clave de Google de Octavio. Archivos en `video/public/voz2/`; tiempos de cada frase en `video/src/voz-tiempos.json` (generados por `scripts/voz-por-escena.py`). Sale centavos por minuto.
 - **Clip B2 (Intelligence, tomates 0,76 kg):** generado el 9/11 con Gemini Omni 1.2 desde `fotos-base/B2-intelligence-tomates-076kg.jpg`. Las sucursales del capítulo de Intelligence (San Isidro, Martínez, Olivos) y sus porcentajes salen del prototipo (datos de ejemplo); las fotos de cada sucursal son A2, E y F.
 - **Voz v3:** misma voz (`es-419-training-6`) con guion más conversacional, por pedido de Octavio.
+- **Música v4:** "Wholesome", Kevin MacLeod (incompetech.com), CC BY 4.0 (reemplaza a "Inspired").
+- **Clips v4:** menú (`menu.mp4`) y gerente con dashboard (`N-gerente.mp4`) generados con Gemini Omni 1.2 desde las fotos de Octavio. La balanza con la tablet va como foto (`fotos/K-smart.jpg`), no como clip.
