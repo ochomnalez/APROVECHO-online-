@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap"><link rel="stylesheet" href="estructura.css"><style>
+.sub{position:absolute;left:0;right:0;top:84px;height:56px;border-bottom:1px solid #e3e8e5;display:flex;gap:4px;padding:0 40px;align-items:center;background:#fff}
+.sub span{padding:8px 14px;border-radius:99px;font-weight:700;font-size:14px;color:#444}.sub .on{background:var(--forest);color:#fff}
+.aviso{position:absolute;left:40px;top:160px;background:var(--mint);border-left:5px solid var(--forest);padding:10px 16px;border-radius:8px;font-size:14.5px}
+.big{position:absolute;display:grid;gap:2px}
+.big b{font-family:'Bricolage Grotesque';font-weight:800;font-size:56px;letter-spacing:-.04em;color:var(--forest);font-variant-numeric:tabular-nums;line-height:1}
+.big span{font-size:14.5px;color:#333;max-width:210px}
+.big small{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#777}
+table{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid #e3e8e5}th:first-child,td:first-child{text-align:left}
+th{font-weight:700;color:var(--forest)}
+.note{position:absolute;left:40px;bottom:26px;width:1100px;font-size:12.5px;color:#555;line-height:1.45}
+</style></head><body>
+<section class="screen">
+<div class="nav"><img class="logo" src="img/sello.png"><div class="menu"><span>Quiénes somos</span><span>Cómo funciona</span><span>Planes</span><span>Mirá cuánto te queda</span><span class="on">Inversores</span><span>Preguntas</span></div><div class="sp"></div><span class="pill out">⬇ Descargar app</span><span class="pill g">Sumá tu comercio</span></div>
+<div class="sub"><span>Tesis</span><span>Mercado</span><span>Modelo</span><span class="on">Números</span><span>Validación</span><span>Roadmap</span><span>Equipo</span><span>Preguntas</span><span>Contacto</span></div>
+<p class="aviso"><b>Proyecciones preliminares.</b> Solo Argentina, en USD. Supuestos del equipo a validar con datos reales desde 2027. No son resultados.</p>
+<div class="big" style="left:40px;top:230px"><small>Proyectado</small><b>USD 112.611</b><span>de financiamiento entre 2026 y 2028</span></div>
+<div class="big" style="left:420px;top:230px"><small>Proyectado</small><b>3,9 años</b><span>de payback (recupera lo invertido en 2030)</span></div>
+<div class="big" style="left:740px;top:230px"><small>Proyectado</small><b>36,7%</b><span>TIR · VAN USD 17.004 (WACC 30%)</span></div>
+<div class="big" style="left:1040px;top:230px"><small>Proyectado</small><b>USD 0,61</b><span>de margen por pack · LTV/CAC de 4,1 a 6,9</span></div>
+<!-- gráfico: ingresos vs costos 2027-2031, escala única 0..900 mil -->
+<svg style="position:absolute;left:40px;top:380px" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Ingresos y costos 2027 a 2031 en miles de dólares">
+<g stroke="#e3e8e5"><line x1="50" y1="40" x2="620" y2="40"/><line x1="50" y1="120" x2="620" y2="120"/><line x1="50" y1="200" x2="620" y2="200"/><line x1="50" y1="280" x2="620" y2="280"/><line x1="50" y1="360" x2="620" y2="360" stroke="#111"/></g>
+<g font-size="12" fill="#555" font-family="DM Sans"><text x="44" y="364" text-anchor="end">0</text><text x="44" y="284" text-anchor="end">200</text><text x="44" y="204" text-anchor="end">400</text><text x="44" y="124" text-anchor="end">600</text><text x="44" y="44" text-anchor="end">800</text><text x="50" y="18" font-weight="700" fill="#111">Ingresos y costos, miles de USD</text></g>
+<!-- escala: 0.4 px por mil USD -->
+<g font-family="DM Sans" font-size="12" text-anchor="middle" fill="#111">
+<rect x="68" y="331.5" width="40" height="28.5" fill="#1A4D3A"/><rect x="112" y="330.6" width="40" height="29.4" fill="#9BB8AA"/><text x="110" y="378">2027</text>
+<rect x="182" y="274.5" width="40" height="85.5" fill="#1A4D3A"/><rect x="226" y="267.4" width="40" height="92.6" fill="#9BB8AA"/><text x="224" y="378">2028</text>
+<rect x="296" y="175.7" width="40" height="184.3" fill="#1A4D3A"/><rect x="340" y="213.5" width="40" height="146.5" fill="#9BB8AA"/><text x="338" y="378">2029</text>
+<rect x="410" y="97.9" width="40" height="262.1" fill="#1A4D3A"/><rect x="454" y="184.4" width="40" height="175.6" fill="#9BB8AA"/><text x="452" y="378">2030</text>
+<rect x="524" y="17.3" width="40" height="342.7" fill="#1A4D3A"/><rect x="568" y="143.5" width="40" height="216.5" fill="#9BB8AA"/><text x="566" y="378">2031</text>
+</g>
+<g font-family="DM Sans" font-size="12.5"><rect x="300" y="6" width="12" height="12" fill="#1A4D3A"/><text x="317" y="17">Ingresos</text><rect x="390" y="6" width="12" height="12" fill="#9BB8AA"/><text x="407" y="17">Costos</text></g>
+</svg>
+<table style="position:absolute;left:720px;top:380px;width:680px"><thead><tr><th>USD</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th></tr></thead><tbody>
+<tr><td>Ingresos</td><td>71.236*</td><td>213.739</td><td>460.846</td><td>655.124</td><td>856.857</td></tr>
+<tr><td>Costos</td><td>73.665</td><td>231.466</td><td>366.367</td><td>439.033</td><td>541.229</td></tr>
+<tr><td>EBITDA</td><td>−2.429</td><td>−17.727</td><td>94.479</td><td>216.091</td><td>315.629</td></tr>
+<tr><td>Resultado neto</td><td>−13.983</td><td>−39.131</td><td>41.379</td><td>117.478</td><td>175.939</td></tr>
+<tr><td>Comercios activos</td><td>525</td><td>1.201</td><td>2.083</td><td>2.299</td><td>2.408</td></tr>
+<tr><td>Usuarios activos</td><td>26.247</td><td>70.437</td><td>149.949</td><td>198.900</td><td>238.795</td></tr>
+</tbody></table>
+<p class="note" style="left:720px;top:700px;width:680px;bottom:auto">* C5: los abonos de 2027 cuentan 12 meses aunque Smart arranca en Q2 e Intelligence en Q3 (pilotos); el ingreso real sería menor (≈ USD 57.100, estimación del equipo). C6: la inversión supone renovar las estaciones cada año. C7: precio del pack y packs por usuario vienen de Too Good To Go; bajas del 30% y market share son supuestos a medir.</p>
+<div class="fab"><i class="ig"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#111"/></svg></i><i class="wa"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z"/></svg></i></div>
+</section></body></html>

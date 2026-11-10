@@ -776,3 +776,26 @@ input[type=range]{height:44px}
 .fs--tab{width:56%;left:0;top:4%}
 .fs--arm{width:100%;height:100%;left:0;top:0;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25));transform:translate3d(calc(var(--ry) * -.4),0,20px)}
 .floatstage__shadow{left:30%;right:0;bottom:-2%}
+
+/* ---------- Portada v3: propósito ---------- */
+h1{font-size:clamp(2.3rem,6.2vw,4.6rem);line-height:.98}
+.pilares{display:grid;gap:12px;margin-top:var(--space-5);padding:0}
+.pilares li{display:grid;gap:2px;border-left:4px solid var(--palette-forest);padding:2px 0 2px 14px}
+.pilares b{font-family:var(--font-display);font-size:1.15rem;letter-spacing:-.01em;color:#0b0b0b}
+.pilares span{color:#333;font-size:.98rem;max-width:46ch}
+.proposito{margin-top:var(--space-5);max-width:54ch;color:#333;font-size:1rem}
+.proposito b{color:#0b0b0b}
+@media(min-width:900px){.pilares{grid-template-columns:repeat(3,1fr);gap:18px}.pilares span{font-size:.92rem}}
+.nav__app{display:none}
+.nav__app-m{display:block}
+@media(min-width:1180px){.nav__app{display:inline-flex}.nav__app-m{display:none}}
+
+/* ---------- Botones flotantes ---------- */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;display:flex;flex-direction:column;gap:12px}
+.fab__btn{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.28);transition:transform .15s}
+.fab__btn:hover{transform:translateY(-2px) scale(1.04)}
+.fab__btn svg{width:28px;height:28px}
+.fab__btn--wa{background:#14803C;color:#fff}
+.fab__btn--ig{background:#fff;color:#0b0b0b;border:2px solid #0b0b0b}
+@media(max-width:899px){.fab{bottom:calc(92px + env(safe-area-inset-bottom))}}
+.toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;background:#0b0b0b;color:#fff;padding:14px 22px;border-radius:99px;font-weight:600;max-width:calc(100vw - 32px);text-align:center;box-shadow:0 14px 30px rgba(0,0,0,.3)}

@@ -35,7 +35,9 @@
       <a href="#suma">Sumá tu comercio</a>
       <a href="#preguntas">Preguntas</a>
       <a href="#inversores">Inversores</a>
+      <a href="#consumidores" data-app class="nav__app-m">Descargar app</a>
     </nav>
+    <a class="btn btn--sm btn--ghost nav__app" href="#consumidores" data-app>Descargar app</a>
     <a class="btn btn--sm nav__cta" href="#alta" data-cta="nav">Sumá tu comercio</a>
     <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu"><span class="sr">Menú</span><i></i><i></i></button>
   </div>
@@ -47,13 +49,21 @@
 <section class="hero" id="quienes-somos">
   <div class="wrap hero__in">
     <div class="hero__copy">
-      <p class="eyebrow">Quiénes somos</p>
-      <h1>Menos desperdicio, <em>más aprovecho.</em></h1>
-      <p class="lead">Somos APROVECHO. Ayudamos a panaderías, cafés y restaurantes a vender lo que les sobra y a medir para que cada vez sobre menos.</p>
+      <p class="eyebrow">Quiénes somos · Menos desperdicio, más aprovecho</p>
+      <h1>Lo que sobra hoy vale. <em>Y mañana, que sobre menos.</em></h1>
+      <p class="lead">APROVECHO es la plataforma que le permite al comercio vender lo que le sobra con una foto y usar esos datos para que le sobre menos.</p>
+      <ul class="pilares" aria-label="Lo que nos mueve">
+        <li><b>Recuperar valor</b><span>Lo que ibas a tirar vuelve a la caja, y tus vecinos comen rico a mitad de precio.</span></li>
+        <li><b>Entender el excedente</b><span>Cada venta registra qué sobró, cuánto y cuándo.</span></li>
+        <li><b>Reducir el desperdicio</b><span>Con esos datos, producir y comprar lo justo.</span></li>
+      </ul>
+      <p class="proposito"><b>Nuestro propósito:</b> que cada vez sobre menos comida en los comercios. Primero recuperando su valor; después, con los datos, evitando que sobre.</p>
       <div class="hero__actions">
         <a class="btn btn--lg" href="#alta" data-cta="hero">Sumá tu comercio</a>
-        <a class="btn btn--lg btn--ghost" href="#equipo">Conocé al equipo</a>
+        <a class="btn btn--lg btn--ghost" href="#consumidores" data-app>Descargar app</a>
+        <a class="link" href="#equipo">Conocé al equipo</a>
       </div>
+      <!-- SUPUESTO: faltan los valores explícitos del equipo y la motivación personal de los fundadores; Octavio los completa (ver handoff). -->
     </div>
     <div class="hero__art" aria-label="Fotos de comida real y el ciclo Recuperá, Medí, Anticipá">
       <div class="arch arch--1"><img src="img/foto/mercado.webp" width="1400" height="933" alt="Puesto de verduras y frutas coloridas en un mercado" fetchpriority="high"></div>
@@ -531,6 +541,11 @@
 </footer>
 
 
+<div class="fab" aria-label="Contacto rápido">
+  <a class="fab__btn fab__btn--ig" href="#alta" data-social="instagram" aria-label="Instagram de APROVECHO"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a class="fab__btn fab__btn--wa" href="#alta" data-social="whatsapp" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6a9.4 9.4 0 0 0-8 14.3L2.7 21.4l4.6-1.2A9.4 9.4 0 1 0 12 2.6zm0 1.8a7.6 7.6 0 1 1-3.9 14.1l-.3-.2-2.7.7.7-2.6-.2-.3A7.6 7.6 0 0 1 12 4.4z"/><path d="M9 7.9c.2-.4.5-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.1-.1.3 0 .5.5.9 1.300 1.600 2.200 2 .2.1.4.1.5-.1l.6-.7c.1-.2.3-.2.5-.1l1.600.8c.2.1.3.2.3.4 0 .5-.2 1.100-.8 1.500-.5.4-1.300.5-2.500.1-2.800-1-4.500-3.600-4.800-4-.3-.4-.9-1.300-.9-2.100 0-.7.4-1.200.6-1.500z"/></svg></a>
+</div>
+<div class="toast" role="status" aria-live="polite" data-toast hidden></div>
 <div class="sticky-cta" data-sticky><a class="btn btn--lg" href="#alta" data-cta="sticky">Sumá tu comercio</a></div>
 
 <script src="js/forms.js?v=20261109" defer></script>

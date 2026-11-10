@@ -3,7 +3,10 @@
   'use strict';
 
   // ===== CONFIGURACIÓN (completar cuando Octavio confirme) =====
-  var WHATSAPP_URL = ''; // ej. 'https://wa.me/54911XXXXXXXX'. Vacío = el link lleva al formulario.
+  // Si una variable está vacía, el botón no se rompe: lleva al formulario de contacto / lista de espera con un aviso.
+  var WHATSAPP_URL = ''; // ej. 'https://wa.me/54911XXXXXXXX'
+  var INSTAGRAM_URL = ''; // ej. 'https://www.instagram.com/aprovecho...'
+  var APP_URL = ''; // dónde se descarga o abre la app (todavía no está publicada)
   // =============================================================
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -133,6 +136,20 @@
     var hero = $('.hero'); if (!hero || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (es) { hero.classList.toggle('is-offscreen', !es[0].isIntersecting); }).observe(hero);
   }, 'hero-pausa');
+
+  // Botones flotantes y Descargar app: links desde las variables de arriba
+  safe(function () {
+    var toast = $('[data-toast]'), tt = null;
+    function aviso(msg) {
+      if (!toast) return;
+      toast.textContent = msg; toast.hidden = false;
+      clearTimeout(tt); tt = setTimeout(function () { toast.hidden = true; }, 4200);
+    }
+    function ext(a, url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+    $$('[data-social="whatsapp"]').forEach(function (a) { if (WHATSAPP_URL) ext(a, WHATSAPP_URL); else a.addEventListener('click', function () { aviso('Muy pronto: por ahora dejanos tus datos y te escribimos.'); }); });
+    $$('[data-social="instagram"]').forEach(function (a) { if (INSTAGRAM_URL) ext(a, INSTAGRAM_URL); else a.addEventListener('click', function () { aviso('Muy pronto: por ahora dejanos tus datos y te escribimos.'); }); });
+    $$('[data-app]').forEach(function (a) { if (APP_URL) ext(a, APP_URL); else a.addEventListener('click', function () { aviso('La app llega pronto. Dejá tu zona y tu email y te avisamos.'); }); });
+  }, 'botones');
 
   // Regiones con scroll horizontal: accesibles con teclado
   safe(function () {
