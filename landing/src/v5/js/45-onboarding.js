@@ -1,7 +1,7 @@
 /* APROVECHO · landing v5 · Recorrido completo (video de onboarding).
    El video (13,7 MB) NO se descarga hasta que la persona toca el play (preload="none").
    Con html.motion: el marco entra suave y el póster se asienta con un leve escalado. */
-APV5.scene('onboarding', function (ctx) {
+(function () {
   'use strict';
   var root = document.getElementById('recorrido');
   if (!root) return;
@@ -58,18 +58,28 @@ APV5.scene('onboarding', function (ctx) {
   });
   if (cta) cta.addEventListener('click', function () { if (!video.paused) video.pause(); });
 
-  // ---------- con movimiento ----------
-  var g = ctx.gsap;
-  function enter() {
-    g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
-    g.set(poster, { scale: 1.07 });
-    g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
-      .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
-      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
+  // No reanudar solo: al salir del video o cambiar de pestaña se detiene el sonido.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting && !video.paused) video.pause();
+    }, { threshold: 0.15 }).observe(frame);
   }
-  ctx.mm.add(ctx.desktop, enter);
-  ctx.mm.add(ctx.mobile, function () {
-    g.set(frame, { opacity: 0, y: 28 });
-    g.to(frame, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: frame, start: 'top 88%', once: true } });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) video.pause(); });
+
+  // Los controles son independientes del movimiento y funcionan también sin GSAP.
+  APV5.scene('onboarding', function (ctx) {
+    var g = ctx.gsap;
+    function enter() {
+      g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
+      g.set(poster, { scale: 1.07 });
+      g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
+        .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
+        .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
+    }
+    ctx.mm.add(ctx.desktop, enter);
+    ctx.mm.add(ctx.mobile, function () {
+      g.set(frame, { opacity: 0, y: 28 });
+      g.to(frame, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: frame, start: 'top 88%', once: true } });
+    });
   });
-});
+})();

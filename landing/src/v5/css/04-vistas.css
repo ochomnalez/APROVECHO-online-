@@ -11,11 +11,11 @@
 .nv-bar a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:var(--forest);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
 .nv-bar a[aria-current]::after{transform:scaleX(1)}
 @media(hover:hover) and (pointer:fine){.nv-bar a:hover::after{transform:scaleX(1)}}
-@media(max-width:999px){
+@media(max-width:1199px){
   :root{--nav-h:112px}
   .nv .nav__in{display:grid;grid-template-columns:52px 1fr;gap:0 14px;padding-top:6px}
   .nv .nav__logo img{width:46px;height:46px}
-  .nv .nav__cta{display:inline-flex;justify-self:end;grid-column:2;grid-row:1}
+  .nv-actions{justify-self:end;grid-column:2;grid-row:1}
   .nv-bar{grid-column:1/-1;grid-row:2;flex:none;width:100%;margin:0;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:4px}
   .nv-bar a{font-size:.8125rem;padding:8px 0}
 }

@@ -17,4 +17,3 @@
 .pl__head{position:relative;isolation:isolate;z-index:0}
 .pl__panels{position:relative;z-index:1}
 .pl__panels>[role=tabpanel]:not([hidden]){animation:none}
-.fab__btn--ig{background:radial-gradient(circle at 30% 105%,#fdf497 0%,#fdf497 5%,#fd5949 42%,#d6249f 64%,#285aeb 100%);color:#fff;border-color:transparent}

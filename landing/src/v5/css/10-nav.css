@@ -1,5 +1,13 @@
-/* Navegación expuesta: sin botón ni panel desplegable. */
+/* Acciones persistentes: mismo estilo y acceso visible a comercio y app. */
 .nv{background:rgba(255,255,255,.98)}
 .nv .nav__in{min-height:var(--nav-h);height:auto}
-.nv .nav__cta{transition:opacity .25s var(--ease-out),visibility .25s}
-.nv .nav__cta.is-covered{opacity:0;visibility:hidden;pointer-events:none}
+.nv-actions{display:flex;align-items:center;gap:10px;flex:none}
+.nv .nv-actions .btn{display:inline-flex}
+@media(max-width:599px){
+  .nv-actions{gap:6px}
+  .nv .nv-actions .btn{min-height:44px;padding-inline:10px;font-size:.75rem}
+}
+@media(max-width:359px){
+  .nv .nav__in{column-gap:6px}
+  .nv .nv-actions .btn{padding-inline:8px;font-size:.6875rem}
+}

@@ -144,22 +144,6 @@ window.APV5 = (function () {
   marcar(actual);
 })();
 
-/* 10-nav.js */
-/* La navegación queda expuesta, sin botón de menú. */
-(function () {
-  'use strict';
-  // «Sumá tu comercio» de la barra se oculta mientras se ve el de la portada
-  var cta = document.querySelector('.nav__cta');
-  var heroBtns = document.querySelector('.hr .hero__actions');
-  if (cta && heroBtns && 'IntersectionObserver' in window) {
-    var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 68;
-    new IntersectionObserver(function (es) {
-      cta.classList.toggle('is-covered', es[0].isIntersecting);
-    }, { rootMargin: '-' + navH + 'px 0px 0px 0px' }).observe(heroBtns);
-  }
-
-})();
-
 /* 20-hero.js */
 /* v5 · portada: rotador de 3 videos de fondo (publicá → medí con balanza → entrega) con fundido cruzado.
    Sin movimiento reducido ni ahorro de datos: solo el póster del primero. */
@@ -172,6 +156,7 @@ window.APV5 = (function () {
   var imgs = clips.map(function (c) { return c.querySelector('img'); });
   var bars = [].slice.call(sec.querySelectorAll('.hr__bar'));
   var fills = bars.map(function (b) { return b.querySelector('b'); });
+  var fillValues = [];
   var cap = sec.querySelector('[data-hr-cap]');
   var LABELS = ['Publicás en segundos', 'Medís con balanza', 'Tu vecino lo retira'];
   var DUR = 6000, FADE = 1000;
@@ -212,7 +197,11 @@ window.APV5 = (function () {
   function setBars() {
     for (var i = 0; i < N; i++) {
       var p = i < cur ? 1 : i === cur ? Math.min(1, elapsed / DUR) : 0;
-      fills[i].style.transform = 'scaleX(' + p.toFixed(3) + ')';
+      var value = p.toFixed(3);
+      if (fillValues[i] !== value) {
+        fills[i].style.transform = 'scaleX(' + value + ')';
+        fillValues[i] = value;
+      }
     }
   }
   function label() {
@@ -528,7 +517,7 @@ APV5.scene('recupera', function (ctx) {
 /* APROVECHO · landing v5 · Recorrido completo (video de onboarding).
    El video (13,7 MB) NO se descarga hasta que la persona toca el play (preload="none").
    Con html.motion: el marco entra suave y el póster se asienta con un leve escalado. */
-APV5.scene('onboarding', function (ctx) {
+(function () {
   'use strict';
   var root = document.getElementById('recorrido');
   if (!root) return;
@@ -585,21 +574,31 @@ APV5.scene('onboarding', function (ctx) {
   });
   if (cta) cta.addEventListener('click', function () { if (!video.paused) video.pause(); });
 
-  // ---------- con movimiento ----------
-  var g = ctx.gsap;
-  function enter() {
-    g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
-    g.set(poster, { scale: 1.07 });
-    g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
-      .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
-      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
+  // No reanudar solo: al salir del video o cambiar de pestaña se detiene el sonido.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting && !video.paused) video.pause();
+    }, { threshold: 0.15 }).observe(frame);
   }
-  ctx.mm.add(ctx.desktop, enter);
-  ctx.mm.add(ctx.mobile, function () {
-    g.set(frame, { opacity: 0, y: 28 });
-    g.to(frame, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: frame, start: 'top 88%', once: true } });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) video.pause(); });
+
+  // Los controles son independientes del movimiento y funcionan también sin GSAP.
+  APV5.scene('onboarding', function (ctx) {
+    var g = ctx.gsap;
+    function enter() {
+      g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
+      g.set(poster, { scale: 1.07 });
+      g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
+        .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
+        .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
+    }
+    ctx.mm.add(ctx.desktop, enter);
+    ctx.mm.add(ctx.mobile, function () {
+      g.set(frame, { opacity: 0, y: 28 });
+      g.to(frame, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: frame, start: 'top 88%', once: true } });
+    });
   });
-});
+})();
 
 /* 50-medi.js */
 /* v5 · ESTACIÓN (componente compartido, APV5.st) + 02 Medí.
@@ -734,21 +733,37 @@ APV5.scene('onboarding', function (ctx) {
     var gw = stage.querySelector('.st-gw'), img = gw && gw.querySelector('.st-giro');
     if (n < 2 || !gw || !img) return;
     var frames = [], ok = [], cur = 0, drag = false, x0 = 0, f0 = 0, ppf = 8, started = false;
-    // carga progresiva: 001 primero; después cada 8, cada 4, cada 2 y el resto (solo cuando la escena está cerca)
+    // Solo el primer cuadro al acercarse. El resto conserva su resolución y carga al interactuar.
     function order() {
       var seen = {}, out = [];
       [n, 8, 4, 2, 1].forEach(function (st) { for (var i = 0; i < n; i += st === n ? n : st) if (!seen[i]) { seen[i] = 1; out.push(i); } });
       return out;
     }
+    function preview() {
+      if (frames[0]) return;
+      var im = new Image();
+      im.decoding = 'async';
+      frames[0] = im;
+      im.onload = function () {
+        if (!im.naturalWidth) return;
+        ok[0] = true;
+        img.src = im.src;
+        gw.hidden = false;
+        stage.classList.add('is-giro');
+      };
+      im.onerror = function () { frames[0] = null; };
+      im.src = (stage.getAttribute('data-giro-dir') || 'img/estacion/giro/') + '001.' + (stage.getAttribute('data-giro-ext') || 'webp');
+    }
     function start() {
       if (started) return; started = true;
-      var q = order(), pend = 0;
+      preview();
+      var q = order().filter(function (i) { return i !== 0; }), pend = 0;
       function next() {
         while (pend < 3 && q.length) {
           var i = q.shift(), im = new Image(); pend++;
           im.decoding = 'async'; frames[i] = im;
           im.onload = im.onerror = (function (i, im) { return function () {
-            pend--; if (im.naturalWidth) { ok[i] = true; if (i === 0) { img.src = im.src; gw.hidden = false; stage.classList.add('is-giro'); } }
+            pend--; if (im.naturalWidth) ok[i] = true;
             next();
           }; })(i, im);
           im.src = (stage.getAttribute('data-giro-dir') || 'img/estacion/giro/') + pad(i + 1, 3) + '.' + (stage.getAttribute('data-giro-ext') || 'webp');
@@ -768,17 +783,24 @@ APV5.scene('onboarding', function (ctx) {
     gw.setAttribute('role', 'img');
     gw.setAttribute('aria-label', 'Estación armada. Arrastrala o usá las flechas izquierda y derecha para girarla.');
     if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: '1200px 0px' });
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); preview(); } }, { rootMargin: '1200px 0px' });
       io.observe(stage);
-    } else gw.addEventListener('pointerenter', start);
-    gw.addEventListener('focus', start);
+    }
+    gw.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') start(); });
+    gw.addEventListener('focus', function () { if (gw.matches(':focus-visible')) start(); });
     gw.addEventListener('pointerdown', function (e) {
       if (!stage.classList.contains('is-armed')) return;
-      start(); drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, gw.offsetWidth * 1.1 / n);
+      if (e.pointerType === 'mouse') start(); else preview();
+      drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, gw.offsetWidth * 1.1 / n);
       try { gw.setPointerCapture(e.pointerId); } catch (err) { noop(); }
       gw.classList.add('is-drag');
     });
-    gw.addEventListener('pointermove', function (e) { if (drag) show(f0 + Math.round((e.clientX - x0) / ppf)); });
+    gw.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - x0;
+      if (Math.abs(dx) > 8) start();
+      if (started) show(f0 + Math.round(dx / ppf));
+    });
     function end() { drag = false; gw.classList.remove('is-drag'); }
     gw.addEventListener('pointerup', end);
     gw.addEventListener('pointercancel', end);
@@ -1104,8 +1126,9 @@ APV5.scene('pasos', function (ctx) {
 })();
 
 /* 90-progreso.js */
-/* Indicador del plan visible: sigue la animación suavizada y nunca una pestaña oculta. */
+/* Medir solo al cambiar vista o al hacer scroll; actualizar solo valores que cambian. */
 APV5.scene('progreso', function (ctx) {
+  var root = document.getElementById('planes');
   var bar = document.createElement('div');
   bar.className = 'pg';
   bar.setAttribute('aria-hidden', 'true');
@@ -1114,16 +1137,49 @@ APV5.scene('progreso', function (ctx) {
   var n = bar.querySelector('.pg__n'), fill = bar.querySelector('.pg__fill'), pct = bar.querySelector('.pg__pct');
   var setY = ctx.gsap.quickSetter(fill, 'scaleY');
   var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
-  ctx.gsap.ticker.add(function () {
-    var sec = document.querySelector('#planes [role="tabpanel"]:not([hidden])');
-    if (!sec || sec.dataset.completed === 'true' || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
-    var pin = ctx.ScrollTrigger.getAll().find(function (t) { return t.pin === sec; });
-    var r = pin ? null : sec.getBoundingClientRect();
-    var on = pin ? pin.isActive : r.top < innerHeight * .3 && r.bottom > innerHeight * .7;
+  var sec = null, pin = null, visible = false, frame = 0, last = -1, lastPct = -1;
+  function show(on) {
+    if (on === visible) return;
+    visible = on;
     bar.classList.toggle('is-on', on);
-    if (!on) return;
-    var p = pin ? pin.animation.progress() : Math.max(0, Math.min(1, (innerHeight * .3 - r.top) / Math.max(1, r.height - innerHeight * .4)));
-    n.textContent = '0' + (ids.indexOf(sec.id) + 1);
-    setY(p); pct.textContent = Math.round(p * 100) + '%';
+  }
+  function paint(progress) {
+    var p = Math.max(0, Math.min(1, progress)), percent = Math.round(p * 100);
+    if (p !== last) { setY(p); last = p; }
+    if (percent !== lastPct) { pct.textContent = percent + '%'; lastPct = percent; }
+  }
+  function update() {
+    frame = 0;
+    if (!sec) { show(false); return; }
+    if (pin) {
+      show(pin.isActive);
+      if (pin.isActive) paint(pin.animation.progress());
+      return;
+    }
+    var r = sec.getBoundingClientRect();
+    var on = r.top < innerHeight * .3 && r.bottom > innerHeight * .7;
+    show(on);
+    if (on) paint((innerHeight * .3 - r.top) / Math.max(1, r.height - innerHeight * .4));
+  }
+  function queue() { if (!frame) frame = requestAnimationFrame(update); }
+  function resolve() {
+    sec = root.querySelector('[role="tabpanel"]:not([hidden])');
+    if (sec && (sec.dataset.completed === 'true' || sec.closest('[data-view][hidden]'))) sec = null;
+    pin = sec && ctx.ScrollTrigger.getAll().find(function (t) { return t.pin === sec; });
+    if (sec) n.textContent = '0' + (ids.indexOf(sec.id) + 1);
+    queue();
+  }
+  // El ticker sigue el scrub sin leer layout, buscar nodos ni escribir texto repetido.
+  ctx.gsap.ticker.add(function () {
+    if (!pin || document.hidden) return;
+    show(pin.isActive);
+    if (pin.isActive) paint(pin.animation.progress());
   });
+  ctx.ScrollTrigger.addEventListener('refresh', resolve);
+  new MutationObserver(resolve).observe(document.getElementById('vista-home'), {
+    subtree: true, attributes: true, attributeFilter: ['hidden', 'data-completed']
+  });
+  window.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+  resolve();
 });

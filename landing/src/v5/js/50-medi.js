@@ -130,21 +130,37 @@
     var gw = stage.querySelector('.st-gw'), img = gw && gw.querySelector('.st-giro');
     if (n < 2 || !gw || !img) return;
     var frames = [], ok = [], cur = 0, drag = false, x0 = 0, f0 = 0, ppf = 8, started = false;
-    // carga progresiva: 001 primero; después cada 8, cada 4, cada 2 y el resto (solo cuando la escena está cerca)
+    // Solo el primer cuadro al acercarse. El resto conserva su resolución y carga al interactuar.
     function order() {
       var seen = {}, out = [];
       [n, 8, 4, 2, 1].forEach(function (st) { for (var i = 0; i < n; i += st === n ? n : st) if (!seen[i]) { seen[i] = 1; out.push(i); } });
       return out;
     }
+    function preview() {
+      if (frames[0]) return;
+      var im = new Image();
+      im.decoding = 'async';
+      frames[0] = im;
+      im.onload = function () {
+        if (!im.naturalWidth) return;
+        ok[0] = true;
+        img.src = im.src;
+        gw.hidden = false;
+        stage.classList.add('is-giro');
+      };
+      im.onerror = function () { frames[0] = null; };
+      im.src = (stage.getAttribute('data-giro-dir') || 'img/estacion/giro/') + '001.' + (stage.getAttribute('data-giro-ext') || 'webp');
+    }
     function start() {
       if (started) return; started = true;
-      var q = order(), pend = 0;
+      preview();
+      var q = order().filter(function (i) { return i !== 0; }), pend = 0;
       function next() {
         while (pend < 3 && q.length) {
           var i = q.shift(), im = new Image(); pend++;
           im.decoding = 'async'; frames[i] = im;
           im.onload = im.onerror = (function (i, im) { return function () {
-            pend--; if (im.naturalWidth) { ok[i] = true; if (i === 0) { img.src = im.src; gw.hidden = false; stage.classList.add('is-giro'); } }
+            pend--; if (im.naturalWidth) ok[i] = true;
             next();
           }; })(i, im);
           im.src = (stage.getAttribute('data-giro-dir') || 'img/estacion/giro/') + pad(i + 1, 3) + '.' + (stage.getAttribute('data-giro-ext') || 'webp');
@@ -164,17 +180,24 @@
     gw.setAttribute('role', 'img');
     gw.setAttribute('aria-label', 'Estación armada. Arrastrala o usá las flechas izquierda y derecha para girarla.');
     if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: '1200px 0px' });
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); preview(); } }, { rootMargin: '1200px 0px' });
       io.observe(stage);
-    } else gw.addEventListener('pointerenter', start);
-    gw.addEventListener('focus', start);
+    }
+    gw.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') start(); });
+    gw.addEventListener('focus', function () { if (gw.matches(':focus-visible')) start(); });
     gw.addEventListener('pointerdown', function (e) {
       if (!stage.classList.contains('is-armed')) return;
-      start(); drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, gw.offsetWidth * 1.1 / n);
+      if (e.pointerType === 'mouse') start(); else preview();
+      drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, gw.offsetWidth * 1.1 / n);
       try { gw.setPointerCapture(e.pointerId); } catch (err) { noop(); }
       gw.classList.add('is-drag');
     });
-    gw.addEventListener('pointermove', function (e) { if (drag) show(f0 + Math.round((e.clientX - x0) / ppf)); });
+    gw.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - x0;
+      if (Math.abs(dx) > 8) start();
+      if (started) show(f0 + Math.round(dx / ppf));
+    });
     function end() { drag = false; gw.classList.remove('is-drag'); }
     gw.addEventListener('pointerup', end);
     gw.addEventListener('pointercancel', end);

@@ -9,6 +9,7 @@
   var imgs = clips.map(function (c) { return c.querySelector('img'); });
   var bars = [].slice.call(sec.querySelectorAll('.hr__bar'));
   var fills = bars.map(function (b) { return b.querySelector('b'); });
+  var fillValues = [];
   var cap = sec.querySelector('[data-hr-cap]');
   var LABELS = ['Publicás en segundos', 'Medís con balanza', 'Tu vecino lo retira'];
   var DUR = 6000, FADE = 1000;
@@ -49,7 +50,11 @@
   function setBars() {
     for (var i = 0; i < N; i++) {
       var p = i < cur ? 1 : i === cur ? Math.min(1, elapsed / DUR) : 0;
-      fills[i].style.transform = 'scaleX(' + p.toFixed(3) + ')';
+      var value = p.toFixed(3);
+      if (fillValues[i] !== value) {
+        fills[i].style.transform = 'scaleX(' + value + ')';
+        fillValues[i] = value;
+      }
     }
   }
   function label() {
