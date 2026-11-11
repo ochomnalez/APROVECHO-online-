@@ -3,6 +3,9 @@
 - **Agente:** codex-octi-app
 - **Fecha:** 2026-11-11
 - **Rama:** `codex/octi-app-cuentas` (desde la demo publicada).
+- **PR:** https://github.com/ochomnalez/APROVECHO-online-/pull/6 (borrador, sin merge).
+- **Deployment final:** `dpl_EE9Wugv7E4nim9gqDhkNLNF4cotG`, código `6f15445`, READY y preflight aprobado.
+- **URL inmutable:** https://aprovecho-app-demo-erpz9o7x5-octaviochomnalez-9006.vercel.app
 
 ## Resultado final
 
