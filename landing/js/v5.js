@@ -673,7 +673,7 @@ APV5.scene('onboarding', function (ctx) {
       i = ((i % n) + n) % n;
       var im = frames && frames[i];
       if (!im || !im.complete || !im.naturalWidth) return;
-      cur = i; img.src = im.src; img.hidden = false;
+      cur = i; img.src = im.src; img.hidden = false; arm.classList.add('is-giro');
     }
     stage.classList.add('has-giro');
     arm.tabIndex = 0;

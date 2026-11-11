@@ -24,7 +24,7 @@ html.motion .st-stage:not(.is-sep) .st-p{visibility:hidden}
 .st-stage:has(.st-p:focus-visible) .st-p:not(:focus-visible) .st-p__img{opacity:.55}
 @media(hover:hover){.st-stage:has(.st-p:hover) .st-p:not(:hover) .st-p__img{opacity:.55}}
 /* etiqueta: nombre + frase corta */
-.st-tag{position:absolute;z-index:3;width:max-content;max-width:200px;padding:6px 11px;border:1px solid var(--line-2);border-radius:10px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.12);font-size:.8125rem;line-height:1.25;color:var(--ink);text-align:left;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .18s var(--ease-out),visibility 0s .18s}
+.st-tag{position:absolute;z-index:3;width:max-content;max-width:230px;padding:6px 11px;border:1px solid var(--line-2);border-radius:10px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.12);font-size:.8125rem;line-height:1.25;color:var(--ink);text-align:left;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .18s var(--ease-out),visibility 0s .18s}
 .st-tag b{display:block;font-weight:700}
 .st-tag small{display:none;margin-top:1px;font-size:.75rem;font-weight:500;color:var(--text-2);white-space:normal}
 [data-tag="b"] .st-tag{top:calc(100% + 6px);left:50%;translate:-50% 0}
@@ -41,6 +41,7 @@ html.motion .st-stage:not(.is-sep) .st-p{visibility:hidden}
 /* giro 360°: solo si hay frames (ver 50-medi.js) */
 .st-stage.has-giro.is-armed .st-armada{pointer-events:auto;cursor:grab;touch-action:pan-y}
 .st-stage.has-giro.is-armed .st-armada.is-drag{cursor:grabbing}
+.st-armada.is-giro .st-armada__img{visibility:hidden}
 .st-armada:focus-visible{outline:3px solid var(--forest);outline-offset:4px;border-radius:12px}
 /* leyenda (celular): reemplaza a las etiquetas junto a cada pieza */
 .st-leg{display:none;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:4px;padding:0 4px;font-size:.8125rem;line-height:1.35;color:var(--text-2)}

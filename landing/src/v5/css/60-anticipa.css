@@ -37,7 +37,7 @@ html.motion .an-t{visibility:visible}
   html.motion .an-stage{position:relative;max-width:none;width:min(calc(100% + var(--bleed)),calc((100svh - 150px) / .72));aspect-ratio:1/.72;container-type:inline-size;justify-self:end;margin-right:calc(-1 * var(--bleed))}
   html.motion .an-st{position:absolute;left:0;top:50%;width:100%;margin-top:-33cqw;transform-origin:0 50%}
   html.motion .an-rot{position:absolute;left:50%;top:calc(50% + 30cqw);margin:0;white-space:nowrap}
-  html.motion .an-bd{position:absolute;right:0;top:50%;width:66%;translate:0 -50%}
+  html.motion .an-bd{position:absolute;right:0;top:50%;width:66%;translate:0 -50%;pointer-events:none}
 }
 @media(min-width:900px) and (max-width:1180px){.an.chap .chap__in{grid-template-columns:380px minmax(0,1fr);gap:36px}html.motion .an-bd{width:61%}.an-rot span{padding:6px 12px;font-size:.8125rem}}
 @media(max-width:899px){
