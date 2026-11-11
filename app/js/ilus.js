@@ -1,3 +1,5 @@
+import { esc } from './util.js';
+import { fotoCategoria } from './fotos.js';
 // Ilustraciones de comida y logos de los locales. Todo vectorial, dibujado a mano:
 // no hay imágenes bajadas de internet. viewBox 0 0 120 120 en las ilustraciones.
 
@@ -136,6 +138,8 @@ const DIBUJOS = {
 };
 
 export function ilus(nombre, tam = 72, extra = '') {
+  const comidas={medialuna:'Panificados',pan:'Panificados',torta:'Pastelería',cupcake:'Pastelería',sandwich:'Sándwiches',empanada:'agotan',vianda:'Viandas',pizza:'mejores',cafe:'Pastelería',hoja:'Vegano',sintacc:'Sin TACC'};
+  if(comidas[nombre]) return `<img class="ilus foto-ilus ${extra}" src="${fotoCategoria(comidas[nombre])}" width="${tam}" height="${tam}" alt="" loading="lazy">`;
   const d = DIBUJOS[nombre] || DIBUJOS.caja;
   return `<svg class="ilus ${extra}" width="${tam}" height="${tam}" viewBox="0 0 120 120" aria-hidden="true">${d()}</svg>`;
 }
@@ -157,9 +161,7 @@ const EMBLEMAS = {
 };
 
 export function logoLocal(c, tam = 56, radio = 16, conNombre = false) {
-  const L = c.logo || { bg: '#2F6B34', fg: '#fff', emblema: 'espiga' };
-  const e = EMBLEMAS[L.emblema] || EMBLEMAS.espiga;
-  const nombre = conNombre ? `<span class="logo-nombre" style="color:${L.fg}">${c.corto || c.nombre}</span>` : '';
-  return `<span class="logo-local${conNombre ? ' con-nombre' : ''}" style="width:${tam}px;height:${tam}px;border-radius:${radio}px;background:${L.bg};color:${L.fg};--corte:${L.bg}">
-    <svg viewBox="0 0 48 48" width="${Math.round(tam * (conNombre ? .46 : .6))}" height="${Math.round(tam * (conNombre ? .46 : .6))}" aria-hidden="true">${e}</svg>${nombre}</span>`;
+  const L = c.logo || {bg:'#1A4D3A',fg:'#FFFFFF'};
+  const imagen = c.marcaDemo && c.fotoLocal ? `<img class="foto-local-real" src="${esc(c.fotoLocal)}" alt="${esc(c.nombre)}" width="${tam}" height="${tam}" loading="lazy">` : `<img class="foto-local-real" src="./img/fotos/pan.webp" alt="Foto de referencia" width="${tam}" height="${tam}">`;
+  return `<span class="logo-local local-con-foto${conNombre?' con-nombre':''}" style="width:${tam}px;height:${tam}px;border-radius:${radio}px;background:${L.bg};color:${L.fg}">${imagen}</span>`;
 }

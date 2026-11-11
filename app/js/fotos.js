@@ -41,26 +41,17 @@ export function cajaPct({ x, y, w, h }) {
 }
 
 const FOTOS_COMERCIO = {
-  c1: 'pan',
-  c3: 'facturas',
-  c4: 'torta',
-  c5: 'verduleria',
-  c6: 'sandwiches',
-  c7: 'pizza',
-  c8: 'pan',
+  c1: 'facturas', c2: 'pollo-crocante', c3: 'torta', c4: 'hamburguesa',
+  c5: 'verduleria', c6: 'hamburguesa', c7: 'plato-del-dia', c8: 'pan',
 };
 const FOTOS_CATEGORIA = {
-  Panificados: 'pan',
-  Pastelería: 'torta',
-  Sándwiches: 'sandwiches',
-  Viandas: 'ensalada',
+  Panificados:'pan', Pastelería:'torta', Sándwiches:'sandwiches', Viandas:'ensalada',
+  'Sin TACC':'ensalada', Vegano:'verduleria', agotan:'empanadas', mejores:'pizza',
 };
-
-export function fotoComercio(comercioId, categoria, tam) {
-  if (comercioId === 'c2') {
-    const rotiseria = { grande: 'tarta', mediano: 'plato-del-dia', chico: 'empanadas' };
-    return ruta(rotiseria[tam] || 'empanadas');
-  }
-  if (comercioId === 'c5' && tam === 'chico') return ruta('ensalada');
+export function fotoComercio(comercioId,categoria,tam,productoId) {
+  const productos={medialuna:'medialunas',grasa:'medialunas',factura:'facturas',pan:'pan',miga:'sandwiches',empanada:'empanadas',torta:'torta',ricota:'tarta',budin:'torta',salvado:'pan'};
+  if(productos[productoId]) return ruta(productos[productoId]);
+  if(comercioId==='c5' && tam==='chico') return ruta('ensalada');
   return ruta(FOTOS_COMERCIO[comercioId] || FOTOS_CATEGORIA[categoria] || 'ensalada');
 }
+export const fotoCategoria = categoria => ruta(FOTOS_CATEGORIA[categoria] || 'ensalada');

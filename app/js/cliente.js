@@ -5,7 +5,7 @@ import { S, guardar, ahora, hoy, comercio, packsActivos, evento, ubicar, ZONA_NO
 import { CONFIG, CATEGORIAS, CONDICIONES, TAMANOS, nutricion, co2, CATS_GRANDES, CATS_CHICAS, BANNERS, BUSQUEDAS } from './data.js';
 import { barra, tabsCliente, abrirHoja, cerrarHoja, confirmar, toast, vacio, nota, demoBtnCliente, spinner, cargando, carrusel } from './ui.js';
 import { ilus, logoLocal, fondoCategoria } from './ilus.js';
-import { fotoComercio } from './fotos.js';
+import { fotoComercio, fotoCategoria } from './fotos.js';
 import { montarMapa, ponerPines, enfocar } from './mapa.js';
 import { qrSvg, payload } from './qr.js';
 import { nav } from './nav.js';
@@ -33,7 +33,7 @@ function horarioReserva(r, c) {
 }
 const retiroReserva = (r, c) => { const { desde, hasta } = horarioReserva(r, c); return retiroTxt(c, desde, hasta); };
 const sello = tam => `<img src="./img/sello-aprovecho.webp" width="${tam}" height="${tam}" alt="APROVECHO" class="sello-cliente">`;
-const fotoPack = (p, carga) => `<img class="foto-pack-cliente" src="${esc(fotoComercio(p.comercioId, p.cat, p.tam))}" alt=""${carga ? ' loading="lazy"' : ''}>`;
+const fotoPack = (p, carga) => `<img class="foto-pack-cliente" src="${esc(fotoComercio(p.comercioId, p.cat, p.tam, p.productoId))}" alt=""${carga ? ' loading="lazy"' : ''}>`;
 export function nutriPack(p) {
   const n100 = p.nutri100 || producto(p.productoId)?.nutri;
   return n100 && p.pesoG > 0 ? nutricion(n100, p.pesoG, p.medido ? 0.08 : CONFIG.rangoNutri) : null;
@@ -184,11 +184,12 @@ function inicio() {
 }
 function contenidoInicio(todos, cerca, agotan, mejores, txtBanner) {
   return `
+    <div class="bloque-inicio demo-marcas"><span class="badge gris">Demo</span><span>Marcas de referencia · ofertas y distancias simuladas.</span></div>
     <div class="bloque-inicio" style="margin-top:6px"><div class="cats-grandes">
       ${CATS_GRANDES.map(c => `<button class="cat-grande categoria-con-foto" data-go="c/lista/${encodeURIComponent(c.id)}" style="background:${c.fondo}">${fotoPack({ cat: c.id }, true)}<b style="color:${c.tinta}">${c.titulo}</b></button>`).join('')}
     </div></div>
     <div class="carril" style="margin-top:12px">
-      ${CATS_CHICAS.map(c => `<button class="cat-chica${CATEGORIAS.includes(c.id) ? ' categoria-con-foto' : ''}" data-go="c/lista/${encodeURIComponent(c.id)}" style="background:${c.fondo}">${CATEGORIAS.includes(c.id) ? fotoPack({ cat: c.id }, true) : ilus(c.ilus, 60)}<span>${c.titulo}</span></button>`).join('')}
+      ${CATS_CHICAS.map(c => `<button class="cat-chica categoria-con-foto" data-go="c/lista/${encodeURIComponent(c.id)}" style="background:${c.fondo}">${fotoPack({ cat: c.id }, true)}<span>${c.titulo}</span></button>`).join('')}
     </div>
     <div class="carrusel">
       <div class="pista">${BANNERS.map(b => `<button class="banner ${b.tono}" ${b.ir ? `data-go="${b.ir}"` : `data-act="${b.act}"`}>
@@ -197,7 +198,7 @@ function contenidoInicio(todos, cerca, agotan, mejores, txtBanner) {
         <h3>${esc(txtBanner(b.titulo))}</h3>
         <p>${esc(txtBanner(b.texto))}</p>
         <span class="b-cta">${esc(b.cta)} ${icon('adelante', 15)}</span>
-        <span class="b-arte">${b.id === 'merienda' ? fotoPack({ cat: 'Panificados' }, true) : b.ilus.map((x, i) => ilus(x, i ? 92 : 120)).join('')}</span>
+        <span class="b-arte">${fotoPack({ cat: ({merienda:'Panificados',sintacc:'Sin TACC',compartir:'agotan',impacto:'Vegano'})[b.id] }, true)}</span>
       </button>`).join('')}</div>
       <div class="puntos">${BANNERS.map(() => '<i></i>').join('')}</div>
     </div>
@@ -209,7 +210,7 @@ function contenidoInicio(todos, cerca, agotan, mejores, txtBanner) {
     <div class="carril" style="margin-top:6px">${mejores.map(p => tarjetaPack(p)).join('')}</div>
     <div class="bloque-inicio seccion" style="margin-top:18px"><h2>Todos los packs</h2><span class="mini">${todos.length} cerca tuyo</span></div>
     <div class="bloque-inicio pila" style="margin-top:8px;gap:14px">${todos.length ? todos.map(p => tarjetaPack(p, true)).join('') : vacio('bolsa', 'No hay packs cerca ahora', 'Suelen aparecer entre las 18 y las 20.')}</div>
-    <div class="pie-inicio">${sello(44)}<span class="mini">Menos desperdicio, más aprovecho</span></div>`;
+    <div class="pie-inicio">${sello(44)}<span class="mini">Menos desperdicio, más aprovecho</span><a class="mini" href="./imagenes.html" target="_blank" rel="noopener">Créditos de fotos</a></div>`;
 }
 function esqueletoInicio() {
   const r = (w, h, extra = '') => `<div class="skeleton" style="width:${w};height:${h}px;${extra}"></div>`;
@@ -272,7 +273,7 @@ function lista(f) {
   return {
     html: `${barra({ titulo: titulos[id] || id, centro: true })}
     <div class="cuerpo">
-      ${cat ? `<div class="card plana fila" style="background:${cat.fondo};gap:14px">${CATEGORIAS.includes(id) ? `<div class="foto-lista-cliente">${fotoPack({ cat: id }, true)}</div>` : ilus(cat.ilus, 64)}<span class="col"><b style="font-size:17px">${packs.length} pack${packs.length === 1 ? '' : 's'} cerca</b><span class="chico">${CONDICIONES.includes(id) ? 'Lo declara cada local, pack por pack.' : 'Retirá hoy. Cada pack muestra su horario.'}</span></span></div>` : ''}
+      ${cat ? `<div class="card plana fila" style="background:${cat.fondo};gap:14px"><div class="foto-lista-cliente">${fotoPack({ cat: id }, true)}</div><span class="col"><b style="font-size:17px">${packs.length} pack${packs.length === 1 ? '' : 's'} cerca</b><span class="chico">${CONDICIONES.includes(id) ? 'Lo declara cada local, pack por pack.' : 'Retirá hoy. Cada pack muestra su horario.'}</span></span></div>` : ''}
       <div class="chips scroll">${[['cerca', 'Más cerca'], ['precio', 'Más barato'], ['rating', 'Mejor puntuados']].map(([k, t]) => `<button class="chip${ordenLista === k ? ' on' : ''}" data-act="orden-lista" data-v="${k}">${t}</button>`).join('')}</div>
       ${packs.length ? packs.map(p => tarjetaPack(p, true)).join('') : vacio('bolsa', 'No hay packs de esto cerca', 'Probá en un rato o mirá otras categorías.', '<button class="btn chico sec" data-tab="c/inicio">Volver al inicio</button>')}
     </div>`,
@@ -290,13 +291,15 @@ function local(id) {
   return {
     html: `<div class="cuerpo sin-pad">
       <div class="hero-local" style="height:170px;background:${c.logo.bg}">
-        ${fotoPack({ comercioId: id, cat: c.cat })}
+        <img class="foto-pack-cliente fachada-local" src="${esc(c.marcaDemo ? c.fotoLocal : fotoCategoria(c.cat))}" alt="${esc(c.marcaDemo?'Fotografía de '+c.nombre:'Foto de referencia del comercio')}">
         <button class="icbtn sobre" data-act="atras" aria-label="Volver">${icon('atras', 24)}</button>
         <span class="hero-logo">${logoLocal(c, 84, 22, true)}</span>
       </div>
       <div class="pila" style="padding:38px 18px calc(28px + var(--sb));gap:14px">
         <div class="col" style="gap:4px"><h1 class="gran-titulo" style="font-size:26px">${esc(c.nombre)}</h1>
           <span class="chico"><span class="estrella-mini">★</span> ${rating(c)} (${c.resenas}) · ${esc(c.cat)} · ${distTxt(d)}</span></div>
+        <div class="demo-marcas"><span class="badge gris">Demo</span><span>Esta marca no está presentada como adherida. Ofertas, calificaciones y ubicación son ejemplos.</span></div>
+        <a class="mini creditos-enlace" href="./imagenes.html" target="_blank" rel="noopener">Créditos de fotografías</a>
         <div class="card plana fila entre"><span class="fila" style="gap:10px">${icon('reloj', 20, 'verde')}<span class="col"><span class="fuerte">Retiro hoy ${retiroTxt(c)}</span><span class="mini">Cierra a las ${c.cierre}</span></span></span>
           <a class="btn chico sec" href="https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lng}" target="_blank" rel="noopener">${icon('ruta', 16)} Ir</a></div>
         <div class="seccion"><h2>Packs de hoy</h2><span class="mini">${packs.length}</span></div>

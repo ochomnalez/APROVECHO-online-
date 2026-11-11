@@ -440,6 +440,7 @@ iniciarAuth(() => {
     if (cuenta.merchant) {
       S.plan=cuenta.merchant.plan;
       miComercio().nombre=cuenta.merchant.name;
+      miComercio().marcaDemo=false;
       S.onboarding.hecho=true;
     }
     guardar();

@@ -3,7 +3,7 @@
    - Las calles del mapa que ya viste quedan guardadas (hasta 500 teselas).
    Al cambiar cualquier archivo, subí VERSION: invalida el cache viejo en los celus. */
 
-const VERSION = 'aprovecho-prototipo-plan-cuentas-v5';
+const VERSION = 'aprovecho-prototipo-plan-fotos-v6';
 const TESELAS = 'aprovecho-prototipo-plan-teselas';
 const FUENTES = 'aprovecho-prototipo-plan-fuentes';
 
@@ -15,6 +15,10 @@ const LOCALES = [
   './js/pwa.js', './js/cliente.js', './js/comercio.js', './js/intelui.js', './js/inventario.js', './js/ilus.js',
   './img/aprovecho-isotipo.svg', './img/aprovecho-isotipo-blanco.svg', './img/aprovecho-logo.svg', './img/sello-aprovecho.webp',
   './img/fotos/empanadas.webp', './img/fotos/ensalada.webp', './img/fotos/facturas.webp', './img/fotos/medialunas.webp',
+  './img/fotos/hamburguesa.webp','./img/fotos/pollo-crocante.webp',
+  './img/comercios/havanna.webp','./img/comercios/kfc.webp','./img/comercios/starbucks.webp','./img/comercios/mcdonalds.webp',
+  './img/comercios/jumbo.webp','./img/comercios/burger-king.webp','./img/comercios/coto.webp','./img/comercios/carrefour.webp',
+  './imagenes.html','./img/fuentes-medios.json',
   './img/fotos/pan.webp', './img/fotos/pizza.webp', './img/fotos/plato-del-dia.webp', './img/fotos/sandwiches.webp',
   './img/fotos/tarta.webp', './img/fotos/torta.webp', './img/fotos/verduleria.webp',
   './fonts/dm-sans-400-700.woff2', './fonts/bricolage-grotesque-700.woff2',

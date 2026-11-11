@@ -1,6 +1,6 @@
 // Estado de la app, persistido en el teléfono.
 import { isoDia } from './util.js';
-import { CARTA_EJEMPLO, ubicarComercios, packsSemilla, HISTORIAL_CONSUMIDOR, CONFIG } from './data.js';
+import { COMERCIOS_BASE, CARTA_EJEMPLO, ubicarComercios, packsSemilla, HISTORIAL_CONSUMIDOR, CONFIG } from './data.js';
 
 let CLAVE = 'aprovecho_prototipo_plan'; // separada de la demo v3.2.1 publicada
 export const ZONA_NORTE = { lat: -34.5087, lng: -58.4877, fuente: 'default', barrio: 'Olivos' };
@@ -53,6 +53,12 @@ export function cargar() {
   } catch (e) {
     S = nuevo();
   }
+  // Actualizar referencias de demo ya guardadas sin tocar la identidad del local real.
+  S.comercios = S.comercios.map(c => {
+    const base=COMERCIOS_BASE.find(x=>x.id===c.id);
+    return base ? {...c,...base,lat:c.lat,lng:c.lng} : c;
+  });
+  S.packs.forEach(p=>{if(String(p.id).startsWith('ps')){const base=COMERCIOS_BASE.find(c=>c.id===p.comercioId);if(base)p.cat=base.cat;}});
   cerrarDia();
   return S;
 }

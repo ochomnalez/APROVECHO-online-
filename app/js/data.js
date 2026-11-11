@@ -138,16 +138,16 @@ export function nutricion(nutri100, pesoG, rango = CONFIG.rangoNutri) {
 export const co2 = kg => kg * CONFIG.factorCO2;
 export const kmAuto = kgCO2 => kgCO2 / CONFIG.kgCO2PorKm;
 
-// ---------- comercios de ejemplo (ficticios), ubicados alrededor tuyo ----------
+// ---------- marcas reales como referencias de demo, sin relación comercial ----------
 export const COMERCIOS_BASE = [
-  { id: 'c1', corto: 'La Espiga', logo: { bg: '#E3A93B', fg: '#FFFFFF', emblema: 'espiga' }, nombre: 'Panadería La Espiga', cat: 'Panificados', cierre: '21:00', rating: 4.7, resenas: 312, dist: 350, rumbo: 40, color: '#E7C27E', esMio: true },
-  { id: 'c2', corto: 'Don Luis', logo: { bg: '#C4432D', fg: '#FFFFFF', emblema: 'chef' }, nombre: 'Rotisería Don Luis', cat: 'Viandas', cierre: '22:00', rating: 4.5, resenas: 188, dist: 900, rumbo: 120, color: '#D9C39A', estacion: true },
-  { id: 'c3', corto: 'Café Plaza', logo: { bg: '#6B4430', fg: '#F6E7D6', emblema: 'taza' }, nombre: 'Café Plaza', cat: 'Pastelería', cierre: '20:30', rating: 4.8, resenas: 97, dist: 600, rumbo: 250, color: '#E9B8A7' },
-  { id: 'c4', corto: 'Lulú', logo: { bg: '#F2A0B4', fg: '#FFFFFF', emblema: 'cupcake' }, nombre: 'Pastelería Lulú', cat: 'Pastelería', cierre: '20:00', rating: 4.6, resenas: 141, dist: 1300, rumbo: 310, color: '#E9B8A7' },
-  { id: 'c5', corto: 'Brote', logo: { bg: '#3E8E52', fg: '#FFFFFF', emblema: 'hoja' }, nombre: 'Almacén Natural Brote', cat: 'Viandas', cierre: '21:30', rating: 4.9, resenas: 76, dist: 1800, rumbo: 190, color: '#C9DDBC' },
-  { id: 'c6', corto: 'El Buen Pan', logo: { bg: '#F08A24', fg: '#FFFFFF', emblema: 'sandwich' }, nombre: 'Sandwichería El Buen Pan', cat: 'Sándwiches', cierre: '21:00', rating: 4.4, resenas: 203, dist: 750, rumbo: 80, color: '#EAD8A6' },
-  { id: 'c7', corto: 'Mamma Rosa', logo: { bg: '#D6363A', fg: '#FFFFFF', emblema: 'pizza' }, nombre: 'Pizzería Mamma Rosa', cat: 'Viandas', cierre: '23:30', rating: 4.3, resenas: 265, dist: 2200, rumbo: 20, color: '#F0C5A8', estacion: true },
-  { id: 'c8', corto: 'Celia', logo: { bg: '#23907F', fg: '#FFFFFF', emblema: 'sintacc' }, nombre: 'Panadería Celia Sin TACC', cat: 'Panificados', cierre: '20:30', rating: 4.8, resenas: 59, dist: 1100, rumbo: 160, color: '#E7C27E' },
+  { id: 'c1', nombre: 'Havanna', corto: 'Havanna', marcaDemo: true, marca: 'havanna', fotoLocal: './img/comercios/havanna.webp', logo: { bg: '#7B301C', fg: '#FFFFFF' }, cat: 'Panificados', cierre: '21:00', rating: 4.7, resenas: 312, dist: 350, rumbo: 40, color: '#7B301C', esMio: true },
+  { id: 'c2', nombre: 'KFC', corto: 'KFC', marcaDemo: true, marca: 'kfc', fotoLocal: './img/comercios/kfc.webp', logo: { bg: '#B91D2C', fg: '#FFFFFF' }, cat: 'Viandas', cierre: '22:00', rating: 4.5, resenas: 188, dist: 900, rumbo: 120, color: '#B91D2C' },
+  { id: 'c3', nombre: 'Starbucks', corto: 'Starbucks', marcaDemo: true, marca: 'starbucks', fotoLocal: './img/comercios/starbucks.webp', logo: { bg: '#006241', fg: '#FFFFFF' }, cat: 'Pastelería', cierre: '20:30', rating: 4.8, resenas: 97, dist: 600, rumbo: 250, color: '#006241' },
+  { id: 'c4', nombre: "McDonald's", corto: "McDonald's", marcaDemo: true, marca: 'mcdonalds', fotoLocal: './img/comercios/mcdonalds.webp', logo: { bg: '#B51E24', fg: '#FFFFFF' }, cat: 'Sándwiches', cierre: '23:00', rating: 4.6, resenas: 141, dist: 1300, rumbo: 310, color: '#B51E24' },
+  { id: 'c5', nombre: 'Jumbo', corto: 'Jumbo', marcaDemo: true, marca: 'jumbo', fotoLocal: './img/comercios/jumbo.webp', logo: { bg: '#007448', fg: '#FFFFFF' }, cat: 'Viandas', cierre: '21:30', rating: 4.9, resenas: 76, dist: 1800, rumbo: 190, color: '#007448' },
+  { id: 'c6', nombre: 'Burger King', corto: 'Burger King', marcaDemo: true, marca: 'burger-king', fotoLocal: './img/comercios/burger-king.webp', logo: { bg: '#A53623', fg: '#FFFFFF' }, cat: 'Sándwiches', cierre: '23:00', rating: 4.4, resenas: 203, dist: 750, rumbo: 80, color: '#A53623' },
+  { id: 'c7', nombre: 'Coto', corto: 'Coto', marcaDemo: true, marca: 'coto', fotoLocal: './img/comercios/coto.webp', logo: { bg: '#C12427', fg: '#FFFFFF' }, cat: 'Viandas', cierre: '22:00', rating: 4.3, resenas: 265, dist: 2200, rumbo: 20, color: '#C12427' },
+  { id: 'c8', nombre: 'Carrefour', corto: 'Carrefour', marcaDemo: true, marca: 'carrefour', fotoLocal: './img/comercios/carrefour.webp', logo: { bg: '#164F9E', fg: '#FFFFFF' }, cat: 'Panificados', cierre: '21:00', rating: 4.8, resenas: 59, dist: 1100, rumbo: 160, color: '#164F9E' },
 ];
 
 export function ubicarComercios(centro) {
@@ -163,7 +163,7 @@ export function packsSemilla(dia) {
     ['c2', 'mediano', 650, [], 'Viandas', 3, true],
     ['c2', 'grande', 1300, [], 'Viandas', 1, true],
     ['c3', 'chico', 330, ['Vegetariano'], 'Pastelería', 2, false],
-    ['c4', 'mediano', 520, ['Vegetariano'], 'Pastelería', 2, false],
+    ['c4', 'mediano', 520, [], 'Sándwiches', 2, false],
     ['c5', 'mediano', 600, ['Vegano', 'Sin TACC'], 'Viandas', 2, false],
     ['c6', 'chico', 280, [], 'Sándwiches', 4, false],
     ['c7', 'grande', 1100, ['Vegetariano'], 'Viandas', 2, true],
@@ -205,7 +205,7 @@ export const CATS_CHICAS = [
   { id: 'agotan', titulo: 'Se agotan', ilus: 'fuego', fondo: '#FDE7DC' },
   { id: 'mejores', titulo: 'Mejor puntuados', ilus: 'estrella', fondo: '#FFF3D6' },
 ];
-export const BUSQUEDAS = ['medialunas', 'viandas', 'sin TACC', 'Don Luis', 'pastelería', 'pizza', 'vegano'];
+export const BUSQUEDAS = ['medialunas', 'viandas', 'sin TACC', 'McDonald’s', 'pastelería', 'pizza', 'vegano'];
 export const BANNERS = [
   { id: 'merienda', tono: 'verde', eti: '50% de descuento', titulo: 'Rescatá la merienda', texto: 'Medialunas, facturas y pan de las panaderías de tu barrio.', cta: 'Ver panaderías', ir: 'c/lista/Panificados', ilus: ['medialuna', 'cafe'] },
   { id: 'sintacc', tono: 'teal', eti: 'Nuevo', titulo: 'Packs sin TACC cerca tuyo', texto: 'Cada local declara qué puede ofrecer, pack por pack.', cta: 'Ver sin TACC', ir: 'c/lista/Sin TACC', ilus: ['sintacc'] },
