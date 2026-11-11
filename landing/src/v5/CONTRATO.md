@@ -55,7 +55,7 @@ APV5.scene('recupera', function (ctx) {
 - Problema: `id="problema"`.
 - Capítulos: `id="plan-base"` (con `<a id="como-funciona"></a>` como primer hijo), `id="plan-smart"`, `id="plan-intelligence"`.
 - Botones de cada plan: `<a class="btn btn--lg" href="#alta" data-plan="base|smart|intelligence">` (preselecciona el plan en el formulario).
-- Menú: si hay botón hamburguesa, `class="nav__burger"` con `aria-controls="menu"` y los enlaces en `<nav id="menu" class="nav__links">` (lo maneja `main.js`). «Descargar app»: `<a href="#consumidores" data-app>`.
+- Menú: si hay botón hamburguesa, `class="nav__burger"` con `aria-controls="menu"` y los enlaces en `<nav id="menu" class="nav__links">` (lo maneja `main.js`). «Descargar app»: `<a href="https://aprovecho-app-demo.vercel.app/" data-app>`.
 - Secciones existentes para enlazar: `#suma`, `#senales`, `#preguntas`, `#alta`, `#inversores`, `#equipo`, `#consumidores`.
 
 ## Accesibilidad y calidad
