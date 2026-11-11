@@ -3,6 +3,8 @@
 - **Agente:** codex-octi-app
 - **Fecha:** 2026-11-11
 - **Rama:** `codex/octi-app-acceso-comercio`
+- **PR:** https://github.com/ochomnalez/APROVECHO-online-/pull/8 (borrador).
+- **Publicado:** https://aprovecho-app-demo.vercel.app · `dpl_4GUxZyxBpJETMKGvzjK9mxo5UvYx`, READY; código `4e01cd6`.
 
 ## Diagnóstico
 
@@ -10,7 +12,7 @@ La captura del usuario muestra el formulario de **registro**, con `over_email_se
 
 Los últimos correos enviados fueron a las 19:04:10 y 19:06:00 UTC (16:04 y 16:06 de Argentina). A las 16:20 se informó al usuario una estimación de reintento alrededor de las 17:06, sin prometer un minuto exacto. La documentación indica cupo horario compartido del servicio incluido y recomienda SMTP propio para quitar esa limitación. Referencia: https://supabase.com/docs/guides/auth/testing-auth-flows .
 
-También se observó un `bad_code_verifier` después de confirmar otro registro. El usuario pudo iniciar sesión con contraseña después. El formulario anterior permitía enviar el alta de nuevo después de mostrar éxito, generando un nuevo verificador PKCE; se elimina ese reenvío accidental.
+También se observó un `bad_code_verifier` después de confirmar otro registro. El usuario pudo iniciar sesión con contraseña después. El formulario anterior permitía enviar el alta de nuevo después de mostrar éxito, lo que podía generar un nuevo verificador PKCE; se elimina ese reenvío accidental. No se atribuye el error observado a esa causa de manera concluyente.
 
 ## Cambios
 
