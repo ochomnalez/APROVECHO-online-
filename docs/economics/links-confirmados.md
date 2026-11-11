@@ -14,3 +14,20 @@ Firma: claude-octi-lider · consulta: 11/11/2026
 | Supabase | USD 25 por mes (plan Pro) | https://supabase.io/pricing | Queda | Falta captura de la página oficial |
 | Pérdidas contra ganancias | Se restan hasta 5 años (Ley 20.628, art. 25) | https://siap.blogdelcontador.com.ar/normativa/ley-20-628-t-o-2019-articulo-25-compensacion-de-quebrantos-con-ganancias/ | Queda | El modelo no las resta. Ver `revision-economics.md` |
 | Escala de Ganancias | 25 % a 35 % (Ley 27.630) | https://www.argentina.gob.ar/normativa/nacional/norma-472/texto | Queda | Sin abrir; confirmar que sea la norma. El modelo usa 35 % fijo |
+
+## Segunda ronda (11/11/2026): costos que no tenían fuente
+
+| Costo o dato | Valor del modelo | Lo que encontré | Link | Estado | Observaciones |
+|---|---|---|---|---|---|
+| Vercel | USD 20 por mes | USD 20 por usuario por mes (plan Pro) | https://vercel.com/pricing | Queda | Es por usuario: con más de una persona, sube. Más consumo aparte |
+| n8n | EUR 20 por mes | EUR 20 por mes pagando todo el año; EUR 24 si se paga mes a mes (2.500 ejecuciones) | https://n8n.io/pricing | Parcial | Fuentes de terceros; falta abrir la página oficial. Si se paga mes a mes, el costo es 24 |
+| Ingresos Brutos | 5 % | CABA 2026: 5,5 % para gestión de cobros y pagos digitales; 3 % o 5 % para comercio electrónico según facturación; 3 % la alícuota general | https://www.derechoenzapatillas.com/2026/codigo-fiscal-y-ley-impositiva-caba-2026/ | Parcial | Blog, no la ley. No pude confirmar qué rubro le toca a APROVECHO. El 5 % puede quedar corto si es el 5,5 %. Consultar al contador y citar la Ley Impositiva 2026 |
+| Débitos y créditos | 1,2 % | 6 por mil en cada débito y 6 por mil en cada crédito = 1,2 % (Ley 25.413 y decretos 380/01 y 969/01) | https://www.argentina.gob.ar/normativa/nacional/ley-25413-66533/texto/1000 | Parcial | No pude confirmar que siga vigente en 2026. Se cobra sobre todo el dinero que pasa por la cuenta, no solo sobre lo que cobra APROVECHO |
+| Sueldo ejecutivo de cuentas | USD 1.850 por mes | Guía Salarial 2026 de Michael Page: ejecutivo de grandes cuentas entre ARS 4,5 y 7 millones brutos por mes (USD 2.941 a 4.575 al dólar de 1.530), sin comisiones | Sin link (abrir la guía de Michael Page) | Parcial | El modelo está por debajo del rango. Tampoco dice si USD 1.850 incluye cargas sociales |
+| Sueldo analista | USD 1.850 por mes | Levels.fyi: analista de datos en Argentina, ARS 23,2 millones de compensación total mediana (no aclara si es por año) | https://www.levels.fyi/es-AR/t/data-analyst/locations/argentina | Parcial | Falta aclarar si es mensual o anual |
+
+## Siguen sin fuente
+- Soporte (USD 1.000 por mes): no encontré dato de sueldo.
+- Balanza (USD 215), tablet (196), cable, hub, soporte: no hay precios argentinos a la vista; hay que entrar a Mercado Libre Argentina y copiar el link.
+- Bolsas (ARS 330), sticker (ARS 6.000), envío (USD 4), vendedor de calle (USD 27), instalación (USD 150): son presupuestos de proveedores; hay que pedirlos.
+- Visión por foto (USD 0,01), nube por pack, estación (USD 15 y 45), administración, plataforma e inversiones, marketing 2027: precios de herramientas o presupuestos.
