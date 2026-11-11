@@ -6,7 +6,7 @@
   // Si una variable está vacía, el botón no se rompe: muestra un aviso y lleva al formulario o a la lista de espera.
   var WHATSAPP_URL = ''; // ej. 'https://wa.me/54911XXXXXXXX'
   var INSTAGRAM_URL = ''; // ej. 'https://www.instagram.com/aprovecho...'
-  var APP_URL = ''; // dónde se descarga o abre la app (todavía no está publicada)
+  var APP_URL = 'https://aprovecho-app-demo.vercel.app/'; // PWA publicada de APROVECHO
   // =============================================================
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -272,7 +272,7 @@
     if (WHATSAPP_URL) $$('[data-whatsapp]').forEach(function (a) { ext(a, WHATSAPP_URL); });
     $$('[data-social="whatsapp"]').forEach(function (a) { if (WHATSAPP_URL) ext(a, WHATSAPP_URL); else a.addEventListener('click', function () { aviso('Muy pronto: por ahora dejanos tus datos y te escribimos.'); }); });
     $$('[data-social="instagram"]').forEach(function (a) { if (INSTAGRAM_URL) ext(a, INSTAGRAM_URL); else a.addEventListener('click', function () { aviso('Muy pronto: por ahora dejanos tus datos y te escribimos.'); }); });
-    $$('[data-app]').forEach(function (a) { if (APP_URL) ext(a, APP_URL); else a.addEventListener('click', function () { aviso('La app llega pronto. Dejá tu zona y tu email y te avisamos.'); }); });
+    $$('[data-app]').forEach(function (a) { if (APP_URL) { a.href = APP_URL; a.removeAttribute('target'); } else a.addEventListener('click', function () { aviso('La app llega pronto. Dejá tu zona y tu email y te avisamos.'); }); });
   }, 'botones');
 
   // ---------- Pausa el anillo de la portada cuando no se ve ----------
