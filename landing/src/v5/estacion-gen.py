@@ -51,12 +51,15 @@ def num(v):
 def stage_html(label, indent='      '):
     aw, ah = ARM['iw'] * ARM['scale'], ARM['ih'] * ARM['scale']
     out = []
-    out.append('<div class="st-stage" data-st-stage data-giro-frames="0" data-seq-frames="0" role="group" aria-label="%s">' % label)
+    out.append('<div class="st-stage" data-st-stage data-giro-frames="48" data-seq-frames="0" role="group" aria-label="%s">' % label)
     out.append('  <div class="st-frame" data-fw="%d" data-fh="%d" style="--fr:%s">' % (FW, FH, num(FW / FH)))
     out.append('    <div class="st-armada" data-x="%s" data-y="%s" data-w="%s" data-h="%s" data-s="%s" style="--x:%s;--y:%s;--w:%s">' % (
         num(ARM['x']), num(ARM['y']), num(aw), num(ah), num(ARM['s']), pct(ARM['x'], FW), pct(ARM['y'], FH), pct(aw, FW)))
     out.append('      <img class="st-armada__img" src="%s" width="%d" height="%d" alt="Estación armada: balanza con la tablet en su brazo, hub de carga y cables" loading="lazy" decoding="async">' % (ARM['file'], ARM['iw'], ARM['ih']))
-    out.append('      <img class="st-giro" src="" width="%d" height="%d" alt="" hidden decoding="async">' % (ARM['iw'], ARM['ih']))
+    out.append('    </div>')
+    # giro 360: cuadros 1500x1080 opacos (fondo blanco) -> multiply sobre el fondo del escenario
+    out.append('    <div class="st-gw" hidden style="--x:%s;--y:%s;--w:%s">' % (pct(ARM['x'], FW), pct(ARM['y'], FH), pct(aw, FW)))
+    out.append('      <img class="st-giro" src="" width="1500" height="1080" alt="" decoding="async" draggable="false">')
     out.append('    </div>')
     out.append('    <img class="st-seq" src="" width="%d" height="%d" alt="" hidden decoding="async">' % (FW, FH))
     for key, name, frase, d in PIEZAS:

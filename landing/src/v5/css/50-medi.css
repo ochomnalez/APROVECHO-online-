@@ -7,8 +7,7 @@
 .st-armada{position:absolute;left:var(--x);top:var(--y);width:var(--w);display:none;transform-origin:50% 50%}
 html.motion .st-armada{display:block;pointer-events:none}
 .st-armada img{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 12px rgba(0,0,0,.16));-webkit-user-drag:none;user-select:none}
-.st-armada .st-giro{position:absolute;left:0;top:0}
-.st-giro[hidden],.st-seq[hidden]{display:none}
+.st-seq[hidden]{display:none}
 .st-seq{position:absolute;left:0;top:0;width:100%;height:auto;pointer-events:none}
 /* piezas sueltas */
 .st-p{position:absolute;left:var(--x);top:var(--y);width:var(--w);outline:none}
@@ -17,7 +16,7 @@ html.motion .st-armada{display:block;pointer-events:none}
 .st-p.is-on{z-index:2}
 .st-p:hover,.st-p:focus-visible,.st-p.is-tap{z-index:4}
 /* en animación (y solo entonces) se promueven a capa propia */
-.st-stage.is-anim .st-p,.st-stage.is-anim .st-armada{will-change:transform,opacity}
+.st-stage.is-anim .st-p,.st-stage.is-anim .st-gw,.st-stage.is-anim .st-armada{will-change:transform,opacity}
 html.motion .st-stage:not(.is-sep) .st-p{visibility:hidden}
 /* al resaltar una pieza, las otras bajan un poco */
 .st-stage.has-on .st-p:not(.is-on):not(:hover):not(:focus-visible) .st-p__img{opacity:.55}
@@ -38,11 +37,16 @@ html.motion .st-stage:not(.is-sep) .st-p{visibility:hidden}
 @media(hover:hover){.st-p:hover .st-tag{opacity:1;visibility:visible;transition-delay:0s}.st-p:hover .st-tag small{display:block}.st-stage:has(.st-p:hover) .st-p.is-on:not(:hover) .st-tag{opacity:0;visibility:hidden}}
 .st-stage.is-mini .st-p{pointer-events:none}
 .st-stage.is-mini .st-tag{opacity:0!important;visibility:hidden!important}
-/* giro 360°: solo si hay frames (ver 50-medi.js) */
-.st-stage.has-giro.is-armed .st-armada{pointer-events:auto;cursor:grab;touch-action:pan-y}
-.st-stage.has-giro.is-armed .st-armada.is-drag{cursor:grabbing}
-.st-armada.is-giro .st-armada__img{visibility:hidden}
-.st-armada:focus-visible{outline:3px solid var(--forest);outline-offset:4px;border-radius:12px}
+/* giro 360°: cuadros opacos (fondo blanco) con multiply sobre el fondo del escenario; solo si hay frames (ver 50-medi.js) */
+.md .st-stage{background:#fff}
+.an .st-stage{background:var(--soft)}
+.st-gw{position:absolute;left:var(--x);top:var(--y);width:var(--w);aspect-ratio:1296/1055;mix-blend-mode:multiply;transform-origin:50% 50%;pointer-events:none}
+.st-gw[hidden]{display:none}
+.st-gw .st-giro{position:absolute;left:-16%;top:-1%;width:117%;height:auto;display:block;filter:brightness(1.04);-webkit-mask-image:radial-gradient(ellipse 62% 60% at 54% 50%,#000 78%,transparent 100%);mask-image:radial-gradient(ellipse 62% 60% at 54% 50%,#000 78%,transparent 100%);-webkit-user-drag:none;user-select:none}
+.st-stage.is-giro .st-armada__img{visibility:hidden}
+.st-stage.has-giro.is-armed .st-gw{pointer-events:auto;cursor:grab;touch-action:pan-y}
+.st-gw.is-drag{cursor:grabbing!important}
+.st-gw:focus-visible{outline:3px solid var(--forest);outline-offset:4px;border-radius:12px}
 /* leyenda (celular): reemplaza a las etiquetas junto a cada pieza */
 .st-leg{display:none;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:4px;padding:0 4px;font-size:.8125rem;line-height:1.35;color:var(--text-2)}
 .st-leg b{display:block;color:var(--ink)}

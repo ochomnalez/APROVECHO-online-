@@ -546,8 +546,8 @@ APV5.scene('onboarding', function (ctx) {
      piezas.json y correr estacion-gen.py.
 
    GIRO 360° (preparado, apagado por defecto):
-   · Frames numerados en  img/estacion/giro/001.webp, 002.webp … NNN.webp  (3 dígitos, WebP con fondo
-     transparente, MISMO tamaño y encuadre que armada.webp = 1296×1055, un giro completo, de 24 a 72 frames).
+   · Frames numerados en  img/estacion/giro/001.webp … NNN.webp  (3 dígitos; hoy 48 cuadros de 1500×1080, fondo
+     blanco OPACO, un giro completo; 001 = vista armada). Se mezclan con multiply sobre el fondo del escenario.
    · Se activa poniendo data-giro-frames="NNN" en el .st-stage (partial de Medí y/o de Anticipá, vía
      estacion-gen.py). Opcionales: data-giro-dir="otra/carpeta/" y data-giro-ext="webp".
    · Cuando está activo, sobre la estación ARMADA se arrastra (mouse/touch, el scroll vertical sigue andando)
@@ -595,6 +595,7 @@ APV5.scene('onboarding', function (ctx) {
   // k (0-1) afloja las rotaciones en celular.
   ST.separate = function (tl, stage, at, dur, k) {
     var d = read(stage), a = d.a, ps = d.ps;
+    var gw = stage.querySelector('.st-gw'), armT = gw ? [a.el, gw] : [a.el];
     var nseq = parseInt(stage.getAttribute('data-seq-frames'), 10) || 0;
     var seq = stage.querySelector('.st-seq');
     if (nseq > 1 && seq) {
@@ -602,7 +603,7 @@ APV5.scene('onboarding', function (ctx) {
       seq.hidden = false;
       seq.style.opacity = 0;
       gsap.set(ps.map(function (p) { return p.el; }), { opacity: 0 });
-      tl.set(seq, { opacity: 1 }, at).set(a.el, { opacity: 0 }, at)
+      tl.set(seq, { opacity: 1 }, at).set(armT, { opacity: 0 }, at)
         .to(o, { f: nseq - 1, duration: dur, ease: 'none', onUpdate: function () {
           var i = Math.round(o.f); if (i === last) return; last = i;
           if (frames[i] && frames[i].complete && frames[i].naturalWidth) seq.src = frames[i].src;
@@ -612,8 +613,8 @@ APV5.scene('onboarding', function (ctx) {
       return;
     }
     // la armada: escala apenas hacia atrás mientras se funde
-    tl.fromTo(a.el, { scale: a.s }, { scale: 1 - .05 * k, duration: dur * .7, ease: 'power2.out' }, at)
-      .to(a.el, { opacity: 0, duration: dur * .22, ease: 'none' }, at + dur * .1);
+    tl.fromTo(armT, { scale: a.s }, { scale: 1 - .05 * k, duration: dur * .7, ease: 'power2.out' }, at)
+      .to(armT, { opacity: 0, duration: dur * .22, ease: 'none' }, at + dur * .1);
     ps.forEach(function (p) {
       var t0 = at + dur * p.sd, dd = dur * (1 - p.sd);
       gsap.set(p.el, { opacity: 0 });
@@ -664,36 +665,60 @@ APV5.scene('onboarding', function (ctx) {
 
   function giro(stage) {
     var n = parseInt(stage.getAttribute('data-giro-frames'), 10) || 0;
-    if (n < 2) return;
-    var arm = stage.querySelector('.st-armada'), img = arm && arm.querySelector('.st-giro');
-    if (!arm || !img) return;
-    var frames = null, cur = 0, drag = false, x0 = 0, f0 = 0, ppf = 8;
-    function load() { if (!frames) frames = frameList(stage, 'data-giro-dir', 'img/estacion/giro/', n); }
+    var gw = stage.querySelector('.st-gw'), img = gw && gw.querySelector('.st-giro');
+    if (n < 2 || !gw || !img) return;
+    var frames = [], ok = [], cur = 0, drag = false, x0 = 0, f0 = 0, ppf = 8, started = false;
+    // carga progresiva: 001 primero; después cada 8, cada 4, cada 2 y el resto (solo cuando la escena está cerca)
+    function order() {
+      var seen = {}, out = [];
+      [n, 8, 4, 2, 1].forEach(function (st) { for (var i = 0; i < n; i += st === n ? n : st) if (!seen[i]) { seen[i] = 1; out.push(i); } });
+      return out;
+    }
+    function start() {
+      if (started) return; started = true;
+      var q = order(), pend = 0;
+      function next() {
+        while (pend < 3 && q.length) {
+          var i = q.shift(), im = new Image(); pend++;
+          im.decoding = 'async'; frames[i] = im;
+          im.onload = im.onerror = (function (i, im) { return function () {
+            pend--; if (im.naturalWidth) { ok[i] = true; if (i === 0) { img.src = im.src; gw.hidden = false; stage.classList.add('is-giro'); } }
+            next();
+          }; })(i, im);
+          im.src = (stage.getAttribute('data-giro-dir') || 'img/estacion/giro/') + pad(i + 1, 3) + '.' + (stage.getAttribute('data-giro-ext') || 'webp');
+        }
+      }
+      next();
+    }
     function show(i) {
       i = ((i % n) + n) % n;
-      var im = frames && frames[i];
-      if (!im || !im.complete || !im.naturalWidth) return;
-      cur = i; img.src = im.src; img.hidden = false; arm.classList.add('is-giro');
+      var j = i, k = 0;
+      while (!ok[j] && k++ < n) j = (j + 1) % n;       // si el cuadro todavía no llegó, el más cercano que sí
+      if (!ok[j]) return;
+      cur = i; img.src = frames[j].src;
     }
     stage.classList.add('has-giro');
-    arm.tabIndex = 0;
-    arm.setAttribute('role', 'img');
-    arm.setAttribute('aria-label', 'Estación armada. Arrastrala o usá las flechas izquierda y derecha para girarla.');
-    arm.addEventListener('pointerenter', load);
-    arm.addEventListener('focus', load);
-    arm.addEventListener('pointerdown', function (e) {
+    gw.tabIndex = 0;
+    gw.setAttribute('role', 'img');
+    gw.setAttribute('aria-label', 'Estación armada. Arrastrala o usá las flechas izquierda y derecha para girarla.');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: '1200px 0px' });
+      io.observe(stage);
+    } else gw.addEventListener('pointerenter', start);
+    gw.addEventListener('focus', start);
+    gw.addEventListener('pointerdown', function (e) {
       if (!stage.classList.contains('is-armed')) return;
-      load(); drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, arm.offsetWidth * 1.1 / n);
-      try { arm.setPointerCapture(e.pointerId); } catch (err) { noop(); }
-      arm.classList.add('is-drag');
+      start(); drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, gw.offsetWidth * 1.1 / n);
+      try { gw.setPointerCapture(e.pointerId); } catch (err) { noop(); }
+      gw.classList.add('is-drag');
     });
-    arm.addEventListener('pointermove', function (e) { if (drag) show(f0 + Math.round((e.clientX - x0) / ppf)); });
-    function end() { drag = false; arm.classList.remove('is-drag'); }
-    arm.addEventListener('pointerup', end);
-    arm.addEventListener('pointercancel', end);
-    arm.addEventListener('keydown', function (e) {
+    gw.addEventListener('pointermove', function (e) { if (drag) show(f0 + Math.round((e.clientX - x0) / ppf)); });
+    function end() { drag = false; gw.classList.remove('is-drag'); }
+    gw.addEventListener('pointerup', end);
+    gw.addEventListener('pointercancel', end);
+    gw.addEventListener('keydown', function (e) {
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      load(); e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1));
+      start(); e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1));
     });
   }
 })();
