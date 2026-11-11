@@ -56,3 +56,24 @@ Equipo según el entregable (sección de equipo fundador): Catalina Rebolo (CEO)
 | Precio del pack USD 3,99 | 16.1 y 16.2 (sección de precios, 11) | Quien armó economics |
 | Bolsas (100 y ARS 330), sticker (ARS 6.000), envío (USD 4) | Solo en 16.2 | Quien armó economics; los presupuestos de proveedores los consigue Operaciones |
 | Instalación USD 150 | 16.2 y 16.4 (CAC de Smart e Intelligence); el proceso está en 14 ("arma y configura cada kit, lo instala") | CTO (Facundo): cuánto lleva armar e instalar, quién lo hace |
+
+## Costos fijos de personal, marketing y administración: de dónde sale cada fila (11/11/2026)
+
+| Fila | Cuenta | Dónde está en el entregable | Fuente |
+|---|---|---|---|
+| Ejecutivos de cuenta | personas × USD 1.850 × 12: 0, 1, 1, 2, 2 (2027 a 2031) | 16.2 | Sin fuente de las cantidades ni del sueldo. Michael Page 2026: ejecutivo de grandes cuentas ARS 4,5 a 7 millones brutos (USD 2.941 a 4.575) |
+| Analistas de Intelligence | personas × USD 1.850 × 12: 0, 0,5, 1, 1, 2 | 16.2 | Sin fuente |
+| Equipo de soporte | personas × USD 1.000 × 12: 0, 1, 3, 5, 8 | 16.2 | Sin fuente |
+| Marketing | 2027: USD 75.000 − 16.900 = 58.100; 2028: 18.000 (1.500 × 12); 2029 a 2031: 12.000 (1.000 × 12) | 13.8 y 16.2 | 2028 no coincide con 13.8 (USD 54.000) |
+| Administración | USD 400, 500, 600, 700 y 800 por mes × 12 | 16.2 | Sin fuente |
+| Sueldo de los 4 fundadores | 4 × USD 1.000 × 12, desde 2028 | 16.2 | Decisión del equipo |
+
+Relación implícita entre personas y clientes (calculada con los números del modelo; no está escrita en el entregable):
+
+| | 2028 | 2029 | 2030 | 2031 |
+|---|---|---|---|---|
+| Clientes Smart e Intelligence por ejecutivo | 24 | 54 | 39 | 51 |
+| Sucursales Intelligence por analista | 12 | 12 | 20 | 15 |
+| Usuarios activos por persona de soporte | 70.437 | 49.983 | 39.780 | 29.849 |
+
+Las cantidades de personal se cargaron a mano año por año, sin una regla fija.
