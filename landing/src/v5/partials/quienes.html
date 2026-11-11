@@ -1,46 +1,27 @@
-<section class="qs" id="quienes-somos" aria-labelledby="qs-t">
-  <div class="qs__bg" aria-hidden="true">
-    <div class="qs__clip is-on" data-clip="1-campo">
-      <img src="video/hero/1-campo.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
-      <video muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    </div>
-    <div class="qs__clip" data-clip="2-fabrica">
-      <img src="video/hero/2-fabrica.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
-      <video muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    </div>
-    <div class="qs__clip" data-clip="3-camiones">
-      <img src="video/hero/3-camiones.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
-      <video muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    </div>
-    <div class="qs__clip" data-clip="4-super">
-      <img src="video/hero/4-super.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
-      <video muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-    </div>
-  </div>
-  <div class="qs__veil" aria-hidden="true"></div>
-  <div class="wrap qs__in">
-    <div class="qs__copy">
+<section class="qn" id="quienes-somos" aria-labelledby="qn-t">
+  <div class="wrap qn__in">
+    <div class="qn__main">
       <p class="eyebrow">Quiénes somos · Menos desperdicio, más aprovecho</p>
-      <h2 id="qs-t" class="qs__title">Lo que sobra hoy vale. <em>Y mañana, que sobre menos.</em></h2>
-      <p class="qs__lead">APROVECHO es la plataforma que le permite al comercio vender lo que le sobra con una foto y usar esos datos para que le sobre menos.</p>
-    </div>
-    <div class="qs__card">
-      <ul class="pilares" aria-label="Lo que nos mueve">
-        <li><b>Recuperar valor</b><span>Lo que ibas a tirar vuelve a la caja, y tus vecinos comen rico a mitad de precio.</span></li>
-        <li><b>Entender el excedente</b><span>Cada venta registra qué sobró, cuánto y cuándo.</span></li>
-        <li><b>Reducir el desperdicio</b><span>Con esos datos, producir y comprar lo justo.</span></li>
-      </ul>
-      <p class="proposito"><b>Nuestro propósito:</b> que cada vez sobre menos comida en los comercios. Primero recuperando su valor; después, con los datos, evitando que sobre.</p>
+      <h2 class="qn__title" id="qn-t">Lo que sobra hoy vale. <em>Y mañana, que sobre menos.</em></h2>
+      <p class="qn__lead">APROVECHO es la plataforma que le permite al comercio vender lo que le sobra con una foto y usar esos datos para que le sobre menos.</p>
+      <p class="qn__purpose"><b>Nuestro propósito:</b> que cada vez sobre menos comida en los comercios. Primero recuperando su valor; después, con los datos, evitando que sobre.</p>
+      <a class="link" href="#equipo" data-open-inv>Conocé al equipo</a>
       <!-- SUPUESTO: faltan los valores explícitos del equipo y la motivación personal de los fundadores; Octavio los completa (ver handoff). -->
-      <p class="qs__more"><a class="link" href="#equipo">Conocé al equipo</a></p>
+    </div>
+    <ul class="qn__pillars" aria-label="Lo que nos mueve">
+      <li><span class="qn__n" aria-hidden="true">01</span><b>Recuperar valor</b><span>Lo que ibas a tirar vuelve a la caja, y tus vecinos comen rico a mitad de precio.</span></li>
+      <li><span class="qn__n" aria-hidden="true">02</span><b>Entender el excedente</b><span>Cada venta registra qué sobró, cuánto y cuándo.</span></li>
+      <li><span class="qn__n" aria-hidden="true">03</span><b>Reducir el desperdicio</b><span>Con esos datos, producir y comprar lo justo.</span></li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <div class="qn__invcta">
+      <div>
+        <p class="eyebrow">Para inversores</p>
+        <p class="qn__invtxt">¿Querés conocer el proyecto en detalle? Tesis, mercado, modelo, números y equipo, en un solo lugar.</p>
+      </div>
+      <button class="btn btn--lg btn--ghost" type="button" aria-expanded="false" aria-controls="inversores" data-inv-toggle><span data-inv-label>Ver información para inversores</span></button>
     </div>
   </div>
-  <div class="qs__rail">
-    <div class="qs__bars" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
-    <p class="qs__cap" aria-hidden="true" data-qs-cap>Se cultiva</p>
-    <button class="qs__pause" type="button" aria-label="Pausar el video de fondo" data-qs-pause>
-      <svg class="qs__ico qs__ico--pause" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.4" height="12" rx="1"/><rect x="9.6" y="2" width="3.4" height="12" rx="1"/></svg>
-      <svg class="qs__ico qs__ico--play" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M4 2.2v11.6a.8.8 0 0 0 1.2.7l9-5.8a.8.8 0 0 0 0-1.4l-9-5.8A.8.8 0 0 0 4 2.2z"/></svg>
-    </button>
-  </div>
+{{V5_INVERSORES}}
 </section>

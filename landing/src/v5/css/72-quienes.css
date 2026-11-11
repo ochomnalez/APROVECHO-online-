@@ -1,0 +1,23 @@
+/* ---------- Quiénes somos (sección aparte, con Inversores adentro) ---------- */
+.qn{padding:var(--sec-y) 0 0;background:#fff;border-top:1px solid var(--line)}
+.qn__in{display:grid;gap:48px;align-items:start}
+.qn__title{max-width:14ch;font-size:clamp(2.6rem,6.4vw,5.5rem);line-height:.96;letter-spacing:-.04em;text-wrap:balance}
+.qn__title em{font-style:normal;color:var(--forest)}
+.qn__lead{margin-top:24px;max-width:50ch;font-size:clamp(1.0625rem,1.6vw,1.25rem);color:#262626}
+.qn__purpose{margin-top:20px;max-width:52ch;color:var(--text-2)}
+.qn__purpose b{color:var(--ink)}
+.qn__main .link{display:inline-block;margin-top:24px}
+.qn__pillars{display:grid;gap:0;border-top:2px solid var(--ink)}
+.qn__pillars li{display:grid;grid-template-columns:44px 1fr;gap:2px 14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.qn__n{grid-row:span 2;font:700 .875rem var(--font-display);letter-spacing:.06em;color:var(--forest);padding-top:5px}
+.qn__pillars b{font:700 1.375rem/1.15 var(--font-display);letter-spacing:-.02em;color:var(--ink)}
+.qn__pillars li>span:last-child{max-width:44ch;color:var(--text-2)}
+@media(min-width:960px){.qn__in{grid-template-columns:1.1fr .9fr;gap:80px}}
+.qn__invcta{display:grid;gap:20px;align-items:center;margin-top:clamp(48px,6vw,80px);padding:clamp(24px,3.5vw,40px);border-radius:var(--r-lg);background:var(--soft)}
+.qn__invtxt{max-width:46ch;font:700 clamp(1.25rem,2.2vw,1.625rem)/1.2 var(--font-display);letter-spacing:-.02em;color:var(--ink)}
+.qn__invcta .eyebrow{margin-bottom:8px}
+@media(min-width:800px){.qn__invcta{grid-template-columns:1fr auto;gap:40px}}
+.qn__invcta .btn[aria-expanded="true"]{background:var(--ink);color:#fff}
+.qn__hub{margin-top:var(--sec-y);padding-top:0;border-top:1px solid var(--line)}
+.qn__hub:not([hidden]){animation:rise .5s var(--ease-out) both}
+.qn:has(.qn__hub[hidden]){padding-bottom:var(--sec-y)}

@@ -80,3 +80,18 @@ Probar también con `reducedMotion: 'reduce'` (debe verse como sección normal).
 
 **No usar git** (ni add, ni commit, ni push, ni checkout): el director integra y sube. No tocar `docs/`.
 Al terminar, informar: archivos tocados, qué se probó, capturas (rutas), dudas y lo que quedó sin hacer.
+
+---
+# RONDA 2 (11/11): cambios pedidos por Octavio (referencias: Cheaf, Buen Provecho, Too Good To Go)
+
+Orden nuevo de la página (ya aplicado en `index.tpl.html`): **Portada con video** → **Contadores** → **El problema** → **Por qué sumar tu comercio** → **Planes (01 Recuperá · 02 Medí · 03 Anticipá)** → Mirá cuánto te queda → **Sumate en 3 pasos + formulario** (alta) → Señales → Preguntas → **Quiénes somos (con Inversores adentro)** → Lista de espera → pie.
+
+Escenas nuevas y sus archivos (prefijo de clases entre paréntesis):
+- `20-hero` rehecha (`hr-`): portada con 3 videos en loop. Constructor A.
+- `10-nav` ajuste del menú. Constructor A.
+- `contadores` (`ct-`): `partials/contadores.html`, `css/25-contadores.css`, `js/25-contadores.js`. Constructor B.
+- `valor` (`vl-`): `partials/valor.html`, `css/35-valor.css`, `js/35-valor.js`. Constructor B.
+- `pasos` (`ps-`): `partials/pasos.html`, `css/80-pasos.css`, `js/80-pasos.js`. Constructor B.
+- `70-quienes` + `partials/inversores.html`: los hace el director (no tocar).
+Las reglas de arriba siguen valiendo (tokens, `.motion`, accesibilidad, sin git, sin 75%/25%, voseo, contenido solo de la fuente).
+Videos de la portada: `video/hero-ia/<n>-<nombre>-1280.mp4` (escritorio), `-640.mp4` (celular ≤899px) y `.webp` (póster): `1-publica`, `2-balanza`, `3-entrega`. Duran 6 s, sin audio, 16:9. Son **generados con IA** (Gemini Omni a partir de imágenes validadas por Octavio); hay que decirlo en el pie.
