@@ -350,11 +350,13 @@ APV5.scene('anticipa', function (ctx) {
 
   // desde dónde llega cada pieza (en % de su propio tamaño): sucursales sueltas que llegan de los costados
   var FROM = [
-    { x: -75, y: -45, r: -13 }, { x: 8, y: -105, r: 5 }, { x: 80, y: -40, r: 11 },
-    { x: -80, y: 55, r: 9 }, { x: -6, y: 100, r: -6 }, { x: 85, y: 50, r: -10 }
+    { x: -50, y: -60, r: -13 }, { x: 8, y: -105, r: 5 }, { x: 80, y: -40, r: 11 },
+    { x: -50, y: 75, r: 9 }, { x: -6, y: 100, r: -6 }, { x: 85, y: 50, r: -10 }
   ];
   // se llega en este orden escalonado
   var ORDER = [0, 2, 3, 5, 1, 4];
+  var RAD = ['16px 0 0 0', '0', '0 16px 0 0', '0 0 0 16px', '0', '0 0 16px 0'];
+  var spans = tiles.map(function (t) { return t.querySelectorAll('span'); });
 
   function build(k) {
     var tl = gsap.timeline();
@@ -367,13 +369,15 @@ APV5.scene('anticipa', function (ctx) {
       var f = FROM[i], n = ORDER.indexOf(i);
       var at = .4 + n * .35;
       tl.fromTo(t, { xPercent: f.x * k, yPercent: f.y * k, rotation: f.r * k, scale: .94, opacity: 0 },
-        { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, opacity: 1, duration: 2.4, ease: 'power3.out' }, at);
+        { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, opacity: 1, duration: 2.1, ease: 'power3.out' }, at);
       tl.fromTo(shadows[i], { opacity: 0 }, { opacity: 1, duration: 1, ease: 'none' }, at);
-      tl.to(shadows[i], { opacity: 0, duration: .6, ease: 'none' }, 4.1);
+      tl.to(shadows[i], { opacity: 0, duration: 1, ease: 'none' }, at + 1.1);
+      // esquinas redondeadas mientras viaja; al encastrar, solo quedan las del borde del tablero
+      tl.fromTo(spans[i], { borderRadius: '16px' }, { borderRadius: RAD[i], duration: .6, ease: 'none', immediateRender: true }, at + 1.5);
     });
     // clic de encastre: tablero de una sola pieza
-    tl.to(full, { opacity: 1, duration: .3, ease: 'none' }, 4.1)
-      .to(tiles, { opacity: 0, duration: .1, ease: 'none' }, 4.45)
+    tl.to(full, { opacity: 1, duration: .1, ease: 'none' }, 4.1)
+      .to(tiles, { opacity: 0, duration: .05, ease: 'none' }, 4.3)
       .to(frame, { opacity: 1, duration: .5, ease: 'none' }, 4.1)
       .to(cap, { opacity: 1, duration: .5, ease: 'none' }, 4.3)
       .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22, ease: 'power2.out', transformOrigin: '50% 50%' }, 4.1)

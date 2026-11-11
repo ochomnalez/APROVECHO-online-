@@ -51,3 +51,4 @@
   .md .callout--l{padding-left:0;padding-right:52px}
 }
 @media(min-width:900px) and (max-height:980px){.md .ch__title{font-size:clamp(2.4rem,3.9vw,3.5rem)}.md .ch__for{margin-top:12px}.md .ch__steps{margin-top:18px}.md .ch__steps li{padding-block:10px}.md .ch__price{margin-top:16px}.md .ch .btn{margin-top:18px}}
+@media(min-width:900px) and (max-height:820px){html.motion .md{padding-block:76px 12px}.md .ch__title{font-size:clamp(2rem,3.4vw,3rem)}.md .ch__for{margin-top:10px;font-size:1rem}.md .ch__steps{margin-top:12px}.md .ch__steps li{padding-block:7px}.md .ch__price{margin-top:12px}.md .ch__price b{font-size:1.5rem}.md .ch__more{margin-top:8px;font-size:.875rem}.md .ch .btn{margin-top:12px;min-height:48px}}
