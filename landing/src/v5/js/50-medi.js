@@ -231,21 +231,27 @@ APV5.scene('medi', function (ctx) {
   ctx.mm.add(ctx.desktop, function () {
     var tl = build(D);
     mark(0, D);
+    tl.eventCallback('onUpdate', function () { mark(tl.progress(), D); });
     ctx.ScrollTrigger.create({
       animation: tl, trigger: root, start: 'top top', end: '+=220%',
-      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress, D); }
+      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
     return reset;
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    steps.forEach(function (li, i) {
+      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
+        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
+        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
+      });
+    });
     var tl = build(M);
     steps.forEach(function (li) { li.classList.remove('is-on'); });
     mark(0, M);
+    tl.eventCallback('onUpdate', function () { mark(tl.progress(), M); });
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress, M); }
+      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true
     });
     return reset;
   });

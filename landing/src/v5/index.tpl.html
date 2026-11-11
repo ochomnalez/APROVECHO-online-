@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="img/logo/favicon-180.png">
 <link rel="preload" href="fonts/bricolage-grotesque-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/dm-sans-400-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/v5.min.css?v=5">
+<link rel="stylesheet" href="css/v5.min.css?v=6">
 <noscript><style>[role=tabpanel][hidden]{display:block!important}.qn__hub[hidden]{display:block!important}[data-inv-toggle]{display:none!important}[role=tablist],.film__toggle{display:none!important}</style></noscript>
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{{JSONLD}}</script>
@@ -59,6 +59,16 @@
 
 {{V5_ONBOARDING}}
 
+<section class="quienes-con-datos" id="quienes-somos" aria-labelledby="qn-t">
+{{V5_QUIENES}}
+<div id="datos" aria-label="Datos de Argentina">
+{{V5_CONTADORES}}
+{{V5_PROBLEMA}}
+</div>
+</section>
+
+{{ALTA}}
+
 <!-- ============ 7 · PREGUNTAS ============ -->
 <section class="sec sec--faq" id="preguntas" aria-labelledby="faq-t">
   <div class="wrap faq">
@@ -69,52 +79,9 @@
   </div>
 </section>
 
-{{ALTA}}
-
 </div>
 
-<!-- ====== VISTAS SECUNDARIAS: se abren desde la barra superior ====== -->
-<div class="view view--sec" data-view="datos" id="datos" hidden>
-<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
-{{V5_CONTADORES}}
-
-{{V5_PROBLEMA}}
-</div>
-
-<div class="view view--sec" data-view="cuenta" id="vista-cuenta" hidden>
-<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
-<!-- ============ 5 · SUMÁ TU COMERCIO + CUENTA (D-033) ============ -->
-<section class="sec sec--cuenta" id="suma" aria-labelledby="suma-t">
-  <div class="wrap cuenta-grid">
-    <div class="cuenta__head">
-      <p class="eyebrow">Sumá tu comercio</p>
-      <h2 class="sec__title" id="suma-t">Mirá cuánto te queda.</h2>
-      <p class="sec__text">Movés el valor de lo que te sobró y ves la cuenta. Hoy, eso lo estás tirando.</p>
-    </div>
-    <div class="cuenta__photo">
-      <img src="img/foto/pan-manos-1000.webp" srcset="img/foto/pan-manos-640.webp 640w, img/foto/pan-manos-1000.webp 1000w" sizes="(min-width: 900px) 600px, 100vw" width="1000" height="800" alt="Manos sosteniendo un pan de masa madre recién horneado" loading="lazy" decoding="async">
-      <div class="pricetag pricetag--a"><small>Lo que vale en tu mostrador</small><b class="num" data-out="valor">$12.200</b></div>
-      <div class="pricetag pricetag--b"><small>Pagan tus vecinos · 50% off</small><b class="num" data-out="pack">$6.100</b></div>
-      <div class="pricetag pricetag--c"><small>Te queda a vos</small><b class="num" data-out="comercio">$4.575</b></div>
-    </div>
-    <div class="cuenta" data-cuenta>
-      <div class="cuenta__ctl">
-        <label for="valor">Lo que te sobró vale, en tu mostrador</label>
-        <output class="cuenta__val num" id="valor-out" for="valor">$12.200</output>
-        <input type="range" id="valor" min="4000" max="40000" step="100" value="12200" aria-describedby="cuenta-nota">
-      </div>
-      <p class="cuenta__nota" id="cuenta-nota">Ejemplo, en pesos. Cobramos una comisión solo cuando vendés: sin abono y sin costo de alta.</p>
-      <a class="btn btn--lg" href="#alta" data-cta="cuenta">Sumá tu comercio</a>
-    </div>
-  </div>
-</section>
-</div>
-
-<div class="view view--sec" data-view="quienes" id="vista-quienes" hidden>
-<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
-{{V5_QUIENES}}
-</div>
-
+<!-- ====== VISTA SECUNDARIA: consumidores ====== -->
 <div class="view view--sec" data-view="packs" id="vista-packs" hidden>
 <div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 {{ESPERA}}
@@ -130,7 +97,7 @@
       <p>Menos desperdicio, más aprovecho.</p>
     </div>
     <nav class="foot__nav" aria-label="Pie de página">
-      <a href="#como-funciona">Cómo funciona</a><a href="#planes">Planes</a><a href="#suma">Cuánto te queda</a><a href="#inversores">Inversores</a><a href="#preguntas">Preguntas</a><a href="#consumidores" data-app>Descargar app</a><a href="#alta" data-social="whatsapp">WhatsApp</a><a href="#alta" data-social="instagram">Instagram</a>
+      <a href="#como-funciona">Cómo funciona</a><a href="#planes">Planes</a><a href="#inversores">Inversores</a><a href="#preguntas">Preguntas</a><a href="#consumidores" data-app>Descargar app</a><a href="#alta" data-social="whatsapp">WhatsApp</a><a href="#alta" data-social="instagram">Instagram</a>
       <span title="Próximamente">Términos y condiciones</span><span title="Próximamente">Política de privacidad</span>
     </nav>
     <p class="foot__legal">APROVECHO no produce, almacena ni transporta alimentos. La responsabilidad sobre el alimento es del comercio adherido.</p>
@@ -142,6 +109,6 @@
 {{TAIL}}
 <script src="js/vendor/gsap.min.js" defer></script>
 <script src="js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="js/v5.js?v=5" defer></script>
+<script src="js/v5.js?v=6" defer></script>
 </body>
 </html>

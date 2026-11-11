@@ -108,7 +108,8 @@
     if (started) return;
     started = true;
     sec.classList.add('is-live');
-    load(0); load(1);
+    load(0);
+    vids[0].addEventListener('playing', function () { load(1); }, { once: true });
     setBars();
     sync();
   }
@@ -122,9 +123,8 @@
   });
   document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
 
-  // los videos se piden recién después del evento load; se pausan al salir de pantalla
-  function afterLoad(fn) { if (document.readyState === 'complete') setTimeout(fn, 60); else window.addEventListener('load', function () { setTimeout(fn, 60); }, { once: true }); }
-  afterLoad(begin);
+  // El póster ya es visible; comenzar el primer clip sin esperar window.load.
+  begin();
   new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
 
   // paralaje y zoom lentos con el scroll (solo con movimiento; sin pin)

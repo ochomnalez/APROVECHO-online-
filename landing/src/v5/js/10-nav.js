@@ -16,13 +16,11 @@
     var mid = window.innerHeight * 0.5, idx = 0, i, el;
     for (i = 0; i < ids.length; i++) {
       el = document.getElementById(ids[i]);
-      if (el && el.getBoundingClientRect().top <= mid) idx = i + 1;
+      if (!el || el.hidden || el.closest('[data-view][hidden]')) continue;
+      var r = el.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) { idx = i + 1; break; }
     }
     var st = info[idx];
-    if (idx === 3) {
-      var r = document.getElementById(ids[2]).getBoundingClientRect();
-      if (r.bottom < mid) { idx = 4; st = { l: 'Menú', a: 3 }; }
-    }
     if (idx === last) return;
     last = idx;
     btn.setAttribute('data-ch', st.a);

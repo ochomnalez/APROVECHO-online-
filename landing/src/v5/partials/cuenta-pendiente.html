@@ -1,0 +1,26 @@
+<!-- Retirada de la v5 por pedido de Octavio. Pendiente: definir dónde reubicarla antes de incluirla otra vez. -->
+<!-- ============ 5 · SUMÁ TU COMERCIO + CUENTA (D-033) ============ -->
+<section class="sec sec--cuenta" id="suma" aria-labelledby="suma-t">
+  <div class="wrap cuenta-grid">
+    <div class="cuenta__head">
+      <p class="eyebrow">Sumá tu comercio</p>
+      <h2 class="sec__title" id="suma-t">Mirá cuánto te queda.</h2>
+      <p class="sec__text">Movés el valor de lo que te sobró y ves la cuenta. Hoy, eso lo estás tirando.</p>
+    </div>
+    <div class="cuenta__photo">
+      <img src="img/foto/pan-manos-1000.webp" srcset="img/foto/pan-manos-640.webp 640w, img/foto/pan-manos-1000.webp 1000w" sizes="(min-width: 900px) 600px, 100vw" width="1000" height="800" alt="Manos sosteniendo un pan de masa madre recién horneado" loading="lazy" decoding="async">
+      <div class="pricetag pricetag--a"><small>Lo que vale en tu mostrador</small><b class="num" data-out="valor">$12.200</b></div>
+      <div class="pricetag pricetag--b"><small>Pagan tus vecinos · 50% off</small><b class="num" data-out="pack">$6.100</b></div>
+      <div class="pricetag pricetag--c"><small>Te queda a vos</small><b class="num" data-out="comercio">$4.575</b></div>
+    </div>
+    <div class="cuenta" data-cuenta>
+      <div class="cuenta__ctl">
+        <label for="valor">Lo que te sobró vale, en tu mostrador</label>
+        <output class="cuenta__val num" id="valor-out" for="valor">$12.200</output>
+        <input type="range" id="valor" min="4000" max="40000" step="100" value="12200" aria-describedby="cuenta-nota">
+      </div>
+      <p class="cuenta__nota" id="cuenta-nota">Ejemplo, en pesos. Cobramos una comisión solo cuando vendés: sin abono y sin costo de alta.</p>
+      <a class="btn btn--lg" href="#alta" data-cta="cuenta">Sumá tu comercio</a>
+    </div>
+  </div>
+</section>

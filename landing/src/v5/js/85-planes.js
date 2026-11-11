@@ -1,25 +1,22 @@
-/* Planes en pestañas: al cambiar de plan hay que recalcular los puntos de scroll (cada escena fija se calcula
-   con su propia altura) y volver al inicio del bloque. main.js maneja el estado accesible de las pestañas. */
+/* main.js actualiza las pestañas; observar el estado final también cubre teclado y enlaces directos. */
 (function () {
   'use strict';
   var root = document.getElementById('planes');
   if (!root) return;
-  var tabs = root.querySelectorAll('[role="tab"]');
-  function refrescar(volver) {
-    var tl = root.querySelector('[role="tablist"]');
-    setTimeout(function () {
-      if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
-      if (volver && tl) {
-        var y = tl.getBoundingClientRect().top + window.scrollY - 84;
-        if (Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
-      }
-    }, 90);
-  }
-  Array.prototype.forEach.call(tabs, function (t) {
-    t.addEventListener('click', function () { refrescar(true); });
-    t.addEventListener('keydown', function (e) { if (/^(Arrow|Home|End)/.test(e.key)) refrescar(false); });
-  });
-  // al llegar por un enlace directo (#plan-smart, anillo de la portada), también recalcular
-  window.addEventListener('hashchange', function () { refrescar(false); });
-  window.addEventListener('load', function () { refrescar(false); });
+  var panels = [].slice.call(root.querySelectorAll('[role="tabpanel"]'));
+  var selected = panels.find(function (p) { return !p.hidden; });
+  var clicked = false;
+  root.querySelector('[role="tablist"]').addEventListener('click', function () { clicked = true; });
+  root.querySelector('[role="tablist"]').addEventListener('keydown', function (e) { if (/^(Arrow|Home|End)/.test(e.key)) clicked = true; });
+  new MutationObserver(function () {
+    var next = panels.find(function (p) { return !p.hidden; });
+    if (next === selected) { clicked = false; return; }
+    selected = next;
+    APV5.refreshPlans();
+    if (clicked) {
+      var head = root.querySelector('.pl__tabs');
+      window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - 84), behavior: 'instant' });
+    }
+    clicked = false;
+  }).observe(root.querySelector('.pl__panels'), { subtree: true, attributes: true, attributeFilter: ['hidden'] });
 })();

@@ -99,15 +99,21 @@ APV5.scene('anticipa', function (ctx) {
     addBoard(tl, A.bd, 1, A.f);
     tl.to({}, { duration: .4 }, A.total - .4);
     mark(0);
+    tl.eventCallback('onUpdate', function () { mark(tl.progress()); });
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: root, start: 'top top', end: '+=300%',
-      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress); }
+      animation: tl, trigger: root, start: 'top top', end: '+=250%',
+      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
     return reset;
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    steps.forEach(function (li, i) {
+      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
+        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
+        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
+      });
+    });
     steps.forEach(function (li) { li.classList.remove('is-on'); });
     var tlS = gsap.timeline({ defaults: { ease: 'none' } });
     ST.separate(tlS, stage, .2, 5.2, .7);

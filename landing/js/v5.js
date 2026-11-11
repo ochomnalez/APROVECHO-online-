@@ -7,32 +7,47 @@ window.APV5 = (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var scenes = [];
+  var active = false, planContexts = {};
+  var planIds = { recupera: 'plan-base', medi: 'plan-smart', anticipa: 'plan-intelligence' };
+  function context(mm) { return { gsap: gsap, ScrollTrigger: ScrollTrigger, mm: mm, desktop: '(min-width: 900px)', mobile: '(max-width: 899px)' }; }
+  function refreshPlans() {
+    if (!active) return;
+    Object.keys(planContexts).forEach(function (name) { planContexts[name].revert(); });
+    planContexts = {};
+    scenes.forEach(function (s) {
+      var id = planIds[s[0]], root = id && document.getElementById(id);
+      if (!root || root.hidden || root.closest('[data-view][hidden]')) return;
+      var mm = gsap.matchMedia();
+      planContexts[s[0]] = mm;
+      s[1](context(mm));
+    });
+    ScrollTrigger.refresh();
+  }
   function start() {
     if (reduce || !window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
     document.documentElement.classList.add('motion');
     var mm = gsap.matchMedia();
-    var ctx = { gsap: gsap, ScrollTrigger: ScrollTrigger, mm: mm, desktop: '(min-width: 900px)', mobile: '(max-width: 899px)' };
-    scenes.forEach(function (s) { try { s[1](ctx); } catch (e) { if (window.console) console.warn('escena ' + s[0], e); } });
+    var ctx = context(mm);
+    active = true;
+    scenes.forEach(function (s) { try { if (!planIds[s[0]]) s[1](ctx); } catch (e) { if (window.console) console.warn('escena ' + s[0], e); } });
+    refreshPlans();
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
   }
   // v5.js se carga con defer: las escenas se registran después de este bloque, así que se arranca
   // recién en DOMContentLoaded (o en el próximo ciclo si el documento ya terminó de cargar).
   if (document.readyState === 'complete') setTimeout(start, 0); else document.addEventListener('DOMContentLoaded', start);
-  return { reduce: reduce, scene: function (name, fn) { scenes.push([name, fn]); } };
+  return { reduce: reduce, refreshPlans: refreshPlans, scene: function (name, fn) { scenes.push([name, fn]); } };
 })();
 
 /* 04-vistas.js */
-/* Vistas: la página principal se recorre con el scroll (portada, por qué sumar, planes, recorrido, preguntas, alta).
-   Las demás secciones (Quiénes somos con Inversores, Datos de Argentina, Cuánto te queda, ¿Querés comprar packs?)
-   son vistas que se abren desde la barra superior o el menú. Sin JS se ven todas seguidas. */
+/* La landing se recorre completa; comprar packs conserva su vista secundaria. */
 (function () {
   'use strict';
   var vistas = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   if (!vistas.length) return;
   var actual = 'home';
-  var nombres = { home: 'inicio', datos: 'datos', cuenta: 'cuenta', quienes: 'quienes somos', packs: 'comprar packs' };
 
   function de(id) {
     var el = id ? document.getElementById(id) : null;
@@ -40,7 +55,7 @@ window.APV5 = (function () {
     return v ? v.getAttribute('data-view') : null;
   }
   // subraya en la barra superior la sección que se está viendo
-  var PRINCIPAL = { home: 'inicio', datos: 'datos', cuenta: 'suma', quienes: 'quienes-somos', packs: 'consumidores' };
+  var PRINCIPAL = { home: 'inicio', packs: 'consumidores' };
   function marcar(nombre, id) {
     var meta = (id === 'inversores' || id === 'equipo') ? 'inversores' : PRINCIPAL[nombre];
     Array.prototype.forEach.call(document.querySelectorAll('.nv-bar a, #menu a'), function (a) {
@@ -54,7 +69,7 @@ window.APV5 = (function () {
     document.documentElement.setAttribute('data-vista', nombre);
     marcar(nombre);
     window.scrollTo(0, 0);
-    if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
+    if (window.APV5) APV5.refreshPlans();
     return true;
   }
   // antes que los demás manejadores: al tocar un enlace de otra vista, se abre esa vista y el navegador baja hasta el ancla
@@ -102,13 +117,11 @@ window.APV5 = (function () {
     var mid = window.innerHeight * 0.5, idx = 0, i, el;
     for (i = 0; i < ids.length; i++) {
       el = document.getElementById(ids[i]);
-      if (el && el.getBoundingClientRect().top <= mid) idx = i + 1;
+      if (!el || el.hidden || el.closest('[data-view][hidden]')) continue;
+      var r = el.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) { idx = i + 1; break; }
     }
     var st = info[idx];
-    if (idx === 3) {
-      var r = document.getElementById(ids[2]).getBoundingClientRect();
-      if (r.bottom < mid) { idx = 4; st = { l: 'Menú', a: 3 }; }
-    }
     if (idx === last) return;
     last = idx;
     btn.setAttribute('data-ch', st.a);
@@ -258,7 +271,8 @@ window.APV5 = (function () {
     if (started) return;
     started = true;
     sec.classList.add('is-live');
-    load(0); load(1);
+    load(0);
+    vids[0].addEventListener('playing', function () { load(1); }, { once: true });
     setBars();
     sync();
   }
@@ -272,9 +286,8 @@ window.APV5 = (function () {
   });
   document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
 
-  // los videos se piden recién después del evento load; se pausan al salir de pantalla
-  function afterLoad(fn) { if (document.readyState === 'complete') setTimeout(fn, 60); else window.addEventListener('load', function () { setTimeout(fn, 60); }, { once: true }); }
-  afterLoad(begin);
+  // El póster ya es visible; comenzar el primer clip sin esperar window.load.
+  begin();
   new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
 
   // paralaje y zoom lentos con el scroll (solo con movimiento; sin pin)
@@ -462,7 +475,7 @@ APV5.scene('recupera', function (ctx) {
       paint(i < 0 ? 0 : (i > N - 1 ? N - 1 : i));
     });
     ScrollTrigger.create({
-      trigger: root, start: 'top top', end: '+=320%', pin: true, scrub: 0.6, anticipatePin: 1,
+      trigger: root, start: 'top top', end: '+=250%', pin: true, scrub: 0.6, anticipatePin: 1,
       animation: tl, invalidateOnRefresh: true
     });
     return function () { reset(); };
@@ -470,7 +483,7 @@ APV5.scene('recupera', function (ctx) {
 
   // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
-    var timer = 0, shown = 0;
+    var shown = 0;
     gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
     gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
     paint(0);
@@ -487,25 +500,20 @@ APV5.scene('recupera', function (ctx) {
       shown = i;
       paint(i);
     }
-    function play(st) {
-      clearTimeout(timer);
+    var stage = root.querySelector('.rc-stage');
+    var tr = lis.map(function (li, st) {
       var idx = [];
       stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
-      var n = 0;
-      show(idx[0]);
-      (function next() {
-        if (++n >= idx.length) return;
-        timer = setTimeout(function () { show(idx[n]); next(); }, 2100);
-      })();
-    }
-    var tr = lis.map(function (li, i) {
       return ScrollTrigger.create({
-        trigger: li, start: 'top 64%', end: 'bottom 64%',
-        onEnter: function () { play(i); },
-        onEnterBack: function () { play(i); }
+        trigger: li,
+        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + 200) + 'px'; },
+        end: function () { return '+=' + li.offsetHeight; },
+        onUpdate: function (self) { show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
+        onEnter: function () { show(idx[0]); },
+        onEnterBack: function () { show(idx[idx.length - 1]); }
       });
     });
-    return function () { clearTimeout(timer); tr.forEach(function (t) { t.kill(); }); reset(); };
+    return function () { tr.forEach(function (t) { t.kill(); }); reset(); };
   });
 });
 
@@ -820,21 +828,27 @@ APV5.scene('medi', function (ctx) {
   ctx.mm.add(ctx.desktop, function () {
     var tl = build(D);
     mark(0, D);
+    tl.eventCallback('onUpdate', function () { mark(tl.progress(), D); });
     ctx.ScrollTrigger.create({
       animation: tl, trigger: root, start: 'top top', end: '+=220%',
-      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress, D); }
+      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
     return reset;
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    steps.forEach(function (li, i) {
+      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
+        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
+        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
+      });
+    });
     var tl = build(M);
     steps.forEach(function (li) { li.classList.remove('is-on'); });
     mark(0, M);
+    tl.eventCallback('onUpdate', function () { mark(tl.progress(), M); });
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress, M); }
+      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true
     });
     return reset;
   });
@@ -942,15 +956,21 @@ APV5.scene('anticipa', function (ctx) {
     addBoard(tl, A.bd, 1, A.f);
     tl.to({}, { duration: .4 }, A.total - .4);
     mark(0);
+    tl.eventCallback('onUpdate', function () { mark(tl.progress()); });
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: root, start: 'top top', end: '+=300%',
-      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress); }
+      animation: tl, trigger: root, start: 'top top', end: '+=250%',
+      pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
     return reset;
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    steps.forEach(function (li, i) {
+      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
+        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
+        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
+      });
+    });
     steps.forEach(function (li) { li.classList.remove('is-on'); });
     var tlS = gsap.timeline({ defaults: { ease: 'none' } });
     ST.separate(tlS, stage, .2, 5.2, .7);
@@ -1033,66 +1053,50 @@ APV5.scene('pasos', function (ctx) {
 });
 
 /* 85-planes.js */
-/* Planes en pestañas: al cambiar de plan hay que recalcular los puntos de scroll (cada escena fija se calcula
-   con su propia altura) y volver al inicio del bloque. main.js maneja el estado accesible de las pestañas. */
+/* main.js actualiza las pestañas; observar el estado final también cubre teclado y enlaces directos. */
 (function () {
   'use strict';
   var root = document.getElementById('planes');
   if (!root) return;
-  var tabs = root.querySelectorAll('[role="tab"]');
-  function refrescar(volver) {
-    var tl = root.querySelector('[role="tablist"]');
-    setTimeout(function () {
-      if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
-      if (volver && tl) {
-        var y = tl.getBoundingClientRect().top + window.scrollY - 84;
-        if (Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
-      }
-    }, 90);
-  }
-  Array.prototype.forEach.call(tabs, function (t) {
-    t.addEventListener('click', function () { refrescar(true); });
-    t.addEventListener('keydown', function (e) { if (/^(Arrow|Home|End)/.test(e.key)) refrescar(false); });
-  });
-  // al llegar por un enlace directo (#plan-smart, anillo de la portada), también recalcular
-  window.addEventListener('hashchange', function () { refrescar(false); });
-  window.addEventListener('load', function () { refrescar(false); });
+  var panels = [].slice.call(root.querySelectorAll('[role="tabpanel"]'));
+  var selected = panels.find(function (p) { return !p.hidden; });
+  var clicked = false;
+  root.querySelector('[role="tablist"]').addEventListener('click', function () { clicked = true; });
+  root.querySelector('[role="tablist"]').addEventListener('keydown', function (e) { if (/^(Arrow|Home|End)/.test(e.key)) clicked = true; });
+  new MutationObserver(function () {
+    var next = panels.find(function (p) { return !p.hidden; });
+    if (next === selected) { clicked = false; return; }
+    selected = next;
+    APV5.refreshPlans();
+    if (clicked) {
+      var head = root.querySelector('.pl__tabs');
+      window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - 84), behavior: 'instant' });
+    }
+    clicked = false;
+  }).observe(root.querySelector('.pl__panels'), { subtree: true, attributes: true, attributeFilter: ['hidden'] });
 })();
 
 /* 90-progreso.js */
-/* Barra de progreso a la izquierda: aparece mientras estás dentro de una escena con scroll (Recuperá, Medí, Anticipá)
-   y muestra cuánto avanzaste de esa escena. Es decorativa (aria-hidden): los pasos ya se leen en el texto. */
+/* Indicador del plan visible: sigue la animación suavizada y nunca una pestaña oculta. */
 APV5.scene('progreso', function (ctx) {
-  var ScrollTrigger = ctx.ScrollTrigger, gsap = ctx.gsap;
-  var ESCENAS = [['plan-base', '01'], ['plan-smart', '02'], ['plan-intelligence', '03']];
   var bar = document.createElement('div');
   bar.className = 'pg';
   bar.setAttribute('aria-hidden', 'true');
   bar.innerHTML = '<span class="pg__n"></span><span class="pg__track"><span class="pg__fill"></span></span><span class="pg__pct">0%</span>';
   document.body.appendChild(bar);
   var n = bar.querySelector('.pg__n'), fill = bar.querySelector('.pg__fill'), pct = bar.querySelector('.pg__pct');
-  var setY = gsap.quickSetter(fill, 'scaleY');
-  var activo = null;
-
-  function pinDe(sec) {
-    var all = ScrollTrigger.getAll();
-    for (var i = 0; i < all.length; i++) if (all[i].pin === sec) return all[i];
-    return null;
-  }
-  ESCENAS.forEach(function (e) {
-    var sec = document.getElementById(e[0]);
-    if (!sec) return;
-    ScrollTrigger.create({
-      trigger: sec,
-      invalidateOnRefresh: true,
-      // en escritorio sigue al pin real de la escena; sin pin (celular), a la sección entera
-      start: function () { var p = pinDe(sec); return p ? p.start : 'top 30%'; },
-      end: function () { var p = pinDe(sec); return p ? p.end : 'bottom 70%'; },
-      onToggle: function (self) {
-        if (self.isActive) { activo = e[0]; n.textContent = e[1]; bar.classList.add('is-on'); }
-        else if (activo === e[0]) { activo = null; bar.classList.remove('is-on'); }
-      },
-      onUpdate: function (self) { if (activo === e[0]) { setY(self.progress); pct.textContent = Math.round(self.progress * 100) + '%'; } }
-    });
+  var setY = ctx.gsap.quickSetter(fill, 'scaleY');
+  var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
+  ctx.gsap.ticker.add(function () {
+    var sec = document.querySelector('#planes [role="tabpanel"]:not([hidden])');
+    if (!sec || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
+    var pin = ctx.ScrollTrigger.getAll().find(function (t) { return t.pin === sec; });
+    var r = pin ? null : sec.getBoundingClientRect();
+    var on = pin ? pin.isActive : r.top < innerHeight * .3 && r.bottom > innerHeight * .7;
+    bar.classList.toggle('is-on', on);
+    if (!on) return;
+    var p = pin ? pin.animation.progress() : Math.max(0, Math.min(1, (innerHeight * .3 - r.top) / Math.max(1, r.height - innerHeight * .4)));
+    n.textContent = '0' + (ids.indexOf(sec.id) + 1);
+    setY(p); pct.textContent = Math.round(p * 100) + '%';
   });
 });

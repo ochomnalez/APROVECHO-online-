@@ -1,12 +1,9 @@
-/* Vistas: la página principal se recorre con el scroll (portada, por qué sumar, planes, recorrido, preguntas, alta).
-   Las demás secciones (Quiénes somos con Inversores, Datos de Argentina, Cuánto te queda, ¿Querés comprar packs?)
-   son vistas que se abren desde la barra superior o el menú. Sin JS se ven todas seguidas. */
+/* La landing se recorre completa; comprar packs conserva su vista secundaria. */
 (function () {
   'use strict';
   var vistas = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   if (!vistas.length) return;
   var actual = 'home';
-  var nombres = { home: 'inicio', datos: 'datos', cuenta: 'cuenta', quienes: 'quienes somos', packs: 'comprar packs' };
 
   function de(id) {
     var el = id ? document.getElementById(id) : null;
@@ -14,7 +11,7 @@
     return v ? v.getAttribute('data-view') : null;
   }
   // subraya en la barra superior la sección que se está viendo
-  var PRINCIPAL = { home: 'inicio', datos: 'datos', cuenta: 'suma', quienes: 'quienes-somos', packs: 'consumidores' };
+  var PRINCIPAL = { home: 'inicio', packs: 'consumidores' };
   function marcar(nombre, id) {
     var meta = (id === 'inversores' || id === 'equipo') ? 'inversores' : PRINCIPAL[nombre];
     Array.prototype.forEach.call(document.querySelectorAll('.nv-bar a, #menu a'), function (a) {
@@ -28,7 +25,7 @@
     document.documentElement.setAttribute('data-vista', nombre);
     marcar(nombre);
     window.scrollTo(0, 0);
-    if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
+    if (window.APV5) APV5.refreshPlans();
     return true;
   }
   // antes que los demás manejadores: al tocar un enlace de otra vista, se abre esa vista y el navegador baja hasta el ancla

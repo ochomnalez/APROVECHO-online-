@@ -1,36 +1,23 @@
-/* Barra de progreso a la izquierda: aparece mientras estás dentro de una escena con scroll (Recuperá, Medí, Anticipá)
-   y muestra cuánto avanzaste de esa escena. Es decorativa (aria-hidden): los pasos ya se leen en el texto. */
+/* Indicador del plan visible: sigue la animación suavizada y nunca una pestaña oculta. */
 APV5.scene('progreso', function (ctx) {
-  var ScrollTrigger = ctx.ScrollTrigger, gsap = ctx.gsap;
-  var ESCENAS = [['plan-base', '01'], ['plan-smart', '02'], ['plan-intelligence', '03']];
   var bar = document.createElement('div');
   bar.className = 'pg';
   bar.setAttribute('aria-hidden', 'true');
   bar.innerHTML = '<span class="pg__n"></span><span class="pg__track"><span class="pg__fill"></span></span><span class="pg__pct">0%</span>';
   document.body.appendChild(bar);
   var n = bar.querySelector('.pg__n'), fill = bar.querySelector('.pg__fill'), pct = bar.querySelector('.pg__pct');
-  var setY = gsap.quickSetter(fill, 'scaleY');
-  var activo = null;
-
-  function pinDe(sec) {
-    var all = ScrollTrigger.getAll();
-    for (var i = 0; i < all.length; i++) if (all[i].pin === sec) return all[i];
-    return null;
-  }
-  ESCENAS.forEach(function (e) {
-    var sec = document.getElementById(e[0]);
-    if (!sec) return;
-    ScrollTrigger.create({
-      trigger: sec,
-      invalidateOnRefresh: true,
-      // en escritorio sigue al pin real de la escena; sin pin (celular), a la sección entera
-      start: function () { var p = pinDe(sec); return p ? p.start : 'top 30%'; },
-      end: function () { var p = pinDe(sec); return p ? p.end : 'bottom 70%'; },
-      onToggle: function (self) {
-        if (self.isActive) { activo = e[0]; n.textContent = e[1]; bar.classList.add('is-on'); }
-        else if (activo === e[0]) { activo = null; bar.classList.remove('is-on'); }
-      },
-      onUpdate: function (self) { if (activo === e[0]) { setY(self.progress); pct.textContent = Math.round(self.progress * 100) + '%'; } }
-    });
+  var setY = ctx.gsap.quickSetter(fill, 'scaleY');
+  var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
+  ctx.gsap.ticker.add(function () {
+    var sec = document.querySelector('#planes [role="tabpanel"]:not([hidden])');
+    if (!sec || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
+    var pin = ctx.ScrollTrigger.getAll().find(function (t) { return t.pin === sec; });
+    var r = pin ? null : sec.getBoundingClientRect();
+    var on = pin ? pin.isActive : r.top < innerHeight * .3 && r.bottom > innerHeight * .7;
+    bar.classList.toggle('is-on', on);
+    if (!on) return;
+    var p = pin ? pin.animation.progress() : Math.max(0, Math.min(1, (innerHeight * .3 - r.top) / Math.max(1, r.height - innerHeight * .4)));
+    n.textContent = '0' + (ids.indexOf(sec.id) + 1);
+    setY(p); pct.textContent = Math.round(p * 100) + '%';
   });
 });

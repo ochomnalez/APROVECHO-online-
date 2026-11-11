@@ -63,7 +63,7 @@ APV5.scene('recupera', function (ctx) {
       paint(i < 0 ? 0 : (i > N - 1 ? N - 1 : i));
     });
     ScrollTrigger.create({
-      trigger: root, start: 'top top', end: '+=320%', pin: true, scrub: 0.6, anticipatePin: 1,
+      trigger: root, start: 'top top', end: '+=250%', pin: true, scrub: 0.6, anticipatePin: 1,
       animation: tl, invalidateOnRefresh: true
     });
     return function () { reset(); };
@@ -71,7 +71,7 @@ APV5.scene('recupera', function (ctx) {
 
   // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
-    var timer = 0, shown = 0;
+    var shown = 0;
     gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
     gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
     paint(0);
@@ -88,24 +88,19 @@ APV5.scene('recupera', function (ctx) {
       shown = i;
       paint(i);
     }
-    function play(st) {
-      clearTimeout(timer);
+    var stage = root.querySelector('.rc-stage');
+    var tr = lis.map(function (li, st) {
       var idx = [];
       stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
-      var n = 0;
-      show(idx[0]);
-      (function next() {
-        if (++n >= idx.length) return;
-        timer = setTimeout(function () { show(idx[n]); next(); }, 2100);
-      })();
-    }
-    var tr = lis.map(function (li, i) {
       return ScrollTrigger.create({
-        trigger: li, start: 'top 64%', end: 'bottom 64%',
-        onEnter: function () { play(i); },
-        onEnterBack: function () { play(i); }
+        trigger: li,
+        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + 200) + 'px'; },
+        end: function () { return '+=' + li.offsetHeight; },
+        onUpdate: function (self) { show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
+        onEnter: function () { show(idx[0]); },
+        onEnterBack: function () { show(idx[idx.length - 1]); }
       });
     });
-    return function () { clearTimeout(timer); tr.forEach(function (t) { t.kill(); }); reset(); };
+    return function () { tr.forEach(function (t) { t.kill(); }); reset(); };
   });
 });
