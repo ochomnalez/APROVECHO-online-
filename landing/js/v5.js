@@ -119,7 +119,7 @@ window.APV5 = (function () {
     v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
     v.addEventListener('canplay', function () { if (cur === i && !isPaused()) play(i); });
     v.addEventListener('error', function () { v.setAttribute('data-err', '1'); });
-    v.src = 'video/hero-ia/' + clips[i].getAttribute('data-clip') + (small ? '-640.mp4' : '-1280.mp4');
+    v.src = 'video/hero-ia/' + clips[i].getAttribute('data-clip') + (small ? '-1280.mp4' : '-1920.mp4');
     v.preload = 'auto';
     try { v.load(); } catch (e) {}
   }

@@ -1,0 +1,50 @@
+{
+ "frame": [
+  1774,
+  887
+ ],
+ "piezas": {
+  "balanza": {
+   "file": "img/estacion/pieza-balanza.webp",
+   "x": 547,
+   "y": 46,
+   "w": 685,
+   "h": 780
+  },
+  "tablet": {
+   "file": "img/estacion/pieza-tablet.webp",
+   "x": 1268,
+   "y": 78,
+   "w": 422,
+   "h": 298
+  },
+  "hub": {
+   "file": "img/estacion/pieza-hub.webp",
+   "x": 183,
+   "y": 257,
+   "w": 241,
+   "h": 217
+  },
+  "brazo": {
+   "file": "img/estacion/pieza-brazo.webp",
+   "x": 1361,
+   "y": 452,
+   "w": 245,
+   "h": 343
+  },
+  "cable-usbc": {
+   "file": "img/estacion/pieza-cable-usbc.webp",
+   "x": 84,
+   "y": 527,
+   "w": 197,
+   "h": 135
+  },
+  "cable-corriente": {
+   "file": "img/estacion/pieza-cable-corriente.webp",
+   "x": 290,
+   "y": 530,
+   "w": 214,
+   "h": 127
+  }
+ }
+}

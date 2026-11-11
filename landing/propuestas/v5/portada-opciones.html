@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>APROVECHO · portada v5 · 3 opciones</title>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:700;src:url(../../fonts/bricolage-grotesque-700.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:400 700;src:url(../../fonts/dm-sans-400-700.woff2) format('woff2')}
+:root{--ink:#0b0b0b;--forest:#1A4D3A;--mint:#DFFFD6;--soft:#F3F6F4}
+*{box-sizing:border-box}body{margin:0;background:#ccc;font:400 16px/1.5 'DM Sans',sans-serif;color:var(--ink)}
+.f{position:relative;width:1440px;height:900px;overflow:hidden;background:#fff;margin:0 auto 24px}
+.tag{position:absolute;left:0;top:0;z-index:20;background:var(--ink);color:#fff;font-weight:700;font-size:13px;letter-spacing:.08em;padding:8px 14px;border-radius:0 0 12px 0;text-transform:uppercase}
+h1{font:700 88px/.96 'Bricolage Grotesque';letter-spacing:-.04em;margin:0}h1 em{font-style:normal;color:var(--forest)}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--forest)}
+.lead{font-size:20px;line-height:1.45;margin-top:22px;max-width:520px;color:#262626}
+.btn{display:inline-flex;align-items:center;height:56px;padding:0 30px;border-radius:99px;background:var(--ink);color:#fff;font-weight:700;font-size:17px}
+.btn.g{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.row{display:flex;gap:14px;margin-top:30px}
+.nav{position:absolute;left:0;right:0;top:0;height:68px;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 56px;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.nav img{width:52px;height:52px}
+img.v{position:absolute;object-fit:cover}
+.ind{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.ind i{display:block;width:56px;height:3px;border-radius:2px;background:rgba(255,255,255,.4)}.ind i:first-child{background:#fff}
+/* A · pantalla completa, scrim oscuro abajo */
+.a .v{inset:0;width:100%;height:100%}
+.a .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 45%,rgba(0,0,0,.72) 100%)}
+.a .nav{color:#fff}.a .copy{position:absolute;left:72px;bottom:84px;color:#fff;width:760px}
+.a h1{color:#fff;font-size:92px}.a h1 em{color:var(--mint)}.a .eyebrow{color:var(--mint)}.a .lead{color:#fff;opacity:.95}
+.a .btn{background:#fff;color:var(--ink)}.a .btn.g{background:transparent;color:#fff;border-color:#fff}
+.a .ind{position:absolute;right:72px;bottom:96px;color:#fff}
+/* B · dividida: texto sobre blanco y video en arco */
+.b .copy{position:absolute;left:72px;top:210px;width:640px}
+.b .arc{position:absolute;right:56px;top:96px;width:640px;height:760px;border-radius:320px 320px 28px 28px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.45)}
+.b .arc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.b .ring{position:absolute;right:620px;top:600px;width:210px;height:210px}
+.b .core{position:absolute;right:652px;top:632px;width:146px;height:146px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 18px 40px rgba(0,0,0,.28)}.b .core img{width:130px;height:130px}
+.b .cap{position:absolute;right:92px;bottom:120px;z-index:3}
+.b .cap .ind i{background:rgba(255,255,255,.45)}
+.b .nav{color:var(--ink)}
+/* C · titular centrado y video que se expande */
+.c{background:#fff}.c .copy{position:absolute;left:0;right:0;top:112px;text-align:center}
+.c h1{font-size:84px;max-width:1100px;margin:14px auto 0}.c .lead{margin:20px auto 0;text-align:center}.c .row{justify-content:center}
+.c .vid{position:absolute;left:112px;right:112px;top:560px;height:620px;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.4)}
+.c .vid img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.c .nav{color:var(--ink)}
+.c .hint{position:absolute;left:0;right:0;top:530px;text-align:center;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#555}
+</style>
+</head>
+<body>
+
+<section class="f a" id="oa">
+  <span class="tag">A · Pantalla completa (estilo Too Good To Go)</span>
+  <img class="v" src="../../video/hero-ia/2-balanza.webp" alt="">
+  <div class="scrim"></div>
+  <div class="nav"><img src="../../img/logo/sello.webp" alt=""><span>Menú ◌</span></div>
+  <div class="copy">
+    <p class="eyebrow">Para comercios de comida</p>
+    <h1>Vendé lo que te sobra <em>con una foto.</em></h1>
+    <p class="lead">Publicá packs a mitad de precio para tus vecinos y medí para que cada vez te sobre menos.</p>
+    <div class="row"><span class="btn">Sumá tu comercio</span><span class="btn g">Descargá la app</span></div>
+  </div>
+  <div class="ind"><i></i><i></i><i></i>&nbsp; Medís con balanza</div>
+</section>
+
+<section class="f b" id="ob">
+  <span class="tag">B · Texto sobre blanco + video en arco (sin degradé)</span>
+  <div class="nav"><img src="../../img/logo/sello.webp" alt=""><span>Menú ◌</span></div>
+  <div class="copy">
+    <p class="eyebrow">Para comercios de comida</p>
+    <h1>Vendé lo que te sobra <em>con una foto.</em></h1>
+    <p class="lead">Publicá packs a mitad de precio para tus vecinos y medí para que cada vez te sobre menos. Sin costo fijo: pagás solo cuando vendés.</p>
+    <div class="row"><span class="btn">Sumá tu comercio</span><span class="btn g">Descargá la app</span></div>
+  </div>
+  <div class="arc"><img src="../../video/hero-ia/1-publica.webp" alt=""></div>
+  <svg class="ring" viewBox="0 0 320 320"><g><path d="M176.1 45.1 A116 116 0 0 1 275.4 172.1" fill="none" stroke="#1A4D3A" stroke-width="26"/><polygon points="301.2,174.8 271.8,205.9 249.5,169.4" fill="#1A4D3A"/><path d="M251.4 231.4 A116 116 0 0 1 91.8 253.8" fill="none" stroke="#2E7D32" stroke-width="26"/><polygon points="76.5,274.9 64.3,233.9 107.1,232.8" fill="#2E7D32"/><path d="M52.4 203.5 A116 116 0 0 1 112.8 54.0" fill="none" stroke="#7BC67B" stroke-width="26"/><polygon points="102.2,30.3 143.9,40.2 123.4,77.8" fill="#7BC67B"/></g></svg>
+  <div class="core"><img src="../../img/logo/sello.webp" alt=""></div>
+  <div class="cap ind"><i></i><i></i><i></i></div>
+</section>
+
+<section class="f c" id="oc">
+  <span class="tag">C · Titular arriba y video grande que se expande al bajar</span>
+  <div class="nav"><img src="../../img/logo/sello.webp" alt=""><span>Menú ◌</span></div>
+  <div class="copy">
+    <p class="eyebrow">Para comercios de comida</p>
+    <h1>Vendé lo que te sobra <em>con una foto.</em></h1>
+    <p class="lead">Publicá packs a mitad de precio para tus vecinos y medí para que cada vez te sobre menos.</p>
+    <div class="row"><span class="btn">Sumá tu comercio</span><span class="btn g">Descargá la app</span></div>
+  </div>
+  <div class="vid"><img src="../../video/hero-ia/3-entrega.webp" alt=""></div>
+</section>
+</body>
+</html>

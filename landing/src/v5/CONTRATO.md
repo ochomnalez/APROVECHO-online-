@@ -95,3 +95,19 @@ Escenas nuevas y sus archivos (prefijo de clases entre paréntesis):
 - `70-quienes` + `partials/inversores.html`: los hace el director (no tocar).
 Las reglas de arriba siguen valiendo (tokens, `.motion`, accesibilidad, sin git, sin 75%/25%, voseo, contenido solo de la fuente).
 Videos de la portada: `video/hero-ia/<n>-<nombre>-1280.mp4` (escritorio), `-640.mp4` (celular ≤899px) y `.webp` (póster): `1-publica`, `2-balanza`, `3-entrega`. Duran 6 s, sin audio, 16:9. Son **generados con IA** (Gemini Omni a partir de imágenes validadas por Octavio); hay que decirlo en el pie.
+
+---
+# RONDA 3 (11/11): estación nueva, Recuperá con pantallas reales y video de onboarding
+
+REGLAS NUEVAS DE OCTAVIO (valen para todo): **máxima nitidez** (imágenes y videos a resolución completa o 2×, nunca desenfocados ni estirados) y **scroll lo más fluido posible**: solo `transform` y `opacity`, sin `filter`/`blur`/`box-shadow` animados, `will-change` solo mientras anima, nada de layout thrash (leer medidas una vez), imágenes con `decoding="async"`, pins cortos, `scrub` 0.4–0.8, `contain: layout paint` en los escenarios, y en celular versiones simples. Se mide con Lighthouse y con capturas; el director rechaza lo que trabe.
+
+Materiales nuevos:
+- **Estación** (fotos que pasó Octavio, ya recortadas con fondo transparente) en `landing/img/estacion/`: `armada.webp` (balanza + tablet en brazo + hub + cable, 1296×1055), `desarmada-a.webp` y `desarmada-b.webp` (todo separado), y las **6 piezas sueltas** de `desarmada-a`: `pieza-balanza.webp`, `pieza-tablet.webp`, `pieza-brazo.webp`, `pieza-hub.webp`, `pieza-cable-usbc.webp`, `pieza-cable-corriente.webp`. `img/estacion/piezas.json` trae el cuadro de referencia (1774×887) y la posición x, y, w, h de cada pieza en la composición desarmada (usalo para armar el despiece en % del cuadro). **Las fotos son provisorias**: Octavio va a pasar más fotos (armada y desarmada en varias etapas, y para girar 360°); el código tiene que aceptar reemplazar archivos con el mismo nombre y sumar etapas sin reescribir.
+- **Pantallas reales de la app** (capturas del prototipo, 390×844 aprox., en JPG): `video/public/onboarding/` (desde la raíz del repo): `08-camara`, `09-analizando`, `10-analizando-b`, `11-tras-analisis`, `12-revisar-checklist`, `13-publicado`, `14-cliente-ve-pack`, `15-reservar`, `16-reserva-qr`, `17-retiros`, `18-retiro-validado`, `19-hoy-final`, `20-impacto`, entre otras. Copiá las que uses a `landing/img/app/pantallas/` convertidas a WebP calidad 90 (sin reducir resolución).
+- **Video de onboarding** (91,6 s, 1920×1080, con voz y música): `landing/video/onboarding/onboarding-1080.mp4` (13,7 MB) y póster `onboarding-poster.webp`. Se carga SOLO al hacer clic (preload="none").
+
+Escenas y archivos:
+- `recupera` (`rc-`) REHECHA y `onboarding` (`ob-`: `partials/onboarding.html`, `css/45-onboarding.css`, `js/45-onboarding.js`): **Constructor X**.
+- `medi` (`md-`) y `anticipa` (`an-`) REHECHAS: **Constructor Y**.
+- Portada y Quiénes somos: las hace el director.
+Siguen valiendo todas las reglas anteriores (sin git, accesibilidad, `.motion`, voseo, sin 75%/25%, contenido de la v4/fuente, sin scroll horizontal en 390/768/1024/1440, sin errores de consola, build OK).
