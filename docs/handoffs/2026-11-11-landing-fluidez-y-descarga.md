@@ -40,4 +40,4 @@ LANDING_TEST_URL=http://127.0.0.1:8770/ NODE_PATH=/workspace/aprovecho-cloud-set
 
 ## Publicación
 
-Preparada para actualizar el mismo proyecto de Vercel desde esta rama después del push. La confirmación de estado READY y del alias se registrará tras el despliegue. Este entorno permite la API de Vercel pero no abrir directamente el dominio público; las verificaciones locales y el estado remoto se distinguen.
+Actualización publicada en https://aprovecho-landing.vercel.app/. Deployment `dpl_DUrsUAbVn8UwV3sdTq9kdPgkMxTp`, commit `e0765cf3fe63e773ef0423d3774ccebf0846e4df`. La API confirmó `READY`, `aliasAssigned: true`, el dominio principal asignado y ausencia de errores. Se verificó que el commit remoto coincide con el probado localmente. Este entorno permite la API de Vercel pero no abrir directamente el dominio público; no se afirma una prueba del sitio remoto en navegador.
