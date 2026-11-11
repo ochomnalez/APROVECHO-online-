@@ -100,7 +100,6 @@ window.APV5 = (function () {
   var bars = [].slice.call(sec.querySelectorAll('.hr__bar'));
   var fills = bars.map(function (b) { return b.querySelector('b'); });
   var cap = sec.querySelector('[data-hr-cap]');
-  var btn = sec.querySelector('[data-hr-pause]');
   var LABELS = ['Publicás en segundos', 'Medís con balanza', 'Tu vecino lo retira'];
   var DUR = 6000, FADE = 1000;
   var N = clips.length;
@@ -204,17 +203,11 @@ window.APV5 = (function () {
     sync();
   }
 
-  btn.addEventListener('click', function () {
-    userPaused = !userPaused;
-    sec.classList.toggle('is-userpaused', userPaused);
-    btn.setAttribute('aria-label', userPaused ? 'Reproducir el video de fondo' : 'Pausar el video de fondo');
-    sync();
-  });
   bars.forEach(function (b, i) {
     b.addEventListener('click', function () {
       if (i === cur) return;
       go(i);
-      if (userPaused) btn.click(); else sync();
+      sync();
     });
   });
   document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
@@ -290,7 +283,7 @@ window.APV5 = (function () {
 })();
 
 /* 30-problema.js */
-/* v5 · el problema: la cifra cuenta de 0 a 58,4 y la foto de adentro se desplaza (solo con movimiento) */
+/* v5 · el problema: la cifra cuenta de 0 a 12,5 y la foto de adentro se desplaza (solo con movimiento) */
 APV5.scene('problema', function (ctx) {
   var g = ctx.gsap;
   var live = document.querySelector('[data-pb-count]');
@@ -300,9 +293,9 @@ APV5.scene('problema', function (ctx) {
   var o = { v: 0 };
   live.textContent = fmt(0);
   g.to(o, {
-    v: 58.4, duration: 1.7, ease: 'power2.out',
+    v: 12.5, duration: 1.7, ease: 'power2.out',
     onUpdate: function () { live.textContent = fmt(o.v); },
-    onComplete: function () { live.textContent = '58,4%'; },
+    onComplete: function () { live.textContent = '12,5%'; },
     scrollTrigger: { trigger: live, start: 'top 82%', once: true }
   });
   g.fromTo(live, { backgroundPositionY: '10%' }, {
@@ -978,6 +971,33 @@ APV5.scene('pasos', function (ctx) {
   ctx.mm.add(ctx.desktop, function () { return run('x'); });
   ctx.mm.add(ctx.mobile, function () { return run('y'); });
 });
+
+/* 85-planes.js */
+/* Planes en pestañas: al cambiar de plan hay que recalcular los puntos de scroll (cada escena fija se calcula
+   con su propia altura) y volver al inicio del bloque. main.js maneja el estado accesible de las pestañas. */
+(function () {
+  'use strict';
+  var root = document.getElementById('planes');
+  if (!root) return;
+  var tabs = root.querySelectorAll('[role="tab"]');
+  function refrescar(volver) {
+    var tl = root.querySelector('[role="tablist"]');
+    setTimeout(function () {
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
+      if (volver && tl) {
+        var y = tl.getBoundingClientRect().top + window.scrollY - 84;
+        if (Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+      }
+    }, 90);
+  }
+  Array.prototype.forEach.call(tabs, function (t) {
+    t.addEventListener('click', function () { refrescar(true); });
+    t.addEventListener('keydown', function (e) { if (/^(Arrow|Home|End)/.test(e.key)) refrescar(false); });
+  });
+  // al llegar por un enlace directo (#plan-smart, anillo de la portada), también recalcular
+  window.addEventListener('hashchange', function () { refrescar(false); });
+  window.addEventListener('load', function () { refrescar(false); });
+})();
 
 /* 90-progreso.js */
 /* Barra de progreso a la izquierda: aparece mientras estás dentro de una escena con scroll (Recuperá, Medí, Anticipá)

@@ -40,15 +40,27 @@
 <!-- Los tres capítulos del anillo: cada uno es un plan -->
 {{V5_VALOR}}
 
-<div id="planes">
+<section class="pl" id="planes" aria-labelledby="pl-t" data-tabs>
+  <div class="wrap pl__head">
+    <p class="eyebrow">Planes</p>
+    <h2 class="sec__title" id="pl-t">Un plan para cada etapa de tu comercio.</h2>
+    <div class="pl__tabs" role="tablist" aria-label="Planes y recorrido">
+      <button class="pl__tab" type="button" role="tab" id="tab-base" aria-controls="plan-base" aria-selected="true"><b>01 · Recuperá</b><span>Base</span></button>
+      <button class="pl__tab" type="button" role="tab" id="tab-smart" aria-controls="plan-smart" aria-selected="false" tabindex="-1"><b>02 · Medí</b><span>Smart</span></button>
+      <button class="pl__tab" type="button" role="tab" id="tab-intelligence" aria-controls="plan-intelligence" aria-selected="false" tabindex="-1"><b>03 · Anticipá</b><span>Intelligence</span></button>
+      <button class="pl__tab" type="button" role="tab" id="tab-recorrido" aria-controls="recorrido" aria-selected="false" tabindex="-1"><b>Recorrido</b><span>En video</span></button>
+    </div>
+  </div>
+  <div class="pl__panels">
 {{V5_RECUPERA}}
 
 {{V5_MEDI}}
 
 {{V5_ANTICIPA}}
-</div>
 
 {{V5_ONBOARDING}}
+  </div>
+</section>
 
 <!-- ============ 5 · SUMÁ TU COMERCIO + CUENTA (D-033) ============ -->
 <section class="sec sec--cuenta" id="suma" aria-labelledby="suma-t">

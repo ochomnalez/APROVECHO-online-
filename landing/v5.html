@@ -89,10 +89,6 @@
   <div class="hr__foot">
     <div class="wrap">
       <div class="hr__rail" role="group" aria-label="Video de fondo">
-        <button class="hr__pause" type="button" aria-label="Pausar el video de fondo" data-hr-pause>
-          <svg class="hr__ico hr__ico--pause" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.4" height="12" rx="1"/><rect x="9.6" y="2" width="3.4" height="12" rx="1"/></svg>
-          <svg class="hr__ico hr__ico--play" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M4 2.2v11.6a.8.8 0 0 0 1.2.7l9-5.8a.8.8 0 0 0 0-1.4l-9-5.8A.8.8 0 0 0 4 2.2z"/></svg>
-        </button>
         <div class="hr__bars">
           <button class="hr__bar" type="button" aria-label="Ver: Publicás en segundos" aria-current="true"><i><b></b></i></button>
           <button class="hr__bar" type="button" aria-label="Ver: Medís con balanza"><i><b></b></i></button>
@@ -135,16 +131,16 @@
 
 <section class="pb" id="problema" aria-labelledby="pb-t">
   <div class="pb__in">
-    <p class="pb__big" aria-hidden="true"><span class="pb__ghost">58,4%</span><span class="pb__live" data-pb-count>58,4%</span></p>
+    <p class="pb__big" aria-hidden="true"><span class="pb__ghost">12,5%</span><span class="pb__live" data-pb-count>12,5%</span></p>
     <div class="pb__cap">
-      <h2 id="pb-t" class="pb__h"><span class="sr">El 58,4% terminó tirando parte de lo que le sobró.</span><span aria-hidden="true">terminó tirando parte de lo que le sobró.</span></h2>
+      <h2 id="pb-t" class="pb__h"><span class="sr">El 12,5% de la producción agroalimentaria de Argentina se pierde o se desperdicia.</span><span aria-hidden="true">de la producción agroalimentaria de Argentina se pierde o se desperdicia.</span></h2>
       <p class="pb__sub">Comida rica que ya te costó ingredientes, horas y luz.</p>
     </div>
     <ul class="pb__side">
-      <li><b class="num">35,7%</b><span>tuvo excedente apto todos los días de la última semana.</span></li>
-      <li><b class="num">52%</b><span>no registra cuánto le sobra. ¿El motivo principal? No hay tiempo.</span></li>
+      <li><b class="num">16 M t</b><span>de alimentos por año en Argentina, entre pérdida y desperdicio.</span></li>
+      <li><b class="num">8–10%</b><span>de las emisiones globales vienen del desperdicio de alimentos.</span></li>
     </ul>
-    <p class="pb__src">Fuente: encuesta propia de APROVECHO a comercios gastronómicos (2026).</p>
+    <p class="pb__src">Fuentes: MAGyP (2022) y PNUMA (2024).</p>
   </div>
 </section>
 
@@ -193,9 +189,20 @@
   </div>
 </section>
 
-<div id="planes">
+<section class="pl" id="planes" aria-labelledby="pl-t" data-tabs>
+  <div class="wrap pl__head">
+    <p class="eyebrow">Planes</p>
+    <h2 class="sec__title" id="pl-t">Un plan para cada etapa de tu comercio.</h2>
+    <div class="pl__tabs" role="tablist" aria-label="Planes y recorrido">
+      <button class="pl__tab" type="button" role="tab" id="tab-base" aria-controls="plan-base" aria-selected="true"><b>01 · Recuperá</b><span>Base</span></button>
+      <button class="pl__tab" type="button" role="tab" id="tab-smart" aria-controls="plan-smart" aria-selected="false" tabindex="-1"><b>02 · Medí</b><span>Smart</span></button>
+      <button class="pl__tab" type="button" role="tab" id="tab-intelligence" aria-controls="plan-intelligence" aria-selected="false" tabindex="-1"><b>03 · Anticipá</b><span>Intelligence</span></button>
+      <button class="pl__tab" type="button" role="tab" id="tab-recorrido" aria-controls="recorrido" aria-selected="false" tabindex="-1"><b>Recorrido</b><span>En video</span></button>
+    </div>
+  </div>
+  <div class="pl__panels">
 <!-- ============ v5 · 01 RECUPERÁ · PLAN BASE (el teléfono con las pantallas reales de la app) ============ -->
-<section class="chap chap--soft rc" id="plan-base" aria-labelledby="rc-t">
+<section class="chap chap--soft rc" id="plan-base" role="tabpanel" aria-labelledby="tab-base">
   <a id="como-funciona"></a>
   <div class="wrap chap__in rc__in">
     <div class="ch rc__ch">
@@ -290,7 +297,7 @@
   </div>
 </section>
 
-<section class="chap chap--flip md" id="plan-smart" aria-labelledby="md-t">
+<section class="chap chap--flip md" id="plan-smart" role="tabpanel" aria-labelledby="tab-smart" hidden>
   <div class="wrap chap__in">
     <div class="md-stage">
     <!-- st:inicio (generado por src/v5/estacion-gen.py: no editar a mano) -->
@@ -359,7 +366,7 @@
   </div>
 </section>
 
-<section class="chap chap--soft an" id="plan-intelligence" aria-labelledby="an-t">
+<section class="chap chap--soft an" id="plan-intelligence" role="tabpanel" aria-labelledby="tab-intelligence" hidden>
   <div class="wrap chap__in">
     <div class="ch">
       <p class="eyebrow">03 · Anticipá · Plan Intelligence</p>
@@ -448,10 +455,9 @@
     </div>
   </div>
 </section>
-</div>
 
 <!-- ============ v5 · RECORRIDO COMPLETO: video de onboarding (ob-) ============ -->
-<section class="sec ob" id="recorrido" aria-labelledby="ob-t">
+<section class="sec ob" id="recorrido" role="tabpanel" aria-labelledby="tab-recorrido" hidden>
   <div class="wrap">
     <header class="ob__head">
       <p class="eyebrow">Recorrido completo</p>
@@ -474,6 +480,8 @@
       <a class="btn btn--lg" href="#alta" data-cta="onboarding">Sumá tu comercio</a>
       <p>Sin costo fijo. Pagás solo por cada pack vendido.</p>
     </div>
+  </div>
+</section>
   </div>
 </section>
 

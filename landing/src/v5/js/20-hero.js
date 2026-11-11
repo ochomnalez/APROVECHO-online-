@@ -10,7 +10,6 @@
   var bars = [].slice.call(sec.querySelectorAll('.hr__bar'));
   var fills = bars.map(function (b) { return b.querySelector('b'); });
   var cap = sec.querySelector('[data-hr-cap]');
-  var btn = sec.querySelector('[data-hr-pause]');
   var LABELS = ['Publicás en segundos', 'Medís con balanza', 'Tu vecino lo retira'];
   var DUR = 6000, FADE = 1000;
   var N = clips.length;
@@ -114,17 +113,11 @@
     sync();
   }
 
-  btn.addEventListener('click', function () {
-    userPaused = !userPaused;
-    sec.classList.toggle('is-userpaused', userPaused);
-    btn.setAttribute('aria-label', userPaused ? 'Reproducir el video de fondo' : 'Pausar el video de fondo');
-    sync();
-  });
   bars.forEach(function (b, i) {
     b.addEventListener('click', function () {
       if (i === cur) return;
       go(i);
-      if (userPaused) btn.click(); else sync();
+      sync();
     });
   });
   document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });

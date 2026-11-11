@@ -1,4 +1,4 @@
-/* v5 · el problema: la cifra cuenta de 0 a 58,4 y la foto de adentro se desplaza (solo con movimiento) */
+/* v5 · el problema: la cifra cuenta de 0 a 12,5 y la foto de adentro se desplaza (solo con movimiento) */
 APV5.scene('problema', function (ctx) {
   var g = ctx.gsap;
   var live = document.querySelector('[data-pb-count]');
@@ -8,9 +8,9 @@ APV5.scene('problema', function (ctx) {
   var o = { v: 0 };
   live.textContent = fmt(0);
   g.to(o, {
-    v: 58.4, duration: 1.7, ease: 'power2.out',
+    v: 12.5, duration: 1.7, ease: 'power2.out',
     onUpdate: function () { live.textContent = fmt(o.v); },
-    onComplete: function () { live.textContent = '58,4%'; },
+    onComplete: function () { live.textContent = '12,5%'; },
     scrollTrigger: { trigger: live, start: 'top 82%', once: true }
   });
   g.fromTo(live, { backgroundPositionY: '10%' }, {
