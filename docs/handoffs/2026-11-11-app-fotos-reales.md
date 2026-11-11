@@ -3,6 +3,10 @@
 - **Agente:** codex-octi-app
 - **Fecha:** 2026-11-11
 - **Rama:** `codex/octi-app-fotos`, desde la versión con cuentas.
+- **PR:** https://github.com/ochomnalez/APROVECHO-online-/pull/7 (borrador).
+- **Deployment final:** `dpl_Dk59GZeDHYvZdWGdnJcS22whRBbe`, código `9b796d1`, READY.
+- **Publicado:** https://aprovecho-app-demo.vercel.app
+- **URL inmutable:** https://aprovecho-app-demo-xx9tzmjor-octaviochomnalez-9006.vercel.app
 
 ## Qué cambió
 
@@ -23,7 +27,7 @@ Sharp fijado en 0.35.5, con lockfile. La auditoría de la versión final informa
 
 ## Verificación
 
-- Primer build Vercel: diez imágenes descargadas y decodificadas correctamente; tamaños entre 52.300 y 101.012 bytes, deployment READY y preflight Auth aprobado. La dependencia de optimización se actualizó después a la versión corregida 0.35.5; resultado del build final registrado al cierre.
+- Primer build Vercel: diez imágenes descargadas y decodificadas correctamente; tamaños entre 52.300 y 101.012 bytes, deployment READY y preflight Auth aprobado. La dependencia de optimización se actualizó después a la versión corregida 0.35.5; build final con Sharp 0.35.5 aprobado: diez FOTO_REAL_OK, MEDIOS_OK 10, preflight Auth OK, cero vulnerabilidades y deployment READY.
 - Regresión de cuentas con SDK real/API simulada: aprobada después del cambio. Incluye comprobar las ocho marcas, foto de fachada de McDonald's, seis categorías con fotografía y ausencia de SVG de comida en categorías/promociones/identificaciones de comercio.
 - Sintaxis y git diff --check: correctos.
 - Las fuentes de locales se revisaron en Wikimedia Commons y las nuevas comidas en Pexels; no se generaron fotos con IA.
