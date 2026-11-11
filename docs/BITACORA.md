@@ -32,3 +32,4 @@
 | 2026-11-04 19:26 | claude-octi-video | `integ` | `00677ff` | Tablero rediseñado: prioridades, pedidos, avance por video y por frente, avance diario | Actualizar DATOS al cerrar cada bloque |
 | 2026-11-04 19:36 | claude-octi-video | `integ` | `f134ece` | Decisiones D-031 a D-035 (sin 75%, inversores como sección, cálculo en Sumá tu comercio, alérgenos, carta por foto); guion ajustado | Montar el onboarding |
 | 2026-11-04 19:40 | claude-octi-video | `integ` | `ff1f785` | Guardado obligatorio (hook Stop), ramas separadas por persona con PR y bloqueo de push a integración; D-036 checklist opción B | Montar video de onboarding en Remotion |
+| 2026-11-11 10:28 | claude-octi-video | `claude/aprovecho-video` | `ab4548b` | Onboarding v7 (1:31): celular consistente con la mesada y con la app, sin zoom fuerte en el pago, logos Excel/PDF con pop, conexión de la balanza más lenta, frase final con emoción, música nueva (Life of Riley) | Octavio revisa v7 |

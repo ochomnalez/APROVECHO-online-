@@ -13,3 +13,4 @@
 - **Clips v4:** menú (`menu.mp4`) y gerente con dashboard (`N-gerente.mp4`) generados con Gemini Omni 1.2 desde las fotos de Octavio. La balanza con la tablet va como foto (`fotos/K-smart.jpg`), no como clip.
 - **Música v5:** "Carefree", Kevin MacLeod (incompetech.com), CC BY 4.0. Voz acelerada (pausas largas recortadas y 7% más rápida) a partir de las tomas originales en `public/voz2-orig/`.
 - **Música v6:** "Easy Lemon", Kevin MacLeod (incompetech.com), CC BY 4.0. Frases nuevas elegidas por Octavio: Intelligence ("Si querés ir un paso más, sumás Intelligence…") y cierre ("Empezar es simple. Sumá tu comercio y mirá cuánto podés recuperar.").
+- **Música v7:** "Life of Riley", Kevin MacLeod (incompetech.com), CC BY 4.0 (reemplaza a "Easy Lemon"). Clip nuevo `L-foto-app.mp4` (Gemini Omni, el celular muestra la app); la pantalla del celular en el video usa la foto de la mesada; frase final con más emoción.

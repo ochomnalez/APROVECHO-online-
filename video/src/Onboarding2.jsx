@@ -204,6 +204,7 @@ function Pantallas({ tomas, radio }) {
               {c && <Marco x={c[0] - 4} y={c[1] - 4} w={c[2] + 8} h={c[3] + 8} base={base} en={tm.clic.en - 0.3} fin={tm.clic.en + 1.3} txt="Clic" />}
               {c && <Toque x={((c[0] + c[2] / 2) / base[0]) * 100} y={((c[1] + c[3] / 2) / base[1]) * 100} en={s(tm.clic.en)} />}
               {tm.marcos && tm.marcos.map((m, k) => <Marco key={k} {...m} />)}
+              {tm.capas && tm.capas.map((c2, k) => (<div key={k} style={{ position: 'absolute', left: `${c2.x / base[0] * 100}%`, top: `${c2.y / base[1] * 100}%`, width: `${c2.w / base[0] * 100}%`, height: `${c2.h / base[1] * 100}%`, background: c2.bg || 'transparent', borderRadius: c2.r || 0, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: c2.al || 'flex-start', fontFamily: CUERPO, fontWeight: c2.fw || 700, color: c2.col || TINTA, fontSize: c2.fs ? `${c2.fs / base[0] * 100 * 0.01 * 1}em` : undefined }}>{c2.img ? <Img src={staticFile(c2.img)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ fontSize: c2.fs, whiteSpace: 'nowrap', textDecoration: c2.tach ? 'line-through' : 'none' }}>{c2.txt}</span>}</div>))}
             </div>
           </div>
         );
@@ -249,7 +250,7 @@ function Escritorio({ tomas, x = 760, y = 150, W = 1050, desde = 0 }) {
 }
 
 // Clip de video con marco (toma con personas)
-function Tarjeta({ src, x, y, w, h, desde = 0, hasta, desdeVideo = 0, cortes, children }) {
+function Tarjeta({ src, x, y, w, h, desde = 0, hasta, desdeVideo = 0, cortes, rate = 1, children }) {
   const f = useCurrentFrame();
   const e = useSp(s(desde), { damping: 16, mass: 0.8 });
   const sal = hasta ? ease(f, s(hasta), s(hasta) + 12) : 0;
@@ -260,9 +261,9 @@ function Tarjeta({ src, x, y, w, h, desde = 0, hasta, desdeVideo = 0, cortes, ch
       {cortes
         ? cortes.map(([c0, c1, vs], i) => (
           <Sequence key={i} from={s(c0)} durationInFrames={s(c1 - c0) + 1}>
-            <OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(vs)} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(vs)} playbackRate={rate} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </Sequence>))
-        : <Sequence from={s(desde)}><OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(desdeVideo)} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></Sequence>}
+        : <Sequence from={s(desde)}><OffthreadVideo src={staticFile(`tomas/${src}`)} startFrom={s(desdeVideo)} playbackRate={rate} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></Sequence>}
       {children}
     </div>
   );
@@ -349,11 +350,24 @@ function E3a() {
     <AbsoluteFill>
       <Fondo k={2} />
       <div style={{ position: 'absolute', left: 90, top: 28 }}><Capitulo n="2" texto="Base · publicar con una foto" /></div>
-      <Tarjeta src="F-apertura.mp4" x={90} y={110} w={1040} h={585} desde={0.2} hasta={fin} />
+      <Tarjeta src="L-foto-app.mp4" x={90} y={110} w={1040} h={585} desde={0.2} hasta={fin} />
       <Celular tomas={[
         { src: '08-camara', desde: 0, clic: { caja: BTN.muestra, en: at(0, 1.4) } },
-        { src: '09-analizando', desde: at(1, 0) },
-        { src: '11-tras-analisis', desde: at(1, 2.2) },
+        { src: '09-analizando', desde: at(1, 0), capas: [
+          { x: 18, y: 175, w: 354, h: 265, img: 'fotos/L-mesada.jpg' },
+          { x: 18, y: 452, w: 354, h: 24, bg: '#fff', txt: 'Medialuna ×2 · Brownie ×1 · Sándwich ×2', fs: 14, fw: 500 }] },
+        { src: '11-tras-analisis', desde: at(1, 2.2), capas: [
+          { x: 33, y: 82, w: 312, h: 232, img: 'fotos/L-mesada.jpg', r: 10 },
+          { x: 33, y: 368, w: 200, h: 48, bg: '#fff', txt: 'Medialuna de manteca', fs: 18 },
+          { x: 270, y: 380, w: 34, h: 24, bg: '#F6EFE4', txt: '2 u', fs: 18 },
+          { x: 33, y: 445, w: 200, h: 28, bg: '#fff', txt: 'Sándwich y brownie', fs: 18 },
+          { x: 270, y: 445, w: 34, h: 28, bg: '#F6EFE4', txt: '3 u', fs: 18 },
+          { x: 262, y: 571, w: 96, h: 26, bg: '#EEF6EB', txt: '$1.000', fs: 24, al: 'flex-end' },
+          { x: 33, y: 602, w: 220, h: 22, bg: '#EEF6EB', txt: '2 u de medialuna · ≈ 90 g', fs: 15, fw: 500 },
+          { x: 305, y: 602, w: 50, h: 22, bg: '#EEF6EB', txt: '$2.000', fs: 15, fw: 500, tach: 1, al: 'flex-end' },
+          { x: 262, y: 719, w: 96, h: 26, bg: '#EEF6EB', txt: '$1.500', fs: 24, al: 'flex-end' },
+          { x: 33, y: 751, w: 220, h: 22, bg: '#EEF6EB', txt: '3 u de sándwich y brownie · ≈ 260 g', fs: 15, fw: 500 },
+          { x: 305, y: 751, w: 50, h: 22, bg: '#EEF6EB', txt: '$3.000', fs: 15, fw: 500, tach: 1, al: 'flex-end' }] },
       ]} />
       <Voz k="e3a" /><Subs segs={sg} />
     </AbsoluteFill>
@@ -404,8 +418,8 @@ function E4() {
         <Lista items={[['El vecino reserva y paga desde la app', at(0)], ['Recibe un código QR', at(1)], ['Lo escaneás en el local', at(1, 2.2)], ['Cobrás cada venta, sin abono fijo', at(2)]]} ancho={1000} />
       </div>
       <Celular x={170} giro={8} tomas={[
-        { src: '14-cliente-ve-pack', desde: 0, clic: { caja: BTN.reservar, en: at(0, 1.2) } },
-        { src: '15-reservar', desde: at(0, 2.2), clic: { caja: BTN.pagar, en: at(0, 3.4) } },
+        { src: '14-cliente-ve-pack', desde: 0, clic: { caja: BTN.reservar, en: at(0, 1.2), z: 1.03 } },
+        { src: '15-reservar', desde: at(0, 2.2), clic: { caja: BTN.pagar, en: at(0, 3.4), z: 1.03 } },
         { src: '16-reserva-qr', desde: at(1, -0.2) },
         { src: '17-retiros', desde: at(1, 2.0), clic: { caja: BTN.escanear, en: at(1, 3.0) } },
         { src: '18-retiro-validado', desde: at(1, 4.2), clic: { caja: BTN.confirmar, en: at(1, 5.4) } },
@@ -413,6 +427,16 @@ function E4() {
       ]} />
       <Voz k="e4" /><Subs segs={sg} />
     </AbsoluteFill>
+  );
+}
+
+function PopLogo({ en, x, y, color, letra, rot }) {
+  const e = useSp(s(en), { damping: 9, mass: 0.6 });
+  const f = useCurrentFrame(); const t = f / FPS;
+  if (e <= 0.001) return null;
+  const x0 = 1435, y0 = 380; // centro del celular
+  return (
+    <div style={{ position: 'absolute', left: x0 + (x - x0) * e - 49, top: y0 + (y - y0) * e - 49 + Math.sin(t * 2 + x) * 4, width: 98, height: 98, borderRadius: 22, background: color, color: '#fff', fontFamily: CUERPO, fontWeight: 800, fontSize: letra.length > 1 ? 34 : 56, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 16px 34px rgba(0,0,0,.28)', transform: `scale(${Math.min(1.1, e)}) rotate(${rot * e}deg)`, opacity: Math.min(1, e * 3), zIndex: 5 }}>{letra}</div>
   );
 }
 
@@ -431,6 +455,8 @@ function E5() {
         { src: '21-reporte', desde: at(1, 0.6), clic: { caja: BTN.bajar, en: at(1, 1.8) } },
         { src: '24-reporte-listo', desde: at(1, 3.0) },
       ]} />
+      <PopLogo en={at(1, 1.55)} x={1170} y={300} color="#1D6F42" letra="X" rot={-9} />
+      <PopLogo en={at(1, 2.15)} x={1170} y={430} color="#9B1C1C" letra="PDF" rot={8} />
       <Voz k="e5" /><Subs segs={sg} />
     </AbsoluteFill>
   );
@@ -468,8 +494,8 @@ function E6() {
         <Cinetico texto="Medí con balanza y cámara." tam={78} desde={6} />
         <Lista items={[['Balanza + tablet con cámara', tC + 0.2], ['Peso real, no estimado', at(1, 1.4)], ['Vos decidís: venta o descarte', at(1, 4.4)]]} ancho={780} />
       </div>
-      <Tarjeta src="G-smart.mp4" x={110} y={410} w={760} h={428} desde={0.2} hasta={1.9} cortes={[[0, 1.9, 0]]} />
-      <FotoSmart x={110} y={410} w={760} h={428} desde={1.9} hasta={tC} />
+      <Tarjeta src="G-smart.mp4" x={110} y={410} w={760} h={428} desde={0.2} hasta={3.9} rate={0.55} cortes={[[0, 3.9, 0]]} />
+      <FotoSmart x={110} y={410} w={760} h={428} desde={3.4} hasta={tC} />
       <Tableta x={930} y={170} W={900} tomas={[
         { src: 't-02-estacion-vacia', desde: 0 },
         { src: 't-03-pesando', desde: at(1, 0) },
@@ -581,7 +607,7 @@ function E9() {
         <Img src={staticFile(SELLO)} style={{ width: 360, height: 360, transform: `scale(${0.7 + sc * 0.3}) rotate(${(1 - sc) * -20}deg)`, opacity: Math.min(1, sc * 2) }} />
         <div style={{ marginTop: 36 }}><Cinetico texto="Empezar es simple." tam={76} color={PAPEL} desde={12} /></div>
         <div style={{ marginTop: 34, padding: '20px 46px', borderRadius: 999, background: MENTA, color: BOSQUE, fontFamily: CUERPO, fontWeight: 700, fontSize: 36, opacity: ease(f, 36, 50) }}>Sumá tu comercio</div>
-        <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Easy Lemon”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
+        <div style={{ position: 'absolute', bottom: 24, fontFamily: CUERPO, fontSize: 15, color: 'rgba(251,243,228,.5)' }}>Música: “Life of Riley”, Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
       </AbsoluteFill>
       <Voz k="e9" /><Subs segs={sg} />
     </AbsoluteFill>
@@ -598,7 +624,7 @@ export const DURACION_ONB2 = ESCENAS.reduce((n, [, d]) => n + d, 0) + 0.1; // la
 export function Onboarding2() {
   return (
     <AbsoluteFill style={{ background: PAPEL }}>
-      <Audio src={staticFile('musica/easylemon-largo.mp3')} volume={(f) => 0.24 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
+      <Audio src={staticFile('musica/lifeofriley-largo.mp3')} volume={(f) => 0.24 * interpolate(f, [0, 20], [0, 1], CL) * interpolate(f, [s(DURACION_ONB2) - 75, s(DURACION_ONB2)], [1, 0], CL)} />
       <TransitionSeries>
         {ESCENAS.map(([C, seg], i) => (
           <React.Fragment key={i}>
