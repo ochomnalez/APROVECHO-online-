@@ -55,3 +55,4 @@
 | 2026-11-09 23:52 | claude-octi-video | `integ` | `a85b05f` | Onboarding v5 (1:31): más ágil sin perder las pantallas, voz con menos pausas, música Carefree más audible | OK de Octavio |
 | 2026-11-10 00:05 | claude-octi-video | `integ` | `8c1dfb9` | Onboarding v6 (1:31): frase de Intelligence y cierre elegidos por Octavio, música Easy Lemon | OK de Octavio |
 | 2026-11-11 14:11 | codex-octi-app | `codex/octi-app-entrega` | `7e160f7` | Demo para entrega cerrada: consumidor y tres planes, confirmación al publicar, comisión 25%, PWA offline, QR, CSV y reportes; pruebas y capturas listas | Octavio revisa visualmente e integra el PR; publicación no solicitada |
+| 2026-11-11 14:12 | codex-octi-app | `codex/octi-app-entrega` | `393ea19` | Demo subida en 393ea19 a codex/octi-app-entrega y PR #5 abierto como borrador contra integración; sin cambios de landing ni video | Revisión visual de Octavio y aprobación del PR #5 |

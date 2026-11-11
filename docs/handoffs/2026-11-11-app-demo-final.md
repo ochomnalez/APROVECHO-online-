@@ -3,6 +3,7 @@
 - **Fecha:** 2026-11-11
 - **Agente:** codex-octi-app
 - **Rama:** `codex/octi-app-entrega`, desde la integración `7e160f7`.
+- **PR de revisión:** https://github.com/ochomnalez/APROVECHO-online-/pull/5 (borrador; sin merge).
 
 ## Qué hice
 
