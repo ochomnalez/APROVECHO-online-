@@ -176,6 +176,15 @@ const assert = require("node:assert/strict");
     await login("cliente@example.test");
     await p.locator('[data-go="auth/cuenta"]').first().waitFor();
     assert(p.url().endsWith("c/inicio"));
+    await p.locator('.demo-marcas').first().waitFor();
+    assert.equal(await p.locator('.cat-chica img').count(),6);
+    assert.equal(await p.locator('.cat-chica svg, .b-arte svg, .logo-local svg').count(),0);
+    const brands = await p.evaluate(async()=> (await import('./js/store.js')).S.comercios.map(c=>c.nombre));
+    for(const name of ['Havanna','KFC','Starbucks',"McDonald's",'Jumbo','Burger King','Coto','Carrefour']) assert(brands.includes(name));
+    await go('c/local/c4');
+    await p.getByRole('heading',{name:"McDonald's",exact:true}).waitFor();
+    assert((await p.locator('.fachada-local').getAttribute('src')).endsWith('/mcdonalds.webp'));
+    await go('c/inicio');
     await p.evaluate(async () => {
       const { S, guardar } = await import("./js/store.js");
       S.perfil.nombre = "Dato privado de cliente";

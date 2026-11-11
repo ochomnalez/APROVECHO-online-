@@ -76,3 +76,5 @@
 .fachada-local{object-position:center}
 .pie-inicio{flex-wrap:wrap}
 .cat-chica.categoria-con-foto .foto-pack-cliente{height:calc(100% - 32px)}
+
+.tp-demo{position:absolute;bottom:8px;right:8px;font-size:10px;z-index:2;background:rgba(255,255,255,.94)}

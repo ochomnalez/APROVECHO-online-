@@ -67,7 +67,7 @@ export function tarjetaPack(p, ancha = false) {
       ${fotoPack(p, true)}
       <span class="badge oferta b-izq">50% de descuento</span>
       ${p.stock <= 2 ? `<span class="badge oscuro b-der">${p.stock === 1 ? 'Queda 1' : 'Quedan 2'}</span>` : ''}
-      <span class="tp-logo">${logoLocal(c, 44, 13)}</span>
+      <span class="badge gris tp-demo">Demo</span><span class="tp-logo">${logoLocal(c, 44, 13)}</span>
     </div>
     <div class="tp-cuerpo">
       <div class="tp-cab"><b class="trunc">${esc(c.nombre)}</b><span class="tp-rating"><span class="estrella-mini">★</span>${rating(c)}</span></div>
@@ -245,7 +245,7 @@ function resultados() {
       <div class="seccion"><h2>Locales</h2></div>
       <div class="lista">${S.comercios.map(c => `<button class="item" data-go="c/local/${c.id}">${logoLocal(c, 44, 12)}<span class="col crece"><span class="fuerte">${esc(c.nombre)}</span><span class="mini">★ ${rating(c)} · ${esc(c.cat)} · ${distTxt(distanciaM(S.ubic || ZONA_NORTE, c))}</span></span>${icon('adelante', 20, 'chev')}</button>`).join('')}</div>`;
   }
-  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’']/g, '');
   const tn = norm(t);
   const locales = S.comercios.filter(c => norm(c.nombre + ' ' + c.cat).includes(tn));
   const packs = todosLosPacks().filter(p => norm(p.c.nombre + ' ' + p.cat + ' ' + p.cond.join(' ') + ' ' + (p.titulo || '') + ' ' + (producto(p.productoId)?.nombre || '')).includes(tn)
@@ -298,7 +298,7 @@ function local(id) {
       <div class="pila" style="padding:38px 18px calc(28px + var(--sb));gap:14px">
         <div class="col" style="gap:4px"><h1 class="gran-titulo" style="font-size:26px">${esc(c.nombre)}</h1>
           <span class="chico"><span class="estrella-mini">★</span> ${rating(c)} (${c.resenas}) · ${esc(c.cat)} · ${distTxt(d)}</span></div>
-        <div class="demo-marcas"><span class="badge gris">Demo</span><span>Esta marca no está presentada como adherida. Ofertas, calificaciones y ubicación son ejemplos.</span></div>
+        <div class="demo-marcas"><span class="badge gris">Demo</span><span>Marca de referencia. Ofertas, calificaciones y ubicación de demostración.</span></div>
         <a class="mini creditos-enlace" href="./imagenes.html" target="_blank" rel="noopener">Créditos de fotografías</a>
         <div class="card plana fila entre"><span class="fila" style="gap:10px">${icon('reloj', 20, 'verde')}<span class="col"><span class="fuerte">Retiro hoy ${retiroTxt(c)}</span><span class="mini">Cierra a las ${c.cierre}</span></span></span>
           <a class="btn chico sec" href="https://www.google.com/maps/dir/?api=1&destination=${c.lat},${c.lng}" target="_blank" rel="noopener">${icon('ruta', 16)} Ir</a></div>

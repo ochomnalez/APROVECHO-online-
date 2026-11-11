@@ -1,7 +1,6 @@
 import { esc } from './util.js';
 import { fotoCategoria } from './fotos.js';
-// Ilustraciones de comida y logos de los locales. Todo vectorial, dibujado a mano:
-// no hay imágenes bajadas de internet. viewBox 0 0 120 120 en las ilustraciones.
+// Fotografías para comida y comercios; vectores solo para estados e iconos de navegación.
 
 const sombra = (cx = 60, cy = 100, rx = 36) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${rx * .17}" fill="#1b2a1e" opacity=".13"/>`;
 const brillo = (cx, cy, rx, ry, rot = -20) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${cx} ${cy})" fill="#fff" opacity=".38"/>`;
@@ -148,18 +147,7 @@ export function ilus(nombre, tam = 72, extra = '') {
 export const ilusCategoria = { Panificados: 'medialuna', Pastelería: 'torta', Sándwiches: 'sandwich', Viandas: 'vianda' };
 export const fondoCategoria = { Panificados: '#FBEBD2', Pastelería: '#FBE1E6', Sándwiches: '#FDF1CF', Viandas: '#E3F1DC' };
 
-// ---------- logos de los locales (ficticios) ----------
-const EMBLEMAS = {
-  espiga: '<path d="M24 42V14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><g fill="currentColor"><ellipse cx="19.5" cy="18" rx="3.6" ry="5.6" transform="rotate(-30 19.5 18)"/><ellipse cx="28.5" cy="18" rx="3.6" ry="5.6" transform="rotate(30 28.5 18)"/><ellipse cx="19.5" cy="26" rx="3.6" ry="5.6" transform="rotate(-30 19.5 26)"/><ellipse cx="28.5" cy="26" rx="3.6" ry="5.6" transform="rotate(30 28.5 26)"/><ellipse cx="19.5" cy="34" rx="3.6" ry="5.6" transform="rotate(-30 19.5 34)"/><ellipse cx="28.5" cy="34" rx="3.6" ry="5.6" transform="rotate(30 28.5 34)"/><ellipse cx="24" cy="10" rx="3" ry="5"/></g>',
-  chef: '<path d="M14 26c-5 0-7-4-6-8 1-5 7-6 9-3 1-6 13-7 14 0 3-3 9-1 9 4 1 5-3 7-6 7v12H14Z" fill="currentColor"/><path d="M14 38h20" stroke="currentColor" stroke-width="3"/>',
-  taza: '<path d="M10 20h24l-2 14c-1 4-4 6-8 6h-4c-4 0-7-2-8-6Z" fill="currentColor"/><path d="M34 23c5 0 7 3 6 6-1 3-4 4-7 3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 15c-2-3 2-4 0-7M24 15c-2-3 2-4 0-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>',
-  cupcake: '<path d="M13 26h22l-3 14H16Z" fill="currentColor"/><path d="M12 25c0-6 5-9 9-8 1-5 9-6 11-1 5-1 9 3 8 9Z" fill="currentColor"/><circle cx="24" cy="10" r="3" fill="currentColor"/>',
-  hoja: '<path d="M12 38C11 22 23 10 38 9c1 16-10 28-26 29Z" fill="currentColor"/><path d="M14 36 34 14" stroke-width="2" stroke-linecap="round" class="corte"/>',
-  sandwich: '<path d="M8 32 24 11l16 21Z" fill="currentColor"/><path d="M8 34h32v4H8Z" fill="currentColor"/><path d="M8 29h32" stroke-width="2.4" class="corte"/>',
-  pizza: '<path d="M24 42 9 14c10-5 20-5 30 0Z" fill="currentColor"/><g class="corte-f"><circle cx="20" cy="21" r="3"/><circle cx="29" cy="22" r="3"/><circle cx="24" cy="31" r="2.6"/></g>',
-  sintacc: '<path d="M24 38V14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g fill="currentColor"><ellipse cx="20" cy="18" rx="3" ry="4.6" transform="rotate(-30 20 18)"/><ellipse cx="28" cy="18" rx="3" ry="4.6" transform="rotate(30 28 18)"/><ellipse cx="20" cy="26" rx="3" ry="4.6" transform="rotate(-30 20 26)"/><ellipse cx="28" cy="26" rx="3" ry="4.6" transform="rotate(30 28 26)"/></g><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="3"/><path d="M12 12l24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
-};
-
+// ---------- Fotografías reales de los locales de referencia ----------
 export function logoLocal(c, tam = 56, radio = 16, conNombre = false) {
   const L = c.logo || {bg:'#1A4D3A',fg:'#FFFFFF'};
   const imagen = c.marcaDemo && c.fotoLocal ? `<img class="foto-local-real" src="${esc(c.fotoLocal)}" alt="${esc(c.nombre)}" width="${tam}" height="${tam}" loading="lazy">` : `<img class="foto-local-real" src="./img/fotos/pan.webp" alt="Foto de referencia" width="${tam}" height="${tam}">`;

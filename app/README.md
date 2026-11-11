@@ -16,6 +16,14 @@ El panel muestra comercios registrados, pendientes, aprobados, consumidores y al
 
 Ver `supabase/README.md` para permisos. Pruebas actuales: `app/tests/cuentas.cjs` (SDK real y API simulada) y `app/tests/permisos.cjs` (PostgreSQL/PGlite). También se verificó RLS en el proyecto real con rollback y la conexión Auth desde Vercel. No se crearon cuentas de prueba persistentes. La entrega de correo y el ingreso con una cuenta real deben revisarse con el usuario.
 
+## Fotografías y marcas de referencia
+
+Comida real en categorías, promociones, packs, muestras de captura y revisión. Las referencias de comercio son Havanna, KFC, Starbucks, McDonald's, Jumbo, Burger King, Coto y Carrefour. Se usan fotografías reales de esos establecimientos, acreditadas en `imagenes.html`; no se afirma que estén adheridos. Packs, valoraciones, horarios y distancias siguen siendo datos de demostración. Los datos de una cuenta comercial real conservan su propio nombre.
+
+Las fotos nuevas se preparan al construir la publicación: `npm ci --ignore-scripts` y `npm run media` desde app/. Las fuentes y licencias están en `img/fuentes-medios.json`, y las adaptaciones WebP conservan sus licencias. Cada foto tiene como máximo 150 KB. La publicación sirve las copias desde el mismo dominio, sin depender de terceros al mostrar imágenes. Sharp está fijado en 0.35.5 con lockfile; las carpetas generadas no se versionan.
+
+El entorno de esta tarea bloquea Pexels/Wikimedia: se ejecutó la preparación en el build de Vercel, con diez fotografías verificadas por Sharp. Los tests locales comprueban el render y las rutas de los assets; no se afirma que las fachadas generadas durante el build se hayan renderizado en un navegador local.
+
 ## Abrir
 
 Desde la raíz del repositorio: `python3 -m http.server 8765 --bind 127.0.0.1`. Abrí `http://127.0.0.1:8765/app/`. No requiere instalar paquetes, cuentas ni claves. También se puede servir la carpeta `app/` sola; no la abras como archivo porque usa módulos de JavaScript.

@@ -30,7 +30,7 @@
 | Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | ✅ Entregado e integrado (falta validar PROPUESTA-identidad-1 a 5) | Vie 6/11 18:00 | `handoffs/2026-11-05-identidad-sistema-visual.md` |
 | Guion y video | `codex/aprovecho-video` · Codex | Cuatro guiones y storyboard. Primer corte de «Una foto» listo para revisión | Guiones: vie 6/11 · Videos: mar 10/11 | [Video y plan de producción](handoffs/2026-11-04-video-una-foto.md) |
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
-| Desarrollo de la app | `codex/octi-app-cuentas` · `codex-octi-app` | ✅ Cuentas y panel admin conectados a Supabase y publicados en https://aprovecho-app-demo.vercel.app. RLS real y preflight Auth aprobados; primer registro de fundadores pendiente | Mié 11/11 | `handoffs/2026-11-11-app-cuentas.md` |
+| Desarrollo de la app | `codex/octi-app-cuentas` · `codex-octi-app` | ✅ Cuentas conectadas; fotos reales en consumidor/comercio y ocho marcas de referencia con fachadas acreditadas. Publicación en https://aprovecho-app-demo.vercel.app; revisión final en celular pendiente | Mié 11/11 | `handoffs/2026-11-11-app-fotos-reales.md` |
 
 ## Próximos pasos
 
