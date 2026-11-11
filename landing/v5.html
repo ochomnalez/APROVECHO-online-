@@ -30,6 +30,14 @@
 <header class="nav nv" id="top">
   <div class="wrap nav__in">
     <a class="nav__logo" href="#top" aria-label="APROVECHO, inicio"><img src="img/logo/sello.webp" alt="APROVECHO" width="52" height="52"></a>
+    <nav class="nv-bar" aria-label="Secciones">
+      <a href="#inicio">Inicio</a>
+      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#datos">Datos de Argentina</a>
+      <a href="#suma">Cuánto te queda</a>
+      <a href="#inversores">Inversores</a>
+      <a href="#consumidores">¿Querés comprar packs?</a>
+    </nav>
     <a class="btn btn--sm nav__cta" href="#alta" data-cta="nav">Sumá tu comercio</a>
     <button class="nav__burger nv-ring" type="button" aria-expanded="false" aria-controls="menu" data-ch="0" aria-label="Menú">
       <span class="nv-ring__label" data-nv-label>Menú</span>
@@ -42,20 +50,24 @@
     <nav class="nav__links" id="menu" aria-label="Principal">
       <a href="#inicio">Inicio</a>
       <a href="#por-que-sumar">Por qué sumar</a>
-      <a href="#plan-base"><b>01</b> Recuperá · Base</a>
-      <a href="#plan-smart"><b>02</b> Medí · Smart</a>
-      <a href="#plan-intelligence"><b>03</b> Anticipá · Intelligence</a>
-      <a href="#suma">Cuánto te queda</a>
-      <a href="#pasos">Sumate</a>
+      <a href="#planes">Planes</a>
+      <a href="#recorrido">Cómo funciona la app</a>
       <a href="#preguntas">Preguntas</a>
+      <a href="#alta">Sumá tu comercio</a>
       <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#datos">Datos de Argentina</a>
+      <a href="#suma">Cuánto te queda</a>
       <a href="#inversores">Inversores</a>
+      <a href="#consumidores">¿Querés comprar packs?</a>
       <a href="#consumidores" data-app>Descargar app</a>
     </nav>
   </div>
 </header>
 
 <main id="contenido">
+
+<!-- ====== VISTA PRINCIPAL: lo que se recorre con el scroll ====== -->
+<div class="view" data-view="home" id="vista-home">
 
 <section class="hero hr" id="inicio" aria-labelledby="hero-t">
   <div class="hr__bg" aria-hidden="true">
@@ -100,51 +112,6 @@
   </div>
 </section>
 
-<!-- ============ v5 · CONTADORES EN TIEMPO REAL (ct-) ============ -->
-<section class="ct" id="contadores" aria-labelledby="ct-t" data-ct-sec>
-  <div class="wrap">
-    <div class="ct__head">
-      <h2 class="ct__h" id="ct-t">Mientras leés esto, en Argentina…</h2>
-      <p class="ct__min" data-ct-min aria-hidden="true">En un minuto</p>
-    </div>
-    <p class="sr">En Argentina se pierden unos 507 kilos de comida por segundo, con unos 1.283 kilos de CO₂e y 97.400 litros de agua asociados (estimación). Fuentes: MAGyP 2022 y FAO.</p>
-    <ul class="ct__grid" aria-hidden="true">
-      <li class="ct__item">
-        <p class="ct__n"><span class="ct__v" data-ct="kg">30.441</span><span class="ct__u">kg</span></p>
-        <p class="ct__l">de comida que se pierden o se desperdician</p>
-        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022</p>
-      </li>
-      <li class="ct__item">
-        <p class="ct__n"><span class="ct__v" data-ct="co2">77.016</span><span class="ct__u">kg CO₂e</span></p>
-        <p class="ct__l">de huella de carbono asociada a esa comida</p>
-        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022 · FAO</p>
-      </li>
-      <li class="ct__item">
-        <p class="ct__n"><span class="ct__v" data-ct="agua">5.844.748</span><span class="ct__u">litros</span></p>
-        <p class="ct__l">de agua dulce asociados a esa comida</p>
-        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022 · FAO</p>
-      </li>
-    </ul>
-    <p class="ct__close">Con APROVECHO, cada pack es comida que no se tira.</p>
-  </div>
-</section>
-
-<section class="pb" id="problema" aria-labelledby="pb-t">
-  <div class="pb__in">
-    <p class="pb__big" aria-hidden="true"><span class="pb__ghost">12,5%</span><span class="pb__live" data-pb-count>12,5%</span></p>
-    <div class="pb__cap">
-      <h2 id="pb-t" class="pb__h"><span class="sr">El 12,5% de la producción agroalimentaria de Argentina se pierde o se desperdicia.</span><span aria-hidden="true">de la producción agroalimentaria de Argentina se pierde o se desperdicia.</span></h2>
-      <p class="pb__sub">Comida rica que ya te costó ingredientes, horas y luz.</p>
-    </div>
-    <ul class="pb__side">
-      <li><b class="num">16 M t</b><span>de alimentos por año en Argentina, entre pérdida y desperdicio.</span></li>
-      <li><b class="num">8–10%</b><span>de las emisiones globales vienen del desperdicio de alimentos.</span></li>
-    </ul>
-    <p class="pb__src">Fuentes: MAGyP (2022) y PNUMA (2024).</p>
-  </div>
-</section>
-
-<!-- Los tres capítulos del anillo: cada uno es un plan -->
 <!-- ============ v5 · POR QUÉ SUMAR TU COMERCIO (vl-) ============ -->
 <!-- El id es «por-que-sumar» y no «valor»: #valor ya es el control deslizante de «Mirá cuánto te queda» (main.js lo busca por ese id). -->
 <section class="sec vl" id="por-que-sumar" aria-labelledby="vl-t">
@@ -193,11 +160,10 @@
   <div class="wrap pl__head">
     <p class="eyebrow">Planes</p>
     <h2 class="sec__title" id="pl-t">Un plan para cada etapa de tu comercio.</h2>
-    <div class="pl__tabs" role="tablist" aria-label="Planes y recorrido">
+    <div class="pl__tabs" role="tablist" aria-label="Planes">
       <button class="pl__tab" type="button" role="tab" id="tab-base" aria-controls="plan-base" aria-selected="true"><b>01 · Recuperá</b><span>Base</span></button>
       <button class="pl__tab" type="button" role="tab" id="tab-smart" aria-controls="plan-smart" aria-selected="false" tabindex="-1"><b>02 · Medí</b><span>Smart</span></button>
       <button class="pl__tab" type="button" role="tab" id="tab-intelligence" aria-controls="plan-intelligence" aria-selected="false" tabindex="-1"><b>03 · Anticipá</b><span>Intelligence</span></button>
-      <button class="pl__tab" type="button" role="tab" id="tab-recorrido" aria-controls="recorrido" aria-selected="false" tabindex="-1"><b>Recorrido</b><span>En video</span></button>
     </div>
   </div>
   <div class="pl__panels">
@@ -455,9 +421,11 @@
     </div>
   </div>
 </section>
+  </div>
+</section>
 
 <!-- ============ v5 · RECORRIDO COMPLETO: video de onboarding (ob-) ============ -->
-<section class="sec ob" id="recorrido" role="tabpanel" aria-labelledby="tab-recorrido" hidden>
+<section class="sec ob" id="recorrido" aria-labelledby="ob-t">
   <div class="wrap">
     <header class="ob__head">
       <p class="eyebrow">Recorrido completo</p>
@@ -482,9 +450,148 @@
     </div>
   </div>
 </section>
+
+<!-- ============ 7 · PREGUNTAS ============ -->
+<section class="sec sec--faq" id="preguntas" aria-labelledby="faq-t">
+  <div class="wrap faq">
+    <h2 class="sec__title" id="faq-t">Preguntas frecuentes.</h2>
+    <div class="faq__list">
+      <details open><summary>¿Cuánto cuesta?</summary><p>Base no tiene costo fijo ni de alta: APROVECHO cobra una comisión solo por cada pack que vendés. Smart cuesta USD 300 por mes e Intelligence USD 800 por mes por sucursal, más la comisión por pack.</p></details>
+      <details><summary>¿Cuánto me queda de cada pack?</summary><p>Ejemplo: si lo que te sobró vale $12.200 en tu mostrador, el pack sale $6.100 (tu precio habitual con 50% de descuento) y a vos te quedan $4.575. Hoy, eso lo estás tirando.</p></details>
+      <details><summary>¿Mis clientes van a dejar de comprar a precio normal?</summary><p>El pack es sorpresa: el cliente no elige qué lleva y solo se publica al cierre, con lo que ya sabés que sobró. Durante el día tu mostrador sigue igual. Y el pack te trae gente nueva del barrio.</p></details>
+      <details><summary>No tengo tiempo al cierre.</summary><p>Por eso es una foto. La app propone los packs, el precio y el horario; vos solo revisás y confirmás. La reserva, el cobro y el QR los resolvemos nosotros.</p></details>
+      <details><summary>¿Y si los packs no se venden?</summary><p>No pagás nada. Activamos compradores en tu zona antes de sumarte y te avisamos cuando alguien reserva. Lo que no se vende lo podés seguir donando como hasta ahora.</p></details>
+      <details><summary>¿Y si la app se equivoca?</summary><p>Todo se corrige antes de publicar. El precio sale de tu lista, nunca de la foto. Cada corrección ayuda a que la app aprenda.</p></details>
+      <details><summary>¿Quién es responsable por la comida?</summary><p>El comercio, igual que con lo que vende en el mostrador. Antes de publicar confirmás tres cosas: producto del día, cadena de frío y alérgenos y sin TACC. Los alérgenos los informás vos, nunca la IA. APROVECHO verifica tu habilitación y el carnet de manipulador antes de activar tu cuenta.</p></details>
+      <details><summary>¿Cómo cobro?</summary><p>El cliente paga en la app con Mercado Pago o tarjeta. Mercado Pago reparte en el momento: tu parte va directo a tu cuenta y la comisión, a APROVECHO.</p></details>
+      <details><summary>¿Hay envío?</summary><p>No. El cliente retira en tu local, en la franja que vos definís.</p></details>
+      <details><summary>¿Qué necesito para empezar?</summary><p>El celular del local, tu habilitación municipal y el carnet de manipulador. Te mandamos el primer lote de bolsas biodegradables sin costo.</p></details>
+      <details><summary>¿Dónde funciona?</summary><p>Arrancamos en CABA, Vicente López, San Isidro y Pilar.</p></details>
+      <details><summary>¿Puedo pasar de plan?</summary><p>Sí, cuando quieras, y conservás todo tu historial.</p></details>
+    </div>
   </div>
 </section>
 
+<!-- ============ 8 · ALTA (F-1 / F-2) ============ -->
+<section class="sec sec--alta" id="alta" aria-labelledby="alta-titulo">
+  <div class="wrap alta">
+    <div class="alta__copy">
+      <h2 class="sec__title" id="alta-titulo">Esta noche, en vez de tirarlo, vendelo.</h2>
+      <p class="sec__text">Sumate en 2 minutos. Sin costo fijo. Pagás solo cuando vendés.</p>
+      <p class="alta__alt">¿Preferís hablar? <a href="#alta" data-whatsapp>Escribinos por WhatsApp.</a></p>
+      <img class="alta__sello" src="img/logo/sello.webp" width="180" height="180" alt="Sello de APROVECHO: menos desperdicio, más aprovecho" loading="lazy" decoding="async">
+    </div>
+
+    <form class="form" id="form-alta" novalidate data-form="alta" aria-labelledby="alta-t">
+      <h3 id="alta-t" class="sr">Alta de comercio</h3>
+      <ol class="form__steps" aria-hidden="true"><li class="is-on">1 · Tu comercio</li><li>2 · Cómo te encontramos</li></ol>
+
+      <fieldset class="form__pane" data-pane="1">
+        <legend class="sr">Paso 1: tu comercio</legend>
+        <div class="field"><label for="a-nombre">Nombre del comercio</label><input id="a-nombre" name="nombre" type="text" autocomplete="organization" placeholder="Panadería La Esquina" required><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-rubro">Rubro</label>
+          <select id="a-rubro" name="rubro" required><option value="">Elegí uno</option><option>Panadería</option><option>Cafetería</option><option>Rotisería</option><option>Restaurante</option><option>Hotel o comedor</option><option>Supermercado</option><option>Otro</option></select><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-wsp">WhatsApp</label><input id="a-wsp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="11 2345-6789" required><p class="err" role="alert"></p></div>
+        <button class="btn btn--lg" type="button" data-next>Seguir</button>
+      </fieldset>
+
+      <fieldset class="form__pane" data-pane="2" hidden>
+        <legend class="sr">Paso 2: cómo te encontramos</legend>
+        <div class="field"><label for="a-zona">Barrio o localidad</label>
+          <select id="a-zona" name="zona" required><option value="">Elegí una zona</option><option>CABA</option><option>Vicente López</option><option>San Isidro</option><option>Pilar</option><option>Otra zona</option></select><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-dir">Dirección</label><input id="a-dir" name="direccion" type="text" autocomplete="street-address" placeholder="Av. Maipú 1234" required><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-persona">Tu nombre</label><input id="a-persona" name="persona" type="text" autocomplete="name" placeholder="Martín Pérez" required><p class="err" role="alert"></p></div>
+        <div class="field"><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email" placeholder="martin@tucomercio.com" required><p class="err" role="alert"></p></div>
+
+        <details class="mas">
+          <summary>Contanos un poco más <span>(opcional)</span></summary>
+          <div class="mas__grid">
+            <div class="field"><label for="a-rol">Tu rol</label><select id="a-rol" name="rol"><option value="">—</option><option>Dueño/a</option><option>Encargado/a</option><option>Otro</option></select></div>
+            <div class="field"><label for="a-dias">¿Cuántos días por semana te sobra comida?</label><select id="a-dias" name="dias"><option value="">—</option><option>Todos los días</option><option>3 a 6</option><option>1 o 2</option><option>Casi nunca</option></select></div>
+            <div class="field"><label for="a-cierre">¿A qué hora cerrás?</label><input id="a-cierre" name="cierre" type="time"></div>
+            <div class="field"><label for="a-locales">¿Cuántos locales tenés?</label><input id="a-locales" name="locales" type="number" min="1" placeholder="1" inputmode="numeric"><p class="hint" data-intel hidden>Te puede servir Intelligence. Te contactamos.</p></div>
+          </div>
+          <fieldset class="plansel"><legend>Plan que te interesa</legend>
+            <label><input type="radio" name="plan" value="base" checked><span>Base</span></label>
+            <label><input type="radio" name="plan" value="smart"><span>Smart</span></label>
+            <label><input type="radio" name="plan" value="intelligence"><span>Intelligence</span></label>
+            <label><input type="radio" name="plan" value="nose"><span>No sé</span></label>
+          </fieldset>
+          <div class="mas__grid" data-demo hidden>
+            <div class="field"><label for="a-cubiertos">Cantidad de cubiertos o sucursales</label><input id="a-cubiertos" name="cubiertos" type="text"></div>
+            <div class="field"><label for="a-mide">¿Hoy medís lo que sobra?</label><select id="a-mide" name="mide"><option value="">—</option><option>No</option><option>A mano</option><option>Con un sistema</option></select></div>
+          </div>
+        </details>
+
+        <div class="check"><input id="a-ok" name="consent" type="checkbox" required><label for="a-ok">Acepto los Términos y la Política de privacidad y que APROVECHO me contacte por WhatsApp o email.</label></div><p class="err" role="alert" data-for="consent"></p>
+        <div class="form__row">
+          <button class="btn btn--ghost" type="button" data-back>Volver</button>
+          <button class="btn btn--lg btn--accent" type="submit" data-submit>Sumá tu comercio</button>
+        </div>
+        <p class="micro micro--dark">Te escribimos por WhatsApp para activar tu cuenta. Vas a necesitar tu habilitación municipal y el carnet de manipulador.</p>
+      </fieldset>
+
+      <div class="form__ok" hidden tabindex="-1" data-ok>
+        <p class="form__ok-t" data-ok-t>¡Listo, ya estás adentro!</p>
+        <p data-ok-p>Te escribimos por WhatsApp en las próximas 48 h hábiles para activar tu cuenta.</p>
+        <a class="link" href="#como-funciona">Mirá cómo funciona tu primer día <span aria-hidden="true">→</span></a>
+      </div>
+    </form>
+  </div>
+</section>
+
+</div>
+
+<!-- ====== VISTAS SECUNDARIAS: se abren desde la barra superior ====== -->
+<div class="view view--sec" data-view="datos" id="datos" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
+<!-- ============ v5 · CONTADORES EN TIEMPO REAL (ct-) ============ -->
+<section class="ct" id="contadores" aria-labelledby="ct-t" data-ct-sec>
+  <div class="wrap">
+    <div class="ct__head">
+      <h2 class="ct__h" id="ct-t">Mientras leés esto, en Argentina…</h2>
+      <p class="ct__min" data-ct-min aria-hidden="true">En un minuto</p>
+    </div>
+    <p class="sr">En Argentina se pierden unos 507 kilos de comida por segundo, con unos 1.283 kilos de CO₂e y 97.400 litros de agua asociados (estimación). Fuentes: MAGyP 2022 y FAO.</p>
+    <ul class="ct__grid" aria-hidden="true">
+      <li class="ct__item">
+        <p class="ct__n"><span class="ct__v" data-ct="kg">30.441</span><span class="ct__u">kg</span></p>
+        <p class="ct__l">de comida que se pierden o se desperdician</p>
+        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022</p>
+      </li>
+      <li class="ct__item">
+        <p class="ct__n"><span class="ct__v" data-ct="co2">77.016</span><span class="ct__u">kg CO₂e</span></p>
+        <p class="ct__l">de huella de carbono asociada a esa comida</p>
+        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022 · FAO</p>
+      </li>
+      <li class="ct__item">
+        <p class="ct__n"><span class="ct__v" data-ct="agua">5.844.748</span><span class="ct__u">litros</span></p>
+        <p class="ct__l">de agua dulce asociados a esa comida</p>
+        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022 · FAO</p>
+      </li>
+    </ul>
+    <p class="ct__close">Con APROVECHO, cada pack es comida que no se tira.</p>
+  </div>
+</section>
+
+<section class="pb" id="problema" aria-labelledby="pb-t">
+  <div class="pb__in">
+    <p class="pb__big" aria-hidden="true"><span class="pb__ghost">12,5%</span><span class="pb__live" data-pb-count>12,5%</span></p>
+    <div class="pb__cap">
+      <h2 id="pb-t" class="pb__h"><span class="sr">El 12,5% de la producción agroalimentaria de Argentina se pierde o se desperdicia.</span><span aria-hidden="true">de la producción agroalimentaria de Argentina se pierde o se desperdicia.</span></h2>
+      <p class="pb__sub">Comida rica que ya te costó ingredientes, horas y luz.</p>
+    </div>
+    <ul class="pb__side">
+      <li><b class="num">16 M t</b><span>de alimentos por año en Argentina, entre pérdida y desperdicio.</span></li>
+      <li><b class="num">8–10%</b><span>de las emisiones globales vienen del desperdicio de alimentos.</span></li>
+    </ul>
+    <p class="pb__src">Fuentes: MAGyP (2022) y PNUMA (2024).</p>
+  </div>
+</section>
+</div>
+
+<div class="view view--sec" data-view="cuenta" id="vista-cuenta" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 <!-- ============ 5 · SUMÁ TU COMERCIO + CUENTA (D-033) ============ -->
 <section class="sec sec--cuenta" id="suma" aria-labelledby="suma-t">
   <div class="wrap cuenta-grid">
@@ -510,7 +617,10 @@
     </div>
   </div>
 </section>
+</div>
 
+<div class="view view--sec" data-view="quienes" id="vista-quienes" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 <section class="qn" id="quienes-somos" aria-labelledby="qn-t">
   <div class="wrap qn__in">
     <div class="qn__main">
@@ -733,132 +843,10 @@
   </div>
 </section>
 </section>
+</div>
 
-<!-- ============ 7 · PREGUNTAS ============ -->
-<section class="sec sec--faq" id="preguntas" aria-labelledby="faq-t">
-  <div class="wrap faq">
-    <h2 class="sec__title" id="faq-t">Preguntas frecuentes.</h2>
-    <div class="faq__list">
-      <details open><summary>¿Cuánto cuesta?</summary><p>Base no tiene costo fijo ni de alta: APROVECHO cobra una comisión solo por cada pack que vendés. Smart cuesta USD 300 por mes e Intelligence USD 800 por mes por sucursal, más la comisión por pack.</p></details>
-      <details><summary>¿Cuánto me queda de cada pack?</summary><p>Ejemplo: si lo que te sobró vale $12.200 en tu mostrador, el pack sale $6.100 (tu precio habitual con 50% de descuento) y a vos te quedan $4.575. Hoy, eso lo estás tirando.</p></details>
-      <details><summary>¿Mis clientes van a dejar de comprar a precio normal?</summary><p>El pack es sorpresa: el cliente no elige qué lleva y solo se publica al cierre, con lo que ya sabés que sobró. Durante el día tu mostrador sigue igual. Y el pack te trae gente nueva del barrio.</p></details>
-      <details><summary>No tengo tiempo al cierre.</summary><p>Por eso es una foto. La app propone los packs, el precio y el horario; vos solo revisás y confirmás. La reserva, el cobro y el QR los resolvemos nosotros.</p></details>
-      <details><summary>¿Y si los packs no se venden?</summary><p>No pagás nada. Activamos compradores en tu zona antes de sumarte y te avisamos cuando alguien reserva. Lo que no se vende lo podés seguir donando como hasta ahora.</p></details>
-      <details><summary>¿Y si la app se equivoca?</summary><p>Todo se corrige antes de publicar. El precio sale de tu lista, nunca de la foto. Cada corrección ayuda a que la app aprenda.</p></details>
-      <details><summary>¿Quién es responsable por la comida?</summary><p>El comercio, igual que con lo que vende en el mostrador. Antes de publicar confirmás tres cosas: producto del día, cadena de frío y alérgenos y sin TACC. Los alérgenos los informás vos, nunca la IA. APROVECHO verifica tu habilitación y el carnet de manipulador antes de activar tu cuenta.</p></details>
-      <details><summary>¿Cómo cobro?</summary><p>El cliente paga en la app con Mercado Pago o tarjeta. Mercado Pago reparte en el momento: tu parte va directo a tu cuenta y la comisión, a APROVECHO.</p></details>
-      <details><summary>¿Hay envío?</summary><p>No. El cliente retira en tu local, en la franja que vos definís.</p></details>
-      <details><summary>¿Qué necesito para empezar?</summary><p>El celular del local, tu habilitación municipal y el carnet de manipulador. Te mandamos el primer lote de bolsas biodegradables sin costo.</p></details>
-      <details><summary>¿Dónde funciona?</summary><p>Arrancamos en CABA, Vicente López, San Isidro y Pilar.</p></details>
-      <details><summary>¿Puedo pasar de plan?</summary><p>Sí, cuando quieras, y conservás todo tu historial.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ v5 · SUMATE EN 3 PASOS (ps-) · va justo arriba del formulario de alta ============ -->
-<section class="sec ps" id="pasos" aria-labelledby="ps-t">
-  <div class="wrap">
-    <h2 class="sec__title ps__h" id="ps-t">Sumate en 3 pasos</h2>
-    <ol class="ps__list">
-      <li class="ps__step is-on">
-        <span class="ps__n num" aria-hidden="true">1</span>
-        <span class="ps__link" aria-hidden="true"><i></i></span>
-        <div class="ps__body">
-          <h3 class="ps__t">Registrá tu comercio</h3>
-          <p class="ps__p">Completás el formulario de abajo en 2 minutos. Te pedimos habilitación municipal y carnet de manipulador.</p>
-        </div>
-      </li>
-      <li class="ps__step is-on">
-        <span class="ps__n num" aria-hidden="true">2</span>
-        <span class="ps__link" aria-hidden="true"><i></i></span>
-        <div class="ps__body">
-          <h3 class="ps__t">Sacá una foto</h3>
-          <p class="ps__p">Al cierre, a lo que te sobró. La app arma los packs, el precio y el horario; vos revisás y publicás.</p>
-        </div>
-      </li>
-      <li class="ps__step is-on">
-        <span class="ps__n num" aria-hidden="true">3</span>
-        <div class="ps__body">
-          <h3 class="ps__t">Vendé sin complicaciones</h3>
-          <p class="ps__p">Tus vecinos reservan y pagan en la app y retiran con un QR en el horario que definís.</p>
-        </div>
-      </li>
-    </ol>
-    <div class="ps__foot">
-      <a class="btn btn--lg" href="#alta" data-cta="pasos">Registrá tu comercio <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v13m-6-6 6 6 6-6"/></svg></a>
-      <p class="ps__free">Sin costo fijo: pagás solo cuando vendés.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 8 · ALTA (F-1 / F-2) ============ -->
-<section class="sec sec--alta" id="alta" aria-labelledby="alta-titulo">
-  <div class="wrap alta">
-    <div class="alta__copy">
-      <h2 class="sec__title" id="alta-titulo">Esta noche, en vez de tirarlo, vendelo.</h2>
-      <p class="sec__text">Sumate en 2 minutos. Sin costo fijo. Pagás solo cuando vendés.</p>
-      <p class="alta__alt">¿Preferís hablar? <a href="#alta" data-whatsapp>Escribinos por WhatsApp.</a></p>
-      <img class="alta__sello" src="img/logo/sello.webp" width="180" height="180" alt="Sello de APROVECHO: menos desperdicio, más aprovecho" loading="lazy" decoding="async">
-    </div>
-
-    <form class="form" id="form-alta" novalidate data-form="alta" aria-labelledby="alta-t">
-      <h3 id="alta-t" class="sr">Alta de comercio</h3>
-      <ol class="form__steps" aria-hidden="true"><li class="is-on">1 · Tu comercio</li><li>2 · Cómo te encontramos</li></ol>
-
-      <fieldset class="form__pane" data-pane="1">
-        <legend class="sr">Paso 1: tu comercio</legend>
-        <div class="field"><label for="a-nombre">Nombre del comercio</label><input id="a-nombre" name="nombre" type="text" autocomplete="organization" placeholder="Panadería La Esquina" required><p class="err" role="alert"></p></div>
-        <div class="field"><label for="a-rubro">Rubro</label>
-          <select id="a-rubro" name="rubro" required><option value="">Elegí uno</option><option>Panadería</option><option>Cafetería</option><option>Rotisería</option><option>Restaurante</option><option>Hotel o comedor</option><option>Supermercado</option><option>Otro</option></select><p class="err" role="alert"></p></div>
-        <div class="field"><label for="a-wsp">WhatsApp</label><input id="a-wsp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="11 2345-6789" required><p class="err" role="alert"></p></div>
-        <button class="btn btn--lg" type="button" data-next>Seguir</button>
-      </fieldset>
-
-      <fieldset class="form__pane" data-pane="2" hidden>
-        <legend class="sr">Paso 2: cómo te encontramos</legend>
-        <div class="field"><label for="a-zona">Barrio o localidad</label>
-          <select id="a-zona" name="zona" required><option value="">Elegí una zona</option><option>CABA</option><option>Vicente López</option><option>San Isidro</option><option>Pilar</option><option>Otra zona</option></select><p class="err" role="alert"></p></div>
-        <div class="field"><label for="a-dir">Dirección</label><input id="a-dir" name="direccion" type="text" autocomplete="street-address" placeholder="Av. Maipú 1234" required><p class="err" role="alert"></p></div>
-        <div class="field"><label for="a-persona">Tu nombre</label><input id="a-persona" name="persona" type="text" autocomplete="name" placeholder="Martín Pérez" required><p class="err" role="alert"></p></div>
-        <div class="field"><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email" placeholder="martin@tucomercio.com" required><p class="err" role="alert"></p></div>
-
-        <details class="mas">
-          <summary>Contanos un poco más <span>(opcional)</span></summary>
-          <div class="mas__grid">
-            <div class="field"><label for="a-rol">Tu rol</label><select id="a-rol" name="rol"><option value="">—</option><option>Dueño/a</option><option>Encargado/a</option><option>Otro</option></select></div>
-            <div class="field"><label for="a-dias">¿Cuántos días por semana te sobra comida?</label><select id="a-dias" name="dias"><option value="">—</option><option>Todos los días</option><option>3 a 6</option><option>1 o 2</option><option>Casi nunca</option></select></div>
-            <div class="field"><label for="a-cierre">¿A qué hora cerrás?</label><input id="a-cierre" name="cierre" type="time"></div>
-            <div class="field"><label for="a-locales">¿Cuántos locales tenés?</label><input id="a-locales" name="locales" type="number" min="1" placeholder="1" inputmode="numeric"><p class="hint" data-intel hidden>Te puede servir Intelligence. Te contactamos.</p></div>
-          </div>
-          <fieldset class="plansel"><legend>Plan que te interesa</legend>
-            <label><input type="radio" name="plan" value="base" checked><span>Base</span></label>
-            <label><input type="radio" name="plan" value="smart"><span>Smart</span></label>
-            <label><input type="radio" name="plan" value="intelligence"><span>Intelligence</span></label>
-            <label><input type="radio" name="plan" value="nose"><span>No sé</span></label>
-          </fieldset>
-          <div class="mas__grid" data-demo hidden>
-            <div class="field"><label for="a-cubiertos">Cantidad de cubiertos o sucursales</label><input id="a-cubiertos" name="cubiertos" type="text"></div>
-            <div class="field"><label for="a-mide">¿Hoy medís lo que sobra?</label><select id="a-mide" name="mide"><option value="">—</option><option>No</option><option>A mano</option><option>Con un sistema</option></select></div>
-          </div>
-        </details>
-
-        <div class="check"><input id="a-ok" name="consent" type="checkbox" required><label for="a-ok">Acepto los Términos y la Política de privacidad y que APROVECHO me contacte por WhatsApp o email.</label></div><p class="err" role="alert" data-for="consent"></p>
-        <div class="form__row">
-          <button class="btn btn--ghost" type="button" data-back>Volver</button>
-          <button class="btn btn--lg btn--accent" type="submit" data-submit>Sumá tu comercio</button>
-        </div>
-        <p class="micro micro--dark">Te escribimos por WhatsApp para activar tu cuenta. Vas a necesitar tu habilitación municipal y el carnet de manipulador.</p>
-      </fieldset>
-
-      <div class="form__ok" hidden tabindex="-1" data-ok>
-        <p class="form__ok-t" data-ok-t>¡Listo, ya estás adentro!</p>
-        <p data-ok-p>Te escribimos por WhatsApp en las próximas 48 h hábiles para activar tu cuenta.</p>
-        <a class="link" href="#como-funciona">Mirá cómo funciona tu primer día <span aria-hidden="true">→</span></a>
-      </div>
-    </form>
-  </div>
-</section>
-
+<div class="view view--sec" data-view="packs" id="vista-packs" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 <!-- ============ 10 · LISTA DE ESPERA CONSUMIDORES (D-024) ============ -->
 <section class="sec sec--espera" id="consumidores">
   <div class="wrap espera">
@@ -875,6 +863,7 @@
     </form>
   </div>
 </section>
+</div>
 
 </main>
 

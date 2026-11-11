@@ -31,24 +31,21 @@
 
 <main id="contenido">
 
+<!-- ====== VISTA PRINCIPAL: lo que se recorre con el scroll ====== -->
+<div class="view" data-view="home" id="vista-home">
+
 {{V5_HERO}}
 
-{{V5_CONTADORES}}
-
-{{V5_PROBLEMA}}
-
-<!-- Los tres capítulos del anillo: cada uno es un plan -->
 {{V5_VALOR}}
 
 <section class="pl" id="planes" aria-labelledby="pl-t" data-tabs>
   <div class="wrap pl__head">
     <p class="eyebrow">Planes</p>
     <h2 class="sec__title" id="pl-t">Un plan para cada etapa de tu comercio.</h2>
-    <div class="pl__tabs" role="tablist" aria-label="Planes y recorrido">
+    <div class="pl__tabs" role="tablist" aria-label="Planes">
       <button class="pl__tab" type="button" role="tab" id="tab-base" aria-controls="plan-base" aria-selected="true"><b>01 · Recuperá</b><span>Base</span></button>
       <button class="pl__tab" type="button" role="tab" id="tab-smart" aria-controls="plan-smart" aria-selected="false" tabindex="-1"><b>02 · Medí</b><span>Smart</span></button>
       <button class="pl__tab" type="button" role="tab" id="tab-intelligence" aria-controls="plan-intelligence" aria-selected="false" tabindex="-1"><b>03 · Anticipá</b><span>Intelligence</span></button>
-      <button class="pl__tab" type="button" role="tab" id="tab-recorrido" aria-controls="recorrido" aria-selected="false" tabindex="-1"><b>Recorrido</b><span>En video</span></button>
     </div>
   </div>
   <div class="pl__panels">
@@ -57,11 +54,35 @@
 {{V5_MEDI}}
 
 {{V5_ANTICIPA}}
-
-{{V5_ONBOARDING}}
   </div>
 </section>
 
+{{V5_ONBOARDING}}
+
+<!-- ============ 7 · PREGUNTAS ============ -->
+<section class="sec sec--faq" id="preguntas" aria-labelledby="faq-t">
+  <div class="wrap faq">
+    <h2 class="sec__title" id="faq-t">Preguntas frecuentes.</h2>
+    <div class="faq__list">
+{{FAQ}}
+    </div>
+  </div>
+</section>
+
+{{ALTA}}
+
+</div>
+
+<!-- ====== VISTAS SECUNDARIAS: se abren desde la barra superior ====== -->
+<div class="view view--sec" data-view="datos" id="datos" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
+{{V5_CONTADORES}}
+
+{{V5_PROBLEMA}}
+</div>
+
+<div class="view view--sec" data-view="cuenta" id="vista-cuenta" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 <!-- ============ 5 · SUMÁ TU COMERCIO + CUENTA (D-033) ============ -->
 <section class="sec sec--cuenta" id="suma" aria-labelledby="suma-t">
   <div class="wrap cuenta-grid">
@@ -87,24 +108,17 @@
     </div>
   </div>
 </section>
+</div>
 
+<div class="view view--sec" data-view="quienes" id="vista-quienes" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 {{V5_QUIENES}}
+</div>
 
-<!-- ============ 7 · PREGUNTAS ============ -->
-<section class="sec sec--faq" id="preguntas" aria-labelledby="faq-t">
-  <div class="wrap faq">
-    <h2 class="sec__title" id="faq-t">Preguntas frecuentes.</h2>
-    <div class="faq__list">
-{{FAQ}}
-    </div>
-  </div>
-</section>
-
-{{V5_PASOS}}
-
-{{ALTA}}
-
+<div class="view view--sec" data-view="packs" id="vista-packs" hidden>
+<div class="wrap view__back"><a class="link" href="#inicio" data-volver>← Volver al inicio</a></div>
 {{ESPERA}}
+</div>
 
 </main>
 
