@@ -41,12 +41,14 @@
     </button>
     <nav class="nav__links" id="menu" aria-label="Principal">
       <a href="#inicio">Inicio</a>
+      <a href="#valor">Por qué sumar</a>
       <a href="#plan-base"><b>01</b> Recuperá · Base</a>
       <a href="#plan-smart"><b>02</b> Medí · Smart</a>
       <a href="#plan-intelligence"><b>03</b> Anticipá · Intelligence</a>
       <a href="#suma">Cuánto te queda</a>
-      <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#pasos">Sumate</a>
       <a href="#preguntas">Preguntas</a>
+      <a href="#quienes-somos">Quiénes somos</a>
       <a href="#inversores">Inversores</a>
       <a href="#consumidores" data-app>Descargar app</a>
     </nav>
@@ -56,7 +58,23 @@
 <main id="contenido">
 
 <section class="hero hr" id="inicio" aria-labelledby="hero-t">
-  <span class="hr__shape" aria-hidden="true"></span>
+  <div class="hr__bg" aria-hidden="true">
+    <div class="hr__media">
+      <div class="hr__clip is-on" data-clip="1-publica">
+        <img src="video/hero-ia/1-publica.webp" width="1280" height="720" alt="" fetchpriority="high" decoding="async">
+        <video muted playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      </div>
+      <div class="hr__clip" data-clip="2-balanza">
+        <img data-src="video/hero-ia/2-balanza.webp" width="1280" height="720" alt="" decoding="async">
+        <video muted playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      </div>
+      <div class="hr__clip" data-clip="3-entrega">
+        <img data-src="video/hero-ia/3-entrega.webp" width="1280" height="720" alt="" decoding="async">
+        <video muted playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      </div>
+    </div>
+    <div class="hr__veil"></div>
+  </div>
   <div class="wrap hr__in">
     <div class="hr__copy">
       <p class="eyebrow">Para comercios de comida</p>
@@ -64,35 +82,56 @@
       <p class="hr__lead">Publicá packs a mitad de precio para tus vecinos y medí para que cada vez te sobre menos. Sin costo fijo: pagás solo cuando vendés.</p>
       <div class="hero__actions">
         <a class="btn btn--lg" href="#alta" data-cta="hero">Sumá tu comercio</a>
-        <a class="btn btn--lg btn--ghost" href="#plan-base">Mirá cómo funciona</a>
+        <a class="btn btn--lg btn--ghost" href="#consumidores" data-app>Descargá la app</a>
       </div>
     </div>
-    <div class="hr__foot">
-      <nav class="hr__index" aria-label="Capítulos">
-        <a href="#plan-base"><b>01</b>Recuperá</a>
-        <a href="#plan-smart"><b>02</b>Medí</a>
-        <a href="#plan-intelligence"><b>03</b>Anticipá</a>
-      </nav>
-      <p class="hr__hint" aria-hidden="true">Bajá: el anillo se abre
-        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v11M3 9l5 5 5-5"/></svg></p>
-    </div>
   </div>
-  <div class="hr__art">
-    <div class="hr__ringwrap">
-      <svg class="hr__ring" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
-        <g class="hr-a hr-a1" data-dx="80" data-dy="-70"><path d="M176.1 45.1 A116 116 0 0 1 275.4 172.1" fill="none" stroke="#1A4D3A" stroke-width="26"/><polygon points="301.2,174.8 271.8,205.9 249.5,169.4" fill="#1A4D3A"/></g>
-        <g class="hr-a hr-a2" data-dx="14" data-dy="100"><path d="M251.4 231.4 A116 116 0 0 1 91.8 253.8" fill="none" stroke="#2E7D32" stroke-width="26"/><polygon points="76.5,274.9 64.3,233.9 107.1,232.8" fill="#2E7D32"/></g>
-        <g class="hr-a hr-a3" data-dx="-90" data-dy="-40"><path d="M52.4 203.5 A116 116 0 0 1 112.8 54.0" fill="none" stroke="#7BC67B" stroke-width="26"/><polygon points="102.2,30.3 143.9,40.2 123.4,77.8" fill="#7BC67B"/></g>
-      </svg>
-      <div class="hr__core"><img src="img/logo/sello.webp" width="300" height="300" alt=""></div>
-      <a class="hr__chip hr__chip--1" href="#plan-base">Recuperá</a>
-      <a class="hr__chip hr__chip--2" href="#plan-smart">Medí</a>
-      <a class="hr__chip hr__chip--3" href="#plan-intelligence">Anticipá</a>
+  <div class="hr__foot">
+    <div class="wrap">
+      <div class="hr__rail" role="group" aria-label="Video de fondo">
+        <button class="hr__pause" type="button" aria-label="Pausar el video de fondo" data-hr-pause>
+          <svg class="hr__ico hr__ico--pause" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><rect x="3" y="2" width="3.4" height="12" rx="1"/><rect x="9.6" y="2" width="3.4" height="12" rx="1"/></svg>
+          <svg class="hr__ico hr__ico--play" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M4 2.2v11.6a.8.8 0 0 0 1.2.7l9-5.8a.8.8 0 0 0 0-1.4l-9-5.8A.8.8 0 0 0 4 2.2z"/></svg>
+        </button>
+        <div class="hr__bars">
+          <button class="hr__bar" type="button" aria-label="Ver: Publicás en segundos" aria-current="true"><i><b></b></i></button>
+          <button class="hr__bar" type="button" aria-label="Ver: Medís con balanza"><i><b></b></i></button>
+          <button class="hr__bar" type="button" aria-label="Ver: Tu vecino lo retira"><i><b></b></i></button>
+        </div>
+        <p class="hr__cap" aria-live="off" data-hr-cap>Publicás en segundos</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="contadores"><div class="wrap"><h2 class="sec__title">Pendiente: contadores</h2></div></section>
+<!-- ============ v5 · CONTADORES EN TIEMPO REAL (ct-) ============ -->
+<section class="ct" id="contadores" aria-labelledby="ct-t" data-ct-sec>
+  <div class="wrap">
+    <div class="ct__head">
+      <h2 class="ct__h" id="ct-t">Mientras leés esto, en Argentina…</h2>
+      <p class="ct__min" data-ct-min aria-hidden="true">En un minuto</p>
+    </div>
+    <p class="sr">En Argentina se pierden unos 507 kilos de comida por segundo, con unos 1.283 kilos de CO₂e y 97.400 litros de agua asociados (estimación). Fuentes: MAGyP 2022 y FAO.</p>
+    <ul class="ct__grid" aria-hidden="true">
+      <li class="ct__item">
+        <p class="ct__n"><span class="ct__v" data-ct="kg">30.441</span><span class="ct__u">kg</span></p>
+        <p class="ct__l">de comida que se pierden o se desperdician</p>
+        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022</p>
+      </li>
+      <li class="ct__item">
+        <p class="ct__n"><span class="ct__v" data-ct="co2">77.016</span><span class="ct__u">kg CO₂e</span></p>
+        <p class="ct__l">de huella de carbono asociada a esa comida</p>
+        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022 · FAO</p>
+      </li>
+      <li class="ct__item">
+        <p class="ct__n"><span class="ct__v" data-ct="agua">5.844.748</span><span class="ct__u">litros</span></p>
+        <p class="ct__l">de agua dulce asociados a esa comida</p>
+        <p class="ct__src"><span class="ct__tag">Estimación</span>MAGyP 2022 · FAO</p>
+      </li>
+    </ul>
+    <p class="ct__close">Con APROVECHO, cada pack es comida que no se tira.</p>
+  </div>
+</section>
 
 <section class="pb" id="problema" aria-labelledby="pb-t">
   <div class="pb__in">
@@ -110,7 +149,49 @@
 </section>
 
 <!-- Los tres capítulos del anillo: cada uno es un plan -->
-<section class="sec" id="valor"><div class="wrap"><h2 class="sec__title">Pendiente: valor</h2></div></section>
+<!-- ============ v5 · POR QUÉ SUMAR TU COMERCIO (vl-) ============ -->
+<!-- El id es «por-que-sumar» y no «valor»: #valor ya es el control deslizante de «Mirá cuánto te queda» (main.js lo busca por ese id). -->
+<section class="sec vl" id="por-que-sumar" aria-labelledby="vl-t">
+  <div class="wrap">
+    <h2 class="sec__title vl__h" id="vl-t">¿Por qué sumar tu comercio?</h2>
+    <ul class="vl__grid">
+      <li class="vl__card">
+        <span class="vl__link" aria-hidden="true"><i></i></span>
+        <div class="vl__top">
+          <span class="vl__ico" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="30" cy="36" r="19"/><path d="M36 28.5c-1.2-2.4-3.6-3.4-6-3.4-3.4 0-5.8 1.8-5.8 4.3 0 6.2 12.2 2.9 12.2 9.1 0 2.6-2.7 4.5-6.4 4.5-3 0-5.5-1.1-6.6-3.5M30 20.5v4.6M30 46.9v4.6"/><path d="M50 15V5m-5 5 5-5 5 5"/></svg>
+          </span>
+        </div>
+        <h3 class="vl__t">Más ingresos</h3>
+        <p class="vl__p">Lo que hoy tirás se vende en packs a mitad de precio y vuelve a la caja. Sin costo fijo: pagás solo cuando vendés.</p>
+      </li>
+      <li class="vl__card">
+        <span class="vl__link" aria-hidden="true"><i></i></span>
+        <div class="vl__top">
+          <span class="vl__ico" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="10" width="12" height="42" rx="3"/><rect x="26" y="22" width="12" height="30" rx="3"/><rect x="43" y="36" width="12" height="16" rx="3"/><path d="M6 58h52"/></svg>
+          </span>
+        </div>
+        <h3 class="vl__t">Menos desperdicio</h3>
+        <p class="vl__p">Medís qué sobra, cuánto y cuándo, y con esos datos producís y comprás lo justo.</p>
+      </li>
+      <li class="vl__card">
+        <span class="vl__link" aria-hidden="true"><i></i></span>
+        <div class="vl__top">
+          <span class="vl__ico" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 59S12 40 12 27a20 20 0 0 1 40 0c0 13-20 32-20 32Z"/><circle cx="32" cy="27" r="7.5"/></svg>
+          </span>
+        </div>
+        <h3 class="vl__t">Clientes nuevos</h3>
+        <p class="vl__p">Tus vecinos reservan y pagan en la app y retiran en tu local; muchos llegan por primera vez a conocerte.</p>
+      </li>
+    </ul>
+    <div class="vl__foot">
+      <p class="remate vl__rem">La app propone. <strong>Vos decidís.</strong> Siempre.</p>
+      <a class="btn btn--lg" href="#alta" data-cta="valor">Sumá tu comercio</a>
+    </div>
+  </div>
+</section>
 
 <div id="planes">
 <!-- ============ v5 · 01 RECUPERÁ · PLAN BASE (la app se desarma capa por capa) ============ -->
@@ -555,7 +636,41 @@
   </div>
 </section>
 
-<section class="sec" id="pasos"><div class="wrap"><h2 class="sec__title">Pendiente: 3 pasos</h2></div></section>
+<!-- ============ v5 · SUMATE EN 3 PASOS (ps-) · va justo arriba del formulario de alta ============ -->
+<section class="sec ps" id="pasos" aria-labelledby="ps-t">
+  <div class="wrap">
+    <h2 class="sec__title ps__h" id="ps-t">Sumate en 3 pasos</h2>
+    <ol class="ps__list">
+      <li class="ps__step is-on">
+        <span class="ps__n num" aria-hidden="true">1</span>
+        <span class="ps__link" aria-hidden="true"><i></i></span>
+        <div class="ps__body">
+          <h3 class="ps__t">Registrá tu comercio</h3>
+          <p class="ps__p">Completás el formulario de abajo en 2 minutos. Te pedimos habilitación municipal y carnet de manipulador.</p>
+        </div>
+      </li>
+      <li class="ps__step is-on">
+        <span class="ps__n num" aria-hidden="true">2</span>
+        <span class="ps__link" aria-hidden="true"><i></i></span>
+        <div class="ps__body">
+          <h3 class="ps__t">Sacá una foto</h3>
+          <p class="ps__p">Al cierre, a lo que te sobró. La app arma los packs, el precio y el horario; vos revisás y publicás.</p>
+        </div>
+      </li>
+      <li class="ps__step is-on">
+        <span class="ps__n num" aria-hidden="true">3</span>
+        <div class="ps__body">
+          <h3 class="ps__t">Vendé sin complicaciones</h3>
+          <p class="ps__p">Tus vecinos reservan y pagan en la app y retiran con un QR en el horario que definís.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="ps__foot">
+      <a class="btn btn--lg" href="#alta" data-cta="pasos">Registrá tu comercio <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v13m-6-6 6 6 6-6"/></svg></a>
+      <p class="ps__free">Sin costo fijo: pagás solo cuando vendés.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ============ 8 · ALTA (F-1 / F-2) ============ -->
 <section class="sec sec--alta" id="alta" aria-labelledby="alta-titulo">

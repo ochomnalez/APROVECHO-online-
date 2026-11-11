@@ -21,3 +21,7 @@
 .qn__hub{margin-top:var(--sec-y);padding-top:0;border-top:1px solid var(--line)}
 .qn__hub:not([hidden]){animation:rise .5s var(--ease-out) both}
 .qn:has(.qn__hub[hidden]){padding-bottom:var(--sec-y)}
+.qn__invcta>*{min-width:0}
+.qn__invcta .btn,.form--espera .btn{white-space:normal;text-align:center;line-height:1.2;padding-top:12px;padding-bottom:12px}
+.qn__invcta .btn{justify-self:stretch}
+@media(min-width:800px){.qn__invcta .btn{justify-self:auto}}

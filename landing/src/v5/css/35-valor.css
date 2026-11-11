@@ -1,0 +1,25 @@
+/* ---------- v5 · por qué sumar tu comercio (vl-) ---------- */
+.vl{--vl-pad:clamp(22px,2.6vw,32px);--vl-gap:20px;--vl-ico:68px;background:#fff}
+.vl__h{max-width:16ch}
+.vl__grid{display:grid;gap:var(--vl-gap);margin-top:clamp(28px,4vw,48px)}
+.vl__card{position:relative;display:grid;grid-template-columns:var(--vl-ico) minmax(0,1fr);column-gap:18px;align-content:start;padding:var(--vl-pad);border:1px solid var(--line);border-radius:var(--r-lg);background:var(--soft)}
+.vl__top{grid-column:1;grid-row:1 / 3}
+.vl__ico{position:relative;z-index:3;display:grid;place-items:center;width:var(--vl-ico);height:var(--vl-ico);border:2px solid var(--forest);border-radius:50%;background:#fff;color:var(--forest)}
+.vl__t{grid-column:2;align-self:center;min-height:var(--vl-ico);display:flex;align-items:center;font-size:clamp(1.6rem,2.4vw,2.1rem);letter-spacing:-.03em}
+.vl__p{grid-column:2;margin-top:6px;font-size:1.0625rem;line-height:1.5;color:var(--text-2);max-width:34ch}
+/* el hilo que une las tres tarjetas, de un ícono al siguiente */
+.vl__link{position:absolute;z-index:2;display:block;background:var(--line-2)}
+.vl__link i{position:absolute;inset:0;display:block;background:var(--forest);transform-origin:0 0}
+.vl__card:last-child .vl__link{display:none}
+.vl__link{left:calc(var(--vl-pad) + var(--vl-ico) / 2 - 1px);top:calc(var(--vl-pad) + var(--vl-ico) / 2);width:2px;height:calc(100% + var(--vl-gap))}
+.vl__foot{display:flex;flex-wrap:wrap;align-items:center;gap:20px 36px;margin-top:clamp(32px,5vw,56px)}
+.vl__rem{margin:0;max-width:none}
+@media(min-width:900px){
+  .vl__card{display:flex;flex-direction:column}
+  .vl__top{display:block}
+  .vl__t{display:block;align-self:auto;min-height:0;margin-top:clamp(18px,2.4vw,28px)}
+  .vl__p{margin-top:10px}
+  .vl__grid{grid-template-columns:repeat(3,minmax(0,1fr));--vl-gap:28px;gap:var(--vl-gap)}
+  .vl__link{left:calc(var(--vl-pad) + var(--vl-ico) / 2);top:calc(var(--vl-pad) + var(--vl-ico) / 2 - 1px);width:calc(100% + var(--vl-gap));height:2px}
+  .vl__link i{transform-origin:0 50%}
+}

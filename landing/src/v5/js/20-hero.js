@@ -1,36 +1,148 @@
-/* v5 · portada: «el anillo se abre» al bajar (solo con movimiento) */
-APV5.scene('hero', function (ctx) {
-  var g = ctx.gsap;
-  var hero = document.querySelector('.hr');
-  if (!hero) return;
-  var wrap = hero.querySelector('.hr__ringwrap');
-  var core = hero.querySelector('.hr__core');
-  var chips = hero.querySelectorAll('.hr__chip');
-  var arcs = hero.querySelectorAll('.hr-a');
-  var copy = hero.querySelector('.hr__copy');
-  var foot = hero.querySelector('.hr__foot');
+/* v5 · portada: rotador de 3 videos de fondo (publicá → medí con balanza → entrega) con fundido cruzado.
+   Sin movimiento reducido ni ahorro de datos: solo el póster del primero. */
+(function () {
+  'use strict';
+  var sec = document.querySelector('.hr');
+  if (!sec) return;
+  var clips = [].slice.call(sec.querySelectorAll('.hr__clip'));
+  var vids = clips.map(function (c) { return c.querySelector('video'); });
+  var imgs = clips.map(function (c) { return c.querySelector('img'); });
+  var bars = [].slice.call(sec.querySelectorAll('.hr__bar'));
+  var fills = bars.map(function (b) { return b.querySelector('b'); });
+  var cap = sec.querySelector('[data-hr-cap]');
+  var btn = sec.querySelector('[data-hr-pause]');
+  var LABELS = ['Publicás en segundos', 'Medís con balanza', 'Tu vecino lo retira'];
+  var DUR = 6000, FADE = 1000;
+  var N = clips.length;
+  var ahorro = !!(navigator.connection && navigator.connection.saveData);
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || ahorro || !('IntersectionObserver' in window)) { sec.classList.add('is-static'); return; }
 
-  function build(trig, dist, pinEnd, start, scaleTo, copyY) {
-    var tl = g.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: { trigger: trig, start: start, end: pinEnd, scrub: 0.6, pin: pinEnd.indexOf('+=') === 0, anticipatePin: 1, invalidateOnRefresh: true }
-    });
-    tl.to(wrap, { scale: scaleTo, duration: 1 }, 0);
-    arcs.forEach(function (a) {
-      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0.08, svgOrigin: '160 160', duration: 1 }, 0);
-    });
-    tl.to(core, { scale: 0.6, opacity: 0.55, duration: 1 }, 0);
-    tl.to(chips, { opacity: 0, duration: 0.35 }, 0);
-    if (copyY !== null) {
-      tl.to(copy, { y: copyY, opacity: 0, duration: 0.7 }, 0);
-      tl.to(foot, { opacity: 0, duration: 0.4 }, 0);
-    }
-    return tl;
+  var small = window.matchMedia('(max-width: 899px)').matches;
+  var cur = 0, elapsed = 0, waited = 0, last = 0, raf = 0, started = false;
+  var userPaused = false, offscreen = false, hidden = document.hidden;
+
+  function load(i) {
+    var v = vids[i];
+    if (imgs[i].getAttribute('data-src')) { imgs[i].src = imgs[i].getAttribute('data-src'); imgs[i].removeAttribute('data-src'); }
+    if (!v || v.getAttribute('src')) return;
+    v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
+    v.addEventListener('canplay', function () { if (cur === i && !isPaused()) play(i); });
+    v.addEventListener('error', function () { v.setAttribute('data-err', '1'); });
+    v.src = 'video/hero-ia/' + clips[i].getAttribute('data-clip') + (small ? '-640.mp4' : '-1280.mp4');
+    v.preload = 'auto';
+    try { v.load(); } catch (e) {}
   }
-  ctx.mm.add(ctx.desktop, function () {
-    build(hero, 1, '+=60%', 'top top+=68', 1.2, -90);
+  function play(i) {
+    var v = vids[i];
+    if (!v || !v.getAttribute('src')) return;
+    var p = v.play();
+    if (p && p.catch) p.catch(function (e) { if (e && e.name === 'NotAllowedError' && started && i === 0 && !v.currentTime) giveUp(); });
+  }
+  // si el navegador no deja reproducir (ahorro de batería, etc.) queda solo el póster
+  function giveUp() {
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    sec.classList.remove('is-live'); sec.classList.add('is-static');
+    started = false;
+  }
+  function isPaused() { return userPaused || offscreen || hidden; }
+
+  function setBars() {
+    for (var i = 0; i < N; i++) {
+      var p = i < cur ? 1 : i === cur ? Math.min(1, elapsed / DUR) : 0;
+      fills[i].style.transform = 'scaleX(' + p.toFixed(3) + ')';
+    }
+  }
+  function label() {
+    cap.classList.remove('is-in');
+    cap.textContent = LABELS[cur];
+    void cap.offsetWidth;
+    cap.classList.add('is-in');
+    bars.forEach(function (b, i) { if (i === cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+  }
+  function go(next) {
+    if (next === cur) return;
+    var old = clips[cur], oldIdx = cur, nv = vids[next];
+    load(next);
+    if (nv && nv.getAttribute('src')) { try { nv.currentTime = 0; } catch (e) {} if (!isPaused()) play(next); }
+    old.classList.remove('is-on'); old.classList.add('is-prev');
+    clips[next].classList.add('is-on');
+    setTimeout(function () {
+      clips[oldIdx].classList.remove('is-prev');
+      if (oldIdx !== cur && vids[oldIdx]) vids[oldIdx].pause();
+    }, FADE + 80);
+    cur = next; elapsed = 0; waited = 0;
+    label();
+    load((cur + 1) % N);
+    setBars();
+  }
+  // el reloj corre solo mientras el clip actual realmente se está reproduciendo
+  function running() {
+    var v = vids[cur];
+    return !v || v.getAttribute('data-err') || v.ended || (!v.paused && v.readyState >= 3);
+  }
+  function tick(t) {
+    raf = 0;
+    if (!started || isPaused()) return;
+    var dt = Math.min(t - last, 100); last = t;
+    if (running()) elapsed += dt;
+    if (elapsed >= DUR) {
+      var nxt = (cur + 1) % N, nv = vids[nxt];
+      // espera (hasta 3 s) a que el próximo clip esté listo, así el fundido no tiene saltos
+      if (nv && nv.getAttribute('src') && !nv.getAttribute('data-err') && nv.readyState < 3 && waited < 3000) { waited += dt; elapsed = DUR; }
+      else go(nxt);
+    }
+    setBars();
+    raf = requestAnimationFrame(tick);
+  }
+  function sync() {
+    if (!started) return;
+    if (isPaused()) {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      vids.forEach(function (v) { if (v) v.pause(); });
+    } else {
+      play(cur);
+      if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+    }
+  }
+  function begin() {
+    if (started) return;
+    started = true;
+    sec.classList.add('is-live');
+    load(0); load(1);
+    setBars();
+    sync();
+  }
+
+  btn.addEventListener('click', function () {
+    userPaused = !userPaused;
+    sec.classList.toggle('is-userpaused', userPaused);
+    btn.setAttribute('aria-label', userPaused ? 'Reproducir el video de fondo' : 'Pausar el video de fondo');
+    sync();
   });
-  ctx.mm.add(ctx.mobile, function () {
-    build(hero.querySelector('.hr__art'), 0.7, 'bottom top+=68', 'center 75%', 1.1, null);
+  bars.forEach(function (b, i) {
+    b.addEventListener('click', function () {
+      if (i === cur) return;
+      go(i);
+      if (userPaused) btn.click(); else sync();
+    });
   });
-});
+  document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
+
+  // los videos se piden recién después del evento load; se pausan al salir de pantalla
+  function afterLoad(fn) { if (document.readyState === 'complete') setTimeout(fn, 60); else window.addEventListener('load', function () { setTimeout(fn, 60); }, { once: true }); }
+  afterLoad(begin);
+  new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
+
+  // paralaje y zoom lentos con el scroll (solo con movimiento; sin pin)
+  APV5.scene('hero', function (ctx) {
+    var g = ctx.gsap;
+    var media = sec.querySelector('.hr__media');
+    ctx.mm.add(ctx.desktop, function () {
+      g.fromTo(media, { yPercent: 0, scale: 1 }, { yPercent: 5, scale: 1.06, ease: 'none', scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom top', scrub: 0.6 } });
+    });
+    ctx.mm.add(ctx.mobile, function () {
+      g.fromTo(media, { scale: 1 }, { scale: 1.08, ease: 'none', scrollTrigger: { trigger: sec.querySelector('.hr__bg'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+    });
+  });
+})();

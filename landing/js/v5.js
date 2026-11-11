@@ -31,10 +31,9 @@ window.APV5 = (function () {
   if (!btn) return;
   var label = btn.querySelector('[data-nv-label]');
   var menu = document.getElementById('menu');
-  var ids = ['problema', 'plan-base', 'plan-smart', 'plan-intelligence'];
+  var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
   var info = [
-    { l: 'Menú', a: 0 }, { l: 'El problema', a: 0 }, { l: '01 · Recuperá', a: 1 },
-    { l: '02 · Medí', a: 2 }, { l: '03 · Anticipá', a: 3 }
+    { l: 'Menú', a: 0 }, { l: '01 · Recuperá', a: 1 }, { l: '02 · Medí', a: 2 }, { l: '03 · Anticipá', a: 3 }
   ];
   var last = -1, raf = 0;
 
@@ -46,9 +45,9 @@ window.APV5 = (function () {
       if (el && el.getBoundingClientRect().top <= mid) idx = i + 1;
     }
     var st = info[idx];
-    if (idx === 4) {
-      var r = document.getElementById(ids[3]).getBoundingClientRect();
-      if (r.bottom < mid) { idx = 5; st = { l: 'Menú', a: 3 }; }
+    if (idx === 3) {
+      var r = document.getElementById(ids[2]).getBoundingClientRect();
+      if (r.bottom < mid) { idx = 4; st = { l: 'Menú', a: 3 }; }
     }
     if (idx === last) return;
     last = idx;
@@ -61,6 +60,16 @@ window.APV5 = (function () {
   window.addEventListener('resize', ask);
   window.addEventListener('load', function () { ask(); setTimeout(ask, 400); });
   calc();
+
+  // «Sumá tu comercio» de la barra se oculta mientras se ve el de la portada
+  var cta = document.querySelector('.nav__cta');
+  var heroBtns = document.querySelector('.hr .hero__actions');
+  if (cta && heroBtns && 'IntersectionObserver' in window) {
+    var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 68;
+    new IntersectionObserver(function (es) {
+      cta.classList.toggle('is-covered', es[0].isIntersecting);
+    }, { rootMargin: '-' + navH + 'px 0px 0px 0px' }).observe(heroBtns);
+  }
 
   // tocar fuera del panel lo cierra (main.js alterna el menú al hacer clic en el botón)
   document.addEventListener('click', function (e) {
@@ -79,42 +88,206 @@ window.APV5 = (function () {
 })();
 
 /* 20-hero.js */
-/* v5 · portada: «el anillo se abre» al bajar (solo con movimiento) */
-APV5.scene('hero', function (ctx) {
-  var g = ctx.gsap;
-  var hero = document.querySelector('.hr');
-  if (!hero) return;
-  var wrap = hero.querySelector('.hr__ringwrap');
-  var core = hero.querySelector('.hr__core');
-  var chips = hero.querySelectorAll('.hr__chip');
-  var arcs = hero.querySelectorAll('.hr-a');
-  var copy = hero.querySelector('.hr__copy');
-  var foot = hero.querySelector('.hr__foot');
+/* v5 · portada: rotador de 3 videos de fondo (publicá → medí con balanza → entrega) con fundido cruzado.
+   Sin movimiento reducido ni ahorro de datos: solo el póster del primero. */
+(function () {
+  'use strict';
+  var sec = document.querySelector('.hr');
+  if (!sec) return;
+  var clips = [].slice.call(sec.querySelectorAll('.hr__clip'));
+  var vids = clips.map(function (c) { return c.querySelector('video'); });
+  var imgs = clips.map(function (c) { return c.querySelector('img'); });
+  var bars = [].slice.call(sec.querySelectorAll('.hr__bar'));
+  var fills = bars.map(function (b) { return b.querySelector('b'); });
+  var cap = sec.querySelector('[data-hr-cap]');
+  var btn = sec.querySelector('[data-hr-pause]');
+  var LABELS = ['Publicás en segundos', 'Medís con balanza', 'Tu vecino lo retira'];
+  var DUR = 6000, FADE = 1000;
+  var N = clips.length;
+  var ahorro = !!(navigator.connection && navigator.connection.saveData);
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || ahorro || !('IntersectionObserver' in window)) { sec.classList.add('is-static'); return; }
 
-  function build(trig, dist, pinEnd, start, scaleTo, copyY) {
-    var tl = g.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: { trigger: trig, start: start, end: pinEnd, scrub: 0.6, pin: pinEnd.indexOf('+=') === 0, anticipatePin: 1, invalidateOnRefresh: true }
-    });
-    tl.to(wrap, { scale: scaleTo, duration: 1 }, 0);
-    arcs.forEach(function (a) {
-      tl.to(a, { x: a.getAttribute('data-dx') * dist, y: a.getAttribute('data-dy') * dist, opacity: 0.08, svgOrigin: '160 160', duration: 1 }, 0);
-    });
-    tl.to(core, { scale: 0.6, opacity: 0.55, duration: 1 }, 0);
-    tl.to(chips, { opacity: 0, duration: 0.35 }, 0);
-    if (copyY !== null) {
-      tl.to(copy, { y: copyY, opacity: 0, duration: 0.7 }, 0);
-      tl.to(foot, { opacity: 0, duration: 0.4 }, 0);
-    }
-    return tl;
+  var small = window.matchMedia('(max-width: 899px)').matches;
+  var cur = 0, elapsed = 0, waited = 0, last = 0, raf = 0, started = false;
+  var userPaused = false, offscreen = false, hidden = document.hidden;
+
+  function load(i) {
+    var v = vids[i];
+    if (imgs[i].getAttribute('data-src')) { imgs[i].src = imgs[i].getAttribute('data-src'); imgs[i].removeAttribute('data-src'); }
+    if (!v || v.getAttribute('src')) return;
+    v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
+    v.addEventListener('canplay', function () { if (cur === i && !isPaused()) play(i); });
+    v.addEventListener('error', function () { v.setAttribute('data-err', '1'); });
+    v.src = 'video/hero-ia/' + clips[i].getAttribute('data-clip') + (small ? '-640.mp4' : '-1280.mp4');
+    v.preload = 'auto';
+    try { v.load(); } catch (e) {}
   }
-  ctx.mm.add(ctx.desktop, function () {
-    build(hero, 1, '+=60%', 'top top+=68', 1.2, -90);
+  function play(i) {
+    var v = vids[i];
+    if (!v || !v.getAttribute('src')) return;
+    var p = v.play();
+    if (p && p.catch) p.catch(function (e) { if (e && e.name === 'NotAllowedError' && started && i === 0 && !v.currentTime) giveUp(); });
+  }
+  // si el navegador no deja reproducir (ahorro de batería, etc.) queda solo el póster
+  function giveUp() {
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    sec.classList.remove('is-live'); sec.classList.add('is-static');
+    started = false;
+  }
+  function isPaused() { return userPaused || offscreen || hidden; }
+
+  function setBars() {
+    for (var i = 0; i < N; i++) {
+      var p = i < cur ? 1 : i === cur ? Math.min(1, elapsed / DUR) : 0;
+      fills[i].style.transform = 'scaleX(' + p.toFixed(3) + ')';
+    }
+  }
+  function label() {
+    cap.classList.remove('is-in');
+    cap.textContent = LABELS[cur];
+    void cap.offsetWidth;
+    cap.classList.add('is-in');
+    bars.forEach(function (b, i) { if (i === cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+  }
+  function go(next) {
+    if (next === cur) return;
+    var old = clips[cur], oldIdx = cur, nv = vids[next];
+    load(next);
+    if (nv && nv.getAttribute('src')) { try { nv.currentTime = 0; } catch (e) {} if (!isPaused()) play(next); }
+    old.classList.remove('is-on'); old.classList.add('is-prev');
+    clips[next].classList.add('is-on');
+    setTimeout(function () {
+      clips[oldIdx].classList.remove('is-prev');
+      if (oldIdx !== cur && vids[oldIdx]) vids[oldIdx].pause();
+    }, FADE + 80);
+    cur = next; elapsed = 0; waited = 0;
+    label();
+    load((cur + 1) % N);
+    setBars();
+  }
+  // el reloj corre solo mientras el clip actual realmente se está reproduciendo
+  function running() {
+    var v = vids[cur];
+    return !v || v.getAttribute('data-err') || v.ended || (!v.paused && v.readyState >= 3);
+  }
+  function tick(t) {
+    raf = 0;
+    if (!started || isPaused()) return;
+    var dt = Math.min(t - last, 100); last = t;
+    if (running()) elapsed += dt;
+    if (elapsed >= DUR) {
+      var nxt = (cur + 1) % N, nv = vids[nxt];
+      // espera (hasta 3 s) a que el próximo clip esté listo, así el fundido no tiene saltos
+      if (nv && nv.getAttribute('src') && !nv.getAttribute('data-err') && nv.readyState < 3 && waited < 3000) { waited += dt; elapsed = DUR; }
+      else go(nxt);
+    }
+    setBars();
+    raf = requestAnimationFrame(tick);
+  }
+  function sync() {
+    if (!started) return;
+    if (isPaused()) {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      vids.forEach(function (v) { if (v) v.pause(); });
+    } else {
+      play(cur);
+      if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+    }
+  }
+  function begin() {
+    if (started) return;
+    started = true;
+    sec.classList.add('is-live');
+    load(0); load(1);
+    setBars();
+    sync();
+  }
+
+  btn.addEventListener('click', function () {
+    userPaused = !userPaused;
+    sec.classList.toggle('is-userpaused', userPaused);
+    btn.setAttribute('aria-label', userPaused ? 'Reproducir el video de fondo' : 'Pausar el video de fondo');
+    sync();
   });
-  ctx.mm.add(ctx.mobile, function () {
-    build(hero.querySelector('.hr__art'), 0.7, 'bottom top+=68', 'center 75%', 1.1, null);
+  bars.forEach(function (b, i) {
+    b.addEventListener('click', function () {
+      if (i === cur) return;
+      go(i);
+      if (userPaused) btn.click(); else sync();
+    });
   });
-});
+  document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
+
+  // los videos se piden recién después del evento load; se pausan al salir de pantalla
+  function afterLoad(fn) { if (document.readyState === 'complete') setTimeout(fn, 60); else window.addEventListener('load', function () { setTimeout(fn, 60); }, { once: true }); }
+  afterLoad(begin);
+  new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
+
+  // paralaje y zoom lentos con el scroll (solo con movimiento; sin pin)
+  APV5.scene('hero', function (ctx) {
+    var g = ctx.gsap;
+    var media = sec.querySelector('.hr__media');
+    ctx.mm.add(ctx.desktop, function () {
+      g.fromTo(media, { yPercent: 0, scale: 1 }, { yPercent: 5, scale: 1.06, ease: 'none', scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom top', scrub: 0.6 } });
+    });
+    ctx.mm.add(ctx.mobile, function () {
+      g.fromTo(media, { scale: 1 }, { scale: 1.08, ease: 'none', scrollTrigger: { trigger: sec.querySelector('.hr__bg'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+    });
+  });
+})();
+
+/* 25-contadores.js */
+/* v5 · contadores en tiempo real. Cuentan desde 0 solo mientras la franja se ve y la pestaña está visible.
+   Con «movimiento reducido» no cuentan: queda el HTML con los valores de un minuto. */
+(function () {
+  'use strict';
+  var sec = document.querySelector('[data-ct-sec]');
+  if (!sec) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = {};
+  [].forEach.call(sec.querySelectorAll('[data-ct]'), function (e) { els[e.getAttribute('data-ct')] = e; });
+  var SEC_YEAR = 365 * 86400;
+  var KG_S = 16e9 / SEC_YEAR;                     // 16 millones de t por año (MAGyP 2022)
+  var RATES = { kg: KG_S, co2: KG_S * 2.53, agua: KG_S * 192 }; // × 2,53 kg CO2e/kg · × 192 L/kg (FAO)
+  var fmt = function (n) { return String(Math.floor(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
+
+  // cada carácter va en su casillero de ancho fijo; solo se reescriben los que cambian
+  function paint(el, str) {
+    if (el.getAttribute('data-len') !== String(str.length)) {
+      var html = '';
+      for (var i = 0; i < str.length; i++) html += '<span class="' + (str.charAt(i) === '.' ? 'ct__p' : 'ct__d') + '">' + str.charAt(i) + '</span>';
+      el.innerHTML = html;
+      el.setAttribute('data-len', String(str.length));
+    }
+    var kids = el.children;
+    for (var j = 0; j < kids.length; j++) if (kids[j].textContent !== str.charAt(j)) kids[j].textContent = str.charAt(j);
+  }
+  function show(sec_) { for (var k in els) paint(els[k], fmt(RATES[k] * sec_)); }
+
+  if (reduce || !('IntersectionObserver' in window)) { show(60); return; } // un minuto, fijo
+
+  sec.classList.add('ct--live');
+  show(0);
+  var acc = 0, last = 0, timer = null, inView = false;
+  function tick() {
+    var now = performance.now();
+    acc += now - last; last = now;
+    show(acc / 1000);
+  }
+  function sync() {
+    var run = inView && !document.hidden;
+    if (run && !timer) { last = performance.now(); timer = setInterval(tick, 100); }
+    else if (!run && timer) { clearInterval(timer); timer = null; }
+  }
+  new IntersectionObserver(function (es) { inView = es[es.length - 1].isIntersecting; sync(); }, { threshold: 0.25 }).observe(sec);
+  document.addEventListener('visibilitychange', sync);
+
+  if (window.APV5) APV5.scene('contadores', function (ctx) {
+    var items = sec.querySelectorAll('.ct__item, .ct__close');
+    ctx.gsap.from(items, { opacity: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.12, scrollTrigger: { trigger: sec, start: 'top 85%', once: true } });
+  });
+})();
 
 /* 30-problema.js */
 /* v5 · el problema: la cifra cuenta de 0 a 58,4 y la foto de adentro se desplaza (solo con movimiento) */
@@ -142,6 +315,32 @@ APV5.scene('problema', function (ctx) {
     opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.14,
     scrollTrigger: { trigger: sec.querySelector('.pb__cap'), start: 'top 88%', once: true }
   });
+});
+
+/* 35-valor.js */
+/* v5 · por qué sumar tu comercio: las tarjetas entran escalonadas y un hilo se dibuja de una a la siguiente */
+APV5.scene('valor', function (ctx) {
+  var g = ctx.gsap;
+  var sec = document.getElementById('por-que-sumar');
+  if (!sec) return;
+  var cards = sec.querySelectorAll('.vl__card');
+  var fills = sec.querySelectorAll('.vl__link i');
+  var foot = sec.querySelector('.vl__foot');
+  function run(axis) {
+    var from = axis === 'x' ? { scaleX: 0 } : { scaleY: 0 };
+    var to = axis === 'x' ? { scaleX: 1 } : { scaleY: 1 };
+    g.set(cards, { opacity: 0, y: 36 });
+    g.set(fills, from);
+    g.set(foot, { opacity: 0, y: 20 });
+    var tl = g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: sec.querySelector('.vl__grid'), start: 'top 80%', once: true } });
+    cards.forEach(function (c, i) {
+      tl.to(c, { opacity: 1, y: 0, duration: 0.7 }, i * 0.45);
+      if (fills[i]) tl.to(fills[i], Object.assign({ duration: 0.6, ease: 'power2.inOut' }, to), i * 0.45 + 0.35);
+    });
+    tl.to(foot, { opacity: 1, y: 0, duration: 0.6 }, '-=0.3');
+  }
+  ctx.mm.add(ctx.desktop, function () { run('x'); });
+  ctx.mm.add(ctx.mobile, function () { run('y'); });
 });
 
 /* 40-recupera.js */
@@ -423,125 +622,6 @@ APV5.scene('anticipa', function (ctx) {
   });
 });
 
-/* 70-quienes.js */
-/* v5 · quiénes somos: rotador de 4 videos de fondo (campo → fábrica → camiones → supermercado) */
-(function () {
-  'use strict';
-  var sec = document.querySelector('.qs');
-  if (!sec) return;
-  var clips = [].slice.call(sec.querySelectorAll('.qs__clip'));
-  var vids = clips.map(function (c) { return c.querySelector('video'); });
-  var bars = [].slice.call(sec.querySelectorAll('.qs__bars b'));
-  var cap = sec.querySelector('[data-qs-cap]');
-  var btn = sec.querySelector('[data-qs-pause]');
-  var LABELS = ['Se cultiva', 'Se produce', 'Se transporta', 'Llega a la góndola'];
-  var DUR = 4500, FADE = 1000;
-  var N = clips.length;
-  var ahorro = !!(navigator.connection && navigator.connection.saveData);
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || ahorro || !('IntersectionObserver' in window)) { sec.classList.add('is-static'); return; }
-
-  var small = window.matchMedia('(max-width: 899px)').matches;
-  var cur = 0, elapsed = 0, waited = 0, last = 0, raf = 0, started = false;
-  var userPaused = false, offscreen = true, hidden = document.hidden;
-
-  function load(i) {
-    var v = vids[i];
-    if (!v || v.getAttribute('src')) return;
-    v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
-    v.src = 'video/hero/' + clips[i].getAttribute('data-clip') + (small ? '-640.mp4' : '-1280.mp4');
-    v.preload = 'auto';
-    try { v.load(); } catch (e) {}
-  }
-  function play(i) {
-    var v = vids[i];
-    if (!v || !v.getAttribute('src')) return;
-    var p = v.play();
-    if (p && p.catch) p.catch(function () {});
-  }
-  function isPaused() { return userPaused || offscreen || hidden; }
-
-  function setBars() {
-    for (var i = 0; i < N; i++) {
-      var p = i < cur ? 1 : i === cur ? Math.min(1, elapsed / DUR) : 0;
-      bars[i].style.transform = 'scaleX(' + p.toFixed(3) + ')';
-    }
-  }
-  function go(next) {
-    var old = clips[cur];
-    var nv = vids[next];
-    if (nv && nv.getAttribute('src')) { try { nv.currentTime = 0; } catch (e) {} play(next); }
-    old.classList.remove('is-on'); old.classList.add('is-prev');
-    clips[next].classList.add('is-on');
-    var oldIdx = cur;
-    setTimeout(function () {
-      clips[oldIdx].classList.remove('is-prev');
-      if (oldIdx !== cur && vids[oldIdx]) { vids[oldIdx].pause(); }
-    }, FADE + 80);
-    cur = next; elapsed = 0; waited = 0;
-    cap.textContent = LABELS[cur];
-    load((cur + 1) % N);
-    setBars();
-  }
-  function tick(t) {
-    raf = 0;
-    if (isPaused()) return;
-    var dt = Math.min(t - last, 100); last = t;
-    elapsed += dt;
-    if (elapsed >= DUR) {
-      var nxt = (cur + 1) % N, nv = vids[nxt];
-      // espera (hasta 3 s) a que el próximo clip esté listo, así el fundido no tiene saltos
-      if (nv && nv.getAttribute('src') && nv.readyState < 2 && waited < 3000) { waited += dt; elapsed = DUR; setBars(); }
-      else go(nxt);
-    }
-    setBars();
-    raf = requestAnimationFrame(tick);
-  }
-  function sync() {
-    if (!started) return;
-    if (isPaused()) {
-      if (raf) { cancelAnimationFrame(raf); raf = 0; }
-      vids.forEach(function (v) { if (v) v.pause(); });
-    } else {
-      play(cur);
-      if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
-    }
-  }
-  function begin() {
-    if (started) return;
-    started = true;
-    load(0); load(1);
-    clips[0].querySelector('video').addEventListener('canplay', function () { if (!isPaused()) play(0); }, { once: true });
-    setBars();
-    sync();
-  }
-
-  btn.addEventListener('click', function () {
-    userPaused = !userPaused;
-    sec.classList.toggle('is-userpaused', userPaused);
-    btn.setAttribute('aria-label', userPaused ? 'Reproducir el video de fondo' : 'Pausar el video de fondo');
-    sync();
-  });
-  document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
-
-  // los videos se piden cuando la sección se acerca; se pausan al salir de pantalla
-  function afterLoad(fn) { if (document.readyState === 'complete') fn(); else window.addEventListener('load', fn, { once: true }); }
-  var near = new IntersectionObserver(function (es) {
-    if (es[0].isIntersecting) { near.disconnect(); afterLoad(begin); }
-  }, { rootMargin: '700px 0px' });
-  near.observe(sec);
-  new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
-
-  // entrada escalonada y paralaje leve (solo con movimiento)
-  APV5.scene('quienes', function (ctx) {
-    var g = ctx.gsap;
-    var items = sec.querySelectorAll('.eyebrow, .qs__title, .qs__lead, .qs__card');
-    g.set(items, { opacity: 0, y: 34 });
-    g.to(items, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.12, scrollTrigger: { trigger: sec, start: 'top 65%', once: true } });
-    g.fromTo(sec.querySelector('.qs__bg'), { yPercent: -3 }, { yPercent: 3, ease: 'none', scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
-  });
-})();
-
 /* 75-inversores.js */
 /* Inversores adentro de «Quiénes somos»: un botón abre y cierra el panel; los enlaces #inversores, #equipo
    e #inv-* también lo abren (aunque lleguen por la barra de direcciones). Sin JS, el panel se ve siempre. */
@@ -571,3 +651,31 @@ APV5.scene('anticipa', function (ctx) {
   if (!hub.hidden) set(true);
   else btn.hidden = false;
 })();
+
+/* 80-pasos.js */
+/* v5 · sumate en 3 pasos: al bajar, la línea se dibuja y cada número se llena al llegar la línea */
+APV5.scene('pasos', function (ctx) {
+  var g = ctx.gsap;
+  var sec = document.getElementById('pasos');
+  if (!sec) return;
+  var list = sec.querySelector('.ps__list');
+  var steps = [].slice.call(sec.querySelectorAll('.ps__step'));
+  var fills = steps.map(function (s) { return s.querySelector('.ps__link i'); });
+  var n = steps.length;
+  function run(axis) {
+    var prop = axis === 'x' ? 'scaleX' : 'scaleY';
+    fills.forEach(function (f) { if (f) g.set(f, axis === 'x' ? { scaleX: 0 } : { scaleY: 0 }); });
+    steps.forEach(function (s, i) { s.classList.toggle('is-on', i === 0); });
+    ctx.ScrollTrigger.create({
+      trigger: list, start: 'top 72%', end: 'bottom 52%', scrub: 0.6,
+      onUpdate: function (self) {
+        var t = self.progress * (n - 1);
+        fills.forEach(function (f, i) { if (f) { var o = {}; o[prop] = Math.max(0, Math.min(1, t - i)); g.set(f, o); } });
+        steps.forEach(function (s, i) { s.classList.toggle('is-on', t >= i - 0.02); });
+      }
+    });
+    return function () { steps.forEach(function (s) { s.classList.add('is-on'); }); };
+  }
+  ctx.mm.add(ctx.desktop, function () { return run('x'); });
+  ctx.mm.add(ctx.mobile, function () { return run('y'); });
+});

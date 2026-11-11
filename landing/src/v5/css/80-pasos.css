@@ -1,0 +1,29 @@
+/* ---------- v5 · sumate en 3 pasos (ps-) ---------- */
+.ps{--ps-n:60px;--ps-gap:28px;background:var(--soft);padding-bottom:clamp(8px,2vw,24px)}
+.ps__h{max-width:16ch}
+.ps__list{display:grid;gap:var(--ps-gap);margin-top:clamp(28px,4vw,52px)}
+.ps__step{position:relative;display:grid;align-content:start;grid-template-columns:var(--ps-n) minmax(0,1fr);column-gap:20px;align-items:start}
+.ps__n{position:relative;z-index:2;display:grid;place-items:center;width:var(--ps-n);height:var(--ps-n);border:2px solid var(--forest);border-radius:50%;background:var(--forest);color:#fff;font:700 1.75rem/1 var(--font-display);letter-spacing:-.02em;transition:background-color .35s var(--ease-out),color .35s var(--ease-out),border-color .35s var(--ease-out)}
+.ps__t{font-size:clamp(1.4rem,2vw,1.75rem);letter-spacing:-.03em}
+.ps__p{margin-top:8px;font-size:1.0625rem;line-height:1.5;color:var(--text-2);max-width:34ch}
+.ps__body{padding-top:calc(var(--ps-n) / 2 - 16px);padding-bottom:4px}
+/* línea que conecta los pasos: vertical en celular */
+.ps__link{position:absolute;z-index:1;display:block;left:calc(var(--ps-n) / 2 - 1px);top:calc(var(--ps-n) + 6px);width:2px;height:calc(100% - var(--ps-n) + var(--ps-gap) - 12px);background:var(--line-2)}
+.ps__link i{position:absolute;inset:0;display:block;background:var(--forest);transform-origin:0 0}
+/* con movimiento, los pasos «apagados» se ven vacíos hasta que la línea llega */
+.motion .ps__step:not(.is-on) .ps__n{background:#fff;color:var(--muted-2);border-color:var(--line-2)}
+.motion .ps__step:not(.is-on) .ps__body{opacity:.55}
+.ps__body{transition:opacity .35s var(--ease-out)}
+.ps__foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(32px,5vw,56px)}
+.ps__free{font-family:var(--font-display);font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+@media(min-width:900px){
+  .ps{--ps-n:76px;--ps-gap:40px}
+  .ps__list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ps__step{grid-template-columns:minmax(0,1fr);row-gap:20px}
+  .ps__body{padding-top:0;padding-right:8px}
+  .ps__n{font-size:2.2rem}
+  .ps__link{left:calc(var(--ps-n) + 10px);top:calc(var(--ps-n) / 2 - 1px);width:calc(100% + var(--ps-gap) - var(--ps-n) - 20px);height:2px}
+  .ps__link i{transform-origin:0 50%}
+}
+/* el formulario de abajo sigue a los pasos sin cortes: mismo fondo, menos aire arriba */
+#alta{padding-top:clamp(20px,3vw,40px)}

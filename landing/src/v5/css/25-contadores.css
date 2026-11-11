@@ -1,0 +1,21 @@
+/* ---------- v5 · contadores en tiempo real (ct-) ---------- */
+.ct{background:var(--soft);padding:clamp(48px,6vw,88px) 0 clamp(44px,5.5vw,76px)}
+.ct__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px}
+.ct__h{font-size:clamp(1.75rem,3.6vw,2.9rem);line-height:1;letter-spacing:-.04em;text-wrap:balance;max-width:24ch}
+/* por defecto (sin JS o con movimiento reducido) se muestran los valores de «un minuto» */
+.ct__min{font-size:.8125rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest)}
+.ct--live .ct__min{display:none}
+.ct__grid{display:grid;gap:28px 40px;margin-top:clamp(28px,4vw,48px)}
+.ct__item{container-type:inline-size;padding-top:16px;border-top:2px solid var(--ink)}
+.ct__n{display:flex;flex-wrap:nowrap;align-items:baseline;gap:.2em .5em;white-space:nowrap;font-family:var(--font-display);font-weight:700;color:var(--forest)}
+.ct__v{font-size:clamp(2.4rem,min(13cqw,5.5rem),5.5rem);line-height:1;letter-spacing:0;font-variant-numeric:tabular-nums lining-nums}
+.ct__u{font-size:clamp(1rem,5.2cqw,1.4rem);letter-spacing:-.01em;color:var(--ink)}
+/* cada cifra ocupa un casillero fijo: el ancho no cambia mientras suben */
+.ct__d,.ct__p{display:inline-block;text-align:center}
+.ct__d{width:.62em}
+.ct__p{width:.3em}
+.ct__l{margin-top:10px;font-size:1.0625rem;line-height:1.35;color:var(--text-2);max-width:26ch}
+.ct__src{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:10px;font-size:.8125rem;color:var(--muted)}
+.ct__tag{padding:2px 9px;border:1px solid var(--line-2);border-radius:var(--r-pill);background:#fff;font-weight:700;color:var(--ink)}
+.ct__close{margin-top:clamp(28px,4vw,44px);font-family:var(--font-display);font-size:clamp(1.25rem,2.2vw,1.75rem);font-weight:700;line-height:1.2;letter-spacing:-.025em;color:var(--ink)}
+@media(min-width:900px){.ct__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

@@ -10,10 +10,13 @@
 .nv-ring[data-ch="2"] .nv-a2,.nv-ring[data-ch="3"] .nv-a2{color:#2E7D32}
 .nv-ring[data-ch="3"] .nv-a3{color:#7BC67B}
 @media(hover:hover) and (pointer:fine){.nv-ring:hover .nv-ring__label{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--forest)}}
+/* «Sumá tu comercio» de la barra: se oculta mientras se ve el de la portada */
+.nv .nav__cta{transition:opacity .25s var(--ease-out),visibility .25s}
+.nv .nav__cta.is-covered{opacity:0;visibility:hidden;pointer-events:none}
 /* panel del menú: siempre desplegable, en todos los anchos */
 .nv .nav__links{display:none}
 .nv .nav__links.is-open{display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;gap:0;margin:0;padding:6px var(--gutter) 18px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 28px 40px -24px rgba(0,0,0,.28);max-height:calc(100svh - var(--nav-h));overflow-y:auto}
-.nv .nav__links.is-open a{display:flex;align-items:baseline;gap:10px;padding:14px 0;font-size:1.125rem;border-bottom:1px solid var(--line)}
+.nv .nav__links.is-open a{display:flex;align-items:baseline;gap:10px;padding:11px 0;font-size:1.0625rem;border-bottom:1px solid var(--line)}
 .nv .nav__links.is-open a:last-child{border-bottom:0}
 .nv .nav__links.is-open a b{font:700 .95rem var(--font-display);color:var(--forest);min-width:1.6em}
 @media(min-width:700px){
