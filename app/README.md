@@ -2,6 +2,8 @@
 
 *Menos desperdicio, más aprovecho.*
 
+**Demo publicada:** https://aprovecho-app-demo.vercel.app (autorizada el 11/11/2026).
+
 Adaptado desde [Aprovecho v3.2.1](https://github.com/ochomnalez/aprovecho-app/tree/3ed4bb8), commit `3ed4bb8`. Alcance confirmado el 11/11/2026: demo navegable para la entrega, con IA, pagos y balanza simulados.
 
 ## Abrir
@@ -23,7 +25,7 @@ Para empezar de nuevo: Demo → Reiniciar la demo. El reloj arranca a las 17:10;
 
 En HTTPS se instala como PWA y guarda recursos locales, fotos, fuentes y librerías. Abrila una vez con conexión antes de presentar; el mapa necesita internet para calles nuevas. En localhost, usá `?sw` para habilitar el service worker. Se verificaron recarga, QR y PDF sin conexión después de instalarlo.
 
-Sin cobros, reconocimiento de imágenes, balanza, cuentas ni verificación comercial reales. Los datos históricos y las propuestas de Score/niveles son ejemplos. No se publicó ni se conectó un backend.
+Sin cobros, reconocimiento de imágenes, balanza, cuentas ni verificación comercial reales. Los datos históricos y las propuestas de Score/niveles son ejemplos. Publicada en Vercel; sin backend conectado.
 
 ## Verificación reproducible
 
