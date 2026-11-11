@@ -54,3 +54,4 @@
 | 2026-11-09 23:12 | claude-octi-video | `integ` | `afdb34b` | Onboarding v4 (109 s): clics con cuadradito y zoom, clips de menú y gerente, sugerencias de Intelligence, Smart con foto, música Wholesome, voces nuevas (apertura, condiciones, Intelligence) | OK de Octavio y ajustes |
 | 2026-11-09 23:52 | claude-octi-video | `integ` | `a85b05f` | Onboarding v5 (1:31): más ágil sin perder las pantallas, voz con menos pausas, música Carefree más audible | OK de Octavio |
 | 2026-11-10 00:05 | claude-octi-video | `integ` | `8c1dfb9` | Onboarding v6 (1:31): frase de Intelligence y cierre elegidos por Octavio, música Easy Lemon | OK de Octavio |
+| 2026-11-11 16:30 | claude-octi-presentacion | `claude/quirky-cerf-y2q0ui` | `7e160f7` | 5 propuestas de presentación de tesis (20 min, HTML interactivo con video y app), sin construir | Octavio elige propuesta y responde 6 preguntas; después armo base + capítulo de muestra |
