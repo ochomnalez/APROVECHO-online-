@@ -90,3 +90,16 @@ Hoy: USD 400, 500, 600, 700 y 800 por mes (4.800 a 9.600 por año). Sin fuente n
 | Registro de marca (una sola vez) | 100 UMAPI por clase; Resolución INPI 75/2026: 1 UMAPI = ARS 360, o sea ARS 36.000 (USD 23,5) por clase. Hay otras cifras distintas | https://www.argentina.gob.ar/normativa/nacional/norma-424092/texto | Parcial. Ya está dentro de "Constitución, marca y asesoría bromatológica" (USD 2.500 de 2026) |
 | Seguros | No encontré precios. La responsabilidad civil no es obligatoria para esta actividad | https://www.cronista.com/pyme/negocios-pyme/los-seguros-obligatorios-y-las-polizas-que-conviene-tener-para-resguardar-la-operatoria-pyme | Sin fuente: pedir cotización |
 | Legales recurrentes | Sin datos | — | Sin fuente: pedir presupuesto |
+
+## Marketing fijo: de dónde sale cada valor (12/11/2026)
+
+2027 (USD 58.100) = 30.000 (que nos conozca: influencers 16.000, pauta de alcance 7.000, pantallas 4.000, producción 3.000) + 16.000 (que confíe: videos, búsqueda y tiendas, cartel de caja) + 5.000 (que vuelva y recomiende) + 5.500 (comercios B2B) + 1.500 (medición) + 100 (ajuste sin explicación). Fuente: entregable 13.8, tabla de presupuesto 2027. No incluye "que compre" (17.000: campañas de instalación 15.300 y garantía 1.700), que ya está en el costo de conseguir usuarios (16.882), ni el kit de los comercios nuevos (24.359), que está en el costo de conseguir comercios.
+
+Control: 58.100 + 16.882 + 24.359 = 99.341, el presupuesto total 2027.
+
+2028 (18.000 = 1.500 × 12) y 2029 a 2031 (12.000 = 1.000 × 12): sin fuente. 13.8 dice unos 54.000 para 2028 (USD 8.000 por ciudad grande y 3.000 por mediana). 14 y 15 dicen que en 2028 se abre solo Córdoba y Mendoza; las otras ciudades del roadmap (Rosario, Mar del Plata, Salta, Tucumán, Neuquén, Bariloche, Santa Fe) vienen "luego" y "después".
+
+Referencias de precio encontradas (de terceros, sin cotización):
+- Influencers: micro entre USD 150 y 600 por publicación (https://www.coderhouse.com/ar/coderlibrary/marketing-influencers-ia-argentina). Rocío Strat (5,6 millones de seguidores) no es micro: sin referencia.
+- Pauta de alcance: 1,8 millones de impresiones por USD 7.000 = USD 3,89 cada mil. CPM de Meta en Latinoamérica entre USD 3 y 12 (https://adligator.com/es/blog/cpm-facebook-por-pais-2026).
+- Pantallas: el entregable dice "una prueba de 30 días arranca en USD 1.500"; USD 4.000 son unas 2,7 pruebas.
