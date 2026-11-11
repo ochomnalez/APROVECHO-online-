@@ -41,3 +41,18 @@ Firma: claude-octi-lider · consulta: 11/11/2026
 | Sticker de vidriera con QR | ARS 6.000 | Ninguna | No encontré precios en pesos | Sin fuente: pedir presupuesto a una imprenta |
 | Envío del kit | USD 4 | Ninguna | Comparador de envíos (junio 2026): 2 kg por Correo Argentino de CABA a Córdoba, ARS 7.000 a 9.800 (USD 4,6 a 6,4). No es dentro del AMBA. https://servidos.ar/comparador-envios | Parcial: USD 4 queda algo bajo; cotizar en MiCorreo y Andreani |
 | Dólar | ARS 1.530 | Nota 14 (Banco Nación, 16/09/2026) | — | Con fuente |
+
+## A quién preguntarle: costo de usuario nuevo y de instalación (11/11/2026)
+
+Equipo según el entregable (sección de equipo fundador): Catalina Rebolo (CEO), Facundo Beumont (CTO), Lola Baldini (CMO), Octavio Chomnalez (CFO).
+
+| Dato | Dónde está en el entregable | A quién preguntarle |
+|---|---|---|
+| USD 1 por instalación de la app | 13.8 (tabla de KPI "costo por instalación: USD 1 o menos" y nota del presupuesto: promedio en Latinoamérica USD 0,34 a 0,50) y 16.2 | Marketing (Lola): de dónde sale el 0,34–0,50 |
+| 60 % de las instalaciones se registran | 13.8 (KPI) y 16.2 ("6 de cada 10") | Marketing (Lola): es una meta, falta el dato que la respalda |
+| 15 % llega por referidos | 13.8 (KPI) y 16.2 | Marketing (Lola) |
+| 10 % de descuento al referido | 13.1 (Loops de recomendación, Referidos B2C) y 16.2 | Marketing (Lola): quién lo recibe |
+| 35 % llega por publicidad paga | Solo en 16.2 | Quien armó economics (CFO/CTO) y Marketing |
+| Precio del pack USD 3,99 | 16.1 y 16.2 (sección de precios, 11) | Quien armó economics |
+| Bolsas (100 y ARS 330), sticker (ARS 6.000), envío (USD 4) | Solo en 16.2 | Quien armó economics; los presupuestos de proveedores los consigue Operaciones |
+| Instalación USD 150 | 16.2 y 16.4 (CAC de Smart e Intelligence); el proceso está en 14 ("arma y configura cada kit, lo instala") | CTO (Facundo): cuánto lleva armar e instalar, quién lo hace |

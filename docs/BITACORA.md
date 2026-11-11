@@ -76,3 +76,4 @@
 | 2026-11-11 16:53 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `ccce96c` | Economics: tablita 'CAC usuario' rehecha para un solo usuario (0,5833 + 0,0599 = 0,6432) | — |
 | 2026-11-11 17:02 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `a33707e` | Economics: hoja 'CAC comercio' en la planilla v2 (paso a paso del 29,49) | — |
 | 2026-11-11 17:04 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `f7b72ca` | Economics: referencias de precio para bolsas, sticker y envío del comercio nuevo (solo el dólar tiene fuente) | Pedir presupuestos de bolsa compostable con logo, sticker y envío AMBA |
+| 2026-11-11 17:09 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `0465336` | Economics: mapa de dónde está cada dato del costo de usuario nuevo y de la instalación en el entregable, y a quién preguntarle | Preguntar a Lola por los datos de 13.8 y a Facundo por la instalación |
