@@ -4,6 +4,23 @@
 - **Fecha:** 2026-11-11
 - **Rama:** `codex/octi-app-cuentas` (desde la demo publicada).
 
+## Resultado final
+
+**Activado y publicado** en https://aprovecho-app-demo.vercel.app. Proyecto Supabase `cggqyfzqmfzkjjitirco` (APROVECHO), migración `20261111182935_cuentas_y_comercios` aplicada. Los cuatro fundadores están en la lista privada; deben registrarse y confirmar su correo para recibir administración. Aún no se crearon cuentas de personas: 0 perfiles y 0 comercios, 4 direcciones habilitadas.
+
+El usuario autorizó pausar «ropa» después de que fallara la pausa de MVP. La pausa de ropa sí se completó; no se borraron sus datos. La creación del proyecto APROVECHO se completó. Los bloqueos que se describen más abajo son el historial de la resolución.
+
+El usuario confirmó guardados Site URL y redirect allowlist para la app en Auth. La configuración cliente solo incluye URL y publishable key.
+
+### Verificación real y límites
+
+- RLS, rol de usuario y auditoría: verificados contra el PostgreSQL real en una transacción revertida, sin dejar usuarios ni comercios de prueba.
+- Desde un build Vercel se verificó Auth real: settings accesibles, email auth habilitado, confirmación de correo activa, contraseña incorrecta rechazada y acceso anónimo a perfiles rechazado. Log: `APROVECHO_PREFLIGHT_OK: Auth reachable; invalid password rejected; anonymous profiles denied; email confirmation=true`.
+- Prueba de UI con SDK real/API simulada: aprobada, incluyendo cambio de contraseña y conservación de la ruta al actualizar la sesión. SQL/PGlite: aprobado.
+- Advisor de seguridad: ningún error ni advertencia, solo INFO de RLS sin políticas en private.ap_founders, intencional para impedir acceso directo. [Referencia de ese aviso](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy).
+- La revisión automática rechazó crear cuentas de prueba persistentes con contraseñas generadas por falta de autorización específica para guardarlas. Esa acción no se ejecutó ni se buscó eludirla. Se completaron las verificaciones alternativas anteriores. No se afirma que se haya probado un ingreso exitoso real ni la entrega de correo; el primer registro/confirmación lo hace el usuario con su correo.
+- La red del entorno impide abrir supabase.co y vercel.app; el navegador de escritorio tampoco pudo iniciar la revisión web. Pruebas de UI locales y preflight remoto separan esta limitación del funcionamiento del deployment.
+
 ## Alcance pedido
 
 El usuario amplió el alcance: registro e inicio de sesión reales, usuarios consumidores y de comercios, navegación automática según cuenta, administración privada para los cuatro fundadores y logo de entrada circular sin fondo cuadrado. Autorizó crear un Supabase separado y pausar «MVP nativa digital» para liberar el cupo gratuito. Proporcionó las cuatro direcciones exactas; no se publica la lista en el frontend ni en el repositorio.
@@ -27,7 +44,7 @@ El usuario amplió el alcance: registro e inicio de sesión reales, usuarios con
 - La prueba del prototipo sin cuentas se conserva en `app/tests/legacy/demo.cjs`, aplicable al commit bc50bdc.
 - No se afirma una prueba con Auth real, emails ni advisors remotos: todavía no hay proyecto APROVECHO.
 
-## Bloqueo real de Supabase
+## Bloqueo de Supabase · historial resuelto
 
 La cuenta conectada solo tiene los proyectos «ropa» (`czkmnkfuodznccfhibpv`) y «MVP nativa digital» (`oxcgtzknqwkigynrvllq`), organización «Cursala simple» (`uxiywfurodyqxfxiqwjt`).
 
@@ -39,10 +56,10 @@ La cuenta conectada solo tiene los proyectos «ropa» (`czkmnkfuodznccfhibpv`) y
 
 No se pausó ni se borró ningún proyecto y no se escribió en bases ajenas. Se consultó al usuario si autoriza pausar «ropa» o si resuelve la pausa de MVP desde su panel. No repetir el circuito fallido sin una nueva señal o decisión.
 
-## Para activar y publicar
+## Activación inicial · historial resuelto
 
 `supabase/README.md` contiene los pasos. Resolver el cupo; crear proyecto; inspeccionar esquema y aplicar migración remota; cargar lista privada de cuatro fundadores; configurar Auth Site URL y allowlist de redirecciones; obtener URL y publishable key; completar auth-config.js; verificar Auth, RLS y correo reales; ejecutar advisors; publicar en Vercel. Las direcciones aportadas se conservaron en SQL de preparación local bajo work/, no versionado. Si ese scratch no sobrevive, recuperar la imagen del usuario.
 
 El CLI 3.1.0 instalado en work no pudo crear el archivo de migración porque intenta escribir configuración en /home/agent/.supabase. Se conserva schema.sql sin inventar nombre con timestamp; usar apply_migration de MCP para la migración remota.
 
-La demo anterior **sigue publicada** en https://aprovecho-app-demo.vercel.app. No se reemplazó por un ingreso deshabilitado. IA, pagos, balanza y operaciones de packs siguen simulados; esta ampliación cubre cuentas, datos de comercio y administración.
+La versión con cuentas reemplazó la demo anterior en el mismo enlace después de configurar el proyecto. IA, pagos, balanza y operaciones de packs siguen simulados; esta ampliación cubre cuentas, datos de comercio y administración.

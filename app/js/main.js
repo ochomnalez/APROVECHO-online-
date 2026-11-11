@@ -429,7 +429,8 @@ pintar('auth/ingresar', 'fade');
 let cuentaActiva = null;
 iniciarAuth(() => {
   const id = cuenta.user?.id || null;
-  if (id !== cuentaActiva) {
+  const cambioCuenta = id !== cuentaActiva;
+  if (cambioCuenta) {
     seleccionarCuenta(id); cuentaActiva = id;
   }
   if (cuenta.profile) {
@@ -443,7 +444,8 @@ iniciarAuth(() => {
     }
     guardar();
   } else { S.rol=null; guardar(); }
-  ir(inicio(), {raiz:true});
+  if (cambioCuenta || cuenta.recovery || !rutaPermitida(nav.ruta)) ir(inicio(), {raiz:true});
+  else nav.render();
 });
 
 // pantalla de carga verde: se va cuando la app ya se dibujó (y se ve por lo menos un instante)
