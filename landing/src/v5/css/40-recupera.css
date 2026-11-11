@@ -1,4 +1,4 @@
-/* ---------- v5 · 01 Recuperá · Plan Base (la app se desarma capa por capa) ---------- */
+/* ---------- v5 · 01 Recuperá · Plan Base (un teléfono con las pantallas reales de la app) ---------- */
 .rc{--rc-g:#1f8a4c}
 .rc__ch{max-width:470px}
 .rc .ch__title{font-size:clamp(2.5rem,4.6vw,4.1rem)}
@@ -17,67 +17,82 @@ html:not(.motion) .rc .rc-st small{color:var(--text-2)}
 .rc-close{margin-top:18px;font-size:1rem;color:var(--text-2)}
 .rc-close strong{color:var(--forest)}
 
-/* escenario: la pila se dibuja en «em» para escalar entera con el ancho disponible */
 .rc-stage{min-width:0}
-.rc-box{container-type:inline-size;width:100%;max-width:820px;margin-inline:auto}
-.rc-board{position:relative;width:74em;height:80em;margin-inline:auto;--pitch:13.5em;
-  --u:min(calc(100cqw / 74),max(calc((100svh - 170px) / 80),5.2px));font-size:var(--u)}
-.rc-stack{position:absolute;inset:0;perspective:240em}
-.rc-pl,.rc-labw{position:absolute;width:33em;height:23em;top:calc(2em + var(--i,0) * var(--pitch))}
-.rc-pl{left:4em;transform-style:preserve-3d;will-change:transform}
-.rc-pl[data-i="0"],.rc-labw[data-i="0"]{--i:0;z-index:5}
-.rc-pl[data-i="1"],.rc-labw[data-i="1"]{--i:1;z-index:4}
-.rc-pl[data-i="2"],.rc-labw[data-i="2"]{--i:2;z-index:3}
-.rc-pl[data-i="3"],.rc-labw[data-i="3"]{--i:3;z-index:2}
-.rc-pl[data-i="4"],.rc-labw[data-i="4"]{--i:4;z-index:1}
-.rc-layer{position:absolute;inset:0;overflow:hidden;border-radius:2.6em;background:#fff;border:1px solid #d3dbd6;
-  box-shadow:-3em 4em 5em rgba(0,0,0,.15);transform:rotateX(58deg) rotateZ(-38deg);
-  transition:border-color .35s var(--ease-out),box-shadow .35s var(--ease-out)}
-.rc-layer.is-on{border:2px solid var(--forest);box-shadow:-3em 4.2em 6em rgba(26,77,58,.38)}
-.rc-layer>img{display:block;width:100%;height:100%;object-fit:cover}
-
-/* 2 · lo que reconoce */
-.rc-l2>img{opacity:.34}
-.rc-l2{background:rgba(255,255,255,.86)}
-.rc-det{position:absolute;inset:0;width:100%;height:100%}
-.rc-det rect{fill:rgba(31,138,76,.08);stroke:var(--rc-g);stroke-width:3;stroke-dasharray:100;stroke-dashoffset:0;vector-effect:non-scaling-stroke}
-.rc-tag{position:absolute;padding:.25em .7em;border-radius:.6em;background:var(--rc-g);font:700 1.3em/1.2 var(--font-body);color:#fff;white-space:nowrap}
-
-/* 3 · packs */
-.rc-pk{position:absolute;left:2.2em;right:2.2em;height:9.2em;display:grid;grid-template-columns:6.4em 1fr;grid-template-rows:auto auto;align-content:center;column-gap:1.1em;padding:1em;border:1.5px solid #d3dbd6;border-radius:1.5em;background:#fff}
-.rc-pk>img{grid-row:1 / 3;width:6.4em;height:6.4em;border-radius:1.1em;object-fit:cover}
-.rc-pk__t{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .7em;min-width:0}
-.rc-pk__t b{flex:0 0 100%;font:700 1.75em/1.25 var(--font-body);color:var(--ink)}
-.rc-pk__t s{font-size:1.5em;color:var(--muted);text-decoration-thickness:1px}
-.rc-pk__t em{font:700 2.8em/1.05 var(--font-display);font-style:normal;letter-spacing:-.02em;color:var(--forest)}
-.rc-chips{display:flex;gap:.5em;margin-top:.5em}
-.rc-chips i{font:700 1.15em/1 var(--font-body);font-style:normal;padding:.45em .7em;border-radius:99px;background:var(--mint);color:var(--forest);white-space:nowrap}
-
-/* 4 · QR ilustrativo */
-.rc-qr{position:absolute;left:50%;top:50%;width:17.5em;height:17.5em;margin:-8.75em 0 0 -8.75em}
-/* 5 · la plata */
-.rc-l5{background:var(--mint);border-color:#c9ecbf}
-.rc-pay{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:var(--forest)}
-.rc-pay span{font:700 2em/1.2 var(--font-body)}
-.rc-pay b{display:block;font:700 6.4em/1 var(--font-display);letter-spacing:-.04em}
-
-/* rótulos */
-.rc-lab.callout{left:calc(var(--u) * 38.8);top:calc(var(--u) * 10.5);padding-left:var(--rc-ln,56px);white-space:normal;width:calc(var(--u) * 35);max-width:19rem}
-.rc-lab.callout::before{width:calc(var(--rc-ln,56px) - 10px)}
-.rc-labw{left:0;pointer-events:none}
-.rc-labw .callout{pointer-events:auto}
 .rc-note{margin-top:6px;text-align:center;font-size:.8125rem;color:var(--muted)}
-.rc-labs{position:absolute;inset:0}
+.rc-scr{margin:0}
+.rc-scr__in{position:relative}
+.rc-scr__in img{display:block;width:100%;height:auto}
+.rc-scr__cap{display:none}
+
+/* ---------- SIN movimiento: las pantallas en orden, una grilla legible ---------- */
+html:not(.motion) .rc__in{grid-template-columns:minmax(0,1fr)}
+html:not(.motion) .rc__ch{max-width:640px}
+html:not(.motion) .rc-frame,html:not(.motion) .rc-sb,html:not(.motion) .rc-labs,html:not(.motion) .rc-dots{display:none}
+html:not(.motion) .rc-screens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}
+@media(min-width:600px){html:not(.motion) .rc-screens{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1000px){html:not(.motion) .rc-screens{grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 18px}}
+html:not(.motion) .rc-scr__in{overflow:hidden;border:1px solid var(--line-2);border-radius:16px;background:var(--bg)}
+html:not(.motion) .rc-scr__cap{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:.875rem;font-weight:700;line-height:1.25;color:var(--ink)}
+html:not(.motion) .rc-scr__cap b{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--forest);font:700 .75rem var(--font-display);color:#fff}
+html:not(.motion) .rc-tap{display:none}
+
+/* ---------- CON movimiento: el teléfono ---------- */
+.motion .rc-scene{--u:min(10px,max(5px,calc((100svh - var(--nav-h) - 96px) / 73)));font-size:var(--u);
+  display:grid;grid-template-columns:auto 190px;grid-template-areas:"ph lb" "dt .";justify-content:center;column-gap:14px;
+  padding:0 24px 56px;contain:layout paint}
+.motion .rc-phone{grid-area:ph;position:relative;width:32em;height:70.12em}
+.motion .rc-phone::before{content:"";position:absolute;inset:0;border-radius:4.6em;
+  box-shadow:0 2.6em 4.6em -1.8em rgba(15,51,38,.34),0 .8em 1.6em -.8em rgba(0,0,0,.2)}
+.motion .rc-screens{position:absolute;left:1em;top:1em;width:30em;height:68.12em;overflow:hidden;background:#fff}
+.motion .rc-scr{position:absolute;inset:0;padding-top:3.2em;background:var(--bg);backface-visibility:hidden}
+.motion .rc-scr:not(:first-child){visibility:hidden;opacity:0}
+.rc-frame{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:4}
+.rc-sb{position:absolute;left:1em;top:1em;width:30em;height:3.2em;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:0 2.7em;pointer-events:none}
+.rc-sb__t{font:700 1.3em/1 var(--font-body);color:#0b0b0b}
+.rc-sb__i{position:absolute;left:50%;top:.75em;width:8.8em;height:2.1em;margin-left:-4.4em;border-radius:1.05em;background:#0b0b0b}
+.rc-sb__s{width:4.4em;height:1.4em;margin-top:.1em}
+
+/* toque ilustrado sobre el botón que se aprieta */
+.rc-tap{position:absolute;width:2.6em;height:2.6em;margin:-1.3em 0 0 -1.3em;border-radius:50%;opacity:0;pointer-events:none;
+  background:rgba(236,246,239,.92);border:.17em solid rgba(26,77,58,.6);transform:scale(.5)}
+.rc-tap::after{content:"";position:absolute;inset:-.17em;border-radius:50%;border:.17em solid rgba(236,246,239,.95);opacity:0}
+.motion .rc-scr.is-cur .rc-tap{opacity:1;transform:scale(1);transition:opacity .25s .7s,transform .35s .7s var(--ease-out);animation:rc-press 1.9s 1s ease-in-out infinite}
+.motion .rc-scr.is-cur .rc-tap::after{animation:rc-pulse 1.9s 1s ease-out infinite}
+@keyframes rc-press{0%,55%,100%{transform:scale(1)}28%{transform:scale(.8)}}
+@keyframes rc-pulse{0%{transform:scale(1);opacity:0}20%{opacity:.9}100%{transform:scale(2.3);opacity:0}}
+
+/* rótulo que cambia junto al teléfono */
+.motion .rc-labs{grid-area:lb;position:relative}
+.motion .rc-lab.callout{left:-8px;right:0;top:var(--ty,30%);padding-left:44px;white-space:normal;color:var(--ink);
+  opacity:0;visibility:hidden;transform:translate(-10px,-25px);
+  transition:opacity .3s var(--ease-out),transform .35s var(--ease-out),visibility 0s .3s,color .3s}
+.motion .rc-lab.callout::before{top:25px;width:34px}
+.motion .rc-lab.callout::after{content:"";position:absolute;left:-3px;top:21.5px;width:7px;height:7px;border-radius:50%;background:var(--forest)}
+.motion .rc-lab.callout.is-on{opacity:1;visibility:visible;transform:translate(0,-25px);transition-delay:.12s,.12s,0s,0s}
+.rc-lab__k{display:block;margin-bottom:2px;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.2;color:var(--forest)}
+.rc-lab small{margin-top:2px;line-height:1.3}
+
+/* indicador de pasos: 10 segmentos, agrupados por paso */
+.motion .rc-dots{grid-area:dt;justify-self:center;display:flex;align-items:center;margin-top:2.4em}
+.rc-dots i{display:block;width:2.4em;height:.6em;margin-left:.5em;border-radius:.3em;background:#cfd8d3;transition:background-color .3s}
+.rc-dots i.rc-g{margin-left:1.3em}
+.rc-dots i:first-child{margin-left:0}
+.rc-dots i.is-done{background:var(--sage)}
+.rc-dots i.is-cur{background:var(--forest)}
 
 /* ---------- escritorio ---------- */
 @media(min-width:900px){
   .rc{padding-top:calc(var(--nav-h) + 8px);padding-bottom:16px}
-  .rc__in{gap:32px;min-height:calc(100svh - var(--nav-h) - 24px)}
-  .rc-lab.callout{--rc-ln:clamp(34px,4.6vw,66px)}
+  .motion .rc__in{gap:32px;min-height:calc(100svh - var(--nav-h) - 24px)}
 }
 @media(min-width:900px) and (max-width:1199px){
   .rc__in{grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);gap:20px}
+  html:not(.motion) .rc__in{grid-template-columns:minmax(0,1fr)}
   .rc__ch{max-width:none}
+  .motion .rc-scene{grid-template-columns:auto 158px;column-gap:10px;padding-inline:8px}
+  .motion .rc-lab.callout{padding-left:36px;font-size:.875rem}
+  .motion .rc-lab.callout::before{width:26px}
+  .rc-lab small{font-size:.75rem}
 }
 @media(min-width:900px) and (max-height:820px){
   .rc .ch__title{font-size:clamp(2.3rem,3.8vw,3.1rem)}
@@ -95,24 +110,25 @@ html:not(.motion) .rc .rc-st small{color:var(--text-2)}
   .rc-close{margin-top:10px;font-size:.875rem}
 }
 
-/* ---------- celular ---------- */
+/* ---------- celular: el teléfono queda arriba mientras se leen los pasos ---------- */
 @media(max-width:899px){
   .rc{padding-top:32px}
-  .rc__in{gap:24px}
+  .rc__in{display:flex;flex-direction:column;gap:24px}
   .rc-stage{order:-1}
-  .rc-box{max-width:480px}
-  .rc-board{width:72em;height:68em;--pitch:11em;--u:calc(100cqw / 72);font-size:var(--u);--rc-ln:20px}
-  .rc-lab.callout{left:calc(var(--u) * 38.6);top:calc(var(--u) * 9.5);width:calc(var(--u) * 33.4);font-size:.75rem;line-height:1.25;padding-left:24px;max-width:none}
-  .rc-lab.callout::before{width:16px}
-  .rc-lab.callout small{font-size:.6875rem}
-  .rc-pl{left:3em}
-  .rc-labw{height:23em}
   .rc .ch__title{font-size:clamp(2.4rem,11vw,3.4rem)}
+  .motion .rc-stage{position:sticky;top:var(--nav-h);z-index:3;background:var(--soft);margin-inline:calc(var(--gutter) * -1);padding:8px var(--gutter) 4px;border-bottom:1px solid var(--line)}
+  .motion .rc-stage .rc-note{display:none}
+  .motion .rc-scene{--u:min(calc(43svh / 70.2),calc(44vw / 32));grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ph lb" "ph dt";grid-template-rows:1fr auto;
+    column-gap:16px;padding:0;justify-content:start}
+  .motion .rc-phone::before{box-shadow:0 .8em 1.8em -.8em rgba(15,51,38,.3)}
+  .motion .rc-lab.callout{top:50%;left:0;padding-left:26px;font-size:.875rem;line-height:1.25;transform:translate(-8px,-1.1rem)}
+  .motion .rc-lab.callout.is-on{transform:translate(0,-1.1rem)}
+  .motion .rc-lab.callout::before{top:1.55rem;width:18px}
+  .motion .rc-lab.callout::after{top:calc(1.55rem - 3.5px)}
+  .rc-lab small{font-size:.75rem}
+  .motion .rc-dots{justify-self:start;margin-top:0;align-self:end;margin-bottom:.4em;font-size:max(var(--u),4.4px)}
+  .rc-dots i{width:1.9em;height:.55em}
 }
-.motion .rc-stage{--keep:1}
-@media(max-width:899px){
-  .motion .rc-stage{position:sticky;top:var(--nav-h);z-index:3;background:var(--soft);padding:6px 0 4px;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);box-shadow:0 12px 14px -12px rgba(11,11,11,.22)}
+@media(max-width:899px) and (max-height:700px){
+  .motion .rc-scene{--u:min(calc(40svh / 70.2),calc(44vw / 32))}
 }
-/* con movimiento, la pila arranca compacta: la base de las capas es la misma y la separa GSAP */
-.motion .rc-pl,.motion .rc-labw{top:2em}
-.motion .rc-labw{opacity:1}

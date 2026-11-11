@@ -1,106 +1,111 @@
-/* APROVECHO · landing v5 · 01 Recuperá (Plan Base): la app se desarma capa por capa al bajar.
-   Solo corre con html.motion; sin eso la pila queda desarmada y estática (CSS). */
+/* APROVECHO · landing v5 · 01 Recuperá (Plan Base): un teléfono con las pantallas reales de la app.
+   Escritorio: la sección se fija y las pantallas pasan con el scroll (deslizamiento + fundido).
+   Celular: el teléfono queda arriba y cada paso del texto activa sus pantallas.
+   Solo anima transform/opacity de las capas de pantalla; sin html.motion queda una grilla estática. */
 APV5.scene('recupera', function (ctx) {
   'use strict';
   var gsap = ctx.gsap, ScrollTrigger = ctx.ScrollTrigger;
   var root = document.getElementById('plan-base');
   if (!root) return;
   var $$ = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
-  var pls = $$('.rc-pl'), labws = $$('.rc-labw'), labs = $$('.rc-lab'), layers = $$('.rc-layer');
-  var lis = $$('.ch__steps li'), rects = $$('.rc-det rect'), tags = $$('.rc-tag');
-  var amount = root.querySelector('.rc-amount');
-  var stage = root.querySelector('.rc-stage');
-  if (pls.length !== 5 || labws.length !== 5 || lis.length !== 5) return;
-  var H = 23; // alto de una placa, en em (las posiciones se animan en % de ese alto: escalan solas)
+  var scr = $$('.rc-scr'), labs = $$('.rc-lab'), dots = $$('.rc-dots i'), lis = $$('.ch__steps li');
+  var N = scr.length;
+  if (!N || labs.length !== N || dots.length !== N || lis.length !== 5) return;
+  var stepOf = scr.map(function (s) { return +s.getAttribute('data-step'); });
 
-  // recuadros de detección: se dibujan al activarse el paso 2
-  var detTl = gsap.timeline({ paused: true })
-    .fromTo(rects, { strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.out', stagger: 0.14 }, 0)
-    .fromTo(tags, { autoAlpha: 0, y: 5 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power2.out', stagger: 0.14 }, 0.35);
-  detTl.progress(0);
-  var counter = { v: 4575 };
-  function fmt(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
+  // las pantallas se piden un poco antes de llegar, para que no aparezcan vacías al deslizar
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      scr.forEach(function (s) { var im = s.querySelector('img'); if (im) im.loading = 'eager'; });
+    }, { rootMargin: '150% 0px' });
+    io.observe(root);
+  }
 
-  var cur = { idx: -2, hl: -2 };
-  function apply(idx, hl) {
-    if (idx !== cur.idx) {
-      lis.forEach(function (li, i) { li.classList.toggle('is-on', i === idx); });
+  var cur = -1;
+  function paint(i) {
+    if (i === cur) return;
+    cur = i;
+    var st = stepOf[i];
+    for (var k = 0; k < N; k++) {
+      scr[k].classList.toggle('is-cur', k === i);
+      labs[k].classList.toggle('is-on', k === i);
+      dots[k].classList.toggle('is-cur', k === i);
+      dots[k].classList.toggle('is-done', k < i);
     }
-    if (hl !== cur.hl) {
-      layers.forEach(function (l, i) { l.classList.toggle('is-on', i === hl); });
-      labs.forEach(function (l, i) { l.classList.toggle('is-on', i === hl); });
-      pls.forEach(function (p, i) {
-        gsap.to(p, { xPercent: i === hl ? -4 : 0, scale: i === hl ? 1.045 : 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-      });
-      // detección
-      if (hl >= 1) detTl.play(); else detTl.reverse();
-      // conteo de la plata
-      if (amount) {
-        gsap.killTweensOf(counter);
-        if (hl === 4) {
-          counter.v = 0;
-          gsap.to(counter, { v: 4575, duration: 0.9, ease: 'power2.out', onUpdate: function () { amount.textContent = fmt(counter.v); }, onComplete: function () { amount.textContent = '$4.575'; } });
-        } else { counter.v = 4575; amount.textContent = '$4.575'; }
-      }
-    }
-    cur.idx = idx; cur.hl = hl;
+    for (var j = 0; j < lis.length; j++) lis[j].classList.toggle('is-on', j === st);
   }
   function reset() {
-    lis.forEach(function (li, i) { li.classList.toggle('is-on', i === 0); });
-    layers.concat(labs).forEach(function (l) { l.classList.remove('is-on'); });
-    gsap.killTweensOf(pls);
-    gsap.set(pls, { clearProps: 'all' });
-    detTl.progress(1);
-    if (amount) amount.textContent = '$4.575';
-    cur = { idx: -2, hl: -2 };
+    gsap.killTweensOf(scr);
+    gsap.set(scr, { clearProps: 'transform,opacity,visibility' });
+    scr.forEach(function (s) { s.classList.remove('is-cur'); });
+    labs.forEach(function (l) { l.classList.remove('is-on'); });
+    dots.forEach(function (d) { d.classList.remove('is-cur', 'is-done'); });
+    lis.forEach(function (li, j) { li.classList.toggle('is-on', j === 0); });
+    cur = -1;
   }
 
-  // separación de las capas (compacta -> desarmada) y aparición de los rótulos
-  function separation(tl, y0, c, pitch, t0, dur) {
-    pls.forEach(function (p, i) {
-      tl.fromTo(p, { yPercent: (y0 + c * i) / H * 100 }, { yPercent: pitch * i / H * 100, ease: 'power2.inOut', duration: dur }, t0 + i * dur * 0.05);
-    });
-    labws.forEach(function (w, i) {
-      tl.fromTo(w, { yPercent: (y0 + c * i) / H * 100 }, { yPercent: pitch * i / H * 100, ease: 'power2.inOut', duration: dur }, t0 + i * dur * 0.05);
-    });
-    labs.forEach(function (l, i) {
-      tl.fromTo(l, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, ease: 'power2.out', duration: dur * 0.28 }, t0 + dur * 0.4 + i * dur * 0.11);
-    });
-  }
-
-  // ---------- escritorio: la sección se fija y se recorre paso por paso ----------
+  // ---------- escritorio: sección fija, una pantalla por vez ----------
   ctx.mm.add(ctx.desktop, function () {
-    var SEP = 0.28, STEP = (1 - SEP) / 5;
+    var D = 0.5, HOLD = 0.9;
     var tl = gsap.timeline({ defaults: { ease: 'none' } });
-    separation(tl, 24.25, 1.4, 13.5, 0, 2.8);
-    tl.set({}, {}, 10);
-    apply(0, -1);
+    for (var i = 1; i < N; i++) {
+      tl.fromTo(scr[i], { xPercent: 100 }, { xPercent: 0, duration: D, ease: 'power2.inOut', immediateRender: true }, i);
+      tl.fromTo(scr[i], { autoAlpha: 0 }, { autoAlpha: 1, duration: D * 0.55, immediateRender: true }, i);
+      tl.to(scr[i - 1], { xPercent: -24, duration: D, ease: 'power2.inOut' }, i);
+      tl.to(scr[i - 1], { autoAlpha: 0, duration: D * 0.5 }, i + D * 0.4);
+    }
+    tl.to({}, { duration: HOLD }, N - 1 + D);
+    paint(0);
+    tl.eventCallback('onUpdate', function () {
+      var i = Math.floor(tl.time() - D / 2);
+      paint(i < 0 ? 0 : (i > N - 1 ? N - 1 : i));
+    });
     ScrollTrigger.create({
-      trigger: root, start: 'top top', end: '+=220%', pin: true, scrub: 0.6, anticipatePin: 1,
-      animation: tl, invalidateOnRefresh: true,
-      onUpdate: function (self) {
-        var p = self.progress;
-        if (p < SEP) apply(0, -1);
-        else { var i = Math.min(4, Math.floor((p - SEP) / STEP)); apply(i, i); }
-      }
+      trigger: root, start: 'top top', end: '+=320%', pin: true, scrub: 0.6, anticipatePin: 1,
+      animation: tl, invalidateOnRefresh: true
     });
     return function () { reset(); };
   });
 
-  // ---------- celular: pila chica y fija arriba; los pasos la activan al bajar ----------
+  // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
-    var tl = gsap.timeline({ defaults: { ease: 'none' } });
-    separation(tl, 19.2, 1.2, 11, 0, 1);
-    ScrollTrigger.create({ trigger: stage, start: 'top 92%', end: 'top 32%', scrub: 0.5, animation: tl, invalidateOnRefresh: true });
-    apply(0, -1);
-    lis.forEach(function (li, i) {
-      ScrollTrigger.create({
-        trigger: li, start: 'top 74%', end: 'bottom 74%',
-        onEnter: function () { apply(i, i); },
-        onEnterBack: function () { apply(i, i); },
-        onLeaveBack: function () { if (i === 0) apply(0, -1); }
+    var timer = 0, shown = 0;
+    gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
+    gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
+    paint(0);
+    function show(i) {
+      if (i === shown) return;
+      var dir = i > shown ? 1 : -1, prev = scr[shown], next = scr[i];
+      gsap.killTweensOf(scr);
+      scr.forEach(function (s, k) { if (k !== shown && k !== i) gsap.set(s, { autoAlpha: 0, xPercent: 100 }); });
+      gsap.set(next, { xPercent: 100 * dir, autoAlpha: 0 });
+      gsap.to(next, { xPercent: 0, duration: 0.55, ease: 'power3.out' });
+      gsap.to(next, { autoAlpha: 1, duration: 0.3, ease: 'none' });
+      gsap.to(prev, { xPercent: -24 * dir, duration: 0.55, ease: 'power3.out' });
+      gsap.to(prev, { autoAlpha: 0, duration: 0.3, ease: 'none', delay: 0.1 });
+      shown = i;
+      paint(i);
+    }
+    function play(st) {
+      clearTimeout(timer);
+      var idx = [];
+      stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
+      var n = 0;
+      show(idx[0]);
+      (function next() {
+        if (++n >= idx.length) return;
+        timer = setTimeout(function () { show(idx[n]); next(); }, 2100);
+      })();
+    }
+    var tr = lis.map(function (li, i) {
+      return ScrollTrigger.create({
+        trigger: li, start: 'top 64%', end: 'bottom 64%',
+        onEnter: function () { play(i); },
+        onEnterBack: function () { play(i); }
       });
     });
-    return function () { reset(); };
+    return function () { clearTimeout(timer); tr.forEach(function (t) { t.kill(); }); reset(); };
   });
 });

@@ -69,3 +69,35 @@
 }
 @media(min-width:1200px){.hr{--v1:46%;--v2:58%;--v3:76%}.hr__copy{max-width:min(52%,640px)}}
 @media(prefers-reduced-motion:reduce){.hr__clip.is-on{transition:none}.js .hr__copy>*{animation:fadein .3s ease both!important}.hr__cap.is-in{animation:none}}
+
+/* ===== Opción A (elegida por Octavio): pantalla completa, texto en blanco abajo a la izquierda, sin degradé blanco ===== */
+@media(min-width:900px){
+  .hr{align-items:flex-end;color:#fff}
+  .hr__veil{background:linear-gradient(180deg,rgba(0,0,0,.30) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 38%,rgba(0,0,0,.74) 100%),radial-gradient(120% 70% at 12% 100%,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 62%)}
+  .hr__in{padding-top:0;padding-bottom:clamp(96px,11vw,132px)}
+  .hr__copy{max-width:min(58%,760px)}
+  .hr__copy .eyebrow{color:var(--mint)}
+  .hr h1{color:#fff;font-size:clamp(3.4rem,6.4vw,6rem);max-width:12ch}
+  .hr h1 em{color:var(--mint)}
+  .hr__lead{color:rgba(255,255,255,.95);max-width:30em}
+  .hr .hero__actions .btn{background:#fff;border-color:#fff;color:var(--ink)}
+  .hr .hero__actions .btn--ghost{background:transparent;border-color:#fff;color:#fff}
+  .hr__foot{bottom:36px}
+  .hr__foot .wrap{display:flex;justify-content:flex-end}
+  .hr__pause{background:rgba(255,255,255,.14);border-color:#fff;color:#fff}
+  .hr__bar i{background:rgba(255,255,255,.45)}
+  .hr__bar b{background:#fff}
+  .hr__cap{color:#fff}
+}
+@media(hover:hover) and (pointer:fine) and (min-width:900px){
+  .hr .hero__actions .btn:hover{background:var(--mint);border-color:var(--mint);color:var(--forest-dark)}
+  .hr .hero__actions .btn--ghost:hover{background:#fff;border-color:#fff;color:var(--ink)}
+  .hr__pause:hover{background:#fff;color:var(--ink)}
+}
+@media(min-width:900px){
+  .hr__copy{max-width:min(47%,660px)}
+  .hr h1{font-size:clamp(3.2rem,5.7vw,5.5rem)}
+  .hr__lead{max-width:27em}
+  /* el teléfono del primer clip se corre a la derecha para que no quede debajo del texto (escala ≤1,2: sigue nítido a 1920) */
+  .hr__clip[data-clip^="1"] img,.hr__clip[data-clip^="1"] video{transform:scale(1.22) translateX(8.5%)}
+}
