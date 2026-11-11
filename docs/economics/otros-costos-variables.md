@@ -21,51 +21,45 @@ Para aclarar en el texto:
 - La alícuota de Ingresos Brutos depende de la actividad y del tamaño de facturación. En el texto de la ley hay que buscar el código de la actividad en el anexo; no lo pude leer completo, así que el 5 % queda como valor simplificado.
 - Se usa el 6 % como estimación; no se descuenta el IVA ni lo que se pueda restar del impuesto a las Ganancias. Se dice así: "estimamos un 6 % de impuestos sobre lo que cobramos".
 
-## 2. Estación Smart: costo de inteligencia artificial
+## 2. Estación Smart: costo de inteligencia artificial (Codex)
 
-La idea: la estación Smart tiene un asistente de inteligencia artificial que ayuda a controlar la tablet y a dar asistencia cuando algo falla. Para ponerle precio se toma lo que cuesta un servicio de ese tipo por mes, como estimación.
+La idea: la estación Smart usa un servicio de inteligencia artificial (Codex, de OpenAI) para controlar la tablet y dar asistencia cuando algo falla. Para ponerle precio se toma lo que cuesta ese servicio por mes, como estimación.
 
-| Referencia | Precio | Link |
+| Referencia | Precio | Link oficial |
 |---|---|---|
-| Plan individual de Claude (Pro) | USD 20 por mes (USD 17 por mes pagando el año) | https://claude.com/pricing |
-| Plan de equipo de Claude, puesto estándar | USD 25 por mes (USD 20 pagando el año) | https://claude.com/pricing |
+| ChatGPT Plus (incluye Codex) | USD 20 por mes | https://learn.chatgpt.com/docs/pricing |
+| ChatGPT Business, por usuario (incluye Codex) | USD 20 por mes pagando el año; USD 25 mes a mes (mínimo 2 usuarios) | https://learn.chatgpt.com/docs/pricing |
+| ChatGPT Pro (incluye Codex, más uso) | USD 100, 200 o 500 por mes | https://learn.chatgpt.com/docs/pricing |
 
-Estimación para la planilla: **USD 20 por mes** por estación Smart (hoy la planilla tiene USD 15; sube USD 5).
+(La dirección https://developers.openai.com/codex/pricing redirige a esa misma página.)
 
-Aclaración que conviene saber: los planes de arriba son para que una persona use el asistente. Cuando una empresa lo mete dentro de su propio producto, se paga por uso con la API. Los planes sirven acá como referencia de precio. Cuenta con la API para ver si USD 20 alcanza (los supuestos son míos):
-- 300 consultas por mes, cada una con 2.000 unidades de entrada y 500 de salida.
-- Modelo chico (Claude Haiku 5.5, USD 0,10 por millón de entrada y USD 0,50 por millón de salida): USD 0,14 por mes.
-- Modelo mediano (Claude Sonnet 5.5, USD 2 y USD 10): USD 2,70 por mes.
-- Precios: https://platform.claude.com/docs/en/about-claude/pricing
+Estimación para la planilla: **USD 20 por mes** por estación Smart (el precio del plan Plus). Hoy la planilla tiene USD 15; sube USD 5.
 
-Los USD 20 quedan muy por arriba del gasto estimado. Es prudente.
+Lo que no pude confirmar: el precio por uso de la API de OpenAI (la página oficial https://openai.com/api/pricing me dio error 403). Cuando una empresa mete la herramienta dentro de su propio producto, lo normal es pagar por uso con la API y no con un plan. Falta abrir esa página para ver cuánto sería. Si me pasás los precios, hago la cuenta de control.
 
 ## 3. Estación Intelligence: costo de inteligencia artificial
 
-Lo mismo que Smart (el asistente de la tablet) más lo que procesa la inteligencia artificial para las predicciones, los avisos y las recomendaciones.
+Lo mismo que Smart (Codex en la tablet) más lo que procesa la inteligencia artificial para las predicciones, los avisos y las recomendaciones.
 
 | Parte | Estimación por mes | Cómo sale |
 |---|---|---|
-| Asistente de la tablet (igual que Smart) | USD 20 | Referencia de precio del plan |
-| Predicciones, avisos y recomendaciones | USD 25 | Supuesto de la planilla (hoy son USD 30 de "procesamiento"); abajo la cuenta de control |
+| Asistente de la tablet (igual que Smart) | USD 20 | Precio del plan Plus |
+| Predicciones, avisos y recomendaciones | USD 25 | Supuesto del equipo (hoy son USD 30 de "procesamiento") |
 | **Total** | **USD 45** | Igual que ahora |
 
-Cuenta de control con la API (supuestos míos): 1 informe por día de 30.000 unidades de entrada y 3.000 de salida, y 20 avisos por día de 2.000 de entrada y 300 de salida.
-- Modelo chico (Haiku 5.5): USD 0,34 por mes.
-- Modelo mediano (Sonnet 5.5): USD 6,90 por mes.
-
-Los USD 25 también quedan por arriba. Se puede decir que es un margen para sucursales con mucho movimiento y para usar el modelo más caro cuando haga falta.
+El USD 25 queda como supuesto hasta tener los precios de la API.
 
 ## Cambios que implican en la planilla
 
 | Línea | Antes | Ahora |
 |---|---|---|
 | Impuestos | 6,2 % | 6 % |
-| Estación Smart por mes | USD 15 (conectividad y soporte) | USD 20 (inteligencia artificial) |
+| Estación Smart por mes | USD 15 (conectividad y soporte) | USD 20 (inteligencia artificial, Codex) |
 | Estación Intelligence por mes | USD 45 (15 + 30 de procesamiento) | USD 45 (20 + 25 de inteligencia artificial) |
 
 Efecto sobre los costos de 2031 (72 clientes Smart): sube USD 4.320 por año. Intelligence no cambia.
 
 ## Para revisar
 - La conectividad (SIM o wifi) y el bloqueo de la tablet ya no están en el costo. Si se saca la conectividad, hay que decir que el comercio pone su wifi.
+- **Codex ya está en los costos fijos** (línea "Codex", USD 480 por año = dos planes Plus). Si ahora también es el costo de cada estación, hay que aclarar cuál es cuál: el del equipo que desarrolla y mantiene la plataforma (fijo) y el del servicio que usa cada estación (variable). Si no, se cuenta dos veces.
 - Soporte técnico: ya aparece como "Equipo de Soporte" en los costos fijos; con este cambio no se cuenta dos veces.
