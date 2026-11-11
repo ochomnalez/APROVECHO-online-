@@ -12,7 +12,7 @@
 .ps__link i{position:absolute;inset:0;display:block;background:var(--forest);transform-origin:0 0}
 /* con movimiento, los pasos «apagados» se ven vacíos hasta que la línea llega */
 .motion .ps__step:not(.is-on) .ps__n{background:#fff;color:var(--muted-2);border-color:var(--line-2)}
-.motion .ps__step:not(.is-on) .ps__body{opacity:.55}
+.motion .ps__step:not(.is-on) .ps__body{opacity:.78}
 .ps__body{transition:opacity .35s var(--ease-out)}
 .ps__foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(32px,5vw,56px)}
 .ps__free{font-family:var(--font-display);font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
