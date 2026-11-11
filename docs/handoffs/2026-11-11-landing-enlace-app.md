@@ -20,7 +20,9 @@ Enlace indicado por el usuario; sin cambios de diseño ni contenido. Se usa la m
 
 ## Pendientes y próximo agente
 
-Publicar esta rama en el proyecto Vercel existente `aprovecho-landing` y confirmar READY. No requiere cambios en la app ni en Supabase.
+Publicado en https://aprovecho-landing.vercel.app/. Vercel confirmó READY y alias para `dpl_o26rnqrqktjuQhoZ8fCewgKqrLJJ`, fuente `54863e6ceef64d32467d671729f7d88e4cb7bd51`. No requiere cambios en la app ni en Supabase.
+
+PR borrador: https://github.com/ochomnalez/APROVECHO-online-/pull/9 hacia la integración. Hereda la historia de la última landing (45 commits respecto de integración); GitHub informa conflictos heredados que debe revisar el líder al integrar. No se modificaron ramas ajenas.
 
 ## Costo
 
