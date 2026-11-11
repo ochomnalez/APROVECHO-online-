@@ -522,11 +522,9 @@ APV5.scene('onboarding', function (ctx) {
   function enter() {
     g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
     g.set(poster, { scale: 1.07 });
-    g.set(chaps.map(function (b) { return b.parentNode; }), { opacity: 0, y: 22 });
     g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
       .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
-      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0)
-      .to(chaps.map(function (b) { return b.parentNode; }), { opacity: 1, y: 0, duration: 0.6, stagger: 0.07 }, 0.35);
+      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
   }
   ctx.mm.add(ctx.desktop, enter);
   ctx.mm.add(ctx.mobile, function () {
@@ -739,9 +737,8 @@ APV5.scene('medi', function (ctx) {
     var tl = gsap.timeline({ defaults: { ease: 'none' } });
     gsap.set(datums, { opacity: 0 });
     ST.separate(tl, stage, m.at, m.dur, m.k);
-    tl.fromTo(datums[0], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.a)
-      .fromTo(datums[1], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.b)
-      .to({}, { duration: .4 }, m.total - .4);
+    if (datums[0]) tl.fromTo(datums[0], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.a);
+    tl.to({}, { duration: .4 }, m.total - .4);
     return tl;
   }
   var D = { at: .6, dur: 4, k: 1, a: 5, b: 7.7, total: 10 };
@@ -808,11 +805,7 @@ APV5.scene('anticipa', function (ctx) {
   var full = root.querySelector('.an-full');
   var frame = root.querySelector('.an-frame');
   var cap = root.querySelector('.an-cap');
-  var line = root.querySelector('.an-line__m');
-  var dots = root.querySelectorAll('.an-line__dots circle');
-  var pt = root.querySelector('.an-line__pt');
-  var base = root.querySelector('.an-line__base');
-  var note = root.querySelector('.an-note');
+  var rep = root.querySelector('.an-rep');
   var steps = root.querySelectorAll('.ch__steps li');
   if (!stage || !st || !bd) return;
   ST.bind(stage);
@@ -828,9 +821,8 @@ APV5.scene('anticipa', function (ctx) {
   function addBoard(tl, at, k, f) {
     gsap.set(full, { opacity: 0 });
     gsap.set(frame, { opacity: 0 });
-    gsap.set(line, { strokeDasharray: 1, strokeDashoffset: 1 });
-    gsap.set([dots, pt], { opacity: 0, transformOrigin: '50% 50%' });
-    gsap.set([base, note, cap], { opacity: 0 });
+    gsap.set(rep, { opacity: 0, y: 26 });
+    gsap.set(cap, { opacity: 0 });
     tiles.forEach(function (t, i) {
       var fr = FROM[i], n = ORDER.indexOf(i), s = at + (.4 + n * .35) * f;
       tl.fromTo(t, { xPercent: fr.x * k, yPercent: fr.y * k, rotation: fr.r * k, scale: .94, opacity: 0 },
@@ -846,13 +838,8 @@ APV5.scene('anticipa', function (ctx) {
       .to(cap, { opacity: 1, duration: .5 * f, ease: 'none' }, q(4.3))
       .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22 * f, ease: 'power2.out', transformOrigin: '50% 50%' }, q(4.1))
       .to(board, { scale: 1, duration: .38 * f, ease: 'power2.inOut' }, q(4.32))
-      // línea ilustrativa
-      .to(base, { opacity: 1, duration: .5 * f, ease: 'none' }, q(5.2))
-      .to(note, { opacity: 1, duration: .6 * f, ease: 'none' }, q(5.2))
-      .to(line, { strokeDashoffset: 0, duration: 2.2 * f, ease: 'none' }, q(5.5))
-      .to(pt, { opacity: 1, duration: .3 * f, ease: 'none' }, q(7.7))
-      .fromTo(pt, { scale: .3 }, { scale: 1, duration: .5 * f, ease: 'back.out(2.5)' }, q(7.7))
-      .to(dots, { opacity: 1, duration: .25 * f, stagger: .07 * f, ease: 'none' }, q(8.1));
+      // informe revisado por un analista
+      .to(rep, { opacity: 1, y: 0, duration: 1.6 * f, ease: 'power2.out' }, q(5.4));
   }
 
   // medidas del escenario: se leen una vez por refresh (no por cuadro)
@@ -990,4 +977,42 @@ APV5.scene('pasos', function (ctx) {
   }
   ctx.mm.add(ctx.desktop, function () { return run('x'); });
   ctx.mm.add(ctx.mobile, function () { return run('y'); });
+});
+
+/* 90-progreso.js */
+/* Barra de progreso a la izquierda: aparece mientras estás dentro de una escena con scroll (Recuperá, Medí, Anticipá)
+   y muestra cuánto avanzaste de esa escena. Es decorativa (aria-hidden): los pasos ya se leen en el texto. */
+APV5.scene('progreso', function (ctx) {
+  var ScrollTrigger = ctx.ScrollTrigger, gsap = ctx.gsap;
+  var ESCENAS = [['plan-base', '01'], ['plan-smart', '02'], ['plan-intelligence', '03']];
+  var bar = document.createElement('div');
+  bar.className = 'pg';
+  bar.setAttribute('aria-hidden', 'true');
+  bar.innerHTML = '<span class="pg__n"></span><span class="pg__track"><span class="pg__fill"></span></span><span class="pg__pct">0%</span>';
+  document.body.appendChild(bar);
+  var n = bar.querySelector('.pg__n'), fill = bar.querySelector('.pg__fill'), pct = bar.querySelector('.pg__pct');
+  var setY = gsap.quickSetter(fill, 'scaleY');
+  var activo = null;
+
+  function pinDe(sec) {
+    var all = ScrollTrigger.getAll();
+    for (var i = 0; i < all.length; i++) if (all[i].pin === sec) return all[i];
+    return null;
+  }
+  ESCENAS.forEach(function (e) {
+    var sec = document.getElementById(e[0]);
+    if (!sec) return;
+    ScrollTrigger.create({
+      trigger: sec,
+      invalidateOnRefresh: true,
+      // en escritorio sigue al pin real de la escena; sin pin (celular), a la sección entera
+      start: function () { var p = pinDe(sec); return p ? p.start : 'top 30%'; },
+      end: function () { var p = pinDe(sec); return p ? p.end : 'bottom 70%'; },
+      onToggle: function (self) {
+        if (self.isActive) { activo = e[0]; n.textContent = e[1]; bar.classList.add('is-on'); }
+        else if (activo === e[0]) { activo = null; bar.classList.remove('is-on'); }
+      },
+      onUpdate: function (self) { if (activo === e[0]) { setY(self.progress); pct.textContent = Math.round(self.progress * 100) + '%'; } }
+    });
+  });
 });

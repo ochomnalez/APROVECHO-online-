@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>APROVECHO · v5 · 3 estructuras</title>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:700;src:url(../../fonts/bricolage-grotesque-700.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:400 700;src:url(../../fonts/dm-sans-400-700.woff2) format('woff2')}
+:root{--ink:#0b0b0b;--forest:#1A4D3A;--mint:#DFFFD6;--soft:#F3F6F4;--line:#cfd8d3}
+*{box-sizing:border-box}body{margin:0;background:#bbb;font:400 15px/1.4 'DM Sans',sans-serif;color:var(--ink)}
+.f{position:relative;width:1440px;height:900px;background:#fff;margin:0 auto 24px;overflow:hidden}
+h2{font:700 54px/.98 'Bricolage Grotesque';letter-spacing:-.04em;margin:0}
+h3{font:700 22px/1.1 'Bricolage Grotesque';letter-spacing:-.02em;margin:0}
+.tag{position:absolute;left:0;top:0;z-index:30;background:var(--ink);color:#fff;font-weight:700;font-size:13px;letter-spacing:.08em;padding:8px 14px;border-radius:0 0 12px 0;text-transform:uppercase}
+.nav{position:absolute;left:0;right:0;top:0;height:68px;border-bottom:1px solid #e3e8e5;background:#fff;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:0 150px;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.nav i{width:44px;height:44px;border-radius:50%;background:var(--mint);border:2px solid var(--forest);display:block}
+.pill{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:99px;border:2px solid var(--ink);font-weight:700;font-size:14px;background:#fff}
+.pill.on{background:var(--ink);color:#fff}
+.box{border:1.5px solid var(--line);border-radius:16px;background:var(--soft);display:grid;place-items:center;color:#555;font-weight:700;font-size:13px;text-align:center;padding:10px}
+.box.dark{background:#2b2f2d;color:#fff;border-color:#2b2f2d}.box.mint{background:var(--mint);border-color:var(--forest);color:var(--forest)}.box.ph{background:linear-gradient(135deg,#3b2a1c,#a8763e);color:#fff;border:0}
+.cap{position:absolute;left:150px;right:150px;bottom:26px;font-size:15px;color:#333;display:flex;justify-content:space-between;gap:30px}
+.cap b{font-family:'Bricolage Grotesque';font-size:18px}
+.note{font-size:13px;color:#666}
+/* A */
+.a .rail{position:absolute;left:44px;top:200px;display:grid;gap:18px}.a .rail i{display:block;width:12px;height:12px;border-radius:50%;border:2px solid var(--forest)}.a .rail i.on{background:var(--forest);height:40px;border-radius:6px}
+.a .tabs{position:absolute;left:150px;top:120px;display:flex;gap:10px}
+.a .stage{position:absolute;left:150px;right:150px;top:190px;height:540px;display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+.a .map{position:absolute;right:48px;top:120px;display:grid;gap:8px;width:240px}
+.a .map div{height:46px}
+/* B */
+.b .strip{position:absolute;left:0;top:100px;height:600px;display:flex;gap:26px;padding-left:150px}
+.b .strip>div{flex:none;width:520px;height:600px;border-radius:22px}
+.b .prog{position:absolute;left:150px;right:150px;bottom:150px;height:4px;background:var(--line);border-radius:2px}.b .prog i{display:block;width:38%;height:100%;background:var(--forest);border-radius:2px}
+.b .lab{position:absolute;left:150px;bottom:120px;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest)}
+/* C */
+.c .big{position:absolute;left:150px;right:150px;top:120px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.c .big .pill{justify-content:center;height:54px;border-radius:18px;font-size:15px}
+.c .panel{position:absolute;left:150px;right:150px;top:200px;height:520px;display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;border:1.5px solid var(--line);border-radius:26px;padding:40px;background:var(--soft)}
+</style>
+</head>
+<body>
+
+<section class="f a" id="pa">
+  <span class="tag">A · Pantallas con riel y pestañas (5 pantallas, no 20)</span>
+  <div class="nav"><i></i><span>Menú ◌</span></div>
+  <div class="rail"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+  <div class="tabs"><span class="pill">Recuperá · Base</span><span class="pill on">Medí · Smart</span><span class="pill">Anticipá · Intelligence</span></div>
+  <div class="stage">
+    <div><h2>Pesá y entendé.</h2><p style="font-size:18px;margin-top:16px;max-width:360px">Los 3 planes viven en UNA pantalla con pestañas. El scroll mueve la escena (el teléfono, la estación) pero no hay que bajar tres veces.</p></div>
+    <div class="box" style="height:460px">Escena del plan elegido<br>(teléfono / estación 360° / tablero)</div>
+  </div>
+  <div class="map">
+    <div class="box dark">1 · Inicio (video + 2 botones)</div><div class="box mint">2 · Planes (pestañas)</div><div class="box">3 · Por qué sumar + Sumate en 3 pasos</div><div class="box">4 · Quiénes somos + Inversores</div><div class="box">5 · Preguntas + Contacto</div>
+  </div>
+  <div class="cap"><span><b>Cómo funciona:</b> el scroll salta de pantalla en pantalla (snap) con un riel a la izquierda; dentro de Planes cambiás de plan con pestañas.</span><span class="note">Pasa de ~20 pantallas de largo a 5.</span></div>
+</section>
+
+<section class="f b" id="pb">
+  <span class="tag">B · Recorrido horizontal (el scroll vertical mueve una tira)</span>
+  <div class="nav"><i></i><span>Menú ◌</span></div>
+  <div class="strip">
+    <div class="box">1 · Problema<br>58,4% + contadores</div>
+    <div class="box mint">2 · Recuperá<br>(teléfono con pantallas)</div>
+    <div class="box">3 · Medí<br>(estación 360°)</div>
+    <div class="box">4 · Anticipá<br>(tablero)</div>
+    <div class="box">5 · Por qué sumar</div>
+    <div class="box dark">6 · Sumate en 3 pasos<br>+ formulario</div>
+  </div>
+  <div class="lab">02 · Recuperá</div>
+  <div class="prog"><i></i></div>
+  <div class="cap" style="bottom:40px"><span><b>Cómo funciona:</b> después del inicio, UNA pantalla fija: al bajar, el contenido se desliza hacia el costado como una película; una barra de progreso muestra dónde estás. Al terminar, vuelve el scroll normal para Quiénes somos, preguntas y pie.</span><span class="note">El más "disruptivo"; mayor esfuerzo en celular (se vuelve vertical).</span></div>
+</section>
+
+<section class="f c" id="pc">
+  <span class="tag">C · Centro con 5 solapas grandes (sin scroll largo)</span>
+  <div class="nav"><i></i><span>Menú ◌</span></div>
+  <div class="big"><span class="pill on">Cómo funciona</span><span class="pill">Por qué sumar</span><span class="pill">Sumate</span><span class="pill">Quiénes somos</span><span class="pill">Preguntas</span></div>
+  <div class="panel">
+    <div><h3 style="font-size:40px">Cómo funciona</h3><p style="font-size:17px;margin-top:14px;max-width:340px">Sub-pestañas Recuperá · Medí · Anticipá. Cada solapa cambia el contenido con una transición, sin mover la página.</p><p style="margin-top:20px"><span class="pill on">Sumá tu comercio</span></p></div>
+    <div class="box" style="height:420px">Contenido de la solapa<br>(con sus escenas animadas dentro)</div>
+  </div>
+  <div class="cap"><span><b>Cómo funciona:</b> la portada con video queda arriba; debajo hay un panel fijo con 5 solapas. Es lo más corto y ordenado, pero el contenido deja de recorrerse con scroll.</span><span class="note">Muy claro; pierde parte del efecto "película".</span></div>
+</section>
+</body>
+</html>

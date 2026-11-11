@@ -63,11 +63,9 @@ APV5.scene('onboarding', function (ctx) {
   function enter() {
     g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
     g.set(poster, { scale: 1.07 });
-    g.set(chaps.map(function (b) { return b.parentNode; }), { opacity: 0, y: 22 });
     g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
       .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
-      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0)
-      .to(chaps.map(function (b) { return b.parentNode; }), { opacity: 1, y: 0, duration: 0.6, stagger: 0.07 }, 0.35);
+      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
   }
   ctx.mm.add(ctx.desktop, enter);
   ctx.mm.add(ctx.mobile, function () {

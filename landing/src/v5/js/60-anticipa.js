@@ -15,11 +15,7 @@ APV5.scene('anticipa', function (ctx) {
   var full = root.querySelector('.an-full');
   var frame = root.querySelector('.an-frame');
   var cap = root.querySelector('.an-cap');
-  var line = root.querySelector('.an-line__m');
-  var dots = root.querySelectorAll('.an-line__dots circle');
-  var pt = root.querySelector('.an-line__pt');
-  var base = root.querySelector('.an-line__base');
-  var note = root.querySelector('.an-note');
+  var rep = root.querySelector('.an-rep');
   var steps = root.querySelectorAll('.ch__steps li');
   if (!stage || !st || !bd) return;
   ST.bind(stage);
@@ -35,9 +31,8 @@ APV5.scene('anticipa', function (ctx) {
   function addBoard(tl, at, k, f) {
     gsap.set(full, { opacity: 0 });
     gsap.set(frame, { opacity: 0 });
-    gsap.set(line, { strokeDasharray: 1, strokeDashoffset: 1 });
-    gsap.set([dots, pt], { opacity: 0, transformOrigin: '50% 50%' });
-    gsap.set([base, note, cap], { opacity: 0 });
+    gsap.set(rep, { opacity: 0, y: 26 });
+    gsap.set(cap, { opacity: 0 });
     tiles.forEach(function (t, i) {
       var fr = FROM[i], n = ORDER.indexOf(i), s = at + (.4 + n * .35) * f;
       tl.fromTo(t, { xPercent: fr.x * k, yPercent: fr.y * k, rotation: fr.r * k, scale: .94, opacity: 0 },
@@ -53,13 +48,8 @@ APV5.scene('anticipa', function (ctx) {
       .to(cap, { opacity: 1, duration: .5 * f, ease: 'none' }, q(4.3))
       .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22 * f, ease: 'power2.out', transformOrigin: '50% 50%' }, q(4.1))
       .to(board, { scale: 1, duration: .38 * f, ease: 'power2.inOut' }, q(4.32))
-      // línea ilustrativa
-      .to(base, { opacity: 1, duration: .5 * f, ease: 'none' }, q(5.2))
-      .to(note, { opacity: 1, duration: .6 * f, ease: 'none' }, q(5.2))
-      .to(line, { strokeDashoffset: 0, duration: 2.2 * f, ease: 'none' }, q(5.5))
-      .to(pt, { opacity: 1, duration: .3 * f, ease: 'none' }, q(7.7))
-      .fromTo(pt, { scale: .3 }, { scale: 1, duration: .5 * f, ease: 'back.out(2.5)' }, q(7.7))
-      .to(dots, { opacity: 1, duration: .25 * f, stagger: .07 * f, ease: 'none' }, q(8.1));
+      // informe revisado por un analista
+      .to(rep, { opacity: 1, y: 0, duration: 1.6 * f, ease: 'power2.out' }, q(5.4));
   }
 
   // medidas del escenario: se leen una vez por refresh (no por cuadro)

@@ -201,9 +201,8 @@ APV5.scene('medi', function (ctx) {
     var tl = gsap.timeline({ defaults: { ease: 'none' } });
     gsap.set(datums, { opacity: 0 });
     ST.separate(tl, stage, m.at, m.dur, m.k);
-    tl.fromTo(datums[0], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.a)
-      .fromTo(datums[1], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.b)
-      .to({}, { duration: .4 }, m.total - .4);
+    if (datums[0]) tl.fromTo(datums[0], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.a);
+    tl.to({}, { duration: .4 }, m.total - .4);
     return tl;
   }
   var D = { at: .6, dur: 4, k: 1, a: 5, b: 7.7, total: 10 };
