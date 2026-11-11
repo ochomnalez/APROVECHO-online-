@@ -75,3 +75,4 @@
 | 2026-11-11 16:48 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `6dff129` | Economics: tablita 'CAC usuario' en la planilla v2 (paso a paso del 0,6432, chequeo contra 13.8 y costo con todo el presupuesto: 2,65) | Decidir si el costo por usuario del LTV usa todo el marketing |
 | 2026-11-11 16:53 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `ccce96c` | Economics: tablita 'CAC usuario' rehecha para un solo usuario (0,5833 + 0,0599 = 0,6432) | — |
 | 2026-11-11 17:02 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `a33707e` | Economics: hoja 'CAC comercio' en la planilla v2 (paso a paso del 29,49) | — |
+| 2026-11-11 17:04 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `f7b72ca` | Economics: referencias de precio para bolsas, sticker y envío del comercio nuevo (solo el dólar tiene fuente) | Pedir presupuestos de bolsa compostable con logo, sticker y envío AMBA |

@@ -31,3 +31,13 @@ Firma: claude-octi-lider · consulta: 11/11/2026
 - Balanza (USD 215), tablet (196), cable, hub, soporte: no hay precios argentinos a la vista; hay que entrar a Mercado Libre Argentina y copiar el link.
 - Bolsas (ARS 330), sticker (ARS 6.000), envío (USD 4), vendedor de calle (USD 27), instalación (USD 150): son presupuestos de proveedores; hay que pedirlos.
 - Visión por foto (USD 0,01), nube por pack, estación (USD 15 y 45), administración, plataforma e inversiones, marketing 2027: precios de herramientas o presupuestos.
+
+## Comercio nuevo (USD 29,49): de dónde sale cada precio (11/11/2026)
+
+| Dato | Valor | Fuente en el entregable | Referencia que encontré | Estado |
+|---|---|---|---|---|
+| Bolsas del primer lote | 100 | Ninguna: 13 y 14 dicen "primer lote" sin la cantidad; el 100 aparece solo en 16.2 | — | Supuesto del equipo |
+| Precio de cada bolsa | ARS 330 | Ninguna | Mercado Libre Argentina: bolsa kraft con asa, 100 unidades a ARS 26.190 (ARS 262 cada una; no es compostable ni lleva logo; publicación de 2025). Falta el link exacto | Parcial: el 330 es razonable pero hay que pedir presupuesto de bolsa compostable con logo (por ejemplo a Conciencia Circular) |
+| Sticker de vidriera con QR | ARS 6.000 | Ninguna | No encontré precios en pesos | Sin fuente: pedir presupuesto a una imprenta |
+| Envío del kit | USD 4 | Ninguna | Comparador de envíos (junio 2026): 2 kg por Correo Argentino de CABA a Córdoba, ARS 7.000 a 9.800 (USD 4,6 a 6,4). No es dentro del AMBA. https://servidos.ar/comparador-envios | Parcial: USD 4 queda algo bajo; cotizar en MiCorreo y Andreani |
+| Dólar | ARS 1.530 | Nota 14 (Banco Nación, 16/09/2026) | — | Con fuente |
