@@ -16,8 +16,12 @@
 
 Se incorpora a la rama de videos el mismo acceso a la app de `54863e6`, sin otros cambios de código. Frente al paquete publicado solo cambian los ocho assets de publica y balanza. Los archivos de trabajo de generación bajo `src/v6-pantallas` quedan fuera del paquete público por el script existente.
 
-Build correcto; tamaños fuente/build idénticos por SHA-256 (publica 1920: 1.668.225 bytes; balanza 1920: 2.876.541 bytes). Navegación a la app verificada en 390 y 1440 px y sin JS. Rotación real de los tres videos en escritorio verificada localmente, sin errores de consola, HTTP ni pedidos fallidos.
+Build correcto; tamaños fuente/build idénticos por SHA-256 (publica 1920: 1.668.225 bytes; balanza 1920: 2.876.541 bytes). Navegación a la app verificada en 390 y 1440 px y sin JS. Rotación real de los tres videos verificada localmente en escritorio (1920) y celular (1280), orden publica → balanza → entrega, sin errores de consola, HTTP ni pedidos fallidos.
 
-Pendiente: publicar la copia en un proyecto separado, conservar el dominio original y registrar la URL. El acceso HTTP desde este entorno a los dominios vercel.app devuelve bloqueo del proxy; el navegador remoto falla con «Browser Use could not read requirements». No se confunde la prueba local con una verificación de la URL real.
+Copia publicada: https://aprovecho-landing-videos.vercel.app/. Proyecto separado `prj_tVrLvxLlcRpCf2HdVDxnSFans3eA`, despliegue `dpl_4qWxs8vXqdPWB8f844apMekbyohx`, fuente `9888c7d66bc084d32217ce97fbe5b0106972f2fe`, READY y alias confirmados por API. El alias original sigue apuntando a `dpl_o26rnqrqktjuQhoZ8fCewgKqrLJJ`, verificado después de publicar la copia.
+
+Respaldo reproducible: `docs/handoffs/2026-11-11-landing-respaldo-manifiesto.json` registra los 141 archivos públicos de la versión estable con SHA-256, commit y comando de build. Comparación de ambos paquetes: solo cambian los ocho assets previstos, sin cambios en HTML/CSS/JS, tercer video ni demás imágenes.
+
+Próximo paso: Octavio revisa ambos enlaces; no se reemplazó producción original. El acceso HTTP desde este entorno a los dominios vercel.app devuelve bloqueo del proxy; el navegador remoto falla con «Browser Use could not read requirements». No se confunde la prueba local con una verificación de la URL real.
 
 Sin regeneraciones ni créditos de generación.
