@@ -2,7 +2,7 @@
 import { isoDia } from './util.js';
 import { CARTA_EJEMPLO, ubicarComercios, packsSemilla, HISTORIAL_CONSUMIDOR, CONFIG } from './data.js';
 
-const CLAVE = 'aprovecho_prototipo_plan'; // separada de la demo v3.2.1 publicada
+let CLAVE = 'aprovecho_prototipo_plan'; // separada de la demo v3.2.1 publicada
 export const ZONA_NORTE = { lat: -34.5087, lng: -58.4877, fuente: 'default', barrio: 'Olivos' };
 
 // ---------- reloj de la demo ----------
@@ -98,3 +98,9 @@ export const miComercio = () => S.comercios.find(c => c.esMio);
 export const producto = id => S.carta.find(p => p.id === id);
 export const packsActivos = () => S.packs.filter(p => p.dia === hoy() && p.estado === 'activo' && p.stock > 0);
 export const tienePlan = min => ({ basico: 0, smart: 1, intelligence: 2 })[S.plan] >= ({ basico: 0, smart: 1, intelligence: 2 })[min];
+
+// Cada cuenta conserva un espacio local independiente para los datos de demostración.
+export function seleccionarCuenta(id) {
+  CLAVE = id ? 'aprovecho_cuenta_' + id : 'aprovecho_sin_sesion';
+  cargar();
+}

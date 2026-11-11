@@ -3,12 +3,13 @@
    - Las calles del mapa que ya viste quedan guardadas (hasta 500 teselas).
    Al cambiar cualquier archivo, subí VERSION: invalida el cache viejo en los celus. */
 
-const VERSION = 'aprovecho-prototipo-plan-v2';
+const VERSION = 'aprovecho-prototipo-plan-cuentas-v3';
 const TESELAS = 'aprovecho-prototipo-plan-teselas';
 const FUENTES = 'aprovecho-prototipo-plan-fuentes';
 
 const LOCALES = [
   './', './index.html', './manifest.webmanifest', './css/app.css', './css/plan.css', './css/cliente-plan.css', './css/comercio-plan.css', './css/tokens.css',
+  './css/cuentas.css', './js/auth.js', './js/auth-config.js', './js/cuentas-ui.js', './vendor/supabase.js',
   './js/main.js', './js/nav.js', './js/util.js', './js/icons.js', './js/store.js', './js/data.js',
   './js/fotos.js', './js/intel.js', './js/ui.js', './js/mapa.js', './js/qr.js', './js/export.js',
   './js/pwa.js', './js/cliente.js', './js/comercio.js', './js/intelui.js', './js/inventario.js', './js/ilus.js',

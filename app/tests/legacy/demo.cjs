@@ -1,3 +1,4 @@
+// Prueba histórica del prototipo sin cuentas (commit bc50bdc). No ejecutarla sobre la versión con autenticación.
 // Servir la raíz en :8765. Ejecutar con Playwright instalado (ver app/README.md).
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');

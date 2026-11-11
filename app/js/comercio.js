@@ -1,3 +1,4 @@
+import { cuenta as identidad, backend } from './auth.js';
 // Pantallas del comercio (Base y Smart) + reportes. Intelligence vive en intelui.js.
 import { esc, plata, dec, num, kg, gramos, pct, hhmm, pad, vibrar, esperar, uid, isoDia, sumarDias, DIAS_CORTO, ddmm, MESES } from './util.js';
 import { icon } from './icons.js';
@@ -860,10 +861,10 @@ function cuenta() {
         <button class="item" data-go="b/local"><span class="ic-caja">${icon('local', 20)}</span><span class="col crece"><span class="fuerte">Datos del local</span><span class="mini">Cierre ${cierre()} · packs al 50%</span></span>${icon('adelante', 20, 'chev')}</button>
         <button class="item" data-go="b/score"><span class="ic-caja">${icon('grafico', 20)}</span><span class="col crece"><span class="fuerte">APROVECHO Score</span><span class="mini">Ranking y comercio del mes</span></span>${icon('adelante', 20, 'chev')}</button>
         ${tienePlan('smart') ? `<button class="item" data-go="b/estacion"><span class="ic-caja">${icon('balanza', 20)}</span><span class="col crece"><span class="fuerte">${EQUIPOS[equipoDelPlan()].nombre}</span><span class="mini">Conectada · calibrada hoy 08:10</span></span>${icon('adelante', 20, 'chev')}</button>` : ''}
-        <button class="item" data-go="b/equipos"><span class="ic-caja">${icon('girar', 20)}</span><span class="col crece"><span class="fuerte">Equipos de cada plan</span><span class="mini">Miralos en 360° y giralos con el dedo</span></span>${icon('adelante', 20, 'chev')}</button>
+        <button class="item" data-go="b/equipos"><span class="ic-caja">${icon('girar', 20)}</span><span class="col crece"><span class="fuerte">Equipos de cada plan</span><span class="mini">Conocé la balanza y la tablet de la estación</span></span>${icon('adelante', 20, 'chev')}</button>
         <button class="item" data-go="b/reporte"><span class="ic-caja">${icon('bajar', 20)}</span><span class="col crece"><span class="fuerte">Descargar reporte</span><span class="mini">Excel o PDF</span></span>${icon('adelante', 20, 'chev')}</button>
       </div>
-      <span class="eti">Modo demo</span>
+      ${identidad.user ? `<section class="cuenta-real"><b>${identidad.merchant?.status === 'approved' ? 'Comercio aprobado' : identidad.merchant?.status === 'rejected' ? 'Alta rechazada' : 'Alta en revisión'}</b><span class="mini">Los packs y pagos de esta versión son de demostración.</span><button class="btn sec" data-go="auth/cuenta">Datos de mi cuenta</button><button class="link" data-act="cerrar-sesion">Cerrar sesión</button></section>` : `<span class="eti">Modo demo</span>
       <div class="card">
         <span class="fuerte">Plan de la demo</span>
         <div class="seg">${Object.entries(PLANES).map(([k, v]) => `<button class="${S.plan === k ? 'on' : ''}" data-act="plan-demo" data-v="${k}">${v.nombre}</button>`).join('')}</div>
@@ -875,6 +876,7 @@ function cuenta() {
         <button class="item" data-act="entrar-cliente"><span class="ic-caja">${icon('usuario', 20)}</span><span class="col crece"><span class="fuerte">Pasar al modo cliente</span><span class="mini">Para ver tus packs como los ve la gente</span></span>${icon('adelante', 20, 'chev')}</button>
         <button class="item" data-act="reiniciar"><span class="ic-caja" style="background:var(--rojo-50);color:var(--rojo)">${icon('refrescar', 20)}</span><span class="col crece"><span class="fuerte">Reiniciar la demo</span><span class="mini">Borra lo que hiciste en este celu</span></span></button>
       </div>
+      `}
       ${instalarUI(true)}
     </div>`,
   };
@@ -1033,10 +1035,17 @@ export const acciones = {
   'leer-carta': async () => { const c = cargando('Leyendo tu lista de precios…'); await esperar(1500); c.listo(`Leí ${S.carta.length} productos`); await esperar(650); c.cerrar(); cartaLeida = true; nav.render(); },
   'editar-precio': ds => editarPrecio(ds.id),
   'cond-local': ds => { const i = S.condLocal.indexOf(ds.v); i >= 0 ? S.condLocal.splice(i, 1) : S.condLocal.push(ds.v); guardar(); nav.render(); },
-  'terminar-alta': () => {
+  'terminar-alta': async () => {
     const el = document.querySelector('.pantalla.actual');
     const c = miComercio();
-    c.nombre = el.querySelector('#nom-local').value.trim() || c.nombre;
+    const nombre = el.querySelector('#nom-local').value.trim() || c.nombre;
+    if(identidad.merchant) {
+      const api=await backend();
+      const {error}=await api.from('ap_merchants').update({name:nombre}).eq('id',identidad.merchant.id);
+      if(error){toast('No pudimos guardar el comercio. Volvé a intentar.',{ic:'alerta'});return;}
+      identidad.merchant.name=nombre;
+    }
+    c.nombre = nombre;
     c.cierre = el.querySelector('#cierre').value;
     S.descuento = .5;
     S.onboarding.hecho = true; guardar();

@@ -1,3 +1,4 @@
+import { cuenta } from './auth.js';
 // Componentes de interfaz compartidos.
 import { icon } from './icons.js';
 import { esc } from './util.js';
@@ -123,10 +124,12 @@ export function nota(texto, ic = 'info', tipo = '') {
 
 // botón "Demo" del modo cliente: abre el menú para pasar al modo local, cambiar de zona o reiniciar
 export function demoBtnCliente(sobreMapa = false) {
+  if (cuenta.user) return `<button class="demo-pill" data-go="auth/cuenta">Mi cuenta</button>`;
   return `<button class="demo-pill${sobreMapa ? ' sobre-mapa' : ''}" data-act="menu-demo-cliente" aria-label="Opciones de la demo">Demo${icon('abajo', 16)}</button>`;
 }
 
 export function demoPill() {
+  if (cuenta.user) return `<button class="demo-pill" data-go="auth/cuenta">Mi cuenta</button>`;
   const n = { basico: 'Base', smart: 'Smart', intelligence: 'Intelligence' }[S.plan];
   return `<button class="demo-pill" data-act="elegir-plan-demo" aria-label="Demo, plan ${n}. Cambiar el plan">Demo<span class="demo-plan">&nbsp;· ${n}</span>${icon('abajo', 16)}</button>`;
 }

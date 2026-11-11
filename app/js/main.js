@@ -1,6 +1,6 @@
 // Arranque, navegación con historial (el "atrás" del celu funciona), barra de pestañas
 // fija, gestos (deslizar entre secciones y volver desde el borde) y eventos.
-import { cargar, S, hoy, guardar } from './store.js';
+import { cargar, S, hoy, guardar, seleccionarCuenta, ubicar, ZONA_NORTE, miComercio } from './store.js';
 import { nav } from './nav.js';
 import { cerrarHoja, hojaAbierta, toast, ordenPestanas } from './ui.js';
 import { iniciarPwa, instalar, esStandalone, esIOS } from './pwa.js';
@@ -9,15 +9,17 @@ import { prestarMapa } from './mapa.js';
 import * as cliente from './cliente.js';
 import * as comercio from './comercio.js';
 import * as intelui from './intelui.js';
+import * as cuentasUI from './cuentas-ui.js';
+import { cuenta, iniciarAuth, destinoCuenta } from './auth.js';
 
-const PANTALLAS = { ...cliente.pantallas, ...comercio.pantallas, ...intelui.pantallas };
+const PANTALLAS = { ...cliente.pantallas, ...comercio.pantallas, ...intelui.pantallas, ...cuentasUI.pantallas };
 const ACCIONES = {
-  ...cliente.acciones, ...comercio.acciones, ...intelui.acciones,
+  ...cliente.acciones, ...comercio.acciones, ...intelui.acciones, ...cuentasUI.acciones,
   atras: () => atras(),
   instalar: async () => { const ok = await instalar(); if (ok) toast('¡Listo! Aprovecho quedó en tu pantalla de inicio.'); },
 };
 const CAMBIOS = { ...comercio.accionesCambio, ...intelui.accionesCambio };
-const FORMS = { ...comercio.formularios };
+const FORMS = { ...comercio.formularios, ...cuentasUI.formularios };
 
 const app = document.getElementById('app');
 const barraTabs = document.createElement('div');
@@ -37,9 +39,17 @@ function resolver(ruta) {
 }
 
 function inicio() {
-  if (S.rol === 'cliente') return S.ubic ? 'c/inicio' : 'c/ubicacion';
-  if (S.rol === 'comercio') return S.onboarding.hecho ? 'b/hoy' : 'b/plan';
-  return 'bienvenida';
+  return cuenta.user && cuenta.profile ? destinoCuenta() : 'auth/ingresar';
+}
+function rutaPermitida(ruta) {
+  const libre = ['bienvenida','auth/ingresar','auth/registro','auth/recuperar'];
+  if (!cuenta.user || !cuenta.profile) return libre.includes(ruta);
+  if (cuenta.recovery) return ruta === 'auth/clave';
+  if (libre.includes(ruta)) return false;
+  const role=cuenta.profile.role;
+  if (ruta==='auth/cuenta') return true;
+  if (role==='admin') return ruta==='admin';
+  return role==='merchant' ? ruta.startsWith('b/') : role==='consumer' && ruta.startsWith('c/');
 }
 
 // ---------- barra de pestañas fija, con el resaltado que se desliza ----------
@@ -95,14 +105,22 @@ new ResizeObserver(() => { if (!barraTabs.classList.contains('oculta')) moverInd
 
 // ---------- dibujar una pantalla ----------
 function pintar(ruta, anim = 'fade') {
+  if (!rutaPermitida(ruta)) { ruta = inicio(); history.replaceState({ruta,i:indice},'', '#/'+ruta); }
   let [fn, param] = resolver(ruta);
-  if (!fn || (!S.rol && ruta !== 'bienvenida')) { ruta = inicio(); [fn, param] = resolver(ruta); anim = 'fade'; }
+  if (!fn) { ruta = inicio(); [fn, param] = resolver(ruta); anim = 'fade'; }
   const p = fn(param);
   if (p.redirigir) { ir(p.redirigir, { replace: true }); return; }
 
   const el = document.createElement('div');
   el.className = 'pantalla actual ' + (p.clase || '');
   el.innerHTML = p.html;
+  // Los roles de las cuentas reales no se cambian desde los controles de la demo.
+  el.querySelectorAll('[data-act="entrar-cliente"],[data-act="entrar-comercio"],[data-act="reiniciar"]').forEach(b => b.remove());
+  if (cuenta.user && ruta === 'c/perfil') {
+    const editar=el.querySelector('[data-act="editar-nombre"]');
+    if(editar){delete editar.dataset.act;editar.dataset.go='auth/cuenta';}
+  }
+
   const viejo = actual;
   if (viejo?.pantalla.desmontar) viejo.pantalla.desmontar();
   cerrarHoja(true);
@@ -144,6 +162,7 @@ function pintar(ruta, anim = 'fade') {
   actual = { ruta, el, pantalla: p };
   app.classList.toggle('ancho-intelligence', el.classList.contains('intel-panel') || el.classList.contains('intel-detalle'));
   app.classList.toggle('ancho-estacion', ruta === 'b/estacion');
+  app.classList.toggle('ancho-admin', ruta === 'admin');
   nav.ruta = ruta;
   document.title = 'Aprovecho';
   actualizarBarra(p.tabs);
@@ -240,8 +259,9 @@ app.addEventListener('click', e => {
   if (!t || t.disabled || t.classList.contains('off')) return;
   if (t.dataset.go) { e.preventDefault(); ir(t.dataset.go); return; }
   if (t.dataset.tab) { e.preventDefault(); irPestana(t.dataset.tab); return; }
+  if (['entrar-cliente','entrar-comercio','reiniciar','menu-demo-cliente','elegir-plan-demo'].includes(t.dataset.act)) return;
   const fn = ACCIONES[t.dataset.act];
-  if (fn) { e.preventDefault(); fn({ ...t.dataset }, t, e); }
+  if (fn) { e.preventDefault(); Promise.resolve(fn({ ...t.dataset }, t, e)).catch(() => toast('No se pudo completar la acción. Volvé a intentar.', { ic: 'alerta' })); }
 });
 app.addEventListener('change', e => {
   const t = e.target.closest('[data-act-change]');
@@ -403,10 +423,28 @@ if (esIOS() && esStandalone()) {
 // ---------- arranque ----------
 cargar();
 iniciarPwa(() => { if (['bienvenida', 'c/perfil', 'b/cuenta'].includes(nav.ruta)) nav.render(); });
-const pedida = rutaDelHash();
-const primera = S.rol && pedida && resolver(pedida)[0] ? pedida : inicio();
-history.replaceState({ ruta: primera, i: 0 }, '', '#/' + primera);
-pintar(primera, 'fade');
+seleccionarCuenta(null);
+if (!/access_token=|error_description=/.test(location.hash)) history.replaceState({ ruta: 'auth/ingresar', i: 0 }, '', '#/auth/ingresar');
+pintar('auth/ingresar', 'fade');
+let cuentaActiva = null;
+iniciarAuth(() => {
+  const id = cuenta.user?.id || null;
+  if (id !== cuentaActiva) {
+    seleccionarCuenta(id); cuentaActiva = id;
+  }
+  if (cuenta.profile) {
+    S.rol = cuenta.profile.role === 'merchant' ? 'comercio' : cuenta.profile.role === 'consumer' ? 'cliente' : 'admin';
+    S.perfil.nombre = cuenta.profile.full_name;
+    if (!S.ubic) ubicar({ ...ZONA_NORTE });
+    if (cuenta.merchant) {
+      S.plan=cuenta.merchant.plan;
+      miComercio().nombre=cuenta.merchant.name;
+      S.onboarding.hecho=true;
+    }
+    guardar();
+  } else { S.rol=null; guardar(); }
+  ir(inicio(), {raiz:true});
+});
 
 // pantalla de carga verde: se va cuando la app ya se dibujó (y se ve por lo menos un instante)
 const splash = document.getElementById('splash');

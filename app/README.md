@@ -6,6 +6,14 @@
 
 Adaptado desde [Aprovecho v3.2.1](https://github.com/ochomnalez/aprovecho-app/tree/3ed4bb8), commit `3ed4bb8`. Alcance confirmado el 11/11/2026: demo navegable para la entrega, con IA, pagos y balanza simulados.
 
+## Versión con cuentas · rama de trabajo
+
+Se agregaron ingreso, registro de consumidor/comercio, sesión persistente, recuperación, permisos por rol y panel de fundadores. Esta rama necesita activar el proyecto Supabase antes de reemplazar la demo publicada. `app/js/auth-config.js` permanece sin configurar hasta resolver el límite de proyectos y la pausa rechazada por Supabase. No hay cuentas reales activadas todavía.
+
+El registro público no ofrece administración: las cuatro direcciones exactas de los fundadores se habilitan en una lista privada, con correo confirmado. Los datos comerciales se guardan en Supabase; packs, pagos, IA y balanza siguen siendo ejemplos de la demo.
+
+Ver `supabase/README.md` para conexión y permisos. Pruebas actuales: `app/tests/cuentas.cjs` (SDK real y API simulada) y `app/tests/permisos.cjs` (PostgreSQL/PGlite). Capturas en `app/capturas/cuentas/`. El recorrido anterior se conserva en `app/tests/legacy/demo.cjs`, para el commit bc50bdc sin autenticación.
+
 ## Abrir
 
 Desde la raíz del repositorio: `python3 -m http.server 8765 --bind 127.0.0.1`. Abrí `http://127.0.0.1:8765/app/`. No requiere instalar paquetes, cuentas ni claves. También se puede servir la carpeta `app/` sola; no la abras como archivo porque usa módulos de JavaScript.
@@ -32,7 +40,7 @@ Sin cobros, reconocimiento de imágenes, balanza, cuentas ni verificación comer
 Con el servidor anterior activo y Playwright disponible:
 
 ```sh
-node app/tests/demo.cjs
+node app/tests/cuentas.cjs
 ```
 
 Si Playwright está en otra carpeta, indicá `PLAYWRIGHT_MODULE=/ruta/a/node_modules/playwright`. `CHROMIUM_PATH` permite elegir Chromium; por defecto `/usr/bin/chromium`. `APP_URL` cambia la URL y `CAPTURE_DIR` la carpeta de capturas (por defecto `work/app-qa`).
