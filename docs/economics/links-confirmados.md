@@ -77,3 +77,16 @@ Relación implícita entre personas y clientes (calculada con los números del m
 | Usuarios activos por persona de soporte | 70.437 | 49.983 | 39.780 | 29.849 |
 
 Las cantidades de personal se cargaron a mano año por año, sin una regla fija.
+
+## Administración (contador, legales, seguros y banco): cómo justificarla (11/11/2026)
+
+Hoy: USD 400, 500, 600, 700 y 800 por mes (4.800 a 9.600 por año). Sin fuente ni desglose.
+
+| Parte | Qué encontré | Fuente | Estado |
+|---|---|---|---|
+| Contador | Abono mensual de una pyme con IVA, Ganancias y sueldos: ARS 120.000 a 250.000 por mes (USD 78 a 163 al dólar de 1.530) | https://cuantomecuesta.com/ar/contador/ (sitio de terceros) | Parcial: usar el honorario sugerido del Consejo Profesional de la jurisdicción o 2 o 3 presupuestos |
+| Liquidación de sueldos | Honorario del Consejo Profesional de Córdoba, Disposición 31/26: ARS 2.559,76 (falta confirmar si es por empleado y por mes) | https://web.cpcecba.org.ar/wp-content/uploads/2026/09/Dis31-26-Honorarios-Ley-7626-003.pdf | Parcial |
+| Banco | Macro, mantenimiento de cuenta corriente: ARS 31.278,50 por mes al 01/06/2026 (USD 20). Galicia y Santander: sin monto | https://www.macro.com.ar/comisiones-nyp | Parcial |
+| Registro de marca (una sola vez) | 100 UMAPI por clase; Resolución INPI 75/2026: 1 UMAPI = ARS 360, o sea ARS 36.000 (USD 23,5) por clase. Hay otras cifras distintas | https://www.argentina.gob.ar/normativa/nacional/norma-424092/texto | Parcial. Ya está dentro de "Constitución, marca y asesoría bromatológica" (USD 2.500 de 2026) |
+| Seguros | No encontré precios. La responsabilidad civil no es obligatoria para esta actividad | https://www.cronista.com/pyme/negocios-pyme/los-seguros-obligatorios-y-las-polizas-que-conviene-tener-para-resguardar-la-operatoria-pyme | Sin fuente: pedir cotización |
+| Legales recurrentes | Sin datos | — | Sin fuente: pedir presupuesto |
