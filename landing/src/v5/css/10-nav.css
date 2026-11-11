@@ -1,24 +1,5 @@
-/* ---------- v5 · nav (nv-) ---------- */
+/* Navegación expuesta: sin botón ni panel desplegable. */
 .nv{background:rgba(255,255,255,.98)}
-.nv .nav__in{height:var(--nav-h)}
-/* botón del mini anillo: etiqueta del capítulo + anillo */
-.nv .nav__burger.nv-ring{display:inline-flex;align-items:center;gap:10px;width:auto;height:48px;margin-right:-8px;padding:0 8px;border:0;border-radius:var(--r-pill);background:none;color:var(--ink)}
-.nv-ring__label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-.nv-ring__svg{flex:none;width:40px;height:40px;will-change:transform}
-.nv-a{color:#cfd8d3;transition:color .35s var(--ease-out)}
-.nv-ring[data-ch="1"] .nv-a1,.nv-ring[data-ch="2"] .nv-a1,.nv-ring[data-ch="3"] .nv-a1{color:#1A4D3A}
-.nv-ring[data-ch="2"] .nv-a2,.nv-ring[data-ch="3"] .nv-a2{color:#2E7D32}
-.nv-ring[data-ch="3"] .nv-a3{color:#7BC67B}
-@media(hover:hover) and (pointer:fine){.nv-ring:hover .nv-ring__label{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--forest)}}
-/* «Sumá tu comercio» de la barra: se oculta mientras se ve el de la portada */
+.nv .nav__in{min-height:var(--nav-h);height:auto}
 .nv .nav__cta{transition:opacity .25s var(--ease-out),visibility .25s}
 .nv .nav__cta.is-covered{opacity:0;visibility:hidden;pointer-events:none}
-/* panel del menú: siempre desplegable, en todos los anchos */
-.nv .nav__links{display:none}
-.nv .nav__links.is-open{display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;gap:0;margin:0;padding:6px var(--gutter) 18px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 28px 40px -24px rgba(0,0,0,.28);max-height:calc(100svh - var(--nav-h));overflow-y:auto}
-.nv .nav__links.is-open a{display:flex;align-items:baseline;gap:10px;padding:11px 0;font-size:1.0625rem;border-bottom:1px solid var(--line)}
-.nv .nav__links.is-open a:last-child{border-bottom:0}
-.nv .nav__links.is-open a b{font:700 .95rem var(--font-display);color:var(--forest);min-width:1.6em}
-@media(min-width:700px){
-  .nv .nav__links.is-open{left:auto;right:max(var(--gutter),calc((100% - 1200px)/2 + var(--gutter)));width:min(400px,calc(100% - 2*var(--gutter)));padding:8px 24px 16px;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r-lg) var(--r-lg)}
-}

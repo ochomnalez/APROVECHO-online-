@@ -7,9 +7,55 @@ window.APV5 = (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var scenes = [];
-  var active = false, planContexts = {};
+  var active = false, planContexts = {}, completedPlans = {};
   var planIds = { recupera: 'plan-base', medi: 'plan-smart', anticipa: 'plan-intelligence' };
-  function context(mm) { return { gsap: gsap, ScrollTrigger: ScrollTrigger, mm: mm, desktop: '(min-width: 900px)', mobile: '(max-width: 899px)' }; }
+  function context(mm) { return { gsap: gsap, ScrollTrigger: ScrollTrigger, mm: mm, desktop: '(min-width: 900px)', mobile: '(max-width: 899px)', planTrigger: planTrigger, readPlanOnce: readPlanOnce }; }
+  // Al terminar, conservar la imagen final y retirar el espacio artificial del pin.
+  // El estado vive por plan durante esta visita, también al cambiar pestaña o ancho.
+  function planTrigger(root, timeline, options) {
+    if (completedPlans[root.id]) {
+      root.dataset.completed = 'true';
+      timeline.progress(1).pause();
+      return null;
+    }
+    var entered = false, pending = false;
+    options.animation = timeline;
+    options.trigger = root;
+    options.onEnter = options.onEnterBack = function () { entered = true; };
+    options.onLeave = function (self) {
+      if (!entered || self.direction !== 1 || pending) return;
+      pending = true;
+      requestAnimationFrame(function () {
+        pending = false;
+        if (self.progress < 1 || root.hidden || root.closest('[data-view][hidden]') || !self.enabled) return;
+        var top = root.getBoundingClientRect().top;
+        completedPlans[root.id] = true;
+        root.dataset.completed = 'true';
+        self.kill(true, true);
+        timeline.progress(1).pause();
+        ScrollTrigger.refresh();
+        var delta = root.getBoundingClientRect().top - top;
+        window.scrollTo({ top: Math.max(0, window.scrollY + delta), behavior: 'instant' });
+        ScrollTrigger.update();
+      });
+    };
+    return ScrollTrigger.create(options);
+  }
+  // En celular ya hay scroll normal: al leer el último paso se libera también el teléfono sticky.
+  function readPlanOnce(root) {
+    var last = root.querySelector('.ch__steps li:last-child');
+    if (!last || completedPlans[root.id]) return;
+    ScrollTrigger.create({ trigger: last, start: 'bottom bottom', once: true,
+      onEnter: function () {
+        requestAnimationFrame(function () {
+          if (root.hidden || root.closest('[data-view][hidden]')) return;
+          completedPlans[root.id] = true;
+          root.dataset.completed = 'true';
+          refreshPlans();
+        });
+      }
+    });
+  }
   function refreshPlans() {
     if (!active) return;
     Object.keys(planContexts).forEach(function (name) { planContexts[name].revert(); });
@@ -99,41 +145,9 @@ window.APV5 = (function () {
 })();
 
 /* 10-nav.js */
-/* v5 · nav: capítulo actual en el mini anillo (siempre) + giro con el scroll (solo con movimiento) */
+/* La navegación queda expuesta, sin botón de menú. */
 (function () {
   'use strict';
-  var btn = document.querySelector('.nv-ring');
-  if (!btn) return;
-  var label = btn.querySelector('[data-nv-label]');
-  var menu = document.getElementById('menu');
-  var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
-  var info = [
-    { l: 'Menú', a: 0 }, { l: '01 · Recuperá', a: 1 }, { l: '02 · Medí', a: 2 }, { l: '03 · Anticipá', a: 3 }
-  ];
-  var last = -1, raf = 0;
-
-  function calc() {
-    raf = 0;
-    var mid = window.innerHeight * 0.5, idx = 0, i, el;
-    for (i = 0; i < ids.length; i++) {
-      el = document.getElementById(ids[i]);
-      if (!el || el.hidden || el.closest('[data-view][hidden]')) continue;
-      var r = el.getBoundingClientRect();
-      if (r.top <= mid && r.bottom >= mid) { idx = i + 1; break; }
-    }
-    var st = info[idx];
-    if (idx === last) return;
-    last = idx;
-    btn.setAttribute('data-ch', st.a);
-    label.textContent = st.l;
-    btn.setAttribute('aria-label', st.l === 'Menú' ? 'Menú' : 'Menú, capítulo actual: ' + st.l);
-  }
-  function ask() { if (!raf) raf = requestAnimationFrame(calc); }
-  window.addEventListener('scroll', ask, { passive: true });
-  window.addEventListener('resize', ask);
-  window.addEventListener('load', function () { ask(); setTimeout(ask, 400); });
-  calc();
-
   // «Sumá tu comercio» de la barra se oculta mientras se ve el de la portada
   var cta = document.querySelector('.nav__cta');
   var heroBtns = document.querySelector('.hr .hero__actions');
@@ -144,20 +158,6 @@ window.APV5 = (function () {
     }, { rootMargin: '-' + navH + 'px 0px 0px 0px' }).observe(heroBtns);
   }
 
-  // tocar fuera del panel lo cierra (main.js alterna el menú al hacer clic en el botón)
-  document.addEventListener('click', function (e) {
-    if (!menu || !menu.classList.contains('is-open')) return;
-    if (menu.contains(e.target) || btn.contains(e.target)) return;
-    btn.click();
-  });
-
-  APV5.scene('nav-giro', function (ctx) {
-    var svg = btn.querySelector('.nv-ring__svg');
-    ctx.gsap.to(svg, {
-      rotation: 720, ease: 'none', transformOrigin: '50% 50%',
-      scrollTrigger: { trigger: document.documentElement, start: 0, end: 'max', scrub: 0.6 }
-    });
-  });
 })();
 
 /* 20-hero.js */
@@ -474,7 +474,7 @@ APV5.scene('recupera', function (ctx) {
       var i = Math.floor(tl.time() - D / 2);
       paint(i < 0 ? 0 : (i > N - 1 ? N - 1 : i));
     });
-    ScrollTrigger.create({
+    ctx.planTrigger(root, tl, {
       trigger: root, start: 'top top', end: '+=250%', pin: true, scrub: 0.6, anticipatePin: 1,
       animation: tl, invalidateOnRefresh: true
     });
@@ -483,6 +483,12 @@ APV5.scene('recupera', function (ctx) {
 
   // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
+    if (root.dataset.completed === 'true') {
+      gsap.set(scr, { autoAlpha: 0, xPercent: 0 });
+      gsap.set(scr[N - 1], { autoAlpha: 1 });
+      paint(N - 1);
+      return reset;
+    }
     var shown = 0;
     gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
     gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
@@ -506,13 +512,14 @@ APV5.scene('recupera', function (ctx) {
       stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
       return ScrollTrigger.create({
         trigger: li,
-        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + 200) + 'px'; },
+        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + document.querySelector('.nv').offsetHeight + 100) + 'px'; },
         end: function () { return '+=' + li.offsetHeight; },
         onUpdate: function (self) { show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
         onEnter: function () { show(idx[0]); },
         onEnterBack: function () { show(idx[idx.length - 1]); }
       });
     });
+    ctx.readPlanOnce(root);
     return function () { tr.forEach(function (t) { t.kill(); }); reset(); };
   });
 });
@@ -829,7 +836,7 @@ APV5.scene('medi', function (ctx) {
     var tl = build(D);
     mark(0, D);
     tl.eventCallback('onUpdate', function () { mark(tl.progress(), D); });
-    ctx.ScrollTrigger.create({
+    ctx.planTrigger(root, tl, {
       animation: tl, trigger: root, start: 'top top', end: '+=220%',
       pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
@@ -837,6 +844,13 @@ APV5.scene('medi', function (ctx) {
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    if (root.dataset.completed === 'true') {
+      build(M).progress(1).pause();
+      ST.flag(stage, 'is-sep', true);
+      ST.flag(stage, 'is-names', true);
+      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
+      return reset;
+    }
     steps.forEach(function (li, i) {
       ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
         onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
@@ -850,6 +864,7 @@ APV5.scene('medi', function (ctx) {
     ctx.ScrollTrigger.create({
       animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true
     });
+    ctx.readPlanOnce(root);
     return reset;
   });
 });
@@ -957,7 +972,7 @@ APV5.scene('anticipa', function (ctx) {
     tl.to({}, { duration: .4 }, A.total - .4);
     mark(0);
     tl.eventCallback('onUpdate', function () { mark(tl.progress()); });
-    ctx.ScrollTrigger.create({
+    ctx.planTrigger(root, tl, {
       animation: tl, trigger: root, start: 'top top', end: '+=250%',
       pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
@@ -965,6 +980,17 @@ APV5.scene('anticipa', function (ctx) {
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    if (root.dataset.completed === 'true') {
+      var station = gsap.timeline();
+      ST.separate(station, stage, .2, 5.2, .7);
+      station.progress(1).pause();
+      ST.flag(stage, 'is-sep', true);
+      var dashboard = gsap.timeline();
+      addBoard(dashboard, 0, .55, 1);
+      dashboard.progress(1).pause();
+      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
+      return reset;
+    }
     steps.forEach(function (li, i) {
       ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
         onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
@@ -990,6 +1016,7 @@ APV5.scene('anticipa', function (ctx) {
       animation: tlB, trigger: board, start: 'top 85%', end: 'bottom 55%', scrub: .6, invalidateOnRefresh: true
     });
     ST.flag(stage, 'is-sep', false);
+    ctx.readPlanOnce(root);
     return reset;
   });
 });
@@ -1070,7 +1097,7 @@ APV5.scene('pasos', function (ctx) {
     APV5.refreshPlans();
     if (clicked) {
       var head = root.querySelector('.pl__tabs');
-      window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - 84), behavior: 'instant' });
+      window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - document.querySelector('.nv').offsetHeight - 16), behavior: 'instant' });
     }
     clicked = false;
   }).observe(root.querySelector('.pl__panels'), { subtree: true, attributes: true, attributeFilter: ['hidden'] });
@@ -1089,7 +1116,7 @@ APV5.scene('progreso', function (ctx) {
   var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
   ctx.gsap.ticker.add(function () {
     var sec = document.querySelector('#planes [role="tabpanel"]:not([hidden])');
-    if (!sec || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
+    if (!sec || sec.dataset.completed === 'true' || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
     var pin = ctx.ScrollTrigger.getAll().find(function (t) { return t.pin === sec; });
     var r = pin ? null : sec.getBoundingClientRect();
     var on = pin ? pin.isActive : r.top < innerHeight * .3 && r.bottom > innerHeight * .7;

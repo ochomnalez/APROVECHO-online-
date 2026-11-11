@@ -15,7 +15,7 @@
     APV5.refreshPlans();
     if (clicked) {
       var head = root.querySelector('.pl__tabs');
-      window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - 84), behavior: 'instant' });
+      window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - document.querySelector('.nv').offsetHeight - 16), behavior: 'instant' });
     }
     clicked = false;
   }).observe(root.querySelector('.pl__panels'), { subtree: true, attributes: true, attributeFilter: ['hidden'] });

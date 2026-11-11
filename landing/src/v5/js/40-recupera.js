@@ -62,7 +62,7 @@ APV5.scene('recupera', function (ctx) {
       var i = Math.floor(tl.time() - D / 2);
       paint(i < 0 ? 0 : (i > N - 1 ? N - 1 : i));
     });
-    ScrollTrigger.create({
+    ctx.planTrigger(root, tl, {
       trigger: root, start: 'top top', end: '+=250%', pin: true, scrub: 0.6, anticipatePin: 1,
       animation: tl, invalidateOnRefresh: true
     });
@@ -71,6 +71,12 @@ APV5.scene('recupera', function (ctx) {
 
   // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
+    if (root.dataset.completed === 'true') {
+      gsap.set(scr, { autoAlpha: 0, xPercent: 0 });
+      gsap.set(scr[N - 1], { autoAlpha: 1 });
+      paint(N - 1);
+      return reset;
+    }
     var shown = 0;
     gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
     gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
@@ -94,13 +100,14 @@ APV5.scene('recupera', function (ctx) {
       stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
       return ScrollTrigger.create({
         trigger: li,
-        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + 200) + 'px'; },
+        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + document.querySelector('.nv').offsetHeight + 100) + 'px'; },
         end: function () { return '+=' + li.offsetHeight; },
         onUpdate: function (self) { show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
         onEnter: function () { show(idx[0]); },
         onEnterBack: function () { show(idx[idx.length - 1]); }
       });
     });
+    ctx.readPlanOnce(root);
     return function () { tr.forEach(function (t) { t.kill(); }); reset(); };
   });
 });

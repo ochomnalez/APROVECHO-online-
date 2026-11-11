@@ -143,3 +143,5 @@ html:not(.motion) .rc-tap{display:none}
   .motion #planes .rc{padding-top:calc(var(--nav-h) + 16px)}
   .motion .rc__in{min-height:calc(100svh - var(--nav-h) - 32px)}
 }
+
+@media(max-width:899px){.motion .rc[data-completed="true"] .rc-stage{position:static}}

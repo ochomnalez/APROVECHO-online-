@@ -3,14 +3,19 @@
 .view__back{padding-top:20px}
 .view__back .link{font-size:.9375rem}
 .view--sec>section:first-of-type{padding-top:clamp(24px,4vw,48px)}
-/* barra superior: secciones entre el logo y el botón de menú */
-.nv-bar{display:none}
-@media(min-width:1200px){
-  .nv .nav__logo{margin-right:0}
-  .nv-bar{display:flex;flex:1;align-items:center;gap:clamp(14px,1.6vw,26px);margin:0 clamp(12px,2vw,32px)}
-  .nv-bar a{position:relative;padding:10px 0;font-size:.875rem;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
-  .nv-bar a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:var(--forest);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
-  .nv-bar a[aria-current]::after{transform:scaleX(1)}
+/* En móvil se conservan los enlaces expuestos en una segunda fila desplazable. */
+.nv .nav__logo{flex:none;margin-right:0}
+.nv .nav__logo img{width:52px;height:52px;flex:none}
+.nv-bar{display:flex;flex:1;align-items:center;gap:clamp(14px,1.6vw,26px);margin:0 clamp(12px,2vw,32px);min-width:0}
+.nv-bar a{position:relative;padding:10px 0;font-size:.875rem;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
+.nv-bar a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:var(--forest);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out)}
+.nv-bar a[aria-current]::after{transform:scaleX(1)}
+@media(hover:hover) and (pointer:fine){.nv-bar a:hover::after{transform:scaleX(1)}}
+@media(max-width:999px){
+  :root{--nav-h:112px}
+  .nv .nav__in{display:grid;grid-template-columns:52px 1fr;gap:0 14px;padding-top:6px}
+  .nv .nav__logo img{width:46px;height:46px}
+  .nv .nav__cta{display:inline-flex;justify-self:end;grid-column:2;grid-row:1}
+  .nv-bar{grid-column:1/-1;grid-row:2;flex:none;width:100%;margin:0;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:4px}
+  .nv-bar a{font-size:.8125rem;padding:8px 0}
 }
-@media(min-width:1200px) and (hover:hover) and (pointer:fine){.nv-bar a:hover::after{transform:scaleX(1)}}
-.nv .nav__logo{flex:none}.nv .nav__logo img{width:52px;height:52px;flex:none}

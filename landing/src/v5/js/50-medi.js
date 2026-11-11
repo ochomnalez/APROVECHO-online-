@@ -232,7 +232,7 @@ APV5.scene('medi', function (ctx) {
     var tl = build(D);
     mark(0, D);
     tl.eventCallback('onUpdate', function () { mark(tl.progress(), D); });
-    ctx.ScrollTrigger.create({
+    ctx.planTrigger(root, tl, {
       animation: tl, trigger: root, start: 'top top', end: '+=220%',
       pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
@@ -240,6 +240,13 @@ APV5.scene('medi', function (ctx) {
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    if (root.dataset.completed === 'true') {
+      build(M).progress(1).pause();
+      ST.flag(stage, 'is-sep', true);
+      ST.flag(stage, 'is-names', true);
+      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
+      return reset;
+    }
     steps.forEach(function (li, i) {
       ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
         onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
@@ -253,6 +260,7 @@ APV5.scene('medi', function (ctx) {
     ctx.ScrollTrigger.create({
       animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true
     });
+    ctx.readPlanOnce(root);
     return reset;
   });
 });

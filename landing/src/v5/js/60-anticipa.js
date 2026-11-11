@@ -100,7 +100,7 @@ APV5.scene('anticipa', function (ctx) {
     tl.to({}, { duration: .4 }, A.total - .4);
     mark(0);
     tl.eventCallback('onUpdate', function () { mark(tl.progress()); });
-    ctx.ScrollTrigger.create({
+    ctx.planTrigger(root, tl, {
       animation: tl, trigger: root, start: 'top top', end: '+=250%',
       pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true
     });
@@ -108,6 +108,17 @@ APV5.scene('anticipa', function (ctx) {
   });
 
   ctx.mm.add(ctx.mobile, function () {
+    if (root.dataset.completed === 'true') {
+      var station = gsap.timeline();
+      ST.separate(station, stage, .2, 5.2, .7);
+      station.progress(1).pause();
+      ST.flag(stage, 'is-sep', true);
+      var dashboard = gsap.timeline();
+      addBoard(dashboard, 0, .55, 1);
+      dashboard.progress(1).pause();
+      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
+      return reset;
+    }
     steps.forEach(function (li, i) {
       ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
         onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
@@ -133,6 +144,7 @@ APV5.scene('anticipa', function (ctx) {
       animation: tlB, trigger: board, start: 'top 85%', end: 'bottom 55%', scrub: .6, invalidateOnRefresh: true
     });
     ST.flag(stage, 'is-sep', false);
+    ctx.readPlanOnce(root);
     return reset;
   });
 });

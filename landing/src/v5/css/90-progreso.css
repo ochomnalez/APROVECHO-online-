@@ -1,17 +1,15 @@
-/* ---------- barra de progreso a la izquierda en las escenas con scroll (Recuperá, Medí, Anticipá) ---------- */
-.pg{position:fixed;z-index:30;left:max(10px,calc((100vw - 1200px) / 2 - 56px));top:50%;display:grid;justify-items:center;gap:10px;width:34px;margin-top:-92px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease-out)}
+/* El avance de cada recorrido queda en el borde, fuera del escenario. */
+.pg{position:fixed;z-index:30;left:0;top:50%;display:grid;justify-items:center;gap:10px;width:28px;margin-top:-92px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease-out)}
 .pg.is-on{opacity:1}
-.pg__n{font:700 .75rem var(--font-display);letter-spacing:.08em;color:var(--forest)}
-.pg__track{position:relative;width:4px;height:150px;border-radius:2px;background:var(--line-2);overflow:hidden}
+.pg__n{font:700 .6875rem var(--font-display);letter-spacing:.04em;color:var(--forest)}
+.pg__track{position:relative;width:3px;height:150px;border-radius:2px;background:var(--line-2);overflow:hidden}
 .pg__fill{position:absolute;inset:0;border-radius:2px;background:var(--forest);transform:scaleY(0);transform-origin:top}
-.pg__pct{font:700 .6875rem var(--font-body);color:var(--muted);font-variant-numeric:tabular-nums}
-@media(max-width:1280px){.pg{left:8px;width:24px}}
-@media(max-width:899px){.pg{left:6px;margin-top:-60px;width:20px}.pg__track{height:96px;width:3px}.pg__pct{display:none}}
-@media(prefers-reduced-motion:reduce){.pg{display:none}}
-
-/* Reservar el margen de lectura para que el indicador no tape los números de los pasos. */
+.pg__pct{font:700 .5625rem var(--font-body);color:var(--muted);font-variant-numeric:tabular-nums}
 @media(max-width:899px){
-  .pg{left:3px;width:28px}
-  .pg__pct{display:block;font-size:.5625rem}
+  .pg{margin-top:-60px;width:26px}
+  .pg__track{height:96px;width:2px}
   .motion #planes .ch{padding-left:20px}
+  .motion #planes .rc-stage{margin-left:0;padding-left:0}
+  .motion #planes .md-stage,.motion #planes .an-stage{padding-left:16px}
 }
+@media(prefers-reduced-motion:reduce){.pg{display:none}}

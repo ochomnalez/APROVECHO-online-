@@ -5,9 +5,55 @@ window.APV5 = (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var scenes = [];
-  var active = false, planContexts = {};
+  var active = false, planContexts = {}, completedPlans = {};
   var planIds = { recupera: 'plan-base', medi: 'plan-smart', anticipa: 'plan-intelligence' };
-  function context(mm) { return { gsap: gsap, ScrollTrigger: ScrollTrigger, mm: mm, desktop: '(min-width: 900px)', mobile: '(max-width: 899px)' }; }
+  function context(mm) { return { gsap: gsap, ScrollTrigger: ScrollTrigger, mm: mm, desktop: '(min-width: 900px)', mobile: '(max-width: 899px)', planTrigger: planTrigger, readPlanOnce: readPlanOnce }; }
+  // Al terminar, conservar la imagen final y retirar el espacio artificial del pin.
+  // El estado vive por plan durante esta visita, también al cambiar pestaña o ancho.
+  function planTrigger(root, timeline, options) {
+    if (completedPlans[root.id]) {
+      root.dataset.completed = 'true';
+      timeline.progress(1).pause();
+      return null;
+    }
+    var entered = false, pending = false;
+    options.animation = timeline;
+    options.trigger = root;
+    options.onEnter = options.onEnterBack = function () { entered = true; };
+    options.onLeave = function (self) {
+      if (!entered || self.direction !== 1 || pending) return;
+      pending = true;
+      requestAnimationFrame(function () {
+        pending = false;
+        if (self.progress < 1 || root.hidden || root.closest('[data-view][hidden]') || !self.enabled) return;
+        var top = root.getBoundingClientRect().top;
+        completedPlans[root.id] = true;
+        root.dataset.completed = 'true';
+        self.kill(true, true);
+        timeline.progress(1).pause();
+        ScrollTrigger.refresh();
+        var delta = root.getBoundingClientRect().top - top;
+        window.scrollTo({ top: Math.max(0, window.scrollY + delta), behavior: 'instant' });
+        ScrollTrigger.update();
+      });
+    };
+    return ScrollTrigger.create(options);
+  }
+  // En celular ya hay scroll normal: al leer el último paso se libera también el teléfono sticky.
+  function readPlanOnce(root) {
+    var last = root.querySelector('.ch__steps li:last-child');
+    if (!last || completedPlans[root.id]) return;
+    ScrollTrigger.create({ trigger: last, start: 'bottom bottom', once: true,
+      onEnter: function () {
+        requestAnimationFrame(function () {
+          if (root.hidden || root.closest('[data-view][hidden]')) return;
+          completedPlans[root.id] = true;
+          root.dataset.completed = 'true';
+          refreshPlans();
+        });
+      }
+    });
+  }
   function refreshPlans() {
     if (!active) return;
     Object.keys(planContexts).forEach(function (name) { planContexts[name].revert(); });

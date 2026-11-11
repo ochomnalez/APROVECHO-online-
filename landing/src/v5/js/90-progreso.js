@@ -10,7 +10,7 @@ APV5.scene('progreso', function (ctx) {
   var ids = ['plan-base', 'plan-smart', 'plan-intelligence'];
   ctx.gsap.ticker.add(function () {
     var sec = document.querySelector('#planes [role="tabpanel"]:not([hidden])');
-    if (!sec || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
+    if (!sec || sec.dataset.completed === 'true' || sec.closest('[data-view][hidden]')) { bar.classList.remove('is-on'); return; }
     var pin = ctx.ScrollTrigger.getAll().find(function (t) { return t.pin === sec; });
     var r = pin ? null : sec.getBoundingClientRect();
     var on = pin ? pin.isActive : r.top < innerHeight * .3 && r.bottom > innerHeight * .7;

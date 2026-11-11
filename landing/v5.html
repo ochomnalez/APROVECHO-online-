@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="img/logo/favicon-180.png">
 <link rel="preload" href="fonts/bricolage-grotesque-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/dm-sans-400-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/v5.min.css?v=6">
+<link rel="stylesheet" href="css/v5.min.css?v=7">
 <noscript><style>[role=tabpanel][hidden]{display:block!important}.qn__hub[hidden]{display:block!important}[data-inv-toggle]{display:none!important}[role=tablist],.film__toggle{display:none!important}</style></noscript>
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "APROVECHO", "slogan": "Menos desperdicio, más aprovecho.", "description": "Plataforma que le permite al comercio vender lo que le sobra con una foto y usar esos datos para que le sobre menos.", "logo": "img/logo/sello.webp"}, {"@type": "WebSite", "name": "APROVECHO", "inLanguage": "es-AR"}, {"@type": "VideoObject", "name": "Así funciona APROVECHO", "description": "Los cinco pasos del plan Base: foto al cierre, packs propuestos, reservas, retiro con QR y panel del día.", "thumbnailUrl": "video/como-funciona-1280.webp", "contentUrl": "video/como-funciona-1280.mp4", "uploadDate": "2026-11-10", "duration": "PT18S", "inLanguage": "es-AR"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": {"@type": "Answer", "text": "Base no tiene costo fijo ni de alta: APROVECHO cobra una comisión solo por cada pack que vendés. Smart cuesta USD 300 por mes e Intelligence USD 800 por mes por sucursal, más la comisión por pack."}}, {"@type": "Question", "name": "¿Cuánto me queda de cada pack?", "acceptedAnswer": {"@type": "Answer", "text": "Ejemplo: si lo que te sobró vale $12.200 en tu mostrador, el pack sale $6.100 (tu precio habitual con 50% de descuento) y a vos te quedan $4.575. Hoy, eso lo estás tirando."}}, {"@type": "Question", "name": "¿Mis clientes van a dejar de comprar a precio normal?", "acceptedAnswer": {"@type": "Answer", "text": "El pack es sorpresa: el cliente no elige qué lleva y solo se publica al cierre, con lo que ya sabés que sobró. Durante el día tu mostrador sigue igual. Y el pack te trae gente nueva del barrio."}}, {"@type": "Question", "name": "No tengo tiempo al cierre.", "acceptedAnswer": {"@type": "Answer", "text": "Por eso es una foto. La app propone los packs, el precio y el horario; vos solo revisás y confirmás. La reserva, el cobro y el QR los resolvemos nosotros."}}, {"@type": "Question", "name": "¿Y si los packs no se venden?", "acceptedAnswer": {"@type": "Answer", "text": "No pagás nada. Activamos compradores en tu zona antes de sumarte y te avisamos cuando alguien reserva. Lo que no se vende lo podés seguir donando como hasta ahora."}}, {"@type": "Question", "name": "¿Y si la app se equivoca?", "acceptedAnswer": {"@type": "Answer", "text": "Todo se corrige antes de publicar. El precio sale de tu lista, nunca de la foto. Cada corrección ayuda a que la app aprenda."}}, {"@type": "Question", "name": "¿Quién es responsable por la comida?", "acceptedAnswer": {"@type": "Answer", "text": "El comercio, igual que con lo que vende en el mostrador. Antes de publicar confirmás tres cosas: producto del día, cadena de frío y alérgenos y sin TACC. Los alérgenos los informás vos, nunca la IA. APROVECHO verifica tu habilitación y el carnet de manipulador antes de activar tu cuenta."}}, {"@type": "Question", "name": "¿Cómo cobro?", "acceptedAnswer": {"@type": "Answer", "text": "El cliente paga en la app con Mercado Pago o tarjeta. Mercado Pago reparte en el momento: tu parte va directo a tu cuenta y la comisión, a APROVECHO."}}, {"@type": "Question", "name": "¿Hay envío?", "acceptedAnswer": {"@type": "Answer", "text": "No. El cliente retira en tu local, en la franja que vos definís."}}, {"@type": "Question", "name": "¿Qué necesito para empezar?", "acceptedAnswer": {"@type": "Answer", "text": "El celular del local, tu habilitación municipal y el carnet de manipulador. Te mandamos el primer lote de bolsas biodegradables sin costo."}}, {"@type": "Question", "name": "¿Dónde funciona?", "acceptedAnswer": {"@type": "Answer", "text": "Arrancamos en CABA, Vicente López, San Isidro y Pilar."}}, {"@type": "Question", "name": "¿Puedo pasar de plan?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, cuando quieras, y conservás todo tu historial."}}]}]}</script>
@@ -32,31 +32,12 @@
     <a class="nav__logo" href="#top" aria-label="APROVECHO, inicio"><img src="img/logo/sello.webp" alt="APROVECHO" width="52" height="52"></a>
     <nav class="nv-bar" aria-label="Secciones">
       <a href="#inicio">Inicio</a>
+      <a href="#planes">Planes</a>
       <a href="#quienes-somos">Quiénes somos</a>
       <a href="#inversores">Inversores</a>
       <a href="#consumidores">¿Querés comprar packs?</a>
     </nav>
     <a class="btn btn--sm nav__cta" href="#alta" data-cta="nav">Sumá tu comercio</a>
-    <button class="nav__burger nv-ring" type="button" aria-expanded="false" aria-controls="menu" data-ch="0" aria-label="Menú">
-      <span class="nv-ring__label" data-nv-label>Menú</span>
-      <svg class="nv-ring__svg" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
-        <g class="nv-a nv-a1"><path d="M176.1 45.1 A116 116 0 0 1 275.4 172.1" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="301.2,174.8 271.8,205.9 249.5,169.4" fill="currentColor"/></g>
-        <g class="nv-a nv-a2"><path d="M251.4 231.4 A116 116 0 0 1 91.8 253.8" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="76.5,274.9 64.3,233.9 107.1,232.8" fill="currentColor"/></g>
-        <g class="nv-a nv-a3"><path d="M52.4 203.5 A116 116 0 0 1 112.8 54.0" fill="none" stroke="currentColor" stroke-width="26"/><polygon points="102.2,30.3 143.9,40.2 123.4,77.8" fill="currentColor"/></g>
-      </svg>
-    </button>
-    <nav class="nav__links" id="menu" aria-label="Principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#por-que-sumar">Por qué sumar</a>
-      <a href="#planes">Planes</a>
-      <a href="#recorrido">Cómo funciona la app</a>
-      <a href="#preguntas">Preguntas</a>
-      <a href="#alta">Sumá tu comercio</a>
-      <a href="#quienes-somos">Quiénes somos</a>
-      <a href="#inversores">Inversores</a>
-      <a href="#consumidores">¿Querés comprar packs?</a>
-      <a href="#consumidores" data-app>Descargar app</a>
-    </nav>
   </div>
 </header>
 
@@ -858,6 +839,6 @@
 <script src="js/main.js?v=20261110" defer></script>
 <script src="js/vendor/gsap.min.js" defer></script>
 <script src="js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="js/v5.js?v=6" defer></script>
+<script src="js/v5.js?v=7" defer></script>
 </body>
 </html>
