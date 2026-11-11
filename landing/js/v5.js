@@ -344,196 +344,439 @@ APV5.scene('valor', function (ctx) {
 });
 
 /* 40-recupera.js */
-/* APROVECHO · landing v5 · 01 Recuperá (Plan Base): la app se desarma capa por capa al bajar.
-   Solo corre con html.motion; sin eso la pila queda desarmada y estática (CSS). */
+/* APROVECHO · landing v5 · 01 Recuperá (Plan Base): un teléfono con las pantallas reales de la app.
+   Escritorio: la sección se fija y las pantallas pasan con el scroll (deslizamiento + fundido).
+   Celular: el teléfono queda arriba y cada paso del texto activa sus pantallas.
+   Solo anima transform/opacity de las capas de pantalla; sin html.motion queda una grilla estática. */
 APV5.scene('recupera', function (ctx) {
   'use strict';
   var gsap = ctx.gsap, ScrollTrigger = ctx.ScrollTrigger;
   var root = document.getElementById('plan-base');
   if (!root) return;
   var $$ = function (s) { return Array.prototype.slice.call(root.querySelectorAll(s)); };
-  var pls = $$('.rc-pl'), labws = $$('.rc-labw'), labs = $$('.rc-lab'), layers = $$('.rc-layer');
-  var lis = $$('.ch__steps li'), rects = $$('.rc-det rect'), tags = $$('.rc-tag');
-  var amount = root.querySelector('.rc-amount');
-  var stage = root.querySelector('.rc-stage');
-  if (pls.length !== 5 || labws.length !== 5 || lis.length !== 5) return;
-  var H = 23; // alto de una placa, en em (las posiciones se animan en % de ese alto: escalan solas)
+  var scr = $$('.rc-scr'), labs = $$('.rc-lab'), dots = $$('.rc-dots i'), lis = $$('.ch__steps li');
+  var N = scr.length;
+  if (!N || labs.length !== N || dots.length !== N || lis.length !== 5) return;
+  var stepOf = scr.map(function (s) { return +s.getAttribute('data-step'); });
 
-  // recuadros de detección: se dibujan al activarse el paso 2
-  var detTl = gsap.timeline({ paused: true })
-    .fromTo(rects, { strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: 0.7, ease: 'power2.out', stagger: 0.14 }, 0)
-    .fromTo(tags, { autoAlpha: 0, y: 5 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power2.out', stagger: 0.14 }, 0.35);
-  detTl.progress(0);
-  var counter = { v: 4575 };
-  function fmt(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
+  // las pantallas se piden un poco antes de llegar, para que no aparezcan vacías al deslizar
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      scr.forEach(function (s) { var im = s.querySelector('img'); if (im) im.loading = 'eager'; });
+    }, { rootMargin: '150% 0px' });
+    io.observe(root);
+  }
 
-  var cur = { idx: -2, hl: -2 };
-  function apply(idx, hl) {
-    if (idx !== cur.idx) {
-      lis.forEach(function (li, i) { li.classList.toggle('is-on', i === idx); });
+  var cur = -1;
+  function paint(i) {
+    if (i === cur) return;
+    cur = i;
+    var st = stepOf[i];
+    for (var k = 0; k < N; k++) {
+      scr[k].classList.toggle('is-cur', k === i);
+      labs[k].classList.toggle('is-on', k === i);
+      dots[k].classList.toggle('is-cur', k === i);
+      dots[k].classList.toggle('is-done', k < i);
     }
-    if (hl !== cur.hl) {
-      layers.forEach(function (l, i) { l.classList.toggle('is-on', i === hl); });
-      labs.forEach(function (l, i) { l.classList.toggle('is-on', i === hl); });
-      pls.forEach(function (p, i) {
-        gsap.to(p, { xPercent: i === hl ? -4 : 0, scale: i === hl ? 1.045 : 1, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-      });
-      // detección
-      if (hl >= 1) detTl.play(); else detTl.reverse();
-      // conteo de la plata
-      if (amount) {
-        gsap.killTweensOf(counter);
-        if (hl === 4) {
-          counter.v = 0;
-          gsap.to(counter, { v: 4575, duration: 0.9, ease: 'power2.out', onUpdate: function () { amount.textContent = fmt(counter.v); }, onComplete: function () { amount.textContent = '$4.575'; } });
-        } else { counter.v = 4575; amount.textContent = '$4.575'; }
-      }
-    }
-    cur.idx = idx; cur.hl = hl;
+    for (var j = 0; j < lis.length; j++) lis[j].classList.toggle('is-on', j === st);
   }
   function reset() {
-    lis.forEach(function (li, i) { li.classList.toggle('is-on', i === 0); });
-    layers.concat(labs).forEach(function (l) { l.classList.remove('is-on'); });
-    gsap.killTweensOf(pls);
-    gsap.set(pls, { clearProps: 'all' });
-    detTl.progress(1);
-    if (amount) amount.textContent = '$4.575';
-    cur = { idx: -2, hl: -2 };
+    gsap.killTweensOf(scr);
+    gsap.set(scr, { clearProps: 'transform,opacity,visibility' });
+    scr.forEach(function (s) { s.classList.remove('is-cur'); });
+    labs.forEach(function (l) { l.classList.remove('is-on'); });
+    dots.forEach(function (d) { d.classList.remove('is-cur', 'is-done'); });
+    lis.forEach(function (li, j) { li.classList.toggle('is-on', j === 0); });
+    cur = -1;
   }
 
-  // separación de las capas (compacta -> desarmada) y aparición de los rótulos
-  function separation(tl, y0, c, pitch, t0, dur) {
-    pls.forEach(function (p, i) {
-      tl.fromTo(p, { yPercent: (y0 + c * i) / H * 100 }, { yPercent: pitch * i / H * 100, ease: 'power2.inOut', duration: dur }, t0 + i * dur * 0.05);
-    });
-    labws.forEach(function (w, i) {
-      tl.fromTo(w, { yPercent: (y0 + c * i) / H * 100 }, { yPercent: pitch * i / H * 100, ease: 'power2.inOut', duration: dur }, t0 + i * dur * 0.05);
-    });
-    labs.forEach(function (l, i) {
-      tl.fromTo(l, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, ease: 'power2.out', duration: dur * 0.28 }, t0 + dur * 0.4 + i * dur * 0.11);
-    });
-  }
-
-  // ---------- escritorio: la sección se fija y se recorre paso por paso ----------
+  // ---------- escritorio: sección fija, una pantalla por vez ----------
   ctx.mm.add(ctx.desktop, function () {
-    var SEP = 0.28, STEP = (1 - SEP) / 5;
+    var D = 0.5, HOLD = 0.9;
     var tl = gsap.timeline({ defaults: { ease: 'none' } });
-    separation(tl, 24.25, 1.4, 13.5, 0, 2.8);
-    tl.set({}, {}, 10);
-    apply(0, -1);
+    for (var i = 1; i < N; i++) {
+      tl.fromTo(scr[i], { xPercent: 100 }, { xPercent: 0, duration: D, ease: 'power2.inOut', immediateRender: true }, i);
+      tl.fromTo(scr[i], { autoAlpha: 0 }, { autoAlpha: 1, duration: D * 0.55, immediateRender: true }, i);
+      tl.to(scr[i - 1], { xPercent: -24, duration: D, ease: 'power2.inOut' }, i);
+      tl.to(scr[i - 1], { autoAlpha: 0, duration: D * 0.5 }, i + D * 0.4);
+    }
+    tl.to({}, { duration: HOLD }, N - 1 + D);
+    paint(0);
+    tl.eventCallback('onUpdate', function () {
+      var i = Math.floor(tl.time() - D / 2);
+      paint(i < 0 ? 0 : (i > N - 1 ? N - 1 : i));
+    });
     ScrollTrigger.create({
-      trigger: root, start: 'top top', end: '+=220%', pin: true, scrub: 0.6, anticipatePin: 1,
-      animation: tl, invalidateOnRefresh: true,
-      onUpdate: function (self) {
-        var p = self.progress;
-        if (p < SEP) apply(0, -1);
-        else { var i = Math.min(4, Math.floor((p - SEP) / STEP)); apply(i, i); }
-      }
+      trigger: root, start: 'top top', end: '+=320%', pin: true, scrub: 0.6, anticipatePin: 1,
+      animation: tl, invalidateOnRefresh: true
     });
     return function () { reset(); };
   });
 
-  // ---------- celular: pila chica y fija arriba; los pasos la activan al bajar ----------
+  // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
-    var tl = gsap.timeline({ defaults: { ease: 'none' } });
-    separation(tl, 19.2, 1.2, 11, 0, 1);
-    ScrollTrigger.create({ trigger: stage, start: 'top 92%', end: 'top 32%', scrub: 0.5, animation: tl, invalidateOnRefresh: true });
-    apply(0, -1);
-    lis.forEach(function (li, i) {
-      ScrollTrigger.create({
-        trigger: li, start: 'top 74%', end: 'bottom 74%',
-        onEnter: function () { apply(i, i); },
-        onEnterBack: function () { apply(i, i); },
-        onLeaveBack: function () { if (i === 0) apply(0, -1); }
+    var timer = 0, shown = 0;
+    gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
+    gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
+    paint(0);
+    function show(i) {
+      if (i === shown) return;
+      var dir = i > shown ? 1 : -1, prev = scr[shown], next = scr[i];
+      gsap.killTweensOf(scr);
+      scr.forEach(function (s, k) { if (k !== shown && k !== i) gsap.set(s, { autoAlpha: 0, xPercent: 100 }); });
+      gsap.set(next, { xPercent: 100 * dir, autoAlpha: 0 });
+      gsap.to(next, { xPercent: 0, duration: 0.55, ease: 'power3.out' });
+      gsap.to(next, { autoAlpha: 1, duration: 0.3, ease: 'none' });
+      gsap.to(prev, { xPercent: -24 * dir, duration: 0.55, ease: 'power3.out' });
+      gsap.to(prev, { autoAlpha: 0, duration: 0.3, ease: 'none', delay: 0.1 });
+      shown = i;
+      paint(i);
+    }
+    function play(st) {
+      clearTimeout(timer);
+      var idx = [];
+      stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
+      var n = 0;
+      show(idx[0]);
+      (function next() {
+        if (++n >= idx.length) return;
+        timer = setTimeout(function () { show(idx[n]); next(); }, 2100);
+      })();
+    }
+    var tr = lis.map(function (li, i) {
+      return ScrollTrigger.create({
+        trigger: li, start: 'top 64%', end: 'bottom 64%',
+        onEnter: function () { play(i); },
+        onEnterBack: function () { play(i); }
       });
     });
-    return function () { reset(); };
+    return function () { clearTimeout(timer); tr.forEach(function (t) { t.kill(); }); reset(); };
+  });
+});
+
+/* 45-onboarding.js */
+/* APROVECHO · landing v5 · Recorrido completo (video de onboarding).
+   El video (13,7 MB) NO se descarga hasta que la persona toca el play (preload="none").
+   Con html.motion: el marco entra suave y el póster se asienta con un leve escalado. */
+APV5.scene('onboarding', function (ctx) {
+  'use strict';
+  var root = document.getElementById('recorrido');
+  if (!root) return;
+  var player = root.querySelector('.ob__player');
+  var video = root.querySelector('.ob__video');
+  var btn = root.querySelector('.ob__play');
+  var poster = root.querySelector('.ob__poster');
+  var chaps = Array.prototype.slice.call(root.querySelectorAll('.ob__chap button'));
+  var frame = root.querySelector('.ob__frame');
+  var cta = root.querySelector('.ob__cta .btn');
+  var loaded = false;
+
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    video.preload = 'auto'; // recién ahora, tras el clic, se permite bajar el video
+    video.src = video.getAttribute('data-src');
+    video.controls = true;
+    video.hidden = false;
+    player.classList.add('is-playing');
+    if (btn) btn.hidden = true;
+  }
+  function play(at) {
+    var first = !loaded;
+    load();
+    function go() {
+      if (typeof at === 'number') { try { video.currentTime = at; } catch (e) {} }
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { video.controls = true; });
+    }
+    if (first && typeof at === 'number') video.addEventListener('loadedmetadata', go, { once: true }); else go();
+    video.focus({ preventScroll: true });
+  }
+  function inView() {
+    var r = frame.getBoundingClientRect();
+    var top = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68) + 8;
+    return r.top >= top - 40 && r.bottom <= window.innerHeight + 20;
+  }
+
+  if (btn) btn.addEventListener('click', function () { play(); });
+  chaps.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = parseFloat(b.getAttribute('data-t'));
+      chaps.forEach(function (c) { c.classList.toggle('is-cur', c === b); });
+      if (!inView()) frame.scrollIntoView({ block: 'center', behavior: APV5.reduce ? 'auto' : 'smooth' });
+      play(t);
+    });
+  });
+  // el capítulo marcado sigue al video
+  video.addEventListener('timeupdate', function () {
+    var t = video.currentTime, k = -1;
+    chaps.forEach(function (b, i) { if (t >= parseFloat(b.getAttribute('data-t')) - 0.5) k = i; });
+    chaps.forEach(function (b, i) { b.classList.toggle('is-cur', i === k); });
+  });
+  if (cta) cta.addEventListener('click', function () { if (!video.paused) video.pause(); });
+
+  // ---------- con movimiento ----------
+  var g = ctx.gsap;
+  function enter() {
+    g.set(frame, { opacity: 0, y: 44, scale: 0.965, transformOrigin: '50% 0%' });
+    g.set(poster, { scale: 1.07 });
+    g.set(chaps.map(function (b) { return b.parentNode; }), { opacity: 0, y: 22 });
+    g.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: frame, start: 'top 82%', once: true } })
+      .to(frame, { opacity: 1, y: 0, scale: 1, duration: 0.95 }, 0)
+      .to(poster, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0)
+      .to(chaps.map(function (b) { return b.parentNode; }), { opacity: 1, y: 0, duration: 0.6, stagger: 0.07 }, 0.35);
+  }
+  ctx.mm.add(ctx.desktop, enter);
+  ctx.mm.add(ctx.mobile, function () {
+    g.set(frame, { opacity: 0, y: 28 });
+    g.to(frame, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: frame, start: 'top 88%', once: true } });
   });
 });
 
 /* 50-medi.js */
-/* v5 · 02 Medí · la estación se desarma pieza por pieza (tablet, soporte, balanza). */
-APV5.scene('medi', function (ctx) {
-  var gsap = ctx.gsap;
-  var root = document.getElementById('plan-smart');
-  if (!root) return;
-  var tab = root.querySelector('[data-md="tab"]');
-  var arm = root.querySelector('[data-md="arm"]');
-  var bal = root.querySelector('[data-md="bal"]');
-  var shadows = root.querySelectorAll('.md-sh');
-  var lines = root.querySelectorAll('.md-lines path');
-  var dots = root.querySelectorAll('.md-dots circle');
-  var calls = root.querySelectorAll('[data-md-c]');
-  var datums = root.querySelectorAll('[data-md-d]');
-  var steps = root.querySelectorAll('.ch__steps li');
-  var stage = root.querySelector('.md-stage');
+/* v5 · ESTACIÓN (componente compartido, APV5.st) + 02 Medí.
+   ------------------------------------------------------------------------------------------------
+   ESTACIÓN (markup generado por src/v5/estacion-gen.py, estilos st- en css/50-medi.css):
+   · .st-armada = foto armada (img/estacion/armada.webp). .st-p = cada pieza suelta (pieza-*.webp), con
+     su posición final en data-x/y/w/h (unidades del cuadro 1774×887) y su arranque en la foto armada
+     (data-u/v = centro dentro de la foto armada, data-ss/sr/sd = tamaño, rotación y retraso iniciales).
+   · Reemplazar fotos: mismo nombre de archivo en img/estacion/. Si cambia la composición, actualizar
+     piezas.json y correr estacion-gen.py.
 
-  // pose armada = pose final (CSS) + este desplazamiento; k reduce el despiece en celular
-  function build(k) {
-    var tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
-    tl.fromTo(tab, { xPercent: 11 * k, yPercent: 35.6 * k, rotation: 7 * k, scale: 1 - .06 * k }, { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, duration: 3 }, 1)
-      .fromTo(arm, { xPercent: 10.9 * k, yPercent: -17.8 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
-      .fromTo(bal, { xPercent: -24.8 * k, yPercent: -21.2 * k }, { xPercent: 0, yPercent: 0, duration: 3 }, 1)
-      .fromTo(shadows, { opacity: 0, scaleX: .45 }, { opacity: 1, scaleX: 1, duration: 3 }, 1)
-      .fromTo(lines, { opacity: 0 }, { opacity: .55, duration: .8, ease: 'none' }, 3.6)
-      .fromTo(dots, { opacity: 0, scale: .2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: .6, stagger: .08, ease: 'back.out(2)' }, 3.7);
-    gsap.set(calls, { opacity: 0 });
-    gsap.set(datums, { opacity: 0 });
-    calls.forEach(function (c, i) {
-      tl.fromTo(c, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .8, ease: 'power2.out' }, 4.4 + i * 1.2);
+   GIRO 360° (preparado, apagado por defecto):
+   · Frames numerados en  img/estacion/giro/001.webp, 002.webp … NNN.webp  (3 dígitos, WebP con fondo
+     transparente, MISMO tamaño y encuadre que armada.webp = 1296×1055, un giro completo, de 24 a 72 frames).
+   · Se activa poniendo data-giro-frames="NNN" en el .st-stage (partial de Medí y/o de Anticipá, vía
+     estacion-gen.py). Opcionales: data-giro-dir="otra/carpeta/" y data-giro-ext="webp".
+   · Cuando está activo, sobre la estación ARMADA se arrastra (mouse/touch, el scroll vertical sigue andando)
+     o se usan las flechas ← → (la foto armada recibe foco) para girarla frame a frame. Sin el atributo (o con 0)
+     no se pide ningún archivo y no hay errores.
+
+   SECUENCIA DE ETAPAS (preparada, apagada): data-seq-frames="NNN" + img/estacion/secuencia/001.webp … NNN.webp
+   (cuadro completo 1774×887, de armada a desarmada). Con eso el despiece se reproduce frame a frame con el scroll
+   (en vez de mover las piezas); al llegar al último frame se funde con las piezas sueltas (mismas posiciones). */
+(function () {
+  'use strict';
+  var ST = APV5.st = {};
+  var noop = function () {};
+  function num(el, k, d) { var v = parseFloat(el.getAttribute('data-' + k)); return isNaN(v) ? d : v; }
+  function pad(i, n) { var s = String(i); while (s.length < n) s = '0' + s; return s; }
+  function flag(el, cls, on) { if (el.classList.contains(cls) !== !!on) el.classList.toggle(cls, !!on); }
+  ST.flag = flag;
+
+  // geometría: en unidades del cuadro; el arranque de cada pieza sale de dónde está en la foto armada
+  function read(stage) {
+    var arm = stage.querySelector('.st-armada');
+    var a = { el: arm, x: num(arm, 'x', 0), y: num(arm, 'y', 0), w: num(arm, 'w', 1), h: num(arm, 'h', 1), s: num(arm, 's', 1.15) };
+    a.cx = a.x + a.w / 2; a.cy = a.y + a.h / 2;
+    var ps = Array.prototype.map.call(stage.querySelectorAll('.st-p'), function (el) {
+      var p = { el: el, key: el.getAttribute('data-st'), x: num(el, 'x', 0), y: num(el, 'y', 0), w: num(el, 'w', 1), h: num(el, 'h', 1),
+        u: num(el, 'u', .5), v: num(el, 'v', .5), ss: num(el, 'ss', 1), sr: num(el, 'sr', 0), sd: num(el, 'sd', 0) };
+      var px = a.x + p.u * a.w, py = a.y + p.v * a.h;
+      var sx = a.cx + a.s * (px - a.cx), sy = a.cy + a.s * (py - a.cy);
+      p.dx = (sx - (p.x + p.w / 2)) / p.w * 100;
+      p.dy = (sy - (p.y + p.h / 2)) / p.h * 100;
+      return p;
     });
-    datums.forEach(function (d, i) {
-      tl.fromTo(d, { opacity: 0, y: 18, scale: .92 }, { opacity: 1, y: 0, scale: 1, duration: .8, ease: 'power3.out' }, 8 + i * .8);
-    });
-    tl.to({}, { duration: .4 }, 9.6); // pausa final: total 10
-    return tl;
+    return { a: a, ps: ps };
   }
 
-  var cur = -1, called = -1;
-  function mark(p) {
-    var t = p * 10, s = t < 4.4 ? 0 : t < 6.8 ? 1 : t < 8.4 ? 2 : 3;
-    if (s !== cur) {
-      cur = s;
-      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === s); });
+  // frames numerados (giro y secuencia)
+  function frameList(stage, dirAttr, defDir, n) {
+    var dir = stage.getAttribute(dirAttr) || defDir, ext = stage.getAttribute('data-giro-ext') || 'webp';
+    var out = [];
+    for (var i = 1; i <= n; i++) { var im = new Image(); im.decoding = 'async'; im.src = dir + pad(i, 3) + '.' + ext; out.push(im); }
+    return out;
+  }
+
+  // Agrega al timeline el despiece: la armada se funde hacia atrás y las piezas salen de donde estaban.
+  // k (0-1) afloja las rotaciones en celular.
+  ST.separate = function (tl, stage, at, dur, k) {
+    var d = read(stage), a = d.a, ps = d.ps;
+    var nseq = parseInt(stage.getAttribute('data-seq-frames'), 10) || 0;
+    var seq = stage.querySelector('.st-seq');
+    if (nseq > 1 && seq) {
+      var frames = frameList(stage, 'data-seq-dir', 'img/estacion/secuencia/', nseq), o = { f: 0 }, last = -1;
+      seq.hidden = false;
+      seq.style.opacity = 0;
+      gsap.set(ps.map(function (p) { return p.el; }), { opacity: 0 });
+      tl.set(seq, { opacity: 1 }, at).set(a.el, { opacity: 0 }, at)
+        .to(o, { f: nseq - 1, duration: dur, ease: 'none', onUpdate: function () {
+          var i = Math.round(o.f); if (i === last) return; last = i;
+          if (frames[i] && frames[i].complete && frames[i].naturalWidth) seq.src = frames[i].src;
+        } }, at)
+        .to(ps.map(function (p) { return p.el; }), { opacity: 1, duration: dur * .12, ease: 'none' }, at + dur * .92)
+        .set(seq, { opacity: 0 }, at + dur * 1.04);
+      return;
     }
-    var c = t < 4.4 ? -1 : t < 5.6 ? 0 : t < 6.8 ? 1 : 2;
-    if (c !== called) {
-      called = c;
-      calls.forEach(function (el, i) { el.classList.toggle('is-on', i === c); });
+    // la armada: escala apenas hacia atrás mientras se funde
+    tl.fromTo(a.el, { scale: a.s }, { scale: 1 - .05 * k, duration: dur * .7, ease: 'power2.out' }, at)
+      .to(a.el, { opacity: 0, duration: dur * .22, ease: 'none' }, at + dur * .1);
+    ps.forEach(function (p) {
+      var t0 = at + dur * p.sd, dd = dur * (1 - p.sd);
+      gsap.set(p.el, { opacity: 0 });
+      tl.fromTo(p.el, { xPercent: p.dx, yPercent: p.dy, rotation: p.sr * k, scale: a.s * p.ss },
+        { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, duration: dd, ease: 'power2.inOut', immediateRender: true }, t0)
+        .to(p.el, { opacity: 1, duration: Math.min(dd * .3, dur * .09), ease: 'none' }, t0);
+    });
+  };
+
+  // resalta piezas (por clave) y atenúa el resto
+  ST.on = function (stage, keys) {
+    var sig = keys.join('|');
+    if (stage._on === sig) return;
+    stage._on = sig;
+    Array.prototype.forEach.call(stage.querySelectorAll('.st-p'), function (el) {
+      flag(el, 'is-on', keys.indexOf(el.getAttribute('data-st')) > -1);
+    });
+    flag(stage, 'has-on', keys.length > 0);
+  };
+
+  // interacción: carga anticipada, toque en celular y giro 360°
+  ST.bind = function (stage) {
+    if (stage._stb) return;
+    stage._stb = 1;
+    var imgs = Array.prototype.slice.call(stage.querySelectorAll('img[loading="lazy"]'));
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        io.disconnect();
+        imgs.forEach(function (im) { im.loading = 'eager'; if (im.decode) im.decode().catch(noop); });
+      }, { rootMargin: '1400px 0px' });
+      io.observe(stage);
     }
+    // táctil: tocar una pieza muestra su etiqueta; tocar afuera o Esc la cierra
+    function clearTap() { Array.prototype.forEach.call(stage.querySelectorAll('.st-p.is-tap'), function (el) { el.classList.remove('is-tap'); }); }
+    stage.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return;
+      var p = e.target.closest && e.target.closest('.st-p');
+      if (!p) return;
+      var was = p.classList.contains('is-tap');
+      clearTap();
+      if (!was) p.classList.add('is-tap');
+    });
+    document.addEventListener('pointerdown', function (e) { if (!stage.contains(e.target)) clearTap(); });
+    stage.addEventListener('keydown', function (e) { if (e.key === 'Escape') clearTap(); });
+    giro(stage);
+  };
+
+  function giro(stage) {
+    var n = parseInt(stage.getAttribute('data-giro-frames'), 10) || 0;
+    if (n < 2) return;
+    var arm = stage.querySelector('.st-armada'), img = arm && arm.querySelector('.st-giro');
+    if (!arm || !img) return;
+    var frames = null, cur = 0, drag = false, x0 = 0, f0 = 0, ppf = 8;
+    function load() { if (!frames) frames = frameList(stage, 'data-giro-dir', 'img/estacion/giro/', n); }
+    function show(i) {
+      i = ((i % n) + n) % n;
+      var im = frames && frames[i];
+      if (!im || !im.complete || !im.naturalWidth) return;
+      cur = i; img.src = im.src; img.hidden = false;
+    }
+    stage.classList.add('has-giro');
+    arm.tabIndex = 0;
+    arm.setAttribute('role', 'img');
+    arm.setAttribute('aria-label', 'Estación armada. Arrastrala o usá las flechas izquierda y derecha para girarla.');
+    arm.addEventListener('pointerenter', load);
+    arm.addEventListener('focus', load);
+    arm.addEventListener('pointerdown', function (e) {
+      if (!stage.classList.contains('is-armed')) return;
+      load(); drag = true; x0 = e.clientX; f0 = cur; ppf = Math.max(3, arm.offsetWidth * 1.1 / n);
+      try { arm.setPointerCapture(e.pointerId); } catch (err) { noop(); }
+      arm.classList.add('is-drag');
+    });
+    arm.addEventListener('pointermove', function (e) { if (drag) show(f0 + Math.round((e.clientX - x0) / ppf)); });
+    function end() { drag = false; arm.classList.remove('is-drag'); }
+    arm.addEventListener('pointerup', end);
+    arm.addEventListener('pointercancel', end);
+    arm.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      load(); e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1));
+    });
+  }
+})();
+
+/* ---------- 02 Medí: armada → desarmada → nombres → los 4 pasos ---------- */
+APV5.scene('medi', function (ctx) {
+  var gsap = ctx.gsap, ST = APV5.st;
+  var root = document.getElementById('plan-smart');
+  if (!root) return;
+  var stage = root.querySelector('[data-st-stage]');
+  var datums = Array.prototype.slice.call(root.querySelectorAll('[data-md-d]'));
+  var steps = root.querySelectorAll('.ch__steps li');
+  if (!stage) return;
+  ST.bind(stage);
+
+  // tiempos (desktop, total 10): 0,6-4,6 despiece · 4,7 nombres · pasos 4,7 / 6,2 / 7,6 / 8,8
+  function build(m) {
+    var tl = gsap.timeline({ defaults: { ease: 'none' } });
+    gsap.set(datums, { opacity: 0 });
+    ST.separate(tl, stage, m.at, m.dur, m.k);
+    tl.fromTo(datums[0], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.a)
+      .fromTo(datums[1], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, m.b)
+      .to({}, { duration: .4 }, m.total - .4);
+    return tl;
+  }
+  var D = { at: .6, dur: 4, k: 1, a: 5, b: 7.7, total: 10 };
+  var M = { at: .2, dur: 5.2, k: .7, a: 6.1, b: 6.9, total: 7.6 };
+
+  var cur = -2;
+  function mark(p, m) {
+    var t = p * m.total;
+    ST.flag(stage, 'is-anim', t > .02 && t < m.at + m.dur + .3);
+    ST.flag(stage, 'is-armed', t < m.at - .05);
+    ST.flag(stage, 'is-sep', t >= m.at - .05);
+    ST.flag(stage, 'is-names', m === D && t >= 4.7);
+    if (m !== D) return;
+    var s = t < 4.7 ? -1 : t < 6.2 ? 0 : t < 7.6 ? 1 : t < 8.8 ? 2 : 3;
+    if (s === cur) return;
+    cur = s;
+    steps.forEach(function (li, i) { li.classList.toggle('is-on', i === s); });
+    ST.on(stage, s === 0 ? ['balanza'] : s === 1 || s === 2 ? ['tablet'] : []);
+  }
+  function reset() {
+    steps.forEach(function (li) { li.classList.remove('is-on'); });
+    ['is-anim', 'is-armed', 'is-sep', 'is-names', 'has-on'].forEach(function (c) { stage.classList.remove(c); });
+    ST.on(stage, []); stage._on = null; cur = -2;
   }
 
   ctx.mm.add(ctx.desktop, function () {
-    var tl = build(1);
-    mark(0);
+    var tl = build(D);
+    mark(0, D);
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: root, start: 'top top', end: '+=200%',
+      animation: tl, trigger: root, start: 'top top', end: '+=220%',
       pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
-      onUpdate: function (self) { mark(self.progress); }
+      onUpdate: function (self) { mark(self.progress, D); }
     });
-    return function () { steps.forEach(function (li) { li.classList.remove('is-on'); }); cur = called = -1; };
+    return reset;
   });
 
   ctx.mm.add(ctx.mobile, function () {
-    var tl = build(.7);
+    var tl = build(M);
     steps.forEach(function (li) { li.classList.remove('is-on'); });
+    mark(0, M);
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 85%', end: 'center 40%', scrub: .6,
-      invalidateOnRefresh: true,
-      onUpdate: function (self) {
-        var t = self.progress * 10;
-        calls.forEach(function (el, i) { el.classList.toggle('is-on', t >= 4.4 + i * 1.2 && t < 5.6 + i * 1.2); });
-      }
+      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true,
+      onUpdate: function (self) { mark(self.progress, M); }
     });
+    return reset;
   });
 });
 
 /* 60-anticipa.js */
-/* v5 · 03 Anticipá · el tablero se arma con las piezas de todas las sucursales y se dibuja la línea. */
+/* v5 · 03 Anticipá · PRIMERO la estación (armada → desarmada → nombres), DESPUÉS «lo demás»:
+   la estación se achica a un costado, el tablero se arma con las piezas de todas las sucursales y se dibuja la línea. */
 APV5.scene('anticipa', function (ctx) {
-  var gsap = ctx.gsap;
+  var gsap = ctx.gsap, ST = APV5.st;
   var root = document.getElementById('plan-intelligence');
   if (!root) return;
+  var area = root.querySelector('.an-stage');
+  var stage = root.querySelector('[data-st-stage]');
+  var st = root.querySelector('.an-st');
+  var rot = root.querySelector('.an-rot');
+  var bd = root.querySelector('.an-bd');
   var board = root.querySelector('.an-board');
   var tiles = gsap.utils.toArray('[data-an-t]', root);
   var shadows = root.querySelectorAll('.an-t__sh');
@@ -546,79 +789,123 @@ APV5.scene('anticipa', function (ctx) {
   var base = root.querySelector('.an-line__base');
   var note = root.querySelector('.an-note');
   var steps = root.querySelectorAll('.ch__steps li');
+  if (!stage || !st || !bd) return;
+  ST.bind(stage);
 
-  // desde dónde llega cada pieza (en % de su propio tamaño): sucursales sueltas que llegan de los costados
+  // desde dónde llega cada pieza del tablero (en % de su propio tamaño): sucursales sueltas que llegan de los costados
   var FROM = [
     { x: -50, y: -60, r: -13 }, { x: 8, y: -105, r: 5 }, { x: 80, y: -40, r: 11 },
     { x: -50, y: 75, r: 9 }, { x: -6, y: 100, r: -6 }, { x: 85, y: 50, r: -10 }
   ];
-  // se llega en este orden escalonado
   var ORDER = [0, 2, 3, 5, 1, 4];
-  var RAD = ['16px 0 0 0', '0', '0 16px 0 0', '0 0 0 16px', '0', '0 0 16px 0'];
-  var spans = tiles.map(function (t) { return t.querySelectorAll('span'); });
 
-  function build(k) {
-    var tl = gsap.timeline();
+  // el tablero y la línea; `at` = segundo de arranque, f = factor de duración
+  function addBoard(tl, at, k, f) {
     gsap.set(full, { opacity: 0 });
     gsap.set(frame, { opacity: 0 });
     gsap.set(line, { strokeDasharray: 1, strokeDashoffset: 1 });
     gsap.set([dots, pt], { opacity: 0, transformOrigin: '50% 50%' });
     gsap.set([base, note, cap], { opacity: 0 });
     tiles.forEach(function (t, i) {
-      var f = FROM[i], n = ORDER.indexOf(i);
-      var at = .4 + n * .35;
-      tl.fromTo(t, { xPercent: f.x * k, yPercent: f.y * k, rotation: f.r * k, scale: .94, opacity: 0 },
-        { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, opacity: 1, duration: 2.1, ease: 'power3.out' }, at);
-      tl.fromTo(shadows[i], { opacity: 0 }, { opacity: 1, duration: 1, ease: 'none' }, at);
-      tl.to(shadows[i], { opacity: 0, duration: 1, ease: 'none' }, at + 1.1);
-      // esquinas redondeadas mientras viaja; al encastrar, solo quedan las del borde del tablero
-      tl.fromTo(spans[i], { borderRadius: '16px' }, { borderRadius: RAD[i], duration: .6, ease: 'none', immediateRender: true }, at + 1.5);
+      var fr = FROM[i], n = ORDER.indexOf(i), s = at + (.4 + n * .35) * f;
+      tl.fromTo(t, { xPercent: fr.x * k, yPercent: fr.y * k, rotation: fr.r * k, scale: .94, opacity: 0 },
+        { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, opacity: 1, duration: 2.1 * f, ease: 'power3.out' }, s);
+      tl.fromTo(shadows[i], { opacity: 0 }, { opacity: 1, duration: 1 * f, ease: 'none' }, s);
+      tl.to(shadows[i], { opacity: 0, duration: 1 * f, ease: 'none' }, s + 1.1 * f);
     });
     // clic de encastre: tablero de una sola pieza
-    tl.to(full, { opacity: 1, duration: .1, ease: 'none' }, 4.1)
-      .to(tiles, { opacity: 0, duration: .05, ease: 'none' }, 4.3)
-      .to(frame, { opacity: 1, duration: .5, ease: 'none' }, 4.1)
-      .to(cap, { opacity: 1, duration: .5, ease: 'none' }, 4.3)
-      .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22, ease: 'power2.out', transformOrigin: '50% 50%' }, 4.1)
-      .to(board, { scale: 1, duration: .38, ease: 'power2.inOut' }, 4.32)
+    var q = function (v) { return at + v * f; };
+    tl.to(full, { opacity: 1, duration: .1, ease: 'none' }, q(4.1))
+      .to(tiles, { opacity: 0, duration: .05, ease: 'none' }, q(4.3))
+      .to(frame, { opacity: 1, duration: .5 * f, ease: 'none' }, q(4.1))
+      .to(cap, { opacity: 1, duration: .5 * f, ease: 'none' }, q(4.3))
+      .fromTo(board, { scale: 1 }, { scale: 1.025, duration: .22 * f, ease: 'power2.out', transformOrigin: '50% 50%' }, q(4.1))
+      .to(board, { scale: 1, duration: .38 * f, ease: 'power2.inOut' }, q(4.32))
       // línea ilustrativa
-      .to(base, { opacity: 1, duration: .5, ease: 'none' }, 4.9)
-      .to(note, { opacity: 1, duration: .6, ease: 'none' }, 4.9)
-      .to(line, { strokeDashoffset: 0, duration: 2.2, ease: 'none' }, 5.2)
-      .to(pt, { opacity: 1, duration: .3, ease: 'none' }, 7.3)
-      .fromTo(pt, { scale: .3 }, { scale: 1, duration: .5, ease: 'back.out(2.5)' }, 7.3)
-      .to(dots, { opacity: 1, duration: .25, stagger: .07, ease: 'none' }, 7.7);
-    tl.to({}, { duration: .4 }, 9.6);
-    return tl;
+      .to(base, { opacity: 1, duration: .5 * f, ease: 'none' }, q(5.2))
+      .to(note, { opacity: 1, duration: .6 * f, ease: 'none' }, q(5.2))
+      .to(line, { strokeDashoffset: 0, duration: 2.2 * f, ease: 'none' }, q(5.5))
+      .to(pt, { opacity: 1, duration: .3 * f, ease: 'none' }, q(7.7))
+      .fromTo(pt, { scale: .3 }, { scale: 1, duration: .5 * f, ease: 'back.out(2.5)' }, q(7.7))
+      .to(dots, { opacity: 1, duration: .25 * f, stagger: .07 * f, ease: 'none' }, q(8.1));
   }
 
-  var cur = -1;
+  // medidas del escenario: se leen una vez por refresh (no por cuadro)
+  var geo = null;
+  function measure() {
+    var W = area.offsetWidth, H = area.offsetHeight;
+    var bh = bd.offsetHeight, bt = H / 2 - bh / 2, boardH = board.offsetHeight;
+    var S = W < 640 ? .34 : .3;
+    var ty = bt + boardH / 2 - H / 2;                    // la estación chica queda a la altura del tablero
+    geo = { S: S, ty: ty, cx: S * W / 2 - W / 2, cy: ty + S * .25 * W + 12 - .3 * W };
+    return geo;
+  }
+
+  // desktop: pin ≤ +=300%  ·  total 14,2
+  var A = { sep: .8, dur: 4, names: 4.9, shrink: 6, bd: 6.4, f: .8, total: 14.2, s: [6.4, 9.8, 12.4, 13.4] };
+  var cur = -2;
   function mark(p) {
-    var t = p * 10, s = t < 4.4 ? 0 : t < 6.4 ? 1 : t < 8.2 ? 2 : 3;
+    var t = p * A.total;
+    ST.flag(stage, 'is-armed', t < A.sep - .05);
+    ST.flag(stage, 'is-sep', t >= A.sep - .05);
+    ST.flag(stage, 'is-anim', t > .02 && t < A.shrink + 1.6);
+    ST.flag(stage, 'is-names', t >= A.names && t < A.shrink);
+    ST.flag(stage, 'is-mini', t >= A.shrink);
+    ST.flag(area, 'is-st-anim', t > .02 && t < A.shrink + 1.6);
+    ST.flag(area, 'is-bd-anim', t > A.bd - .1 && t < A.bd + 4.6 * A.f);
+    var s = t < A.s[0] ? -1 : t < A.s[1] ? 0 : t < A.s[2] ? 1 : t < A.s[3] ? 2 : 3;
     if (s !== cur) {
       cur = s;
       steps.forEach(function (li, i) { li.classList.toggle('is-on', i === s); });
     }
   }
+  function reset() {
+    steps.forEach(function (li) { li.classList.remove('is-on'); });
+    ['is-anim', 'is-armed', 'is-sep', 'is-names', 'is-mini', 'has-on'].forEach(function (c) { stage.classList.remove(c); });
+    area.classList.remove('is-st-anim', 'is-bd-anim');
+    cur = -2;
+  }
 
   ctx.mm.add(ctx.desktop, function () {
-    var tl = build(1);
+    var tl = gsap.timeline({ defaults: { ease: 'none' } });
+    ST.separate(tl, stage, A.sep, A.dur, 1);
+    gsap.set(st, { transformOrigin: '0% 50%' });
+    gsap.set(rot, { xPercent: -50 });
+    // la estación se achica y se corre a la izquierda; el rótulo la acompaña (solo se traslada: se lee siempre)
+    tl.to(st, { scale: function () { return measure().S; }, x: 0, y: function () { return (geo || measure()).ty; }, duration: 1.4, ease: 'power2.inOut' }, A.shrink)
+      .to(rot, { x: function () { return (geo || measure()).cx; }, y: function () { return (geo || measure()).cy; }, duration: 1.4, ease: 'power2.inOut' }, A.shrink);
+    addBoard(tl, A.bd, 1, A.f);
+    tl.to({}, { duration: .4 }, A.total - .4);
     mark(0);
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: root, start: 'top top', end: '+=180%',
+      animation: tl, trigger: root, start: 'top top', end: '+=300%',
       pin: true, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true,
       onUpdate: function (self) { mark(self.progress); }
     });
-    return function () { steps.forEach(function (li) { li.classList.remove('is-on'); }); cur = -1; };
+    return reset;
   });
 
   ctx.mm.add(ctx.mobile, function () {
-    var tl = build(.55);
     steps.forEach(function (li) { li.classList.remove('is-on'); });
+    var tlS = gsap.timeline({ defaults: { ease: 'none' } });
+    ST.separate(tlS, stage, .2, 5.2, .7);
+    tlS.to({}, { duration: .6 }, 5.4);
     ctx.ScrollTrigger.create({
-      animation: tl, trigger: root.querySelector('.an-stage'), start: 'top 85%', end: 'bottom 62%', scrub: .6,
-      invalidateOnRefresh: true
+      animation: tlS, trigger: stage, start: 'top 85%', end: 'bottom 45%', scrub: .6, invalidateOnRefresh: true,
+      onUpdate: function (self) {
+        var t = self.progress * 6;
+        ST.flag(stage, 'is-armed', t < .15);
+        ST.flag(stage, 'is-sep', t >= .15);
+        ST.flag(stage, 'is-anim', t > .02 && t < 5.6);
+      }
     });
+    var tlB = gsap.timeline();
+    addBoard(tlB, 0, .55, 1);
+    ctx.ScrollTrigger.create({
+      animation: tlB, trigger: board, start: 'top 85%', end: 'bottom 55%', scrub: .6, invalidateOnRefresh: true
+    });
+    ST.flag(stage, 'is-sep', false);
+    return reset;
   });
 });
 

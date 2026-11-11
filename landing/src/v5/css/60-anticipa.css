@@ -1,5 +1,9 @@
-/* ---------- v5 · 03 Anticipá · Plan Intelligence: el tablero se arma ---------- */
-.an-stage{width:min(100%,720px);margin-inline:auto}
+/* ---------- v5 · 03 Anticipá · Plan Intelligence: primero la estación, después el tablero ---------- */
+/* Sin movimiento (y en celular): todo en flujo, en orden: estación desarmada con nombres → rótulo → tablero → línea. */
+.an{--bleed:clamp(0px,calc((100vw - 1200px)/2 + var(--gutter) - 40px),140px)}
+.an-stage{width:100%;max-width:620px;margin-inline:auto;min-width:0}
+.an-rot{margin:10px 0 28px;text-align:center}
+.an-rot span{display:inline-block;padding:7px 18px;border:1.5px solid var(--forest);border-radius:999px;background:#fff;font-weight:700;font-size:.9375rem;line-height:1.2;color:var(--forest)}
 .an-board{position:relative;width:100%;aspect-ratio:1440/900}
 /* imagen completa debajo: tapa cualquier costura entre piezas cuando el tablero está armado */
 .an-full{position:absolute;inset:0;width:100%;height:100%;border-radius:16px;display:block}
@@ -22,16 +26,23 @@ html.motion .an-t{visibility:visible}
 .an-line__dots circle{fill:var(--forest)}
 .an-line__pt{fill:#fff;stroke:var(--forest);stroke-width:4}
 .an-note{margin-top:4px;font-size:.8125rem;color:var(--muted)}
+/* capas animadas: promovidas solo mientras se mueven */
+.an-stage.is-bd-anim .an-t,.an-stage.is-bd-anim .an-board,.an-stage.is-st-anim .an-st,.an-stage.is-st-anim .an-rot{will-change:transform,opacity}
+.an .ch{position:relative;z-index:1}
 @media(min-width:900px){
+  .an.chap .chap__in{grid-template-columns:420px minmax(0,1fr);gap:48px}
   html.motion .an{min-height:100vh;display:flex;align-items:center;padding-block:clamp(80px,10vh,96px) 20px}
   html.motion .an .chap__in{width:100%}
-  .an-stage{width:min(100%,720px,calc((100vh - 230px) * 1.6))}
+  /* escenario: la estación ocupa todo; después se achica a la izquierda y el tablero se arma a la derecha */
+  html.motion .an-stage{position:relative;max-width:none;width:min(calc(100% + var(--bleed)),calc((100svh - 150px) / .72));aspect-ratio:1/.72;container-type:inline-size;justify-self:end;margin-right:calc(-1 * var(--bleed))}
+  html.motion .an-st{position:absolute;left:0;top:50%;width:100%;margin-top:-33cqw;transform-origin:0 50%}
+  html.motion .an-rot{position:absolute;left:50%;top:calc(50% + 30cqw);margin:0;white-space:nowrap}
+  html.motion .an-bd{position:absolute;right:0;top:50%;width:66%;translate:0 -50%}
 }
+@media(min-width:900px) and (max-width:1180px){.an.chap .chap__in{grid-template-columns:380px minmax(0,1fr);gap:36px}html.motion .an-bd{width:61%}.an-rot span{padding:6px 12px;font-size:.8125rem}}
 @media(max-width:899px){
   .an-stage{order:-1}
   html.motion .an .ch__steps li{color:var(--ink)}
 }
 @media(min-width:900px) and (max-height:980px){.an .ch__title{font-size:clamp(2.4rem,3.9vw,3.5rem)}.an .ch__for{margin-top:12px}.an .ch__steps{margin-top:18px}.an .ch__steps li{padding-block:10px}.an .ch__price{margin-top:16px}.an .ch .btn{margin-top:18px}}
-.an .ch{position:relative;z-index:1}
 @media(min-width:900px) and (max-height:820px){html.motion .an{padding-block:76px 12px}.an .ch__title{font-size:clamp(2rem,3.4vw,3rem)}.an .ch__for{margin-top:10px;font-size:1rem}.an .ch__steps{margin-top:12px}.an .ch__steps li{padding-block:7px}.an .ch__price{margin-top:12px}.an .ch__price b{font-size:1.5rem}.an .ch__more{margin-top:8px;font-size:.875rem}.an .ch .btn{margin-top:12px;min-height:48px}}
-@media(min-width:900px) and (max-width:1180px){.an-note{max-width:calc(100% - 70px)}}

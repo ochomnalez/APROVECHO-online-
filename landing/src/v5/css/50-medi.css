@@ -1,54 +1,70 @@
+/* ---------- v5 · ESTACIÓN (prefijo st-): componente compartido por 02 Medí y 03 Anticipá ----------
+   Cuadro de referencia 1774×887 (2:1, ver img/estacion/piezas.json): todas las posiciones van en % del cuadro.
+   Sin .motion se ve la etapa DESARMADA estática, con los nombres visibles. Solo transform/opacity se animan. */
+.st-stage{position:relative;width:100%;margin-inline:auto;padding:8% 3% 11%;contain:layout paint}
+.st-frame{position:relative;width:100%;aspect-ratio:var(--fr,2)}
+/* foto armada: solo existe con movimiento (sin él, la estación se muestra desarmada) */
+.st-armada{position:absolute;left:var(--x);top:var(--y);width:var(--w);display:none;transform-origin:50% 50%}
+html.motion .st-armada{display:block;pointer-events:none}
+.st-armada img{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 12px rgba(0,0,0,.16));-webkit-user-drag:none;user-select:none}
+.st-armada .st-giro{position:absolute;left:0;top:0}
+.st-giro[hidden],.st-seq[hidden]{display:none}
+.st-seq{position:absolute;left:0;top:0;width:100%;height:auto;pointer-events:none}
+/* piezas sueltas */
+.st-p{position:absolute;left:var(--x);top:var(--y);width:var(--w);outline:none}
+.st-p:focus-visible{outline:3px solid var(--forest);outline-offset:4px;border-radius:12px}
+.st-p__img{display:block;width:100%;height:auto;filter:drop-shadow(0 9px 8px rgba(0,0,0,.16));transition:opacity .2s;-webkit-user-drag:none;user-select:none}
+.st-p.is-on{z-index:2}
+.st-p:hover,.st-p:focus-visible,.st-p.is-tap{z-index:4}
+/* en animación (y solo entonces) se promueven a capa propia */
+.st-stage.is-anim .st-p,.st-stage.is-anim .st-armada{will-change:transform,opacity}
+html.motion .st-stage:not(.is-sep) .st-p{visibility:hidden}
+/* al resaltar una pieza, las otras bajan un poco */
+.st-stage.has-on .st-p:not(.is-on):not(:hover):not(:focus-visible) .st-p__img{opacity:.55}
+.st-stage:has(.st-p:focus-visible) .st-p:not(:focus-visible) .st-p__img{opacity:.55}
+@media(hover:hover){.st-stage:has(.st-p:hover) .st-p:not(:hover) .st-p__img{opacity:.55}}
+/* etiqueta: nombre + frase corta */
+.st-tag{position:absolute;z-index:3;width:max-content;max-width:200px;padding:6px 11px;border:1px solid var(--line-2);border-radius:10px;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.12);font-size:.8125rem;line-height:1.25;color:var(--ink);text-align:left;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .18s var(--ease-out),visibility 0s .18s}
+.st-tag b{display:block;font-weight:700}
+.st-tag small{display:none;margin-top:1px;font-size:.75rem;font-weight:500;color:var(--text-2);white-space:normal}
+[data-tag="b"] .st-tag{top:calc(100% + 6px);left:50%;translate:-50% 0}
+[data-tag="bl"] .st-tag{top:calc(100% + 6px);left:0}
+[data-tag="br"] .st-tag{top:calc(100% + 6px);right:0}
+[data-tag="tl"] .st-tag{bottom:calc(100% + 6px);left:0}
+[data-tag="b2"] .st-tag{top:calc(100% + 34px);right:0}
+[data-tag="b2"] .st-tag::before{content:"";position:absolute;right:14px;bottom:100%;height:28px;border-left:1.5px solid var(--ink)}
+.st-p:focus-visible .st-tag,.st-p.is-on .st-tag,.st-p.is-tap .st-tag,.st-stage.is-names .st-tag,html:not(.motion) .st-tag{opacity:1;visibility:visible;transition-delay:0s}
+.st-p:focus-visible .st-tag small,.st-p.is-on .st-tag small,.st-p.is-tap .st-tag small{display:block}
+@media(hover:hover){.st-p:hover .st-tag{opacity:1;visibility:visible;transition-delay:0s}.st-p:hover .st-tag small{display:block}.st-stage:has(.st-p:hover) .st-p.is-on:not(:hover) .st-tag{opacity:0;visibility:hidden}}
+.st-stage.is-mini .st-p{pointer-events:none}
+.st-stage.is-mini .st-tag{opacity:0!important;visibility:hidden!important}
+/* giro 360°: solo si hay frames (ver 50-medi.js) */
+.st-stage.has-giro.is-armed .st-armada{pointer-events:auto;cursor:grab;touch-action:pan-y}
+.st-stage.has-giro.is-armed .st-armada.is-drag{cursor:grabbing}
+.st-armada:focus-visible{outline:3px solid var(--forest);outline-offset:4px;border-radius:12px}
+/* leyenda (celular): reemplaza a las etiquetas junto a cada pieza */
+.st-leg{display:none;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:4px;padding:0 4px;font-size:.8125rem;line-height:1.35;color:var(--text-2)}
+.st-leg b{display:block;color:var(--ink)}
+@media(max-width:899px){
+  .st-leg{display:grid}
+  .st-tag,html:not(.motion) .st-tag{display:none}
+  .st-p.is-tap .st-tag,.st-p:focus-visible .st-tag{display:block;opacity:1;visibility:visible}
+  .st-stage{padding:5% 2% 6%}
+  .st-tag{padding:5px 9px;font-size:.75rem;max-width:150px}
+}
+
 /* ---------- v5 · 02 Medí · Plan Smart: la estación se desarma ---------- */
-/* Pose final (desarmada) definida en CSS: sin movimiento se ve así, estática y legible. */
-.md{background:#fff}
-.md-stage{position:relative;width:min(100%,680px);aspect-ratio:1/1;margin-inline:auto}
-.md-piece{position:absolute;will-change:transform}
-.md-piece img{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 12px rgba(0,0,0,.2))}
-.md-piece--tab{left:1%;top:2%;width:50%;rotate:-7deg}
-.md-piece--arm{left:34%;top:36%;width:27.5%}
-.md-piece--arm svg{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25))}
-.md-piece--bal{left:57%;top:52%;width:42%}
-.md-sh{position:absolute;left:12%;right:12%;bottom:-9%;height:8%;border-radius:50%;background:rgba(0,0,0,.34);filter:blur(9px)}
-.md-lines,.md-dots{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.md-lines path{fill:none;stroke:var(--ink);stroke-width:1.25;stroke-dasharray:2 5;stroke-linecap:round;opacity:.55}
-.md-dots circle{fill:#fff;stroke:var(--ink);stroke-width:1.25;vector-effect:non-scaling-stroke}
-/* rótulos y datos (línea más corta que la base para que entren) (posiciones en % de la escena) */
-.md-c--tab{left:54%;top:9%}
-.md-c--arm{right:66%;top:45%}
-.md-c--bal{right:42%;top:70%}
-.md-d--a{left:2%;top:80%}
-.md-d--b{left:23%;top:87%}
+.md{background:#fff;--bleed:clamp(0px,calc((100vw - 1200px)/2 + var(--gutter) - 40px),140px)}
+.md-stage{width:100%;max-width:600px;margin-inline:auto;min-width:0}
+.md-ds{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:6px}
+.md-ds .datum{position:static}
 @media(min-width:900px){
-  .md.chap--flip .chap__in{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+  .md.chap--flip .chap__in{grid-template-columns:minmax(0,1fr) 420px;gap:48px}
   html.motion .md{min-height:100vh;display:flex;align-items:center;padding-block:clamp(80px,10vh,96px) 20px}
   html.motion .md .chap__in{width:100%}
-  .md-stage{width:min(100%,680px,calc(100vh - 140px))}
+  .md-stage{max-width:none;width:min(calc(100% + var(--bleed)),calc((100svh - 200px) * 1.55));margin-left:calc(-1 * var(--bleed))}
 }
-@media(max-width:1180px){
-  .md .callout{padding-left:44px;font-size:.875rem}
-  .md .callout::before{width:34px}
-  .md .callout--l{padding-left:0;padding-right:44px}
-  .md .callout small{font-size:.75rem}
-}
-@media(max-width:899px){
-  .md-stage{width:min(100%,460px)}
-  .md .callout{padding-left:24px;font-size:.78rem;white-space:normal;max-width:46%;line-height:1.25}
-  .md .callout::before{width:18px}
-  .md .callout--l{padding-left:0;padding-right:24px}
-  .md .callout small{font-size:.6875rem}
-  .md-c--tab{left:48%;top:6%}
-  .md-c--arm{right:60%;top:43%;max-width:38%}
-  .md-c--bal{right:46%;top:63%;max-width:38%}
-  .md .datum{padding:7px 11px;border-radius:11px;font-size:.6875rem;box-shadow:0 8px 18px rgba(0,0,0,.14)}
-  .md .datum b{font-size:1.05rem}
-  .md-d--a{left:1%;top:79%}
-  .md-d--b{left:25%;top:88%}
-  html.motion .md .ch__steps li{color:var(--ink)}
-}
-@media(min-width:1181px){
-  .md .callout{padding-left:52px}
-  .md .callout::before{width:42px}
-  .md .callout--l{padding-left:0;padding-right:52px}
-}
+@media(min-width:900px) and (max-width:1180px){.md.chap--flip .chap__in{grid-template-columns:minmax(0,1fr) 380px;gap:36px}}
+@media(max-width:899px){html.motion .md .ch__steps li{color:var(--ink)}}
 @media(min-width:900px) and (max-height:980px){.md .ch__title{font-size:clamp(2.4rem,3.9vw,3.5rem)}.md .ch__for{margin-top:12px}.md .ch__steps{margin-top:18px}.md .ch__steps li{padding-block:10px}.md .ch__price{margin-top:16px}.md .ch .btn{margin-top:18px}}
 @media(min-width:900px) and (max-height:820px){html.motion .md{padding-block:76px 12px}.md .ch__title{font-size:clamp(2rem,3.4vw,3rem)}.md .ch__for{margin-top:10px;font-size:1rem}.md .ch__steps{margin-top:12px}.md .ch__steps li{padding-block:7px}.md .ch__price{margin-top:12px}.md .ch__price b{font-size:1.5rem}.md .ch__more{margin-top:8px;font-size:.875rem}.md .ch .btn{margin-top:12px;min-height:48px}}

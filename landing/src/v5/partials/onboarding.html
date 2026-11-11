@@ -1,1 +1,35 @@
-<section class="sec" id="recorrido"><div class="wrap"><h2 class="sec__title">Pendiente: recorrido</h2></div></section>
+<!-- ============ v5 · RECORRIDO COMPLETO: video de onboarding (ob-) ============ -->
+<section class="sec ob" id="recorrido" aria-labelledby="ob-t">
+  <div class="wrap">
+    <header class="ob__head">
+      <p class="eyebrow">Recorrido completo</p>
+      <h2 class="sec__title ob__title" id="ob-t">Mirá cómo es tu primer día.</h2>
+      <p class="sec__text ob__lead">Del alta a tu primer pack vendido, en un minuto y medio.</p>
+    </header>
+
+    <div class="ob__frame">
+      <div class="ob__player" id="ob-player">
+        <img class="ob__poster" src="video/onboarding/onboarding-poster.webp" width="1920" height="1080" alt="" loading="lazy" decoding="async">
+        <video class="ob__video" id="ob-video" preload="none" playsinline hidden poster="video/onboarding/onboarding-poster.webp" width="1920" height="1080" data-src="video/onboarding/onboarding-1080.mp4" aria-label="Video: cómo es tu primer día con APROVECHO, del alta al primer pack vendido"></video>
+        <button class="ob__play" id="ob-play" type="button" aria-label="Reproducir el video del recorrido completo, 1 minuto y 31 segundos">
+          <span class="ob__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8A1 1 0 0 0 8 5.2z" fill="currentColor"/></svg></span>
+          <span class="ob__lab">Ver el recorrido <small>1:31 · con voz</small></span>
+        </button>
+      </div>
+    </div>
+
+    <ol class="ob__chap" aria-label="Capítulos del video: tocá uno para ir a ese momento">
+      <li><button type="button" data-t="5.3"><b>0:05</b><span class="ob__ct">Armá tu comercio en minutos</span><small>Entrás como comercio y elegís tu plan.</small></button></li>
+      <li><button type="button" data-t="15.4"><b>0:15</b><span class="ob__ct">Publicá con una foto</span><small>La app reconoce qué es y cuántos hay, y te arma la propuesta. Cada detalle lo elegís vos.</small></button></li>
+      <li><button type="button" data-t="36.2"><b>0:36</b><span class="ob__ct">Reserva, QR y retiro</span><small>El vecino reserva y paga desde la app, y vos escaneás su QR en el local.</small></button></li>
+      <li><button type="button" data-t="46"><b>0:46</b><span class="ob__ct">Mirá lo que recuperás</span><small>Plata y kilos recuperados, y huella de carbono asociada (estimada).</small></button></li>
+      <li><button type="button" data-t="55.8"><b>0:56</b><span class="ob__ct">Smart: medí con balanza y cámara</span><small>Peso real, no estimado, y vos decidís si se vende o se descarta.</small></button></li>
+      <li><button type="button" data-t="68.2"><b>1:08</b><span class="ob__ct">Intelligence: varias sucursales</span><small>Todos tus locales en un solo panel.</small></button></li>
+    </ol>
+
+    <div class="ob__cta">
+      <a class="btn btn--lg" href="#alta" data-cta="onboarding">Sumá tu comercio</a>
+      <p>Sin costo fijo. Pagás solo por cada pack vendido.</p>
+    </div>
+  </div>
+</section>

@@ -27,7 +27,7 @@ P = json.load(open(os.path.join(LANDING, 'img', 'estacion', 'piezas.json'), enco
 FW, FH = P['frame']
 
 # armada.webp (1296×1055) dentro del cuadro: escala .78 y centrada sobre la base de la balanza
-ARM = dict(file='img/estacion/armada.webp', iw=1296, ih=1055, x=315, y=43, scale=.78, s=1.15)
+ARM = dict(file='img/estacion/armada.webp', iw=1296, ih=1055, x=315, y=43, scale=.78, s=1.28)
 
 # clave del json -> (nombre visible, frase corta, datos de animación)
 PIEZAS = [

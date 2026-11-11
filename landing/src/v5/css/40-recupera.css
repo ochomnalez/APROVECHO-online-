@@ -113,13 +113,13 @@ html:not(.motion) .rc-tap{display:none}
 /* ---------- celular: el teléfono queda arriba mientras se leen los pasos ---------- */
 @media(max-width:899px){
   .rc{padding-top:32px}
-  .rc__in{display:flex;flex-direction:column;gap:24px}
+  .rc__in{display:flex;flex-direction:column;align-items:stretch;gap:24px}
   .rc-stage{order:-1}
   .rc .ch__title{font-size:clamp(2.4rem,11vw,3.4rem)}
   .motion .rc-stage{position:sticky;top:var(--nav-h);z-index:3;background:var(--soft);margin-inline:calc(var(--gutter) * -1);padding:8px var(--gutter) 4px;border-bottom:1px solid var(--line)}
   .motion .rc-stage .rc-note{display:none}
-  .motion .rc-scene{--u:min(calc(43svh / 70.2),calc(44vw / 32));grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ph lb" "ph dt";grid-template-rows:1fr auto;
-    column-gap:16px;padding:0;justify-content:start}
+  .motion .rc-scene{--u:min(calc(43svh / 70.2),calc(44vw / 32));grid-template-columns:auto minmax(0,210px);grid-template-areas:"ph lb" "ph dt";grid-template-rows:1fr auto;
+    column-gap:16px;padding:0;justify-content:center}
   .motion .rc-phone::before{box-shadow:0 .8em 1.8em -.8em rgba(15,51,38,.3)}
   .motion .rc-lab.callout{top:50%;left:0;padding-left:26px;font-size:.875rem;line-height:1.25;transform:translate(-8px,-1.1rem)}
   .motion .rc-lab.callout.is-on{transform:translate(0,-1.1rem)}
