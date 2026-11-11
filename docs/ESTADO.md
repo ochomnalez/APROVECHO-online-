@@ -30,7 +30,7 @@
 | Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | ✅ Entregado e integrado (falta validar PROPUESTA-identidad-1 a 5) | Vie 6/11 18:00 | `handoffs/2026-11-05-identidad-sistema-visual.md` |
 | Guion y video | `codex/aprovecho-video` · Codex | Cuatro guiones y storyboard. Primer corte de «Una foto» listo para revisión | Guiones: vie 6/11 · Videos: mar 10/11 | [Video y plan de producción](handoffs/2026-11-04-video-una-foto.md) |
 | Desarrollo de la landing | `claude/aprovecho-landing` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
-| Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
+| Desarrollo de la app | `codex/octi-app-entrega` · `codex-octi-app` | ✅ Demo para entrega implementada y probada: consumidor + Base + Smart + Intelligence, offline y reportes. Pendiente revisión visual e integración por PR | Mié 11/11 | `handoffs/2026-11-11-app-demo-final.md` |
 
 ## Próximos pasos
 

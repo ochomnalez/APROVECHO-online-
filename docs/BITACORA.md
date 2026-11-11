@@ -54,3 +54,4 @@
 | 2026-11-09 23:12 | claude-octi-video | `integ` | `afdb34b` | Onboarding v4 (109 s): clics con cuadradito y zoom, clips de menú y gerente, sugerencias de Intelligence, Smart con foto, música Wholesome, voces nuevas (apertura, condiciones, Intelligence) | OK de Octavio y ajustes |
 | 2026-11-09 23:52 | claude-octi-video | `integ` | `a85b05f` | Onboarding v5 (1:31): más ágil sin perder las pantallas, voz con menos pausas, música Carefree más audible | OK de Octavio |
 | 2026-11-10 00:05 | claude-octi-video | `integ` | `8c1dfb9` | Onboarding v6 (1:31): frase de Intelligence y cierre elegidos por Octavio, música Easy Lemon | OK de Octavio |
+| 2026-11-11 14:11 | codex-octi-app | `codex/octi-app-entrega` | `7e160f7` | Demo para entrega cerrada: consumidor y tres planes, confirmación al publicar, comisión 25%, PWA offline, QR, CSV y reportes; pruebas y capturas listas | Octavio revisa visualmente e integra el PR; publicación no solicitada |
