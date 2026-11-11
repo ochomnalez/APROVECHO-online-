@@ -7,6 +7,7 @@ export const cuenta = {
   merchant: null,
   ready: false,
   error: null,
+  emailSugerido: "",
   recovery: new URLSearchParams(location.search).get("auth") === "recovery",
 };
 let client,
@@ -120,8 +121,14 @@ export async function iniciarAuth(onChange) {
     await sincronizar(data.session);
   } catch (e) {
     cuenta.ready = true;
-    cuenta.error =
-      "No pudimos conectar con las cuentas. Reintentá cuando tengas conexión.";
+    if (["bad_code_verifier", "flow_state_not_found", "flow_state_expired", "otp_expired"].includes(e?.code)) {
+      const url = new URL(location.href);
+      for (const key of ["code", "error", "error_code", "error_description", "auth"]) url.searchParams.delete(key);
+      history.replaceState(history.state, "", url.pathname + url.search + "#/auth/ingresar");
+      cuenta.error = mensajeError(e);
+    } else {
+      cuenta.error = "No pudimos conectar con las cuentas. Reintentá cuando tengas conexión.";
+    }
     changed();
   }
 }
@@ -137,11 +144,14 @@ export function mensajeError(error) {
     return "El correo o la contraseña no coinciden.";
   if (code === "email_not_confirmed")
     return "Confirmá tu correo con el enlace que te enviamos antes de ingresar.";
-  if (
-    code === "over_email_send_rate_limit" ||
-    code === "over_request_rate_limit"
-  )
-    return "Hubo varios intentos seguidos. Esperá unos minutos y volvé a intentar.";
+  if (code === "over_email_send_rate_limit")
+    return "El servicio de correo alcanzó su cupo de confirmaciones por hora. No pudimos completar esta solicitud. Si ya tenés cuenta, usá Ingresar; si no, reintentá más tarde.";
+  if (code === "over_request_rate_limit")
+    return "Hubo demasiadas solicitudes seguidas. Esperá unos minutos y volvé a intentar.";
+  if (code === "email_address_not_authorized")
+    return "El registro por correo todavía no está disponible para esta dirección. Contactá al equipo de APROVECHO.";
+  if (["bad_code_verifier", "flow_state_not_found", "flow_state_expired", "otp_expired"].includes(code))
+    return "El enlace ya no puede iniciar sesión. Volvé a Ingresar con tu correo y contraseña. Si todavía falta confirmar tu correo, usá el último enlace recibido.";
   if (code === "weak_password")
     return "Elegí una contraseña más larga y difícil de adivinar.";
   if (code === "user_already_exists")

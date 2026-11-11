@@ -46,6 +46,8 @@ function acceso(tipo = "ingresar") {
     <div class="auth-pie">${registro ? "¿Ya tenés cuenta?" : recuperar || clave ? "¿Ya podés entrar?" : "¿Primera vez por acá?"} <button class="link" data-go="auth/${registro || recuperar || clave ? "ingresar" : "registro"}">${registro || recuperar || clave ? "Ingresá" : "Creá tu cuenta"}</button></div>
     </div><p class="mini auth-aclaracion">Tus cuentas se guardan de forma segura. Los packs, pagos, IA y balanza de esta versión siguen siendo de demostración.</p></div>`,
     montar: (el) => {
+      const email = el.querySelector('[name="email"]');
+      if (email && cuenta.emailSugerido) email.value = cuenta.emailSugerido;
       el.querySelectorAll("[name=rol]").forEach((r) =>
         r.addEventListener("change", () => {
           const local = el.querySelector("[data-local]");
@@ -57,7 +59,7 @@ function acceso(tipo = "ingresar") {
   };
 }
 async function enviar(form) {
-  if (form.dataset.busy || !form.reportValidity()) return;
+  if (form.dataset.busy || form.dataset.espera || form.dataset.completado || !form.reportValidity()) return;
   form.dataset.busy = "1";
   const btn = form.querySelector("[type=submit]"),
     msg = form.querySelector("[role=alert]");
@@ -101,6 +103,16 @@ async function enviar(form) {
       msg.focus();
       const input = form.querySelector("[name=password]");
       if (input) input.value = "";
+      cuenta.emailSugerido = email;
+      form.dataset.completado = "1";
+      btn.hidden = true;
+      form.querySelectorAll("input").forEach(input => input.disabled = true);
+      const volver = document.createElement("button");
+      volver.type = "button";
+      volver.className = "btn bloque";
+      volver.dataset.go = "auth/ingresar";
+      volver.textContent = "Ir a Ingresar";
+      form.appendChild(volver);
     } else if (tipo === "clave") {
       cuenta.recovery = false;
       const retorno = new URL(location.href);
@@ -113,9 +125,21 @@ async function enviar(form) {
     msg.classList.remove("exito");
     msg.textContent = mensajeError(e);
     msg.focus();
+    if (e?.code === "over_email_send_rate_limit" || e?.code === "over_request_rate_limit") {
+      form.dataset.espera = "1";
+      const original = btn.textContent;
+      let restantes = 60;
+      btn.textContent = `Reintentar en ${restantes} s`;
+      const reloj = setInterval(() => {
+        if (!form.isConnected) { clearInterval(reloj); return; }
+        restantes -= 1;
+        btn.textContent = restantes > 0 ? `Reintentar en ${restantes} s` : original;
+        if (restantes <= 0) { clearInterval(reloj); delete form.dataset.espera; btn.disabled = false; }
+      }, 1000);
+    }
   } finally {
     delete form.dataset.busy;
-    btn.disabled = false;
+    btn.disabled = !!form.dataset.espera;
   }
 }
 const tipos = {

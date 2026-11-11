@@ -10,6 +10,7 @@ const assert = require("node:assert/strict");
     reducedMotion: "reduce",
   });
   p.setDefaultTimeout(8000);
+  await p.clock.install();
   const errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
   const profiles = {
@@ -47,6 +48,7 @@ const assert = require("node:assert/strict");
   };
   let who = "consumer",
     signup,
+    signupCalls = 0,
     recovery = 0,
     reviews = 0;
   const user = () => ({
@@ -124,6 +126,8 @@ const assert = require("node:assert/strict");
     if (url.pathname.endsWith("/logout")) return fulfill(r, {});
     if (url.pathname.endsWith("/signup")) {
       signup = JSON.parse(req.postData());
+      signupCalls += 1;
+      if (signupCalls === 1) return fulfill(r,{code:'over_email_send_rate_limit',error_code:'over_email_send_rate_limit',msg:'email rate limit exceeded'},429);
       return fulfill(r, { user: user(), session: null });
     }
     if (url.pathname.endsWith("/recover")) {
@@ -244,11 +248,27 @@ const assert = require("node:assert/strict");
     await p.getByLabel("Correo electrónico").fill("nuevo@example.test");
     await p.locator("[name=password]").fill("ContrasenaLarga123");
     await p.getByRole("button", { name: "Crear cuenta", exact: true }).click();
+    await p.getByRole('alert').filter({hasText:'cupo de confirmaciones por hora'}).waitFor();
+    assert.equal(signupCalls,1);
+    assert.equal(await p.getByLabel('Nombre del comercio').inputValue(),'Nuevo local');
+    assert(await p.getByRole('button',{name:'Reintentar en 60 s',exact:true}).isDisabled());
+    await p.locator('form[data-form=cuenta]').evaluate(f=>f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));
+    assert.equal(signupCalls,1);
+    await p.clock.runFor(61000);
+    await p.getByRole("button", { name: "Crear cuenta", exact: true }).click();
     await p
       .getByRole("alert")
       .filter({ hasText: "Revisá tu correo" })
       .waitFor();
     assert.equal(signup.data.account_type, "merchant");
+    assert.equal(signupCalls,2);
+    await p.locator('form[data-form=cuenta]').evaluate(f=>f.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true})));
+    assert.equal(signupCalls,2);
+    await p.getByRole('button',{name:'Ir a Ingresar',exact:true}).click();
+    assert.equal(await p.getByLabel('Correo electrónico').inputValue(),'nuevo@example.test');
+    const errores=await p.evaluate(async()=>{const {mensajeError}=await import('./js/auth.js');return {correo:mensajeError({code:'over_email_send_rate_limit'}),enlace:mensajeError({code:'bad_code_verifier'})}});
+    assert(errores.correo.includes('cupo de confirmaciones'));
+    assert(errores.enlace.includes('Volvé a Ingresar'));
     assert(!("role" in signup.data));
     await go("auth/recuperar");
     await p.getByLabel("Correo electrónico").fill("cliente@example.test");
