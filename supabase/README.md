@@ -2,15 +2,16 @@
 
 `schema.sql` prepara perfiles, comercios, revisión administrativa e historial. Es independiente de los datos de packs simulados del navegador. Se diseñó para un proyecto dedicado; no aplicar a proyectos ajenos sin verificar su esquema.
 
-## Activación
+## Proyecto conectado
 
-1. Crear o seleccionar el proyecto autorizado por el usuario. El intento de crear **APROVECHO** en la organización conectada fue rechazado por el límite de dos proyectos gratuitos activos. No se pausó, borró ni modificó ninguno.
-2. Inspeccionar tablas y migraciones existentes. Aplicar `schema.sql` con una migración remota `cuentas_y_comercios` mediante Supabase MCP.
-3. Configurar Auth: Site URL `https://aprovecho-app-demo.vercel.app`; permitir redirecciones a esa raíz y a `https://aprovecho-app-demo.vercel.app/?auth=recovery`. Mantener confirmación de correo. Verificar envío/entrega de correo y recuperación antes de publicar como funcional.
-4. Cargar en `private.ap_founders` las cuatro direcciones exactas suministradas por el usuario. No registrar el dominio entero ni poner la lista de fundadores en el cliente público. Los usuarios existentes deben tener correo confirmado para recibir el rol admin.
-5. Obtener URL y clave **publicable** con el conector y completar `app/js/auth-config.js`. Nunca distribuir una clave `service_role`.
-6. Ejecutar advisors y verificar en el proyecto real: consumidor, comercio, fundador verificado, aislamiento por RLS, recuperación, cierre de sesión y registro.
-7. Desplegar la carpeta app en el proyecto Vercel existente `aprovecho-app-demo`. Actualizar la versión de la PWA si se cambian recursos.
+- **APROVECHO:** `cggqyfzqmfzkjjitirco`, región sa-east-1, organización Cursala simple.
+- Migración remota aplicada: `20261111182935_cuentas_y_comercios`, copia en `migrations/`.
+- URL y clave publicable configuradas en `app/js/auth-config.js`. No hay claves de servicio en el cliente.
+- Cuatro correos exactos de fundadores cargados en lista privada. No se habilitó un dominio completo.
+- El usuario confirmó Site URL `https://aprovecho-app-demo.vercel.app` y redirect allowlist `https://aprovecho-app-demo.vercel.app/**`.
+- «ropa» se pausó con autorización para liberar el cupo gratuito. «MVP nativa digital» rechazó la pausa por hibernación y no se modificó.
+
+Para una actualización, aplicar la nueva migración autorizada, ejecutar pruebas/advisors, y publicar solo la carpeta app en el proyecto Vercel existente `aprovecho-app-demo`. La publicación actual es una carga de archivos, sin conexión Git automática.
 
 ## Permisos
 

@@ -165,7 +165,7 @@ const assert = require("node:assert/strict");
     await p.getByRole("heading", { name: "Qué bueno verte" }).waitFor();
   }
   try {
-    await p.goto(process.env.APP_URL || "http://127.0.0.1:8767/app/");
+    await p.goto(process.env.APP_URL || "http://127.0.0.1:8765/app/");
     await p.waitForTimeout(1100);
     await go("admin");
     assert(p.url().endsWith("auth/ingresar"));
@@ -188,6 +188,11 @@ const assert = require("node:assert/strict");
     await p.reload();
     await p.locator('[data-go="auth/cuenta"]').first().waitFor();
     assert(p.url().endsWith("c/inicio"));
+    await p.evaluate(async()=>{const {cuenta}=await import('./js/auth.js');cuenta.recovery=true;history.replaceState(history.state,'','?auth=recovery#/auth/clave');(await import('./js/nav.js')).nav.go('auth/clave',{raiz:true});});
+    await p.locator('[name=password]').fill('NuevaContrasenaLarga123');
+    await p.getByRole('button',{name:'Guardar contraseña',exact:true}).click();
+    await p.locator('[data-go="auth/cuenta"]').first().waitFor();
+    assert(!p.url().includes('auth=recovery'));
     await logout();
     await login("local@example.test");
     await p

@@ -103,6 +103,9 @@ async function enviar(form) {
       if (input) input.value = "";
     } else if (tipo === "clave") {
       cuenta.recovery = false;
+      const retorno = new URL(location.href);
+      retorno.searchParams.delete('auth');
+      history.replaceState(history.state, '', retorno.pathname + retorno.search + retorno.hash);
       nav.go(destinoCuenta(), { raiz: true });
     } else await sincronizar(result.data.session);
   } catch (e) {

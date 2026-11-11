@@ -6,19 +6,21 @@
 
 Adaptado desde [Aprovecho v3.2.1](https://github.com/ochomnalez/aprovecho-app/tree/3ed4bb8), commit `3ed4bb8`. Alcance confirmado el 11/11/2026: demo navegable para la entrega, con IA, pagos y balanza simulados.
 
-## Versión con cuentas · rama de trabajo
+## Cuentas y administración
 
-Se agregaron ingreso, registro de consumidor/comercio, sesión persistente, recuperación, permisos por rol y panel de fundadores. Esta rama necesita activar el proyecto Supabase antes de reemplazar la demo publicada. `app/js/auth-config.js` permanece sin configurar hasta resolver el límite de proyectos y la pausa rechazada por Supabase. No hay cuentas reales activadas todavía.
+Ingreso, registro consumidor/comercio, recuperación de contraseña y datos de cuenta conectados a Supabase. Después de iniciar sesión se abre la app del tipo de cuenta correspondiente. Los cuatro fundadores pueden registrarse con las direcciones institucionales que indicaron: después de verificar el correo se les asigna el panel de administración.
 
-El registro público no ofrece administración: las cuatro direcciones exactas de los fundadores se habilitan en una lista privada, con correo confirmado. Los datos comerciales se guardan en Supabase; packs, pagos, IA y balanza siguen siendo ejemplos de la demo.
+El panel muestra comercios registrados, pendientes, aprobados, consumidores y altas de los últimos siete días. Permite buscar, filtrar y aprobar/rechazar altas. El historial de cambios queda registrado en la base. No hay registro público de administradores ni cambio libre de rol.
 
-Ver `supabase/README.md` para conexión y permisos. Pruebas actuales: `app/tests/cuentas.cjs` (SDK real y API simulada) y `app/tests/permisos.cjs` (PostgreSQL/PGlite). Capturas en `app/capturas/cuentas/`. El recorrido anterior se conserva en `app/tests/legacy/demo.cjs`, para el commit bc50bdc sin autenticación.
+**Los packs, pagos, IA y balanza siguen siendo de demostración.** Cada cuenta tiene su propio estado local para recorrer esa parte; no hay inventario compartido ni cobros reales.
+
+Ver `supabase/README.md` para permisos. Pruebas actuales: `app/tests/cuentas.cjs` (SDK real y API simulada) y `app/tests/permisos.cjs` (PostgreSQL/PGlite). También se verificó RLS en el proyecto real con rollback y la conexión Auth desde Vercel. No se crearon cuentas de prueba persistentes. La entrega de correo y el ingreso con una cuenta real deben revisarse con el usuario.
 
 ## Abrir
 
 Desde la raíz del repositorio: `python3 -m http.server 8765 --bind 127.0.0.1`. Abrí `http://127.0.0.1:8765/app/`. No requiere instalar paquetes, cuentas ni claves. También se puede servir la carpeta `app/` sola; no la abras como archivo porque usa módulos de JavaScript.
 
-## Presentación en 5 minutos
+## Recorrido del prototipo anterior (sin cuentas)
 
 1. **Base:** Entrar como local → Base → Usar la carta de ejemplo. La lectura deja un precio sin reconocer: tocá Tarta de ricota, cargá su precio y guardá. Guardá la carta y terminá los datos del local.
 2. **Publicar:** Sacar foto → foto de muestra → revisá productos, cantidades, alérgenos y horario → Publicar → Confirmar y publicar. La confirmación cubre alimento del día, frío y alérgenos. Volver a revisar no publica nada.
@@ -29,11 +31,11 @@ Desde la raíz del repositorio: `python3 -m http.server 8765 --bind 127.0.0.1`. 
 
 Para empezar de nuevo: Demo → Reiniciar la demo. El reloj arranca a las 17:10; dejá desactivado Usar la hora real durante la presentación. Los datos se guardan en este navegador; dos celulares tienen estados independientes. El QR puede transportar datos de una reserva de demostración, pero no sincroniza inventario entre dispositivos.
 
-## Sin conexión y límites
+## Sin conexión y límites de la demo
 
 En HTTPS se instala como PWA y guarda recursos locales, fotos, fuentes y librerías. Abrila una vez con conexión antes de presentar; el mapa necesita internet para calles nuevas. En localhost, usá `?sw` para habilitar el service worker. Se verificaron recarga, QR y PDF sin conexión después de instalarlo.
 
-Sin cobros, reconocimiento de imágenes, balanza, cuentas ni verificación comercial reales. Los datos históricos y las propuestas de Score/niveles son ejemplos. Publicada en Vercel; sin backend conectado.
+Sin cobros, reconocimiento de imágenes, balanza, cuentas ni verificación comercial reales. Los datos históricos y las propuestas de Score/niveles son ejemplos. Publicada en Vercel. Cuentas y comercios conectados a Supabase; marketplace aún simulado.
 
 ## Verificación reproducible
 
@@ -45,6 +47,6 @@ node app/tests/cuentas.cjs
 
 Si Playwright está en otra carpeta, indicá `PLAYWRIGHT_MODULE=/ruta/a/node_modules/playwright`. `CHROMIUM_PATH` permite elegir Chromium; por defecto `/usr/bin/chromium`. `APP_URL` cambia la URL y `CAPTURE_DIR` la carpeta de capturas (por defecto `work/app-qa`).
 
-La prueba recorre alta, publicación y confirmación, pago fallido, reserva, persistencia, entrega y duplicado, cancelación, Smart, CSV Intelligence, Excel/PDF, funcionamiento sin conexión, reporte con foto y publicación cerca del cierre. Capturas revisadas en `app/capturas/`. Resultado y límites en `docs/handoffs/2026-11-11-app-demo-final.md`.
+La prueba actual recorre ingreso, registro, recuperación, roles y administración con API simulada. El recorrido transaccional del prototipo sin cuentas se conserva en app/tests/legacy/demo.cjs, aplicable al commit bc50bdc. Capturas revisadas en `app/capturas/`. Resultado y límites en `docs/handoffs/2026-11-11-app-demo-final.md`.
 
 `css/tokens.css` es una copia local de `docs/marca/tokens.css`, con las mismas variables y fuentes locales en lugar de Google Fonts. Al cambiar el sistema visual, sincronizá esta copia y subí la versión de `sw.js`.
