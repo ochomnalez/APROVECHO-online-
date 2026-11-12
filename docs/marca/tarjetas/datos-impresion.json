@@ -1,0 +1,24 @@
+{
+  "url_qr": "https://aprovecho-landing-videos.vercel.app/",
+  "frente": [
+    "aprovecho.",
+    "Menos desperdicio, más aprovecho."
+  ],
+  "dorso": [
+    "QR real",
+    "ESCANEÁ Y DESCUBRÍ",
+    "aprovecho."
+  ],
+  "tamano_final_mm": [
+    90,
+    50
+  ],
+  "sangrado_mm": 3,
+  "tamano_qr_mm_con_margen": 25,
+  "margen_qr_modulos": 4,
+  "correccion_qr": "Q",
+  "modulos_con_margen": 41,
+  "tarjetas_por_a4": 10,
+  "doble_faz": "Giro por borde largo; escala 100%; sin ajustar a página",
+  "firma": "codex-octi-landing"
+}
