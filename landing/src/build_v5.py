@@ -28,6 +28,7 @@ def read(p):
 # reutiliza FAQ, JSON-LD, gráficos y formularios de la v4 (también regenera index.html, sin cambios)
 v4 = runpy.run_path(os.path.join(HERE, 'build.py'))
 parts = dict(v4['parts'])
+parts.update(runpy.run_path(os.path.join(V5, 'investor_charts.py'))['parts'])
 for name in ('nav', 'hero', 'problema', 'recupera', 'medi', 'anticipa', 'quienes', 'contadores', 'valor', 'pasos', 'inversores', 'onboarding'):
     parts['V5_' + name.upper()] = read(os.path.join(V5, 'partials', name + '.html')).rstrip()
 
