@@ -45,12 +45,18 @@ window.APV5 = (function () {
   function readPlanOnce(root) {
     var last = root.querySelector('.ch__steps li:last-child');
     if (!last || completedPlans[root.id]) return;
-    ScrollTrigger.create({ trigger: last, start: 'bottom bottom', once: true,
-      onEnter: function () {
+    ScrollTrigger.create({ trigger: last, start: 'bottom bottom',
+      onEnter: function (self) {
         requestAnimationFrame(function () {
           if (root.hidden || root.closest('[data-view][hidden]')) return;
+          var rect = last.getBoundingClientRect();
+          var nav = document.querySelector('.nv');
+          // Al mostrar una pestaña, el refresh puede notificar un cruce transitorio.
+          // Completar solo cuando el último paso se ve realmente en la pantalla.
+          if (!rect.height || rect.top < (nav ? nav.offsetHeight : 0) || rect.bottom > innerHeight + 2) return;
           completedPlans[root.id] = true;
           root.dataset.completed = 'true';
+          self.kill();
           refreshPlans();
         });
       }
@@ -171,7 +177,13 @@ window.APV5 = (function () {
 
   function load(i) {
     var v = vids[i];
-    if (imgs[i].getAttribute('data-src')) { imgs[i].src = imgs[i].getAttribute('data-src'); imgs[i].removeAttribute('data-src'); }
+    if (imgs[i].getAttribute('data-src')) {
+      var poster = imgs[i].getAttribute('data-src');
+      imgs[i].sizes = '100vw';
+      imgs[i].srcset = poster.replace('.webp', '-640.webp') + ' 960w, ' + poster + ' 1920w';
+      imgs[i].src = poster;
+      imgs[i].removeAttribute('data-src');
+    }
     if (!v || v.getAttribute('src')) return;
     v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
     v.addEventListener('canplay', function () { if (cur === i && !isPaused()) play(i); });
@@ -261,7 +273,10 @@ window.APV5 = (function () {
     started = true;
     sec.classList.add('is-live');
     load(0);
-    vids[0].addEventListener('playing', function () { load(1); }, { once: true });
+    vids[0].addEventListener('playing', function () {
+      if (small) setTimeout(function () { load(1); }, 1200);
+      else load(1);
+    }, { once: true });
     setBars();
     sync();
   }
@@ -276,7 +291,12 @@ window.APV5 = (function () {
   document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
 
   // El póster ya es visible; comenzar el primer clip sin esperar window.load.
-  begin();
+  if (small && imgs[0].decode) {
+    // Dar prioridad al primer póster antes de abrir las descargas de video en teléfono.
+    imgs[0].decode().catch(function () {}).then(function () {
+      requestAnimationFrame(function () { requestAnimationFrame(begin); });
+    });
+  } else begin();
   new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
 
   // paralaje y zoom lentos con el scroll (solo con movimiento; sin pin)
@@ -285,9 +305,6 @@ window.APV5 = (function () {
     var media = sec.querySelector('.hr__media');
     ctx.mm.add(ctx.desktop, function () {
       g.fromTo(media, { yPercent: 0, scale: 1 }, { yPercent: 5, scale: 1.06, ease: 'none', scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom top', scrub: 0.6 } });
-    });
-    ctx.mm.add(ctx.mobile, function () {
-      g.fromTo(media, { scale: 1 }, { scale: 1.08, ease: 'none', scrollTrigger: { trigger: sec.querySelector('.hr__bg'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
     });
   });
 })();
@@ -436,6 +453,11 @@ APV5.scene('recupera', function (ctx) {
       dots[k].classList.toggle('is-done', k < i);
     }
     for (var j = 0; j < lis.length; j++) lis[j].classList.toggle('is-on', j === st);
+    var count = root.querySelector('[data-rc-count]');
+    if (count) count.textContent = (i + 1) + ' / ' + N;
+    var prev = root.querySelector('[data-rc-prev]'), next = root.querySelector('[data-rc-next]');
+    if (prev) prev.disabled = i === 0;
+    if (next) next.disabled = i === N - 1;
   }
   function reset() {
     gsap.killTweensOf(scr);
@@ -472,16 +494,11 @@ APV5.scene('recupera', function (ctx) {
 
   // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
-    if (root.dataset.completed === 'true') {
-      gsap.set(scr, { autoAlpha: 0, xPercent: 0 });
-      gsap.set(scr[N - 1], { autoAlpha: 1 });
-      paint(N - 1);
-      return reset;
-    }
-    var shown = 0;
-    gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
-    gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
-    paint(0);
+    var completed = root.dataset.completed === 'true';
+    var shown = completed ? N - 1 : 0;
+    gsap.set(scr, { autoAlpha: 0, xPercent: 100 });
+    gsap.set(scr[shown], { autoAlpha: 1, xPercent: 0 });
+    paint(shown);
     function show(i) {
       if (i === shown) return;
       var dir = i > shown ? 1 : -1, prev = scr[shown], next = scr[i];
@@ -495,21 +512,37 @@ APV5.scene('recupera', function (ctx) {
       shown = i;
       paint(i);
     }
+    var previous = root.querySelector('[data-rc-prev]'), next = root.querySelector('[data-rc-next]');
+    function backward() { show(Math.max(0, shown - 1)); }
+    function forward() { show(Math.min(N - 1, shown + 1)); }
+    if (previous) previous.addEventListener('click', backward);
+    if (next) next.addEventListener('click', forward);
     var stage = root.querySelector('.rc-stage');
-    var tr = lis.map(function (li, st) {
+    function readingLine() {
+      return Math.min(innerHeight - 80, stage.offsetHeight + document.querySelector('.nv').offsetHeight + 100);
+    }
+    function reading(li) {
+      var rect = li.getBoundingClientRect(), line = readingLine();
+      return rect.height > 0 && rect.top <= line + 2 && rect.bottom >= line - 2;
+    }
+    var tr = completed ? [] : lis.map(function (li, st) {
       var idx = [];
       stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
       return ScrollTrigger.create({
         trigger: li,
-        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + document.querySelector('.nv').offsetHeight + 100) + 'px'; },
+        start: function () { return 'top ' + readingLine() + 'px'; },
         end: function () { return '+=' + li.offsetHeight; },
-        onUpdate: function (self) { show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
-        onEnter: function () { show(idx[0]); },
-        onEnterBack: function () { show(idx[idx.length - 1]); }
+        onUpdate: function (self) { if (reading(li)) show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
+        onEnter: function () { if (reading(li)) show(idx[0]); },
+        onEnterBack: function () { if (reading(li)) show(idx[idx.length - 1]); }
       });
     });
     ctx.readPlanOnce(root);
-    return function () { tr.forEach(function (t) { t.kill(); }); reset(); };
+    return function () {
+      if (previous) previous.removeEventListener('click', backward);
+      if (next) next.removeEventListener('click', forward);
+      tr.forEach(function (t) { t.kill(); }); reset();
+    };
   });
 });
 
@@ -865,27 +898,10 @@ APV5.scene('medi', function (ctx) {
     return reset;
   });
 
+  // En teléfono la estación permanece visible; sus vistas se eligen tocando los controles.
+  // El despiece no depende de haber pasado por una posición exacta de scroll.
   ctx.mm.add(ctx.mobile, function () {
-    if (root.dataset.completed === 'true') {
-      build(M).progress(1).pause();
-      ST.flag(stage, 'is-sep', true);
-      ST.flag(stage, 'is-names', true);
-      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
-      return reset;
-    }
-    steps.forEach(function (li, i) {
-      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
-        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
-        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
-      });
-    });
-    var tl = build(M);
-    steps.forEach(function (li) { li.classList.remove('is-on'); });
-    mark(0, M);
-    tl.eventCallback('onUpdate', function () { mark(tl.progress(), M); });
-    ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true
-    });
+    ST.mobile(stage);
     ctx.readPlanOnce(root);
     return reset;
   });
@@ -1001,43 +1017,10 @@ APV5.scene('anticipa', function (ctx) {
     return reset;
   });
 
+  // En teléfono la estación permanece visible; sus vistas se eligen tocando los controles.
+  // El despiece no depende de haber pasado por una posición exacta de scroll.
   ctx.mm.add(ctx.mobile, function () {
-    if (root.dataset.completed === 'true') {
-      var station = gsap.timeline();
-      ST.separate(station, stage, .2, 5.2, .7);
-      station.progress(1).pause();
-      ST.flag(stage, 'is-sep', true);
-      var dashboard = gsap.timeline();
-      addBoard(dashboard, 0, .55, 1);
-      dashboard.progress(1).pause();
-      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
-      return reset;
-    }
-    steps.forEach(function (li, i) {
-      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
-        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
-        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
-      });
-    });
-    steps.forEach(function (li) { li.classList.remove('is-on'); });
-    var tlS = gsap.timeline({ defaults: { ease: 'none' } });
-    ST.separate(tlS, stage, .2, 5.2, .7);
-    tlS.to({}, { duration: .6 }, 5.4);
-    ctx.ScrollTrigger.create({
-      animation: tlS, trigger: stage, start: 'top 85%', end: 'bottom 45%', scrub: .6, invalidateOnRefresh: true,
-      onUpdate: function (self) {
-        var t = self.progress * 6;
-        ST.flag(stage, 'is-armed', t < .15);
-        ST.flag(stage, 'is-sep', t >= .15);
-        ST.flag(stage, 'is-anim', t > .02 && t < 5.6);
-      }
-    });
-    var tlB = gsap.timeline();
-    addBoard(tlB, 0, .55, 1);
-    ctx.ScrollTrigger.create({
-      animation: tlB, trigger: board, start: 'top 85%', end: 'bottom 55%', scrub: .6, invalidateOnRefresh: true
-    });
-    ST.flag(stage, 'is-sep', false);
+    ST.mobile(stage);
     ctx.readPlanOnce(root);
     return reset;
   });
@@ -1116,11 +1099,13 @@ APV5.scene('pasos', function (ctx) {
     var next = panels.find(function (p) { return !p.hidden; });
     if (next === selected) { clicked = false; return; }
     selected = next;
-    APV5.refreshPlans();
     if (clicked) {
       var head = root.querySelector('.pl__tabs');
       window.scrollTo({ top: Math.max(0, head.getBoundingClientRect().top + window.scrollY - document.querySelector('.nv').offsetHeight - 16), behavior: 'instant' });
     }
+    // Inicializar desde la posición final: una pestaña larga no debe marcarse
+    // como leída usando el scroll que pertenecía a la pestaña anterior.
+    APV5.refreshPlans();
     clicked = false;
   }).observe(root.querySelector('.pl__panels'), { subtree: true, attributes: true, attributeFilter: ['hidden'] });
 })();
@@ -1183,3 +1168,104 @@ APV5.scene('progreso', function (ctx) {
   window.addEventListener('resize', queue);
   resolve();
 });
+
+/* 99-mobile.js */
+/* El producto se puede explorar sin depender del scroll ni de GSAP en teléfono. */
+(function () {
+  'use strict';
+  var mobile = window.matchMedia('(max-width:899px)');
+  var stages = Array.prototype.slice.call(document.querySelectorAll('[data-st-stage]'));
+  var ST = APV5.st;
+
+  function choose(stage, mode) {
+    stage.setAttribute('data-mobile-view', mode);
+    stage.classList.toggle('is-armed', mode === 'assembled');
+    stage.querySelectorAll('[data-st-mode]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.getAttribute('data-st-mode') === mode));
+    });
+    stage.querySelectorAll('.st-p').forEach(function (piece) { piece.tabIndex = -1; });
+  }
+  ST.mobile = function (stage) {
+    ST.bind(stage);
+    stage.classList.add('st-mobile');
+    choose(stage, stage.getAttribute('data-mobile-view') || 'assembled');
+  };
+  stages.forEach(function (stage) {
+    stage.querySelectorAll('[data-st-mode]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        choose(stage, button.getAttribute('data-st-mode'));
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+      });
+    });
+  });
+  function resize() {
+    stages.forEach(function (stage) {
+      if (mobile.matches) ST.mobile(stage);
+      else {
+        stage.classList.remove('st-mobile');
+        stage.querySelectorAll('.st-p').forEach(function (piece) { piece.tabIndex = 0; });
+      }
+    });
+  }
+  resize();
+  if (mobile.addEventListener) mobile.addEventListener('change', resize);
+  else mobile.addListener(resize);
+
+  // El visor usa las imágenes originales y admite zoom y desplazamiento en ambos ejes.
+  var dialog = document.createElement('dialog');
+  dialog.className = 'pv';
+  dialog.setAttribute('aria-labelledby', 'pv-title');
+  dialog.innerHTML = '<div class="pv__head"><h2 class="pv__title" id="pv-title"></h2><button type="button" data-pv-close>Cerrar</button></div><div class="pv__tools" aria-label="Zoom de la imagen"><button type="button" data-pv-out aria-label="Alejar imagen">−</button><output aria-live="polite">100%</output><button type="button" data-pv-in aria-label="Acercar imagen">+</button></div><p class="pv__hint">Usá + para ampliar y deslizá para recorrer la imagen.</p><div class="pv__viewport"><img class="pv__img" alt=""></div>';
+  document.body.appendChild(dialog);
+  var image = dialog.querySelector('img'), viewport = dialog.querySelector('.pv__viewport');
+  var zoom = 1, origin = null;
+  function paint() {
+    image.style.width = Math.round(viewport.clientWidth * zoom) + 'px';
+    dialog.querySelector('output').textContent = Math.round(zoom * 100) + '%';
+    dialog.querySelector('[data-pv-out]').disabled = zoom <= 1;
+    dialog.querySelector('[data-pv-in]').disabled = zoom >= 4;
+  }
+  function open(button, source, title) {
+    origin = button; zoom = 1;
+    dialog.querySelector('h2').textContent = title;
+    image.alt = title;
+    image.src = source;
+    if (typeof dialog.showModal !== 'function') { window.open(source, '_blank', 'noopener'); return; }
+    dialog.showModal();
+    document.documentElement.classList.add('preview-open');
+    viewport.scrollTop = viewport.scrollLeft = 0;
+    paint();
+    dialog.querySelector('[data-pv-close]').focus({ preventScroll: true });
+  }
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-preview], [data-preview-current]');
+    if (!button) return;
+    var source = button.getAttribute('data-preview');
+    if (button.hasAttribute('data-preview-current')) {
+      var current = document.querySelector('#plan-base .rc-scr.is-cur img') || document.querySelector('#plan-base .rc-scr img');
+      source = current && current.getAttribute('src');
+      if (current && current.getAttribute('srcset')) source = current.getAttribute('srcset').split(',').pop().trim().split(/\s+/)[0];
+    }
+    if (source) open(button, source, button.getAttribute('data-preview-label') || 'Vista del producto');
+  });
+  dialog.querySelector('[data-pv-close]').addEventListener('click', function () { dialog.close(); });
+  dialog.querySelector('[data-pv-in]').addEventListener('click', function () { zoom = Math.min(4, zoom + .5); paint(); });
+  dialog.querySelector('[data-pv-out]').addEventListener('click', function () { zoom = Math.max(1, zoom - .5); paint(); });
+  dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', function () {
+    document.documentElement.classList.remove('preview-open');
+    if (origin) origin.focus({ preventScroll: true });
+  });
+  window.addEventListener('resize', function () { if (dialog.open) paint(); });
+
+  // Evitar que el contacto flotante tape el video, un formulario o las tablas de inversores.
+  if ('IntersectionObserver' in window) {
+    var watched = Array.prototype.slice.call(document.querySelectorAll('#planes,#recorrido,#alta,#inversores,#consumidores'));
+    var visible = new Set();
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) visible.add(entry.target); else visible.delete(entry.target); });
+      document.documentElement.classList.toggle('mobile-reading', visible.size > 0);
+    });
+    watched.forEach(function (element) { observer.observe(element); });
+  }
+})();

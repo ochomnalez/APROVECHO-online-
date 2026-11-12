@@ -262,27 +262,10 @@ APV5.scene('medi', function (ctx) {
     return reset;
   });
 
+  // En teléfono la estación permanece visible; sus vistas se eligen tocando los controles.
+  // El despiece no depende de haber pasado por una posición exacta de scroll.
   ctx.mm.add(ctx.mobile, function () {
-    if (root.dataset.completed === 'true') {
-      build(M).progress(1).pause();
-      ST.flag(stage, 'is-sep', true);
-      ST.flag(stage, 'is-names', true);
-      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
-      return reset;
-    }
-    steps.forEach(function (li, i) {
-      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
-        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
-        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
-      });
-    });
-    var tl = build(M);
-    steps.forEach(function (li) { li.classList.remove('is-on'); });
-    mark(0, M);
-    tl.eventCallback('onUpdate', function () { mark(tl.progress(), M); });
-    ctx.ScrollTrigger.create({
-      animation: tl, trigger: stage, start: 'top 85%', end: 'bottom 40%', scrub: .6, invalidateOnRefresh: true
-    });
+    ST.mobile(stage);
     ctx.readPlanOnce(root);
     return reset;
   });

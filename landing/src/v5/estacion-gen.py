@@ -52,6 +52,7 @@ def stage_html(label, indent='      '):
     aw, ah = ARM['iw'] * ARM['scale'], ARM['ih'] * ARM['scale']
     out = []
     out.append('<div class="st-stage" data-st-stage data-giro-frames="48" data-seq-frames="0" role="group" aria-label="%s">' % label)
+    out.append('  <div class="st-views" role="group" aria-label="Vista de la estación"><button type="button" data-st-mode="assembled" aria-pressed="true">Estación armada</button><button type="button" data-st-mode="parts" aria-pressed="false">Componentes</button></div>')
     out.append('  <div class="st-frame" data-fw="%d" data-fh="%d" style="--fr:%s">' % (FW, FH, num(FW / FH)))
     out.append('    <div class="st-armada" data-x="%s" data-y="%s" data-w="%s" data-h="%s" data-s="%s" style="--x:%s;--y:%s;--w:%s">' % (
         num(ARM['x']), num(ARM['y']), num(aw), num(ah), num(ARM['s']), pct(ARM['x'], FW), pct(ARM['y'], FH), pct(aw, FW)))
@@ -72,6 +73,8 @@ def stage_html(label, indent='      '):
         out.append('      <span class="st-tag" aria-hidden="true"><b>%s</b><small>%s</small></span>' % (name, frase))
         out.append('    </div>')
     out.append('  </div>')
+    out.append('  <p class="st-mobile-hint">Deslizá sobre la estación para girarla.</p>')
+    out.append('  <button class="mobile-preview" type="button" data-preview="img/estacion/armada.webp" data-preview-label="Estación con balanza y tablet">Ampliar estación</button>')
     out.append('</div>')
     out.append('<ul class="st-leg">')
     for key, name, frase, d in PIEZAS:

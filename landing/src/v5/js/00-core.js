@@ -43,12 +43,18 @@ window.APV5 = (function () {
   function readPlanOnce(root) {
     var last = root.querySelector('.ch__steps li:last-child');
     if (!last || completedPlans[root.id]) return;
-    ScrollTrigger.create({ trigger: last, start: 'bottom bottom', once: true,
-      onEnter: function () {
+    ScrollTrigger.create({ trigger: last, start: 'bottom bottom',
+      onEnter: function (self) {
         requestAnimationFrame(function () {
           if (root.hidden || root.closest('[data-view][hidden]')) return;
+          var rect = last.getBoundingClientRect();
+          var nav = document.querySelector('.nv');
+          // Al mostrar una pestaña, el refresh puede notificar un cruce transitorio.
+          // Completar solo cuando el último paso se ve realmente en la pantalla.
+          if (!rect.height || rect.top < (nav ? nav.offsetHeight : 0) || rect.bottom > innerHeight + 2) return;
           completedPlans[root.id] = true;
           root.dataset.completed = 'true';
+          self.kill();
           refreshPlans();
         });
       }

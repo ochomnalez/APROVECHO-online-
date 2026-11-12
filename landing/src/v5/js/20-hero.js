@@ -24,7 +24,13 @@
 
   function load(i) {
     var v = vids[i];
-    if (imgs[i].getAttribute('data-src')) { imgs[i].src = imgs[i].getAttribute('data-src'); imgs[i].removeAttribute('data-src'); }
+    if (imgs[i].getAttribute('data-src')) {
+      var poster = imgs[i].getAttribute('data-src');
+      imgs[i].sizes = '100vw';
+      imgs[i].srcset = poster.replace('.webp', '-640.webp') + ' 960w, ' + poster + ' 1920w';
+      imgs[i].src = poster;
+      imgs[i].removeAttribute('data-src');
+    }
     if (!v || v.getAttribute('src')) return;
     v.addEventListener('playing', function () { v.classList.add('is-ready'); }, { once: true });
     v.addEventListener('canplay', function () { if (cur === i && !isPaused()) play(i); });
@@ -114,7 +120,10 @@
     started = true;
     sec.classList.add('is-live');
     load(0);
-    vids[0].addEventListener('playing', function () { load(1); }, { once: true });
+    vids[0].addEventListener('playing', function () {
+      if (small) setTimeout(function () { load(1); }, 1200);
+      else load(1);
+    }, { once: true });
     setBars();
     sync();
   }
@@ -129,7 +138,12 @@
   document.addEventListener('visibilitychange', function () { hidden = document.hidden; sync(); });
 
   // El póster ya es visible; comenzar el primer clip sin esperar window.load.
-  begin();
+  if (small && imgs[0].decode) {
+    // Dar prioridad al primer póster antes de abrir las descargas de video en teléfono.
+    imgs[0].decode().catch(function () {}).then(function () {
+      requestAnimationFrame(function () { requestAnimationFrame(begin); });
+    });
+  } else begin();
   new IntersectionObserver(function (es) { offscreen = !es[0].isIntersecting; sync(); }).observe(sec);
 
   // paralaje y zoom lentos con el scroll (solo con movimiento; sin pin)
@@ -138,9 +152,6 @@
     var media = sec.querySelector('.hr__media');
     ctx.mm.add(ctx.desktop, function () {
       g.fromTo(media, { yPercent: 0, scale: 1 }, { yPercent: 5, scale: 1.06, ease: 'none', scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom top', scrub: 0.6 } });
-    });
-    ctx.mm.add(ctx.mobile, function () {
-      g.fromTo(media, { scale: 1 }, { scale: 1.08, ease: 'none', scrollTrigger: { trigger: sec.querySelector('.hr__bg'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
     });
   });
 })();

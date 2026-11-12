@@ -15,6 +15,7 @@ const url = process.env.LANDING_TEST_URL || 'http://127.0.0.1:8766/v5.html';
     page.on('response', response => {
       if (response.status() >= 400) errors.push(response.status() + ' ' + response.url());
     });
+    await page.route('https://aprovecho-app-demo.vercel.app/', route => route.fulfill({contentType:'text/html',body:'<h1>App</h1>'}));
     await page.goto(url);
     await page.waitForTimeout(600);
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
@@ -40,9 +41,7 @@ const url = process.env.LANDING_TEST_URL || 'http://127.0.0.1:8766/v5.html';
         'El indicador no reescribe HTML en reposo');
     }
     await page.locator('.nav__download').click();
-    await page.waitForTimeout(100);
-    assert(await page.locator('#vista-packs').isVisible());
-    assert((await page.locator('[data-toast]').textContent()).includes('La app llega pronto'));
+    await page.waitForURL('https://aprovecho-app-demo.vercel.app/');
     assert.deepEqual(errors, []);
     await page.close();
   }
@@ -76,5 +75,5 @@ const url = process.env.LANDING_TEST_URL || 'http://127.0.0.1:8766/v5.html';
   assert(frames.size > 1, 'El giro completo sigue disponible con teclado');
   await station.close();
   await browser.close();
-  console.log('PASS: botones, disponibilidad de app, reposo, video accesible y carga progresiva del giro.');
+  console.log('PASS: botones, enlace a la app, reposo, video accesible y carga progresiva del giro.');
 })().catch(error => { console.error(error); process.exit(1); });

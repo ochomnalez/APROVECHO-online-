@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="img/logo/favicon-180.png">
 <link rel="preload" href="fonts/bricolage-grotesque-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/dm-sans-400-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/v5.min.css?v=8">
+<link rel="stylesheet" href="css/v5.min.css?v=9">
 <noscript><style>[role=tabpanel][hidden]{display:block!important}.qn__hub[hidden]{display:block!important}[data-inv-toggle]{display:none!important}[role=tablist],.film__toggle{display:none!important}</style></noscript>
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "APROVECHO", "slogan": "Menos desperdicio, más aprovecho.", "description": "Plataforma que le permite al comercio vender lo que le sobra con una foto y usar esos datos para que le sobre menos.", "logo": "img/logo/sello.webp"}, {"@type": "WebSite", "name": "APROVECHO", "inLanguage": "es-AR"}, {"@type": "VideoObject", "name": "Así funciona APROVECHO", "description": "Los cinco pasos del plan Base: foto al cierre, packs propuestos, reservas, retiro con QR y panel del día.", "thumbnailUrl": "video/como-funciona-1280.webp", "contentUrl": "video/como-funciona-1280.mp4", "uploadDate": "2026-11-10", "duration": "PT18S", "inLanguage": "es-AR"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": {"@type": "Answer", "text": "Base no tiene costo fijo ni de alta: APROVECHO cobra una comisión solo por cada pack que vendés. Smart cuesta USD 300 por mes e Intelligence USD 800 por mes por sucursal, más la comisión por pack."}}, {"@type": "Question", "name": "¿Cuánto me queda de cada pack?", "acceptedAnswer": {"@type": "Answer", "text": "Ejemplo: si lo que te sobró vale $12.200 en tu mostrador, el pack sale $6.100 (tu precio habitual con 50% de descuento) y a vos te quedan $4.575. Hoy, eso lo estás tirando."}}, {"@type": "Question", "name": "¿Mis clientes van a dejar de comprar a precio normal?", "acceptedAnswer": {"@type": "Answer", "text": "El pack es sorpresa: el cliente no elige qué lleva y solo se publica al cierre, con lo que ya sabés que sobró. Durante el día tu mostrador sigue igual. Y el pack te trae gente nueva del barrio."}}, {"@type": "Question", "name": "No tengo tiempo al cierre.", "acceptedAnswer": {"@type": "Answer", "text": "Por eso es una foto. La app propone los packs, el precio y el horario; vos solo revisás y confirmás. La reserva, el cobro y el QR los resolvemos nosotros."}}, {"@type": "Question", "name": "¿Y si los packs no se venden?", "acceptedAnswer": {"@type": "Answer", "text": "No pagás nada. Activamos compradores en tu zona antes de sumarte y te avisamos cuando alguien reserva. Lo que no se vende lo podés seguir donando como hasta ahora."}}, {"@type": "Question", "name": "¿Y si la app se equivoca?", "acceptedAnswer": {"@type": "Answer", "text": "Todo se corrige antes de publicar. El precio sale de tu lista, nunca de la foto. Cada corrección ayuda a que la app aprenda."}}, {"@type": "Question", "name": "¿Quién es responsable por la comida?", "acceptedAnswer": {"@type": "Answer", "text": "El comercio, igual que con lo que vende en el mostrador. Antes de publicar confirmás tres cosas: producto del día, cadena de frío y alérgenos y sin TACC. Los alérgenos los informás vos, nunca la IA. APROVECHO verifica tu habilitación y el carnet de manipulador antes de activar tu cuenta."}}, {"@type": "Question", "name": "¿Cómo cobro?", "acceptedAnswer": {"@type": "Answer", "text": "El cliente paga en la app con Mercado Pago o tarjeta. Mercado Pago reparte en el momento: tu parte va directo a tu cuenta y la comisión, a APROVECHO."}}, {"@type": "Question", "name": "¿Hay envío?", "acceptedAnswer": {"@type": "Answer", "text": "No. El cliente retira en tu local, en la franja que vos definís."}}, {"@type": "Question", "name": "¿Qué necesito para empezar?", "acceptedAnswer": {"@type": "Answer", "text": "El celular del local, tu habilitación municipal y el carnet de manipulador. Te mandamos el primer lote de bolsas biodegradables sin costo."}}, {"@type": "Question", "name": "¿Dónde funciona?", "acceptedAnswer": {"@type": "Answer", "text": "Arrancamos en CABA, Vicente López, San Isidro y Pilar."}}, {"@type": "Question", "name": "¿Puedo pasar de plan?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, cuando quieras, y conservás todo tu historial."}}]}]}</script>
@@ -239,6 +239,10 @@
         </div>
         <div class="rc-dots" aria-hidden="true"><i class="rc-g"></i><i></i><i class="rc-g"></i><i></i><i></i><i class="rc-g"></i><i></i><i class="rc-g"></i><i></i><i class="rc-g"></i></div>
       </div>
+      <div class="mobile-screen-controls" aria-label="Pantallas de la app">
+        <button type="button" data-rc-prev aria-label="Pantalla anterior">←</button><span data-rc-count role="status" aria-live="polite">1 / 10</span><button type="button" data-rc-next aria-label="Pantalla siguiente">→</button>
+      </div>
+      <button class="mobile-preview rc-preview" type="button" data-preview-current data-preview-label="Pantalla de la app · ejemplo">Ampliar pantalla</button>
     </div>
   </div>
 </section>
@@ -248,6 +252,7 @@
     <div class="md-stage">
     <!-- st:inicio (generado por src/v5/estacion-gen.py: no editar a mano) -->
     <div class="st-stage" data-st-stage data-giro-frames="48" data-seq-frames="0" role="group" aria-label="Estación Smart: balanza, tablet, brazo, hub de carga y cables">
+      <div class="st-views" role="group" aria-label="Vista de la estación"><button type="button" data-st-mode="assembled" aria-pressed="true">Estación armada</button><button type="button" data-st-mode="parts" aria-pressed="false">Componentes</button></div>
       <div class="st-frame" data-fw="1774" data-fh="887" style="--fr:2">
         <div class="st-armada" data-x="315" data-y="43" data-w="1010.88" data-h="822.9" data-s="1.28" style="--x:17.756%;--y:4.848%;--w:56.983%">
           <img class="st-armada__img" src="img/estacion/armada.webp" width="1296" height="1055" alt="Estación armada: balanza con la tablet en su brazo, hub de carga y cables" loading="lazy" decoding="async">
@@ -281,6 +286,8 @@
           <span class="st-tag" aria-hidden="true"><b>Cable de corriente</b><small>Alimentación de la estación.</small></span>
         </div>
       </div>
+      <p class="st-mobile-hint">Deslizá sobre la estación para girarla.</p>
+      <button class="mobile-preview" type="button" data-preview="img/estacion/armada.webp" data-preview-label="Estación con balanza y tablet">Ampliar estación</button>
     </div>
     <ul class="st-leg">
       <li><b>Balanza</b>Peso real, no estimado.</li>
@@ -294,6 +301,11 @@
       <div class="md-ds">
         <div class="datum md-d" data-md-d="0">Ejemplo<b>0,87 kg</b>en la balanza</div>
       </div>
+      <figure class="mobile-product-panel">
+        <img src="img/producto/tablet.webp" width="816" height="548" alt="Panel Smart con el peso del alimento y el balance del día; datos de ejemplo" loading="lazy" decoding="async">
+        <figcaption>Panel Smart · datos de ejemplo</figcaption>
+        <button class="mobile-preview" type="button" data-preview="img/producto/tablet.webp" data-preview-label="Panel Smart · datos de ejemplo">Ampliar panel Smart</button>
+      </figure>
     </div>
     <div class="ch">
       <p class="eyebrow">02 · Medí · Plan Smart</p>
@@ -332,6 +344,7 @@
       <div class="an-st">
         <!-- st:inicio (generado por src/v5/estacion-gen.py: no editar a mano) -->
         <div class="st-stage" data-st-stage data-giro-frames="48" data-seq-frames="0" role="group" aria-label="Estación de una sucursal: balanza, tablet, brazo, hub de carga y cables">
+          <div class="st-views" role="group" aria-label="Vista de la estación"><button type="button" data-st-mode="assembled" aria-pressed="true">Estación armada</button><button type="button" data-st-mode="parts" aria-pressed="false">Componentes</button></div>
           <div class="st-frame" data-fw="1774" data-fh="887" style="--fr:2">
             <div class="st-armada" data-x="315" data-y="43" data-w="1010.88" data-h="822.9" data-s="1.28" style="--x:17.756%;--y:4.848%;--w:56.983%">
               <img class="st-armada__img" src="img/estacion/armada.webp" width="1296" height="1055" alt="Estación armada: balanza con la tablet en su brazo, hub de carga y cables" loading="lazy" decoding="async">
@@ -365,6 +378,8 @@
               <span class="st-tag" aria-hidden="true"><b>Cable de corriente</b><small>Alimentación de la estación.</small></span>
             </div>
           </div>
+          <p class="st-mobile-hint">Deslizá sobre la estación para girarla.</p>
+          <button class="mobile-preview" type="button" data-preview="img/estacion/armada.webp" data-preview-label="Estación con balanza y tablet">Ampliar estación</button>
         </div>
         <ul class="st-leg">
           <li><b>Balanza</b>Peso real, no estimado.</li>
@@ -389,6 +404,7 @@
         <span class="an-frame"></span>
       </div>
       <p class="an-cap">Panel de Intelligence · datos de ejemplo</p>
+      <button class="mobile-preview" type="button" data-preview="img/app/intelligence.webp" data-preview-label="Panel de Intelligence · datos de ejemplo">Ampliar tablero</button>
       <div class="an-rep" role="img" aria-label="Ejemplo de informe mensual con gráficos y un sello de revisado por un analista">
         <div class="an-rep__head"><b>Informe del mes</b><span class="an-rep__seal"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>Revisado por un analista</span></div>
         <div class="an-rep__body">
@@ -858,6 +874,6 @@
 <script src="js/main.js?v=20261110" defer></script>
 <script src="js/vendor/gsap.min.js" defer></script>
 <script src="js/vendor/ScrollTrigger.min.js" defer></script>
-<script src="js/v5.js?v=8" defer></script>
+<script src="js/v5.js?v=9" defer></script>
 </body>
 </html>

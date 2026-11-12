@@ -35,6 +35,11 @@ APV5.scene('recupera', function (ctx) {
       dots[k].classList.toggle('is-done', k < i);
     }
     for (var j = 0; j < lis.length; j++) lis[j].classList.toggle('is-on', j === st);
+    var count = root.querySelector('[data-rc-count]');
+    if (count) count.textContent = (i + 1) + ' / ' + N;
+    var prev = root.querySelector('[data-rc-prev]'), next = root.querySelector('[data-rc-next]');
+    if (prev) prev.disabled = i === 0;
+    if (next) next.disabled = i === N - 1;
   }
   function reset() {
     gsap.killTweensOf(scr);
@@ -71,16 +76,11 @@ APV5.scene('recupera', function (ctx) {
 
   // ---------- celular: teléfono fijo arriba; cada paso activa sus pantallas ----------
   ctx.mm.add(ctx.mobile, function () {
-    if (root.dataset.completed === 'true') {
-      gsap.set(scr, { autoAlpha: 0, xPercent: 0 });
-      gsap.set(scr[N - 1], { autoAlpha: 1 });
-      paint(N - 1);
-      return reset;
-    }
-    var shown = 0;
-    gsap.set(scr.slice(1), { autoAlpha: 0, xPercent: 100 });
-    gsap.set(scr[0], { autoAlpha: 1, xPercent: 0 });
-    paint(0);
+    var completed = root.dataset.completed === 'true';
+    var shown = completed ? N - 1 : 0;
+    gsap.set(scr, { autoAlpha: 0, xPercent: 100 });
+    gsap.set(scr[shown], { autoAlpha: 1, xPercent: 0 });
+    paint(shown);
     function show(i) {
       if (i === shown) return;
       var dir = i > shown ? 1 : -1, prev = scr[shown], next = scr[i];
@@ -94,20 +94,36 @@ APV5.scene('recupera', function (ctx) {
       shown = i;
       paint(i);
     }
+    var previous = root.querySelector('[data-rc-prev]'), next = root.querySelector('[data-rc-next]');
+    function backward() { show(Math.max(0, shown - 1)); }
+    function forward() { show(Math.min(N - 1, shown + 1)); }
+    if (previous) previous.addEventListener('click', backward);
+    if (next) next.addEventListener('click', forward);
     var stage = root.querySelector('.rc-stage');
-    var tr = lis.map(function (li, st) {
+    function readingLine() {
+      return Math.min(innerHeight - 80, stage.offsetHeight + document.querySelector('.nv').offsetHeight + 100);
+    }
+    function reading(li) {
+      var rect = li.getBoundingClientRect(), line = readingLine();
+      return rect.height > 0 && rect.top <= line + 2 && rect.bottom >= line - 2;
+    }
+    var tr = completed ? [] : lis.map(function (li, st) {
       var idx = [];
       stepOf.forEach(function (s, k) { if (s === st) idx.push(k); });
       return ScrollTrigger.create({
         trigger: li,
-        start: function () { return 'top ' + Math.min(innerHeight - 80, stage.offsetHeight + document.querySelector('.nv').offsetHeight + 100) + 'px'; },
+        start: function () { return 'top ' + readingLine() + 'px'; },
         end: function () { return '+=' + li.offsetHeight; },
-        onUpdate: function (self) { show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
-        onEnter: function () { show(idx[0]); },
-        onEnterBack: function () { show(idx[idx.length - 1]); }
+        onUpdate: function (self) { if (reading(li)) show(idx[Math.min(idx.length - 1, Math.floor(self.progress * idx.length))]); },
+        onEnter: function () { if (reading(li)) show(idx[0]); },
+        onEnterBack: function () { if (reading(li)) show(idx[idx.length - 1]); }
       });
     });
     ctx.readPlanOnce(root);
-    return function () { tr.forEach(function (t) { t.kill(); }); reset(); };
+    return function () {
+      if (previous) previous.removeEventListener('click', backward);
+      if (next) next.removeEventListener('click', forward);
+      tr.forEach(function (t) { t.kill(); }); reset();
+    };
   });
 });

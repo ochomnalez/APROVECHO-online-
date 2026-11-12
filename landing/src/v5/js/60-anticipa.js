@@ -107,43 +107,10 @@ APV5.scene('anticipa', function (ctx) {
     return reset;
   });
 
+  // En teléfono la estación permanece visible; sus vistas se eligen tocando los controles.
+  // El despiece no depende de haber pasado por una posición exacta de scroll.
   ctx.mm.add(ctx.mobile, function () {
-    if (root.dataset.completed === 'true') {
-      var station = gsap.timeline();
-      ST.separate(station, stage, .2, 5.2, .7);
-      station.progress(1).pause();
-      ST.flag(stage, 'is-sep', true);
-      var dashboard = gsap.timeline();
-      addBoard(dashboard, 0, .55, 1);
-      dashboard.progress(1).pause();
-      steps.forEach(function (li, i) { li.classList.toggle('is-on', i === steps.length - 1); });
-      return reset;
-    }
-    steps.forEach(function (li, i) {
-      ctx.ScrollTrigger.create({ trigger: li, start: 'top 65%', end: 'bottom 65%',
-        onEnter: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); },
-        onEnterBack: function () { steps.forEach(function (item, j) { item.classList.toggle('is-on', i === j); }); }
-      });
-    });
-    steps.forEach(function (li) { li.classList.remove('is-on'); });
-    var tlS = gsap.timeline({ defaults: { ease: 'none' } });
-    ST.separate(tlS, stage, .2, 5.2, .7);
-    tlS.to({}, { duration: .6 }, 5.4);
-    ctx.ScrollTrigger.create({
-      animation: tlS, trigger: stage, start: 'top 85%', end: 'bottom 45%', scrub: .6, invalidateOnRefresh: true,
-      onUpdate: function (self) {
-        var t = self.progress * 6;
-        ST.flag(stage, 'is-armed', t < .15);
-        ST.flag(stage, 'is-sep', t >= .15);
-        ST.flag(stage, 'is-anim', t > .02 && t < 5.6);
-      }
-    });
-    var tlB = gsap.timeline();
-    addBoard(tlB, 0, .55, 1);
-    ctx.ScrollTrigger.create({
-      animation: tlB, trigger: board, start: 'top 85%', end: 'bottom 55%', scrub: .6, invalidateOnRefresh: true
-    });
-    ST.flag(stage, 'is-sep', false);
+    ST.mobile(stage);
     ctx.readPlanOnce(root);
     return reset;
   });
