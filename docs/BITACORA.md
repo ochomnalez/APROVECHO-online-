@@ -90,3 +90,4 @@
 | 2026-11-11 21:02 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `0de2f92` | Economics: material para la presentación (5 minutos, 5 diapositivas, gráficos, pitch y preguntas) | Octavio lo comparte con el equipo; actualizar números si cambia el Excel |
 | 2026-11-11 21:19 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `b45159e` | Economics: presentación con todos los números del pitch en las diapositivas y tabla de chequeo | — |
 | 2026-11-12 09:26 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `4034c31` | Economics: diapositiva 5 más corta con payback, VAN (2.494) y TIR (30,7%) | — |
+| 2026-11-12 09:27 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `cd09a52` | Economics: diapositiva 5 cierra pidiendo los USD 163.287 a los inversores, sin nombrar punto de equilibrio ni payback | — |
