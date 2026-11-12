@@ -24,6 +24,7 @@ Optimicé el recorrido móvil de la landing con videos nuevos e Inversores actua
 ## Pruebas
 
 - Recorrido completo automatizado: 320×568, 360×740, 390×844, 430×932, 768×1024 y 844×390, con emulación táctil de Chromium. Tres planes, diez pantallas de Base, seis piezas por estación, zoom/desplazamiento, video inline, alta con selección de plan, FAQ, ocho pestañas de inversores y acceso a la app. Sin excepciones JS ni HTTP erróneos.
+- Recorrido vertical revisado por secciones. Alta de comercio probada en dos pasos: campos vacíos, avanzar, validación, volver y fuente 16 px, sin enviar datos; consola limpia.
 - Fallback: movimiento reducido y GSAP bloqueado; producto y visor siguen disponibles.
 - Gesto táctil real mediante CDP: giro descarga cuadros solo tras interactuar y no desplaza la página; cambio teléfono → horizontal → escritorio correcto.
 - Regresiones `plan-scroll.cjs` y `ui-fluidity.cjs`: completadas. Desktop conserva animaciones, finalización y navegación, video y carga progresiva del giro.
@@ -37,7 +38,7 @@ El teléfono usa exploración táctil explícita para las piezas, sin intentar c
 
 ## Pendientes y próximo agente
 
-Publicar en `aprovecho-landing-videos` (proyecto existente `prj_tVrLvxLlcRpCf2HdVDxnSFans3eA`), confirmar READY y dominio. El entorno ha bloqueado la URL pública; distinguir pruebas locales y confirmación por API de una revisión en teléfono físico. La versión estable `aprovecho-landing.vercel.app` se conserva.
+Publicado en https://aprovecho-landing-videos.vercel.app/ (proyecto existente `prj_tVrLvxLlcRpCf2HdVDxnSFans3eA`). Vercel confirmó READY y alias para `dpl_2PiqSyE7PgQsgxAUWsAxPaoKQetg`, fuente `34552c6e8862f6f1f359e4d5f7cab2e684be15a1`. Se verificó además que el dominio estable sigue apuntando a `dpl_o26rnqrqktjuQhoZ8fCewgKqrLJJ`. El entorno ha bloqueado la URL pública; distinguir pruebas locales y confirmación por API de una revisión en teléfono físico. La versión estable `aprovecho-landing.vercel.app` se conserva.
 
 ## Costo
 
