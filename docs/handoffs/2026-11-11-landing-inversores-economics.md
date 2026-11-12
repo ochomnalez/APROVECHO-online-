@@ -27,7 +27,7 @@ Excel nuevo como fuente principal autorizada. No se recalculan ni corrigen sus h
 
 ## Pendientes y bloqueos
 
-Publicar en el proyecto existente `aprovecho-landing-videos` y confirmar READY y alias. Google Doc sin permiso de lectura; se trabajó con el Excel completo, según la prioridad indicada por el usuario. El entorno ha bloqueado anteriormente las URLs públicas vercel.app; diferenciar pruebas locales de la verificación por API.
+Publicado en https://aprovecho-landing-videos.vercel.app/#inversores. Vercel confirmó READY, commit fuente `d032e50c75e81bc24eca2827738f9aef20bce61f` y alias para `dpl_H1ZZjfUQ9i6r2HP11KTXt8e8qSgN`. El alias estable `aprovecho-landing.vercel.app` sigue en `dpl_o26rnqrqktjuQhoZ8fCewgKqrLJJ`, confirmado después de publicar. Google Doc sin permiso de lectura; se trabajó con el Excel completo, según la prioridad indicada por el usuario. El proxy de este entorno devolvió 403 CONNECT al intentar leer la URL pública, por lo que la verificación visual es local y la publicación se confirma por la API; no se atribuye una prueba visual a la URL real.
 
 ## Próximo agente
 
