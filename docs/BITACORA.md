@@ -92,3 +92,4 @@
 | 2026-11-12 09:26 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `4034c31` | Economics: diapositiva 5 más corta con payback, VAN (2.494) y TIR (30,7%) | — |
 | 2026-11-12 09:27 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `cd09a52` | Economics: diapositiva 5 cierra pidiendo los USD 163.287 a los inversores, sin nombrar punto de equilibrio ni payback | — |
 | 2026-11-12 12:48 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `b4bfab6` | Economics: diapositiva 2 con la cuenta clara de los 50 centavos por pack (comisión − costos − impuestos) | — |
+| 2026-11-12 12:48 | claude-octi-lider | `claude/wizardly-goldberg-q6gnrt` | `4074897` | Economics: diapositiva 2 aclarada (cuenta de los 50 centavos); corregido el archivo | — |
