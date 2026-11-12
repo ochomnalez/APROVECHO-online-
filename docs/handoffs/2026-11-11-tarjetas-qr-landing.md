@@ -27,3 +27,9 @@ Para impresora A4: tamaño real/100%, doble faz por borde largo; luego cortar co
 ## Costo
 
 Sin generaciones ni servicios externos nuevos. El QR se codifica localmente, sin servicio con vencimiento.
+
+## Ajuste posterior · QR con estilo redondeado
+
+Octavio pidió que el QR se pareciera al símbolo suave de la referencia. Se redondearon los tres ojos y las esquinas exteriores de los módulos, con puntos y trazos conectados. No se cambian la matriz, la URL, el margen blanco ni el tamaño de 25 mm. El frente y su lema quedaron idénticos píxel a píxel respecto de la versión previa.
+
+Se actualizaron todos los PDF y las vistas previas, el SVG y el PNG; se agregó un PDF vectorial del QR solo y `verificar.py` para repetir la lectura. Regeneración y prueba con ZXing correctas: un QR en PNG/vista previa/imprenta a 300 ppp y diez en A4 a 150 ppp, todos con la URL exacta de la landing. Sin cambios en el sitio ni nuevos servicios o generaciones pagas.

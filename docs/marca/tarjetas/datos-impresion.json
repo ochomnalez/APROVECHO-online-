@@ -17,6 +17,7 @@
   "tamano_qr_mm_con_margen": 25,
   "margen_qr_modulos": 4,
   "correccion_qr": "Q",
+  "estilo_qr": "Módulos conectados redondeados y tres ojos con esquinas suaves; matriz sin cambios",
   "modulos_con_margen": 41,
   "tarjetas_por_a4": 10,
   "doble_faz": "Giro por borde largo; escala 100%; sin ajustar a página",

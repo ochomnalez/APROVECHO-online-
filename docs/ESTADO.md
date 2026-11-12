@@ -30,7 +30,7 @@
 | Identidad visual / UI | `claude/aprovecho-identidad` · sesión `session_01YPepJKRPFvh2fx4pRYrdnC` (Sonnet) | ✅ Entregado e integrado (falta validar PROPUESTA-identidad-1 a 5) | Vie 6/11 18:00 | `handoffs/2026-11-05-identidad-sistema-visual.md` |
 | Guion y video | `codex/aprovecho-video` · Codex | Cuatro guiones y storyboard. Primer corte de «Una foto» listo para revisión | Guiones: vie 6/11 · Videos: mar 10/11 | [Video y plan de producción](handoffs/2026-11-04-video-una-foto.md) |
 | Desarrollo de la landing | `codex/aprovecho-landing` · `codex-octi-landing` | ✅ Recorrido móvil optimizado y publicado en https://aprovecho-landing-videos.vercel.app/ (READY, 34552c6). Estaciones grandes, piezas táctiles, zoom y controles de Base; pruebas en 6 tamaños, horizontal, fallbacks, formularios y escritorio correctas | Mié 11/11 | `handoffs/2026-11-11-landing-recorrido-mobile.md` |
-| Tarjetas de entrega | `codex/aprovecho-landing` · `codex-octi-landing` | ✅ Frente con «Menos desperdicio, más aprovecho.» y QR real a la landing móvil. PDF imprenta y A4 doble faz listos; diez QR del pliego verificados | Mié 11/11 | `handoffs/2026-11-11-tarjetas-qr-landing.md` |
+| Tarjetas de entrega | `codex/aprovecho-landing` · `codex-octi-landing` | ✅ Frente con «Menos desperdicio, más aprovecho.» y QR real redondeado, como la referencia, a la landing móvil. PDF imprenta/A4 actualizados; diez QR leídos correctamente | Mié 11/11 | `handoffs/2026-11-11-tarjetas-qr-landing.md` |
 | Desarrollo de la app | `claude/aprovecho-app` | Sin abrir (espera a Identidad y UX) | Mar 10/11 | — |
 
 ## Próximos pasos

@@ -7,6 +7,7 @@ no se modifica ni se usa como fondo la captura de pantalla.
 """
 from pathlib import Path
 import json
+import subprocess
 
 import qrcode
 from reportlab.lib.units import mm
@@ -32,29 +33,58 @@ qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_Q, border=4, 
 qr.add_data(URL)
 qr.make(fit=True)
 matrix = qr.get_matrix()  # Incluye el margen blanco de cuatro módulos.
-qr.make_image(fill_color='black', back_color='white').save(OUT / 'qr-landing.png')
-
-
-def runs():
-    for row, values in enumerate(matrix):
-        col = 0
-        while col < len(values):
-            if not values[col]:
-                col += 1
-                continue
-            start = col
-            while col < len(values) and values[col]:
-                col += 1
-            yield row, start, col - start
-
-
 n = len(matrix)
-path = ''.join(f'M{x} {y}h{length}v1h-{length}z' for y, x, length in runs())
+EYES = [(4, 4), (n - 11, 4), (4, n - 11)]
+
+
+def inside_eye(x, y):
+    return any(ex <= x < ex + 7 and ey <= y < ey + 7 for ex, ey in EYES)
+
+
+def module_path(x, y):
+    """Redondear solo esquinas exteriores: puntos aislados y trazos conectados.
+
+    No mueve, agrega ni elimina centros de módulos del QR codificado.
+    Las coordenadas usan el origen arriba a la izquierda, como el SVG.
+    """
+    dark = lambda xx, yy: 0 <= xx < n and 0 <= yy < n and matrix[yy][xx]
+    top, right, bottom, left = dark(x, y - 1), dark(x + 1, y), dark(x, y + 1), dark(x - 1, y)
+    tl = .5 if not top and not left else 0
+    tr = .5 if not top and not right else 0
+    br = .5 if not bottom and not right else 0
+    bl = .5 if not bottom and not left else 0
+    k = .5522847498
+    commands = [('M', x + tl, y), ('L', x + 1 - tr, y)]
+    if tr:
+        commands.append(('C', x + 1 - tr + k * tr, y, x + 1, y + tr - k * tr, x + 1, y + tr))
+    commands.append(('L', x + 1, y + 1 - br))
+    if br:
+        commands.append(('C', x + 1, y + 1 - br + k * br, x + 1 - br + k * br, y + 1, x + 1 - br, y + 1))
+    commands.append(('L', x + bl, y + 1))
+    if bl:
+        commands.append(('C', x + bl - k * bl, y + 1, x, y + 1 - bl + k * bl, x, y + 1 - bl))
+    commands.append(('L', x, y + tl))
+    if tl:
+        commands.append(('C', x, y + tl - k * tl, x + tl - k * tl, y, x + tl, y))
+    commands.append(('Z',))
+    return commands
+
+
+MODULE_PATHS = [module_path(x, y) for y, row in enumerate(matrix)
+                for x, dark in enumerate(row) if dark and not inside_eye(x, y)]
+path = ''.join(command[0] + ' '.join(f'{value:.5f}'.rstrip('0').rstrip('.') for value in command[1:])
+               for commands in MODULE_PATHS for command in commands)
+eyes_svg = ''.join(
+    f'<rect x="{x}" y="{y}" width="7" height="7" rx="1.3" fill="black"/>'
+    f'<rect x="{x + 1}" y="{y + 1}" width="5" height="5" rx=".8" fill="white"/>'
+    f'<rect x="{x + 2}" y="{y + 2}" width="3" height="3" rx=".6" fill="black"/>'
+    for x, y in EYES
+)
 (OUT / 'qr-landing.svg').write_text(
     f'<svg xmlns="http://www.w3.org/2000/svg" width="25mm" height="25mm" viewBox="0 0 {n} {n}">'
     f'<title>QR de la landing APROVECHO</title><desc>{URL}</desc>'
     f'<rect width="{n}" height="{n}" fill="white"/>'
-    f'<path d="{path}" fill="black" shape-rendering="crispEdges"/></svg>\n'
+    f'<path d="{path}" fill="black"/>{eyes_svg}</svg>\n'
 )
 
 
@@ -69,10 +99,28 @@ def black(c):
 def draw_qr(c, x, y, size):
     white(c)
     c.rect(x, y, size, size, fill=1, stroke=0)
-    black(c)
     unit = size / n
-    for row, col, length in runs():
-        c.rect(x + col * unit, y + (n - 1 - row) * unit, length * unit, unit, fill=1, stroke=0)
+    c.saveState()
+    c.translate(x, y + size)
+    c.scale(unit, -unit)
+    black(c)
+    for commands in MODULE_PATHS:
+        p = c.beginPath()
+        for command in commands:
+            if command[0] == 'M': p.moveTo(*command[1:])
+            elif command[0] == 'L': p.lineTo(*command[1:])
+            elif command[0] == 'C': p.curveTo(*command[1:])
+            else: p.close()
+        c.drawPath(p, fill=1, stroke=0)
+    # Los tres ojos conservan sus proporciones 7:5:3, con las esquinas suaves.
+    for ex, ey in EYES:
+        black(c)
+        c.roundRect(ex, ey, 7, 7, 1.3, fill=1, stroke=0)
+        white(c)
+        c.roundRect(ex + 1, ey + 1, 5, 5, .8, fill=1, stroke=0)
+        black(c)
+        c.roundRect(ex + 2, ey + 2, 3, 3, .6, fill=1, stroke=0)
+    c.restoreState()
 
 
 def draw_card(c, x, y, back=False, bleed=BLEED):
@@ -87,7 +135,7 @@ def draw_card(c, x, y, back=False, bleed=BLEED):
         c.setFont('CardSans', 11)
         c.drawCentredString(WIDTH / 2, 15 * mm, SLOGAN)
     else:
-        # QR de 25 mm, margen blanco incluido. Sin logos ni redondeo de módulos.
+        # QR redondeado de 25 mm, margen blanco incluido. Sin logos superpuestos.
         draw_qr(c, (WIDTH - 25 * mm) / 2, 21 * mm, 25 * mm)
         black(c)
         c.setFont('CardSans', 11)
@@ -104,6 +152,12 @@ def new_pdf(path, pagesize, title):
     c.setSubject('Tarjetas con QR a la landing y el lema aprobado por Octavio')
     return c
 
+
+# QR independiente vectorial: permite rasterizar exactamente el mismo dibujo a PNG.
+c = new_pdf('qr-landing.pdf', (25 * mm, 25 * mm), 'QR APROVECHO · estilo redondeado')
+draw_qr(c, 0, 0, 25 * mm)
+c.showPage()
+c.save()
 
 # Archivo de imprenta: un frente y un dorso, con 3 mm de sangrado y TrimBox explícito.
 c = new_pdf('tarjeta-frente-dorso-imprenta.pdf', (WIDTH + 2 * BLEED, HEIGHT + 2 * BLEED), 'APROVECHO · frente y dorso · 90 × 50 mm')
@@ -172,10 +226,16 @@ c.save()
     'tamano_qr_mm_con_margen': 25,
     'margen_qr_modulos': 4,
     'correccion_qr': 'Q',
+    'estilo_qr': 'Módulos conectados redondeados y tres ojos con esquinas suaves; matriz sin cambios',
     'modulos_con_margen': n,
     'tarjetas_por_a4': 10,
     'doble_faz': 'Giro por borde largo; escala 100%; sin ajustar a página',
     'firma': 'codex-octi-landing'
 }, ensure_ascii=False, indent=2) + '\n')
+for source, target, pixels in [('qr-landing.pdf', 'qr-landing', 1200),
+                               ('vista-previa.pdf', 'vista-previa', 1600)]:
+    subprocess.run(['pdftoppm', '-scale-to', str(pixels), '-png', '-singlefile',
+                    str(OUT / source), str(OUT / target)], check=True,
+                   stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 print('Generados: PDF de imprenta, A4 doble faz, vista previa y QR PNG/SVG.')
 print('QR:', URL, '· matriz', n, '×', n, 'con margen blanco incluido.')
