@@ -14,7 +14,7 @@ Este repositorio reúne todo el trabajo digital del emprendimiento:
 | Video de presentación | `video/` | Pendiente |
 
 - Reglas de trabajo para agentes: [`CLAUDE.md`](CLAUDE.md)
-- Estado del proyecto: [`docs/ESTADO.md`](docs/ESTADO.md)
+- Estado del proyecto: [tablero visual](docs/tablero/index.html) (abrilo en el navegador desde la copia local) · [resumen y sesiones](docs/ESTADO.md)
 - Resumen del negocio: [`docs/fuente/01-resumen-ejecutivo.md`](docs/fuente/01-resumen-ejecutivo.md)
 
 Equipo fundador: Catalina Rebolo (CEO), Facundo Beumont (CTO), Lola Baldini (CMO) y Octavio Chomnalez (CFO).
