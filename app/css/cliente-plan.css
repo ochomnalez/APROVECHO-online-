@@ -1,0 +1,67 @@
+.sello-cliente {
+  display: block;
+  object-fit: contain;
+}
+
+.foto-pack-cliente {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-pack .tp-img::before {
+  content: none;
+}
+
+.hero-local .foto-pack-cliente,
+.tp-img .foto-pack-cliente {
+  border-radius: inherit;
+}
+
+.categoria-con-foto {
+  overflow: hidden;
+}
+
+.categoria-con-foto .foto-pack-cliente {
+  height: calc(100% - 44px);
+}
+
+.cat-chica.categoria-con-foto .foto-pack-cliente {
+  height: calc(100% - 32px);
+}
+
+.foto-lista-cliente {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.banner .b-arte:has(.foto-pack-cliente) {
+  width: 92px;
+  height: 92px;
+  right: 12px;
+  bottom: 12px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.archivo-reporte {
+  height: auto;
+  min-height: 50px;
+  padding: 12px;
+}
+
+.foto-reporte {
+  align-self: flex-start;
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: var(--r);
+  object-fit: contain;
+}
