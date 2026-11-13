@@ -1,0 +1,215 @@
+.logo-circular,
+.sello-cliente {
+  display: block;
+  border-radius: 50%;
+  clip-path: circle(49%);
+  object-fit: contain;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+.acceso {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  padding: 28px 22px 32px;
+  gap: 24px;
+}
+.auth-marca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.auth-lema {
+  font-family: var(--display);
+  font-size: 17px;
+  color: var(--verde);
+}
+.auth-card {
+  background: white;
+  border: 1px solid var(--linea);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.auth-card h1 {
+  font-size: 29px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.auth-card .pila {
+  gap: 16px;
+}
+.auth-card label {
+  font-weight: 600;
+}
+.auth-card .input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+.auth-roles {
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.auth-roles legend {
+  font-size: 14px;
+  padding: 0 4px;
+}
+.auth-roles label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.auth-roles input {
+  accent-color: var(--verde);
+  width: 19px;
+  height: 19px;
+}
+.auth-password {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.auth-password .input {
+  padding-right: 80px;
+}
+.auth-password button {
+  position: absolute;
+  right: 12px;
+  min-height: 44px;
+}
+.auth-link {
+  align-self: center;
+  min-height: 44px;
+}
+.auth-pie {
+  border-top: 1px solid var(--linea);
+  padding-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+.auth-pie button {
+  min-height: 44px;
+  margin-left: 4px;
+}
+.auth-aclaracion {
+  text-align: center;
+  line-height: 1.6;
+}
+.auth-mensaje {
+  background: #fae8e5;
+  border-radius: 12px;
+  padding: 12px;
+  color: #842b25;
+  font-size: 14px;
+}
+.auth-mensaje.exito {
+  background: var(--verde-50);
+  color: var(--verde);
+}
+[hidden] {
+  display: none !important;
+}
+.admin-cuerpo {
+  gap: 20px;
+  padding: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+.admin-resumen {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.admin-resumen .card {
+  margin: 0;
+}
+.admin-resumen b {
+  font-size: 32px;
+  font-family: var(--display);
+  color: var(--verde);
+}
+.admin-resumen span {
+  font-size: 13px;
+  color: var(--gris);
+}
+.admin-filtros {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+.admin-filtros input {
+  min-width: 0;
+  width: 100%;
+}
+.admin-comercio {
+  border-top: 1px solid var(--linea);
+  padding: 20px 0;
+  display: grid;
+  gap: 10px;
+}
+.admin-comercio p {
+  overflow-wrap: anywhere;
+}
+.admin-comercio h3 {
+  font-size: 20px;
+}
+.admin-comercio .fila-btns {
+  flex-wrap: wrap;
+}
+.admin-pantalla .barra {
+  justify-content: space-between;
+}
+.cuenta-real {
+  margin: 12px 0;
+  padding: 16px;
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+  background: white;
+  display: grid;
+  gap: 10px;
+}
+.cuenta-real p {
+  overflow-wrap: anywhere;
+}
+#app.ancho-admin {
+  max-width: 1440px;
+}
+@media (max-width: 700px) {
+  .admin-resumen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .admin-filtros {
+    grid-template-columns: 1fr;
+  }
+  .admin-cuerpo {
+    padding: 20px 16px;
+  }
+  .admin-pantalla .barra b {
+    font-size: 14px;
+  }
+  .admin-pantalla .barra {
+    padding: 12px 16px;
+  }
+  .auth-card {
+    padding: 20px;
+  }
+  .acceso {
+    padding: 22px 18px;
+  }
+  .auth-marca img {
+    width: 96px;
+    height: 96px;
+  }
+}

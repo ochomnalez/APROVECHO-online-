@@ -1,0 +1,80 @@
+.sello-cliente {
+  display: block;
+  object-fit: contain;
+}
+
+.foto-pack-cliente {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-pack .tp-img::before {
+  content: none;
+}
+
+.hero-local .foto-pack-cliente,
+.tp-img .foto-pack-cliente {
+  border-radius: inherit;
+}
+
+.categoria-con-foto {
+  overflow: hidden;
+}
+
+.categoria-con-foto .foto-pack-cliente {
+  height: calc(100% - 44px);
+}
+
+.cat-chica.categoria-con-foto .foto-pack-cliente {
+  height: calc(100% - 32px);
+}
+
+.foto-lista-cliente {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.banner .b-arte:has(.foto-pack-cliente) {
+  width: 92px;
+  height: 92px;
+  right: 12px;
+  bottom: 12px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.archivo-reporte {
+  height: auto;
+  min-height: 50px;
+  padding: 12px;
+}
+
+.foto-reporte {
+  align-self: flex-start;
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: var(--r);
+  object-fit: contain;
+}
+
+/* Fotografía real en comida, categorías, promociones y comercios. */
+.foto-local-real {width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
+.local-con-foto {overflow:hidden;isolation:isolate;flex:none}
+.foto-ilus {object-fit:cover;border-radius:18%;display:block}
+.demo-marcas {display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.4;color:var(--gris);margin:12px 0}
+.demo-marcas .badge{flex:none}
+.creditos-enlace{text-decoration:underline;min-height:32px;display:inline-flex;align-items:center}
+.fachada-local{object-position:center}
+.pie-inicio{flex-wrap:wrap}
+.cat-chica.categoria-con-foto .foto-pack-cliente{height:calc(100% - 32px)}
+
+.tp-demo{position:absolute;bottom:8px;right:8px;font-size:10px;z-index:2;background:rgba(255,255,255,.94)}
