@@ -1,0 +1,102 @@
+[
+  {
+    "id": "havanna",
+    "output": "img/comercios/havanna.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Caf%C3%A9_Havanna_en_Colegiales%2C_Ciudad_de_Buenos_Aires.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_Havanna_en_Colegiales%2C_Ciudad_de_Buenos_Aires.jpg",
+    "author": "Just a Man",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "kfc",
+    "output": "img/comercios/kfc.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/KFC-Caseros.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:KFC-Caseros.jpg",
+    "author": "Elpodestero",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "starbucks",
+    "output": "img/comercios/starbucks.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Starbucks_Coffee_in_Buenos_Aires.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Starbucks_Coffee_in_Buenos_Aires.JPG",
+    "author": "Anastasiya Lvova",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "mcdonalds",
+    "output": "img/comercios/mcdonalds.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Mcdonalds_local_acassuso.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mcdonalds_local_acassuso.jpg",
+    "author": "Fernando Martello",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "jumbo",
+    "output": "img/comercios/jumbo.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Tucuman_Hipermercado_Jumbo_Portal_Tucuman.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Tucuman_Hipermercado_Jumbo_Portal_Tucuman.JPG",
+    "author": "Jlazarte",
+    "license": "Dominio público",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Tucuman_Hipermercado_Jumbo_Portal_Tucuman.JPG",
+    "kind": "comercio"
+  },
+  {
+    "id": "burger-king",
+    "output": "img/comercios/burger-king.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Acceso_a_Burger_King_en_Estaci%C3%B3n_Retiro%2C_Buenos_Aires%2C_Argentina.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Acceso_a_Burger_King_en_Estaci%C3%B3n_Retiro%2C_Buenos_Aires%2C_Argentina.jpg",
+    "author": "Horacio Cambeiro",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "coto",
+    "output": "img/comercios/coto.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Coto_de_munro_esquina.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Coto_de_munro_esquina.jpg",
+    "author": "Fernando Martello",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "carrefour",
+    "output": "img/comercios/carrefour.webp",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Hipermercado_Carrefour_San_Mart%C3%ADn%2C_Buenos_Aires.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Hipermercado_Carrefour_San_Mart%C3%ADn%2C_Buenos_Aires.jpg",
+    "author": "Just a Man",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "kind": "comercio"
+  },
+  {
+    "id": "hamburguesa",
+    "output": "img/fotos/hamburguesa.webp",
+    "url": "https://images.pexels.com/photos/2983104/pexels-photo-2983104.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "source": "https://www.pexels.com/photo/close-up-photo-of-burger-2983104/",
+    "author": "Jonathan Borba",
+    "license": "Pexels",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "kind": "comida"
+  },
+  {
+    "id": "pollo-crocante",
+    "output": "img/fotos/pollo-crocante.webp",
+    "url": "https://images.pexels.com/photos/7172748/pexels-photo-7172748.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "source": "https://www.pexels.com/photo/overhead-shot-of-fried-chicken-on-a-white-plate-7172748/",
+    "author": "Gabriela Sakita",
+    "license": "Pexels",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "kind": "comida"
+  }
+]

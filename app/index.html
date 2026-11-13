@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aprovecho</title>
+<meta name="description" content="Comida rica que sobró en los locales de tu barrio, a mitad de precio. Menos desperdicio, más aprovecho.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<!-- iOS no lee el manifest: necesita estas etiquetas para abrir en pantalla completa -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Aprovecho">
+<!-- pantalla de arranque verde de iPhone, una por tamaño de pantalla -->
+<link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1320x2868.png">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1284x2778.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1242x2688.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="icons/splash-828x1792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="icons/splash-750x1334.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="icons/splash-1242x2208.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aprovecho">
+<meta property="og:title" content="Aprovecho · Menos desperdicio, más aprovecho">
+<meta property="og:description" content="Comida rica que sobró en los locales de tu barrio, a mitad de precio. Prototipo navegable.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+<style>
+  /* la pantalla verde tiene que verse antes que cualquier otra cosa */
+  #splash{position:fixed;inset:0;z-index:9999;background:#1A4D3A;display:grid;place-items:center}
+  #splash img{width:128px;height:128px}
+</style>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/plan.css">
+<link rel="stylesheet" href="css/cliente-plan.css">
+<link rel="stylesheet" href="css/comercio-plan.css">
+<link rel="stylesheet" href="css/cuentas.css">
+</head>
+<body>
+<div id="splash" aria-hidden="true"><img src="img/sello-aprovecho.webp" alt=""></div>
+<div id="app"></div>
+<noscript><p style="padding:24px;font-family:sans-serif">Aprovecho necesita JavaScript para funcionar.</p></noscript>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

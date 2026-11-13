@@ -1,0 +1,214 @@
+// Datos de la demo y reglas de negocio. Todo número que la app muestra sale de acá.
+import { desplazar, rng } from './util.js';
+
+// ---------- configuración de negocio (una sola fuente de verdad) ----------
+const DESCUENTO = 0.5;
+const PRECIO_PACK_DEMO = 6100;    // D-015 · aproximación en ARS a USD 3,99
+
+export const CONFIG = {
+  descuentoDefault: DESCUENTO,
+  descuentoMin: DESCUENTO, descuentoMax: DESCUENTO,
+  horasAnticipacion: 2,           // publicar hasta 2 h antes del cierre
+  radioKm: 3,
+  factorCO2: 2.53,                // huella asociada estimada · kg CO₂e/kg · fuente 04, D-013
+  factorAgua: 192,                // huella asociada estimada · l/kg · solo Intelligence
+  kgCO2PorKm: 0.17,               // auto promedio · referencia a validar
+  rangoNutri: 0.15,               // ±15%
+  comision: 0.25,                 // D-007 · el comercio recibe el 75% del precio del pack
+  umbralAlta: 0.85, umbralDuda: 0.60,
+  precios: {                      // precios del plan · fuente 04 §11.5
+    basico: { txt: 'Sin abono', sub: '25% por pack vendido' },
+    smart: { txt: 'USD 300/mes', sub: '+ 25% por pack vendido' },
+    intelligence: { txt: 'USD 800/mes', sub: 'por sucursal + 25% por pack vendido' },
+  },
+};
+
+export const PLANES = {
+  basico: { nombre: 'Base', lema: 'Recuperá valor con una foto desde el celular de tu comercio.',
+    incluye: ['Revisás los packs sugeridos antes de publicar', 'Ventas, comisión e ingreso recuperado', 'Kilos y huella asociada estimados'] },
+  smart: { nombre: 'Smart', lema: 'Medí con precisión lo que desperdiciás y recuperá más.',
+    incluye: ['Todo lo de Base', 'Estación con balanza Systel y tablet Samsung que saca la foto', 'Peso, destino del excedente y tasa de recuperación', 'Reportes periódicos de sustentabilidad'] },
+  intelligence: { nombre: 'Intelligence', lema: 'Entendé por qué desperdiciás y empezá a desperdiciar menos.',
+    incluye: ['Todo lo de Smart', 'Inventario de envasados con vencimientos', 'Patrones, predicción y recomendaciones', 'Comparación entre sucursales e informes validados por analistas'] },
+};
+
+export const CATEGORIAS = ['Panificados', 'Pastelería', 'Sándwiches', 'Viandas'];
+export const CONDICIONES = ['Sin TACC', 'Vegetariano', 'Vegano'];
+export const TAMANOS = { chico: 'Chico', mediano: 'Mediano', grande: 'Grande' };
+
+// ---------- carta de La Espiga (14 productos; uno sin precio legible) ----------
+// nutri: kcal, proteínas, carbohidratos, grasas cada 100 g (valores de referencia aproximados)
+// alergenos: declaración del comercio ficticio para la demo, sin inferencia desde la foto.
+export const CARTA_EJEMPLO = [
+  { id: 'medialuna', nombre: 'Medialuna de manteca', cat: 'Panificados', precio: 1000, peso: 45, u: 'u', costo: 600, nutri: [410, 8, 45, 21], alergenos: ['Trigo', 'Leche', 'Huevo'] },
+  { id: 'grasa', nombre: 'Medialuna de grasa', cat: 'Panificados', precio: 900, peso: 40, u: 'u', costo: 520, nutri: [390, 8, 47, 18], alergenos: ['Trigo'] },
+  { id: 'factura', nombre: 'Factura surtida', cat: 'Panificados', precio: 1000, peso: 50, u: 'u', costo: 550, nutri: [400, 7, 50, 19], alergenos: ['Trigo', 'Leche', 'Huevo'] },
+  { id: 'bizcocho', nombre: 'Bizcochitos de grasa (100 g)', cat: 'Panificados', precio: 900, peso: 100, u: 'u', costo: 420, nutri: [450, 8, 55, 22] },
+  { id: 'pan', nombre: 'Pan de campo', cat: 'Panificados', precio: 4500, peso: 1000, u: 'kg', costo: 2200, nutri: [250, 9, 50, 1.5], alergenos: ['Trigo'] },
+  { id: 'frances', nombre: 'Pan francés', cat: 'Panificados', precio: 3200, peso: 1000, u: 'kg', costo: 1500, nutri: [270, 9, 55, 1.2] },
+  { id: 'miga', nombre: 'Sándwich de miga', cat: 'Sándwiches', precio: 1200, peso: 35, u: 'u', costo: 700, nutri: [280, 10, 28, 14], alergenos: ['Trigo', 'Leche'] },
+  { id: 'torta', nombre: 'Torta de chocolate (porción)', cat: 'Pastelería', precio: 4000, peso: 120, u: 'u', costo: 1800, nutri: [380, 5, 48, 19], alergenos: ['Trigo', 'Leche', 'Huevo'] },
+  { id: 'ricota', nombre: 'Tarta de ricota (porción)', cat: 'Pastelería', precio: null, peso: 120, u: 'u', costo: 1500, nutri: [300, 10, 32, 15] },
+  { id: 'empanada', nombre: 'Empanada de carne', cat: 'Viandas', precio: 1300, peso: 90, u: 'u', costo: 700, nutri: [250, 9, 26, 12], alergenos: ['Trigo'] },
+  { id: 'alfajor', nombre: 'Alfajor de maicena', cat: 'Pastelería', precio: 900, peso: 50, u: 'u', costo: 400, nutri: [420, 5, 60, 18] },
+  { id: 'budin', nombre: 'Budín de limón', cat: 'Pastelería', precio: 6500, peso: 450, u: 'u', costo: 3000, nutri: [370, 5, 52, 16] },
+  { id: 'chipa', nombre: 'Chipá (100 g)', cat: 'Panificados', precio: 1500, peso: 100, u: 'u', costo: 700, nutri: [330, 9, 36, 16] },
+  { id: 'salvado', nombre: 'Pan de salvado', cat: 'Panificados', precio: 4800, peso: 1000, u: 'kg', costo: 2400, nutri: [240, 10, 44, 3] },
+];
+
+// ---------- IA de visión simulada: qué "ve" en cada foto de muestra ----------
+export const RECONOCIMIENTO = {
+  medialunas: { producto: 'medialuna', unidades: 12, confianza: 0.94 },
+  facturas: { producto: 'medialuna', unidades: 5, confianza: 0.94,
+    productos: [
+      { producto: 'medialuna', unidades: 5, confianza: 0.94 },
+      { producto: 'factura', unidades: 2, confianza: 0.91 },
+    ] },
+  pan: { producto: 'pan', kg: 0.92, confianza: 0.91 },
+  sandwiches: { producto: 'miga', unidades: 4, confianza: 0.89 },
+  empanadas: { producto: 'empanada', unidades: 4, confianza: 0.72, duda: 'unidades' },
+  torta: { producto: 'torta', unidades: 1, confianza: 0.88 },
+  grasa: { producto: 'grasa', unidades: 12, confianza: 0.86 },
+};
+
+// ---------- reglas de armado de packs ----------
+// por producto: tamaño del grupo y tamaño resultante del pack
+const GRUPO = {
+  medialuna: [6, 'chico', 'Media docena de medialunas'],
+  grasa: [6, 'chico', 'Media docena de medialunas de grasa'],
+  factura: [6, 'chico', 'Media docena de facturas'],
+  alfajor: [6, 'chico', 'Media docena de alfajores'],
+  miga: [6, 'chico', 'Media docena de sándwiches de miga'],
+  empanada: [6, 'mediano', 'Media docena de empanadas'],
+  torta: [3, 'mediano', 'Tres porciones de torta'],
+  ricota: [3, 'mediano', 'Tres porciones de tarta'],
+  bizcocho: [3, 'chico', '300 g de bizcochitos'],
+  chipa: [3, 'chico', '300 g de chipá'],
+  budin: [1, 'mediano', 'Un budín'],
+};
+
+export function armarPacks(prod, cantidad) {
+  // cantidad: unidades, o kg si el producto se vende por kg
+  const packs = [];
+  if (prod.u === 'kg') {
+    const n = Math.max(1, Math.round(cantidad / 0.9));
+    const kgPack = cantidad / n;
+    for (let i = 0; i < n; i++) packs.push(nuevoPack(prod, kgPack, 'mediano', `${String(kgPack.toFixed(2)).replace('.', ',')} kg de ${prod.nombre.toLowerCase()}`));
+    return packs;
+  }
+  const [g, tam, titulo] = GRUPO[prod.id] || [Math.max(1, cantidad), 'mediano', prod.nombre];
+  let resto = cantidad;
+  while (resto >= g) { packs.push(nuevoPack(prod, g, tam, titulo)); resto -= g; }
+  if (resto > 0) {
+    if (resto >= Math.ceil(g / 2) || !packs.length) {
+      packs.push(nuevoPack(prod, resto, 'chico', `${resto} u de ${prod.nombre.toLowerCase()}`));
+    } else {
+      const ult = packs[packs.length - 1];
+      Object.assign(ult, nuevoPack(prod, ult.cantidad + resto, ult.tam, `${ult.cantidad + resto} u de ${prod.nombre.toLowerCase()}`));
+    }
+  }
+  return packs;
+}
+function nuevoPack(prod, cantidad, tam, titulo) {
+  const valorCentavos = Math.round(prod.precio * cantidad * 100);
+  const pesoG = prod.u === 'kg' ? cantidad * 1000 : prod.peso * cantidad;
+  return {
+    productoId: prod.id, cantidad, tam, titulo,
+    valor: valorCentavos / 100,
+    precio: Math.round(valorCentavos * (1 - DESCUENTO)) / 100,
+    pesoG: Math.round(pesoG), cat: prod.cat,
+  };
+}
+
+// fusiona packs iguales para mostrarlos como "2 packs chicos"
+export function agrupar(packs) {
+  const m = new Map();
+  for (const p of packs) {
+    const k = p.titulo + '|' + p.precio + '|' + p.tam;
+    if (m.has(k)) m.get(k).stock++; else m.set(k, { ...p, stock: 1 });
+  }
+  return [...m.values()];
+}
+
+// ---------- nutrición y CO2 ----------
+export function nutricion(nutri100, pesoG, rango = CONFIG.rangoNutri) {
+  const f = pesoG / 100;
+  return nutri100.map(v => [v * f * (1 - rango), v * f * (1 + rango)]);
+}
+export const co2 = kg => kg * CONFIG.factorCO2;
+export const kmAuto = kgCO2 => kgCO2 / CONFIG.kgCO2PorKm;
+
+// ---------- marcas reales como referencias de demo, sin relación comercial ----------
+export const COMERCIOS_BASE = [
+  { id: 'c1', nombre: 'Havanna', corto: 'Havanna', marcaDemo: true, marca: 'havanna', fotoLocal: './img/comercios/havanna.webp', logo: { bg: '#7B301C', fg: '#FFFFFF' }, cat: 'Panificados', cierre: '21:00', rating: 4.7, resenas: 312, dist: 350, rumbo: 40, color: '#7B301C', esMio: true },
+  { id: 'c2', nombre: 'KFC', corto: 'KFC', marcaDemo: true, marca: 'kfc', fotoLocal: './img/comercios/kfc.webp', logo: { bg: '#B91D2C', fg: '#FFFFFF' }, cat: 'Viandas', cierre: '22:00', rating: 4.5, resenas: 188, dist: 900, rumbo: 120, color: '#B91D2C' },
+  { id: 'c3', nombre: 'Starbucks', corto: 'Starbucks', marcaDemo: true, marca: 'starbucks', fotoLocal: './img/comercios/starbucks.webp', logo: { bg: '#006241', fg: '#FFFFFF' }, cat: 'Pastelería', cierre: '20:30', rating: 4.8, resenas: 97, dist: 600, rumbo: 250, color: '#006241' },
+  { id: 'c4', nombre: "McDonald's", corto: "McDonald's", marcaDemo: true, marca: 'mcdonalds', fotoLocal: './img/comercios/mcdonalds.webp', logo: { bg: '#B51E24', fg: '#FFFFFF' }, cat: 'Sándwiches', cierre: '23:00', rating: 4.6, resenas: 141, dist: 1300, rumbo: 310, color: '#B51E24' },
+  { id: 'c5', nombre: 'Jumbo', corto: 'Jumbo', marcaDemo: true, marca: 'jumbo', fotoLocal: './img/comercios/jumbo.webp', logo: { bg: '#007448', fg: '#FFFFFF' }, cat: 'Viandas', cierre: '21:30', rating: 4.9, resenas: 76, dist: 1800, rumbo: 190, color: '#007448' },
+  { id: 'c6', nombre: 'Burger King', corto: 'Burger King', marcaDemo: true, marca: 'burger-king', fotoLocal: './img/comercios/burger-king.webp', logo: { bg: '#A53623', fg: '#FFFFFF' }, cat: 'Sándwiches', cierre: '23:00', rating: 4.4, resenas: 203, dist: 750, rumbo: 80, color: '#A53623' },
+  { id: 'c7', nombre: 'Coto', corto: 'Coto', marcaDemo: true, marca: 'coto', fotoLocal: './img/comercios/coto.webp', logo: { bg: '#C12427', fg: '#FFFFFF' }, cat: 'Viandas', cierre: '22:00', rating: 4.3, resenas: 265, dist: 2200, rumbo: 20, color: '#C12427' },
+  { id: 'c8', nombre: 'Carrefour', corto: 'Carrefour', marcaDemo: true, marca: 'carrefour', fotoLocal: './img/comercios/carrefour.webp', logo: { bg: '#164F9E', fg: '#FFFFFF' }, cat: 'Panificados', cierre: '21:00', rating: 4.8, resenas: 59, dist: 1100, rumbo: 160, color: '#164F9E' },
+];
+
+export function ubicarComercios(centro) {
+  return COMERCIOS_BASE.map(c => ({ ...c, ...desplazar(centro, c.dist, c.rumbo) }));
+}
+
+// packs de los otros locales, para que el mapa arranque con oferta
+const NUTRI_CAT = { Panificados: [360, 8, 48, 14], Pastelería: [370, 5, 50, 17], Sándwiches: [280, 10, 28, 14], Viandas: [210, 11, 20, 10] };
+export function packsSemilla(dia) {
+  const r = rng('packs' + dia);
+  const def = [
+    ['c1', 'mediano', 910, [], 'Panificados', 2, false, 'pan'],
+    ['c2', 'mediano', 650, [], 'Viandas', 3, true],
+    ['c2', 'grande', 1300, [], 'Viandas', 1, true],
+    ['c3', 'chico', 330, ['Vegetariano'], 'Pastelería', 2, false],
+    ['c4', 'mediano', 520, [], 'Sándwiches', 2, false],
+    ['c5', 'mediano', 600, ['Vegano', 'Sin TACC'], 'Viandas', 2, false],
+    ['c6', 'chico', 280, [], 'Sándwiches', 4, false],
+    ['c7', 'grande', 1100, ['Vegetariano'], 'Viandas', 2, true],
+    ['c8', 'chico', 350, ['Sin TACC'], 'Panificados', 3, false],
+    ['c5', 'chico', 420, ['Vegano'], 'Viandas', 2, false],
+  ];
+  return def.map(([comercioId, tam, pesoG, cond, cat, stock, medido, productoId], i) => ({
+    id: 'ps' + i, comercioId, tam, precio: PRECIO_PACK_DEMO, valor: PRECIO_PACK_DEMO / (1 - DESCUENTO),
+    pesoG, cond, cat, stock, vendidos: 0,
+    medido, origen: medido ? 'estacion' : 'foto', productoId: productoId || null,
+    nutri100: NUTRI_CAT[cat], dia, titulo: null, creado: null, estado: 'activo',
+    minutosPublicado: 20 + Math.floor(r() * 90),
+  }));
+}
+
+// ---------- consumidor ----------
+export const NIVELES = [
+  { min: 0, a: 'Rescatadora novata', o: 'Rescatador novato', n: 'Novato' },
+  { min: 5, a: 'Rescatadora comprometida', o: 'Rescatador comprometido', n: 'Comprometido' },
+  { min: 25, a: 'Rescatadora experta', o: 'Rescatador experto', n: 'Experto' },
+  { min: 60, a: 'Embajadora', o: 'Embajador', n: 'Embajador' },
+];
+export const HISTORIAL_CONSUMIDOR = { packs: 19, kg: 7.8, ahorro: 19 * PRECIO_PACK_DEMO };
+
+export const MOTIVOS_MERMA = ['Sobró de producción', 'Se venció', 'Recorte de preparación', 'Resto de plato', 'Se quemó o se rompió'];
+export const MOTIVOS_DESCARTE = ['No se puede hacer', 'Ya lo hago', 'No creo que funcione', 'Otro motivo'];
+
+// ---------- Inicio del consumidor ----------
+// categorías grandes (arriba) y chicas (fila deslizable)
+export const CATS_GRANDES = [
+  { id: 'Panificados', titulo: 'Panaderías', ilus: 'medialuna', fondo: '#FBEBD2', tinta: '#7A4A12' },
+  { id: 'Viandas', titulo: 'Viandas', ilus: 'vianda', fondo: '#E3F1DC', tinta: '#23572B' },
+];
+export const CATS_CHICAS = [
+  { id: 'Pastelería', titulo: 'Pastelería', ilus: 'torta', fondo: '#FBE1E6' },
+  { id: 'Sándwiches', titulo: 'Sándwiches', ilus: 'sandwich', fondo: '#FDF1CF' },
+  { id: 'Sin TACC', titulo: 'Sin TACC', ilus: 'sintacc', fondo: '#E0F2EE', cond: true },
+  { id: 'Vegano', titulo: 'Vegano', ilus: 'hoja', fondo: '#E6F4DC', cond: true },
+  { id: 'agotan', titulo: 'Se agotan', ilus: 'fuego', fondo: '#FDE7DC' },
+  { id: 'mejores', titulo: 'Mejor puntuados', ilus: 'estrella', fondo: '#FFF3D6' },
+];
+export const BUSQUEDAS = ['medialunas', 'viandas', 'sin TACC', 'McDonald’s', 'pastelería', 'pizza', 'vegano'];
+export const BANNERS = [
+  { id: 'merienda', tono: 'verde', eti: '50% de descuento', titulo: 'Rescatá la merienda', texto: 'Medialunas, facturas y pan de las panaderías de tu barrio.', cta: 'Ver panaderías', ir: 'c/lista/Panificados', ilus: ['medialuna', 'cafe'] },
+  { id: 'sintacc', tono: 'teal', eti: 'Nuevo', titulo: 'Packs sin TACC cerca tuyo', texto: 'Cada local declara qué puede ofrecer, pack por pack.', cta: 'Ver sin TACC', ir: 'c/lista/Sin TACC', ilus: ['sintacc'] },
+  { id: 'compartir', tono: 'naranja', eti: 'Sumá gente', titulo: 'Pasale Aprovecho a un amigo', texto: 'Cuanta más gente rescata, menos comida se tira.', cta: 'Compartir', act: 'compartir-app', ilus: ['caja'] },
+  { id: 'impacto', tono: 'oscuro', eti: 'Tu impacto', titulo: 'Ya rescataste {kg} kg', texto: '{co2} kg de CO₂e de huella asociada estimada.', cta: 'Ver mi perfil', ir: 'c/perfil', ilus: ['hoja'] },
+];
